@@ -47,6 +47,7 @@ def generate_configs(
     *,
     steps: int = 10_000_000,
     agent_obsk: int = 1,
+    mamujoco_backend: str = "modern",
     include_ablations: bool = False,
 ) -> Path:
     """Validate and write the registry's complete matched experiment matrix.
@@ -61,6 +62,8 @@ def generate_configs(
         raise ValueError("steps must be a positive integer")
     if agent_obsk not in (0, 1):
         raise ValueError("agent_obsk must be 0 (paper table) or 1 (paper prose)")
+    if mamujoco_backend not in {"modern", "legacy"}:
+        raise ValueError("mamujoco_backend must be modern or legacy")
     targets, output_dir = Path(targets), Path(output_dir)
     registry, registry_hash = _read_json(targets)
     evaluation = registry["reproduction_evaluation_policy"]
@@ -99,10 +102,12 @@ def generate_configs(
                 agent_obsk=agent_obsk,
             )
             if environment == "mamujoco":
-                base.update(scenario=target["environment"], agent_conf=target["agent_configuration"])
+                base.update(scenario=target["environment"], agent_conf=target["agent_configuration"],
+                            mamujoco_backend=mamujoco_backend)
             else:
                 base.update(map_name=task)
-            task_slug = f"{environment}-{_slug(task)}"
+            prefix = "mamujoco-legacy" if environment == "mamujoco" and mamujoco_backend == "legacy" else environment
+            task_slug = f"{prefix}-{_slug(task)}"
             for variant in variants:
                 values = dict(base)
                 values.update(
@@ -125,6 +130,9 @@ def generate_configs(
         "reference_templates": template_provenance,
         "total_environment_steps": steps,
         "agent_obsk": agent_obsk,
+        "mamujoco_backend": mamujoco_backend,
+        "mamujoco_track": ("historical_v2_compatibility" if mamujoco_backend == "legacy"
+                            else "modern_v5_adaptation"),
         "observation_track": "paper_prose_k1" if agent_obsk == 1 else "paper_table_k0_no_observed_peers",
         "placeholder_seed": 101,
         "training_seeds": list(evaluation["training_seeds"]),
@@ -163,6 +171,7 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--steps", type=int, default=10_000_000)
     parser.add_argument("--agent-obsk", type=int, choices=(0, 1), default=1)
+    parser.add_argument("--mamujoco-backend", choices=("modern", "legacy"), default="modern")
     parser.add_argument("--include-ablations", action="store_true")
     args = parser.parse_args(argv)
     manifest_path = generate_configs(
@@ -170,6 +179,7 @@ def main(argv: list[str] | None = None) -> None:
         args.output_dir,
         steps=args.steps,
         agent_obsk=args.agent_obsk,
+        mamujoco_backend=args.mamujoco_backend,
         include_ablations=args.include_ablations,
     )
     count = len(json.loads(manifest_path.read_text())["experiments"])

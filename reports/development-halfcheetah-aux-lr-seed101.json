@@ -1,0 +1,82 @@
+{
+  "purpose": "narrow_auxiliary_learning_rate_screen_not_final_selection",
+  "created_utc": "2026-10-25T09:06:05.777881+00:00",
+  "control_job": "21195750",
+  "control_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101",
+  "control_intention_lr": 0.001,
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-aux-lr-source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+    "dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "4d844744296b2c10cc7bc4cb8ac556f8afe141724ba6e3d55b415f430d67eba1"
+  },
+  "source_note": "Exactly the archived completed control source; older evaluator lacks current release-provenance fields. No existing artifact modified.",
+  "hypothesis": "Slower auxiliary updates may reduce representation drift; the previous negative three-seed result does not establish this cause. No separate target network added.",
+  "plan": "Two predeclared auxiliary rates,3e-4and1e-4; same seed101,500ktransitions,beta0.1,and all other configfields. Positive single-seed evidence would require replication.",
+  "jobs": [
+    {
+      "job_id": "21196479",
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4.json",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101",
+      "intention_lr": 0.0003,
+      "config_sha256": "5fc1404ce35e9f1c290292b17d8d28c352b0064a34bafe9efb4b46eb7f19b9aa",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=02:00:00",
+        "--job-name=dms-hc-aux-3e-4",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4.json",
+        "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101",
+        "101"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "time_limit": "02:00:00"
+      },
+      "state": "RUNNING",
+      "startup_verified": true,
+      "verified_steps": 140000,
+      "source_files_verified": 15
+    },
+    {
+      "job_id": "21196480",
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4.json",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101",
+      "intention_lr": 0.0001,
+      "config_sha256": "fc086b4f8ebda3a0d19bf8866eba3cc33e3df7ecf908e42fad393730a897b6d1",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=02:00:00",
+        "--job-name=dms-hc-aux-1e-4",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4.json",
+        "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101",
+        "101"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "time_limit": "02:00:00"
+      },
+      "state": "RUNNING",
+      "startup_verified": true,
+      "verified_steps": 136000,
+      "source_files_verified": 15
+    }
+  ]
+}

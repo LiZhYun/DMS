@@ -1,0 +1,196 @@
+{
+  "purpose": "joint decoder-history/KL-setting transfer to SMAC development, not an isolated causal ablation or held-out final benchmark",
+  "created_utc": "2026-10-25T08:59:22.769391+00:00",
+  "baseline_training_job_id": "21195883",
+  "config_base": "/scratch/work/liz23/reproduce/dms/configs/development/smac-3s5z-dms-soft-1m-threaded.json",
+  "config_base_sha256": "c7c66264b59f4f19338c67def36fe2b6de937c50bf44ea07c7d1089e90c09f5a",
+  "config": "/scratch/work/liz23/reproduce/dms/configs/development/smac-3s5z-dms-latent-decoder-beta-01-1m-threaded.json",
+  "config_sha256": "779f35e3d15e05e08d29836062bd4a140e04a1254934ee51422a8b0ffe85dd70",
+  "validated_differences": {
+    "decoder_history": {
+      "baseline": true,
+      "trial": false
+    },
+    "kl_beta": {
+      "baseline": 1.0,
+      "trial": 0.1
+    },
+    "output": {
+      "baseline": "runs/dev-smac-3s5z-dms-soft-1m-threaded-101",
+      "trial": "runs/dev-smac-3s5z-dms-latent-decoder-beta-01-1m-threaded-101"
+    }
+  },
+  "all_other_settings_unchanged": true,
+  "source_snapshot": {
+    "created_utc": "2026-10-25T08:59:22.354370+00:00",
+    "origin": "/scratch/work/liz23/reproduce/dms/src/dms",
+    "package": "/scratch/work/liz23/reproduce/dms/runs/development-smac-latent-decoder-seed101-source/dms",
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+      "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+      "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+    }
+  },
+  "training": {
+    "status": "running; startup and active auxiliary updates verified",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name",
+      "dms-smac-latent-beta01",
+      "--chdir",
+      "/scratch/work/liz23/reproduce/dms",
+      "--cpus-per-task=8",
+      "--mem=32G",
+      "--time=06:00:00",
+      "scripts/triton/train.sbatch",
+      "/scratch/work/liz23/reproduce/dms/configs/development/smac-3s5z-dms-latent-decoder-beta-01-1m-threaded.json",
+      "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-latent-decoder-beta-01-1m-threaded-101",
+      "101"
+    ],
+    "source_environment": {
+      "DMS_SOURCE_ROOT": "/scratch/work/liz23/reproduce/dms/runs/development-smac-latent-decoder-seed101-source",
+      "DMS_DEVICE": "cuda",
+      "PYTHON": "/scratch/work/liz23/reproduce/dms/.venv/bin/python"
+    },
+    "output": "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-latent-decoder-beta-01-1m-threaded-101",
+    "training_seed": 101,
+    "total_steps": 1000000,
+    "resources": {
+      "cpus": 8,
+      "memory": "32G",
+      "time": "06:00:00",
+      "gpu_partitions": [
+        "gpu-h200-141g-ellis",
+        "gpu-a100-80g",
+        "gpu-h100-80g"
+      ]
+    },
+    "job_id": "21196342",
+    "submitted_utc": "2026-10-25T08:59:23.047261+00:00",
+    "startup_verification": {
+      "utc": "2026-10-25T09:05:18.105139+00:00",
+      "resolved_config_matches": true,
+      "source_matches_shared_snapshot": true,
+      "source_file_count": 16,
+      "finite_policy_and_intention_updates": true,
+      "last_completed_steps": 20480,
+      "completed_episodes": 389,
+      "slurm_state": "RUNNING",
+      "node": "gpu58",
+      "partition": "gpu-h200-141g-ellis",
+      "allocated_cpus": 8,
+      "requested_memory": "32G",
+      "time_limit": "06:00:00",
+      "runtime": {
+        "host": "gpu58.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21196342",
+        "slurm_partition": "gpu-h200-141g-ellis"
+      }
+    }
+  },
+  "baseline_diagnostic": {
+    "status": "completed; provenance/invariants verified",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name",
+      "dms-smac-mechanism",
+      "--chdir",
+      "/scratch/work/liz23/reproduce/dms",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=2",
+      "--mem=8G",
+      "--time=00:15:00",
+      "--output",
+      "/scratch/work/liz23/reproduce/dms/logs/%x_%j.out",
+      "--error",
+      "/scratch/work/liz23/reproduce/dms/logs/%x_%j.err",
+      "--wrap",
+      "env PYTHONPATH=/scratch/work/liz23/reproduce/dms/runs/development-smac-latent-decoder-seed101-source SC2PATH=/scratch/work/liz23/3rdparty/StarCraftII OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /scratch/work/liz23/reproduce/dms/.venv/bin/python scripts/diagnose_intentions.py --checkpoint /scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-soft-1m-threaded-101/diagnostic-checkpoint-01.pt --output /scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-soft-1m-threaded-101/mechanism-diagnostic-01.json --device cpu --steps 128 --num-envs 4 --windows 256 --seed 200001"
+    ],
+    "wrapped_arguments": [
+      "env",
+      "PYTHONPATH=/scratch/work/liz23/reproduce/dms/runs/development-smac-latent-decoder-seed101-source",
+      "SC2PATH=/scratch/work/liz23/3rdparty/StarCraftII",
+      "OMP_NUM_THREADS=1",
+      "MKL_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "/scratch/work/liz23/reproduce/dms/.venv/bin/python",
+      "scripts/diagnose_intentions.py",
+      "--checkpoint",
+      "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-soft-1m-threaded-101/diagnostic-checkpoint-01.pt",
+      "--output",
+      "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-soft-1m-threaded-101/mechanism-diagnostic-01.json",
+      "--device",
+      "cpu",
+      "--steps",
+      "128",
+      "--num-envs",
+      "4",
+      "--windows",
+      "256",
+      "--seed",
+      "200001"
+    ],
+    "checkpoint": "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-soft-1m-threaded-101/diagnostic-checkpoint-01.pt",
+    "checkpoint_sha256": "f1313e101fd2c480ebd0b7839dd9d7d24b937fe104b547c5ff15af2cd02bdbc8",
+    "checkpoint_steps": 400000,
+    "checkpoint_episodes": 6345,
+    "checkpoint_original_path": "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-soft-1m-threaded-101/latest.pt",
+    "output": "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-soft-1m-threaded-101/mechanism-diagnostic-01.json",
+    "diagnostic_seed": 200001,
+    "num_envs": 4,
+    "steps_per_environment": 128,
+    "maximum_windows": 256,
+    "diagnostic_source": "/scratch/work/liz23/reproduce/dms/runs/development-smac-latent-decoder-seed101-source",
+    "script_sha256": "a266da6572fc1d27ce379d5ff034faaf47ca3a20a738b9195bbf8d55f170ec34",
+    "job_id": "21196343",
+    "submitted_utc": "2026-10-25T08:59:23.155261+00:00",
+    "verified_utc": "2026-10-25T09:05:11.951878+00:00",
+    "slurm_state": "COMPLETED",
+    "slurm_exit_code": "0:0",
+    "slurm_elapsed": "00:01:13",
+    "artifact_sha256": "66943bb83212b17c8a9ea81ed113ca81414683c43ddf4a6f12507f864f233584",
+    "summary": {
+      "gated_peer_pairs": 56,
+      "gated_peer_variance_steps": 23204,
+      "gated_temporal_coordinate_rms_std": 0.017825525376572792,
+      "matched_policy_count": 3688,
+      "policy_shuffle_kl_mean": 7.567101750237986e-07,
+      "decoder_peer_pairs": 56,
+      "decoder_matched_target_count": 22025,
+      "decoder_prediction_total_variation": 0.0003162330577044804,
+      "decoder_nll_increase_after_shuffle": 1.9079860870826778e-05,
+      "decoder_pairs_with_positive_nll_increase": 28,
+      "forecast": {
+        "forecast_target_count": 32465,
+        "forecast_comparison_count": 31201,
+        "history_baseline_target_count": 31201,
+        "forecast_nll": 1.6801354095048315,
+        "forecast_accuracy": 0.40239095125269886,
+        "persistence_accuracy": 0.32329091697254075,
+        "history_histogram_accuracy": 0.25483157709687454,
+        "history_histogram_nll": 2.1826837938155337,
+        "forecast_history_comparison_nll": 1.714718724056672,
+        "history_baseline_coverage_fraction": 0.9610657631295241
+      },
+      "aggregation": "temporal std sqrt weighted variance by variance_steps; actor KL weighted by compared_policy_count; decoder changes weighted by scored_target_count; peer-only temporal/decoder rows",
+      "interpretation": "Forecasts outperform local history baselines on their matched masks, but shuffled peer latents produce near-negligible actor/decoder effects. This is evidence of weak history-dependent latent use in these sampled histories, not formal proof of posterior collapse or benchmark performance."
+    }
+  }
+}

@@ -94,3 +94,40 @@ def test_cli_writes_only_to_requested_temporary_directory(tmp_path, capsys):
     manifest, tasks = _read_matrix(output_dir / "manifest.json")
     assert manifest["total_environment_steps"] == 4000
     assert all(values["total_steps"] == 4000 for variants in tasks.values() for values in variants.values())
+
+
+def test_historical_matrix_is_explicit_and_cannot_share_modern_run_outputs(tmp_path):
+    modern, modern_tasks = _read_matrix(generate_configs(TARGETS, tmp_path / "modern"))
+    legacy, legacy_tasks = _read_matrix(generate_configs(
+        TARGETS, tmp_path / "legacy", mamujoco_backend="legacy", include_ablations=True))
+    assert modern["mamujoco_track"] == "modern_v5_adaptation"
+    assert legacy["mamujoco_backend"] == "legacy"
+    assert legacy["mamujoco_track"] == "historical_v2_compatibility"
+    assert len(legacy["experiments"]) == 60
+    for task, variants in legacy_tasks.items():
+        for variant, config in variants.items():
+            if config["env"] == "mamujoco":
+                assert config["mamujoco_backend"] == "legacy"
+                assert config["output"].startswith("runs/mamujoco-legacy-")
+            else:
+                assert config["mamujoco_backend"] == modern_tasks[task]["dms-soft"]["mamujoco_backend"]
+        if variants["dms-soft"]["env"] == "mamujoco":
+            for variant in ("ippo", "dms-soft"):
+                old, new = modern_tasks[task][variant], variants[variant]
+                assert {key for key in old if old[key] != new[key]} == {"mamujoco_backend", "output"}
+
+
+def test_cli_accepts_explicit_historical_backend(tmp_path):
+    main(["--targets", str(TARGETS), "--output-dir", str(tmp_path),
+          "--mamujoco-backend", "legacy", "--steps", "4000"])
+    manifest, tasks = _read_matrix(tmp_path / "manifest.json")
+    assert manifest["mamujoco_backend"] == "legacy"
+    assert all(values["mamujoco_backend"] == "legacy" for variants in tasks.values()
+               for values in variants.values() if values["env"] == "mamujoco")
+
+
+def test_invalid_backend_rejected_before_any_output(tmp_path):
+    output = tmp_path / "invalid"
+    with pytest.raises(ValueError, match="mamujoco_backend"):
+        generate_configs(TARGETS, output, mamujoco_backend="unknown")
+    assert not output.exists()

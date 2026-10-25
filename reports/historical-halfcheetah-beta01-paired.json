@@ -1,0 +1,2311 @@
+{
+  "purpose": "descriptive_paired_development_endpoints_not_final_hyperparameter_selection",
+  "training_seeds": [
+    101,
+    103,
+    107
+  ],
+  "training_budget_per_run": 500000,
+  "episodes_per_endpoint": 5,
+  "pairing": "Same training-seed labels and evaluation episode seeds; not identical random streams or parameterization.",
+  "uncertainty": "Three development seeds, with seed 101 used for selection; no confidence interval or confirmatory claim.",
+  "paper_reproduction_pass": false,
+  "release_reference_gate_evaluated": false,
+  "pairs": [
+    {
+      "training_seed": 101,
+      "training_steps": 500000,
+      "episodes_per_method": 5,
+      "episode_seeds": [
+        10001,
+        10002,
+        10003,
+        10004,
+        10005
+      ],
+      "ippo_return_mean": 1928.2011149985715,
+      "dms_return_mean": 3109.834005684685,
+      "dms_minus_ippo": 1181.6328906861136,
+      "ippo_episode_returns": [
+        1906.921900268644,
+        1923.059241543524,
+        1953.6283568516374,
+        1941.2231738381088,
+        1916.1729024909437
+      ],
+      "dms_episode_returns": [
+        3093.7899291603826,
+        3018.4548967927694,
+        3158.060522302985,
+        3146.4879565164447,
+        3132.376723650843
+      ],
+      "config_differences": {
+        "decoder_history": {
+          "ippo": null,
+          "dms": false
+        },
+        "output": {
+          "ippo": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-101",
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101"
+        },
+        "kl_beta": {
+          "ippo": 1.0,
+          "dms": 0.1
+        },
+        "algorithm": {
+          "ippo": "ippo",
+          "dms": "dms"
+        }
+      },
+      "source_comparison": {
+        "all_saved_source_snapshots_identical": false,
+        "all_manifests_match_saved_source": true,
+        "differing_files": {
+          "dms/diagnostics.py": {
+            "dev-legacy-halfcheetah-2x3-ippo-101": "6de9dff7bec63aeacc559e690f88bf11f3014251af78de90f3fd5e69b36d54b7",
+            "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+          },
+          "dms/smac_env.py": {
+            "dev-legacy-halfcheetah-2x3-ippo-101": "6dea3faa3afb05ab2c2b96c4486c5f650eeb1901603a21bdbedb1154d699c16e",
+            "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+          },
+          "dms/train.py": {
+            "dev-legacy-halfcheetah-2x3-ippo-101": "cfdf12231b4f896c1d133f8c463e16b6702816c85530c3a080928c2b7b6bea49",
+            "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "4d844744296b2c10cc7bc4cb8ac556f8afe141724ba6e3d55b415f430d67eba1"
+          }
+        },
+        "interpretation": "Recorded source differences are confounders; this is not a matching-source release gate."
+      }
+    },
+    {
+      "training_seed": 103,
+      "training_steps": 500000,
+      "episodes_per_method": 5,
+      "episode_seeds": [
+        10001,
+        10002,
+        10003,
+        10004,
+        10005
+      ],
+      "ippo_return_mean": 3114.3355138249694,
+      "dms_return_mean": 1612.3823393977996,
+      "dms_minus_ippo": -1501.9531744271699,
+      "ippo_episode_returns": [
+        3119.8640473261476,
+        3166.5951191335917,
+        3080.5159221682698,
+        3099.8732270002365,
+        3104.829253496602
+      ],
+      "dms_episode_returns": [
+        1551.2668177497399,
+        1322.2429705116629,
+        1988.1419051899575,
+        1520.5777590998914,
+        1679.6822444377467
+      ],
+      "config_differences": {
+        "decoder_history": {
+          "ippo": true,
+          "dms": false
+        },
+        "output": {
+          "ippo": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-103",
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103"
+        },
+        "kl_beta": {
+          "ippo": 1.0,
+          "dms": 0.1
+        },
+        "algorithm": {
+          "ippo": "ippo",
+          "dms": "dms"
+        }
+      },
+      "source_comparison": {
+        "all_saved_source_snapshots_identical": true,
+        "all_manifests_match_saved_source": true,
+        "differing_files": {},
+        "interpretation": "Recorded source differences are confounders; this is not a matching-source release gate."
+      }
+    },
+    {
+      "training_seed": 107,
+      "training_steps": 500000,
+      "episodes_per_method": 5,
+      "episode_seeds": [
+        10001,
+        10002,
+        10003,
+        10004,
+        10005
+      ],
+      "ippo_return_mean": 2708.2924179883676,
+      "dms_return_mean": 2239.9706745424073,
+      "dms_minus_ippo": -468.32174344596024,
+      "ippo_episode_returns": [
+        2663.04228460975,
+        2711.921298339963,
+        2722.389103326015,
+        2735.854435235262,
+        2708.254968430847
+      ],
+      "dms_episode_returns": [
+        2216.8314871126786,
+        2251.0325528783724,
+        2257.455936208251,
+        2219.5522720287554,
+        2254.9811244839802
+      ],
+      "config_differences": {
+        "decoder_history": {
+          "ippo": true,
+          "dms": false
+        },
+        "output": {
+          "ippo": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-107",
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107"
+        },
+        "kl_beta": {
+          "ippo": 1.0,
+          "dms": 0.1
+        },
+        "algorithm": {
+          "ippo": "ippo",
+          "dms": "dms"
+        }
+      },
+      "source_comparison": {
+        "all_saved_source_snapshots_identical": true,
+        "all_manifests_match_saved_source": true,
+        "differing_files": {},
+        "interpretation": "Recorded source differences are confounders; this is not a matching-source release gate."
+      }
+    }
+  ],
+  "mean_of_training_seed_means": {
+    "ippo": 2583.6096822706363,
+    "dms": 2320.7290065416305,
+    "dms_minus_ippo": -262.88067572900553
+  },
+  "source_comparison": {
+    "all_saved_source_snapshots_identical": false,
+    "all_manifests_match_saved_source": true,
+    "differing_files": {
+      "dms/diagnostics.py": {
+        "dev-legacy-halfcheetah-2x3-ippo-101": "6de9dff7bec63aeacc559e690f88bf11f3014251af78de90f3fd5e69b36d54b7",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dev-legacy-halfcheetah-2x3-ippo-103": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dev-legacy-halfcheetah-2x3-ippo-107": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      "dms/evaluate.py": {
+        "dev-legacy-halfcheetah-2x3-ippo-101": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+        "dev-legacy-halfcheetah-2x3-ippo-103": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dev-legacy-halfcheetah-2x3-ippo-107": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      "dms/intention.py": {
+        "dev-legacy-halfcheetah-2x3-ippo-101": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+        "dev-legacy-halfcheetah-2x3-ippo-103": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dev-legacy-halfcheetah-2x3-ippo-107": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7"
+      },
+      "dms/parallel.py": {
+        "dev-legacy-halfcheetah-2x3-ippo-101": null,
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": null,
+        "dev-legacy-halfcheetah-2x3-ippo-103": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dev-legacy-halfcheetah-2x3-ippo-107": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      "dms/report.py": {
+        "dev-legacy-halfcheetah-2x3-ippo-101": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+        "dev-legacy-halfcheetah-2x3-ippo-103": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "dev-legacy-halfcheetah-2x3-ippo-107": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6"
+      },
+      "dms/smac_env.py": {
+        "dev-legacy-halfcheetah-2x3-ippo-101": "6dea3faa3afb05ab2c2b96c4486c5f650eeb1901603a21bdbedb1154d699c16e",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dev-legacy-halfcheetah-2x3-ippo-103": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dev-legacy-halfcheetah-2x3-ippo-107": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      "dms/train.py": {
+        "dev-legacy-halfcheetah-2x3-ippo-101": "cfdf12231b4f896c1d133f8c463e16b6702816c85530c3a080928c2b7b6bea49",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101": "4d844744296b2c10cc7bc4cb8ac556f8afe141724ba6e3d55b415f430d67eba1",
+        "dev-legacy-halfcheetah-2x3-ippo-103": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+        "dev-legacy-halfcheetah-2x3-ippo-107": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+        "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+      }
+    },
+    "interpretation": "Recorded source differences are confounders; this is not a matching-source release gate."
+  },
+  "series": [
+    {
+      "run": "dev-legacy-halfcheetah-2x3-ippo-101",
+      "source": "runs/dev-legacy-halfcheetah-2x3-ippo-101/evaluation.jsonl",
+      "task": "HalfCheetah 2x3",
+      "method": "IPPO",
+      "training_seed": 101,
+      "training_budget": 500000,
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "episodes_per_checkpoint": 5,
+      "checkpoints": [
+        {
+          "training_steps": 100000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            373.9808995516505,
+            403.7797815584345,
+            386.70302733266726,
+            378.0652927322517,
+            379.3509632432979
+          ],
+          "return_mean": 384.3759928836604
+        },
+        {
+          "training_steps": 200000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            88.24851619955734,
+            143.20796776097268,
+            175.5784459223505,
+            71.08129553729668,
+            147.189575525932
+          ],
+          "return_mean": 125.06116018922185
+        },
+        {
+          "training_steps": 300000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            788.5384892257571,
+            889.6112397127436,
+            845.1808077296009,
+            860.3915285842959,
+            792.8121567353373
+          ],
+          "return_mean": 835.3068443975469
+        },
+        {
+          "training_steps": 400000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1658.3738927706145,
+            1613.113368081511,
+            1580.185332808178,
+            1592.339577901177,
+            1600.2197219594382
+          ],
+          "return_mean": 1608.8463787041837
+        },
+        {
+          "training_steps": 500000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1906.921900268644,
+            1923.059241543524,
+            1953.6283568516374,
+            1941.2231738381088,
+            1916.1729024909437
+          ],
+          "return_mean": 1928.2011149985715
+        }
+      ],
+      "provenance": {
+        "files": {
+          "runs/dev-legacy-halfcheetah-2x3-ippo-101/config.json": "52562b28f055879b1dfa7bb975f64865205953ec387a29e2f19bd5a4aa8b9dae",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-101/manifest.json": "2fd1360588f0e4f492e742d7cfde63915d3be3fd962517da6f090f67bc5d847a",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-101/evaluation.jsonl": "4a0830737bd9491ad509e1ec525c68e99c5ce45753650f2aaf1084c1623ac61e",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-101/source/dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-101/source/dms/train.py": "cfdf12231b4f896c1d133f8c463e16b6702816c85530c3a080928c2b7b6bea49"
+        },
+        "config": {
+          "algorithm": "ippo",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "HalfCheetah",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cpu",
+          "num_envs": 4,
+          "total_steps": 500000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "latent_dim": 8,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 1.0,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 100000,
+          "eval_episodes": 5,
+          "eval_seed": 10001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-101",
+          "torch_threads": 1
+        },
+        "manifest": {
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "initial_info": {
+            "elapsed_steps": 0
+          },
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+            "dms/diagnostics.py": "6de9dff7bec63aeacc559e690f88bf11f3014251af78de90f3fd5e69b36d54b7",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+            "dms/evaluate.py": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+            "dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+            "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+            "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+            "dms/report.py": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "6dea3faa3afb05ab2c2b96c4486c5f650eeb1901603a21bdbedb1154d699c16e",
+            "dms/train.py": "cfdf12231b4f896c1d133f8c463e16b6702816c85530c3a080928c2b7b6bea49"
+          },
+          "runtime": {
+            "host": "milan6.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21192876",
+            "slurm_partition": "batch-milan"
+          },
+          "information": "local observations and visibility-masked observed action sensors",
+          "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+          "parameters": {
+            "actor_critic": 24590,
+            "intention": 0
+          },
+          "history": "finite rolling action window; configurable redesign of full-history prior",
+          "status": "completed; no paper performance claim",
+          "completed_steps": 500000,
+          "completed_episodes": 500
+        },
+        "saved_source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+          "dms/diagnostics.py": "6de9dff7bec63aeacc559e690f88bf11f3014251af78de90f3fd5e69b36d54b7",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+          "dms/evaluate.py": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+          "dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+          "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+          "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+          "dms/report.py": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "6dea3faa3afb05ab2c2b96c4486c5f650eeb1901603a21bdbedb1154d699c16e",
+          "dms/train.py": "cfdf12231b4f896c1d133f8c463e16b6702816c85530c3a080928c2b7b6bea49"
+        },
+        "manifest_matches_saved_source": true
+      }
+    },
+    {
+      "run": "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101",
+      "source": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101/evaluation.jsonl",
+      "task": "HalfCheetah 2x3",
+      "method": "DMS latent init, beta=0.1",
+      "training_seed": 101,
+      "training_budget": 500000,
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "episodes_per_checkpoint": 5,
+      "checkpoints": [
+        {
+          "training_steps": 100000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            -0.48073720641696127,
+            0.7701905624671781,
+            -1.744246986338112,
+            0.28970415164258156,
+            -1.0205612282306902
+          ],
+          "return_mean": -0.4371301413752008
+        },
+        {
+          "training_steps": 200000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            229.29277293256018,
+            223.24760968110058,
+            222.73374640685506,
+            226.23841318907216,
+            228.53846915252507
+          ],
+          "return_mean": 226.01020227242262
+        },
+        {
+          "training_steps": 300000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1361.7045774159487,
+            1352.1042814877583,
+            1382.725942719262,
+            1351.378007908177,
+            1341.9852450052858
+          ],
+          "return_mean": 1357.9796109072863
+        },
+        {
+          "training_steps": 400000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            2274.9443490733393,
+            2259.181233705138,
+            2310.1650204472244,
+            2325.7085099127144,
+            2326.2298352705548
+          ],
+          "return_mean": 2299.245789681794
+        },
+        {
+          "training_steps": 500000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            3093.7899291603826,
+            3018.4548967927694,
+            3158.060522302985,
+            3146.4879565164447,
+            3132.376723650843
+          ],
+          "return_mean": 3109.834005684685
+        }
+      ],
+      "provenance": {
+        "files": {
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101/config.json": "ee5bbb56a2e711ae3e85cc56871d47141aaff7e19a94179cb73bf4b6d1035ef6",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101/manifest.json": "3a82d788501c5e7dfd13fb0251879ea6b775b036084476b0835a6ec2d99c3a65",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101/evaluation.jsonl": "f863c63e53b9e660b1c0aaf686e209c66160de468998f8c1ac44ec885f146189",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101/source/dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101/source/dms/train.py": "4d844744296b2c10cc7bc4cb8ac556f8afe141724ba6e3d55b415f430d67eba1"
+        },
+        "config": {
+          "algorithm": "dms",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "HalfCheetah",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cpu",
+          "num_envs": 4,
+          "total_steps": 500000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 100000,
+          "eval_episodes": 5,
+          "eval_seed": 10001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-101",
+          "torch_threads": 1
+        },
+        "manifest": {
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "initial_info": {
+            "elapsed_steps": 0
+          },
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+            "dms/evaluate.py": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+            "dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+            "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+            "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+            "dms/report.py": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/train.py": "4d844744296b2c10cc7bc4cb8ac556f8afe141724ba6e3d55b415f430d67eba1"
+          },
+          "runtime": {
+            "host": "milan1.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21195750",
+            "slurm_partition": "batch-milan"
+          },
+          "information": "local observations and visibility-masked observed action sensors",
+          "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+          "parameters": {
+            "actor_critic": 26894,
+            "intention": 61868
+          },
+          "history": "finite rolling action window; configurable redesign of full-history prior",
+          "status": "completed; no paper performance claim",
+          "completed_steps": 500000,
+          "completed_episodes": 500
+        },
+        "saved_source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+          "dms/evaluate.py": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+          "dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+          "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+          "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+          "dms/report.py": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/train.py": "4d844744296b2c10cc7bc4cb8ac556f8afe141724ba6e3d55b415f430d67eba1"
+        },
+        "manifest_matches_saved_source": true
+      },
+      "decoder_history": false,
+      "decoder_history_source": "saved config.decoder_history",
+      "decoder_interpretation": "latent initializes the decoder; previous-action and autoregressive inputs are retained"
+    },
+    {
+      "run": "dev-legacy-halfcheetah-2x3-ippo-103",
+      "source": "runs/dev-legacy-halfcheetah-2x3-ippo-103/evaluation.jsonl",
+      "task": "HalfCheetah 2x3",
+      "method": "IPPO",
+      "training_seed": 103,
+      "training_budget": 500000,
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "episodes_per_checkpoint": 5,
+      "checkpoints": [
+        {
+          "training_steps": 100000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            240.52383971269592,
+            237.94006969771726,
+            237.82936713469098,
+            239.49726869852748,
+            238.1325993796927
+          ],
+          "return_mean": 238.78462892466487
+        },
+        {
+          "training_steps": 200000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            518.0205652592704,
+            546.4625475110706,
+            526.5596487986622,
+            531.1784887482936,
+            520.2234227545778
+          ],
+          "return_mean": 528.4889346143749
+        },
+        {
+          "training_steps": 300000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            841.1582199965487,
+            819.5839048477355,
+            825.4614908797375,
+            803.1612626793794,
+            832.6046507842839
+          ],
+          "return_mean": 824.393905837537
+        },
+        {
+          "training_steps": 400000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1481.3072509832273,
+            1504.538603561523,
+            1514.004675628501,
+            1593.5954120717943,
+            1617.2285952131497
+          ],
+          "return_mean": 1542.134907491639
+        },
+        {
+          "training_steps": 500000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            3119.8640473261476,
+            3166.5951191335917,
+            3080.5159221682698,
+            3099.8732270002365,
+            3104.829253496602
+          ],
+          "return_mean": 3114.3355138249694
+        }
+      ],
+      "provenance": {
+        "files": {
+          "runs/dev-legacy-halfcheetah-2x3-ippo-103/config.json": "12c549f0ef8d32ff57a5ed00c5d18bc4f6d3db19ac90f6350dcb66daf580b03b",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-103/manifest.json": "6d1a7d32653e25c9188e9c97ad6bcde09104774e6bef80ea53ae984ca7e96b61",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-103/evaluation.jsonl": "9be0542fd7a2bbc41503fcb1aee9f2b851abed124a0eda1aefa47cc4cbc84984",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-103/source/dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-103/source/dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "config": {
+          "algorithm": "ippo",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "HalfCheetah",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 103,
+          "device": "cpu",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "total_steps": 500000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "latent_dim": 8,
+          "decoder_history": true,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 1.0,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 100000,
+          "eval_episodes": 5,
+          "eval_seed": 10001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-103",
+          "torch_threads": 1
+        },
+        "manifest": {
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "protobuf": "6.33.0",
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "initial_info": {
+            "elapsed_steps": 0
+          },
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+            "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+            "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+          },
+          "runtime": {
+            "host": "milan4.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21196090",
+            "slurm_partition": "batch-milan"
+          },
+          "information": "local observations and visibility-masked observed action sensors",
+          "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+          "parameters": {
+            "actor_critic": 24590,
+            "intention": 0
+          },
+          "history": "finite rolling action window; configurable redesign of full-history prior",
+          "status": "completed; no paper performance claim",
+          "completed_steps": 500000,
+          "completed_episodes": 500,
+          "environment_runtime": [
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        "saved_source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+          "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+          "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "manifest_matches_saved_source": true
+      }
+    },
+    {
+      "run": "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103",
+      "source": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103/evaluation.jsonl",
+      "task": "HalfCheetah 2x3",
+      "method": "DMS latent init, beta=0.1",
+      "training_seed": 103,
+      "training_budget": 500000,
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "episodes_per_checkpoint": 5,
+      "checkpoints": [
+        {
+          "training_steps": 100000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            -1.0598688697136822,
+            0.4820379271386628,
+            -1.2270707282077638,
+            -0.05801809819240589,
+            -1.932976639320259
+          ],
+          "return_mean": -0.7591792816590897
+        },
+        {
+          "training_steps": 200000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1792.2930312890094,
+            1769.3863620124757,
+            1745.95867283782,
+            1739.5222360277548,
+            1734.9494372729678
+          ],
+          "return_mean": 1756.4219478880054
+        },
+        {
+          "training_steps": 300000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1251.7669584158575,
+            1320.0989985303022,
+            1241.1921777023235,
+            1158.6590404973103,
+            1572.512871307321
+          ],
+          "return_mean": 1308.846009290623
+        },
+        {
+          "training_steps": 400000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1184.2007583251689,
+            1375.5012291667517,
+            1456.7261675912887,
+            1471.7848161600996,
+            1867.9043067208258
+          ],
+          "return_mean": 1471.223455592827
+        },
+        {
+          "training_steps": 500000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1551.2668177497399,
+            1322.2429705116629,
+            1988.1419051899575,
+            1520.5777590998914,
+            1679.6822444377467
+          ],
+          "return_mean": 1612.3823393977996
+        }
+      ],
+      "provenance": {
+        "files": {
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103/config.json": "40876e83863b83807a187140eac449c467985cc4b0d88c7a9d57e8a3685abfac",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103/manifest.json": "3de64c84e0898f1192c9c47233bb324c228e0449ac25f072b82fe43d112bfc8b",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103/evaluation.jsonl": "461ec44a99631f7ea68c9af1ce59ee5863a74cd45f476ea964ecc222db9d41b4",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103/source/dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103/source/dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "config": {
+          "algorithm": "dms",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "HalfCheetah",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 103,
+          "device": "cpu",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "total_steps": 500000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 100000,
+          "eval_episodes": 5,
+          "eval_seed": 10001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103",
+          "torch_threads": 1
+        },
+        "manifest": {
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "protobuf": "6.33.0",
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "initial_info": {
+            "elapsed_steps": 0
+          },
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+            "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+            "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+          },
+          "runtime": {
+            "host": "milan4.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21196091",
+            "slurm_partition": "batch-milan"
+          },
+          "information": "local observations and visibility-masked observed action sensors",
+          "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+          "parameters": {
+            "actor_critic": 26894,
+            "intention": 61868
+          },
+          "history": "finite rolling action window; configurable redesign of full-history prior",
+          "status": "completed; no paper performance claim",
+          "completed_steps": 500000,
+          "completed_episodes": 500,
+          "environment_runtime": [
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        "saved_source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+          "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+          "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "manifest_matches_saved_source": true
+      },
+      "decoder_history": false,
+      "decoder_history_source": "saved config.decoder_history",
+      "decoder_interpretation": "latent initializes the decoder; previous-action and autoregressive inputs are retained"
+    },
+    {
+      "run": "dev-legacy-halfcheetah-2x3-ippo-107",
+      "source": "runs/dev-legacy-halfcheetah-2x3-ippo-107/evaluation.jsonl",
+      "task": "HalfCheetah 2x3",
+      "method": "IPPO",
+      "training_seed": 107,
+      "training_budget": 500000,
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "episodes_per_checkpoint": 5,
+      "checkpoints": [
+        {
+          "training_steps": 100000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            92.86060212884331,
+            94.65467830142006,
+            94.00343675049226,
+            94.45819353076513,
+            98.09310090914369
+          ],
+          "return_mean": 94.81400232413289
+        },
+        {
+          "training_steps": 200000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            170.7432469141204,
+            159.4883302138187,
+            162.2541088386206,
+            147.58244367872248,
+            165.02524395589717
+          ],
+          "return_mean": 161.01867472023588
+        },
+        {
+          "training_steps": 300000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            941.2601275930647,
+            935.9681099308655,
+            954.9637248681647,
+            964.007752622274,
+            981.1376835203264
+          ],
+          "return_mean": 955.467479706939
+        },
+        {
+          "training_steps": 400000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1843.8418485365983,
+            1793.058789151255,
+            1783.4657516488805,
+            1746.8871056081261,
+            1793.1147451750003
+          ],
+          "return_mean": 1792.073648023972
+        },
+        {
+          "training_steps": 500000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            2663.04228460975,
+            2711.921298339963,
+            2722.389103326015,
+            2735.854435235262,
+            2708.254968430847
+          ],
+          "return_mean": 2708.2924179883676
+        }
+      ],
+      "provenance": {
+        "files": {
+          "runs/dev-legacy-halfcheetah-2x3-ippo-107/config.json": "20c0a99efbf71bb2f3bbb357d7390a6b04b3b003a5082b11f686c2a6d07e461a",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-107/manifest.json": "338da0f062aec50f15db709ce80c7ffda9384c794a9a180ca089c39c45fd8c90",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-107/evaluation.jsonl": "f11d74b08b88a42b6e78b0e26df7a722c3caa2d539f515336b9df0f22a816edb",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-107/source/dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "runs/dev-legacy-halfcheetah-2x3-ippo-107/source/dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "config": {
+          "algorithm": "ippo",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "HalfCheetah",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 107,
+          "device": "cpu",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "total_steps": 500000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "latent_dim": 8,
+          "decoder_history": true,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 1.0,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 100000,
+          "eval_episodes": 5,
+          "eval_seed": 10001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-107",
+          "torch_threads": 1
+        },
+        "manifest": {
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "protobuf": "6.33.0",
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "initial_info": {
+            "elapsed_steps": 0
+          },
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+            "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+            "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+          },
+          "runtime": {
+            "host": "milan5.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21196092",
+            "slurm_partition": "batch-milan"
+          },
+          "information": "local observations and visibility-masked observed action sensors",
+          "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+          "parameters": {
+            "actor_critic": 24590,
+            "intention": 0
+          },
+          "history": "finite rolling action window; configurable redesign of full-history prior",
+          "status": "completed; no paper performance claim",
+          "completed_steps": 500000,
+          "completed_episodes": 500,
+          "environment_runtime": [
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        "saved_source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+          "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+          "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "manifest_matches_saved_source": true
+      }
+    },
+    {
+      "run": "dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107",
+      "source": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107/evaluation.jsonl",
+      "task": "HalfCheetah 2x3",
+      "method": "DMS latent init, beta=0.1",
+      "training_seed": 107,
+      "training_budget": 500000,
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "episodes_per_checkpoint": 5,
+      "checkpoints": [
+        {
+          "training_steps": 100000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            -8.203818451613188,
+            -5.834869499551132,
+            -8.40121244249167,
+            -6.361639520211611,
+            -7.6061231441562995
+          ],
+          "return_mean": -7.28153261160478
+        },
+        {
+          "training_steps": 200000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            -102.50204571787617,
+            -102.15199564601062,
+            17.758385138149606,
+            -105.09154876763932,
+            18.056374920124654
+          ],
+          "return_mean": -54.78616601465037
+        },
+        {
+          "training_steps": 300000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            648.3750780764967,
+            683.2773641631939,
+            681.8772741266293,
+            677.9501604062971,
+            679.4389106263407
+          ],
+          "return_mean": 674.1837574797916
+        },
+        {
+          "training_steps": 400000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            1584.4640681724995,
+            1535.1789993336424,
+            1524.8452233184362,
+            1565.9415087229218,
+            1525.2532064603984
+          ],
+          "return_mean": 1547.1366012015797
+        },
+        {
+          "training_steps": 500000,
+          "episodes": 5,
+          "episode_seeds": [
+            10001,
+            10002,
+            10003,
+            10004,
+            10005
+          ],
+          "episode_returns": [
+            2216.8314871126786,
+            2251.0325528783724,
+            2257.455936208251,
+            2219.5522720287554,
+            2254.9811244839802
+          ],
+          "return_mean": 2239.9706745424073
+        }
+      ],
+      "provenance": {
+        "files": {
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107/config.json": "bae57b8ee44ee532c7e2fcba0e367c197664690e4b1a130a63c0a69c23f950e8",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107/manifest.json": "c72bf2dc30114959bb19ea144ae065bd9cccd06524c01707e247706156ca54df",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107/evaluation.jsonl": "0be6354a151f78fecd8c4f14efd55184dc98d948024563c3400ebfdc5c0a93b8",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107/source/dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107/source/dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "config": {
+          "algorithm": "dms",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "HalfCheetah",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 107,
+          "device": "cpu",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "total_steps": 500000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 100000,
+          "eval_episodes": 5,
+          "eval_seed": 10001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107",
+          "torch_threads": 1
+        },
+        "manifest": {
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "protobuf": "6.33.0",
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "initial_info": {
+            "elapsed_steps": 0
+          },
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+            "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+            "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+          },
+          "runtime": {
+            "host": "milan5.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21196093",
+            "slurm_partition": "batch-milan"
+          },
+          "information": "local observations and visibility-masked observed action sensors",
+          "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+          "parameters": {
+            "actor_critic": 26894,
+            "intention": 61868
+          },
+          "history": "finite rolling action window; configurable redesign of full-history prior",
+          "status": "completed; no paper performance claim",
+          "completed_steps": 500000,
+          "completed_episodes": 500,
+          "environment_runtime": [
+            {},
+            {},
+            {},
+            {}
+          ]
+        },
+        "saved_source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+          "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+          "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+        },
+        "manifest_matches_saved_source": true
+      },
+      "decoder_history": false,
+      "decoder_history_source": "saved config.decoder_history",
+      "decoder_interpretation": "latent initializes the decoder; previous-action and autoregressive inputs are retained"
+    }
+  ],
+  "generator": {
+    "path": "scripts/plot_pilots.py",
+    "track": "historical-halfcheetah-paired",
+    "sha256": "4347b348760435bf827e7dcb40ea5107389dce625a100c33b9a379fc1eccd3aa"
+  }
+}

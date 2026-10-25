@@ -1,0 +1,442 @@
+{
+  "purpose": "full_paper_step_budget_development_diagnosis_not_final_freeze_or_release_evidence",
+  "created_utc": "2026-10-25T09:04:29.666210+00:00",
+  "task": "historical HalfCheetah 2x3 k1, Gym-v2 / MuJoCo210 compatibility",
+  "training_seeds": [
+    101
+  ],
+  "environment_transitions_per_run": 10000000,
+  "evaluation_every_steps": 1000000,
+  "evaluation_episodes_per_checkpoint": 10,
+  "evaluation_episode_seeds": [
+    10001,
+    10002,
+    10003,
+    10004,
+    10005,
+    10006,
+    10007,
+    10008,
+    10009,
+    10010
+  ],
+  "selection_note": "Retain the provisional latent-only decoder and kl_beta=0.1 without architecture changes. The completed 500k three-development-seed comparison underperformed IPPO in the aggregate (DMS 2320.7290, IPPO 2583.6097, DMS minus IPPO -262.8807); seed101 was used for earlier selection and source snapshots differ across some earlier runs. This fresh, matched-source 10M pair tests whether short-pilot behavior persists at the paper step budget. It is one development seed, not a final hyperparameter freeze, independent-seed improvement claim, or paper reproduction result.",
+  "prior_evidence": {
+    "path": "reports/historical-halfcheetah-beta01-paired.json",
+    "sha256": "a366c3a0028b2ac2cd9afc88d5d54415ed5676a7c154c89660cb81d21f1fb9e9",
+    "training_seeds": [
+      101,
+      103,
+      107
+    ],
+    "training_budget_per_run": 500000,
+    "mean_of_training_seed_means": {
+      "ippo": 2583.6096822706363,
+      "dms": 2320.7290065416305,
+      "dms_minus_ippo": -262.88067572900553
+    },
+    "all_saved_source_snapshots_identical": false
+  },
+  "pair_validation": {
+    "resolved_config_differences": {
+      "algorithm": {
+        "ippo": "ippo",
+        "dms": "dms"
+      },
+      "output": {
+        "ippo": "runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+        "dms": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101"
+      }
+    },
+    "all_other_fields_equal": true,
+    "base_changes_only": [
+      "total_steps",
+      "eval_every",
+      "eval_episodes",
+      "output"
+    ],
+    "new_training_no_resume": true,
+    "held_out_training_seeds_used": false
+  },
+  "source_snapshot": {
+    "root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-10m-seed101-source",
+    "source_file_count": 16,
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+      "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+      "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+    },
+    "verified_live_and_snapshot_equal_at_creation": true
+  },
+  "source_environment": {
+    "DMS_SOURCE_ROOT": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-10m-seed101-source"
+  },
+  "wrapper": "scripts/triton/train_legacy_cpu.sbatch",
+  "jobs": [
+    {
+      "algorithm": "ippo",
+      "base_config": "configs/development/legacy-halfcheetah-2x3-ippo-1m.json",
+      "base_job_id": "21196012",
+      "config": "configs/development/legacy-halfcheetah-2x3-ippo-10m.json",
+      "output": "runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+      "base_differences": {
+        "eval_episodes": {
+          "baseline": 5,
+          "new": 10
+        },
+        "eval_every": {
+          "baseline": 200000,
+          "new": 1000000
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-halfcheetah-2x3-ippo-1m-101",
+          "new": "runs/dev-legacy-halfcheetah-2x3-ippo-10m-101"
+        },
+        "total_steps": {
+          "baseline": 1000000,
+          "new": 10000000
+        }
+      },
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 10000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+        "torch_threads": 1
+      },
+      "job_name": "dms-dev10m-hc2x3-ippo",
+      "resources": {
+        "partition": "batch-milan",
+        "cpus_per_task": 4,
+        "memory": "16G",
+        "time_limit": "04:00:00",
+        "gpus": 0
+      },
+      "planning_transitions_per_second": 1600,
+      "submission_state": "accepted",
+      "config_sha256": "228155e27a27cb5400cbd624601291f9e6ee844837070f67ca2e1300bfec5336",
+      "submission_started_utc": "2026-10-25T09:05:11.014540+00:00",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--partition=batch-milan",
+        "--cpus-per-task=4",
+        "--mem=16G",
+        "--time=04:00:00",
+        "--job-name=dms-dev10m-hc2x3-ippo",
+        "--export=ALL,DMS_ROOT=/scratch/work/liz23/reproduce/dms,DMS_SOURCE_ROOT=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-10m-seed101-source",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-ippo-10m.json",
+        "runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+        "101"
+      ],
+      "submission_stdout": "21196471",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T09:05:11.056586+00:00",
+      "job_id": "21196471",
+      "stdout_log": "logs/dms-dev10m-hc2x3-ippo_21196471.out",
+      "stderr_log": "logs/dms-dev10m-hc2x3-ippo_21196471.err",
+      "startup_checked_utc": "2026-10-25T09:06:12.092946+00:00",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196471",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:56",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "04:00:00",
+        "partition": "batch-milan",
+        "nodes": "milan2"
+      },
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan2.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196471",
+        "slurm_partition": "batch-milan"
+      },
+      "startup_manifest_sha256": "d680630ce34bff1e570fd32915d94aa6ff00d2c64e3d5d5063d735c86bc8af18",
+      "resolved_config_sha256": "5a84a131fb6d3962c4735d0b66e679b7081250f1dfd576a3c50ab9a86d92d433",
+      "saved_source_matches_manifest_and_shared_snapshot": true,
+      "verified_source_count": 16,
+      "first_metrics": {
+        "policy_loss": -0.003208455444837455,
+        "value_loss": 0.9513323560357094,
+        "entropy": 2.7572958767414093,
+        "approx_kl": 0.002670243298598507,
+        "peer_gate_fraction": 0.0,
+        "steps": 4000,
+        "episodes": 4,
+        "elapsed_seconds": 2.5081945741549134,
+        "training_return_mean": -298.64034587607057
+      },
+      "latest_startup_metrics": {
+        "policy_loss": -0.003012446517823264,
+        "value_loss": 0.24044600874185562,
+        "entropy": 2.7259813487529754,
+        "approx_kl": 0.001856275133775398,
+        "peer_gate_fraction": 0.0,
+        "steps": 72000,
+        "episodes": 72,
+        "elapsed_seconds": 46.64419752685353,
+        "training_return_mean": -109.06219349362073
+      },
+      "startup_metrics_rows": 18,
+      "startup_all_numeric_metrics_finite": true,
+      "legacy_dependency_manifest_sha256": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b"
+    },
+    {
+      "algorithm": "dms",
+      "base_config": "configs/development/legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m.json",
+      "base_job_id": "21196013",
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m.json",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+      "base_differences": {
+        "eval_episodes": {
+          "baseline": 5,
+          "new": 10
+        },
+        "eval_every": {
+          "baseline": 200000,
+          "new": 1000000
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m-101",
+          "new": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101"
+        },
+        "total_steps": {
+          "baseline": 1000000,
+          "new": 10000000
+        }
+      },
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 10000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+        "torch_threads": 1
+      },
+      "job_name": "dms-dev10m-hc2x3-dms",
+      "resources": {
+        "partition": "batch-milan",
+        "cpus_per_task": 4,
+        "memory": "16G",
+        "time_limit": "12:00:00",
+        "gpus": 0
+      },
+      "planning_transitions_per_second": 400,
+      "submission_state": "accepted",
+      "config_sha256": "fae5b7868748f4d8d4b8283efe475395f433b22c64c4bd76b3834a73492c6d3d",
+      "submission_started_utc": "2026-10-25T09:05:11.058349+00:00",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--partition=batch-milan",
+        "--cpus-per-task=4",
+        "--mem=16G",
+        "--time=12:00:00",
+        "--job-name=dms-dev10m-hc2x3-dms",
+        "--export=ALL,DMS_ROOT=/scratch/work/liz23/reproduce/dms,DMS_SOURCE_ROOT=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-10m-seed101-source",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m.json",
+        "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+        "101"
+      ],
+      "submission_stdout": "21196472",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T09:05:11.083157+00:00",
+      "job_id": "21196472",
+      "stdout_log": "logs/dms-dev10m-hc2x3-dms_21196472.out",
+      "stderr_log": "logs/dms-dev10m-hc2x3-dms_21196472.err",
+      "startup_checked_utc": "2026-10-25T09:06:12.211289+00:00",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196472",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:56",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "12:00:00",
+        "partition": "batch-milan",
+        "nodes": "milan2"
+      },
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan2.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196472",
+        "slurm_partition": "batch-milan"
+      },
+      "startup_manifest_sha256": "ca05a9b3063b3f48a4007404c5e2fd95028069dbda19eb6eb73fcb4e6ecaab67",
+      "resolved_config_sha256": "410a42b27818d569bfe16a91b06a64c6d9862d39721a28709b9b324fdf27d965",
+      "saved_source_matches_manifest_and_shared_snapshot": true,
+      "verified_source_count": 16,
+      "first_metrics": {
+        "policy_loss": -0.0024982404876936924,
+        "value_loss": 0.8349659189581871,
+        "entropy": 2.7557355761528015,
+        "approx_kl": 0.002161194429027091,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 2.585389196872711,
+        "intention_nll": 2.545323073863983,
+        "intention_kl": 0.400661364197731,
+        "forecast_target_count": 1024,
+        "forecast_comparison_count": 1024,
+        "forecast_component_count": 2048,
+        "history_baseline_target_count": 1024,
+        "history_baseline_component_count": 2048,
+        "forecast_rmse": 0.7895936908029504,
+        "persistence_rmse": 0.7895936908029504,
+        "history_mean_rmse": 0.5671061734694369,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 4000,
+        "episodes": 4,
+        "elapsed_seconds": 3.8348372830078006,
+        "training_return_mean": -295.1734002713838
+      },
+      "latest_startup_metrics": {
+        "policy_loss": -0.0026281303691575884,
+        "value_loss": 0.2851109474897385,
+        "entropy": 2.745910769701004,
+        "approx_kl": 0.0016014570730590095,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 2.284492790699005,
+        "intention_nll": 2.282369911670685,
+        "intention_kl": 0.021228712983429432,
+        "forecast_target_count": 1024,
+        "forecast_comparison_count": 1024,
+        "forecast_component_count": 2048,
+        "history_baseline_target_count": 1024,
+        "history_baseline_component_count": 2048,
+        "forecast_rmse": 0.751768290756172,
+        "persistence_rmse": 0.81085710138398,
+        "history_mean_rmse": 0.5762646259245789,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 48000,
+        "episodes": 48,
+        "elapsed_seconds": 45.25211443193257,
+        "training_return_mean": -183.28312160176574
+      },
+      "startup_metrics_rows": 12,
+      "startup_all_numeric_metrics_finite": true,
+      "legacy_dependency_manifest_sha256": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b"
+    }
+  ],
+  "all_submitted_utc": "2026-10-25T09:05:11.084601+00:00",
+  "all_startups_verified_utc": "2026-10-25T09:06:12.213251+00:00",
+  "actual_environment_manifests_equal": true,
+  "actual_package_inventories_equal": true,
+  "legacy_dependency_manifests_equal": true,
+  "resolved_pair_differences": {
+    "algorithm": [
+      "ippo",
+      "dms"
+    ],
+    "output": [
+      "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+      "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101"
+    ]
+  },
+  "startup_note": "Both jobs running with first finite PPO updates; DMS auxiliary updates also finite. Initial zero peer gates are expected during the configured first 100 completed training episodes. Completion and performance are not yet known."
+}

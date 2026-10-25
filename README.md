@@ -8,6 +8,8 @@ The implementation is a work in progress. **Performance exceeding the paper has 
 
 ## Read the code in this order
 
+[One training iteration](docs/METHOD_WALKTHROUGH.md) explains the data flow, what each agent observes, and which computations happen only during training.
+
 1. [envs.py](src/dms/envs.py) defines the observation/action interface, a tiny synthetic task, and modern Multi-Agent MuJoCo. [legacy_env.py](src/dms/legacy_env.py) adapts the historical MuJoCo tasks, and [smac_env.py](src/dms/smac_env.py) implements original SMAC.
 2. [intention.py](src/dms/intention.py) contains the shared prior/posterior encoder, decoder, variational objective, and history filtering.
 3. [policy.py](src/dms/policy.py) contains independent actors and critics plus soft attention and causal selection.
@@ -23,9 +25,12 @@ Use Python 3.10 or newer in an isolated environment. Install a PyTorch build com
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
-.venv/bin/python -m pip install -e '.[test,mujoco]'
+.venv/bin/python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+.venv/bin/python -m pip install -c requirements/modern-constraints.txt -e '.[test,mujoco]'
 .venv/bin/python -m pytest tests -q
 ```
+
+The commands above select a CPU build for a workstation. For the measured Triton CUDA stack, select the [official PyTorch 2.6.0 CUDA 12.6 wheel](https://pytorch.org/get-started/previous-versions/#v260) instead. [modern-constraints.txt](requirements/modern-constraints.txt) pins the inspected direct scientific dependencies; it is not a complete transitive environment lock. Run manifests remain the record of actual versions and assets. The wheel contains the Python package; clone the repository for configurations, scripts, and tests.
 
 SMAC requires the official environment package, its maps, and a separately installed StarCraft II binary. For a fresh checkout, install the pinned environment revision:
 
@@ -33,8 +38,8 @@ SMAC requires the official environment package, its maps, and a separately insta
 mkdir -p reference
 git clone https://github.com/oxwhirl/smac.git reference/smac
 git -C reference/smac checkout --detach d6aab33f76abc3849c50463a8592a84f59a5ef84
-.venv/bin/python -m pip install -e '.[smac]'
-.venv/bin/python -m pip install -e reference/smac
+.venv/bin/python -m pip install -c requirements/modern-constraints.txt -e '.[smac]'
+.venv/bin/python -m pip install -c requirements/modern-constraints.txt -e reference/smac
 ```
 
 Skip cloning when that revision is already present. Install StarCraft II **4.10 / Base75689** using the [official Linux distribution instructions](https://github.com/Blizzard/s2client-proto#downloads), then set `SC2PATH` to your installation and copy the pinned maps into it:
@@ -117,7 +122,7 @@ The repository ships 60 configurations in `configs/generated`. To regenerate the
   --output-dir configs/regenerated --include-ablations
 ```
 
-The command creates 60 configurations and a manifest listing development and held-out training seeds. It refuses to replace existing files. Generated configurations use k=1; `--agent-obsk 0` generates the separately labelled table-setting sensitivity track into another directory.
+The command creates 60 configurations and a manifest listing development and held-out training seeds. The default is the modern v5 track. Add `--mamujoco-backend legacy` and choose another new output directory for historical v2 compatibility configs; these use distinct `mamujoco-legacy-` output names and require the legacy launcher. Generated settings are provisional templates, not a frozen final protocol. It refuses to replace existing files. Generated configurations use k=1; `--agent-obsk 0` generates the separately labelled table-setting sensitivity track into another directory.
 
 ## Evaluate and inspect a run
 
@@ -159,3 +164,7 @@ For MuJoCo, native joint observations do not expose actuator commands. The adapt
 ## Citation and license
 
 The software follows the original repository’s [MIT license](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) identify the adapted graph code and separately installed benchmark assets. Cite the published method using [CITATION.bib](CITATION.bib); no benchmark reproduction result is claimed by this development release.
+
+A copied public checkout passed 277 tests (22 native-legacy tests skipped) on an allocated CPU node without the workspace’s `runs`, `reference`, or environment directories. It reused the installed test dependencies; [the recorded check](reports/clean-checkout-tests.json) does not claim a new dependency installation.
+
+The [CPU CI workflow](.github/workflows/tests.yml) installs the pinned direct dependencies, runs the synthetic, mocked SMAC, and modern MuJoCo tests, and builds a wheel. Native legacy MuJoCo and real StarCraft checks run separately on allocated Triton nodes. The workflow has not yet run on GitHub because this repository has not been published.

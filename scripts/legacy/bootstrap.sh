@@ -6,7 +6,7 @@ DMS_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
 LEGACY_CACHE="$DMS_ROOT/.cache/legacy"
 LEGACY_VENV="$DMS_ROOT/.venv-legacy"
 LEGACY_PYTHON="$LEGACY_VENV/bin/python"
-BASE_PYTHON="${DMS_LEGACY_BASE_PYTHON:-/scratch/work/liz23/.conda_envs/slotcontrast/bin/python}"
+TRITON_BASE_PYTHON="/scratch/work/liz23/.conda_envs/slotcontrast/bin/python"
 MODE="${1:-prepare}"
 export PIP_CACHE_DIR="$LEGACY_CACHE/pip"
 export PIP_DISABLE_PIP_VERSION_CHECK=1
@@ -23,12 +23,80 @@ PINS=(
 )
 TEST_PINS=(pytest==8.4.2 pluggy==1.6.0 iniconfig==2.1.0 pygments==2.19.2 tomli==2.3.0)
 
-prepare() {
-  mkdir -p "$LEGACY_CACHE/downloads" "$LEGACY_CACHE/wheels" "$LEGACY_CACHE/tmp"
+resolve_base_python() {
+  local requested
+  if [[ "${DMS_LEGACY_BASE_PYTHON+x}" ]]; then
+    requested="$DMS_LEGACY_BASE_PYTHON"
+  elif [[ -x "$TRITON_BASE_PYTHON" ]]; then
+    requested="$TRITON_BASE_PYTHON"
+  else
+    requested="$(command -v python3.10 || true)"
+  fi
+  if [[ -z "$requested" ]]; then
+    printf '%s\n' 'Set DMS_LEGACY_BASE_PYTHON to a Python 3.10 executable with torch>=2.6,<3 installed. See docs/PORTABLE_LEGACY_SETUP.md.' >&2
+    return 2
+  fi
+  if [[ "$requested" != */* ]]; then
+    requested="$(command -v "$requested" || true)"
+  fi
+  if [[ ! -f "$requested" || ! -x "$requested" ]]; then
+    printf 'DMS_LEGACY_BASE_PYTHON must identify an executable Python interpreter: %s\n' "$requested" >&2
+    return 2
+  fi
+  # Preserve the final executable symlink: resolving a venv's python symlink
+  # to the underlying interpreter would silently discard its environment.
+  printf '%s/%s\n' "$(cd -- "$(dirname -- "$requested")" && pwd -P)" "$(basename -- "$requested")"
+}
+
+check_python_prerequisites() {
+  local interpreter="$1" label="$2"
+  "$interpreter" -I - "$label" <<'PY'
+import json
+import re
+import sys
+
+label = sys.argv[1]
+hint = "See docs/PORTABLE_LEGACY_SETUP.md; choose an isolated Python 3.10 with torch>=2.6,<3 (tested: torch2.6.0)."
+if sys.version_info[:2] != (3, 10):
+    raise SystemExit(f"{label} requires Python 3.10, found {sys.version.split()[0]} at {sys.executable}. {hint}")
+try:
+    import torch
+except Exception as error:
+    raise SystemExit(
+        f"{label} cannot import torch using {sys.executable}: {type(error).__name__}: {error}. "
+        "A child venv does not inherit packages installed only in its parent venv. "
+        "Install torch in the selected legacy environment or use a standalone/Conda base prefix. " + hint
+    ) from error
+version = str(torch.__version__)
+match = re.fullmatch(r"2\.(\d+)\.(\d+)(?:\+[^\s]+)?", version)
+if match is None or int(match.group(1)) < 6:
+    raise SystemExit(f"{label} requires a stable torch>=2.6,<3 release, found {version}. {hint}")
+print(json.dumps({"prerequisite_check": label, "python": sys.version.split()[0],
+                  "executable": sys.executable, "torch": version,
+                  "tested_torch_release": "2.6.0", "status": "passed"}))
+PY
+}
+
+prepare_python() {
+  # Fail before downloads. Existing environments are checked, never recreated
+  # or rebound to another base merely because an override has changed.
+  if [[ -e "$LEGACY_VENV" && ! -x "$LEGACY_PYTHON" ]]; then
+    printf 'Existing legacy environment has no executable Python: %s. Inspect it before choosing a fresh environment; no files were replaced.\n' "$LEGACY_VENV" >&2
+    return 2
+  fi
+  if [[ ! -x "$LEGACY_PYTHON" || "${DMS_LEGACY_BASE_PYTHON+x}" ]]; then
+    BASE_PYTHON="$(resolve_base_python)"
+    check_python_prerequisites "$BASE_PYTHON" 'Legacy base Python'
+  fi
   if [[ ! -x "$LEGACY_PYTHON" ]]; then
     "$BASE_PYTHON" -m venv --system-site-packages "$LEGACY_VENV"
   fi
-  "$LEGACY_PYTHON" -c 'import sys; assert sys.version_info[:2] == (3, 10), "legacy stack requires Python 3.10"'
+  check_python_prerequisites "$LEGACY_PYTHON" 'Legacy virtual environment'
+}
+
+prepare() {
+  prepare_python
+  mkdir -p "$LEGACY_CACHE/downloads" "$LEGACY_CACHE/wheels" "$LEGACY_CACHE/tmp"
   local archive=mujoco210-linux-x86_64.tar.gz
   local release=https://github.com/google-deepmind/mujoco/releases/download/2.1.0
   if [[ ! -f "$LEGACY_CACHE/downloads/$archive" ]]; then
