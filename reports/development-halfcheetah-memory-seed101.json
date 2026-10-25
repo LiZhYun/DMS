@@ -1,0 +1,504 @@
+{
+  "purpose": "Matched historical HalfCheetah2x3 IPPO local observation history development comparison",
+  "created_utc": "2026-10-25T11:54:00.781815+00:00",
+  "status": "both_running_startup_verified",
+  "artifact": "runs/development-halfcheetah-memory-seed101",
+  "training_seed": 101,
+  "held_out_training_seeds_used": false,
+  "steps_per_run": 3000000,
+  "evaluation": {
+    "at_training_steps": [
+      1000000,
+      2000000,
+      3000000
+    ],
+    "episodes_per_checkpoint": 10,
+    "seeds": [
+      10001,
+      10002,
+      10003,
+      10004,
+      10005,
+      10006,
+      10007,
+      10008,
+      10009,
+      10010
+    ],
+    "deterministic": true,
+    "checkpoint_selection": "fixed3M endpoint; no best-checkpoint selection"
+  },
+  "only_resolved_config_differences": {
+    "policy_history_length": [
+      0,
+      32
+    ],
+    "output": [
+      "runs/dev-legacy-halfcheetah-2x3-ippo-history0-3m-cuda-101",
+      "runs/dev-legacy-halfcheetah-2x3-ippo-history32-3m-cuda-101"
+    ]
+  },
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src",
+  "source_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "source_mapping_sha256": "5b7a21ac4db312950e14f65df383cd44fc3f490e7859aef3534e0dae3bf72573",
+  "source_validation_report": "reports/sequential-update-validation.json",
+  "profile_report": "reports/development-halfcheetah-memory-profile.json",
+  "profile_job_id": "21198505",
+  "baseline_config": "configs/development/legacy-halfcheetah-2x3-ippo-10m.json",
+  "baseline_config_sha256": "228155e27a27cb5400cbd624601291f9e6ee844837070f67ca2e1300bfec5336",
+  "runs": [
+    {
+      "variant": "history0",
+      "policy_history_length": 0,
+      "config": "configs/development/legacy-halfcheetah-2x3-ippo-history0-3m-cuda.json",
+      "frozen_config": "runs/development-halfcheetah-memory-seed101/configs/legacy-halfcheetah-2x3-ippo-history0-3m-cuda.json",
+      "config_sha256": "ac042e2f644eeec8b2bc11108e13b25e00b2d7d7b9be65619fd943d883c5a4d6",
+      "output": "runs/dev-legacy-halfcheetah-2x3-ippo-history0-3m-cuda-101",
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-ippo-history0-3m-cuda-101",
+        "torch_threads": 1
+      },
+      "resources": {
+        "gpus": 1,
+        "cpus": 1,
+        "memory": "4G",
+        "time": "03:00:00",
+        "partitions": [
+          "gpu-h200-141g-ellis",
+          "gpu-a100-80g",
+          "gpu-h100-80g"
+        ]
+      },
+      "status": "running_startup_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc-ippo-history0-3m",
+        "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+        "--gpus=1",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=03:00:00",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-seed101/train.sbatch",
+        "history0"
+      ],
+      "job_id": "21198566",
+      "submitted_utc": "2026-10-25T11:55:39.262762+00:00",
+      "submission_stdout": "21198566\n",
+      "submission_stderr": "",
+      "startup_validation": {
+        "checked_utc": "2026-10-25T11:58:40.672656+00:00",
+        "status": "passed",
+        "actual_gpu": "NVIDIA A100-SXM4-80GB",
+        "actual_cpu": "AMD EPYC 7413 24-Core Processor",
+        "actual_host": "gpu17.int.triton.aalto.fi",
+        "runtime_preflight": "runs/development-halfcheetah-memory-seed101/history0-runtime-preflight.json",
+        "runtime_preflight_sha256": "b1e3472f95feb9e35b016b2534f6927f419d9a06a5f4c515283b30b402e15000",
+        "all_imports_from_frozen_package": true,
+        "all_22_archived_files_match": true,
+        "resolved_config_matches": true,
+        "all_observed_updates_finite": true,
+        "observed_update_count": 35,
+        "first_update": {
+          "policy_loss": -0.0036024764036483247,
+          "value_loss": 0.8828095570206642,
+          "entropy": 2.754905182123184,
+          "approx_kl": 0.0029153942570701473,
+          "peer_gate_fraction": 0.0,
+          "steps": 4000,
+          "episodes": 4,
+          "elapsed_seconds": 5.900736764073372,
+          "training_return_mean": -256.1915879836524
+        },
+        "last_observed_update": {
+          "policy_loss": -0.002542097798868781,
+          "value_loss": 0.3639599993824959,
+          "entropy": 2.5865034818649293,
+          "approx_kl": 0.002265237817174784,
+          "peer_gate_fraction": 0.0,
+          "steps": 140000,
+          "episodes": 140,
+          "elapsed_seconds": 137.33454581908882,
+          "training_return_mean": 33.80771981783619
+        },
+        "metrics_prefix_bytes": 9885,
+        "metrics_prefix_sha256": "039c4929199bb9ca89b528c855a36be17031fca29f07be7ee0ea1dbba70b0352",
+        "transitions_per_second_excluding_first_rollout": 1034.7413726940931,
+        "estimated_3m_training_hours": 0.80535422215083,
+        "estimated_3m_hours_with1_5margin": 1.208031333226245,
+        "walltime_limit_hours": 3,
+        "walltime_risk_flag": false,
+        "observed_host_max_rss_bytes": 2155708416,
+        "requested_host_bytes": 4294967296,
+        "host_memory_headroom_bytes": 2139258880,
+        "startup_free_gpu_bytes": 84533706752,
+        "interpretation": "Early throughput excludes evaluation/checkpoint costs;1.5x planning allowance, no performance conclusion."
+      }
+    },
+    {
+      "variant": "history32",
+      "policy_history_length": 32,
+      "config": "configs/development/legacy-halfcheetah-2x3-ippo-history32-3m-cuda.json",
+      "frozen_config": "runs/development-halfcheetah-memory-seed101/configs/legacy-halfcheetah-2x3-ippo-history32-3m-cuda.json",
+      "config_sha256": "6f72e34ebacf1143d17d2e5e097e697eee20fe96549583c0b1d9dc085631b2f9",
+      "output": "runs/dev-legacy-halfcheetah-2x3-ippo-history32-3m-cuda-101",
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-ippo-history32-3m-cuda-101",
+        "torch_threads": 1
+      },
+      "resources": {
+        "gpus": 1,
+        "cpus": 1,
+        "memory": "4G",
+        "time": "06:00:00",
+        "partitions": [
+          "gpu-h200-141g-ellis",
+          "gpu-a100-80g",
+          "gpu-h100-80g"
+        ]
+      },
+      "status": "running_startup_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc-ippo-history32-3m",
+        "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+        "--gpus=1",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=06:00:00",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-seed101/train.sbatch",
+        "history32"
+      ],
+      "job_id": "21198567",
+      "submitted_utc": "2026-10-25T11:55:39.285534+00:00",
+      "submission_stdout": "21198567\n",
+      "submission_stderr": "",
+      "startup_validation": {
+        "checked_utc": "2026-10-25T11:58:40.781950+00:00",
+        "status": "passed",
+        "actual_gpu": "NVIDIA A100-SXM4-80GB",
+        "actual_cpu": "AMD EPYC 7413 24-Core Processor",
+        "actual_host": "gpu42.int.triton.aalto.fi",
+        "runtime_preflight": "runs/development-halfcheetah-memory-seed101/history32-runtime-preflight.json",
+        "runtime_preflight_sha256": "731e07995ed39bc6ec62458bebf77f381744ef3d705237b4203100eb68d7207f",
+        "all_imports_from_frozen_package": true,
+        "all_22_archived_files_match": true,
+        "resolved_config_matches": true,
+        "all_observed_updates_finite": true,
+        "observed_update_count": 14,
+        "first_update": {
+          "policy_loss": -0.003026462520938367,
+          "value_loss": 0.929986472427845,
+          "entropy": 2.755184417963028,
+          "approx_kl": 0.0020857608601327236,
+          "peer_gate_fraction": 0.0,
+          "steps": 4000,
+          "episodes": 4,
+          "elapsed_seconds": 11.766221615951508,
+          "training_return_mean": -290.1243837518068
+        },
+        "last_observed_update": {
+          "policy_loss": -0.00406535073343548,
+          "value_loss": 0.22134532146155833,
+          "entropy": 2.6936420798301697,
+          "approx_kl": 0.002681799196758061,
+          "peer_gate_fraction": 0.0,
+          "steps": 56000,
+          "episodes": 56,
+          "elapsed_seconds": 135.13048462895676,
+          "training_return_mean": -153.6231452210875
+        },
+        "metrics_prefix_bytes": 3948,
+        "metrics_prefix_sha256": "9477d2418dc4a96de08add05e5c27347bacc6944f001c168cb29de9c6c7379c6",
+        "transitions_per_second_excluding_first_rollout": 421.5159133607281,
+        "estimated_3m_training_hours": 1.9769913944391868,
+        "estimated_3m_hours_with1_5margin": 2.96548709165878,
+        "walltime_limit_hours": 6,
+        "walltime_risk_flag": false,
+        "observed_host_max_rss_bytes": 2310201344,
+        "requested_host_bytes": 4294967296,
+        "host_memory_headroom_bytes": 1984765952,
+        "startup_free_gpu_bytes": 84533706752,
+        "interpretation": "Early throughput excludes evaluation/checkpoint costs;1.5x planning allowance, no performance conclusion."
+      }
+    }
+  ],
+  "runtime_evidence": {
+    "profile_total_cpu_seconds": 185.285,
+    "profile_wall_seconds": 190,
+    "average_cpu_cores": 0.9751842105263158,
+    "maximum_process_host_gib": 1.4490728378295898,
+    "resource_request_rationale": "One Torch thread/serial environments; measured approximately one CPU and1.45GiB host peak. One GPU/one CPU/4GB each. H0 limit3h,H32 limit6h."
+  },
+  "interpretation_limits": [
+    "One development training seed; no held-out final seeds or superiority claim.",
+    "Contrast changes bounded local observation memory and encoder capacity together; it does not isolate temporal information from added parameters.",
+    "Both are independent IPPO with no intentions and same CUDA config/source. Actual allocated hardware is recorded; different GPU models would limit systems comparisons.",
+    "Older CPU IPPO/DMS0 curves are contextual, not exact controls for this pair.",
+    "This does not replace an equal-history IPPO/DMS comparison or prove intention benefit.",
+    "Historical Gym-v2/MuJoCo210 compatibility track; paper binary parity remains unverified."
+  ],
+  "submission_authorization": "Root reviewed runtime evidence and authorized exactly these two bounded development runs.",
+  "predeclaration": {
+    "path": "runs/development-halfcheetah-memory-seed101/predeclared.json",
+    "sha256": "3a6f6616abd4a5182f15851ac2b3ed0e39f5f2f7e8136cdddb13ec2ae33e016e"
+  },
+  "submission_artifacts": {
+    "runs/development-halfcheetah-memory-seed101/launch_training.py": "1b7b280fb132c918977cce4db36c47e325dc7e7379f191df0c7e6590f9493454",
+    "runs/development-halfcheetah-memory-seed101/train.sbatch": "0e4ebcd484a0731beac43fbeca405e3bee311350fa77a8f42465cfdbe28aed46",
+    "scripts/legacy/bootstrap.sh": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7"
+  },
+  "submission_ready_checks": {
+    "config_exact_pair_difference": [
+      "policy_history_length",
+      "output"
+    ],
+    "frozen_source_file_count": 22,
+    "driver_ast_and_wrapper_shell_syntax_passed": true,
+    "fresh_outputs_confirmed": true
+  },
+  "submission_started_utc": "2026-10-25T11:55:39.183092+00:00",
+  "startup_validation_completed_utc": "2026-10-25T11:58:40.785252+00:00",
+  "actual_common_environment": {
+    "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+    "historical_binary_parity_verified": false,
+    "scenario": "HalfCheetah",
+    "native_env_id": "HalfCheetah-v2",
+    "agent_conf": "2x3",
+    "agent_obsk": 1,
+    "k_categories": [
+      [
+        "qpos",
+        "qvel"
+      ],
+      [
+        "qpos"
+      ]
+    ],
+    "global_categories": [],
+    "max_episode_steps": 1000,
+    "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+    "packages": {
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14",
+      "numpy": "1.26.4"
+    },
+    "mujoco_engine_version": 210,
+    "xml_asset": "half_cheetah.xml",
+    "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+    "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+    "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+    "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "action_routing": "graph_node_actuator_indices",
+    "control_processing": "clip_native_bounds_before_simulation_and_reward",
+    "action_ids": [
+      [
+        2,
+        1,
+        0
+      ],
+      [
+        5,
+        4,
+        3
+      ]
+    ],
+    "action_dims": [
+      3,
+      3
+    ],
+    "observation_dims": [
+      7,
+      7
+    ],
+    "action_sensor": "previous_executed_control_on_observed_joints",
+    "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+    "reward": {
+      "formula": "root_x_velocity - 0.1*sum(control**2)",
+      "native_termination": "never"
+    },
+    "frame_skip": 5,
+    "physics_timestep": 0.01,
+    "native_geom_friction": [
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ]
+    ]
+  },
+  "actual_common_gpu": "NVIDIA A100-SXM4-80GB",
+  "actual_common_cpu": "AMD EPYC 7413 24-Core Processor",
+  "startup_evidence": {
+    "runs/development-halfcheetah-memory-seed101/startup-observations.json": "ff5be808cd0b8766fa84ae18c15cea2b1b50eb318f6224a1553682be137a5ec4",
+    "runs/development-halfcheetah-memory-seed101/startup-accounting.txt": "7acefbe8c49912704eaffc15759e30cd4adc37cd289e4e2c12b5728085fc6116"
+  }
+}

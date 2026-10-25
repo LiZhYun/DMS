@@ -1,0 +1,615 @@
+{
+  "purpose": "Automatic fixed10M endpoint100-episode DEVELOPMENT evaluations; no checkpoint selection or final-test claim",
+  "created_utc": "2026-10-25T11:59:47.998537+00:00",
+  "status": "waiting_or_running",
+  "evaluation_seed_start": 400101,
+  "evaluation_seed_end": 400200,
+  "evaluation_episode_count": 100,
+  "deterministic": true,
+  "required_training_steps": 10000000,
+  "parameter_updates": 0,
+  "final_test_seed_block_used": false,
+  "held_out_training_seeds_used": false,
+  "evaluations": [
+    {
+      "label": "dms-101",
+      "training_job_id": "21196472",
+      "training_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+      "training_seed": 101,
+      "algorithm": "dms",
+      "intention_lr": 0.001,
+      "artifact_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-101",
+      "spec": "runs/halfcheetah-10m-development-evaluation-queue-01/dms-101/spec.json",
+      "spec_sha256": "cd14bbe64319ce3556b826049d006d23c7c16908cd5b7bf2a5b30208e5352c4b",
+      "evaluation_job_id": "21198612",
+      "dependency": "afterok:21196472",
+      "kill_on_invalid_dependency": true,
+      "current_state": "waiting_for_training_dependency",
+      "resources": {
+        "cpus": 1,
+        "memory": "4G",
+        "time": "00:30:00",
+        "partitions": [
+          "batch-milan",
+          "batch-csl",
+          "batch-skl"
+        ]
+      },
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc10m-eval-dms-101",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:30:00",
+        "--dependency=afterok:21196472",
+        "--kill-on-invalid-dep=yes",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-101/spec.json"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T12:02:27.105317+00:00",
+      "scheduler": {
+        "parent": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "02:58:01",
+          "node": "milan2",
+          "allocated_cpus": "4",
+          "requested_memory": "16G"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned",
+          "allocated_cpus": "0",
+          "requested_memory": "4G"
+        }
+      },
+      "failure_artifacts": {},
+      "verified_submission": {
+        "checked_utc": "2026-10-25T12:03:16.374819+00:00",
+        "all_checks_passed": true,
+        "slurm": {
+          "JobId": "21198612",
+          "JobState": "PENDING",
+          "Reason": "Dependency",
+          "Dependency": "afterok:21196472(unfulfilled)",
+          "NumCPUs": "1",
+          "MinMemoryNode": "4G",
+          "TimeLimit": "00:30:00",
+          "Partition": "batch-milan,batch-csl,batch-skl",
+          "Command": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "StdOut": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-101/dms-hc10m-eval-dms-101_21198612.out",
+          "StdErr": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-101/dms-hc10m-eval-dms-101_21198612.err"
+        },
+        "evaluation_snapshot_not_created_before_parent_completion": true
+      }
+    },
+    {
+      "label": "ippo-103",
+      "training_job_id": "21198414",
+      "training_run": "runs/dev-legacy-halfcheetah-2x3-ippo-10m-103",
+      "training_seed": 103,
+      "algorithm": "ippo",
+      "intention_lr": 0.001,
+      "artifact_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-103",
+      "spec": "runs/halfcheetah-10m-development-evaluation-queue-01/ippo-103/spec.json",
+      "spec_sha256": "262cf25c182e747b8d8c5c3678db53df8c15f61c0532510b5a18f5b813a8192b",
+      "evaluation_job_id": "21198613",
+      "dependency": "afterok:21198414",
+      "kill_on_invalid_dependency": true,
+      "current_state": "waiting_for_training_dependency",
+      "resources": {
+        "cpus": 1,
+        "memory": "4G",
+        "time": "00:15:00",
+        "partitions": [
+          "batch-milan",
+          "batch-csl",
+          "batch-skl"
+        ]
+      },
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc10m-eval-ippo-103",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:15:00",
+        "--dependency=afterok:21198414",
+        "--kill-on-invalid-dep=yes",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-103/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-103/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-103/spec.json"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T12:02:27.208437+00:00",
+      "scheduler": {
+        "parent": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:33:12",
+          "node": "milan32",
+          "allocated_cpus": "1",
+          "requested_memory": "4G"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned",
+          "allocated_cpus": "0",
+          "requested_memory": "4G"
+        }
+      },
+      "failure_artifacts": {},
+      "verified_submission": {
+        "checked_utc": "2026-10-25T12:03:16.461387+00:00",
+        "all_checks_passed": true,
+        "slurm": {
+          "JobId": "21198613",
+          "JobState": "PENDING",
+          "Reason": "Dependency",
+          "Dependency": "afterok:21198414(unfulfilled)",
+          "NumCPUs": "1",
+          "MinMemoryNode": "4G",
+          "TimeLimit": "00:15:00",
+          "Partition": "batch-milan,batch-csl,batch-skl",
+          "Command": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "StdOut": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-103/dms-hc10m-eval-ippo-103_21198613.out",
+          "StdErr": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-103/dms-hc10m-eval-ippo-103_21198613.err"
+        },
+        "evaluation_snapshot_not_created_before_parent_completion": true
+      }
+    },
+    {
+      "label": "dms-103",
+      "training_job_id": "21198415",
+      "training_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-103",
+      "training_seed": 103,
+      "algorithm": "dms",
+      "intention_lr": 0.001,
+      "artifact_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-103",
+      "spec": "runs/halfcheetah-10m-development-evaluation-queue-01/dms-103/spec.json",
+      "spec_sha256": "dfbc90d1a20799ca275b3b7356a4374a965b4a538085440627843d372ede6507",
+      "evaluation_job_id": "21198614",
+      "dependency": "afterok:21198415",
+      "kill_on_invalid_dependency": true,
+      "current_state": "waiting_for_training_dependency",
+      "resources": {
+        "cpus": 1,
+        "memory": "4G",
+        "time": "00:30:00",
+        "partitions": [
+          "batch-milan",
+          "batch-csl",
+          "batch-skl"
+        ]
+      },
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc10m-eval-dms-103",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:30:00",
+        "--dependency=afterok:21198415",
+        "--kill-on-invalid-dep=yes",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-103/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-103/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-103/spec.json"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T12:02:27.234117+00:00",
+      "scheduler": {
+        "parent": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:33:12",
+          "node": "milan32",
+          "allocated_cpus": "1",
+          "requested_memory": "4G"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned",
+          "allocated_cpus": "0",
+          "requested_memory": "4G"
+        }
+      },
+      "failure_artifacts": {},
+      "verified_submission": {
+        "checked_utc": "2026-10-25T12:03:16.484446+00:00",
+        "all_checks_passed": true,
+        "slurm": {
+          "JobId": "21198614",
+          "JobState": "PENDING",
+          "Reason": "Dependency",
+          "Dependency": "afterok:21198415(unfulfilled)",
+          "NumCPUs": "1",
+          "MinMemoryNode": "4G",
+          "TimeLimit": "00:30:00",
+          "Partition": "batch-milan,batch-csl,batch-skl",
+          "Command": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "StdOut": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-103/dms-hc10m-eval-dms-103_21198614.out",
+          "StdErr": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-103/dms-hc10m-eval-dms-103_21198614.err"
+        },
+        "evaluation_snapshot_not_created_before_parent_completion": true
+      }
+    },
+    {
+      "label": "ippo-107",
+      "training_job_id": "21198416",
+      "training_run": "runs/dev-legacy-halfcheetah-2x3-ippo-10m-107",
+      "training_seed": 107,
+      "algorithm": "ippo",
+      "intention_lr": 0.001,
+      "artifact_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-107",
+      "spec": "runs/halfcheetah-10m-development-evaluation-queue-01/ippo-107/spec.json",
+      "spec_sha256": "90768bb8625cc4d6a20efece0c4496bf36a05420aad9d98609b7f56852103aae",
+      "evaluation_job_id": "21198615",
+      "dependency": "afterok:21198416",
+      "kill_on_invalid_dependency": true,
+      "current_state": "waiting_for_training_dependency",
+      "resources": {
+        "cpus": 1,
+        "memory": "4G",
+        "time": "00:15:00",
+        "partitions": [
+          "batch-milan",
+          "batch-csl",
+          "batch-skl"
+        ]
+      },
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc10m-eval-ippo-107",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:15:00",
+        "--dependency=afterok:21198416",
+        "--kill-on-invalid-dep=yes",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-107/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-107/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-107/spec.json"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T12:02:27.256433+00:00",
+      "scheduler": {
+        "parent": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:33:12",
+          "node": "milan32",
+          "allocated_cpus": "1",
+          "requested_memory": "4G"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned",
+          "allocated_cpus": "0",
+          "requested_memory": "4G"
+        }
+      },
+      "failure_artifacts": {},
+      "verified_submission": {
+        "checked_utc": "2026-10-25T12:03:16.571134+00:00",
+        "all_checks_passed": true,
+        "slurm": {
+          "JobId": "21198615",
+          "JobState": "PENDING",
+          "Reason": "Dependency",
+          "Dependency": "afterok:21198416(unfulfilled)",
+          "NumCPUs": "1",
+          "MinMemoryNode": "4G",
+          "TimeLimit": "00:15:00",
+          "Partition": "batch-milan,batch-csl,batch-skl",
+          "Command": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "StdOut": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-107/dms-hc10m-eval-ippo-107_21198615.out",
+          "StdErr": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/ippo-107/dms-hc10m-eval-ippo-107_21198615.err"
+        },
+        "evaluation_snapshot_not_created_before_parent_completion": true
+      }
+    },
+    {
+      "label": "dms-107",
+      "training_job_id": "21198417",
+      "training_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-107",
+      "training_seed": 107,
+      "algorithm": "dms",
+      "intention_lr": 0.001,
+      "artifact_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-107",
+      "spec": "runs/halfcheetah-10m-development-evaluation-queue-01/dms-107/spec.json",
+      "spec_sha256": "8ab8d5afd4685fd76838e7be6f2b8fa37fb1e262d4c7c515c7afbcc56d41ecb3",
+      "evaluation_job_id": "21198616",
+      "dependency": "afterok:21198417",
+      "kill_on_invalid_dependency": true,
+      "current_state": "waiting_for_training_dependency",
+      "resources": {
+        "cpus": 1,
+        "memory": "4G",
+        "time": "00:30:00",
+        "partitions": [
+          "batch-milan",
+          "batch-csl",
+          "batch-skl"
+        ]
+      },
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc10m-eval-dms-107",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:30:00",
+        "--dependency=afterok:21198417",
+        "--kill-on-invalid-dep=yes",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-107/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-107/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-107/spec.json"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T12:02:27.279272+00:00",
+      "scheduler": {
+        "parent": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:33:12",
+          "node": "milan32",
+          "allocated_cpus": "1",
+          "requested_memory": "4G"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned",
+          "allocated_cpus": "0",
+          "requested_memory": "4G"
+        }
+      },
+      "failure_artifacts": {},
+      "verified_submission": {
+        "checked_utc": "2026-10-25T12:03:16.652255+00:00",
+        "all_checks_passed": true,
+        "slurm": {
+          "JobId": "21198616",
+          "JobState": "PENDING",
+          "Reason": "Dependency",
+          "Dependency": "afterok:21198417(unfulfilled)",
+          "NumCPUs": "1",
+          "MinMemoryNode": "4G",
+          "TimeLimit": "00:30:00",
+          "Partition": "batch-milan,batch-csl,batch-skl",
+          "Command": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "StdOut": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-107/dms-hc10m-eval-dms-107_21198616.out",
+          "StdErr": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-107/dms-hc10m-eval-dms-107_21198616.err"
+        },
+        "evaluation_snapshot_not_created_before_parent_completion": true
+      }
+    },
+    {
+      "label": "dms-aux-lr-1e-4-101",
+      "training_job_id": "21197271",
+      "training_run": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101",
+      "training_seed": 101,
+      "algorithm": "dms",
+      "intention_lr": 0.0001,
+      "artifact_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-aux-lr-1e-4-101",
+      "spec": "runs/halfcheetah-10m-development-evaluation-queue-01/dms-aux-lr-1e-4-101/spec.json",
+      "spec_sha256": "cf72b2654098f7cf1f4268160b89386a90a6c1dae2280011a7c96ae8cf92fb8d",
+      "evaluation_job_id": "21198617",
+      "dependency": "afterok:21197271",
+      "kill_on_invalid_dependency": true,
+      "current_state": "waiting_for_training_dependency",
+      "resources": {
+        "cpus": 1,
+        "memory": "4G",
+        "time": "00:30:00",
+        "partitions": [
+          "batch-milan",
+          "batch-csl",
+          "batch-skl"
+        ]
+      },
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc10m-eval-dms-aux-lr-1e-4-101",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:30:00",
+        "--dependency=afterok:21197271",
+        "--kill-on-invalid-dep=yes",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-aux-lr-1e-4-101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-aux-lr-1e-4-101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-aux-lr-1e-4-101/spec.json"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T12:02:27.304227+00:00",
+      "scheduler": {
+        "parent": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "02:01:50",
+          "node": "milan2",
+          "allocated_cpus": "4",
+          "requested_memory": "16G"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned",
+          "allocated_cpus": "0",
+          "requested_memory": "4G"
+        }
+      },
+      "failure_artifacts": {},
+      "verified_submission": {
+        "checked_utc": "2026-10-25T12:03:16.752556+00:00",
+        "all_checks_passed": true,
+        "slurm": {
+          "JobId": "21198617",
+          "JobState": "PENDING",
+          "Reason": "Dependency",
+          "Dependency": "afterok:21197271(unfulfilled)",
+          "NumCPUs": "1",
+          "MinMemoryNode": "4G",
+          "TimeLimit": "00:30:00",
+          "Partition": "batch-milan,batch-csl,batch-skl",
+          "Command": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "StdOut": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-aux-lr-1e-4-101/dms-hc10m-eval-dms-aux-lr-1e-4-101_21198617.out",
+          "StdErr": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-aux-lr-1e-4-101/dms-hc10m-eval-dms-aux-lr-1e-4-101_21198617.err"
+        },
+        "evaluation_snapshot_not_created_before_parent_completion": true
+      }
+    }
+  ],
+  "reused_ippo_seed101": {
+    "report": "reports/development-halfcheetah-ippo-10m-evaluation.json",
+    "report_sha256": "96661c45a35ee822daa1339cc41c38d96a5009c86692fb3560612281587bac1e",
+    "training_job_id": "21196471",
+    "evaluation_job_id": "21198124",
+    "rerun": false,
+    "development_summary": {
+      "episodes": 100,
+      "return_mean": 3239.774041410799,
+      "return_population_std": 1267.696453755398,
+      "return_quantiles": {
+        "0": -165.6728731632793,
+        "0.01": -49.709950009110074,
+        "0.05": 68.4079088474682,
+        "0.1": 283.2198349906132,
+        "0.25": 3628.5621979780844,
+        "0.5": 3840.9875118373893,
+        "0.75": 3878.6416810765513,
+        "0.9": 3900.555875126086,
+        "0.95": 3908.4800293950366,
+        "0.99": 3914.5329670565575,
+        "1": 3919.9110139757395
+      },
+      "quantile_method": "linear interpolation at (n-1)*q",
+      "negative_return_episodes": 3,
+      "return_below1000_episodes": 12,
+      "tail_count_note": "Zero and1000 are descriptive cutoffs only, not paper or acceptance thresholds.",
+      "episode_length_mean": 1000,
+      "episode_length_min": 1000,
+      "episode_length_max": 1000
+    }
+  },
+  "artifacts": "runs/halfcheetah-10m-development-evaluation-queue-01",
+  "runner_reuses_verified_state_digest": true,
+  "original_runner_sha256": "3c82c99c0caf86305683a4529eb41ab692a5d160555df621ddf9288717d3e0dc",
+  "scripts_sha256": {
+    "runs/halfcheetah-10m-development-evaluation-queue-01/runner.py": "e8c0a92b8bb7503960158a0a0650369b79b018ec4c7e6e1c5971fcdc6451d045",
+    "runs/halfcheetah-10m-development-evaluation-queue-01/refresh_status.py": "8823c462fbbd46b6e9441c9312ec6630df625e561decd017d76e63c9a415942b",
+    "runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch": "71636c2df030011f9aa7007d5565a61eb699bcfc8c2ce3b2b43e5199307ae697",
+    "runs/halfcheetah-10m-development-evaluation-queue-01/status.sbatch": "f0bf8adc427b94274a3edd6bda0369cd09c659bbba479d92e2812816022a2363"
+  },
+  "failure_policy": "Evaluation requires afterok of the exact parent and a completed/exact10M manifest/checkpoint. Invalid dependencies are cancelled; one afterany collector reports failure. No automatic retraining, resume, or substitute checkpoint.",
+  "manual_status_command": [
+    "python3",
+    "runs/halfcheetah-10m-development-evaluation-queue-01/refresh_status.py"
+  ],
+  "interpretation_limits": [
+    "All episode seeds and training seeds are development-only; held-out/final-test blocks remain unused.",
+    "Episode mean, populationSD, quantiles and tail counts describe each fixed policy; they do not measure training-seed uncertainty.",
+    "1000 and zero return cutoffs are descriptive, not paper thresholds.",
+    "Historical simulator compatibility remains unverified exact paper binary parity."
+  ],
+  "preflight_checks": {
+    "passed": true,
+    "checks": [
+      "syntax:runner.py",
+      "syntax:refresh_status.py",
+      "shell:evaluate.sbatch",
+      "shell:status.sbatch",
+      "slurm_invalid_dependency_option_supported",
+      "known_quantile_and_low_tail_oracle",
+      "nonfinite_returns_rejected",
+      "seven_dependency_and_failure_state_oracles",
+      "strict_completed_budget_source_xml_and_version_guards",
+      "invalid_endpoint_rejected_before_snapshot_creation",
+      "one_copy_readonly_snapshot_and_provenance_guards",
+      "existing_snapshot_refused",
+      "original_source_mutation_detected",
+      "all_six_predeclared_specs_and_uncreated_snapshots_valid"
+    ],
+    "native_simulation_executed": false,
+    "existing100episode_protocol_reused": true
+  },
+  "final_status_collector": {
+    "job_id": "21198618",
+    "dependency": "afterany:21198612:21198613:21198614:21198615:21198616:21198617",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc10m-eval-status",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=256M",
+      "--time=00:02:00",
+      "--dependency=afterany:21198612:21198613:21198614:21198615:21198616:21198617",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/status.sbatch"
+    ],
+    "resources": {
+      "cpus": 1,
+      "memory": "256M",
+      "time": "00:02:00"
+    },
+    "role": "Read final scheduler/result evidence only; no simulator, training, retry or resume.",
+    "verified_submission": {
+      "all_checks_passed": true,
+      "slurm": {
+        "JobId": "21198618",
+        "JobState": "PENDING",
+        "Reason": "Dependency",
+        "Dependency": "afterany:21198612(unfulfilled),afterany:21198613(unfulfilled),afterany:21198614(unfulfilled),afterany:21198615(unfulfilled),afterany:21198616(unfulfilled),afterany:21198617(unfulfilled)",
+        "NumCPUs": "1",
+        "MinMemoryNode": "256M",
+        "TimeLimit": "00:02:00",
+        "Partition": "batch-milan,batch-csl,batch-skl",
+        "Command": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/status.sbatch",
+        "StdOut": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-hc10m-eval-status_21198618.out",
+        "StdErr": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/dms-hc10m-eval-status_21198618.err"
+      }
+    }
+  },
+  "all_submitted_utc": "2026-10-25T12:02:27.327244+00:00",
+  "all_evaluations_succeeded": false,
+  "last_status_refresh_utc": "2026-10-25T12:03:16.172935+00:00",
+  "last_status_command": [
+    "sacct",
+    "-j",
+    "21196472,21198612,21198414,21198613,21198415,21198614,21198416,21198615,21198417,21198616,21197271,21198617",
+    "-X",
+    "--format=JobIDRaw,State,ExitCode,Elapsed,NodeList,AllocCPUS,ReqMem",
+    "-P",
+    "-n"
+  ],
+  "all_dependencies_verified_utc": "2026-10-25T12:03:16.956109+00:00",
+  "all_submissions_verified": true
+}

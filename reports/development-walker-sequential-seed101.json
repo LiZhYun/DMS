@@ -327,6 +327,67 @@
         },
         "stdout": "logs/dms-walker-no-intention-independent_21198485.out",
         "stderr": "logs/dms-walker-no-intention-independent_21198485.err"
+      },
+      "completed_endpoint": {
+        "checked_utc": "2026-10-25T12:00:29.674120+00:00",
+        "scheduler": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:16:45",
+          "host": "milan32"
+        },
+        "steps": 1000000,
+        "training_episodes": 4296,
+        "episodes": 5,
+        "return_mean": 778.5857134277933,
+        "return_population_std": 250.745612231322,
+        "records": [
+          {
+            "steps": 1000000,
+            "seed": 10001,
+            "return": 474.5711945295334,
+            "length": 227,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10002,
+            "return": 1012.3319800794125,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10003,
+            "return": 956.9288610792719,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10004,
+            "return": 979.1639521718025,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10005,
+            "return": 469.9325792789459,
+            "length": 221,
+            "battle_won": null
+          }
+        ],
+        "source_matches_manifest": true,
+        "all_numeric_metrics_finite": true,
+        "file_sha256": {
+          "config.json": "191fac4231b1239f0c8e951b20e048fb389915027631f5848990ef26c925d70a",
+          "manifest.json": "148d056b7de289a989f5581bc4034d68fb46e3a3937fca7542d5b865eeb4e415",
+          "metrics.jsonl": "45aee8dfa0c5efb82ce043556936713207baf2075fe233b7f968decaa1d0c3e2",
+          "evaluation.jsonl": "91e3a06923bae2410e042dca52d9d791043ed52d9f6c6e388dde410a39703f19",
+          "latest.pt": "9b64ca077017565c3c52cff607df2cc70fc519ea6050a1e59e58108f27197ec2"
+        },
+        "scope": "One development training seed; sequential no-intention is HAPPO-style, not IPPO."
       }
     },
     {
@@ -618,6 +679,67 @@
         },
         "stdout": "logs/dms-walker-no-intention-sequential_21198486.out",
         "stderr": "logs/dms-walker-no-intention-sequential_21198486.err"
+      },
+      "completed_endpoint": {
+        "checked_utc": "2026-10-25T12:00:29.781058+00:00",
+        "scheduler": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:16:52",
+          "host": "milan32"
+        },
+        "steps": 1000000,
+        "training_episodes": 5019,
+        "episodes": 5,
+        "return_mean": 744.3683831363917,
+        "return_population_std": 418.9247380537919,
+        "records": [
+          {
+            "steps": 1000000,
+            "seed": 10001,
+            "return": 375.874415576458,
+            "length": 177,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10002,
+            "return": 1241.4198071360588,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10003,
+            "return": 429.62856206297874,
+            "length": 203,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10004,
+            "return": 1272.343841508031,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10005,
+            "return": 402.5752893984318,
+            "length": 190,
+            "battle_won": null
+          }
+        ],
+        "source_matches_manifest": true,
+        "all_numeric_metrics_finite": true,
+        "file_sha256": {
+          "config.json": "ddfcd3f06a114e80b99fa218056c8ba45e72ee6ec8c6adbc38b1e6b8a386cf47",
+          "manifest.json": "183ce7bb04c7eb445fa68e6fd1f33e694129b555149c2a8c08d4391de5e205d9",
+          "metrics.jsonl": "b122c15b8dd6030824f4e335271255630c701a7f45c8ca25745fc4d1c3d4e178",
+          "evaluation.jsonl": "1eab3b198bfa773da3adb53a1e333d820087cefb5fe138843b61b228d0d19846",
+          "latest.pt": "e1f93e34f2e3a5c85d1501ee23de125b9c08b1a795026e95b0b091dce761b7a4"
+        },
+        "scope": "One development training seed; sequential no-intention is HAPPO-style, not IPPO."
       }
     },
     {
@@ -1144,5 +1266,14 @@
     "path": "runs/development-walker-sequential-seed101/startup-accounting.txt",
     "sha256": "0ab06307b88a64a68fdb8adf46febb18365a3a873fa41f43dbc82d6a4ff5f6aa"
   },
-  "startup_note": "All four native jobs imported the frozen package and archived identical validated source, matched exact predeclared settings and 1M budgets, and produced finite updates. Sequential factors/ESS and active DMS auxiliary updates verified. These are startup correctness checks, not endpoint performance evidence."
+  "startup_note": "All four native jobs imported the frozen package and archived identical validated source, matched exact predeclared settings and 1M budgets, and produced finite updates. Sequential factors/ESS and active DMS auxiliary updates verified. These are startup correctness checks, not endpoint performance evidence.",
+  "independent_reference_replay": {
+    "old_run": "runs/dev-legacy-walker2d-3x2-ippo-1m-101",
+    "new_run": "runs/dev-legacy-walker2d-3x2-no-intention-independent-1m-101",
+    "old_updates": 250,
+    "new_updates": 250,
+    "all_metrics_except_elapsed_exactly_equal": true,
+    "all_evaluation_records_exactly_equal": true,
+    "interpretation": "Same seed/configuration repeated on the redesigned default path. A reproducibility check, not an independent training-seed replicate."
+  }
 }

@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-25 11:53 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
+Snapshot: **2026-10-25 12:15 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
 
 ## Latest verified updates
 
@@ -10,8 +10,9 @@ episode SD **2.2359**. The mask-only IPPO job **21197312** also completed one mi
 with **0/10 wins**, mean **6.7141**, and no wins in 8,390 training episodes.
 Masking alone did not solve learning. The remaining mask and local-memory
 pilots are development experiments. A separate **20-environment recurrent IPPO control**, job
-**21198103**, tests the original rollout batch size after native smoke
-**21198024** passed. It changes both sample diversity and PPO update cadence;
+**21198103**, completed the original rollout batch-size control after native
+smoke **21198024** passed: **0/10 final wins**, mean shaped return **8.1568**,
+and zero wins in **8,678** training battles. It changes both sample diversity and PPO update cadence;
 [the ledger](../reports/development-smac-original-batch-seed101.json) records
 this joint change. There is no corresponding DMS batch result yet.
 
@@ -38,6 +39,15 @@ IPPO/DMS replicas on development seeds **103 and 107** are running as jobs
 the exact seed/output-only changes. They check stability; the earlier negative 500k comparisons remain part of the
 record.
 
+At **4M**, the same DMS run's ten diagnostic episodes average **4,383.5675**:
+nine exceeded 4,700 and one returned 1,000.68. Training continues to the
+registered 10M endpoint. Six dependent evaluation jobs, **21198612–21198617**,
+will evaluate the fixed 10M checkpoints of the remaining full-budget runs on
+100 development episode seeds **400101–400200**; job **21198618** records their
+outcomes or failures automatically. [The queue ledger](../reports/development-halfcheetah-10m-evaluation-queue.json)
+verifies every parent dependency, immutable evaluation specification, and
+zero-update requirement. These are not the reserved final evaluation seeds.
+
 The lower auxiliary-rate HalfCheetah run's exact **2M** checkpoint now has
 measurable latent dependence: forecast RMSE **0.5942** versus its own-trajectory
 history baseline **0.7765**; peer latent shuffling raises forecast MSE by
@@ -54,7 +64,11 @@ A **32-observation local-memory IPPO** profile passed native checks in job
 16.7 s. [The profile](../reports/development-halfcheetah-memory-profile.json)
 records measured memory, source hashes, an initial harness-name collision,
 and an unchanged-source retry. Matched CUDA memory-length 0/32 development
-controls are being prepared; this is runtime evidence, not a learning result.
+controls are now running as **21198566 / 21198567**, respectively. Both use
+the same A100 GPU model and the exact validated source, with only memory
+length/output differing. [Their ledger](../reports/development-halfcheetah-memory-seed101.json)
+records matching settings and finite startup updates. This profile is runtime
+evidence, not a learning result.
 
 The Swimmer history-filter probe **21198220** passed all 41 checks at the
 200,000-step checkpoint. Each manuscript `(K,l)` setting rejected **0/9,144
@@ -84,7 +98,12 @@ source hashes. Learning benefit remains untested. Four matched Walker2d 3x2 1M c
 are running as **21198485–21198488**: independent/sequential updates crossed
 with no-intention/DMS. [The ledger](../reports/development-walker-sequential-seed101.json)
 verifies configurations differing only by the intended mode/algorithm and output,
-plus exact frozen-source imports and finite initial updates.
+plus exact frozen-source imports and finite initial updates. The two no-intention
+controls have completed: independent mean **778.5857**, sequential mean
+**744.3684**, five episodes each. All 250 independent training updates
+(excluding elapsed time) and all evaluation records exactly reproduce the
+preceding independent run. This is a same-seed reproducibility check, not an
+additional independent replicate. Both DMS controls continue.
 
 ## Verified compute results
 
@@ -208,7 +227,7 @@ The SMAC review identified missing inactive-agent masking and the original imple
 
 The frozen Ant history-filter probe, **21197238**, sampled 512 transitions from a 600,000-step checkpoint. Each paper joint setting rejected **0 of 6,096 eligible peer prefixes**. Maximum `KL(long || short)` was **2.34, 6.74, and 19.66**, below the respective thresholds **100, 10,000, and 1,000,000**. The [raw evidence ledger](../reports/development-ant-history-filter.json) and [diagnostic guide](HISTORY_FILTER_DIAGNOSTIC.md) establish inactivity only for this sampled checkpoint, not for every task or training stage.
 
-Native Ant contact-force diagnostic **21197578** completed 600 paired transitions using zero, random, and frozen-policy actions. The native compatibility environment reported exactly zero external contact forces and zero contact penalty throughout, despite contacts in 195/200, 66/200, and 194/200 respective steps. Explicit `mj_rnePostConstraint` produced nonzero forces and changed the existing local force observations on every contact-bearing step, while preserving physical positions and velocities. The diagnostic restored derived arrays, so the checkpoint actor never received those new force values and paired native rewards/trajectories stayed equal. The [evidence](../reports/ant-contact-force-diagnostic.json) records the external Gym code and engine hashes. The explicit computed-force variant passed **56 native tests, zero skips**, and a **128-transition active-DMS smoke with one evaluation episode**, job **21197871**, exit `0:0`. Its [validation ledger](../reports/ant-computed-validation.json) verifies frozen imports, source hashes, finite updates, and the new `initial_log_std` hook. It uses the separate `historical_gym_v2_ant_computed_forces_adaptation` track. The report retains descriptive reference comparisons but blocks the reference release gate for this override; 81 report tests passed, including five manufactured variant fixtures. This is not historical parity, because the original `mujoco-py` stack may also have had this issue. Four fresh seed-101, 500,000-transition pilots are now running: **21197957** DMS native/log-std -0.5, **21197958** DMS native/-1, **21197959** DMS computed/-1, and **21197960** IPPO computed/-1. Each controlled pair changes only its intended setting and output. The unchanged 100-completed-episode warmup can activate at different transition counts as survival changes. [The ledger](../reports/development-ant-forces-scale-seed101.json) records this limitation and exact source/configuration checks.
+Native Ant contact-force diagnostic **21197578** completed 600 paired transitions using zero, random, and frozen-policy actions. The native compatibility environment reported exactly zero external contact forces and zero contact penalty throughout, despite contacts in 195/200, 66/200, and 194/200 respective steps. Explicit `mj_rnePostConstraint` produced nonzero forces and changed the existing local force observations on every contact-bearing step, while preserving physical positions and velocities. The diagnostic restored derived arrays, so the checkpoint actor never received those new force values and paired native rewards/trajectories stayed equal. The [evidence](../reports/ant-contact-force-diagnostic.json) records the external Gym code and engine hashes. The explicit computed-force variant passed **56 native tests, zero skips**, and a **128-transition active-DMS smoke with one evaluation episode**, job **21197871**, exit `0:0`. Its [validation ledger](../reports/ant-computed-validation.json) verifies frozen imports, source hashes, finite updates, and the new `initial_log_std` hook. It uses the separate `historical_gym_v2_ant_computed_forces_adaptation` track. The report retains descriptive reference comparisons but blocks the reference release gate for this override; 81 report tests passed, including five manufactured variant fixtures. This is not historical parity, because the original `mujoco-py` stack may also have had this issue. Four fresh seed-101, 500,000-transition pilots have completed (endpoint results appear above): **21197957** DMS native/log-std -0.5, **21197958** DMS native/-1, **21197959** DMS computed/-1, and **21197960** IPPO computed/-1. Each controlled pair changes only its intended setting and output. The unchanged 100-completed-episode warmup can activate at different transition counts as survival changes. [The ledger](../reports/development-ant-forces-scale-seed101.json) records this limitation and exact source/configuration checks.
 
 Integrated public-checkout job **21197934** passed **442 tests**, with 32 native-only skips, on the same 22 package/asset files used by native job 21197871. It also built an offline wheel and verified isolated imports, both license files, and the packaged Swimmer XML. [The integrated ledger](../reports/current-source-validation.json) records source/test/asset hashes and explicitly states that installed dependencies were reused.
 
