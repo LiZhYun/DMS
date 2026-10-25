@@ -1,6 +1,66 @@
 # Reproduction status
 
-Snapshot: **2026-10-25 10:44 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
+Snapshot: **2026-10-25 11:33 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
+
+## Latest verified updates
+
+The latent-only beta-0.1 SMAC run **21196342** completed one million
+transitions with **0/10 wins**, shaped-return mean **13.4689**, and population
+episode SD **2.2359**. The mask-only IPPO job **21197312** also completed one million transitions
+with **0/10 wins**, mean **6.7141**, and no wins in 8,390 training episodes.
+Masking alone did not solve learning. The remaining mask and local-memory
+pilots are development experiments. A separate **20-environment recurrent IPPO control**, job
+**21198103**, tests the original rollout batch size after native smoke
+**21198024** passed. It changes both sample diversity and PPO update cadence;
+[the ledger](../reports/development-smac-original-batch-seed101.json) records
+this joint change. There is no corresponding DMS batch result yet.
+
+The Ant all-peer and causal-0.6 jobs **21196123 / 21196124** completed their
+one-million-transition budgets with five-episode means **972.6429 / 1,044.8874**.
+The causal job's final selected-peer fraction was zero. These scores do not
+establish useful selective coordination. The lower-threshold **0.01** trial,
+job **21196571**, completed with mean **975.1578** and final selected-peer
+fraction **0.9889**. Opening nearly every gate did not improve the observed
+return over the threshold-0.6 run on this seed. In the separate computed-force
+adaptation, IPPO job **21197960** completed 500,000 transitions with mean
+**1,237.3109** over five episodes. The three matching DMS scale/force pilots
+continue; their [ledger](../reports/development-ant-forces-scale-seed101.json)
+keeps this adaptation distinct from native Ant.
+
+HalfCheetah DMS job **21196472** reached a **3M-step intermediate** mean of
+**4,077.3705** over ten diagnostic episodes: nine returns were 4,352–4,752,
+and one was −235.87. This is not its fixed 10M endpoint. Matched full-budget
+IPPO/DMS replicas on development seeds **103 and 107** are running as jobs
+**21198414–21198417**, with 98 startup checks passed;
+[the ledger](../reports/development-halfcheetah-10m-replications.json) records
+the exact seed/output-only changes. They check stability; the earlier negative 500k comparisons remain part of the
+record.
+
+The Swimmer history-filter probe **21198220** passed all 41 checks at the
+200,000-step checkpoint. Each manuscript `(K,l)` setting rejected **0/9,144
+eligible peer prefixes** on 512 fresh transitions. The
+[diagnostic](HISTORY_FILTER_DIAGNOSTIC.md#verified-swimmer-probe) distinguishes
+this history-filter inactivity from the separate causal coordination gate.
+
+Fresh CPU installation job **21198078** built commit `56394f6` in an isolated
+Python 3.10 environment with an initially empty pip cache. All **442 tests
+passed**, with 32 native-only skips; `pip check` passed. The
+[installation ledger](../reports/fresh-install-validation.json) records all
+downloaded artifacts and versions. Fresh SMAC installation job **21198390** also passed the documented dependency
+installation and `pip check`, then trained/evaluated an installed wheel and
+loaded its checkpoint on real 3s5z outside the checkout. It reused the existing
+game assets read-only; [the ledger](../reports/fresh-smac-install-validation.json)
+records this distinction. Both fresh-install results apply to commit `56394f6`.
+
+The optional [sequential PPO update](SEQUENTIAL_POLICY_UPDATE.md) has now
+passed **465 tests** (32 legacy-only skips), **56 native legacy tests**,
+128-transition HalfCheetah 3x2 and 512-transition SMAC CUDA smokes. Jobs
+**21198407–21198409** all completed with exit `0:0`. The SMAC run exercised
+dead-unit masking and local history; corrections and losses stayed finite.
+Exact prepatch checks found zero changes to default independent metrics,
+model/optimizer state, or random states across five cases. The
+[validation ledger](../reports/sequential-update-validation.json) records all
+source hashes. Learning benefit remains untested.
 
 ## Verified compute results
 
@@ -102,7 +162,7 @@ This setting does not show a higher observed three-seed mean than IPPO. Seed 101
 
 Two additional Ant 4x2 coordination variants were submitted: **all peers job 21196123** and **causal selection job 21196124**, each one million transitions, seed 101, four CPU cores, 16 GB RAM, and six hours. Their [ledger](../reports/development-ant-coordination-seed101.json) records configs differing from soft job 21196015 only in coordination mode and output, and an exact copy of that job's 16-file source snapshot. Both startups are verified against all 16 source files. These variants change policy input structure and parameter counts, so identical numerical seeds do not imply identical initialization or sampling streams; their comparisons are not isolated equal-architecture attention interventions.
 
-A fresh longer-budget HalfCheetah 2x3 pair is running: **IPPO job 21196471** and **latent-only beta-0.1 DMS job 21196472**, each with training seed 101 and **10,000,000 transitions**, with ten diagnostic evaluation episodes every million transitions. Both use the same frozen 16-file source, historical k=1 environment, four CPU cores, and 16 GB RAM on milan2; the time limits are four and twelve hours respectively. The [ledger](../reports/development-halfcheetah-10m-seed101.json) verifies startup source, resolved configs, backend, dependencies, and finite first updates. This is a longer-budget development diagnosis prompted by the negative three-seed 500,000-step result. It is not a final setting freeze, completed benchmark, or held-out comparison.
+The longer-budget HalfCheetah 2x3 development pair uses: **IPPO job 21196471** and **latent-only beta-0.1 DMS job 21196472**, each with training seed 101 and **10,000,000 transitions**, with ten diagnostic evaluation episodes every million transitions. Both use the same frozen 16-file source, historical k=1 environment, four CPU cores, and 16 GB RAM on milan2; the time limits are four and twelve hours respectively. The [ledger](../reports/development-halfcheetah-10m-seed101.json) verifies startup source, resolved configs, backend, dependencies, and finite first updates. This is a longer-budget development diagnosis prompted by the negative three-seed 500,000-step result. IPPO has now completed all **10,000,000 transitions**, exit `0:0`, in **1 h 47 min 51 s**. Its ten final diagnostic episodes average **3,345.9590**, population episode SD **1,154.6162**; the individual returns include one 150.01 episode and several near 3,900. A separate **100-episode development evaluation**, job **21198124**, completed with mean **3,239.7740**, population episode SD **1,267.6965**, and median **3,840.9875**. Twelve episodes returned below 1,000, including three negative returns. All lasted 1,000 steps. The [evaluation ledger](../reports/development-halfcheetah-ippo-10m-evaluation.json) preserves all outcomes, new diagnostic seeds 400101–400200, and unchanged checkpoint/source checks. This confirms a substantial low-return tail; the median does not replace the mean. DMS continues. This is not a final setting freeze or held-out comparison.
 
 The narrower 500,000-transition seed-101 HalfCheetah rate screen completed with exit `0:0`: **21196479**, `intention_lr=3e-4`, mean return **2,157.0453**, population episode SD **35.5595**; **21196480**, `intention_lr=1e-4`, mean **3,628.5830**, SD **28.9056**. Both use the exact 16-file archived source of the `1e-3` control job 21195750, whose mean was **3,109.8340**. All other configuration fields match except output. The [screen ledger](../reports/development-halfcheetah-aux-lr-seed101.json) retains both outcomes and all endpoint episodes. The lower rate is promising on seed 101; the intermediate rate is worse. Replication jobs **21196699** and **21196700** test `1e-4` on development seeds **103 and 107**, each against its own completed control's exact source snapshot; [the replication ledger](../reports/development-halfcheetah-aux-lr-replications.json) records startup checks. The [method audit and bounded plan](INTENTION_DIAGNOSIS.md) explains the per-step interpolation/learning-rate relationship. These trials do not prove that parameter drift caused the earlier seed variation.
 
@@ -221,7 +281,7 @@ The original-graph multi-agent compatibility adapter is now implemented, and job
 
 Legacy manifests now record graph provenance, actuator routing, observation categories, simulator version, XML hashes, and reward settings. They explicitly retain `historical_binary_parity_verified=false`. This establishes a runnable historical compatibility track; the paper's unrecorded binary stack and empirical performance still need separate qualification. Modern v5 results remain a separate adaptation track.
 
-Historical **ManyAgentSwimmer 10x2** now covers the paper's supplemental parameter-study environment. Native job **21196579** passed all **44 tests**, including the existing 35 and nine new asset/graph/reset/control/physics/timeout cases. Active-DMS smoke **21196586** completed 128 transitions, two finite PPO/auxiliary updates, and one 1,000-step diagnostic episode, exit `0:0` in 52 s. An independent review matched the reference's literal XML rendering and 50 graph/observation cases across five radii; the wheel includes the exact licensed XML. [The environment guide](SWIMMER_ENVIRONMENT.md) records evidence and unresolved historical binary parity. Separate 500,000-transition seed-101 IPPO and causal-DMS pilots, **21196867 / 21196868**, are running from that validated frozen source; [their ledger](../reports/development-swimmer-seed101.json) records the source and asset hashes. The generator prepares the plotted threshold and joint long/short settings plus a separately labelled prose-only threshold and k=0 sensitivity. No supplemental performance curve is reproduced yet.
+Historical **ManyAgentSwimmer 10x2** now covers the paper's supplemental parameter-study environment. Native job **21196579** passed all **44 tests**, including the existing 35 and nine new asset/graph/reset/control/physics/timeout cases. Active-DMS smoke **21196586** completed 128 transitions, two finite PPO/auxiliary updates, and one 1,000-step diagnostic episode, exit `0:0` in 52 s. An independent review matched the reference's literal XML rendering and 50 graph/observation cases across five radii; the wheel includes the exact licensed XML. [The environment guide](SWIMMER_ENVIRONMENT.md) records evidence and unresolved historical binary parity. Separate 500,000-transition seed-101 IPPO and causal-DMS pilots, **21196867 / 21196868**, use that validated frozen source; IPPO has completed and DMS continues; [their ledger](../reports/development-swimmer-seed101.json) records the source and asset hashes. The generator prepares the plotted threshold and joint long/short settings plus a separately labelled prose-only threshold and k=0 sensitivity. No supplemental performance curve is reproduced yet.
 
 ## Prepared experiment matrix
 
@@ -241,4 +301,6 @@ The durable method record is [PAPER_CONTRACT.md](PAPER_CONTRACT.md), current red
 
 ### Two-million-step HalfCheetah mechanism check
 
-The full-budget beta-0.1 DMS development run reached a two-million-step diagnostic return of **3,537.0042** over ten episodes; training continues toward ten million. Its immutable checkpoint probe **21197951** used exact training source and 512 fresh transitions, with parameters and normalizers unchanged. Forecast RMSE was **0.3384**, versus **0.7233** for visible-history mean and **1.0527** for persistence. Shuffling peer latents increased forecast MSE by **0.7024 / 0.6721** and changed policy distributions with mean KL **2.2840 / 1.9698**. These are stronger measured latent effects than the earlier short-run probes, but trajectories differ across checkpoints. The [mechanism ledger](../reports/development-halfcheetah-2m-diagnostic.json) retains 14 passing provenance/protocol checks. There is only one peer per observer, so this does not validate multi-peer ranking. A separate full-episode intervention check is pending; no final performance or causal benefit claim follows from sensitivity alone.
+The full-budget beta-0.1 DMS development run reached a two-million-step diagnostic return of **3,537.0042** over ten episodes; training continues toward ten million. Its immutable checkpoint probe **21197951** used exact training source and 512 fresh transitions, with parameters and normalizers unchanged. Forecast RMSE was **0.3384**, versus **0.7233** for visible-history mean and **1.0527** for persistence. Shuffling peer latents increased forecast MSE by **0.7024 / 0.6721** and changed policy distributions with mean KL **2.2840 / 1.9698**. These are stronger measured latent effects than the earlier short-run probes, but trajectories differ across checkpoints. The [mechanism ledger](../reports/development-halfcheetah-2m-diagnostic.json) retains 14 passing provenance/protocol checks. There is only one peer per observer, so this does not validate multi-peer ranking. Complete-episode intervention job **21198007** also passed all 28 checks, preserving model/source/checkpoint/XML hashes and completing 30,000 transitions. Normal evaluation averaged **3,489.8661**; holding each peer's first eligible latent averaged **2,905.0450**, and masking peers averaged **801.1241**. Both interventions reduced return on all ten paired seeds, with mean differences **-584.8211** and **-2,688.7420**. [The intervention ledger](../reports/development-halfcheetah-2m-interventions.json) retains raw paired returns. These diagnostic seeds reuse the earlier checkpoint's seed set. The frozen/removed inputs may be outside training support and trajectories diverge; the result supports peer-feature dependence for this checkpoint, not an independent-training-seed improvement or multi-peer selection claim.
+
+Fresh installation job **21198078** completed from a clean archive of commit `56394f6`, a new Python **3.10.19** environment without inherited site packages, and an initially empty package cache. It downloaded the official CPU PyTorch wheel and constrained dependencies, passed `pip check`, and passed **442 tests with 32 native-only skips**. All 257 committed files remained unchanged. [The fresh-install ledger](../reports/fresh-install-validation.json) records wheel URLs/hashes, installed versions, commands, and the tested platform; other Python versions/platforms are not certified by this run.

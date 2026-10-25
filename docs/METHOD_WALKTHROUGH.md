@@ -38,7 +38,7 @@ The collector stores the normalized observations, intention features, gates, sam
 
 ## 2. Update the policy on fixed rollout inputs
 
-`update` computes advantages and applies independent PPO updates. During these updates the intention features and gates remain those used for collection. Policy gradients update the actor, critic, and attention parameters; they do not update the intention encoder.
+`update` computes advantages and applies independent PPO updates by default. The optional [sequential mode](SEQUENTIAL_POLICY_UPDATE.md) trains agents in random order and weights each actor surrogate by the completed predecessors' detached likelihood ratios. During both modes the intention features and gates remain those used for collection. Policy gradients update the actor, critic, and attention parameters; they do not update the intention encoder.
 
 [returns.py](../src/dms/returns.py) treats true termination and a time limit differently. A time limit can bootstrap from the final observation; a true terminal state cannot. Neither case joins the next episode's reward sequence. Observation histories are cleared on reset. PopArt changes value normalization while preserving the critic's raw prediction when its statistics change.
 

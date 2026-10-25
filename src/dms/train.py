@@ -47,6 +47,7 @@ class Config:
     num_envs: int = 4
     parallel_env_steps: bool = False
     mask_inactive_agents: bool = False
+    update_mode: str = 'independent'
     total_steps: int = 4096
     rollout_steps: int = 128
     epochs: int = 5
@@ -87,6 +88,8 @@ class Config:
     torch_threads: int = 1
 
     def validate(self):
+        if self.update_mode not in ('independent', 'sequential'):
+            raise ValueError('update_mode must be independent or sequential')
         if self.ant_contact_forces not in ('native', 'computed'):
             raise ValueError('ant_contact_forces must be native or computed')
         if self.ant_contact_forces == 'computed' and (
@@ -338,6 +341,52 @@ def collect(learner, environments, states, history, visible, episodes, episode_r
     return records, states, history, visible, episodes, episode_returns, finished
 
 
+
+def sequential_factor(log_correction):
+    """Detached predecessor likelihood product, without clipping or rescaling."""
+    factor = log_correction.detach().exp()
+    if not torch.isfinite(log_correction).all() or not torch.isfinite(factor).all() or not (factor > 0).all():
+        raise FloatingPointError('Nonfinite or underflowed sequential PPO correction')
+    return factor
+
+
+@torch.no_grad()
+def advance_sequential_correction(learner, data, agent_index, log_correction):
+    """Reevaluate stored actions after one agent finishes all its PPO epochs.
+
+    Each distribution already returns the joint action log probability. Keep
+    the full time/environment row index even when this agent trained on only
+    its active subset. Cached normalized observations, contexts and gates keep
+    the likelihood comparison conditional on the same rollout information.
+    """
+    i, agent = agent_index, learner.agents[agent_index]
+    old_log_prob = data['log_prob'][:, :, i].flatten()
+    obs = data['obs'][:, :, i].flatten(0, 1)
+    context = data['context'][:, :, i].flatten(0, 1)
+    gates = data['gates'][:, :, i].flatten(0, 1)
+    actions = data['actions'][:, :, i].flatten(0, 1)
+    if not learner.discrete:
+        actions = actions[:, :learner.action_dims[i]]
+    available = data['available'][:, :, i].flatten(0, 1) if learner.discrete else None
+    updated_log_prob = []
+    for indices in torch.arange(len(obs), device=learner.device).split(learner.config.minibatch_size):
+        distribution = agent.distribution(obs[indices], context[indices], gates[indices],
+                                           available[indices] if available is not None else None)
+        joint_log_prob = distribution.log_prob(actions[indices])
+        if joint_log_prob.shape != old_log_prob[indices].shape:
+            raise ValueError('Sequential PPO requires one joint log probability per rollout row')
+        updated_log_prob.append(joint_log_prob)
+    log_ratio = torch.cat(updated_log_prob) - old_log_prob
+    if learner.config.env == 'smac':
+        # A dead predecessor contributes the identity likelihood ratio,
+        # irrespective of whether inactive rows were filtered during PPO.
+        alive = data['available'][:, :, i, 1:].any(-1).flatten()
+        log_ratio = torch.where(alive, log_ratio, torch.zeros_like(log_ratio))
+    updated = log_correction.detach() + log_ratio.detach()
+    sequential_factor(updated)  # Fail before another agent consumes invalid weights.
+    return updated
+
+
 def update(learner: Learner, data):
     c = learner.config
     # SMAC reserves action zero for dead units; this convention is not shared
@@ -351,7 +400,11 @@ def update(learner: Learner, data):
         learner.tensor(data['terminated'], torch.bool), learner.tensor(data['truncated'], torch.bool),
         gamma=c.gamma, gae_lambda=c.gae_lambda)
     metrics = []
-    for i, (agent, optimizer) in enumerate(zip(learner.agents, learner.optimizers)):
+    sequential = c.update_mode == 'sequential'
+    order = torch.randperm(learner.num_agents, device=learner.device).tolist() if sequential else range(learner.num_agents)
+    log_correction = torch.zeros_like(data['log_prob'][:, :, 0].flatten()) if sequential else None
+    for i in order:
+        agent, optimizer = learner.agents[i], learner.optimizers[i]
         obs = data['obs'][:, :, i].flatten(0, 1)
         contexts = data['context'][:, :, i].flatten(0, 1)
         gates = data['gates'][:, :, i].flatten(0, 1)
@@ -362,6 +415,11 @@ def update(learner: Learner, data):
         available = data['available'][:, :, i].flatten(0, 1) if learner.discrete else None
         advantage, target = advantages[:, :, i].flatten(), returns[:, :, i].flatten()
         old_value = data['values'][:, :, i].flatten()
+        if sequential:
+            # These indices always refer to the complete [time, environment]
+            # grid, not this agent's possibly shorter active minibatch.
+            rows = torch.arange(len(obs), device=learner.device)
+            factor = sequential_factor(log_correction)
         if mask_inactive:
             active = alive[:, :, i].flatten()
             if not active.any():
@@ -373,6 +431,8 @@ def update(learner: Learner, data):
             actions, old_log_prob = actions[active], old_log_prob[active]
             available = available[active]
             advantage, target, old_value = advantage[active], target[active], old_value[active]
+            if sequential:
+                rows = rows[active]
         # Filter before normalization and minibatching. This also keeps dead
         # rows out of entropy, critic/PopArt targets, and the KL stopping rule.
         advantage = (advantage - advantage.mean()) / advantage.std(unbiased=False).clamp_min(1e-8)
@@ -386,8 +446,15 @@ def update(learner: Learner, data):
                                           available[indices] if available is not None else None)
                 log_ratio = dist.log_prob(actions[indices]) - old_log_prob[indices]
                 ratio = log_ratio.exp()
-                policy_loss = -torch.minimum(ratio * advantage[indices],
-                    ratio.clamp(1-c.clip,1+c.clip) * advantage[indices]).mean()
+                if sequential:
+                    # Standardize the local advantage once above; predecessor
+                    # ratios weight only the actor's clipped surrogate.
+                    surrogate = torch.minimum(ratio * advantage[indices],
+                        ratio.clamp(1-c.clip,1+c.clip) * advantage[indices])
+                    policy_loss = -(factor[rows[indices]] * surrogate).mean()
+                else:
+                    policy_loss = -torch.minimum(ratio * advantage[indices],
+                        ratio.clamp(1-c.clip,1+c.clip) * advantage[indices]).mean()
                 predicted = agent.normalized_value(obs[indices], contexts[indices], gates[indices])
                 clipped = old_value[indices] + (predicted-old_value[indices]).clamp(-c.value_clip,c.value_clip)
                 value_loss = 0.5 * torch.maximum((predicted-target[indices]).square(),
@@ -408,10 +475,21 @@ def update(learner: Learner, data):
                     break
             if stop:
                 break
+        if sequential:
+            log_correction = advance_sequential_correction(learner, data, i, log_correction)
         raw_obs = learner.tensor(data['raw_obs'][:, :, i])
         agent.update_observation_scale(raw_obs.flatten(0, 1)[active] if mask_inactive else raw_obs)
     result = {key: float(np.mean([row[key] for row in metrics])) if metrics else 0.0
               for key in ['policy_loss', 'value_loss', 'entropy', 'approx_kl']}
+    if sequential:
+        # Diagnostics describe the final cumulative product after all agents,
+        # including the last agent's ratio; they do not rescale training weights.
+        factor = sequential_factor(log_correction)
+        weights = factor.double()
+        ess = weights.sum().square() / weights.square().sum()
+        result.update(sequential_agent_order=order,
+            sequential_factor_min=factor.min().item(), sequential_factor_max=factor.max().item(),
+            sequential_factor_ess=ess.item(), sequential_factor_ess_fraction=(ess / len(factor)).item())
     if alive is not None:
         result['alive_fraction'] = alive.float().mean().item()
         result['ppo_update_count'] = len(metrics)
@@ -548,6 +626,11 @@ def run(config: Config):
                        'slurm_partition':os.environ.get('SLURM_JOB_PARTITION')},
             'information':'local observations and visibility-masked observed action sensors',
             'intention_control':'deterministic prior means; fixed rollout features/gates during PPO',
+            'ppo_update':{'mode':config.update_mode,
+                'agent_order':'one random permutation per rollout' if config.update_mode == 'sequential' else 'fixed index order; independent objectives',
+                'training_signal':'detached predecessor action likelihood ratios across agents' if config.update_mode == 'sequential' else 'no cross-agent likelihood correction',
+                'actor_information':'unchanged local cached observations, intentions and gates',
+                'sequential_scope':'HAPPO-style coordinated training; not the exact legacy stochastic-latent recipe'},
             'parameters':{'actor_critic':sum(p.numel() for p in learner.agents.parameters()),
                           'intention':sum(p.numel() for p in learner.intentions.parameters())},
             'history':'finite rolling action window; configurable redesign of full-history prior',

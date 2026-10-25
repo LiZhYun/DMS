@@ -86,8 +86,12 @@ def profile_condition(config, warmup_iterations, timed_iterations, order):
             if config.device == 'cuda':
                 torch.cuda.synchronize()
             end = time.perf_counter()
-            if not all(math.isfinite(float(value)) for value in metrics.values()):
-                raise RuntimeError(f'Nonfinite profile update: {metrics}')
+            # Metrics may contain structured diagnostics, such as the agent
+            # permutation. Validate every numeric leaf through strict JSON.
+            try:
+                json.dumps(metrics, allow_nan=False)
+            except (ValueError, TypeError) as exc:
+                raise RuntimeError(f'Invalid profile update: {metrics}') from exc
             if config.algorithm == 'dms' and metrics['peer_gate_fraction'] <= 0:
                 raise RuntimeError('DMS profile did not exercise active peer intentions')
             row = dict(backend=config.mamujoco_backend, scenario=config.scenario,

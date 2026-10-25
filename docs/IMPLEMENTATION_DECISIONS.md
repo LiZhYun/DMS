@@ -4,7 +4,7 @@ The user authorized a readable redesign that preserves the method's core and mus
 
 | Area | Current decision and reason |
 | --- | --- |
-| Learning base | Independent PPO with separate actors, critics, and intention models per observer. The paper used a HAPPO-style sequential update; this optimizer substitution is explicit. The IPPO comparison uses the same training implementation and local sensors. |
+| Learning base | Independent PPO remains the default, with separate actors, critics, and intention models per observer. Optional `update_mode=sequential` adds the paper's random agent order and detached predecessor likelihood correction while retaining the fixed-feature redesign. Its coordinated training signal is explicit in the manifest. Match the update mode in no-intention comparisons; see [the update guide](SEQUENTIAL_POLICY_UPDATE.md). |
 | Execution intention | Use the prior's deterministic mean, inferred only from recorded local behavior. Future-informed posterior samples are training-only. Deterministic actor features avoid treating newly sampled latent noise as a policy change in PPO ratios. |
 | History | A configurable rolling window, initially 32 actions, replaces an entire-episode GRU history. It bounds memory and makes the input sequence inspectable. The synthetic smoke uses eight steps solely to keep the check small. |
 | Posterior and prior | Share the same GRU, LayerNorm, and Gaussian head; the posterior additionally sees a completed future suffix from the same episode. No future action enters the acting policy. |

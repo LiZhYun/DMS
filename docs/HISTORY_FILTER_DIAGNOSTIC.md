@@ -59,12 +59,33 @@ The exact imported package matched the training snapshot. Model parameters/buffe
 
 All three thresholds were inactive **on this checkpoint and these sampled prefixes**; each threshold substantially exceeded the corresponding observed maximum. This does not establish inactivity throughout training, reproduce the swimmer sensitivity figure, or demonstrate a return advantage from changing a cutoff. No new cutoff was selected from these scores, and no alternate-policy rollout was performed.
 
-## Deferred swimmer probe
+## Verified Swimmer probe
 
-The **ManyAgentSwimmer 10x2 DMS** diagnostic remains unsubmitted. Wait until its development checkpoint has at least **200,000 training transitions** and intentions are active before taking an immutable snapshot. The existing 128-transition swimmer smoke checkpoint only establishes execution.
+Job **21198220** completed with exit `0:0` in **27 seconds** on Triton
+`milan1`, using two CPU cores, 8 GB RAM, and a 15-minute limit. The
+[verified ledger](../reports/development-swimmer-history-filter.json) records
+41 passing checks and the immutable checkpoint captured at **200,000 training
+transitions and 200 completed episodes**, at the causal-selection activation
+boundary. It used the training run's exact 17 Python files and packaged XML.
 
-The proposed bounded swimmer probe uses the same four-environment, 128-transition collection: **512 fresh transitions**, four CPU cores, 8 GB RAM, and a 30-minute limit. Its own archived source and packaged XML must be frozen with both diagnostic scripts. Diagnostic seeds beginning at 400001 are separate from training and reserved final evaluation; no return comparison or threshold sweep is included.
+The probe collected **512 fresh transitions** from diagnostic seeds beginning
+at 400001, with zero parameter or normalizer updates. Each of the 18 locally
+visible ordered peer pairs contributed 508 eligible prefixes; hidden pairs
+contributed none. All settings rejected **0/9,144 peer prefixes** and
+**0/5,080 self prefixes**.
 
-If a paper K rejects no eligible prefixes and substantially exceeds the observed maximum/upper quantiles, report that it was inactive on this checkpoint and sampled trajectory prefixes. Do not infer inactivity throughout training or that lowering K improves returns. Likewise, high rejection rates can reveal a scale mismatch without proving harmful filtering. Any later cutoff change requires a separately declared controlled training experiment; these quantiles provide a scale diagnostic, not a tuning result.
+| Joint `(K,l)` | Mean peer KL | 99th percentile | Maximum |
+| --- | ---: | ---: | ---: |
+| `(100,6)` | 0.5022 | 0.9284 | 1.5435 |
+| `(10000,4)` | 1.4786 | 2.7298 | 4.0326 |
+| `(1000000,2)` | 5.0757 | 9.0515 | 10.3117 |
+
+The history filter was inactive on these sampled checkpoint trajectories.
+This is separate from the causal coordination gate, which compares policy
+distributions rather than history distributions. Neither the sampled
+inactivity nor these descriptive quantiles demonstrates that changing a
+threshold improves return. No alternative cutoff was selected or trained.
+Checkpoint, source, scripts, XML, model state, and environment metadata checks
+passed without mutation.
 
 Focused tests use fabricated Gaussian distributions and tiny synthetic trajectories. They verify KL direction/sum, strict boundaries, local visibility, hidden-component invariance, unchanged model state, rejection of source/XML/checkpoint mutation, and the allocation/overwrite guards. These fixtures are software evidence and are not recorded as Ant or swimmer results.

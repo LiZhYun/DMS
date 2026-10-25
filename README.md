@@ -22,7 +22,7 @@ The optional [local policy memory](docs/LOCAL_POLICY_MEMORY.md) adds a bounded o
 
 ## Install
 
-Use Python 3.10 or newer in an isolated environment. Install a PyTorch build compatible with the compute node first; then install this package and the required environment extras. The existing Triton environment is `dms/.venv` and currently uses PyTorch 2.6 with CUDA 12.6.
+Use Python 3.10 for the documented pinned environment. Install a PyTorch build compatible with the compute node first; then install this package and the required environment extras. The existing Triton environment is `dms/.venv` and currently uses PyTorch 2.6 with CUDA 12.6.
 
 ```bash
 python3 -m venv .venv
@@ -59,6 +59,8 @@ The [SMAC environment audit](docs/SMAC_ENVIRONMENT.md) records the verified map 
 For the historical MuJoCo compatibility track, use a separate Python 3.10 environment with Gym 0.23.1, `mujoco-py` 2.1.2.14, and MuJoCo 2.1.0. The prepared Triton setup is `.venv-legacy`; it leaves the modern environment intact. Follow the [historical environment setup](docs/HISTORICAL_ENVIRONMENT.md#isolated-preparation-and-allocated-smoke) to prepare dependencies and compile the native extension on a compute node. The original graph, v2 rewards, and XML assets are preserved, with corrected actuator routing and explicit local control sensing. This is a documented compatibility track, not verified parity with the paper's unrecorded binaries.
 
 The pinned native Ant simulator leaves contact-force buffers zero. The optional [computed-force variant](docs/ANT_CONTACT_FORCES.md) populates those existing local observations and the contact penalty. Its configuration, benchmark label, and results remain separate from native Ant; passing its execution checks does not establish historical comparability.
+
+The default optimizer is independent PPO. The optional [sequential update](docs/SEQUENTIAL_POLICY_UPDATE.md) adds predecessor likelihood correction with local actor/critic inputs; compare algorithms with the same update mode.
 
 ## Run the synthetic check
 
@@ -174,6 +176,6 @@ For MuJoCo, native joint observations do not expose actuator commands. The adapt
 
 The software follows the original repository’s [MIT license](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) identify the adapted graph and Swimmer source, packaged XML, and separately installed benchmark assets. Cite the published method using [CITATION.bib](CITATION.bib); no benchmark reproduction result is claimed by this development release.
 
-The current copied public checkout passed **442 tests** (32 native-legacy tests skipped); a separate allocation passed **56 native legacy tests** on the same package source. Offline wheel and isolated import checks verified the modules, licenses, and packaged Swimmer XML. [The integrated validation](reports/current-source-validation.json) reused installed dependencies; it does not claim a fresh dependency installation or benchmark performance. Earlier real-SMAC CUDA smokes separately validated local policy memory and inactive-agent masking.
+A **fresh Python 3.10.19 CPU installation** passed **442 tests** (32 native-legacy tests skipped), using newly downloaded dependencies and a clean checkout. [The fresh-install record](reports/fresh-install-validation.json) includes exact wheel hashes and dependency versions. A separate allocation passed **56 native legacy tests** on the same package source. Offline wheel and isolated import checks verified the modules, licenses, and packaged Swimmer XML. [The integrated validation](reports/current-source-validation.json) reused installed dependencies; it does not claim a fresh dependency installation or benchmark performance. Earlier real-SMAC CUDA smokes separately validated local policy memory and inactive-agent masking.
 
 The [CPU CI workflow](.github/workflows/tests.yml) installs the pinned direct dependencies, runs the synthetic, mocked SMAC, and modern MuJoCo tests, and builds a wheel. Native legacy MuJoCo and real StarCraft checks run separately on allocated Triton nodes. The workflow has not yet run on GitHub because this repository has not been published.

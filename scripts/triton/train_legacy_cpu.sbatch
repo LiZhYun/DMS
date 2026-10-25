@@ -1,11 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name=dms-legacy-train
 #SBATCH --partition=batch-milan,batch-csl,batch-skl
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=16G
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=4G
 #SBATCH --time=24:00:00
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
+# The supplied serial MuJoCo configs use one Torch thread. Completed jobs used
+# approximately one CPU and at most 1.3 GiB RSS; see docs/RUNTIME_SCALING.md.
+# Override resources when increasing Torch threads or using a larger workload.
 set -euo pipefail
 if [[ $# -lt 2 || $# -gt 3 ]]; then
     echo "Usage: sbatch scripts/triton/train_legacy_cpu.sbatch CONFIG NEW_OUTPUT_DIR [SEED]" >&2

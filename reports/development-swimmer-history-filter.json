@@ -1,0 +1,590 @@
+{
+  "purpose": "Completed supplemental Swimmer history-filter mechanism diagnostic; no return tuning or training",
+  "status": "completed_verified",
+  "prepared_at_utc": "2026-10-25T10:57:14.369004+00:00",
+  "training_run": "runs/dev-legacy-swimmer10x2-dms-causal-500k-101",
+  "artifact_directory": "runs/dev-legacy-swimmer10x2-dms-causal-500k-101/history-filter-diagnostic-01",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-swimmer10x2-dms-causal-500k-101/history-filter-diagnostic-01/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "d4847f2b0c5da7d73a71d5e2817d69dd300480cb00d894969975f16dee2fb642",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "asset": {
+    "path": "dms/assets/manyagent_swimmer_10x2.xml",
+    "sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "training_environment": {
+    "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+    "historical_binary_parity_verified": false,
+    "scenario": "ManyAgentSwimmer",
+    "native_env_id": "custom_manyagent_swimmer_10x2",
+    "agent_conf": "10x2",
+    "agent_obsk": 1,
+    "k_categories": [
+      [
+        "qpos",
+        "qvel"
+      ],
+      [
+        "qpos"
+      ]
+    ],
+    "global_categories": [],
+    "max_episode_steps": 1000,
+    "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+    "packages": {
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14",
+      "numpy": "1.26.4"
+    },
+    "mujoco_engine_version": 210,
+    "xml_asset": "manyagent_swimmer_10x2.xml",
+    "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+    "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+    "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "action_routing": "graph_node_actuator_indices",
+    "control_processing": "clip_native_bounds_before_simulation_and_reward",
+    "action_ids": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        12,
+        13
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        16,
+        17
+      ],
+      [
+        18,
+        19
+      ]
+    ],
+    "action_dims": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "observation_dims": [
+      5,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      5
+    ],
+    "action_sensor": "previous_executed_control_on_observed_joints",
+    "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+    "reward": {
+      "formula": "root_x_velocity - 0.0001*sum(control**2)",
+      "native_termination": "never"
+    },
+    "frame_skip": 4,
+    "physics_timestep": 0.005,
+    "native_geom_friction": [
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ],
+      [
+        1.0,
+        0.005,
+        0.0001
+      ]
+    ],
+    "original_environment_sha256": "c3e52d46867b4bed3063e0b572ba15060d105456a53c7d75d13edff45b835781",
+    "original_xml_template_sha256": "e258a36037bd7dca12e563ed9c0986a6239b6394ea9ff76edaf49f65ebeb9831",
+    "asset_generation": "packaged_fixed_10x2; no runtime generation",
+    "native_integrator": "RK4",
+    "fluid_density": 4000.0,
+    "fluid_viscosity": 0.1
+  },
+  "source_matches_training_manifest": true,
+  "frozen_source_and_asset_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/legacy_env.py": "d4847f2b0c5da7d73a71d5e2817d69dd300480cb00d894969975f16dee2fb642",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "frozen_script_sha256": {
+    "tools/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01",
+    "tools/diagnose_history_filter.py": "d8e1248d34fd9ce4f210cea105630c5962f1f59f34637f8b4d9e23af3383a341"
+  },
+  "snapshot_helper_sha256": "8de70930624cb3a7edd843408f4307efab2dadfb0ad1f275f2f13841b20d4190",
+  "runner_sha256": "01e749415b7b125fc762e315318f2be16b1295fff75ff078bf2b80d4672a7ec1",
+  "wrapper_sha256": "e67cd3ebe838915fd88ae7a86e755e2ffe1216a7579f2c04d0b981fd750c6031",
+  "input_guard_sha256": "de89a88fc6eb6f618375c1b966eca902c5b74f433e4e5d8e93e783b873aea775",
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "checkpoint_eligibility": {
+    "required_training_steps": 200000,
+    "required_training_episodes": 200,
+    "also_require_completed_causal_warmup": true,
+    "last_observed_training_steps": 216000,
+    "last_observed_training_episodes": 216,
+    "last_observed_saved_steps": 200000,
+    "last_observed_saved_episodes": 200,
+    "checkpoint_selected": true,
+    "last_checked_at_utc": "2026-10-25T11:15:39.047058+00:00",
+    "selected_at_utc": "2026-10-25T11:14:27.778741+00:00"
+  },
+  "protocol": {
+    "transitions": 512,
+    "steps_per_environment": 128,
+    "num_environments": 4,
+    "diagnostic_seed": 400001,
+    "paper_joint_K_l": [
+      [
+        100,
+        6
+      ],
+      [
+        10000,
+        4
+      ],
+      [
+        1000000,
+        2
+      ]
+    ],
+    "parameter_updates": 0,
+    "selection": "First observed saved checkpoint meeting transition and causal-phase thresholds; never the 128-transition smoke."
+  },
+  "resources": {
+    "cpus": 2,
+    "memory_gb": 8,
+    "time_limit": "00:15:00"
+  },
+  "one_shot_snapshot_command": [
+    ".venv/bin/python",
+    "runs/dev-legacy-swimmer10x2-dms-causal-500k-101/history-filter-diagnostic-01/snapshot_checkpoint.py"
+  ],
+  "submit_after_eligibility_command": [
+    "sbatch",
+    "--parsable",
+    "runs/dev-legacy-swimmer10x2-dms-causal-500k-101/history-filter-diagnostic-01/probe.sbatch"
+  ],
+  "submitted": true,
+  "job_id": "21198220",
+  "interpretation_limits": [
+    "Scores/quantiles describe correlated prefixes from one checkpoint, not independent-seed performance.",
+    "Joint K/l pairs do not isolate K from l.",
+    "Same diagnostic seed starts as the Ant probe create new Swimmer trajectories; they are not held-out performance seeds.",
+    "The 200k/200-episode snapshot is exactly at hard causal-mask activation; it does not establish later-training filter behavior."
+  ],
+  "eligibility_checks": [
+    {
+      "checked_at_utc": "2026-10-25T11:03:21.048027+00:00",
+      "snapshot_helper_exit_code": 2,
+      "saved_steps": 100000,
+      "saved_episodes": 100,
+      "latest_training_steps": 200000,
+      "latest_training_episodes": 200,
+      "result": "ineligible; no checkpoint copy or job submission"
+    },
+    {
+      "checked_at_utc": "2026-10-25T11:15:39.047058+00:00",
+      "snapshot_helper_exit_code": 0,
+      "saved_steps": 200000,
+      "saved_episodes": 200,
+      "latest_training_steps": 216000,
+      "latest_training_episodes": 216,
+      "result": "eligible; immutable snapshot selected"
+    }
+  ],
+  "checkpoint_selection": {
+    "selected_at_utc": "2026-10-25T11:14:27.778741+00:00",
+    "training_steps": 200000,
+    "training_episodes": 200,
+    "causal_phase_required_episodes": 200,
+    "sha256": "9da829a4da026d9cd21acfd997f7a906519316492a2493fc0637fd3c56c979ee",
+    "bytes": 7625604,
+    "method": "read latest.pt once; write new exclusive immutable path; never overwrite"
+  },
+  "checkpoint_selection_sha256": "f844dfb3e7ba8beaa912f8872cc6478d4d4eff9ddedc76483aa63e9ffc2fb62d",
+  "training_phase_at_snapshot": {
+    "warmup_completed": true,
+    "causal_warmup_completed": true,
+    "causal_phase_required_episodes": 200,
+    "training_episodes": 200,
+    "at_causal_activation_boundary": true,
+    "causal_policy_gate_is_distinct_from_history_filter_rejection": true
+  },
+  "latest_live_metric_before_submission": {
+    "steps": 216000,
+    "episodes": 216,
+    "peer_gate_fraction": 0.0022611111111111113,
+    "intention_loss": 1.2531517565250396
+  },
+  "checkpoint": {
+    "path": "runs/dev-legacy-swimmer10x2-dms-causal-500k-101/history-filter-diagnostic-01/checkpoint.pt",
+    "sha256": "9da829a4da026d9cd21acfd997f7a906519316492a2493fc0637fd3c56c979ee",
+    "bytes": 7625604,
+    "read_only": true
+  },
+  "training_manifest_sha256": "615d4a5d59220e83b94eec43ca0a69535b4f4478e8d761ce18f34e9eb09d454c",
+  "submitted_at_utc": "2026-10-25T11:15:39.074395+00:00",
+  "submission_returncode": 0,
+  "submission_stdout": "21198220",
+  "submission_stderr": "",
+  "verified_at_utc": "2026-10-25T11:21:03.076333+00:00",
+  "scheduler": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:00:27",
+    "node": "milan1",
+    "partition": "batch-milan",
+    "allocated_cpus": 2,
+    "requested_memory": "8G",
+    "start_local": "2026-10-25T13:15:52",
+    "end_local": "2026-10-25T13:16:19",
+    "local_timezone": "Europe/Helsinki"
+  },
+  "runtime": {
+    "slurm_job_id": "21198220",
+    "host": "milan1.int.triton.aalto.fi",
+    "device": "cpu",
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "diagnostic_package_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-swimmer10x2-dms-causal-500k-101/history-filter-diagnostic-01/source/dms",
+    "python_executable": "/scratch/work/liz23/reproduce/dms/.venv-legacy/bin/python"
+  },
+  "verification_checks": {
+    "checkpoint_bytes_match_selection_and_result": true,
+    "checkpoint_read_only_on_disk": true,
+    "checkpoint_unchanged_during_probe": true,
+    "training_steps_and_episode_phase_eligible": true,
+    "training_seed101": true,
+    "dms_causal_swimmer10x2_k1": true,
+    "original_training_manifest_unchanged": true,
+    "snapshot_manifest_identical": true,
+    "python_sources_match_original_manifest": true,
+    "frozen_source_and_xml_match_record": true,
+    "expected17_python_files_plus_xml": true,
+    "frozen_source_and_scripts_read_only": true,
+    "recorded_diagnostic_source_and_scripts_match": true,
+    "frozen_script_bytes_match_record": true,
+    "snapshot_checkpoint.py_unchanged": true,
+    "run_probe.py_unchanged": true,
+    "probe.sbatch_unchanged": true,
+    "inputs.json_unchanged": true,
+    "checkpoint-selection.json_unchanged": true,
+    "source_and_xml_unchanged_during_probe": true,
+    "model_state_unchanged": true,
+    "zero_parameter_updates": true,
+    "actual_frozen_import": true,
+    "allocated_expected_cpu_job": true,
+    "transition_budget": true,
+    "fresh_episode_seed_protocol": true,
+    "no_complete_episodes_expected": true,
+    "active_original_filter_and_intentions": true,
+    "checkpoint_environment_matches_training": true,
+    "four_actual_environments_match_training": true,
+    "actual_xml_hash_matches_packaged_asset": true,
+    "exact_three_paper_joint_settings": true,
+    "all100_ordered_pairs_per_setting": true,
+    "local_k1_chain_visibility_only": true,
+    "raw_array_lengths_match_eligible_counts": true,
+    "raw_prefix_indices_exclude_only_first_empty_histories": true,
+    "finite_nonnegative_kl": true,
+    "raw_strict_threshold_decisions_and_counts": true,
+    "raw_visibility_history_lengths": true,
+    "pooled_means_quantiles_counts_and_cutoffs_match_raw_pairs": true,
+    "no_sampled_prefix_rejected_at_paper_settings": true
+  },
+  "all_verification_checks_passed": true,
+  "result": {
+    "path": "runs/dev-legacy-swimmer10x2-dms-causal-500k-101/history-filter-diagnostic-01/history-filter.json",
+    "sha256": "1cef72c43b99dbbc1f397ae421c23c8ef28096f59f2ce358428ea502a6bf7fdf",
+    "bytes": 4142040
+  },
+  "collection": {
+    "intentions_active": true,
+    "episode_seeds_by_environment": [
+      [
+        400001
+      ],
+      [
+        400002
+      ],
+      [
+        400003
+      ],
+      [
+        400004
+      ]
+    ],
+    "completed_diagnostic_episodes": 0
+  },
+  "filter_active_in_collected_policy": true,
+  "diagnostic_protocol": {
+    "direction": "KL(full-history prior || recent-history prior); manuscript direction unspecified",
+    "reduction": "sum over latent coordinates per history/observer/peer; no time or action-count division",
+    "eligibility": "at least one actually observed action in recent l slots; local component mask retained",
+    "rejection": "strict KL > K; mask only recent l slots; older visibility unchanged",
+    "collection": "stochastic frozen checkpoint policy with its original configured filter; raw unfiltered past histories retained",
+    "quantiles": "descriptive development cutoffs only; no threshold selection, alternate rollouts, or return tuning",
+    "sampling": "all collected prefixes; overlapping histories and correlated entries are not independent training-seed replicates",
+    "padding": "full checkpoint history window includes original unknown padding after reset; never trim it for this comparison"
+  },
+  "settings_summary": [
+    {
+      "threshold": 100.0,
+      "short_length": 6,
+      "peers": {
+        "eligible_count": 9144,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 0.5021574295965966,
+        "negative_kl_count": 0,
+        "recent_visible_action_entries": 53784,
+        "removed_visible_action_entries": 0,
+        "kl_p99": 0.9284063327312468,
+        "kl_max": 1.5435431003570557
+      },
+      "self": {
+        "eligible_count": 5080,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 0.47075345936839974,
+        "negative_kl_count": 0,
+        "recent_visible_action_entries": 29880,
+        "removed_visible_action_entries": 0,
+        "kl_p99": 0.8044332551956178,
+        "kl_max": 1.1957030296325684
+      }
+    },
+    {
+      "threshold": 10000.0,
+      "short_length": 4,
+      "peers": {
+        "eligible_count": 9144,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 1.478606159514434,
+        "negative_kl_count": 0,
+        "recent_visible_action_entries": 36144,
+        "removed_visible_action_entries": 0,
+        "kl_p99": 2.729842491149902,
+        "kl_max": 4.032646179199219
+      },
+      "self": {
+        "eligible_count": 5080,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 1.4599783778542608,
+        "negative_kl_count": 0,
+        "recent_visible_action_entries": 20080,
+        "removed_visible_action_entries": 0,
+        "kl_p99": 2.700271594524384,
+        "kl_max": 3.48966383934021
+      }
+    },
+    {
+      "threshold": 1000000.0,
+      "short_length": 2,
+      "peers": {
+        "eligible_count": 9144,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 5.07572867483396,
+        "negative_kl_count": 0,
+        "recent_visible_action_entries": 18216,
+        "removed_visible_action_entries": 0,
+        "kl_p99": 9.051489906311033,
+        "kl_max": 10.311677932739258
+      },
+      "self": {
+        "eligible_count": 5080,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 5.367213103785289,
+        "negative_kl_count": 0,
+        "recent_visible_action_entries": 10120,
+        "removed_visible_action_entries": 0,
+        "kl_p99": 10.728880853652957,
+        "kl_max": 13.217899322509766
+      }
+    }
+  ],
+  "eligible_pair_structure": {
+    "visible_ordered_peer_pairs": 18,
+    "self_pairs": 10,
+    "prefixes_per_visible_pair": 508,
+    "hidden_ordered_peer_pairs": 72,
+    "hidden_pair_eligible_prefixes": 0
+  },
+  "conclusion": "At this 200000-step/200-episode activation-boundary checkpoint, all three paper joint settings reject zero of 9144 eligible peer prefixes; this establishes threshold inactivity only on the 512 sampled fresh transitions. It does not explain or measure the separate causal policy gate, establish later-training behavior, or support a performance claim.",
+  "logs": {
+    "stdout": "logs/dms-swimmer-history-filter_21198220.out",
+    "stderr": "logs/dms-swimmer-history-filter_21198220.err",
+    "stderr_note": "Only Python load_module deprecation warning; no exception or diagnostic failure."
+  }
+}

@@ -1,0 +1,608 @@
+{
+  "purpose": "Fresh documented SMAC dependency install and real installed-wheel train/evaluation/checkpoint smoke",
+  "status": "completed_pass",
+  "commit": "56394f68b96716c6bd152d094793e19e7aecac59",
+  "artifact": "runs/fresh-smac-install-01",
+  "snapshot_sha256": "ab3ffa0646cb83ff0ac80f337d470451832cf319fd64ad77e42e840195b4650c",
+  "runner_sha256": "96ccdb5f3b2f10cde9217711b4b213d4a64766c94218f5e34ffde92baa2b9be8",
+  "wrapper_sha256": "6bfc152a8065875470e41c93bb168aafb0ff736ba410e1edafe1974b775816bb",
+  "resources": {
+    "cpus": 4,
+    "memory": "16G",
+    "time": "00:30:00",
+    "partitions": [
+      "batch-milan",
+      "batch-csl",
+      "batch-skl"
+    ]
+  },
+  "command": [
+    "sbatch",
+    "--parsable",
+    "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/run.sbatch"
+  ],
+  "source_snapshot_matches_prior_fresh_install": true,
+  "new_venv_no_system_or_user_site": true,
+  "empty_dedicated_pip_cache": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/pip-cache",
+  "existing_environments_modified": false,
+  "starcraft_assets": "Existing shared 4.10/Base75689 binary and pinned 3s5z map reused without copying; hashes checked before/after. StarCraft download/install not validated.",
+  "package_workflow": "Follow archived README CPU/test/mujoco installation and SMAC extras plus fresh pinned official SMAC clone; then replace only the editable DMS package with its built wheel and run outside checkout.",
+  "failure_policy": "Preserve first dependency/runtime failure and report before changing constraints or package configuration.",
+  "created_utc": "2026-10-25T11:26:59.051093+00:00",
+  "job_id": "21198390",
+  "submitted_utc": "2026-10-25T11:27:17.864286+00:00",
+  "submission_stdout": "21198390\n",
+  "submission_stderr": "",
+  "success": true,
+  "completed_utc": "2026-10-25T11:30:08.268810+00:00",
+  "elapsed_seconds": 155.54837400105316,
+  "completion_accounting": [
+    "21198390|COMPLETED|0:0|00:02:36|milan1|",
+    "21198390.batch|COMPLETED|0:0|00:02:36|milan1|3619652K",
+    "21198390.extern|COMPLETED|0:0|00:02:36|milan1|"
+  ],
+  "host": "milan1.int.triton.aalto.fi",
+  "partition": "batch-milan",
+  "versions": {
+    "absl-py": "2.5.1",
+    "cachebox": "5.2.3",
+    "certifi": "2026.10.23",
+    "charset-normalizer": "3.5.2",
+    "cloudpickle": "3.1.2",
+    "deepdiff": "9.1.0",
+    "dms-marl": "0.1.0",
+    "enum34": "1.1.10",
+    "etils": "1.13.0",
+    "exceptiongroup": "1.3.1",
+    "Farama-Notifications": "0.0.6",
+    "filelock": "3.32.3",
+    "fsspec": "2026.7.0",
+    "future": "1.0.0",
+    "glfw": "2.11.0",
+    "gymnasium": "1.4.0",
+    "gymnasium-robotics": "1.4.2",
+    "idna": "3.20",
+    "ImageIO": "2.38.0",
+    "importlib_resources": "7.1.0",
+    "iniconfig": "2.3.1",
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.3",
+    "mock": "5.2.0",
+    "mpmath": "1.3.0",
+    "mpyq": "0.2.5",
+    "mujoco": "3.17.0",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "orderly-set": "5.5.0",
+    "packaging": "26.3",
+    "pettingzoo": "1.27.0",
+    "pillow": "12.3.0",
+    "pip": "26.2.2",
+    "pluggy": "1.7.0",
+    "portpicker": "1.6.0",
+    "protobuf": "3.20.3",
+    "psutil": "7.2.2",
+    "pygame": "2.6.1",
+    "Pygments": "2.21.0",
+    "PyOpenGL": "3.1.10",
+    "PySC2": "3.0.0",
+    "pytest": "8.4.2",
+    "requests": "2.34.2",
+    "s2clientprotocol": "5.0.17.98310.0",
+    "s2protocol": "5.0.17.98310.0",
+    "scipy": "1.15.3",
+    "setuptools": "79.0.1",
+    "six": "1.17.0",
+    "sk-video": "1.1.10",
+    "SMAC": "1.0.0",
+    "sympy": "1.13.1",
+    "tomli": "2.5.0",
+    "torch": "2.6.0+cpu",
+    "typing_extensions": "4.16.0",
+    "urllib3": "2.8.0",
+    "websocket-client": "1.9.2",
+    "websockets": "16.1.1",
+    "whichcraft": "0.6.1",
+    "zipp": "4.1.2"
+  },
+  "python": "3.10.19 | packaged by conda-forge | (main, Oct 22 2025, 22:29:10) [GCC 14.3.0]",
+  "validation_commands": [
+    {
+      "argv": [
+        "/scratch/work/liz23/.conda_envs/slotcontrast/bin/python",
+        "-m",
+        "venv",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01",
+      "log": "create-venv.log",
+      "started_utc": "2026-10-25T11:27:32.788244+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 6.112321954104118,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--upgrade",
+        "pip",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/install-pip-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "install-pip.log",
+      "started_utc": "2026-10-25T11:27:38.903606+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 4.297943206969649,
+      "log_sha256": "b7d31025df2ff625bcd396c35d4da46d706bc5894c9f5c9024c7820edc988c4c"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "torch==2.6.0",
+        "--index-url",
+        "https://download.pytorch.org/whl/cpu",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/install-torch-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "install-torch.log",
+      "started_utc": "2026-10-25T11:27:43.204059+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 43.279541218071245,
+      "log_sha256": "e198890a4520e543d06b6c05db3f534f6ad01bbae8aaa27750d796089f2a1499"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-c",
+        "requirements/modern-constraints.txt",
+        "-e",
+        ".[test,mujoco]",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/install-project-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "install-project.log",
+      "started_utc": "2026-10-25T11:28:26.486933+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 30.160364660900086,
+      "log_sha256": "ce1093fff2b0b359a5900b9d6e5717ec78fb5e3c7fbaceefb2d94a0465a3bd3b"
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "https://github.com/oxwhirl/smac.git",
+        "reference/smac"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "clone-smac.log",
+      "started_utc": "2026-10-25T11:28:56.650622+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1.131904699956067,
+      "log_sha256": "f564de7db5468f7ade8dbb820bbc89f9fc647564a360ca062fed4722a0041082"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout/reference/smac",
+        "checkout",
+        "--detach",
+        "d6aab33f76abc3849c50463a8592a84f59a5ef84"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "checkout-smac.log",
+      "started_utc": "2026-10-25T11:28:57.784950+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.0459151630057022,
+      "log_sha256": "e77e5bab3edc69382b667d7745fc60d60a88b227cde1ffc346d7046ebbdff8d1"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-c",
+        "requirements/modern-constraints.txt",
+        "-e",
+        ".[smac]",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/install-smac-extra-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "install-smac-extra.log",
+      "started_utc": "2026-10-25T11:28:57.833111+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 27.15481971402187,
+      "log_sha256": "30e88e1648fca8f39121faa04bf1e3601d75eff9b9f5a1ca008b74c3173acf73"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-c",
+        "requirements/modern-constraints.txt",
+        "-e",
+        "reference/smac",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/install-smac-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "install-smac.log",
+      "started_utc": "2026-10-25T11:29:24.991816+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 2.9206015249947086,
+      "log_sha256": "69312fc839754f2fccff496e90d7a6971577fbc1e79795826571b7d2418a29cd"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "pip-check-documented.log",
+      "started_utc": "2026-10-25T11:29:27.915287+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.5717595840105787,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout/reference/smac",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "smac-revision.txt",
+      "started_utc": "2026-10-25T11:29:28.489868+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.007004582090303302,
+      "log_sha256": "ef891b983e33218a41d3f0de4c0b125aedacba4ce8fe56ebabb658dca0f36f47"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "wheel",
+        ".",
+        "--no-deps",
+        "--wheel-dir",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/wheels"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "build-wheel.log",
+      "started_utc": "2026-10-25T11:29:28.500815+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 2.806684121955186,
+      "log_sha256": "41a8e5d764ab8707e503c00f88a3a82b823e19e0fe73726cc08b78dce724cce7"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--force-reinstall",
+        "--no-deps",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/wheels/dms_marl-0.1.0-py3-none-any.whl",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/install-wheel-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/checkout",
+      "log": "install-wheel.log",
+      "started_utc": "2026-10-25T11:29:31.318633+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 1.4247359900036827,
+      "log_sha256": "d67a8a826d4d8501d0851c2420850ca49450e10a99eb0facb2f27c4361ceef6e"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/outside",
+      "log": "pip-check-wheel.log",
+      "started_utc": "2026-10-25T11:29:32.746065+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.5710451999912038,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "freeze",
+        "--all"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/outside",
+      "log": "pip-freeze.txt",
+      "started_utc": "2026-10-25T11:29:33.319734+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.4131325570633635,
+      "log_sha256": "eac43f66c4e681f2bdb12c06a72abed355d6ba3e956278388930cd78ed4caa39"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "list",
+        "--format=json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/outside",
+      "log": "pip-list.json",
+      "started_utc": "2026-10-25T11:29:33.735594+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.33019776304718107,
+      "log_sha256": "0f57a78ea3cdc85c4988b5cbe92547bb1062d1a08965c8d726da838bccc53eb6"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/venv/bin/python",
+        "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/validate.py",
+        "--smoke-child"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/outside",
+      "log": "native-smoke.log",
+      "started_utc": "2026-10-25T11:29:34.069056+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 33.31545614998322,
+      "log_sha256": "60450c80eeaff9afa6b8da50b97dab3b70a34ae410c5938225a9b1432ae25f1c"
+    }
+  ],
+  "pip_check": {
+    "documented_install": "No broken requirements found.",
+    "installed_wheel": "No broken requirements found."
+  },
+  "isolation": {
+    "new_venv": "runs/fresh-smac-install-01/venv",
+    "include_system_site_packages": false,
+    "enable_user_site": false,
+    "inherited_pythonpath_removed": true,
+    "all_scientific_imports_and_distributions_verified_in_new_venv": true,
+    "smac_editable_source_is_fresh_pinned_clone": true,
+    "dms_imported_from_installed_wheel_site_packages": true,
+    "execution_cwd": "runs/fresh-smac-install-01/outside",
+    "existing_dependencies_reused": false,
+    "preexisting_pip_cache_reused": false
+  },
+  "source": {
+    "commit": "56394f68b96716c6bd152d094793e19e7aecac59",
+    "public_archive_sha256": "7f24eaf932a480eb4b4228e8a8717cc6bd8d0df29867294847230303f3238992",
+    "source_and_asset_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "3bd2de5162ea115fd1dbccbe0a598e7cdaa7183230ab98a6435cbbacedbe0bfc"
+    },
+    "public_files_unchanged": true,
+    "smac_commit": "d6aab33f76abc3849c50463a8592a84f59a5ef84",
+    "smac_tracked_files_unchanged": true,
+    "smac_source_hashes": "runs/fresh-smac-install-01/smac-source-hashes.json"
+  },
+  "wheel": {
+    "path": "/scratch/work/liz23/reproduce/dms/runs/fresh-smac-install-01/wheels/dms_marl-0.1.0-py3-none-any.whl",
+    "sha256": "2716633f1eb7dac0f74e8360f106d28c9762a645843f8f244677dbaae6f72aa5",
+    "bytes": 77253
+  },
+  "native_smoke": {
+    "training_steps": 64,
+    "training_seed": 101,
+    "ppo_rollouts": 2,
+    "ppo_optimizer_steps_each_rollout": [
+      8,
+      8
+    ],
+    "active_peer_fractions": [
+      0.96875,
+      0.9497767857142857
+    ],
+    "finite_ppo_and_auxiliary_losses": true,
+    "training_evaluation_episodes": 1,
+    "checkpoint_evaluation_episodes": 1,
+    "checkpoint_evaluation_seed": 200001,
+    "checkpoint_evaluation_return": 3.440397374331951,
+    "checkpoint_evaluation_length": 65,
+    "checkpoint_sha256_unchanged_by_evaluation": "28ffb0635799ca1fad6f5ef16bc4c7573ace0f64be841ef8e249d6935536855a",
+    "training_environment_runtime": [
+      {
+        "scheduled_restarts": 0,
+        "seed_generation": 0,
+        "process_seed": 101,
+        "game_loop": 514,
+        "backend_force_restarts": 0
+      }
+    ],
+    "evaluation_runtime": {
+      "host": "milan1.int.triton.aalto.fi",
+      "device": "cpu",
+      "slurm_job_id": "21198390",
+      "slurm_partition": "batch-milan",
+      "initial_environment": {
+        "scheduled_restarts": 0,
+        "seed_generation": 0,
+        "process_seed": 200001,
+        "game_loop": 0,
+        "backend_force_restarts": 0
+      },
+      "final_environment": {
+        "scheduled_restarts": 0,
+        "seed_generation": 0,
+        "process_seed": 200001,
+        "game_loop": 520,
+        "backend_force_restarts": 0
+      }
+    },
+    "installed_source_and_xml_match_archive": true,
+    "environment": {
+      "benchmark_track": "original_smac",
+      "map_name": "3s5z",
+      "game_version": "4.10",
+      "difficulty": "7",
+      "action_observability": "native_local_obs_last_action",
+      "environment_options": {
+        "obs_last_action": true,
+        "continuing_episode": true,
+        "obs_instead_of_state": false,
+        "heuristic_ai": false,
+        "map_name": "3s5z",
+        "game_version": "4.10",
+        "difficulty": "7"
+      },
+      "resolved_environment_options": {
+        "obs_last_action": true,
+        "continuing_episode": true,
+        "obs_instead_of_state": false,
+        "heuristic_ai": false,
+        "map_name": "3s5z",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "obs_all_health": true,
+        "obs_own_health": true,
+        "obs_pathing_grid": false,
+        "obs_terrain_height": false,
+        "obs_timestep_number": false,
+        "state_last_action": true,
+        "state_timestep_number": false,
+        "reward_sparse": false,
+        "reward_only_positive": true,
+        "reward_death_value": 10,
+        "reward_win": 200,
+        "reward_defeat": 0,
+        "reward_negative_scale": 0.5,
+        "reward_scale": true,
+        "reward_scale_rate": 20,
+        "heuristic_rest": false,
+        "step_mul": 8,
+        "move_amount": 2,
+        "episode_limit": 150
+      },
+      "process_lifetime": {
+        "restart_at_episode_boundary_after_game_loops": 500000,
+        "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+        "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+      },
+      "map_asset": {
+        "status": "resolved",
+        "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+        "relative_path": "SMAC_Maps/3s5z.SC2Map",
+        "size_bytes": 15697,
+        "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+      },
+      "runtime_selection": {
+        "source": "pysc2_run_config_selection_not_launched_binary",
+        "game_version": "4.10.0",
+        "build_version": 75689,
+        "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+      },
+      "packages": {
+        "smac": "1.0.0",
+        "pysc2": "3.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      }
+    }
+  },
+  "shared_starcraft_assets": {
+    "reused_existing_installation": true,
+    "download_or_install_tested": false,
+    "pinned_clone_map_matches_existing_map": true,
+    "binary_and_map_sha256": {
+      "/scratch/work/liz23/3rdparty/StarCraftII/Versions/Base75689/SC2_x64": "115f65a49191c504f6336f7d5b7818b23dbba3d7a45cacf9142c86c959abaa41",
+      "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+    },
+    "binary_and_map_unchanged": true
+  },
+  "resolved_downloads": {
+    "path": "runs/fresh-smac-install-01/resolved-downloads.json",
+    "sha256": "2cf79d9bc77e24369219cc7c9f7be55b2b2d069f4bf7bfde2316705e2e377a2a",
+    "scope": "Resolver URLs and available artifact hashes for every documented installation step; cache reuse within this newly created environment is allowed."
+  },
+  "files_sha256": {
+    "runs/fresh-smac-install-01/build-wheel.log": "41a8e5d764ab8707e503c00f88a3a82b823e19e0fe73726cc08b78dce724cce7",
+    "runs/fresh-smac-install-01/checkout-smac.log": "e77e5bab3edc69382b667d7745fc60d60a88b227cde1ffc346d7046ebbdff8d1",
+    "runs/fresh-smac-install-01/checkpoint-evaluation.json": "da1966c358c090e57d6cc1f54e83ec77e51745f2caae59a372631c3e6c97ff10",
+    "runs/fresh-smac-install-01/clone-smac.log": "f564de7db5468f7ade8dbb820bbc89f9fc647564a360ca062fed4722a0041082",
+    "runs/fresh-smac-install-01/create-venv.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/fresh-smac-install-01/dms-fresh-smac-install_21198390.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/fresh-smac-install-01/dms-fresh-smac-install_21198390.out": "1448f1118b032754bc68e5ca113e224129f88915fb6f16734d48216797d744c2",
+    "runs/fresh-smac-install-01/environment.json": "468649854f9285c5f6b18f0254208635ab41e9920aba456b0c3cd307651f05a5",
+    "runs/fresh-smac-install-01/install-pip-report.json": "35389a4d72e85d619e49ec44c87546e5e9dfc4f0cb65314134a65e7f83bd86f8",
+    "runs/fresh-smac-install-01/install-pip.log": "b7d31025df2ff625bcd396c35d4da46d706bc5894c9f5c9024c7820edc988c4c",
+    "runs/fresh-smac-install-01/install-project-report.json": "c6a3e05598202465daeab0f7df091176952733cbc48f86c8caf654638976f6bb",
+    "runs/fresh-smac-install-01/install-project.log": "ce1093fff2b0b359a5900b9d6e5717ec78fb5e3c7fbaceefb2d94a0465a3bd3b",
+    "runs/fresh-smac-install-01/install-smac-extra-report.json": "5be19e36f1e004e6aeb973da18970450c1537ad7e71b88dcff506671bde75436",
+    "runs/fresh-smac-install-01/install-smac-extra.log": "30e88e1648fca8f39121faa04bf1e3601d75eff9b9f5a1ca008b74c3173acf73",
+    "runs/fresh-smac-install-01/install-smac-report.json": "839b77b71edadab4bee9392bd205ff4ddcfa596cf965dcfe4aa53729d978ea17",
+    "runs/fresh-smac-install-01/install-smac.log": "69312fc839754f2fccff496e90d7a6971577fbc1e79795826571b7d2418a29cd",
+    "runs/fresh-smac-install-01/install-torch-report.json": "2a6606ab7c3338d957b0bc48439503a976d60f0f26a5591732aab6d951a3baec",
+    "runs/fresh-smac-install-01/install-torch.log": "e198890a4520e543d06b6c05db3f534f6ad01bbae8aaa27750d796089f2a1499",
+    "runs/fresh-smac-install-01/install-wheel-report.json": "e81ccad94b2a0ec3a3966a252fe1a632dbff11c69d29923b0700ba1b82ee8b2e",
+    "runs/fresh-smac-install-01/install-wheel.log": "d67a8a826d4d8501d0851c2420850ca49450e10a99eb0facb2f27c4361ceef6e",
+    "runs/fresh-smac-install-01/native-smoke.log": "60450c80eeaff9afa6b8da50b97dab3b70a34ae410c5938225a9b1432ae25f1c",
+    "runs/fresh-smac-install-01/pip-check-documented.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "runs/fresh-smac-install-01/pip-check-wheel.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "runs/fresh-smac-install-01/pip-freeze.txt": "eac43f66c4e681f2bdb12c06a72abed355d6ba3e956278388930cd78ed4caa39",
+    "runs/fresh-smac-install-01/pip-list.json": "0f57a78ea3cdc85c4988b5cbe92547bb1062d1a08965c8d726da838bccc53eb6",
+    "runs/fresh-smac-install-01/progress.json": "954277a836d26e4bcf81f38eef8784c72db776529002261b7da00077649646e8",
+    "runs/fresh-smac-install-01/resolved-downloads.json": "2cf79d9bc77e24369219cc7c9f7be55b2b2d069f4bf7bfde2316705e2e377a2a",
+    "runs/fresh-smac-install-01/run.sbatch": "6bfc152a8065875470e41c93bb168aafb0ff736ba410e1edafe1974b775816bb",
+    "runs/fresh-smac-install-01/smac-revision.txt": "ef891b983e33218a41d3f0de4c0b125aedacba4ce8fe56ebabb658dca0f36f47",
+    "runs/fresh-smac-install-01/smac-source-hashes.json": "b968a3ee26ef9529e20819c35f32350405288029f0244fa762b39475bb979012",
+    "runs/fresh-smac-install-01/smoke/config.json": "b39563886832cbc31d82ae5942012e6c58969068822defa0e620758d7a6e2252",
+    "runs/fresh-smac-install-01/smoke/evaluation.jsonl": "5609e250c3d3197eaa80593ef7361b813b534551413685ff419056980d3528fd",
+    "runs/fresh-smac-install-01/smoke/latest.pt": "28ffb0635799ca1fad6f5ef16bc4c7573ace0f64be841ef8e249d6935536855a",
+    "runs/fresh-smac-install-01/smoke/manifest.json": "c8f9b150fcb4d4ae9283db27734a2ebf35e1ce280544e8f53467a9d2284f7659",
+    "runs/fresh-smac-install-01/smoke/metrics.jsonl": "a395063bde8c8ef0b114bed5b16403578f81641ceb2030962578af932ea5db82",
+    "runs/fresh-smac-install-01/smoke-validation.json": "859ce2482be62fe6ac626ab4c633c24ba1bf4b8a2de21441a3ddc06be7d05806",
+    "runs/fresh-smac-install-01/snapshot.json": "ab3ffa0646cb83ff0ac80f337d470451832cf319fd64ad77e42e840195b4650c",
+    "runs/fresh-smac-install-01/validate.py": "96ccdb5f3b2f10cde9217711b4b213d4a64766c94218f5e34ffde92baa2b9be8",
+    "runs/fresh-smac-install-01/validation.json": "97d564c7228fa9b3b414dff123b26ce825f7aadca3e55579f2cbc042aff2db1a"
+  },
+  "limitations": [
+    "Validates fresh Python 3.10 CPU package installation and minimal native SMAC execution on Triton; not a learning-performance or final reproduction result.",
+    "StarCraft II 4.10/Base75689 and maps were already installed and reused read-only; fresh game download/installation is not covered.",
+    "The recorded complete dependency versions describe this installation outcome, not a portable transitive lock.",
+    "The full modern suite was already tested in the separate fresh-install validation; this job adds actual original-SMAC train/evaluation/checkpoint execution."
+  ]
+}

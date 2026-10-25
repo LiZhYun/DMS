@@ -1,0 +1,1192 @@
+{
+  "purpose": "Optional sequential PPO correctness and native execution validation; no learning-performance claim",
+  "status": "completed_all_stages_pass",
+  "success": true,
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "source_mapping_sha256": "5b7a21ac4db312950e14f65df383cd44fc3f490e7859aef3534e0dae3bf72573",
+  "snapshot_sha256": "8baec6ee2dcef1239d6de6bd4d8818058b8d4f378071c5a843425a1fddba10e8",
+  "runner_sha256": "6a1eb2ce0a9464f29c8b69ae0666450b946f3945a30536fbfc1fa32d332d9e84",
+  "prepatch_independent_regression": {
+    "cases": [
+      {
+        "case": "ippo_discrete=True_history=0",
+        "exact_metrics_weights_buffers_optimizer_states_and_all_rngs_match": true
+      },
+      {
+        "case": "ippo_discrete=False_history=0",
+        "exact_metrics_weights_buffers_optimizer_states_and_all_rngs_match": true
+      },
+      {
+        "case": "ippo_discrete=True_history=3",
+        "exact_metrics_weights_buffers_optimizer_states_and_all_rngs_match": true
+      },
+      {
+        "case": "smac_distinct_active_subsets",
+        "exact_metrics_weights_buffers_optimizer_states_and_all_rngs_match": true
+      },
+      {
+        "case": "dms_with_actual_auxiliary_update",
+        "exact_metrics_weights_buffers_optimizer_states_and_all_rngs_match": true
+      }
+    ],
+    "prepatch_train_sha256": "3bd2de5162ea115fd1dbccbe0a598e7cdaa7183230ab98a6435cbbacedbe0bfc",
+    "default_differences": 0,
+    "artifact": "runs/sequential-validation-01/independent-regression.json",
+    "artifact_sha256": "066898fc7954fa8d996eae729c62f17e1dbf9c5ff6cd528c7dbd2310c02e5096"
+  },
+  "focused_tests": {
+    "passed": 62,
+    "deselected": 1,
+    "reason": "native simulator test deferred to allocated full suite"
+  },
+  "independent_review": "sequential_update_audit found no mathematical defect; structured profiler metric issue fixed by root and included in validation",
+  "stages": [
+    {
+      "stage": "modern",
+      "status": "completed_pass",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/modern/run.sbatch"
+      ],
+      "submitted_utc": "2026-10-25T11:29:09.962794+00:00",
+      "wrapper_sha256": "be0638f210758703e2d5e8cb45722fef0ec51f49d989735386b09872e8615258",
+      "job_id": "21198407",
+      "submission_stdout": "21198407\n",
+      "submission_stderr": "",
+      "success": true,
+      "host": "milan2.int.triton.aalto.fi",
+      "partition": "batch-milan",
+      "started_utc": "2026-10-25T11:29:34.923418+00:00",
+      "completed_utc": "2026-10-25T11:30:04.153800+00:00",
+      "elapsed_seconds": 29.23041712027043,
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "pytest": "8.4.2",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "smac": "1.0.0",
+        "pysc2": "3.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "frozen_checkout_unchanged": true,
+      "initial_imports": {
+        "dms": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/envs.py",
+        "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/intention.py",
+        "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/diagnostics.py",
+        "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/distributions.py",
+        "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/recurrent.py",
+        "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/policy.py",
+        "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/parallel.py",
+        "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/returns.py",
+        "dms.train": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/train.py"
+      },
+      "final_imports": {
+        "dms": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/envs.py",
+        "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/intention.py",
+        "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/diagnostics.py",
+        "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/distributions.py",
+        "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/recurrent.py",
+        "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/policy.py",
+        "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/parallel.py",
+        "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/returns.py",
+        "dms.train": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/train.py",
+        "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/observation_history.py"
+      },
+      "tests": {
+        "tests": 497,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 32,
+        "passed": 465,
+        "seconds": 20.622
+      },
+      "pytest_frozen_import_guard_passed": true,
+      "structured_metric_profile": {
+        "condition_order": 0,
+        "config": {
+          "algorithm": "dms",
+          "env": "toy",
+          "mamujoco_backend": "modern",
+          "scenario": "HalfCheetah",
+          "ant_contact_forces": "native",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cpu",
+          "num_envs": 1,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "update_mode": "sequential",
+          "total_steps": 4,
+          "rollout_steps": 4,
+          "epochs": 1,
+          "minibatch_size": 4,
+          "hidden_dim": 8,
+          "policy_history_length": 3,
+          "initial_log_std": -0.5,
+          "latent_dim": 2,
+          "decoder_history": true,
+          "history_length": 4,
+          "prediction_horizon": 2,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000.0,
+          "warmup_episodes": 0,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 1,
+          "aux_batch_size": 2,
+          "kl_beta": 1.0,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.01,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 2048,
+          "eval_episodes": 10,
+          "eval_seed": 10001,
+          "output": "runs/toy-dms-101",
+          "torch_threads": 1
+        },
+        "environment": {
+          "benchmark_track": "synthetic_integration_only",
+          "task": "leader_signal_propagation",
+          "n_agents": 3,
+          "horizon": 32,
+          "action_sensor": "own_and_ring_predecessor_previous_action",
+          "policy_observation_history": {
+            "length": 3,
+            "base_observation_dim": 21,
+            "shape": [
+              3,
+              3,
+              22
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "initial_environment_seeds": [
+          101
+        ],
+        "parameter_counts": {
+          "agents": 5529,
+          "intentions": 2850,
+          "total": 8379
+        },
+        "iterations": [
+          {
+            "backend": "modern",
+            "scenario": "HalfCheetah",
+            "agent_conf": "2x3",
+            "device": "cpu",
+            "algorithm": "dms",
+            "condition_order": 0,
+            "iteration": 0,
+            "phase": "timed",
+            "collection_seconds": 0.058004272636026144,
+            "update_seconds": 0.06320967525243759,
+            "total_seconds": 0.12121394788846374,
+            "transitions": 4,
+            "transitions_per_second": 32.999502694860176,
+            "finite_update": true,
+            "metrics": {
+              "policy_loss": -0.0006160984436670939,
+              "value_loss": 2.0534176031748452,
+              "entropy": 0.6931390762329102,
+              "approx_kl": 0.0,
+              "sequential_agent_order": [
+                0,
+                1,
+                2
+              ],
+              "sequential_factor_min": 0.9983440041542053,
+              "sequential_factor_max": 1.0038599967956543,
+              "sequential_factor_ess": 3.9999793038535656,
+              "sequential_factor_ess_fraction": 0.9999948259633914,
+              "peer_gate_fraction": 0.375,
+              "intention_feature_std": 0.48701637983322144,
+              "intention_loss": 0.8204305569330851,
+              "intention_nll": 0.6967771450678507,
+              "intention_kl": 0.1236534093817075,
+              "forecast_target_count": 24,
+              "forecast_comparison_count": 24,
+              "history_baseline_target_count": 24,
+              "forecast_nll": 0.6864956816037496,
+              "forecast_accuracy": 0.5416666666666666,
+              "persistence_accuracy": 0.5,
+              "history_histogram_accuracy": 0.5,
+              "history_histogram_nll": 0.7127776940663656,
+              "forecast_history_comparison_nll": 0.6864956816037496,
+              "history_baseline_coverage_fraction": 1.0
+            },
+            "host_memory": {
+              "process_peak_rss_bytes": 461778944,
+              "current_rss_bytes": 465096704
+            }
+          }
+        ],
+        "condition_wall_seconds": 1.7311848951503634,
+        "host_memory": {
+          "process_peak_rss_bytes": 461778944,
+          "current_rss_bytes": 465100800
+        },
+        "gpu_memory": null
+      },
+      "artifacts": {
+        "MUJOCO_LOG.TXT": {
+          "path": "runs/sequential-validation-01/modern/MUJOCO_LOG.TXT",
+          "sha256": "940fb6095acfe0ad7f882ab2ba3983bdfad18677833b8662d9433c0db3ee9201",
+          "bytes": 1848
+        },
+        "dms-seq-modern_21198407.err": {
+          "path": "runs/sequential-validation-01/modern/dms-seq-modern_21198407.err",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "dms-seq-modern_21198407.out": {
+          "path": "runs/sequential-validation-01/modern/dms-seq-modern_21198407.out",
+          "sha256": "ef42e1324831c52c67f565a98b803ceaf5b6bce70ff613ac232ba0c5257f4d5d",
+          "bytes": 11242
+        },
+        "pytest-imports.json": {
+          "path": "runs/sequential-validation-01/modern/pytest-imports.json",
+          "sha256": "2e86151cc5580c3b464a1dbba5f568152421588c6e5dac505f72bb018fdda83a",
+          "bytes": 2350
+        },
+        "pytest.log": {
+          "path": "runs/sequential-validation-01/modern/pytest.log",
+          "sha256": "26fae220fc6dfb36b48409ec5e3df1cd8965733eedd965bc202e6d1e23e82423",
+          "bytes": 2173
+        },
+        "run.sbatch": {
+          "path": "runs/sequential-validation-01/modern/run.sbatch",
+          "sha256": "be0638f210758703e2d5e8cb45722fef0ec51f49d989735386b09872e8615258",
+          "bytes": 977
+        },
+        "tests.xml": {
+          "path": "runs/sequential-validation-01/modern/tests.xml",
+          "sha256": "34040f4c5cf35c449a939433cc5df9759c3a9ecdd32dafa7d3706d4ee35e1dd9",
+          "bytes": 78190
+        },
+        "validation.json": {
+          "path": "runs/sequential-validation-01/modern/validation.json",
+          "sha256": "e844952b873cf1fc81f2b21c010cb5d389e3ef1ac44a03fd6916f68254c926e4",
+          "bytes": 9855
+        }
+      }
+    },
+    {
+      "stage": "legacy",
+      "status": "completed_pass",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/legacy/run.sbatch"
+      ],
+      "submitted_utc": "2026-10-25T11:29:10.073916+00:00",
+      "wrapper_sha256": "3075837a3dd1641db76c862b383fea33ccccfb6e5961deef6e94e82b8c49b29b",
+      "job_id": "21198408",
+      "submission_stdout": "21198408\n",
+      "submission_stderr": "",
+      "success": true,
+      "host": "milan32.int.triton.aalto.fi",
+      "partition": "batch-milan",
+      "started_utc": "2026-10-25T11:29:35.982162+00:00",
+      "completed_utc": "2026-10-25T11:29:59.143276+00:00",
+      "elapsed_seconds": 23.161151098960545,
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "pytest": "8.4.2",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "protobuf": "6.33.0"
+      },
+      "frozen_checkout_unchanged": true,
+      "initial_imports": {
+        "dms": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/envs.py",
+        "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/intention.py",
+        "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/diagnostics.py",
+        "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/distributions.py",
+        "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/recurrent.py",
+        "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/policy.py",
+        "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/parallel.py",
+        "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/returns.py",
+        "dms.train": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/train.py"
+      },
+      "final_imports": {
+        "dms": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/envs.py",
+        "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/intention.py",
+        "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/diagnostics.py",
+        "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/distributions.py",
+        "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/recurrent.py",
+        "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/policy.py",
+        "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/parallel.py",
+        "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/returns.py",
+        "dms.train": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/train.py",
+        "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/legacy_graph.py",
+        "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/legacy_env.py",
+        "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/observation_history.py"
+      },
+      "tests": {
+        "tests": 56,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "passed": 56,
+        "seconds": 4.238
+      },
+      "pytest_frozen_import_guard_passed": true,
+      "smoke": {
+        "config": {
+          "algorithm": "dms",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "HalfCheetah",
+          "ant_contact_forces": "native",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cpu",
+          "num_envs": 2,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "update_mode": "sequential",
+          "total_steps": 128,
+          "rollout_steps": 32,
+          "epochs": 2,
+          "minibatch_size": 32,
+          "hidden_dim": 16,
+          "policy_history_length": 3,
+          "initial_log_std": -0.5,
+          "latent_dim": 2,
+          "decoder_history": true,
+          "history_length": 4,
+          "prediction_horizon": 2,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000.0,
+          "warmup_episodes": 0,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 1,
+          "aux_batch_size": 4,
+          "kl_beta": 1.0,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.01,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 128,
+          "eval_episodes": 1,
+          "eval_seed": 191001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/legacy/smoke",
+          "torch_threads": 1
+        },
+        "metrics": [
+          {
+            "policy_loss": -0.0056868574271599455,
+            "value_loss": 0.7209530423084894,
+            "entropy": 1.8380898237228394,
+            "approx_kl": 1.8845622738202412e-05,
+            "sequential_agent_order": [
+              1,
+              0,
+              2
+            ],
+            "sequential_factor_min": 0.9536899328231812,
+            "sequential_factor_max": 1.0621706247329712,
+            "sequential_factor_ess": 63.96625148142041,
+            "sequential_factor_ess_fraction": 0.9994726793971939,
+            "peer_gate_fraction": 0.6458333333333334,
+            "intention_feature_std": 0.706271231174469,
+            "intention_loss": 2.475128650665283,
+            "intention_nll": 2.3864983717600503,
+            "intention_kl": 0.08863028449316819,
+            "forecast_target_count": 56,
+            "forecast_comparison_count": 56,
+            "forecast_component_count": 96,
+            "history_baseline_target_count": 56,
+            "history_baseline_component_count": 96,
+            "forecast_rmse": 0.8402587904340018,
+            "persistence_rmse": 0.8402587904340018,
+            "history_mean_rmse": 0.6817704505762,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 64,
+            "episodes": 0,
+            "elapsed_seconds": 0.6976185989915393,
+            "training_return_mean": null
+          },
+          {
+            "policy_loss": -0.000802773671845595,
+            "value_loss": 0.6216478124260902,
+            "entropy": 1.8384116391340892,
+            "approx_kl": 5.641176054875056e-06,
+            "sequential_agent_order": [
+              2,
+              0,
+              1
+            ],
+            "sequential_factor_min": 0.9737358093261719,
+            "sequential_factor_max": 1.0321509838104248,
+            "sequential_factor_ess": 63.99285213376678,
+            "sequential_factor_ess_fraction": 0.999888314590106,
+            "peer_gate_fraction": 0.6666666666666666,
+            "intention_feature_std": 0.7040960192680359,
+            "intention_loss": 1.70083483060201,
+            "intention_nll": 1.6081031560897827,
+            "intention_kl": 0.09273169375956059,
+            "forecast_target_count": 56,
+            "forecast_comparison_count": 56,
+            "forecast_component_count": 96,
+            "history_baseline_target_count": 56,
+            "history_baseline_component_count": 96,
+            "forecast_rmse": 0.6119939620401541,
+            "persistence_rmse": 0.611441305038598,
+            "history_mean_rmse": 0.5604865763813713,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 128,
+            "episodes": 0,
+            "elapsed_seconds": 1.249931815022137,
+            "training_return_mean": null
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 128,
+            "seed": 191001,
+            "return": -0.39287543809109593,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            5,
+            7,
+            6
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 3,
+            "base_observation_dim": 29,
+            "shape": [
+              3,
+              3,
+              30
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "runtime": {
+          "host": "milan32.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21198408",
+          "slurm_partition": "batch-milan"
+        },
+        "ppo_update_manifest": {
+          "mode": "sequential",
+          "agent_order": "one random permutation per rollout",
+          "training_signal": "detached predecessor action likelihood ratios across agents",
+          "actor_information": "unchanged local cached observations, intentions and gates",
+          "sequential_scope": "HAPPO-style coordinated training; not the exact legacy stochastic-latent recipe"
+        },
+        "checkpoint_sha256": "84dfb0c23fd8ad8d6584faba3cf3110aa282e12ca6bf8409f0213536651d1a9d",
+        "checkpoint_tensors_finite": true,
+        "checkpoint_config_mode_verified": true,
+        "archived_source_matches_snapshot": true,
+        "actual_inactive_rows_exercised": false,
+        "factor_min_across_updates": 0.9536899328231812,
+        "factor_max_across_updates": 1.0621706247329712,
+        "ess_fraction_min_across_updates": 0.9994726793971939
+      },
+      "artifacts": {
+        "dms-seq-legacy_21198408.err": {
+          "path": "runs/sequential-validation-01/legacy/dms-seq-legacy_21198408.err",
+          "sha256": "0ca89a5428070db5dc8b04fca4a9fdb2af61013f8a2834ca68d82faaad1b8fb5",
+          "bytes": 727
+        },
+        "dms-seq-legacy_21198408.out": {
+          "path": "runs/sequential-validation-01/legacy/dms-seq-legacy_21198408.out",
+          "sha256": "9ccabb1c7768d3c763ce14b03f380baafa6eb7354ccf47c7b8a0bc1db2f22771",
+          "bytes": 18792
+        },
+        "pytest-imports.json": {
+          "path": "runs/sequential-validation-01/legacy/pytest-imports.json",
+          "sha256": "1f953d00b0c9a5e1b9f8425e354b297d68976e2cdc2aa138e28b206f7f452e00",
+          "bytes": 1618
+        },
+        "pytest.log": {
+          "path": "runs/sequential-validation-01/legacy/pytest.log",
+          "sha256": "7533dc1b25909ac0dc0b8964be546acc9c67139d45d5828e4922d113d41716e3",
+          "bytes": 2819
+        },
+        "run.sbatch": {
+          "path": "runs/sequential-validation-01/legacy/run.sbatch",
+          "sha256": "3075837a3dd1641db76c862b383fea33ccccfb6e5961deef6e94e82b8c49b29b",
+          "bytes": 987
+        },
+        "tests.xml": {
+          "path": "runs/sequential-validation-01/legacy/tests.xml",
+          "sha256": "66aa206ea5f1480b3c9419f01e3a23664f2225bbe5c2c1cdcb688998132f4a35",
+          "bytes": 8097
+        },
+        "validation.json": {
+          "path": "runs/sequential-validation-01/legacy/validation.json",
+          "sha256": "8713ecc59759997cfa5b688da320f1dd81c13dff22c1ae37a189d9c33b242ca3",
+          "bytes": 16750
+        }
+      }
+    },
+    {
+      "stage": "smac",
+      "status": "completed_pass",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/smac/run.sbatch"
+      ],
+      "submitted_utc": "2026-10-25T11:29:10.249520+00:00",
+      "wrapper_sha256": "375d3cf0fa567f5346d67ab9650d0df0061b1e1bb08005f7bc0a7f08c29786d0",
+      "job_id": "21198409",
+      "submission_stdout": "21198409\n",
+      "submission_stderr": "",
+      "success": true,
+      "host": "gpu14.int.triton.aalto.fi",
+      "partition": "gpu-a100-80g",
+      "started_utc": "2026-10-25T11:29:35.991537+00:00",
+      "completed_utc": "2026-10-25T11:30:37.879202+00:00",
+      "elapsed_seconds": 61.891746061854064,
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "pytest": "8.4.2",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "smac": "1.0.0",
+        "pysc2": "3.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "frozen_checkout_unchanged": true,
+      "initial_imports": {
+        "dms": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/envs.py",
+        "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/intention.py",
+        "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/diagnostics.py",
+        "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/distributions.py",
+        "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/recurrent.py",
+        "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/policy.py",
+        "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/parallel.py",
+        "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/returns.py",
+        "dms.train": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/train.py"
+      },
+      "final_imports": {
+        "dms": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/envs.py",
+        "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/intention.py",
+        "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/diagnostics.py",
+        "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/distributions.py",
+        "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/recurrent.py",
+        "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/policy.py",
+        "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/parallel.py",
+        "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/returns.py",
+        "dms.train": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/train.py",
+        "dms.smac_env": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/smac_env.py",
+        "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/observation_history.py"
+      },
+      "gpu": {
+        "name": "NVIDIA A100-SXM4-80GB",
+        "capability": [
+          8,
+          0
+        ],
+        "compiled_architectures": [
+          "sm_50",
+          "sm_60",
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90"
+        ],
+        "kernel_preflight_passed": true
+      },
+      "smoke": {
+        "config": {
+          "algorithm": "dms",
+          "env": "smac",
+          "mamujoco_backend": "modern",
+          "scenario": "HalfCheetah",
+          "ant_contact_forces": "native",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 2,
+          "parallel_env_steps": true,
+          "mask_inactive_agents": true,
+          "update_mode": "sequential",
+          "total_steps": 512,
+          "rollout_steps": 64,
+          "epochs": 1,
+          "minibatch_size": 64,
+          "hidden_dim": 16,
+          "policy_history_length": 16,
+          "initial_log_std": -0.5,
+          "latent_dim": 2,
+          "decoder_history": true,
+          "history_length": 8,
+          "prediction_horizon": 2,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000.0,
+          "warmup_episodes": 0,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "aux_updates": 1,
+          "aux_batch_size": 8,
+          "kl_beta": 1.0,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.01,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 512,
+          "eval_episodes": 1,
+          "eval_seed": 191001,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/smac/smoke",
+          "torch_threads": 1
+        },
+        "metrics": [
+          {
+            "policy_loss": 0.03131207305705175,
+            "value_loss": 2.029275245964527,
+            "entropy": 1.9765489548444748,
+            "approx_kl": 7.024017740775435e-07,
+            "sequential_agent_order": [
+              4,
+              1,
+              2,
+              6,
+              7,
+              5,
+              0,
+              3
+            ],
+            "sequential_factor_min": 0.9802485108375549,
+            "sequential_factor_max": 1.017775535583496,
+            "sequential_factor_ess": 127.99406143058586,
+            "sequential_factor_ess_fraction": 0.999953604926452,
+            "alive_fraction": 0.7333984375,
+            "ppo_update_count": 16,
+            "peer_gate_fraction": 0.658203125,
+            "intention_feature_std": 0.5369495749473572,
+            "intention_loss": 2.869748830795288,
+            "intention_nll": 2.661847472190857,
+            "intention_kl": 0.20790136186406016,
+            "forecast_target_count": 311,
+            "forecast_comparison_count": 311,
+            "history_baseline_target_count": 311,
+            "forecast_nll": 2.66189428234407,
+            "forecast_accuracy": 0.08038585362327061,
+            "persistence_accuracy": 0.09324759016130899,
+            "history_histogram_accuracy": 0.08038585411438605,
+            "history_histogram_nll": 2.6673385475992775,
+            "forecast_history_comparison_nll": 2.66189428234407,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 128,
+            "episodes": 2,
+            "elapsed_seconds": 8.262697384227067,
+            "training_return_mean": 4.870033162645996,
+            "training_battles": 2,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 2,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          },
+          {
+            "policy_loss": 0.13261611229972914,
+            "value_loss": 1.830574743449688,
+            "entropy": 2.0750758424401283,
+            "approx_kl": 9.619470531241348e-08,
+            "sequential_agent_order": [
+              5,
+              7,
+              2,
+              6,
+              1,
+              0,
+              4,
+              3
+            ],
+            "sequential_factor_min": 0.9944548606872559,
+            "sequential_factor_max": 1.0076192617416382,
+            "sequential_factor_ess": 127.99915577923136,
+            "sequential_factor_ess_fraction": 0.999993404525245,
+            "alive_fraction": 0.73828125,
+            "ppo_update_count": 16,
+            "peer_gate_fraction": 0.7254464285714286,
+            "intention_feature_std": 0.5260164737701416,
+            "intention_loss": 2.8575817942619324,
+            "intention_nll": 2.671610027551651,
+            "intention_kl": 0.18597173923626542,
+            "forecast_target_count": 564,
+            "forecast_comparison_count": 564,
+            "history_baseline_target_count": 564,
+            "forecast_nll": 2.6683718528307923,
+            "forecast_accuracy": 0.0833333338089023,
+            "persistence_accuracy": 0.1205673754505866,
+            "history_histogram_accuracy": 0.15957446803226538,
+            "history_histogram_nll": 2.568227136811466,
+            "forecast_history_comparison_nll": 2.6683718528307923,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 256,
+            "episodes": 4,
+            "elapsed_seconds": 11.99132324103266,
+            "training_return_mean": 5.694536479306407,
+            "training_battles": 2,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 4,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          },
+          {
+            "policy_loss": 0.012968457121002887,
+            "value_loss": 1.9012238127844674,
+            "entropy": 2.1367288572447642,
+            "approx_kl": 4.3601306438339245e-08,
+            "sequential_agent_order": [
+              6,
+              7,
+              5,
+              0,
+              3,
+              1,
+              2,
+              4
+            ],
+            "sequential_factor_min": 0.9959244728088379,
+            "sequential_factor_max": 1.0052335262298584,
+            "sequential_factor_ess": 127.99957178540478,
+            "sequential_factor_ess_fraction": 0.9999966545734749,
+            "alive_fraction": 0.6123046875,
+            "ppo_update_count": 14,
+            "peer_gate_fraction": 0.5597098214285714,
+            "intention_feature_std": 0.533983051776886,
+            "intention_loss": 2.8133676648139954,
+            "intention_nll": 2.665223002433777,
+            "intention_kl": 0.14814469404518604,
+            "forecast_target_count": 490,
+            "forecast_comparison_count": 490,
+            "history_baseline_target_count": 490,
+            "forecast_nll": 2.663852550058949,
+            "forecast_accuracy": 0.07551020443135378,
+            "persistence_accuracy": 0.11020408132854773,
+            "history_histogram_accuracy": 0.07959183638497275,
+            "history_histogram_nll": 2.443678843731783,
+            "forecast_history_comparison_nll": 2.663852550058949,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 384,
+            "episodes": 6,
+            "elapsed_seconds": 15.670179687906057,
+            "training_return_mean": 3.635761633515358,
+            "training_battles": 2,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 6,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          },
+          {
+            "policy_loss": -0.020721716173769285,
+            "value_loss": 2.026953760782878,
+            "entropy": 1.9977302233378091,
+            "approx_kl": 2.3211127124037982e-08,
+            "sequential_agent_order": [
+              0,
+              5,
+              6,
+              7,
+              1,
+              4,
+              2,
+              3
+            ],
+            "sequential_factor_min": 0.9950026869773865,
+            "sequential_factor_max": 1.0052883625030518,
+            "sequential_factor_ess": 127.99952067513685,
+            "sequential_factor_ess_fraction": 0.9999962552745066,
+            "alive_fraction": 0.70703125,
+            "ppo_update_count": 15,
+            "peer_gate_fraction": 0.6568080357142857,
+            "intention_feature_std": 0.5226740837097168,
+            "intention_loss": 2.7851912081241608,
+            "intention_nll": 2.658155173063278,
+            "intention_kl": 0.12703602481633425,
+            "forecast_target_count": 684,
+            "forecast_comparison_count": 684,
+            "history_baseline_target_count": 684,
+            "forecast_nll": 2.6489823512863695,
+            "forecast_accuracy": 0.09941520505688256,
+            "persistence_accuracy": 0.1842105278407621,
+            "history_histogram_accuracy": 0.15497076293529824,
+            "history_histogram_nll": 2.4214784680751333,
+            "forecast_history_comparison_nll": 2.6489823512863695,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 512,
+            "episodes": 10,
+            "elapsed_seconds": 19.40568234398961,
+            "training_return_mean": 4.6456954291206785,
+            "training_battles": 4,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 10,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 512,
+            "seed": 191001,
+            "return": 4.031457003671676,
+            "length": 56,
+            "battle_won": false
+          }
+        ],
+        "environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 150
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+            "relative_path": "SMAC_Maps/3s5z.SC2Map",
+            "size_bytes": 15697,
+            "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          },
+          "policy_observation_history": {
+            "length": 16,
+            "base_observation_dim": 249,
+            "shape": [
+              8,
+              16,
+              250
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset and own SMAC death",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "runtime": {
+          "host": "gpu14.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21198409",
+          "slurm_partition": "gpu-a100-80g"
+        },
+        "ppo_update_manifest": {
+          "mode": "sequential",
+          "agent_order": "one random permutation per rollout",
+          "training_signal": "detached predecessor action likelihood ratios across agents",
+          "actor_information": "unchanged local cached observations, intentions and gates",
+          "sequential_scope": "HAPPO-style coordinated training; not the exact legacy stochastic-latent recipe"
+        },
+        "checkpoint_sha256": "97b874886af5b677a996f8cb5e8d01f2619de07ac805556e498c8f8e42466fe0",
+        "checkpoint_tensors_finite": true,
+        "checkpoint_config_mode_verified": true,
+        "archived_source_matches_snapshot": true,
+        "actual_inactive_rows_exercised": true,
+        "factor_min_across_updates": 0.9802485108375549,
+        "factor_max_across_updates": 1.017775535583496,
+        "ess_fraction_min_across_updates": 0.999953604926452
+      },
+      "artifacts": {
+        "dms-seq-smac_21198409.err": {
+          "path": "runs/sequential-validation-01/smac/dms-seq-smac_21198409.err",
+          "sha256": "e2bca5a4eceb8f54fb122652c8de1cecb553be6ce090f582b5eecf2103c71b08",
+          "bytes": 3996
+        },
+        "dms-seq-smac_21198409.out": {
+          "path": "runs/sequential-validation-01/smac/dms-seq-smac_21198409.out",
+          "sha256": "3018a74d5206f16388c2341bde36b9fd164da481f392ce5fb206714842c195ca",
+          "bytes": 27408
+        },
+        "run.sbatch": {
+          "path": "runs/sequential-validation-01/smac/run.sbatch",
+          "sha256": "375d3cf0fa567f5346d67ab9650d0df0061b1e1bb08005f7bc0a7f08c29786d0",
+          "bytes": 1063
+        },
+        "validation.json": {
+          "path": "runs/sequential-validation-01/smac/validation.json",
+          "sha256": "c07033e4256a0d7e9a37684098e1a5415c3250320fc9e4236418d4b39deae354",
+          "bytes": 21832
+        }
+      }
+    }
+  ],
+  "interpretation_limits": [
+    "This checks execution and implementation invariants, not learning performance.",
+    "Sequential mode uses coordinated training likelihood signals while actor and critic observations remain local.",
+    "Cached rollout inputs and post-PPO auxiliary updates intentionally differ from the legacy stochastic-latent training recipe.",
+    "Native historical environment binary parity with the manuscript remains unverified."
+  ],
+  "completion_accounting": [
+    "21198407|COMPLETED|0:0|00:00:30|batch-milan|milan2|4|16G|",
+    "21198407.batch|COMPLETED|0:0|00:00:30||milan2|4||669724K",
+    "21198407.extern|COMPLETED|0:0|00:00:30||milan2|4||",
+    "21198408|COMPLETED|0:0|00:00:25|batch-milan|milan32|1|4G|",
+    "21198408.batch|COMPLETED|0:0|00:00:25||milan32|1||600796K",
+    "21198408.extern|COMPLETED|0:0|00:00:25||milan32|1||",
+    "21198409|COMPLETED|0:0|00:01:11|gpu-a100-80g|gpu14|4|16G|",
+    "21198409.batch|COMPLETED|0:0|00:01:11||gpu14|4||5126540K",
+    "21198409.extern|COMPLETED|0:0|00:01:11||gpu14|4||"
+  ],
+  "validated_live_package_matches_snapshot": true,
+  "summary": {
+    "modern_tests_passed": 465,
+    "modern_native_only_skips": 32,
+    "native_legacy_tests_passed": 56,
+    "focused_pure_tests_passed": 62,
+    "prepatch_independent_differences": 0,
+    "legacy_sequential_transitions": 128,
+    "smac_cuda_sequential_transitions": 512,
+    "smac_observed_inactive_rows": true,
+    "all_policy_history_smokes_passed": true
+  },
+  "factor_metric_definition": "Final cumulative predecessor likelihood product after all agents per update; ESS=(sum factor)^2/sum(factor^2). No clipping or normalization is applied to training weights.",
+  "archived_experiment_sources_modified": false
+}

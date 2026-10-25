@@ -1,0 +1,776 @@
+{
+  "purpose": "Fresh Python3.10 CPU dependency installation and full test validation of README commands",
+  "status": "completed_pass",
+  "success": true,
+  "commit": "56394f68b96716c6bd152d094793e19e7aecac59",
+  "artifacts": "runs/dms-fresh-install-01",
+  "snapshot_sha256": "2fe84e2531444fa121d644badd291e21ba6653fd5f1ad0b52ae2bbc977a7fdf2",
+  "runner_sha256": "a9c1d998f8bdb55e81fb8924f33c986f59227ab154ecf0af847ca962fefaf30a",
+  "wrapper_sha256": "1d8064ea0bef7828bd1eaf49153dfaa016d7248cd12a8757fb932d1387eb1c87",
+  "resources": {
+    "cpus": 4,
+    "memory": "16G",
+    "time": "00:30:00",
+    "partitions": [
+      "batch-milan",
+      "batch-csl",
+      "batch-skl"
+    ]
+  },
+  "command": [
+    "sbatch",
+    "--parsable",
+    "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/run.sbatch"
+  ],
+  "submitted_utc": "2026-10-25T10:51:50.650767+00:00",
+  "existing_environments_modified": false,
+  "fresh_venv_without_system_site_packages": true,
+  "pip_cache_initially_absent": true,
+  "limitations": [
+    "Tests validate installation and execution, not benchmark learning performance.",
+    "This validates the README CPU track on Triton x86 Linux with Python3.10; other platforms and Python versions remain untested.",
+    "The32 skips are intentionally gated native legacy MuJoCo tests; that backend has separate56-test validation.",
+    "SMAC tests here use mocks; this install does not install StarCraftII or demonstrate real SMAC execution.",
+    "The recorded transitive versions are this install outcome, not a complete portable lock; direct constraints remain unchanged."
+  ],
+  "job_id": "21198078",
+  "submission_stdout": "21198078\n",
+  "submission_stderr": "",
+  "host": "milan2.int.triton.aalto.fi",
+  "partition": "batch-milan",
+  "started_utc": "2026-10-25T10:52:02.101478+00:00",
+  "completed_utc": "2026-10-25T10:53:58.099084+00:00",
+  "elapsed_seconds": 115.99764453014359,
+  "python": "3.10.19 | packaged by conda-forge | (main, Oct 22 2025, 22:29:10) [GCC 14.3.0]",
+  "versions": {
+    "absl-py": "2.5.1",
+    "cloudpickle": "3.1.2",
+    "dms-marl": "0.1.0",
+    "etils": "1.13.0",
+    "exceptiongroup": "1.3.1",
+    "Farama-Notifications": "0.0.6",
+    "filelock": "3.32.3",
+    "fsspec": "2026.7.0",
+    "glfw": "2.11.0",
+    "gymnasium": "1.4.0",
+    "gymnasium-robotics": "1.4.2",
+    "ImageIO": "2.38.0",
+    "importlib_resources": "7.1.0",
+    "iniconfig": "2.3.1",
+    "Jinja2": "3.1.6",
+    "MarkupSafe": "3.0.3",
+    "mpmath": "1.3.0",
+    "mujoco": "3.17.0",
+    "networkx": "3.4.2",
+    "numpy": "2.2.6",
+    "packaging": "26.3",
+    "pettingzoo": "1.27.0",
+    "pillow": "12.3.0",
+    "pip": "26.2.2",
+    "pluggy": "1.7.0",
+    "Pygments": "2.21.0",
+    "PyOpenGL": "3.1.10",
+    "pytest": "8.4.2",
+    "setuptools": "79.0.1",
+    "sympy": "1.13.1",
+    "tomli": "2.5.0",
+    "torch": "2.6.0+cpu",
+    "typing_extensions": "4.16.0",
+    "websockets": "16.1.1",
+    "zipp": "4.1.2"
+  },
+  "tests": {
+    "tests": 474,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 32,
+    "passed": 442,
+    "seconds": 16.211
+  },
+  "pip_check": "No broken requirements found.",
+  "validation_commands": [
+    {
+      "argv": [
+        "/scratch/work/liz23/.conda_envs/slotcontrast/bin/python",
+        "-m",
+        "venv",
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01",
+      "log": "create-venv.log",
+      "started_utc": "2026-10-25T10:52:02.409362+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 7.00670396303758,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--upgrade",
+        "pip",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/install-pip-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/checkout",
+      "log": "install-pip.log",
+      "started_utc": "2026-10-25T10:52:09.419251+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 4.47287943167612,
+      "log_sha256": "61814ebee96091e3617cb05e414ed891f1870cba7641e2718c5f87786f165f5b"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "torch==2.6.0",
+        "--index-url",
+        "https://download.pytorch.org/whl/cpu",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/install-torch-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/checkout",
+      "log": "install-torch.log",
+      "started_utc": "2026-10-25T10:52:13.894823+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 46.127077475655824,
+      "log_sha256": "8f8e7bfb9f84e67ae5425d6f65c08676f5d92b743a5cc493893e3a063bed0582"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-c",
+        "requirements/modern-constraints.txt",
+        "-e",
+        ".[test,mujoco]",
+        "--report",
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/install-project-report.json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/checkout",
+      "log": "install-project.log",
+      "started_utc": "2026-10-25T10:53:00.025033+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 34.7454853230156,
+      "log_sha256": "860b56aefbd38ec740c535bdf1fe423f4283c5b8f3e6e528a0604a415b556435"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/checkout",
+      "log": "pip-check.log",
+      "started_utc": "2026-10-25T10:53:34.773348+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.5312804849818349,
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "freeze",
+        "--all"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/checkout",
+      "log": "pip-freeze.txt",
+      "started_utc": "2026-10-25T10:53:35.307551+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.3843425838276744,
+      "log_sha256": "8918559638d8f8bdb0654ed9231afcd6ec8a4e8a12ff120bf7d0b74c8e1ff20d"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "-m",
+        "pip",
+        "list",
+        "--format=json"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/checkout",
+      "log": "pip-list.json",
+      "started_utc": "2026-10-25T10:53:35.695009+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 0.30368287302553654,
+      "log_sha256": "5e26d80e6233d80e7ea5f2b66be9c1dec93ead4a4ea529cf0134b14686376638"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/validate.py",
+        "--environment-child"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/outside",
+      "log": "environment.log",
+      "started_utc": "2026-10-25T10:53:36.002129+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 2.371503603644669,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/venv/bin/python",
+        "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/validate.py",
+        "--pytest-child"
+      ],
+      "cwd": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/outside",
+      "log": "pytest.log",
+      "started_utc": "2026-10-25T10:53:38.378381+00:00",
+      "returncode": 0,
+      "elapsed_seconds": 19.278086035046726,
+      "log_sha256": "085ab0acb5ec5e52909b509a90a5232e9f55b416f14fba2316bbf1b5f337cd6f"
+    }
+  ],
+  "isolation": {
+    "new_venv": "runs/dms-fresh-install-01/venv",
+    "base_interpreter": "/scratch/work/liz23/.conda_envs/slotcontrast/bin/python",
+    "base_prefix": "/scratch/work/liz23/.conda_envs/slotcontrast",
+    "include_system_site_packages": false,
+    "enable_user_site": false,
+    "scientific_distribution_locations_verified_inside_new_venv": true,
+    "editable_dms_metadata_in_clean_checkout_allowed": true,
+    "inherited_pythonpath_removed": true,
+    "pip_config_file": "/dev/null",
+    "inherited_pip_index_overrides_removed": true,
+    "initial_and_final_package_imports_verified_in_clean_checkout": true
+  },
+  "checkout_integrity": {
+    "committed_public_files": 257,
+    "all_original_files_unchanged": true,
+    "generated_files": [
+      "src/dms_marl.egg-info/PKG-INFO",
+      "src/dms_marl.egg-info/SOURCES.txt",
+      "src/dms_marl.egg-info/requires.txt",
+      "src/dms_marl.egg-info/top_level.txt",
+      "src/dms_marl.egg-info/entry_points.txt",
+      "src/dms_marl.egg-info/dependency_links.txt"
+    ],
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "3bd2de5162ea115fd1dbccbe0a598e7cdaa7183230ab98a6435cbbacedbe0bfc"
+    }
+  },
+  "installation": {
+    "official_torch_index": "https://download.pytorch.org/whl/cpu",
+    "other_index": "https://pypi.org/simple",
+    "dedicated_pip_cache": ".cache/fresh-install-01/pip",
+    "cache_initially_empty": true,
+    "preexisting_wheel_cache_reused": false,
+    "using_cached_log_lines": [],
+    "final_cache_bytes": 277227207,
+    "downloaded_wheels_in_resolver_reports": 33,
+    "already_satisfied_note": "venv seeds pip/setuptools from ensurepip; the project install reuses only torch and dependencies installed earlier in this same fresh environment.",
+    "resolved_packages": [
+      {
+        "step": "pip",
+        "name": "pip",
+        "version": "26.2.2",
+        "requested": true,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/pip-26.2.2-py3-none-any.whl",
+        "hashes": {
+          "sha256": "fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70"
+        }
+      },
+      {
+        "step": "torch",
+        "name": "torch",
+        "version": "2.6.0+cpu",
+        "requested": true,
+        "source": "downloaded_wheel",
+        "url": "https://download-r2.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp310-cp310-linux_x86_64.whl",
+        "hashes": {
+          "sha256": "35a9e78b7e4096968b54c1a198687b981569c50ae93e661aa430f9fd208da102"
+        }
+      },
+      {
+        "step": "torch",
+        "name": "sympy",
+        "version": "1.13.1",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/b2/fe/81695a1aa331a842b582453b605175f419fe8540355886031328089d840a/sympy-1.13.1-py3-none-any.whl",
+        "hashes": {
+          "sha256": "db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8"
+        }
+      },
+      {
+        "step": "torch",
+        "name": "mpmath",
+        "version": "1.3.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+        }
+      },
+      {
+        "step": "torch",
+        "name": "typing_extensions",
+        "version": "4.16.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+        }
+      },
+      {
+        "step": "torch",
+        "name": "filelock",
+        "version": "3.32.3",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/a7/8e/50f46a9c0ce8d2861a394c1347caae037ea0431d2f67d7feb151cbc4649a/filelock-3.32.3-py3-none-any.whl",
+        "hashes": {
+          "sha256": "7f0ca4bcc0e181c60dbbd8aa9ab5b120ebb99e4e064e83636340056f833a1f09"
+        }
+      },
+      {
+        "step": "torch",
+        "name": "fsspec",
+        "version": "2026.7.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/fd/3c/6a2bf344106328fd04963664a60b9bb6496fc25df8e962fcdc1367285fb9/fsspec-2026.7.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "b57ddbafedfaef7018c1ecab32aa200a9d7ca26b77965f64e48b70061249d279"
+        }
+      },
+      {
+        "step": "torch",
+        "name": "Jinja2",
+        "version": "3.1.6",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl",
+        "hashes": {}
+      },
+      {
+        "step": "torch",
+        "name": "MarkupSafe",
+        "version": "3.0.3",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://download.pytorch.org/whl/markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "hashes": {}
+      },
+      {
+        "step": "torch",
+        "name": "networkx",
+        "version": "3.4.2",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/b9/54/dd730b32ea14ea797530a4479b2ed46a6fb250f682a9cfb997e968bf0261/networkx-3.4.2-py3-none-any.whl",
+        "hashes": {
+          "sha256": "df5d4365b724cf81b8c6a7312509d0c22386097011ad1abe274afd5e9d3bbc5f"
+        }
+      },
+      {
+        "step": "project",
+        "name": "dms-marl",
+        "version": "0.1.0",
+        "requested": true,
+        "source": "local_editable_checkout",
+        "url": "file:///scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-01/checkout",
+        "hashes": {}
+      },
+      {
+        "step": "project",
+        "name": "gymnasium",
+        "version": "1.4.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/38/4e/6a51be94ae8e9dc8eaddd6ea74a6dde754448c4c746b51a232681f81e41c/gymnasium-1.4.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "1cb947c59e7c72d8eabb2c2274c00cd20948e69f8452a9ef4092223be24fdf0e"
+        }
+      },
+      {
+        "step": "project",
+        "name": "gymnasium-robotics",
+        "version": "1.4.2",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/71/86/2b890923c96b2ef3cf0f98ce91c54bad762db0982e07e6dd9b2afab9a2d3/gymnasium_robotics-1.4.2-py3-none-any.whl",
+        "hashes": {
+          "sha256": "a1743530431cb377e6b3b956d284bc96436fc68bac1648ef205054c178e7dc4b"
+        }
+      },
+      {
+        "step": "project",
+        "name": "mujoco",
+        "version": "3.17.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/f9/db/360108471f993658d6a4f070fd521ace85d37a97a5c055144ac5a7eedfa3/mujoco-3.17.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "hashes": {
+          "sha256": "0fa2b5731e2bee273e52e93fd3349d0b2651d2cb95ee30da0e7c5c1af1e6f125"
+        }
+      },
+      {
+        "step": "project",
+        "name": "numpy",
+        "version": "2.2.6",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/b4/63/3de6a34ad7ad6646ac7d2f55ebc6ad439dbbf9c4370017c50cf403fb19b5/numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+        "hashes": {
+          "sha256": "fc7b73d02efb0e18c000e9ad8b83480dfcd5dfd11065997ed4c6747470ae8915"
+        }
+      },
+      {
+        "step": "project",
+        "name": "pytest",
+        "version": "8.4.2",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/a8/a4/20da314d277121d6534b3a980b29035dcd51e6744bd79075a6ce8fa4eb8d/pytest-8.4.2-py3-none-any.whl",
+        "hashes": {
+          "sha256": "872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79"
+        }
+      },
+      {
+        "step": "project",
+        "name": "pluggy",
+        "version": "1.7.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/40/9e/2b38731e0fc536806f16490e1a12d7f0dc2a1235aa8cc07bcc75416a7daa/pluggy-1.7.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec"
+        }
+      },
+      {
+        "step": "project",
+        "name": "cloudpickle",
+        "version": "3.1.2",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/88/39/799be3f2f0f38cc727ee3b4f1445fe6d5e4133064ec2e4115069418a5bb6/cloudpickle-3.1.2-py3-none-any.whl",
+        "hashes": {
+          "sha256": "9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a"
+        }
+      },
+      {
+        "step": "project",
+        "name": "exceptiongroup",
+        "version": "1.3.1",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/8a/0e/97c33bf5009bdbac74fd2beace167cab3f978feb69cc36f1ef79360d6c4e/exceptiongroup-1.3.1-py3-none-any.whl",
+        "hashes": {
+          "sha256": "a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598"
+        }
+      },
+      {
+        "step": "project",
+        "name": "Farama-Notifications",
+        "version": "0.0.6",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/7c/f0/21f81892e4ed10f4ec3ef2e7cf8635fb76e7c0907c55d0da66be50094760/farama_notifications-0.0.6-py3-none-any.whl",
+        "hashes": {
+          "sha256": "f84839188efa1ce5bb361c2a84881b2dc2c0d0d7fb661ff00421820170930935"
+        }
+      },
+      {
+        "step": "project",
+        "name": "iniconfig",
+        "version": "2.3.1",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl",
+        "hashes": {
+          "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7"
+        }
+      },
+      {
+        "step": "project",
+        "name": "packaging",
+        "version": "26.3",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+        "hashes": {
+          "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+        }
+      },
+      {
+        "step": "project",
+        "name": "pettingzoo",
+        "version": "1.27.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/7b/1f/ff1bebbe1fc168b6435b482a34d9757249c9da1b14ebc61868cc19998cca/pettingzoo-1.27.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "075a6ab7c32d32d9a674f1af395010198bf09c172341aa38fa5415461601ac61"
+        }
+      },
+      {
+        "step": "project",
+        "name": "Pygments",
+        "version": "2.21.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+        }
+      },
+      {
+        "step": "project",
+        "name": "tomli",
+        "version": "2.5.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/60/3f/3e3f8fd0919249b0200c80fbc4f9a1e70be19f9883da71dfb7f8b9ab8aca/tomli-2.5.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "32a7b79ac57a2e83670ce329ccf675798bc5a2094783a63676866b70503f2e2b"
+        }
+      },
+      {
+        "step": "project",
+        "name": "websockets",
+        "version": "16.1.1",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/f3/18/a17e2f0cde02dc10154c808deed7e1d8528afff93612f70d3f0a5b19b011/websockets-16.1.1-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+        "hashes": {
+          "sha256": "1214e673c404684b9bf7154f5cf43b45025b1a6160fac3a9e438e9c1a97e22cb"
+        }
+      },
+      {
+        "step": "project",
+        "name": "absl-py",
+        "version": "2.5.1",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/b3/7d/01e62f59e4166af1be6238d9f2b7f3453630c51b8044b412d05b5606532a/absl_py-2.5.1-py3-none-any.whl",
+        "hashes": {
+          "sha256": "721200f2f0e9960f2ca9dc3a2a706b201f5f75d812c158f059cbbe29eeafbdb8"
+        }
+      },
+      {
+        "step": "project",
+        "name": "etils",
+        "version": "1.13.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/e7/98/87b5946356095738cb90a6df7b35ff69ac5750f6e783d5fbcc5cb3b6cbd7/etils-1.13.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "d9cd4f40fbe77ad6613b7348a18132cc511237b6c076dbb89105c0b520a4c6bb"
+        }
+      },
+      {
+        "step": "project",
+        "name": "glfw",
+        "version": "2.11.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/cc/b2/ee7afd7e84bc1a8a490710c3c0a7ad472b57f17909549dc7400d17f19c8b/glfw-2.11.0-py2.py3-none-manylinux_2_28_x86_64.whl",
+        "hashes": {
+          "sha256": "76484fae4a4ef0f778a05e02422ecbe6960ae23039087fe2e0ad9742ab8c7bbe"
+        }
+      },
+      {
+        "step": "project",
+        "name": "ImageIO",
+        "version": "2.38.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/ba/4b/87a794e51d150f62a55715c453c9afbf6103fe24afef6db26a929a8480b7/imageio-2.38.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "474ea3a39e36e0e8e02d81d7f10412aaecec7a2825e5fbc4f44cbcd7bb7cebfc"
+        }
+      },
+      {
+        "step": "project",
+        "name": "pillow",
+        "version": "12.3.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/4e/89/36f4cd76cf4baf05c50ababb976249153f18c959171c7f6ba09a6f217260/pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "hashes": {
+          "sha256": "f0606c8bf2cdefea14a43530f7657cbbb7ecf1c4222512492ef4a4434a9501ec"
+        }
+      },
+      {
+        "step": "project",
+        "name": "importlib_resources",
+        "version": "7.1.0",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/8a/db/55a262f3606bebcae07cc14095338471ad7c0bbcaa37707e6f0ee49725b7/importlib_resources-7.1.0-py3-none-any.whl",
+        "hashes": {
+          "sha256": "1bd7b48b4088eddb2cd16382150bb515af0bd2c70128194392725f82ad2c96a1"
+        }
+      },
+      {
+        "step": "project",
+        "name": "PyOpenGL",
+        "version": "3.1.10",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/de/e4/1ba6f44e491c4eece978685230dde56b14d51a0365bc1b774ddaa94d14cd/pyopengl-3.1.10-py3-none-any.whl",
+        "hashes": {
+          "sha256": "794a943daced39300879e4e47bd94525280685f42dbb5a998d336cfff151d74f"
+        }
+      },
+      {
+        "step": "project",
+        "name": "zipp",
+        "version": "4.1.2",
+        "requested": false,
+        "source": "downloaded_wheel",
+        "url": "https://files.pythonhosted.org/packages/b8/44/7bd2007260da11cccca29ba2d4c345f1287aa663db38ee7cefeabf6386a5/zipp-4.1.2-py3-none-any.whl",
+        "hashes": {
+          "sha256": "b30cb6cd253122169c47de245ca24a86bac2a5d3802ba15bf7ba6414eb9e144d"
+        }
+      }
+    ]
+  },
+  "completion_accounting": [
+    "21198078|COMPLETED|0:0|00:01:57|batch-milan|milan2|4|16G|",
+    "21198078.batch|COMPLETED|0:0|00:01:57||milan2|4||1688056K",
+    "21198078.extern|COMPLETED|0:0|00:01:57||milan2|4||"
+  ],
+  "raw_artifacts": {
+    "snapshot.json": {
+      "path": "runs/dms-fresh-install-01/snapshot.json",
+      "sha256": "2fe84e2531444fa121d644badd291e21ba6653fd5f1ad0b52ae2bbc977a7fdf2",
+      "bytes": 32678
+    },
+    "validate.py": {
+      "path": "runs/dms-fresh-install-01/validate.py",
+      "sha256": "a9c1d998f8bdb55e81fb8924f33c986f59227ab154ecf0af847ca962fefaf30a",
+      "bytes": 9718
+    },
+    "run.sbatch": {
+      "path": "runs/dms-fresh-install-01/run.sbatch",
+      "sha256": "1d8064ea0bef7828bd1eaf49153dfaa016d7248cd12a8757fb932d1387eb1c87",
+      "bytes": 998
+    },
+    "validation.json": {
+      "path": "runs/dms-fresh-install-01/validation.json",
+      "sha256": "7367ef4a80e9bd068cd158c781b4011686a6d2b5bb18b5de0978d224ee28ae94",
+      "bytes": 24132
+    },
+    "environment.json": {
+      "path": "runs/dms-fresh-install-01/environment.json",
+      "sha256": "cd59088b140abdb9550598374fd38523bdb54be2df0c37ce150fbf7fe9aa8d16",
+      "bytes": 8986
+    },
+    "install-pip-report.json": {
+      "path": "runs/dms-fresh-install-01/install-pip-report.json",
+      "sha256": "bbcbda2860f4ff69e7a15a535506577ba24d22a8efd01eb0528e685b3fdfe62b",
+      "bytes": 4896
+    },
+    "install-torch-report.json": {
+      "path": "runs/dms-fresh-install-01/install-torch-report.json",
+      "sha256": "903dfebc2474a8313b32a2c7e4c483ed7efd7673986016565430ec6eca461297",
+      "bytes": 84922
+    },
+    "install-project-report.json": {
+      "path": "runs/dms-fresh-install-01/install-project-report.json",
+      "sha256": "708221f18927aa11104b1146ea09fccd9cbaeb8bb1d82a032d478371b6728021",
+      "bytes": 470271
+    },
+    "pip-freeze.txt": {
+      "path": "runs/dms-fresh-install-01/pip-freeze.txt",
+      "sha256": "8918559638d8f8bdb0654ed9231afcd6ec8a4e8a12ff120bf7d0b74c8e1ff20d",
+      "bytes": 710
+    },
+    "pip-list.json": {
+      "path": "runs/dms-fresh-install-01/pip-list.json",
+      "sha256": "5e26d80e6233d80e7ea5f2b66be9c1dec93ead4a4ea529cf0134b14686376638",
+      "bytes": 1610
+    },
+    "pip-check.log": {
+      "path": "runs/dms-fresh-install-01/pip-check.log",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30
+    },
+    "pytest-imports.json": {
+      "path": "runs/dms-fresh-install-01/pytest-imports.json",
+      "sha256": "5c607b8d908a26203b2d1efeaae8ce53f6470ca49965f6b15339d3215bc5ae0b",
+      "bytes": 3689
+    },
+    "tests.xml": {
+      "path": "runs/dms-fresh-install-01/tests.xml",
+      "sha256": "03dbc7897bd89fbf73ba6ead8a56ce8dbcba96dc21215fc14d8172efcb9a05d1",
+      "bytes": 74685
+    },
+    "create-venv.log": {
+      "path": "runs/dms-fresh-install-01/create-venv.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "install-pip.log": {
+      "path": "runs/dms-fresh-install-01/install-pip.log",
+      "sha256": "61814ebee96091e3617cb05e414ed891f1870cba7641e2718c5f87786f165f5b",
+      "bytes": 578
+    },
+    "install-torch.log": {
+      "path": "runs/dms-fresh-install-01/install-torch.log",
+      "sha256": "8f8e7bfb9f84e67ae5425d6f65c08676f5d92b743a5cc493893e3a063bed0582",
+      "bytes": 2592
+    },
+    "install-project.log": {
+      "path": "runs/dms-fresh-install-01/install-project.log",
+      "sha256": "860b56aefbd38ec740c535bdf1fe423f4283c5b8f3e6e528a0604a415b556435",
+      "bytes": 9469
+    },
+    "environment.log": {
+      "path": "runs/dms-fresh-install-01/environment.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "pytest.log": {
+      "path": "runs/dms-fresh-install-01/pytest.log",
+      "sha256": "085ab0acb5ec5e52909b509a90a5232e9f55b416f14fba2316bbf1b5f337cd6f",
+      "bytes": 2162
+    },
+    "dms-fresh-install_21198078.out": {
+      "path": "runs/dms-fresh-install-01/dms-fresh-install_21198078.out",
+      "sha256": "952fcbf125b5e48a275ee8046c9c7b2a5559ded1c60178fe68761b0b2ed84550",
+      "bytes": 27247
+    },
+    "dms-fresh-install_21198078.err": {
+      "path": "runs/dms-fresh-install-01/dms-fresh-install_21198078.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

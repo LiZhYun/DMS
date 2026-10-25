@@ -24,6 +24,13 @@ Use `coordination="all"` for intention without selection, `"soft"` for attention
 - Intention model with causal selection.
 - Long/short filtering and missing-action handling sensitivity, with hidden commands still excluded in every variant.
 
+Keep `policy_history_length` equal across a matched IPPO/DMS pair. On representative
+tasks, also include an IPPO memory control over the same available observation
+and action history: a feedforward IPPO comparison alone cannot distinguish the
+benefit of learned intention prediction from the benefit of remembering past
+inputs. Forecast shuffles and downstream interventions answer related but
+different questions; they do not replace that trained control.
+
 Do not implement a missing-action ablation by revealing hidden true controls. An ablation can instead remove the explicit missingness token or alter how missing local records are encoded, while preserving the information boundary. Check MuJoCo observation radius 0 and 1 because the manuscript contradicts itself. Record the four-environment SMAC redesign and investigate 20 environments before asserting historical optimizer parity.
 
 ## Stage 3: freeze the final experiment
