@@ -198,6 +198,36 @@ def test_modern_mujoco_score_above_reference_never_claims_original_reproduction(
     assert not comparison["paper_reproduction_pass"] and not report["paper_reproduction_pass"]
 
 
+@pytest.mark.parametrize("declaration", ["config", "training", "evaluation", "nested", "track"])
+def test_computed_ant_forces_keep_reference_summary_but_block_certification(targets, declaration):
+    records = [fixture_evaluation(seed, env="mamujoco", episodes=100, value=10000)
+               for seed in [11, 23, 37, 53, 71, 89]]
+    for record in records:
+        record["config"].update(scenario="Ant", agent_conf="4x2", mamujoco_backend="legacy")
+        for metadata in (record["manifest"]["environment"], record["evaluation_environment"]):
+            metadata.update(scenario="Ant", agent_conf="4x2",
+                            benchmark_track="historical_gym_v2_mujoco210_compatibility")
+        if declaration == "config":
+            record["config"]["ant_contact_forces"] = "computed"
+        elif declaration in {"training", "evaluation"}:
+            metadata = (record["manifest"]["environment"] if declaration == "training"
+                        else record["evaluation_environment"])
+            metadata["ant_contact_forces"] = "computed"
+        else:
+            for metadata in (record["manifest"]["environment"], record["evaluation_environment"]):
+                if declaration == "nested":
+                    metadata["contact_force_computation"] = {"mode": "computed"}
+                else:
+                    metadata["benchmark_track"] = "historical_gym_v2_ant_computed_forces_adaptation"
+    report = aggregate_evaluations(records, target_id="Ant_4x2", targets=targets)
+    comparison = report["comparison"]
+    assert comparison["scope"] == "computed_ant_contact_forces_adaptation_reference_only"
+    assert comparison["mean_exceeds_reference_point"]
+    assert not comparison["release_reference_gate"]
+    assert "no_unverified_contact_force_override" in comparison["failed_release_reference_checks"]
+    assert not report["paper_reproduction_pass"]
+
+
 def test_final_test_episode_seeds_must_not_reuse_training_diagnostics(targets):
     records = [fixture_evaluation(seed, episodes=1000) for seed in [11, 23, 37, 53, 71, 89]]
     for record in records:

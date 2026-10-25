@@ -1,0 +1,604 @@
+{
+  "purpose": "matched opt-in SMAC inactive-agent mask development, no claimed performance gain",
+  "created_utc": "2026-10-25T10:02:02.968743+00:00",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-smac-alive-mask-source",
+  "source_and_asset_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "d4847f2b0c5da7d73a71d5e2817d69dd300480cb00d894969975f16dee2fb642",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "a91c92fbf0ec2ae4e8b0c19a7f2e00c85acd1f4f72f7dee0fbdca960e8fef03b"
+  },
+  "mask_semantics": "Actor,entropy,KL,advantage statistics,critic targets/loss and observation/PopArt moments use alive rows; team GAE across death unchanged. Joint mask and moments change; not actor-only.",
+  "validation": {
+    "frozen_tests_passed": 17,
+    "native_smoke_job": "21197237",
+    "native_training_steps": 512,
+    "native_dead_rows_exercised": true
+  },
+  "jobs": [
+    {
+      "variant": "ippo",
+      "control_run": "runs/dev-smac-3s5z-ippo-1m-threaded-101",
+      "control_job": "21195882",
+      "config": "configs/development/smac-3s5z-ippo-alive-mask-1m-threaded.json",
+      "config_sha256": "34fd942d05ab5574aa6e0becc2f038f2b7d0efd40fc07fb306e325ac4421bbcb",
+      "output": "runs/dev-smac-3s5z-ippo-alive-mask-1m-threaded-101",
+      "changes": {
+        "output": {
+          "old": "runs/dev-smac-3s5z-ippo-1m-threaded-101",
+          "new": "runs/dev-smac-3s5z-ippo-alive-mask-1m-threaded-101"
+        },
+        "mask_inactive_agents": {
+          "old": false,
+          "new": true
+        }
+      },
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=03:00:00",
+        "--job-name=dms-smac-mask-ippo",
+        "scripts/triton/train_cpu.sbatch",
+        "configs/development/smac-3s5z-ippo-alive-mask-1m-threaded.json",
+        "runs/dev-smac-3s5z-ippo-alive-mask-1m-threaded-101",
+        "101"
+      ],
+      "returncode": 0,
+      "stdout": "21197312",
+      "stderr": "",
+      "job_id": "21197312",
+      "startup_validation": {
+        "status": "verified_running",
+        "checked_at_utc": "2026-10-25T10:27:15.558619+00:00",
+        "scheduler": {
+          "job_id": "21197312",
+          "state": "RUNNING",
+          "current_exit_code": "0:0",
+          "elapsed": "00:25:03",
+          "node": "milan2",
+          "allocated_cpus": "4",
+          "requested_memory": "16G",
+          "time_limit": "03:00:00"
+        },
+        "checks": {
+          "config_input_hash_matches_submission": true,
+          "saved_config_matches_requested_after_cli_path_device_seed": true,
+          "selected_python_and_xml_hashes_match": true,
+          "actual_copied_python_and_xml_hashes_match": true,
+          "manifest_python_hashes_match": true,
+          "runtime_job_matches": true,
+          "finite_all_logged_numeric_metrics": true,
+          "finite_policy_value_losses": true,
+          "training_steps_strictly_increase": true,
+          "training_started": true,
+          "no_matched_runtime_exceptions": true,
+          "import_origin_logged_and_guarded": true,
+          "mask_enabled": true,
+          "dead_agent_rows_exercised": true,
+          "correct_map_build": true,
+          "map_hash_matches_file": true,
+          "binary_launch_logged": true,
+          "no_policy_history_wrapper": true
+        },
+        "source_files": {
+          "python": 18,
+          "xml": 1,
+          "selected_files_read_only": false
+        },
+        "import_provenance": {
+          "logged_root": "/scratch/work/liz23/reproduce/dms/runs/development-smac-alive-mask-source",
+          "modern_wrapper_origin_guard": true,
+          "executed_trainer_source_snapshot_exact": true
+        },
+        "runtime": {
+          "host": "milan2.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21197312",
+          "slurm_partition": "batch-milan"
+        },
+        "versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "2.2.6",
+          "gymnasium": "1.4.0",
+          "gymnasium-robotics": "1.4.2",
+          "mujoco": "3.17.0",
+          "pysc2": "3.0.0",
+          "smac": "1.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 150
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+            "relative_path": "SMAC_Maps/3s5z.SC2Map",
+            "size_bytes": 15697,
+            "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          }
+        },
+        "initial_info": {
+          "battle_won": false,
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "action_observability": "native_local_obs_last_action",
+          "scheduled_process_restart": false,
+          "process_seed": 101
+        },
+        "saved_config_sha256": "b25a0b61336efec44b9da8badb63886c19f8ed88f6347b59a6df8352d3a7e5ff",
+        "manifest_snapshot_sha256": "54b112aaf9ef05794489cecd44e4e2e9e6f9d038ffaa6a5bd6a4011016f8136c",
+        "config_cli_normalization": {
+          "seed": 101,
+          "device": "cpu",
+          "absolute_output": "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-ippo-alive-mask-1m-threaded-101"
+        },
+        "metric_snapshot": {
+          "path": "runs/dev-smac-3s5z-ippo-alive-mask-1m-threaded-101/metrics.jsonl",
+          "sha256_of_read_snapshot": "eb5f35773929a0d425414e0f16bf8114bd72af540f61f94b724d1732e359bbb4",
+          "bytes_read": 249522,
+          "ignored_incomplete_final_line": false,
+          "complete_rows": 450,
+          "first": {
+            "policy_loss": -0.002419513613038049,
+            "value_loss": 2.569171613454819,
+            "entropy": 2.0609155893325806,
+            "approx_kl": 6.616353505251027e-05,
+            "alive_fraction": 0.6664062738418579,
+            "ppo_update_count": 40,
+            "peer_gate_fraction": 0.0,
+            "steps": 640,
+            "episodes": 10,
+            "elapsed_seconds": 3.260896864812821,
+            "training_return_mean": 4.656125886645168,
+            "training_battles": 10,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 10,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          },
+          "latest": {
+            "policy_loss": -0.004418599201437642,
+            "value_loss": 0.08408376844599844,
+            "entropy": 0.7773555234074593,
+            "approx_kl": 0.00025502705850612986,
+            "alive_fraction": 0.5009765625,
+            "ppo_update_count": 40,
+            "peer_gate_fraction": 0.0,
+            "steps": 288000,
+            "episodes": 2950,
+            "elapsed_seconds": 1471.4745258819312,
+            "training_return_mean": 8.506622627843171,
+            "training_battles": 4,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 2950,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 4
+          }
+        },
+        "evaluation_snapshot": {
+          "path": "runs/dev-smac-3s5z-ippo-alive-mask-1m-threaded-101/evaluation.jsonl",
+          "sha256_of_read_snapshot": "d5fa02c1cd5fbc0fbd8d24124b84cdc8ea0d84272cb4edfe37081ddf5bcd308f",
+          "bytes_read": 967,
+          "ignored_incomplete_final_line": false,
+          "complete_rows": 10,
+          "checkpoint_groups": [
+            {
+              "training_steps": 200320,
+              "episodes": 10,
+              "return_mean": 5.608940480160527,
+              "win_rate": 0.0,
+              "episode_seeds": [
+                10001,
+                10002,
+                10003,
+                10004,
+                10005,
+                10006,
+                10007,
+                10008,
+                10009,
+                10010
+              ],
+              "complete_expected_batch": true
+            }
+          ]
+        },
+        "logs": {
+          "stdout": "logs/dms-smac-mask-ippo_21197312.out",
+          "stderr": "logs/dms-smac-mask-ippo_21197312.err",
+          "stdout_snapshot_sha256": "c8346b00f39d37adc52b6023e6f7b662f98d25c8dd316a37e77d3c6579e53f20",
+          "stderr_snapshot_sha256": "2a9c89de7c90bc9b87d1f94a73237e57f8a96a11ba0f5463a6f62aee96cf5205",
+          "startup_lines": [
+            "Job 21197312 on milan2, partition batch-milan",
+            "DMS source: /scratch/work/liz23/reproduce/dms/runs/development-smac-alive-mask-source",
+            "PyTorch: 2.6.0+cu126 CUDA: 12.6",
+            "Training on CPU"
+          ],
+          "stderr_line_count": 577,
+          "exception_search_pattern": "Traceback|Exception|RuntimeError|AssertionError|out of memory|CUDA error|\\bError:",
+          "exception_matches": []
+        },
+        "runtime_projection": {
+          "recent_updates": 50,
+          "recent_transitions_per_second": 208.19827273341494,
+          "projected_total_hours": 1.3586921005767847,
+          "allocated_hours": 3.0,
+          "exceeds_allocation": false,
+          "caveat": "exploratory linear estimate from most recent update interval; future evaluations, restarts, workload and learning-phase speed changes can alter duration"
+        },
+        "concerns": [
+          "The completed development evaluation batch has zero wins; successful startup does not establish a performance gain."
+        ],
+        "scope": "startup and partial-development evidence only; not final results or independent-seed performance evidence"
+      }
+    },
+    {
+      "variant": "dms",
+      "control_run": "runs/dev-smac-3s5z-dms-latent-decoder-beta-01-1m-threaded-101",
+      "control_job": "21196342",
+      "config": "configs/development/smac-3s5z-dms-alive-mask-1m-threaded.json",
+      "config_sha256": "7ba016d5ece55626adf0a91ce777fc9293725ff5b50f4f6e85429d50c7a1bf75",
+      "output": "runs/dev-smac-3s5z-dms-alive-mask-1m-threaded-101",
+      "changes": {
+        "output": {
+          "old": "runs/dev-smac-3s5z-dms-latent-decoder-beta-01-1m-threaded-101",
+          "new": "runs/dev-smac-3s5z-dms-alive-mask-1m-threaded-101"
+        },
+        "mask_inactive_agents": {
+          "old": false,
+          "new": true
+        }
+      },
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=04:00:00",
+        "--job-name=dms-smac-mask-dms",
+        "scripts/triton/train.sbatch",
+        "configs/development/smac-3s5z-dms-alive-mask-1m-threaded.json",
+        "runs/dev-smac-3s5z-dms-alive-mask-1m-threaded-101",
+        "101"
+      ],
+      "returncode": 0,
+      "stdout": "21197314",
+      "stderr": "",
+      "job_id": "21197314",
+      "startup_validation": {
+        "status": "verified_running",
+        "checked_at_utc": "2026-10-25T10:27:15.754806+00:00",
+        "scheduler": {
+          "job_id": "21197314",
+          "state": "RUNNING",
+          "current_exit_code": "0:0",
+          "elapsed": "00:23:39",
+          "node": "gpu16",
+          "allocated_cpus": "8",
+          "requested_memory": "32G",
+          "time_limit": "04:00:00"
+        },
+        "checks": {
+          "config_input_hash_matches_submission": true,
+          "saved_config_matches_requested_after_cli_path_device_seed": true,
+          "selected_python_and_xml_hashes_match": true,
+          "actual_copied_python_and_xml_hashes_match": true,
+          "manifest_python_hashes_match": true,
+          "runtime_job_matches": true,
+          "finite_all_logged_numeric_metrics": true,
+          "finite_policy_value_losses": true,
+          "training_steps_strictly_increase": true,
+          "training_started": true,
+          "no_matched_runtime_exceptions": true,
+          "finite_auxiliary_losses": true,
+          "nonempty_forecast_targets": true,
+          "peer_intentions_activated": true,
+          "import_origin_logged_and_guarded": true,
+          "mask_enabled": true,
+          "dead_agent_rows_exercised": true,
+          "correct_map_build": true,
+          "map_hash_matches_file": true,
+          "binary_launch_logged": true,
+          "no_policy_history_wrapper": true
+        },
+        "source_files": {
+          "python": 18,
+          "xml": 1,
+          "selected_files_read_only": false
+        },
+        "import_provenance": {
+          "logged_root": "/scratch/work/liz23/reproduce/dms/runs/development-smac-alive-mask-source",
+          "modern_wrapper_origin_guard": true,
+          "executed_trainer_source_snapshot_exact": true
+        },
+        "runtime": {
+          "host": "gpu16.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21197314",
+          "slurm_partition": "gpu-a100-80g"
+        },
+        "versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "2.2.6",
+          "gymnasium": "1.4.0",
+          "gymnasium-robotics": "1.4.2",
+          "mujoco": "3.17.0",
+          "pysc2": "3.0.0",
+          "smac": "1.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 150
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+            "relative_path": "SMAC_Maps/3s5z.SC2Map",
+            "size_bytes": 15697,
+            "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          }
+        },
+        "initial_info": {
+          "battle_won": false,
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "action_observability": "native_local_obs_last_action",
+          "scheduled_process_restart": false,
+          "process_seed": 101
+        },
+        "saved_config_sha256": "07d7e1aa7fb372e14794e5dc73c34de7fd737858f7618c6d5273123ba23c6b06",
+        "manifest_snapshot_sha256": "0c7878c83609431ebee96a9f6a87f7902379732e9bc59d577d1afff3d20ef537",
+        "config_cli_normalization": {
+          "seed": 101,
+          "device": "cuda",
+          "absolute_output": "/scratch/work/liz23/reproduce/dms/runs/dev-smac-3s5z-dms-alive-mask-1m-threaded-101"
+        },
+        "metric_snapshot": {
+          "path": "runs/dev-smac-3s5z-dms-alive-mask-1m-threaded-101/metrics.jsonl",
+          "sha256_of_read_snapshot": "016dc88e02f0163f44b269d9196cfb66657e19312ad438a37bb04ac252db2b13",
+          "bytes_read": 229453,
+          "ignored_incomplete_final_line": false,
+          "complete_rows": 199,
+          "first": {
+            "policy_loss": -0.002158000359712009,
+            "value_loss": 2.9950175911188124,
+            "entropy": 2.0407895177602766,
+            "approx_kl": 5.671817140182611e-05,
+            "alive_fraction": 0.651171863079071,
+            "ppo_update_count": 40,
+            "peer_gate_fraction": 0.0,
+            "intention_feature_std": 0.0,
+            "intention_loss": 2.734122171998024,
+            "intention_nll": 2.650439292192459,
+            "intention_kl": 0.8368287794291973,
+            "forecast_target_count": 8023,
+            "forecast_comparison_count": 7767,
+            "history_baseline_target_count": 7767,
+            "forecast_nll": 2.6453484976275314,
+            "forecast_accuracy": 0.06591991787301277,
+            "persistence_accuracy": 0.11947985205646339,
+            "history_histogram_accuracy": 0.12488734526735974,
+            "history_histogram_nll": 2.537097038442416,
+            "forecast_history_comparison_nll": 2.64534823765883,
+            "history_baseline_coverage_fraction": 0.9680917362582575,
+            "steps": 640,
+            "episodes": 11,
+            "elapsed_seconds": 9.080226839054376,
+            "training_return_mean": 4.645544905046171,
+            "training_battles": 11,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 11,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          },
+          "latest": {
+            "policy_loss": -0.00242666219840893,
+            "value_loss": 0.055840242514386774,
+            "entropy": 1.4904225587844848,
+            "approx_kl": 0.0001220509132144892,
+            "alive_fraction": 0.774218738079071,
+            "ppo_update_count": 40,
+            "peer_gate_fraction": 0.9747767857142857,
+            "intention_feature_std": 1.9483386278152466,
+            "intention_loss": 1.9772621393203735,
+            "intention_nll": 1.8625623658299446,
+            "intention_kl": 1.1469978466629982,
+            "forecast_target_count": 11248,
+            "forecast_comparison_count": 10224,
+            "history_baseline_target_count": 10224,
+            "forecast_nll": 2.1460569339405593,
+            "forecast_accuracy": 0.28785211622353546,
+            "persistence_accuracy": 0.23894757416728937,
+            "history_histogram_accuracy": 0.24540297644932832,
+            "history_histogram_nll": 2.414123265652776,
+            "forecast_history_comparison_nll": 2.2736051714802756,
+            "history_baseline_coverage_fraction": 0.9089615931721194,
+            "steps": 127360,
+            "episodes": 2164,
+            "elapsed_seconds": 1370.6074784020893,
+            "training_return_mean": 6.284768288295406,
+            "training_battles": 12,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 2164,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          }
+        },
+        "evaluation_snapshot": {
+          "path": "runs/dev-smac-3s5z-dms-alive-mask-1m-threaded-101/evaluation.jsonl",
+          "sha256_of_read_snapshot": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes_read": 0,
+          "ignored_incomplete_final_line": false,
+          "complete_rows": 0,
+          "checkpoint_groups": []
+        },
+        "logs": {
+          "stdout": "logs/dms-smac-mask-dms_21197314.out",
+          "stderr": "logs/dms-smac-mask-dms_21197314.err",
+          "stdout_snapshot_sha256": "bbe798122a40bb413efb80306fb1d38168136e5ec18c2a7e8f83114912e91f92",
+          "stderr_snapshot_sha256": "8cef4ec74e6741d86f005e1ae32152fcb474bd77876789b4f01da3eeac064ae8",
+          "startup_lines": [
+            "Job 21197314 on gpu16, partition gpu-a100-80g",
+            "NVIDIA A100-SXM4-80GB, 81920 MiB",
+            "DMS source: /scratch/work/liz23/reproduce/dms/runs/development-smac-alive-mask-source",
+            "PyTorch: 2.6.0+cu126 CUDA: 12.6",
+            "GPU: NVIDIA A100-SXM4-80GB compiled architectures: ['sm_50', 'sm_60', 'sm_70', 'sm_75', 'sm_80', 'sm_86', 'sm_90']"
+          ],
+          "stderr_line_count": 116,
+          "exception_search_pattern": "Traceback|Exception|RuntimeError|AssertionError|out of memory|CUDA error|\\bError:",
+          "exception_matches": []
+        },
+        "runtime_projection": {
+          "recent_updates": 50,
+          "recent_transitions_per_second": 91.54224994573826,
+          "projected_total_hours": 3.028681938173089,
+          "allocated_hours": 4.0,
+          "exceeds_allocation": false,
+          "caveat": "exploratory linear estimate from most recent update interval; future evaluations, restarts, workload and learning-phase speed changes can alter duration"
+        },
+        "concerns": [
+          "No scheduled evaluation has completed yet; latest return is an on-policy training-batch statistic."
+        ],
+        "scope": "startup and partial-development evidence only; not final results or independent-seed performance evidence"
+      }
+    }
+  ],
+  "startup_checked_at_utc": "2026-10-25T10:27:15.755686+00:00"
+}

@@ -1,0 +1,323 @@
+{
+  "purpose": "bounded_native_contact_force_diagnostic_not_learning_performance",
+  "submission": {
+    "origin_run": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+    "source_root": "/scratch/work/liz23/reproduce/dms/runs/ant-contact-diagnostic-01/source",
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+      "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+      "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+    },
+    "checkpoint_sha256": "3107046aa553a2084f226f8e3393279f9fc76490853f89ffffd45a4ebd359032",
+    "checkpoint_path": "/scratch/work/liz23/reproduce/dms/runs/ant-contact-diagnostic-01/checkpoint.pt",
+    "output": "/scratch/work/liz23/reproduce/dms/reports/ant-contact-force-diagnostic.json",
+    "purpose": "native contact-force diagnostic; no training or environment implementation changes",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "runs/ant-contact-diagnostic-01/run.sbatch"
+    ],
+    "script_sha256": "75ccfaf1270607352efe1430cbfd763ad95357c41627be7cb0e40be6b6d3f2ba",
+    "resources": {
+      "cpus": 4,
+      "memory": "8G",
+      "time": "00:15:00",
+      "partitions": [
+        "batch-milan",
+        "batch-csl",
+        "batch-skl"
+      ]
+    },
+    "job_id": "21197578"
+  },
+  "job_id": "21197578",
+  "slurm_partition": "batch-milan",
+  "host": "milan2.int.triton.aalto.fi",
+  "command_argv": [
+    "runs/ant-contact-diagnostic-01/check_contacts.py"
+  ],
+  "script_sha256": "75ccfaf1270607352efe1430cbfd763ad95357c41627be7cb0e40be6b6d3f2ba",
+  "imported_package": "/scratch/work/liz23/reproduce/dms/runs/ant-contact-diagnostic-01/source/dms/__init__.py",
+  "checkpoint_steps": 800000,
+  "engine_version": 210,
+  "versions": {
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14",
+    "numpy": "1.26.4",
+    "torch": "2.6.0+cu126"
+  },
+  "environment": {
+    "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+    "historical_binary_parity_verified": false,
+    "scenario": "Ant",
+    "native_env_id": "Ant-v2",
+    "agent_conf": "4x2",
+    "agent_obsk": 1,
+    "k_categories": [
+      [
+        "qpos",
+        "qvel",
+        "cfrc_ext"
+      ],
+      [
+        "qpos"
+      ]
+    ],
+    "global_categories": [],
+    "max_episode_steps": 1000,
+    "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+    "packages": {
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14",
+      "numpy": "1.26.4"
+    },
+    "mujoco_engine_version": 210,
+    "xml_asset": "ant.xml",
+    "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+    "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+    "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+    "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "action_routing": "graph_node_actuator_indices",
+    "control_processing": "clip_native_bounds_before_simulation_and_reward",
+    "action_ids": [
+      [
+        2,
+        3
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "action_dims": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "observation_dims": [
+      31,
+      31,
+      31,
+      31
+    ],
+    "action_sensor": "previous_executed_control_on_observed_joints",
+    "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+    "reward": {
+      "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+      "alive_bonus_on_terminal": true,
+      "healthy_height": [
+        0.2,
+        1.0
+      ]
+    },
+    "frame_skip": 5,
+    "physics_timestep": 0.01,
+    "native_geom_friction": [
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ],
+      [
+        1.0,
+        0.5,
+        0.5
+      ]
+    ]
+  },
+  "external_sources": {
+    "gym_ant_file": "/scratch/work/liz23/reproduce/dms/.venv-legacy/lib/python3.10/site-packages/gym/envs/mujoco/ant.py",
+    "gym_ant_file_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+    "gym_ant_step_source": "    def step(self, a):\n        xposbefore = self.get_body_com(\"torso\")[0]\n        self.do_simulation(a, self.frame_skip)\n        xposafter = self.get_body_com(\"torso\")[0]\n        forward_reward = (xposafter - xposbefore) / self.dt\n        ctrl_cost = 0.5 * np.square(a).sum()\n        contact_cost = (\n            0.5 * 1e-3 * np.sum(np.square(np.clip(self.sim.data.cfrc_ext, -1, 1)))\n        )\n        survive_reward = 1.0\n        reward = forward_reward - ctrl_cost - contact_cost + survive_reward\n        state = self.state_vector()\n        notdone = np.isfinite(state).all() and state[2] >= 0.2 and state[2] <= 1.0\n        done = not notdone\n        ob = self._get_obs()\n        return (\n            ob,\n            reward,\n            done,\n            dict(\n                reward_forward=forward_reward,\n                reward_ctrl=-ctrl_cost,\n                reward_contact=-contact_cost,\n                reward_survive=survive_reward,\n            ),\n        )\n",
+    "gym_ant_step_sha256": "8d405b2096d735795689bf9b2bdbfbdfc43043694627131f1c5a20fc7adfada4",
+    "do_simulation_file": "/scratch/work/liz23/reproduce/dms/.venv-legacy/lib/python3.10/site-packages/gym/envs/mujoco/mujoco_env.py",
+    "do_simulation_file_sha256": "f098927716b13fb13e25e924034347fb147acaca8e8d7122b5d37bc4da6c013d",
+    "do_simulation_source": "    def do_simulation(self, ctrl, n_frames):\n        if np.array(ctrl).shape != self.action_space.shape:\n            raise ValueError(\"Action dimension mismatch\")\n\n        self.sim.data.ctrl[:] = ctrl\n        for _ in range(n_frames):\n            self.sim.step()\n",
+    "do_simulation_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a"
+  },
+  "model_state_sha256_before": "86e32a5d0cfa92b6e24c10854a7709a6bf1f9df4b8ce14fcadeca811c8ab6ec9",
+  "model_state_sha256_after": "86e32a5d0cfa92b6e24c10854a7709a6bf1f9df4b8ce14fcadeca811c8ab6ec9",
+  "checkpoint_unchanged": true,
+  "source_unchanged": true,
+  "parameter_updates": 0,
+  "derived_arrays_restored_after_each_probe": [
+    "cfrc_ext",
+    "cfrc_int",
+    "cacc"
+  ],
+  "probe_forces_given_to_actor": false,
+  "physical_state_unchanged_and_paired_each_step": true,
+  "limits": [
+    "200 transitions per action mode; no learning or full-return comparison.",
+    "Explicitly computing forces changes local observations and the contact penalty if adopted.",
+    "Any proposed change needs a named environment variant and matched baseline; existing runs remain unchanged.",
+    "Original MuJoCo 2.0 may also omit post-constraint forces; this diagnostic does not establish paper-binary parity.",
+    "Counterfactual rewards reuse the native forward/control/alive terms at the same physical state."
+  ],
+  "primary_sources": [
+    {
+      "url": "https://gymnasium.farama.org/environments/mujoco/ant/",
+      "supports": "Ant-v3/earlier contact-force warning for mujoco-py >2.0"
+    },
+    {
+      "url": "https://mujoco.readthedocs.io/en/stable/APIreference/APIfunctions.html#mj-rnepostconstraint",
+      "supports": "Post-constraint computation populates cfrc_ext; sensor-dependent automatic invocation"
+    }
+  ],
+  "summaries": [
+    {
+      "mode": "zero",
+      "steps": 200,
+      "completed_episodes": 0,
+      "steps_with_contacts": 195,
+      "max_contacts": 4,
+      "native_force_max_abs": 0.0,
+      "computed_force_max_abs": 24.073878359774614,
+      "steps_with_changed_local_observation": 195,
+      "mean_native_contact_reward": 0.0,
+      "mean_computed_contact_reward": -0.005786853465955349,
+      "mean_native_forward_reward": -0.005018653599071381,
+      "mean_native_control_reward": 0.0,
+      "mean_native_reward": 0.9949813678860664,
+      "mean_counterfactual_reward": 0.9891945144201111
+    },
+    {
+      "mode": "uniform_random",
+      "steps": 200,
+      "completed_episodes": 1,
+      "steps_with_contacts": 66,
+      "max_contacts": 3,
+      "native_force_max_abs": 0.0,
+      "computed_force_max_abs": 187.4850994655418,
+      "steps_with_changed_local_observation": 66,
+      "mean_native_contact_reward": 0.0,
+      "mean_computed_contact_reward": -0.0010311075788656152,
+      "mean_native_forward_reward": -0.2016870024313605,
+      "mean_native_control_reward": -1.3277895724773408,
+      "mean_native_reward": -0.5294765764893964,
+      "mean_counterfactual_reward": -0.5305076840682621
+    },
+    {
+      "mode": "checkpoint_deterministic",
+      "steps": 200,
+      "completed_episodes": 0,
+      "steps_with_contacts": 194,
+      "max_contacts": 3,
+      "native_force_max_abs": 0.0,
+      "computed_force_max_abs": 34.531764274218524,
+      "steps_with_changed_local_observation": 194,
+      "mean_native_contact_reward": 0.0,
+      "mean_computed_contact_reward": -0.004638640731819465,
+      "mean_native_forward_reward": 0.0006256745822112321,
+      "mean_native_control_reward": -0.04056544086895883,
+      "mean_native_reward": 0.9600602349266409,
+      "mean_counterfactual_reward": 0.9554215941948216
+    }
+  ],
+  "completion_accounting": [
+    "21197578|COMPLETED|0:0|00:00:11|milan2|",
+    "21197578.batch|COMPLETED|0:0|00:00:11|milan2|366848K",
+    "21197578.extern|COMPLETED|0:0|00:00:11|milan2|"
+  ],
+  "logs": {
+    "logs/dms-ant-contacts_21197578.out": "82494186942cb4d411b5851f2e6ed7ca8db94f8b581f063de0a3bec62c96e06b",
+    "logs/dms-ant-contacts_21197578.err": "82bbcead384a00ec8e25ffe5fe6b538792dcb599f863bb629eaace8ceda78cda"
+  },
+  "wrapper_path": "runs/ant-contact-diagnostic-01/run.sbatch",
+  "wrapper_sha256": "f6c6f7103e389db4c334394d2e3321991eddc3999a3e8efc3dc030d4559ebac5",
+  "raw_measurements": {
+    "path": "runs/ant-contact-diagnostic-01/native-measurements.json",
+    "sha256": "d38797da87d2fdb945632808d5ba3afe78d83a2a17958c2fa7c96dc41975ef0b",
+    "bytes": 6863338,
+    "rows": 600,
+    "contents": "original complete report with force arrays, local observations and all per-step checks; preserved byte-for-byte",
+    "availability": "workspace artifact under ignored runs; supply alongside public evidence export"
+  },
+  "measurement_checks": {
+    "all_physical_states_unchanged": true,
+    "all_native_force_values_zero": true,
+    "all_native_contact_rewards_zero": true
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "purpose": "longer-budget test of development-selected auxiliary learning rate; no final freeze or held-out evidence",
+  "created_utc": "2026-10-25T10:01:04.057523+00:00",
+  "control_job": "21196472",
+  "control_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "config": "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m.json",
+  "config_sha256": "f14b1fb20ee2484a7ccad3f0b7ca6488c571c4d1ca5fa2e3981fcdb6eaad2633",
+  "output": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101",
+  "config_changes": {
+    "intention_lr": {
+      "old": 0.001,
+      "new": 0.0001
+    },
+    "output": {
+      "old": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+      "new": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101"
+    }
+  },
+  "selection_evidence": {
+    "rate": 0.0001,
+    "development_seed_means": {
+      "101": 3628.5830403324217,
+      "103": 2601.115007108264,
+      "107": 2247.276563850098
+    },
+    "mean": 2825.6582037635944,
+    "limitation": "Observed mean exceeds the corresponding IPPO development mean, but seeds103/107 each remain below IPPO. Seed101 selected the rate. At500k forecast error is worse than visible-historymean; useful learned inference needs further validation."
+  },
+  "budget": 10000000,
+  "eval_episodes": 10,
+  "eval_every": 1000000,
+  "resources": {
+    "cpus": 4,
+    "memory": "16G",
+    "time": "09:00:00"
+  },
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--time=09:00:00",
+    "--job-name=dms-hc-aux1e4-10m",
+    "scripts/triton/train_legacy_cpu.sbatch",
+    "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m.json",
+    "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101",
+    "101"
+  ],
+  "returncode": 0,
+  "stdout": "21197271",
+  "stderr": "",
+  "job_id": "21197271",
+  "startup_validation": {
+    "status": "verified_running",
+    "checked_at_utc": "2026-10-25T10:27:06.752184+00:00",
+    "scheduler": {
+      "job_id": "21197271",
+      "state": "RUNNING",
+      "current_exit_code": "0:0",
+      "elapsed": "00:25:40",
+      "node": "milan2",
+      "allocated_cpus": "4",
+      "requested_memory": "16G",
+      "time_limit": "09:00:00"
+    },
+    "checks": {
+      "config_input_hash_matches_submission": true,
+      "saved_config_matches_requested_after_cli_path_device_seed": true,
+      "selected_python_and_xml_hashes_match": true,
+      "actual_copied_python_and_xml_hashes_match": true,
+      "manifest_python_hashes_match": true,
+      "runtime_job_matches": true,
+      "finite_all_logged_numeric_metrics": true,
+      "finite_policy_value_losses": true,
+      "training_steps_strictly_increase": true,
+      "training_started": true,
+      "no_matched_runtime_exceptions": true,
+      "finite_auxiliary_losses": true,
+      "nonempty_forecast_targets": true,
+      "peer_intentions_activated": true,
+      "environment_matches_longer_budget_control": true,
+      "auxiliary_rate_1e4": true
+    },
+    "source_files": {
+      "python": 16,
+      "xml": 0,
+      "selected_files_read_only": false
+    },
+    "import_provenance": {
+      "logged_root": null,
+      "modern_wrapper_origin_guard": false,
+      "executed_trainer_source_snapshot_exact": true
+    },
+    "runtime": {
+      "host": "milan2.int.triton.aalto.fi",
+      "device": "cpu",
+      "slurm_job_id": "21197271",
+      "slurm_partition": "batch-milan"
+    },
+    "versions": {
+      "torch": "2.6.0+cu126",
+      "numpy": "1.26.4",
+      "protobuf": "6.33.0",
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14"
+    },
+    "environment": {
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "historical_binary_parity_verified": false,
+      "scenario": "HalfCheetah",
+      "native_env_id": "HalfCheetah-v2",
+      "agent_conf": "2x3",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "half_cheetah.xml",
+      "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          5,
+          4,
+          3
+        ]
+      ],
+      "action_dims": [
+        3,
+        3
+      ],
+      "observation_dims": [
+        7,
+        7
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "root_x_velocity - 0.1*sum(control**2)",
+        "native_termination": "never"
+      },
+      "frame_skip": 5,
+      "physics_timestep": 0.01,
+      "native_geom_friction": [
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    "initial_info": {
+      "elapsed_steps": 0
+    },
+    "saved_config_sha256": "6236401ce0850a80d6e12c0fc96b2c5e51f8453b71e76a617bace5fd7727d94f",
+    "manifest_snapshot_sha256": "a71d3a3f747c3d22d126c19e9d48ef82e225ec84ea21cca3eef572844034e4a8",
+    "config_cli_normalization": {
+      "seed": 101,
+      "device": "cpu",
+      "absolute_output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101"
+    },
+    "metric_snapshot": {
+      "path": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101/metrics.jsonl",
+      "sha256_of_read_snapshot": "bb21f6372ded6697c5e3ddd2f569a64243c338ab2592ce4f658c35637f6ada39",
+      "bytes_read": 123429,
+      "ignored_incomplete_final_line": false,
+      "complete_rows": 158,
+      "first": {
+        "policy_loss": -0.0024982404876936924,
+        "value_loss": 0.8349659189581871,
+        "entropy": 2.7557355761528015,
+        "approx_kl": 0.002161194429027091,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 2.5922247767448425,
+        "intention_nll": 2.5474884510040283,
+        "intention_kl": 0.44736357033252716,
+        "forecast_target_count": 1024,
+        "forecast_comparison_count": 1024,
+        "forecast_component_count": 2048,
+        "history_baseline_target_count": 1024,
+        "history_baseline_component_count": 2048,
+        "forecast_rmse": 0.7895936908029504,
+        "persistence_rmse": 0.7895936908029504,
+        "history_mean_rmse": 0.5671061734694369,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 4000,
+        "episodes": 4,
+        "elapsed_seconds": 3.9130838559940457,
+        "training_return_mean": -295.1734002713838
+      },
+      "latest": {
+        "policy_loss": -0.0031483672617468985,
+        "value_loss": 0.03338506743311882,
+        "entropy": 1.9541093289852143,
+        "approx_kl": 0.004243166373635176,
+        "peer_gate_fraction": 0.999,
+        "intention_feature_std": 1.8237887620925903,
+        "intention_loss": 2.7041900753974915,
+        "intention_nll": 2.697660505771637,
+        "intention_kl": 0.0652955062687397,
+        "forecast_target_count": 1024,
+        "forecast_comparison_count": 1024,
+        "forecast_component_count": 2048,
+        "history_baseline_target_count": 1024,
+        "history_baseline_component_count": 2048,
+        "forecast_rmse": 0.8399963407240164,
+        "persistence_rmse": 1.0178638460201554,
+        "history_mean_rmse": 0.6845367468083954,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 632000,
+        "episodes": 632,
+        "elapsed_seconds": 1528.8625827138312,
+        "training_return_mean": 1568.689724301963
+      }
+    },
+    "evaluation_snapshot": {
+      "path": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101/evaluation.jsonl",
+      "sha256_of_read_snapshot": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes_read": 0,
+      "ignored_incomplete_final_line": false,
+      "complete_rows": 0,
+      "checkpoint_groups": []
+    },
+    "logs": {
+      "stdout": "logs/dms-hc-aux1e4-10m_21197271.out",
+      "stderr": "logs/dms-hc-aux1e4-10m_21197271.err",
+      "stdout_snapshot_sha256": "2641f7147b90773b417b11e7120e91de79541b6259faa0e9a6ecaa991d8f3d4f",
+      "stderr_snapshot_sha256": "7294d3e0055372c03a65e8ede25d1c83e46bfcaa55b509aaa263ecbc6a19e51d",
+      "startup_lines": [
+        "Job 21197271 on milan2, legacy compatibility backend on CPU"
+      ],
+      "stderr_line_count": 3,
+      "exception_search_pattern": "Traceback|Exception|RuntimeError|AssertionError|out of memory|CUDA error|\\bError:",
+      "exception_matches": []
+    },
+    "runtime_projection": {
+      "recent_updates": 50,
+      "recent_transitions_per_second": 363.1782135303902,
+      "projected_total_hours": 7.589822611590097,
+      "allocated_hours": 9.0,
+      "exceeds_allocation": false,
+      "caveat": "exploratory linear estimate from most recent update interval; future evaluations, restarts, workload and learning-phase speed changes can alter duration"
+    },
+    "concerns": [
+      "Legacy launcher did not print the actual imported root. Exact executed source identity is verified through its trainer-created source snapshot and manifest; an import-path log is unavailable.",
+      "No scheduled evaluation has completed yet; latest return is an on-policy training-batch statistic."
+    ],
+    "scope": "startup and partial-development evidence only; not final results or independent-seed performance evidence"
+  },
+  "startup_checked_at_utc": "2026-10-25T10:27:06.752797+00:00"
+}

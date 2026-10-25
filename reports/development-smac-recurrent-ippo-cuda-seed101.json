@@ -1,0 +1,431 @@
+{
+  "purpose": "Fresh CUDA replacement of undersized CPU history16 IPPO development allocation; no resume or performance claim",
+  "created_at_utc": "2026-10-25T10:31:04.254122+00:00",
+  "original_cpu_job": "21197484",
+  "original_cpu_output": "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-smac-recurrent-source",
+  "source_and_asset_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/policy.py": "cba59d4c43b04187857692df8b11104cab046b490febcd6f1159459034fd3615",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "d4847f2b0c5da7d73a71d5e2817d69dd300480cb00d894969975f16dee2fb642",
+    "dms/train.py": "a133c44edc56568d6f1d7b8cbabb18f5661a9a02c3f7c86f094433dcab68bbf8",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "original_config": "configs/development/smac-3s5z-ippo-history16-mask-1m-threaded.json",
+  "original_config_sha256": "552cd0d102413f8e16a8262da7889075f514bbea0a42e293c53803ed1fc08e4b",
+  "replacement_config": "configs/development/smac-3s5z-ippo-history16-mask-1m-threaded-cuda.json",
+  "replacement_config_sha256": "45cb361cf0e8375080f195784aca700a84900d4c0eeca8fac2ee8a118e925c9f",
+  "replacement_config_changes": {
+    "device": {
+      "old": "cpu",
+      "new": "cuda"
+    },
+    "output": {
+      "old": "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-101",
+      "new": "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-cuda-101"
+    }
+  },
+  "replacement_output": "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-cuda-101",
+  "fresh_initialization": true,
+  "resume_checkpoint": null,
+  "seed": 101,
+  "training_budget": 1000000,
+  "gpu_compatibility": "PyTorch2.6 CUDA12.6; B300 excluded. Existing installed wheel includes sm70 and passed prior V100 CUDA smoke; wrapper tests real kernel on mixed gpu-debug hardware. Long run uses EllisH200/A100/H100.",
+  "submission_environment": {
+    "DMS_SOURCE_ROOT": "/scratch/work/liz23/reproduce/dms/runs/development-smac-recurrent-source",
+    "DMS_DEVICE": "cuda",
+    "SLURM_CONF_SERVER": "slurmctl:6817,slurmctl2:6817"
+  },
+  "wrapper_sha256": "9acfbda8da4fc57e7bcea0546715ff41b606e37d594257a40c52eefcade79d0b",
+  "smoke": {
+    "status": "completed_verified",
+    "config": "runs/smac-recurrent-ippo-cuda-validation-01/smoke-config.json",
+    "config_sha256": "c02a35268ab710c34d2875b29dc44f4b5c7112b026e470afc70cd8e06de76bc8",
+    "config_changes_vs_replacement": {
+      "total_steps": {
+        "replacement": 1000000,
+        "smoke": 512
+      },
+      "eval_every": {
+        "replacement": 200000,
+        "smoke": 512
+      },
+      "eval_episodes": {
+        "replacement": 10,
+        "smoke": 1
+      },
+      "output": {
+        "replacement": "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-cuda-101",
+        "smoke": "runs/smac-recurrent-ippo-cuda-smoke-01"
+      }
+    },
+    "output": "runs/smac-recurrent-ippo-cuda-smoke-01",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--partition=gpu-debug,gpu-h200-141g-ellis,gpu-a100-80g",
+      "--time=00:30:00",
+      "--cpus-per-task=8",
+      "--mem=16G",
+      "--job-name=dms-smac-ippo-h16-cuda-smoke",
+      "scripts/triton/train.sbatch",
+      "runs/smac-recurrent-ippo-cuda-validation-01/smoke-config.json",
+      "runs/smac-recurrent-ippo-cuda-smoke-01",
+      "101"
+    ],
+    "returncode": 0,
+    "stdout": "21197897",
+    "stderr": "",
+    "submitted_at_utc": "2026-10-25T10:31:29.662553+00:00",
+    "job_id": "21197897",
+    "verified_at_utc": "2026-10-25T10:34:38.558197+00:00",
+    "checks": {
+      "source_unchanged": true,
+      "executed_source_snapshot_exact": true,
+      "manifest_python_hashes_exact": true,
+      "config_input_hash_exact": true,
+      "actual_config_matches": true,
+      "exact_ippo_cuda_history16_mask": true,
+      "exact_512_training_transitions": true,
+      "finite_update": true,
+      "forty_ppo_updates": true,
+      "dead_rows_exercised": true,
+      "one_finite_evaluation": true,
+      "runtime_cuda_job_exact": true,
+      "actual_import_guard_passed": true,
+      "history_shape_correct": true,
+      "sc2_build_correct": true,
+      "map_hash_exact": true,
+      "wrapper_unchanged": true
+    },
+    "scheduler": {
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed": "00:01:30",
+      "node": "dgx1",
+      "partition": "gpu-debug"
+    },
+    "runtime": {
+      "host": "dgx1.int.triton.aalto.fi",
+      "device": "cuda",
+      "slurm_job_id": "21197897",
+      "slurm_partition": "gpu-debug"
+    },
+    "gpu": "Tesla V100-SXM2-16GB",
+    "metrics": [
+      {
+        "policy_loss": -0.0021663926166279436,
+        "value_loss": 3.155320626497269,
+        "entropy": 2.064830279350281,
+        "approx_kl": 6.169228886392375e-05,
+        "alive_fraction": 0.7138671875,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.0,
+        "steps": 512,
+        "episodes": 8,
+        "elapsed_seconds": 13.733351866714656,
+        "training_return_mean": 4.88555467830156,
+        "training_battles": 8,
+        "training_battles_won": 0,
+        "training_win_rate": 0.0,
+        "training_battles_total": 8,
+        "training_battles_won_total": 0,
+        "training_win_rate_total": 0.0,
+        "scheduled_environment_restarts": 0
+      }
+    ],
+    "evaluation": [
+      {
+        "steps": 512,
+        "seed": 10001,
+        "return": 4.60927156265825,
+        "length": 150,
+        "battle_won": false
+      }
+    ],
+    "environment": {
+      "benchmark_track": "original_smac",
+      "map_name": "3s5z",
+      "game_version": "4.10",
+      "difficulty": "7",
+      "action_observability": "native_local_obs_last_action",
+      "environment_options": {
+        "obs_last_action": true,
+        "continuing_episode": true,
+        "obs_instead_of_state": false,
+        "heuristic_ai": false,
+        "map_name": "3s5z",
+        "game_version": "4.10",
+        "difficulty": "7"
+      },
+      "resolved_environment_options": {
+        "obs_last_action": true,
+        "continuing_episode": true,
+        "obs_instead_of_state": false,
+        "heuristic_ai": false,
+        "map_name": "3s5z",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "obs_all_health": true,
+        "obs_own_health": true,
+        "obs_pathing_grid": false,
+        "obs_terrain_height": false,
+        "obs_timestep_number": false,
+        "state_last_action": true,
+        "state_timestep_number": false,
+        "reward_sparse": false,
+        "reward_only_positive": true,
+        "reward_death_value": 10,
+        "reward_win": 200,
+        "reward_defeat": 0,
+        "reward_negative_scale": 0.5,
+        "reward_scale": true,
+        "reward_scale_rate": 20,
+        "heuristic_rest": false,
+        "step_mul": 8,
+        "move_amount": 2,
+        "episode_limit": 150
+      },
+      "process_lifetime": {
+        "restart_at_episode_boundary_after_game_loops": 500000,
+        "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+        "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+      },
+      "map_asset": {
+        "status": "resolved",
+        "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+        "relative_path": "SMAC_Maps/3s5z.SC2Map",
+        "size_bytes": 15697,
+        "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+      },
+      "runtime_selection": {
+        "source": "pysc2_run_config_selection_not_launched_binary",
+        "game_version": "4.10.0",
+        "build_version": 75689,
+        "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+      },
+      "packages": {
+        "smac": "1.0.0",
+        "pysc2": "3.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "policy_observation_history": {
+        "length": 16,
+        "base_observation_dim": 249,
+        "shape": [
+          8,
+          16,
+          250
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset and own SMAC death",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "artifact_sha256": {
+      "runs/smac-recurrent-ippo-cuda-smoke-01/config.json": "91f600642263ca092e352f96aaefd57627011b4e3d97f45f7085ccdcf6b8ddc4",
+      "runs/smac-recurrent-ippo-cuda-smoke-01/manifest.json": "8d03303de7517a8acb722ec414b027f01915a717d382833ee467df779cce5702",
+      "runs/smac-recurrent-ippo-cuda-smoke-01/metrics.jsonl": "b13767107b9e8d745841ded5d043f2cec885dce8632f6304282ed8a4d8ee50e9",
+      "runs/smac-recurrent-ippo-cuda-smoke-01/evaluation.jsonl": "623c52916abfbf1933bfa8718be24e71d52375d6da62072706ae7ca2e96c3ca4",
+      "runs/smac-recurrent-ippo-cuda-smoke-01/latest.pt": "2946e9f8c9c826e8fa4ee74777efda248af9f2eb4907501d1182701d93b76fa8",
+      "logs/dms-smac-ippo-h16-cuda-smoke_21197897.out": "900fee87651e8d27143d8f7f283bb1cbbdd0b1073608aad37e5c2a9cb5d1239e",
+      "logs/dms-smac-ippo-h16-cuda-smoke_21197897.err": "4f6ed57a25c395f85a5e5e5c90656c0b82cbb2ac4577b551007d9ddf48a20344"
+    }
+  },
+  "replacement": {
+    "status": "running_verified",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+      "--time=04:00:00",
+      "--cpus-per-task=8",
+      "--mem=16G",
+      "--job-name=dms-smac-h16-ippo-cuda",
+      "scripts/triton/train.sbatch",
+      "configs/development/smac-3s5z-ippo-history16-mask-1m-threaded-cuda.json",
+      "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-cuda-101",
+      "101"
+    ],
+    "returncode": 0,
+    "stdout": "21197923",
+    "stderr": "",
+    "submitted_at_utc": "2026-10-25T10:34:38.781593+00:00",
+    "job_id": "21197923",
+    "pending_snapshot": {
+      "checked_at_utc": "2026-10-25T10:38:10.053286+00:00",
+      "state": "PENDING",
+      "reason": "Priority",
+      "estimated_start_slurm_local": "2026-10-25T13:30:00",
+      "estimated_node": "gpu43",
+      "time_limit": "04:00:00",
+      "allocated_now": false,
+      "caveat": "Scheduler estimate can change. CPU21197484 remains running until replacement finite startup."
+    },
+    "startup_verified_at_utc": "2026-10-25T10:42:51.665285+00:00",
+    "startup_checks": {
+      "source_unchanged": true,
+      "actual_source_snapshot_exact": true,
+      "manifest_source_exact": true,
+      "config_input_unchanged": true,
+      "only_device_and_output_changed_vs_cpu": true,
+      "expected_algorithm_budget_seed": true,
+      "cuda_history16_mask": true,
+      "actual_import_guard_passed": true,
+      "runtime_job_device_match": true,
+      "at_least_two_finite_updates": true,
+      "positive_ppo_updates": true,
+      "dead_agent_rows_exercised": true,
+      "environment_matches_cpu": true,
+      "no_runtime_exception_matches": true,
+      "smoke_previously_passed": true
+    },
+    "runtime": {
+      "host": "gpu61.int.triton.aalto.fi",
+      "device": "cuda",
+      "slurm_job_id": "21197923",
+      "slurm_partition": "gpu-h200-141g-ellis"
+    },
+    "gpu": "NVIDIA H200",
+    "complete_update_rows": 29,
+    "first_metric": {
+      "policy_loss": -0.0019014351571844835,
+      "value_loss": 2.648065757751465,
+      "entropy": 2.057783904671669,
+      "approx_kl": 5.824897351562677e-05,
+      "alive_fraction": 0.6792969107627869,
+      "ppo_update_count": 40,
+      "peer_gate_fraction": 0.0,
+      "steps": 640,
+      "episodes": 12,
+      "elapsed_seconds": 8.629703457001597,
+      "training_return_mean": 4.811672242823988,
+      "training_battles": 12,
+      "training_battles_won": 0,
+      "training_win_rate": 0.0,
+      "training_battles_total": 12,
+      "training_battles_won_total": 0,
+      "training_win_rate_total": 0.0,
+      "scheduled_environment_restarts": 0
+    },
+    "latest_metric": {
+      "policy_loss": -0.0022953403487768974,
+      "value_loss": 0.09548290753737092,
+      "entropy": 2.038757711648941,
+      "approx_kl": 6.963517208676967e-05,
+      "alive_fraction": 0.571093738079071,
+      "ppo_update_count": 40,
+      "peer_gate_fraction": 0.0,
+      "steps": 18560,
+      "episodes": 351,
+      "elapsed_seconds": 158.61899640597403,
+      "training_return_mean": 5.039735140581615,
+      "training_battles": 10,
+      "training_battles_won": 0,
+      "training_win_rate": 0.0,
+      "training_battles_total": 351,
+      "training_battles_won_total": 0,
+      "training_win_rate_total": 0.0,
+      "scheduled_environment_restarts": 0
+    },
+    "manifest_sha256": "a80ef82df389df8c6d9f230a5931dc8f152f0a35984591948ff7f6c6362e84be",
+    "actual_config_sha256": "fcb6ece82261419af533a035f514ec5454f5bc49a5ae3a49db964089a597d2ef",
+    "log_paths": {
+      "stdout": "logs/dms-smac-h16-ippo-cuda_21197923.out",
+      "stderr": "logs/dms-smac-h16-ippo-cuda_21197923.err"
+    },
+    "exception_matches": []
+  },
+  "cpu_cancellation_gate": "Cancel ONLY21197484 after successful CUDA smoke and replacement manifest/source/config verification plus finite policy updates. Preserve all CPU artifacts; GPU run starts fresh.",
+  "cpu_cancellation": {
+    "status": "cancelled_verified",
+    "job_id": "21197484",
+    "reason": "Original four-hour CPU allocation projected ~5.2 hours for1M steps; Slurm denied extension. Fresh exact-source CUDA replacement21197923 is running with finite updates after successful smoke. CPU partial artifacts retained; no resume claim.",
+    "gate_verified_at_utc": "2026-10-25T10:42:51.748966+00:00",
+    "last_complete_metric_before_cancel": {
+      "policy_loss": -0.005849314524745841,
+      "value_loss": 0.06317997081205248,
+      "entropy": 1.2254126131534577,
+      "approx_kl": 0.001085665114640467,
+      "alive_fraction": 0.538867175579071,
+      "ppo_update_count": 40,
+      "peer_gate_fraction": 0.0,
+      "steps": 122240,
+      "episodes": 1657,
+      "elapsed_seconds": 2052.996518507134,
+      "training_return_mean": 7.565515697168719,
+      "training_battles": 7,
+      "training_battles_won": 0,
+      "training_win_rate": 0.0,
+      "training_battles_total": 1657,
+      "training_battles_won_total": 0,
+      "training_win_rate_total": 0.0,
+      "scheduled_environment_restarts": 0
+    },
+    "complete_rows_before_cancel": 191,
+    "checkpoint_exists_before_cancel": false,
+    "command": [
+      "scancel",
+      "21197484"
+    ],
+    "scheduler_before_cancel": "21197484|RUNNING|dms-smac-h16-ippo",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "requested_at_utc": "2026-10-25T10:42:51.871448+00:00",
+    "verified_at_utc": "2026-10-25T10:43:21.654261+00:00",
+    "scheduler": {
+      "job_id": "21197484",
+      "state": "CANCELLED by 3278648",
+      "exit_code": "0:0",
+      "elapsed": "00:34:51",
+      "node": "milan2"
+    },
+    "last_persisted_metric": {
+      "policy_loss": -0.005849314524745841,
+      "value_loss": 0.06317997081205248,
+      "entropy": 1.2254126131534577,
+      "approx_kl": 0.001085665114640467,
+      "alive_fraction": 0.538867175579071,
+      "ppo_update_count": 40,
+      "peer_gate_fraction": 0.0,
+      "steps": 122240,
+      "episodes": 1657,
+      "elapsed_seconds": 2052.996518507134,
+      "training_return_mean": 7.565515697168719,
+      "training_battles": 7,
+      "training_battles_won": 0,
+      "training_win_rate": 0.0,
+      "training_battles_total": 1657,
+      "training_battles_won_total": 0,
+      "training_win_rate_total": 0.0,
+      "scheduled_environment_restarts": 0
+    },
+    "persisted_rows": 191,
+    "artifacts_retained": true,
+    "artifact_sha256": {
+      "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-101/config.json": "c0fdb8e5a96cfb17c08ea0df0250cbdb794fc9936871dd6e3f4c702763bbf3a9",
+      "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-101/manifest.json": "d2885a26676a950012cc16a5b465c3bd28e530da8a7d29dd1f250bb68505c12c",
+      "runs/dev-smac-3s5z-ippo-history16-mask-1m-threaded-101/metrics.jsonl": "5445722c43d15445bb8fa7cd2e5dcf9eb22da98c012c6b3cd628243643807d4a"
+    },
+    "final_checkpoint_exists": false
+  }
+}

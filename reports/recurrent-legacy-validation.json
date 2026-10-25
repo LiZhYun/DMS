@@ -1,0 +1,385 @@
+{
+  "purpose": "Native adapter regression and bounded continuous-action observation-window execution; no performance claim",
+  "status": "completed_verified",
+  "prepared_at_utc": "2026-10-25T10:10:38.959789+00:00",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-smac-recurrent-source",
+  "source_and_asset_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/policy.py": "cba59d4c43b04187857692df8b11104cab046b490febcd6f1159459034fd3615",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "d4847f2b0c5da7d73a71d5e2817d69dd300480cb00d894969975f16dee2fb642",
+    "dms/train.py": "a133c44edc56568d6f1d7b8cbabb18f5661a9a02c3f7c86f094433dcab68bbf8",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "artifact_directory": "runs/recurrent-legacy-validation-01",
+  "copied_test_sha256": {
+    "tests/conftest.py": "7dca16142dc98aef10f10f5c3cfb30428a11b657ad86d737348eabdbcdf9128d",
+    "tests/test_legacy_env.py": "474cd1001cb5200bae5882d708732118c61a03c762c339a8441a554ea57c3dca",
+    "tests/test_legacy_swimmer.py": "51d7279219671296feb7fc46391a70834cd0db6535c6c9d472e384f718b320b3"
+  },
+  "smoke_config": {
+    "algorithm": "dms",
+    "env": "mamujoco",
+    "scenario": "HalfCheetah",
+    "agent_conf": "2x3",
+    "agent_obsk": 1,
+    "map_name": "3s5z",
+    "seed": 101,
+    "device": "cpu",
+    "num_envs": 1,
+    "total_steps": 64,
+    "rollout_steps": 32,
+    "epochs": 2,
+    "minibatch_size": 32,
+    "hidden_dim": 64,
+    "latent_dim": 8,
+    "history_length": 32,
+    "prediction_horizon": 4,
+    "coordination": "soft",
+    "coordination_threshold": 0.6,
+    "short_history": 4,
+    "filter_history": true,
+    "intention_threshold": 10000,
+    "warmup_episodes": 0,
+    "causal_warmup_episodes": 0,
+    "actor_lr": 0.0003,
+    "critic_lr": 0.001,
+    "intention_lr": 0.001,
+    "aux_updates": 1,
+    "aux_batch_size": 16,
+    "kl_beta": 0.1,
+    "latent_samples": 2,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip": 0.2,
+    "value_clip": 0.2,
+    "entropy_coef": 0.0,
+    "value_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "target_kl": 0.02,
+    "eval_every": 64,
+    "eval_episodes": 1,
+    "eval_seed": 10001,
+    "output": "/scratch/work/liz23/reproduce/dms/runs/recurrent-legacy-validation-01/halfcheetah-smoke",
+    "torch_threads": 1,
+    "mamujoco_backend": "legacy",
+    "decoder_history": false,
+    "policy_history_length": 3
+  },
+  "smoke_config_sha256": "1e8b66b1b37c50a6e1b5470012ea40e0b581074f74ec09be63d7dc7a80085401",
+  "smoke_runner_sha256": "0f1b49583c4e0e9251e6e65f6147dce8e532aaf217e1a879b4f6efda55294965",
+  "launcher_sha256": "9ba39ae9f646d2198d2fbc0e25de6d5fbd2e6bf0e71918a672f0663ce4ed4dcd",
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "native_test_count_required": 44,
+  "test_gate": "all 44 tests pass with zero errors/failures/skips before smoke",
+  "test_command": "bash scripts/legacy/bootstrap.sh run -m pytest -o pythonpath=/scratch/work/liz23/reproduce/dms/runs/development-smac-recurrent-source -p no:cacheprovider /scratch/work/liz23/reproduce/dms/runs/recurrent-legacy-validation-01/tests/test_legacy_env.py /scratch/work/liz23/reproduce/dms/runs/recurrent-legacy-validation-01/tests/test_legacy_swimmer.py -q --junitxml=/scratch/work/liz23/reproduce/dms/runs/recurrent-legacy-validation-01/native-tests.xml",
+  "smoke_command": "DMS_SOURCE_ROOT=/scratch/work/liz23/reproduce/dms/runs/development-smac-recurrent-source bash scripts/legacy/bootstrap.sh run /scratch/work/liz23/reproduce/dms/runs/recurrent-legacy-validation-01/run_smoke.py",
+  "resources": {
+    "cpus": 4,
+    "memory_gb": 8,
+    "time_limit": "00:15:00",
+    "device": "cpu"
+  },
+  "submit_command": "SLURM_CONF_SERVER=slurmctl:6817,slurmctl2:6817 sbatch --parsable /scratch/work/liz23/reproduce/dms/runs/recurrent-legacy-validation-01/validate.sbatch",
+  "slurm_job_id": "21197622",
+  "submitted_at_utc": "2026-10-25T10:11:11.158527+00:00",
+  "logs": {
+    "stdout": "logs/dms-recurrent-legacy_21197622.out",
+    "stderr": "logs/dms-recurrent-legacy_21197622.err"
+  },
+  "verified_at_utc": "2026-10-25T10:14:08.754284+00:00",
+  "scheduler": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:00:25",
+    "node": "milan2",
+    "allocated_cpus": 4,
+    "requested_memory": "8G",
+    "time_limit": "00:15:00"
+  },
+  "tests": {
+    "tests": 44,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "pytest_elapsed_seconds": 5.46,
+    "junit_path": "runs/recurrent-legacy-validation-01/native-tests.xml",
+    "junit_sha256": "a490482acd5e8e74bf4f192ef8ca4ddbe5efbcb71567b39443d0363a1017c755"
+  },
+  "checks": {
+    "expected_frozen_source_unchanged": true,
+    "copied_smoke_source_and_xml_exact": true,
+    "manifest_exact_python_hashes": true,
+    "source_files_read_only": true,
+    "test_copies_unchanged": true,
+    "test_copies_read_only": true,
+    "launcher_unchanged": true,
+    "runner_unchanged": true,
+    "bootstrap_unchanged": true,
+    "config_input_unchanged": true,
+    "native_44_pass_no_skips": true,
+    "correct_runtime_job": true,
+    "saved_config_matches_requested": true,
+    "exact_64_training_transitions": true,
+    "active_dms_config": true,
+    "native_historical_halfcheetah": true,
+    "window_three_in_environment": true,
+    "window_three_in_checkpoint": true,
+    "actor_and_critic_encoders_present": true,
+    "all_checkpoint_model_tensors_finite": true,
+    "two_finite_policy_aux_updates": true,
+    "active_peer_features": true,
+    "nonempty_forecast_targets": true,
+    "one_complete_finite_evaluation": true,
+    "native_xml_matches_runtime": true
+  },
+  "smoke": {
+    "output": "runs/recurrent-legacy-validation-01/halfcheetah-smoke",
+    "training_transitions": 64,
+    "training_episodes": 0,
+    "policy_updates": 2,
+    "evaluation": [
+      {
+        "steps": 64,
+        "seed": 10001,
+        "return": 0.05866919215463895,
+        "length": 1000,
+        "battle_won": null
+      }
+    ],
+    "metrics": [
+      {
+        "policy_loss": -0.002745486330240965,
+        "value_loss": 5.076573014259338,
+        "entropy": 2.7566663026809692,
+        "approx_kl": 5.263322964310646e-05,
+        "peer_gate_fraction": 0.96875,
+        "intention_feature_std": 0.586074709892273,
+        "intention_loss": 2.4732483625411987,
+        "intention_nll": 2.4162018299102783,
+        "intention_kl": 0.5704655200242996,
+        "forecast_target_count": 252,
+        "forecast_comparison_count": 240,
+        "forecast_component_count": 480,
+        "history_baseline_target_count": 240,
+        "history_baseline_component_count": 480,
+        "forecast_rmse": 0.7732203584510863,
+        "persistence_rmse": 0.7732203584510863,
+        "history_mean_rmse": 0.5560223974620393,
+        "history_baseline_coverage_fraction": 0.9523809523809523,
+        "steps": 32,
+        "episodes": 0,
+        "elapsed_seconds": 0.4843573337420821,
+        "training_return_mean": null
+      },
+      {
+        "policy_loss": -0.000851568765938282,
+        "value_loss": 3.2973049879074097,
+        "entropy": 2.7562089562416077,
+        "approx_kl": 6.0461461544036865e-06,
+        "peer_gate_fraction": 1.0,
+        "intention_feature_std": 0.5823644399642944,
+        "intention_loss": 2.2255314588546753,
+        "intention_nll": 2.1983143091201782,
+        "intention_kl": 0.2721720039844513,
+        "forecast_target_count": 256,
+        "forecast_comparison_count": 256,
+        "forecast_component_count": 512,
+        "history_baseline_target_count": 256,
+        "history_baseline_component_count": 512,
+        "forecast_rmse": 0.7078343730002661,
+        "persistence_rmse": 0.7087582431915408,
+        "history_mean_rmse": 0.5494707043100461,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 64,
+        "episodes": 0,
+        "elapsed_seconds": 0.9583266000263393,
+        "training_return_mean": null
+      }
+    ],
+    "environment": {
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "historical_binary_parity_verified": false,
+      "scenario": "HalfCheetah",
+      "native_env_id": "HalfCheetah-v2",
+      "agent_conf": "2x3",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "half_cheetah.xml",
+      "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          5,
+          4,
+          3
+        ]
+      ],
+      "action_dims": [
+        3,
+        3
+      ],
+      "observation_dims": [
+        7,
+        7
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "root_x_velocity - 0.1*sum(control**2)",
+        "native_termination": "never"
+      },
+      "frame_skip": 5,
+      "physics_timestep": 0.01,
+      "native_geom_friction": [
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ],
+        [
+          0.4,
+          0.1,
+          0.1
+        ]
+      ],
+      "policy_observation_history": {
+        "length": 3,
+        "base_observation_dim": 28,
+        "shape": [
+          2,
+          3,
+          29
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "versions": {
+      "torch": "2.6.0+cu126",
+      "numpy": "1.26.4",
+      "protobuf": "6.33.0",
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14"
+    },
+    "runtime": {
+      "host": "milan2.int.triton.aalto.fi",
+      "device": "cpu",
+      "slurm_job_id": "21197622",
+      "slurm_partition": "batch-milan"
+    },
+    "checkpoint_sha256": "30c774458b70afb4ad615083dbe9f63507f8be258b91a3546308b691f8008699",
+    "checkpoint_bytes": 2147707,
+    "actor_critic_history_encoder_parameter_keys": [
+      "0.actor_encoder.gru.weight_ih_l0",
+      "0.actor_encoder.gru.weight_hh_l0",
+      "0.actor_encoder.gru.bias_ih_l0",
+      "0.actor_encoder.gru.bias_hh_l0",
+      "0.critic_encoder.gru.weight_ih_l0",
+      "0.critic_encoder.gru.weight_hh_l0",
+      "0.critic_encoder.gru.bias_ih_l0",
+      "0.critic_encoder.gru.bias_hh_l0",
+      "1.actor_encoder.gru.weight_ih_l0",
+      "1.actor_encoder.gru.weight_hh_l0",
+      "1.actor_encoder.gru.bias_ih_l0",
+      "1.actor_encoder.gru.bias_hh_l0",
+      "1.critic_encoder.gru.weight_ih_l0",
+      "1.critic_encoder.gru.weight_hh_l0",
+      "1.critic_encoder.gru.bias_ih_l0",
+      "1.critic_encoder.gru.bias_hh_l0"
+    ]
+  },
+  "artifact_sha256": {
+    "runs/recurrent-legacy-validation-01/halfcheetah-smoke/config.json": "153beef3756369e9831714bff12ee352681943eb20acb5d9a31f28dbbf153df0",
+    "runs/recurrent-legacy-validation-01/halfcheetah-smoke/manifest.json": "bc2c70d5aa0ad87e52bafc43f99b0cdc67c2e1129b70d7cc836216f149e0441d",
+    "runs/recurrent-legacy-validation-01/halfcheetah-smoke/metrics.jsonl": "56065e98efafbe7dcd1d73b84d4fc0f82ef55f4b0ff26617a1967170dac25373",
+    "runs/recurrent-legacy-validation-01/halfcheetah-smoke/evaluation.jsonl": "4a476de15496a53b15c91151efd6b5e2614ab6f8dd3ba1e8d1e47c284bedd50a",
+    "runs/recurrent-legacy-validation-01/verify_results.py": "e16d40c4b544b46280bda470545e03481a1d8b70b30ed8658ae2bcaf7fe8c447"
+  },
+  "verification_notes": [
+    "The first post-run check incorrectly assumed seven raw local features plus validity; corrected from frozen adapter code to the actual 28 local actor features plus validity. No source or model change, and no simulation rerun."
+  ],
+  "interpretation": "All 44 native adapter tests pass against the exact frozen recurrent package. A 64-transition continuous-action DMS smoke with history 3 executes finite PPO and auxiliary updates plus one 1000-step evaluation. This validates execution and regression behavior, not performance, training stability, or paper reproduction.",
+  "logs_sha256": {
+    "stdout": "62c0e3ea713ed39f3d6af48d25cc5457d2a77231a8346e3e6333ebad0d239f33",
+    "stderr": "0ca89a5428070db5dc8b04fca4a9fdb2af61013f8a2834ca68d82faaad1b8fb5"
+  }
+}

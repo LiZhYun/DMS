@@ -60,12 +60,19 @@ class LegacyMaMuJoCoEnv:
         agent_conf: str = "2x3",
         agent_obsk: int = 1,
         max_episode_steps: int = 1000,
+        *,
+        ant_contact_forces: str = "native",
     ):
         if not isinstance(agent_obsk, int) or isinstance(agent_obsk, bool) or agent_obsk < 0:
             raise ValueError("agent_obsk must be a nonnegative integer")
         if not isinstance(max_episode_steps, int) or isinstance(max_episode_steps, bool) or max_episode_steps < 1:
             raise ValueError("max_episode_steps must be a positive integer")
         scenario = scenario.removesuffix("-v2")
+        if ant_contact_forces not in {"native", "computed"}:
+            raise ValueError("ant_contact_forces must be 'native' or 'computed'")
+        if ant_contact_forces == "computed" and scenario != "Ant":
+            raise ValueError("computed ant_contact_forces is supported only for legacy Ant")
+        self.ant_contact_forces = ant_contact_forces
         self.agent_action_partitions, edges = legacy_graph.graph_for(scenario, agent_conf)
         self.k_dicts = [legacy_graph.distance_layers(part, edges, agent_obsk) for part in self.agent_action_partitions]
         self.k_categories = legacy_graph.observation_categories(scenario, agent_obsk)
@@ -93,6 +100,10 @@ class LegacyMaMuJoCoEnv:
             from .legacy_swimmer import make_swimmer
 
             self.backend = gym.wrappers.TimeLimit(make_swimmer(), max_episode_steps=max_episode_steps)
+        elif scenario == "Ant" and ant_contact_forces == "computed":
+            from .legacy_ant import make_computed_ant
+
+            self.backend = gym.wrappers.TimeLimit(make_computed_ant(), max_episode_steps=max_episode_steps)
         else:
             self.backend = gym.make(f"{scenario}-v2")
             self.backend._max_episode_steps = max_episode_steps
@@ -121,11 +132,18 @@ class LegacyMaMuJoCoEnv:
                 from .legacy_swimmer import ASSET_PATH
 
                 asset = ASSET_PATH
+            elif scenario == "Ant":
+                from gym.envs.mujoco.ant import AntEnv
+
+                # The optional subclass lives in our package; both variants
+                # still load the unchanged XML beside Gym's original AntEnv.
+                asset = Path(inspect.getfile(AntEnv)).parent / "assets" / _ASSETS[scenario]
             else:
                 asset = Path(inspect.getfile(type(self.native))).parent / "assets" / _ASSETS[scenario]
             graph_path = Path(legacy_graph.__file__)
             self.metadata = {
-                "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+                "benchmark_track": "historical_gym_v2_ant_computed_forces_adaptation"
+                    if ant_contact_forces == "computed" else "historical_gym_v2_mujoco210_compatibility",
                 "historical_binary_parity_verified": False,
                 "scenario": scenario,
                 "native_env_id": "custom_manyagent_swimmer_10x2" if scenario == "ManyAgentSwimmer" else f"{scenario}-v2",
@@ -154,6 +172,24 @@ class LegacyMaMuJoCoEnv:
                 "physics_timestep": float(self.native.model.opt.timestep),
                 "native_geom_friction": self.native.model.geom_friction.tolist(),
             }
+            if scenario == "Ant":
+                from . import legacy_ant
+
+                computed = ant_contact_forces == "computed"
+                self.metadata["ant_contact_forces"] = ant_contact_forces
+                self.metadata["contact_force_computation"] = {
+                    "mode": ant_contact_forces,
+                    "api": "mujoco_py.functions.mj_rnePostConstraint" if computed else None,
+                    "after_control_substeps_before_reward": computed,
+                    "after_reset_before_observation": computed,
+                    "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+                    "reward": "Gym Ant contact penalty reads explicitly computed forces" if computed
+                              else "unchanged Gym Ant contact penalty reads native force buffer",
+                    "variant_source_sha256": hashlib.sha256(Path(legacy_ant.__file__).read_bytes()).hexdigest() if computed else None,
+                    "gym_ant_source_sha256": hashlib.sha256(Path(inspect.getfile(AntEnv)).read_bytes()).hexdigest(),
+                    "gym_do_simulation_source_sha256": hashlib.sha256(inspect.getsource(AntEnv.do_simulation).encode()).hexdigest(),
+                    "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation",
+                }
             if scenario == "ManyAgentSwimmer":
                 from .legacy_swimmer import ORIGINAL_SOURCE_SHA256, ORIGINAL_TEMPLATE_SHA256
 

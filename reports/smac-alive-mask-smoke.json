@@ -1,0 +1,50 @@
+{
+  "purpose": "native CUDA smoke for opt-in inactive-agent PPO mask; not learning evidence",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-smac-alive-mask-source",
+  "source_freeze": "/scratch/work/liz23/reproduce/dms/runs/development-smac-alive-mask-source/freeze.json",
+  "config": "configs/development/smac-alive-mask-smoke.json",
+  "config_sha256": "59edd6c5a128028f8e2f92acbd80aab77e6d2ae7c6f15cca8f8926400fc88bfe",
+  "output": "runs/smac-alive-mask-smoke-101",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--partition=gpu-h200-141g-ellis,gpu-debug,gpu-a100-80g,gpu-h100-80g",
+    "--time=00:20:00",
+    "--cpus-per-task=4",
+    "--mem=16G",
+    "--job-name=dms-smac-mask-smoke",
+    "scripts/triton/train.sbatch",
+    "configs/development/smac-alive-mask-smoke.json",
+    "runs/smac-alive-mask-smoke-101",
+    "101"
+  ],
+  "created_utc": "2026-10-25T09:55:17.651979+00:00",
+  "returncode": 0,
+  "stdout": "21197237",
+  "stderr": "",
+  "job_id": "21197237",
+  "state": "completed_verified",
+  "checks": {
+    "completed": true,
+    "steps": true,
+    "source_matches": true,
+    "frozen_source_matches": true,
+    "finite": true,
+    "dead_samples_exercised": true,
+    "battles_completed": true,
+    "one_eval": true
+  },
+  "runtime": {
+    "host": "dgx15.int.triton.aalto.fi",
+    "device": "cuda",
+    "slurm_job_id": "21197237",
+    "slurm_partition": "gpu-debug"
+  },
+  "training_updates": 4,
+  "training_battles": 8,
+  "alive_fraction_range": [
+    0.587890625,
+    0.865234375
+  ],
+  "completed_utc": "2026-10-25T10:02:02.967771+00:00"
+}

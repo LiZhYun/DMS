@@ -38,6 +38,7 @@ class Config:
     env: str = 'toy'
     mamujoco_backend: str = 'modern'
     scenario: str = 'HalfCheetah'
+    ant_contact_forces: str = 'native'
     agent_conf: str = '2x3'
     agent_obsk: int = 1
     map_name: str = '3s5z'
@@ -45,11 +46,14 @@ class Config:
     device: str = 'cpu'
     num_envs: int = 4
     parallel_env_steps: bool = False
+    mask_inactive_agents: bool = False
     total_steps: int = 4096
     rollout_steps: int = 128
     epochs: int = 5
     minibatch_size: int = 256
     hidden_dim: int = 64
+    policy_history_length: int = 0
+    initial_log_std: float = -0.5
     latent_dim: int = 8
     decoder_history: bool = True
     history_length: int = 32
@@ -83,6 +87,18 @@ class Config:
     torch_threads: int = 1
 
     def validate(self):
+        if self.ant_contact_forces not in ('native', 'computed'):
+            raise ValueError('ant_contact_forces must be native or computed')
+        if self.ant_contact_forces == 'computed' and (
+                self.env != 'mamujoco' or self.mamujoco_backend != 'legacy' or self.scenario != 'Ant'):
+            raise ValueError('computed contact forces require historical legacy Ant')
+        if (isinstance(self.initial_log_std, bool)
+                or not isinstance(self.initial_log_std, (float, int))
+                or not -5 <= self.initial_log_std <= 2):
+            raise ValueError('initial_log_std must be finite and in [-5, 2]')
+        if (not isinstance(self.policy_history_length, int)
+                or isinstance(self.policy_history_length, bool) or self.policy_history_length < 0):
+            raise ValueError('policy_history_length must be a nonnegative integer')
         if self.algorithm not in {'ippo', 'dms'}:
             raise ValueError('algorithm must be ippo or dms')
         if self.env not in {'toy', 'mamujoco', 'smac'}:
@@ -116,16 +132,28 @@ class Config:
 def create_env(config: Config):
     if config.env == 'smac':
         from .smac_env import SMACEnv
-        return SMACEnv(config.map_name, seed=config.seed)
-    if config.env == 'mamujoco':
+        env = SMACEnv(config.map_name, seed=config.seed)
+    elif config.env == 'mamujoco':
         if config.mamujoco_backend == 'legacy':
             from .legacy_env import LegacyMaMuJoCoEnv
-            return LegacyMaMuJoCoEnv(config.scenario,config.agent_conf,config.agent_obsk)
-        return make_env('mamujoco', scenario=config.scenario, agent_conf=config.agent_conf,
-                        agent_obsk=config.agent_obsk)
-    if config.env == 'toy':
-        return make_env('toy')
-    raise ValueError(f'unknown environment: {config.env}')
+            env = LegacyMaMuJoCoEnv(config.scenario,config.agent_conf,config.agent_obsk,
+                                   ant_contact_forces=config.ant_contact_forces)
+        else:
+            env = make_env('mamujoco', scenario=config.scenario, agent_conf=config.agent_conf,
+                           agent_obsk=config.agent_obsk)
+    elif config.env == 'toy':
+        env = make_env('toy')
+    else:
+        raise ValueError(f'unknown environment: {config.env}')
+    if config.policy_history_length:
+        from .observation_history import ObservationHistoryEnv
+        try:
+            env = ObservationHistoryEnv(env, config.policy_history_length,
+                                        clear_dead_agents=config.env == 'smac')
+        except BaseException:
+            env.close()
+            raise
+    return env
 
 
 def seed_everything(seed: int):
@@ -153,7 +181,9 @@ class Learner:
         self.latent_dim = config.latent_dim if config.algorithm == 'dms' else 0
         self.agents = nn.ModuleList([
             IndependentAgent(env.obs_dim, env.action_dim if env.discrete else env.action_dims[i], env.n_agents, self.latent_dim,
-                             config.hidden_dim, env.discrete, config.coordination, i)
+                             config.hidden_dim, env.discrete, config.coordination, i,
+                             policy_history_length=config.policy_history_length,
+                             initial_log_std=config.initial_log_std)
             for i in range(env.n_agents)
         ]).to(self.device)
         self.intentions = nn.ModuleList([
@@ -165,11 +195,12 @@ class Learner:
         ]).to(self.device) if self.latent_dim else nn.ModuleList()
         self.optimizers = []
         for agent in self.agents:
-            critic_ids = {id(p) for p in agent.critic.parameters()}
+            critic_parameters = list(agent.critic_parameters())
+            critic_ids = {id(p) for p in critic_parameters}
             actor_parameters = [p for p in agent.parameters() if id(p) not in critic_ids]
             self.optimizers.append(torch.optim.Adam([
                 {'params': actor_parameters, 'lr': config.actor_lr},
-                {'params': agent.critic.parameters(), 'lr': config.critic_lr},
+                {'params': critic_parameters, 'lr': config.critic_lr},
             ], eps=1e-5))
         self.aux_optimizers = [torch.optim.Adam(m.parameters(), lr=config.intention_lr)
                                for m in self.intentions]
@@ -309,6 +340,11 @@ def collect(learner, environments, states, history, visible, episodes, episode_r
 
 def update(learner: Learner, data):
     c = learner.config
+    # SMAC reserves action zero for dead units; this convention is not shared
+    # by the toy task or continuous environments. Keep archived behavior by
+    # default, and report the live fraction even when filtering is disabled.
+    alive = data['available'][..., 1:].any(-1) if c.env == 'smac' else None
+    mask_inactive = c.env == 'smac' and c.mask_inactive_agents
     rewards = learner.tensor(data['rewards'])
     advantages, returns = generalized_advantage_estimate(
         rewards, data['values'], data['next_values'],
@@ -325,10 +361,24 @@ def update(learner: Learner, data):
         old_log_prob = data['log_prob'][:, :, i].flatten()
         available = data['available'][:, :, i].flatten(0, 1) if learner.discrete else None
         advantage, target = advantages[:, :, i].flatten(), returns[:, :, i].flatten()
+        old_value = data['values'][:, :, i].flatten()
+        if mask_inactive:
+            active = alive[:, :, i].flatten()
+            if not active.any():
+                # A zero loss followed by Adam.step() can still move parameters
+                # through existing momentum. Skip the optimizer and all moments.
+                optimizer.zero_grad(set_to_none=True)
+                continue
+            obs, contexts, gates = obs[active], contexts[active], gates[active]
+            actions, old_log_prob = actions[active], old_log_prob[active]
+            available = available[active]
+            advantage, target, old_value = advantage[active], target[active], old_value[active]
+        # Filter before normalization and minibatching. This also keeps dead
+        # rows out of entropy, critic/PopArt targets, and the KL stopping rule.
         advantage = (advantage - advantage.mean()) / advantage.std(unbiased=False).clamp_min(1e-8)
         agent.update_value_scale(target)
         target = (target - agent.value_moments.mean[0]) / agent.value_moments.std[0]
-        old_value = (data['values'][:, :, i].flatten() - agent.value_moments.mean[0]) / agent.value_moments.std[0]
+        old_value = (old_value - agent.value_moments.mean[0]) / agent.value_moments.std[0]
         stop = False
         for _ in range(c.epochs):
             for indices in torch.randperm(len(obs), device=learner.device).split(c.minibatch_size):
@@ -358,8 +408,13 @@ def update(learner: Learner, data):
                     break
             if stop:
                 break
-        agent.obs_moments.update(learner.tensor(data['raw_obs'][:, :, i]))
-    result = {key: float(np.mean([row[key] for row in metrics])) for key in metrics[0]}
+        raw_obs = learner.tensor(data['raw_obs'][:, :, i])
+        agent.update_observation_scale(raw_obs.flatten(0, 1)[active] if mask_inactive else raw_obs)
+    result = {key: float(np.mean([row[key] for row in metrics])) if metrics else 0.0
+              for key in ['policy_loss', 'value_loss', 'entropy', 'approx_kl']}
+    if alive is not None:
+        result['alive_fraction'] = alive.float().mean().item()
+        result['ppo_update_count'] = len(metrics)
     result['peer_gate_fraction'] = (data['gates'].float().sum().item() /
         max(1, data['gates'].shape[0]*data['gates'].shape[1]*learner.num_agents*(learner.num_agents-1)))
     if learner.latent_dim:
@@ -500,6 +555,7 @@ def run(config: Config):
         history,visible = empty_history(learner,config.num_envs)
         episode_returns = np.zeros(config.num_envs)
         steps,episodes,next_eval = 0,0,config.eval_every
+        training_battles, training_battles_won = 0, 0
         if config.parallel_env_steps:
             executor = ThreadPoolExecutor(max_workers=config.num_envs)
         started = time.monotonic()
@@ -513,6 +569,15 @@ def run(config: Config):
             metrics.update(steps=steps,episodes=episodes,elapsed_seconds=time.monotonic()-started,
                            training_return_mean=float(np.mean([r['return'] for r in finished])) if finished else None)
             if config.env == 'smac':
+                outcomes = [r['battle_won'] for r in finished if r['battle_won'] is not None]
+                wins = sum(bool(won) for won in outcomes)
+                training_battles += len(outcomes)
+                training_battles_won += wins
+                metrics.update(training_battles=len(outcomes), training_battles_won=wins,
+                    training_win_rate=wins/len(outcomes) if outcomes else None,
+                    training_battles_total=training_battles,
+                    training_battles_won_total=training_battles_won,
+                    training_win_rate_total=training_battles_won/training_battles if training_battles else None)
                 metrics['scheduled_environment_restarts'] = sum(
                     env.runtime_info['scheduled_restarts'] for env in environments)
             append_json(output/'metrics.jsonl',metrics)

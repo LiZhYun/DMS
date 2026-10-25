@@ -1,0 +1,274 @@
+{
+  "purpose": "long-run mechanism check at latest two-million-step diagnostic checkpoint; not final performance evidence",
+  "created_utc": "2026-10-25T10:38:12.151884+00:00",
+  "training_job_id": "21196472",
+  "checkpoint": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/mechanism-checkpoint-2m-01.pt",
+  "checkpoint_sha256": "b1bd84898456d3ee76928537be56800ebee4abc566045954fcbaa67f6d952cb0",
+  "expected_training_steps": 2000000,
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/mechanism-source-2m-01",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "script_sha256": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01",
+  "output": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/mechanism-diagnostic-2m-01.json",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=dms-hc-2m-probe",
+    "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/mechanism-diagnostic-2m-01.sbatch",
+    "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/mechanism-checkpoint-2m-01.pt",
+    "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/mechanism-diagnostic-2m-01.json"
+  ],
+  "submission_stdout": "21197951",
+  "submission_stderr": "",
+  "submission_returncode": 0,
+  "job_id": "21197951",
+  "checked_utc": "2026-10-25T10:41:47.561494+00:00",
+  "checks": {
+    "expected_training_steps": true,
+    "expected_training_seed": true,
+    "checkpoint_hash": true,
+    "checkpoint_file_unchanged": true,
+    "source_matches_training": true,
+    "source_unchanged": true,
+    "actual_import_path": true,
+    "diagnostic_source_mapping": true,
+    "script_hash": true,
+    "environment_matches_training": true,
+    "zero_updates": true,
+    "model_unchanged": true,
+    "expected_transition_count": true,
+    "job_id": true
+  },
+  "raw_sha256": "3607380424e654f07bc29374960273783a87fead0c2becb44d0e644f7a5667df",
+  "scheduler_accounting": [
+    "JobID|State|ExitCode|Elapsed|NodeList",
+    "21197951|COMPLETED|0:0|00:00:14|milan1"
+  ],
+  "forecast": {
+    "forecast_target_count": 4088,
+    "forecast_comparison_count": 4064,
+    "forecast_component_count": 8128,
+    "history_baseline_target_count": 4064,
+    "history_baseline_component_count": 8128,
+    "forecast_rmse": 0.33836828513805733,
+    "persistence_rmse": 1.0527123419435842,
+    "history_mean_rmse": 0.723292227213588,
+    "history_baseline_coverage_fraction": 0.9941291585127201
+  },
+  "latent_temporal_variation": [
+    {
+      "observer": 0,
+      "peer": 0,
+      "self": true,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.3892194128638349,
+          1.94396195860094,
+          0.7026461355977062,
+          0.35256368156909773,
+          0.9190328471136054,
+          0.5422059803418743,
+          1.565213161189316,
+          0.2665662261816613
+        ],
+        "rms_coordinate_std": 1.0129197328368889,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 1.3253795638682138
+      },
+      "gated": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      }
+    },
+    {
+      "observer": 0,
+      "peer": 1,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.463541188207697,
+          2.1360255386671434,
+          0.8215926680173736,
+          0.36997101046990416,
+          1.3630358845028097,
+          0.5971575046851776,
+          1.5764088179563422,
+          0.3182784242444081
+        ],
+        "rms_coordinate_std": 1.139638013814337,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 1.5009900588945235
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.463541188207697,
+          2.1360255386671434,
+          0.8215926680173736,
+          0.36997101046990416,
+          1.3630358845028097,
+          0.5971575046851776,
+          1.5764088179563422,
+          0.3182784242444081
+        ],
+        "rms_coordinate_std": 1.139638013814337,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 1.5009900588945235
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.14723373181666596,
+          0.09398930554372405,
+          0.09951663708480292,
+          0.14951954764502937,
+          1.803247542766728,
+          0.17806091543495736,
+          0.14672831556280072,
+          2.077409120989839
+        ],
+        "rms_coordinate_std": 0.9800087156618394,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 1.290818076352148
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.14723373181666596,
+          0.09398930554372405,
+          0.09951663708480292,
+          0.14951954764502937,
+          1.803247542766728,
+          0.17806091543495736,
+          0.14672831556280072,
+          2.077409120989839
+        ],
+        "rms_coordinate_std": 0.9800087156618394,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 1.290818076352148
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 1,
+      "self": true,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.3052956393018451,
+          0.06417390594364178,
+          0.10453001131968817,
+          0.22388649097144098,
+          2.2649492000159586,
+          0.1776308638210426,
+          0.15598169057081898,
+          2.121572603868858
+        ],
+        "rms_coordinate_std": 1.1093536184081332,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 1.461925736554557
+      },
+      "gated": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      }
+    }
+  ],
+  "policy_shuffle": [
+    {
+      "observer": 0,
+      "eligible_peer_entries": 508,
+      "matched_peer_entries": 508,
+      "compared_policy_count": 508,
+      "mean_kl_full_to_shuffled": 2.2840311527252197,
+      "max_kl_full_to_shuffled": 24.45162582397461,
+      "own_query_preserved": true
+    },
+    {
+      "observer": 1,
+      "eligible_peer_entries": 508,
+      "matched_peer_entries": 496,
+      "compared_policy_count": 496,
+      "mean_kl_full_to_shuffled": 1.9697703123092651,
+      "max_kl_full_to_shuffled": 13.91082763671875,
+      "own_query_preserved": true
+    }
+  ],
+  "peer_decoder_shuffle": [
+    {
+      "observer": 0,
+      "peer": 1,
+      "self": false,
+      "matched_history_count": 247,
+      "scored_target_count": 988,
+      "scored_component_count": 988,
+      "prediction_change_rmse": 0.8686466813087463,
+      "forecast_rmse": 0.3902551829814911,
+      "shuffled_forecast_rmse": 0.9245017766952515,
+      "mse_increase_after_shuffle": 0.7024043798446655
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "self": false,
+      "matched_history_count": 245,
+      "scored_target_count": 980,
+      "scored_component_count": 980,
+      "prediction_change_rmse": 0.8604400157928467,
+      "forecast_rmse": 0.3470292389392853,
+      "shuffled_forecast_rmse": 0.8902572989463806,
+      "mse_increase_after_shuffle": 0.6721287369728088
+    }
+  ],
+  "limitations": [
+    "One development checkpoint and seed, on-policy diagnostic trajectories; no independent-training performance claim.",
+    "Only one peer per observer; this does not establish multi-peer ranking or useful causal selection.",
+    "Policy sensitivity is not return benefit; complete-episode paired interventions follow separately.",
+    "Different policy checkpoints induce different diagnostic trajectories, so cross-checkpoint RMSE is not a matched-distribution ranking."
+  ]
+}

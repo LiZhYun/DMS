@@ -1,0 +1,327 @@
+{
+  "purpose": "computed Ant variant native tests and short DMS smoke; distinct adaptation provenance; no learning-performance claim",
+  "job_id": "21197871",
+  "host": "milan2.int.triton.aalto.fi",
+  "partition": "batch-milan",
+  "submission": {
+    "purpose": "computed Ant variant native tests and short DMS smoke; distinct adaptation provenance; no learning-performance claim",
+    "source_root": "/scratch/work/liz23/reproduce/dms/runs/ant-computed-validation-02/source",
+    "files_sha256": {
+      "source/dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "source/dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+      "source/dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "source/dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "source/dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "source/dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "source/dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "source/dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "source/dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "source/dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "source/dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "source/dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "source/dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "source/dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "source/dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "source/dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "source/dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "source/dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "source/dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "source/dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "source/dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "source/dms/train.py": "3bd2de5162ea115fd1dbccbe0a598e7cdaa7183230ab98a6435cbbacedbe0bfc",
+      "tests/test_ant_contact_forces.py": "518afc63772a483ce55859fe82000394a3b3033b6b6d87eea5efab3e7bfdb5c9",
+      "tests/test_legacy_env.py": "474cd1001cb5200bae5882d708732118c61a03c762c339a8441a554ea57c3dca",
+      "tests/test_legacy_swimmer.py": "51d7279219671296feb7fc46391a70834cd0db6535c6c9d472e384f718b320b3"
+    },
+    "test_files": [
+      "test_ant_contact_forces.py",
+      "test_legacy_env.py",
+      "test_legacy_swimmer.py"
+    ],
+    "resources": {
+      "cpus": 4,
+      "memory": "8G",
+      "time": "00:15:00",
+      "partitions": [
+        "batch-milan",
+        "batch-csl",
+        "batch-skl"
+      ]
+    },
+    "command": [
+      "sbatch",
+      "--parsable",
+      "runs/ant-computed-validation-02/run.sbatch"
+    ],
+    "runner_sha256": "d03d3078ccce9743437d2d5964296068499cd592f54162570733be21c3dffbca",
+    "wrapper_sha256": "1c9438a294e1ff9fe513b7e2aeb07687d0da2793c2068420d5cd5f0bd9f7ffe1",
+    "previous_validation": {
+      "job_id": "21197864",
+      "result": "56 passed plus128-transition smoke; superseded generic benchmark track",
+      "artifact": "/scratch/work/liz23/reproduce/dms/runs/ant-computed-validation-01/validation.json",
+      "sha256": "fd4f0ceea56b9a8e818da917727b5ce59ffd9d7f3f284f4c63886d31643e438a"
+    },
+    "changed_files_from_first_snapshot": [
+      "source/dms/legacy_env.py",
+      "source/dms/report.py",
+      "tests/test_ant_contact_forces.py"
+    ],
+    "job_id": "21197871"
+  },
+  "tests": {
+    "tests": 56,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "frozen_import_verified": true,
+  "pytest_pythonpath_override": "/scratch/work/liz23/reproduce/dms/runs/ant-computed-validation-02/source",
+  "source_unchanged": true,
+  "native_and_computed_modes_tested": true,
+  "initial_log_std_hook_verified": -1.0,
+  "smoke": {
+    "output": "/scratch/work/liz23/reproduce/dms/runs/ant-computed-validation-02/smoke",
+    "steps": 128,
+    "metrics": [
+      {
+        "policy_loss": -0.0004210476763546467,
+        "value_loss": 0.8829948902130127,
+        "entropy": 0.837802104651928,
+        "approx_kl": 1.6584061086177826e-05,
+        "peer_gate_fraction": 0.96875,
+        "intention_feature_std": 0.4702798128128052,
+        "intention_loss": 1.0719075798988342,
+        "intention_nll": 1.0609357506036758,
+        "intention_kl": 0.10971822217106819,
+        "forecast_target_count": 128,
+        "forecast_comparison_count": 128,
+        "forecast_component_count": 160,
+        "history_baseline_target_count": 128,
+        "history_baseline_component_count": 160,
+        "forecast_rmse": 0.5623491508808993,
+        "persistence_rmse": 0.5623491508808993,
+        "history_mean_rmse": 0.4562367969810669,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 128,
+        "episodes": 0,
+        "elapsed_seconds": 0.633087083697319,
+        "training_return_mean": null
+      }
+    ],
+    "evaluation": [
+      {
+        "steps": 128,
+        "seed": 10001,
+        "return": 996.2457672953606,
+        "length": 1000,
+        "battle_won": null
+      }
+    ],
+    "environment": {
+      "benchmark_track": "historical_gym_v2_ant_computed_forces_adaptation",
+      "historical_binary_parity_verified": false,
+      "scenario": "Ant",
+      "native_env_id": "Ant-v2",
+      "agent_conf": "4x2",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel",
+          "cfrc_ext"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "ant.xml",
+      "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "action_dims": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "observation_dims": [
+        31,
+        31,
+        31,
+        31
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+        "alive_bonus_on_terminal": true,
+        "healthy_height": [
+          0.2,
+          1.0
+        ]
+      },
+      "frame_skip": 5,
+      "physics_timestep": 0.01,
+      "native_geom_friction": [
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ]
+      ],
+      "ant_contact_forces": "computed",
+      "contact_force_computation": {
+        "mode": "computed",
+        "api": "mujoco_py.functions.mj_rnePostConstraint",
+        "after_control_substeps_before_reward": true,
+        "after_reset_before_observation": true,
+        "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+        "reward": "Gym Ant contact penalty reads explicitly computed forces",
+        "variant_source_sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+        "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+        "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+      }
+    },
+    "versions": {
+      "torch": "2.6.0+cu126",
+      "numpy": "1.26.4",
+      "protobuf": "6.33.0",
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14"
+    },
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "3bd2de5162ea115fd1dbccbe0a598e7cdaa7183230ab98a6435cbbacedbe0bfc"
+    },
+    "checkpoint_all_tensors_finite": true
+  },
+  "completion_accounting": [
+    "21197871|COMPLETED|0:0|00:00:23|milan2|",
+    "21197871.batch|COMPLETED|0:0|00:00:23|milan2|381008K",
+    "21197871.extern|COMPLETED|0:0|00:00:23|milan2|"
+  ],
+  "logs_sha256": {
+    "logs/dms-ant-force-test_21197871.out": "ce89a265b0980e060df8c32f8dd9d3340bd81a7a96435cfae3a206b146cf4c49",
+    "logs/dms-ant-force-test_21197871.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "validation_source_equals_smoke_source": true,
+  "native_test_xml": {
+    "path": "runs/ant-computed-validation-02/native-tests.xml",
+    "sha256": "b592e0e49da1ecbaccbf87f433c7027dc67bf817b615c908b7dce929772ef283"
+  }
+}

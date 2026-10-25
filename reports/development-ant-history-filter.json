@@ -1,0 +1,569 @@
+{
+  "purpose": "bounded frozen Ant history-filter mechanism probe; no return tuning or training",
+  "status": "completed_verified",
+  "prepared_at_utc": "2026-10-25T09:55:16.677045+00:00",
+  "training_run": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+  "training_job_id": "21196015",
+  "artifact_directory": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01",
+  "checkpoint": {
+    "path": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/checkpoint.pt",
+    "sha256": "a96674ad0ba65b08086576a3ad279bcc342545af1e58928bfeac7392992c4205",
+    "bytes": 2641483,
+    "read_only": true,
+    "snapshot_method": "read latest.pt once into bytes, write to new path; training may atomically replace original"
+  },
+  "training_manifest_sha256": "a68d4d112ba83052673fe82104fbbbd275cc393165bb4a126678e598d85871c7",
+  "training_source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "diagnostic_source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "diagnostic_script_sha256": {
+    "tools/diagnose_history_filter.py": "d8e1248d34fd9ce4f210cea105630c5962f1f59f34637f8b4d9e23af3383a341",
+    "tools/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01"
+  },
+  "wrapper_sha256": "d5c491dbdb3cf590650035a395426d9b6c0026932acdcc06a75ed454f28b0d0d",
+  "legacy_bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "settings": {
+    "steps_per_environment": 128,
+    "num_environments": 4,
+    "fresh_transitions": 512,
+    "diagnostic_seed": 400001,
+    "device": "cpu",
+    "cpus": 4,
+    "memory_gb": 8,
+    "time_limit": "00:30:00",
+    "paper_joint_K_l": [
+      [
+        100,
+        6
+      ],
+      [
+        10000,
+        4
+      ],
+      [
+        1000000,
+        2
+      ]
+    ]
+  },
+  "command": "DMS_SOURCE_ROOT=/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/source bash scripts/legacy/bootstrap.sh run /scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/tools/diagnose_history_filter.py --checkpoint /scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/checkpoint.pt --output /scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/history-filter-01.json --steps 128 --num-envs 4 --seed 400001 --device cpu",
+  "submit_command": "SLURM_CONF_SERVER=slurmctl:6817,slurmctl2:6817 sbatch --parsable /scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/probe.sbatch",
+  "interpretation_limits": [
+    "one frozen development checkpoint; not independent training seeds",
+    "overlapping trajectory prefixes are correlated",
+    "joint K/l scores are not alternate-policy return comparisons",
+    "no threshold selected from quantiles or returns",
+    "Swimmer probe not submitted; waits for at least 200000 training steps"
+  ],
+  "slurm_job_id": "21197238",
+  "submitted_at_utc": "2026-10-25T09:55:36.967800+00:00",
+  "logs": {
+    "stdout": "logs/dms-ant-history-filter_21197238.out",
+    "stderr": "logs/dms-ant-history-filter_21197238.err"
+  },
+  "verified_at_utc": "2026-10-25T09:57:38.702514+00:00",
+  "scheduler": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:00:10",
+    "node": "milan2",
+    "allocated_cpus": 4,
+    "requested_memory": "8G",
+    "time_limit": "00:30:00"
+  },
+  "result": {
+    "path": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/history-filter-01.json",
+    "sha256": "be90c0f41a3a68e5f7495a365568ab7d35f9503aceb06ef99fa7eaf49505a896",
+    "bytes": 2295079
+  },
+  "training_checkpoint": {
+    "steps": 600000,
+    "episodes": 1860,
+    "seed": 101
+  },
+  "runtime": {
+    "slurm_job_id": "21197238",
+    "host": "milan2.int.triton.aalto.fi",
+    "device": "cpu",
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "diagnostic_package_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101/history-filter-diagnostic-01/source/dms",
+    "python_executable": "/scratch/work/liz23/reproduce/dms/.venv-legacy/bin/python"
+  },
+  "checks": {
+    "exact_training_source": true,
+    "copied_source_unchanged": true,
+    "source_files_read_only": true,
+    "diagnostic_scripts_unchanged": true,
+    "loaded_script_hashes_match": true,
+    "diagnostic_scripts_read_only": true,
+    "correct_import_root": true,
+    "correct_job": true,
+    "environment_matches_training": true,
+    "checkpoint_hash_unchanged": true,
+    "checkpoint_read_only": true,
+    "manifest_unchanged": true,
+    "wrapper_unchanged": true,
+    "legacy_bootstrap_unchanged": true,
+    "model_state_unchanged": true,
+    "source_and_packaged_xml_unchanged": true,
+    "zero_parameter_updates": true,
+    "exact_transition_budget": true,
+    "exact_diagnostic_seeds": true,
+    "filter_active": true,
+    "all_eligible_kl_finite": true,
+    "raw_strict_threshold_decisions_correct": true,
+    "raw_counts_correct": true,
+    "external_xml_matches_training_and_loaded_envs": true,
+    "all_expected_paper_settings": true,
+    "pooled_counts_match_raw_pair_rows": true
+  },
+  "collection": {
+    "intentions_active": true,
+    "episode_seeds_by_environment": [
+      [
+        400001
+      ],
+      [
+        400002
+      ],
+      [
+        400003
+      ],
+      [
+        400004
+      ]
+    ],
+    "completed_diagnostic_episodes": 0
+  },
+  "filter_active_in_collected_policy": true,
+  "external_ant_xml": {
+    "path": ".venv-legacy/lib/python3.10/site-packages/gym/envs/mujoco/assets/ant.xml",
+    "sha256_after_probe": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+    "matches_training_and_four_construction_metadata_hashes": true
+  },
+  "settings_summary": [
+    {
+      "threshold": 100.0,
+      "short_length": 6,
+      "paper_joint_setting": true,
+      "configured_setting": false,
+      "peers": {
+        "eligible_count": 6096,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 0.9625350071112393,
+        "negative_kl_count": 0,
+        "kl_quantiles": {
+          "0.0": 0.3347042500972748,
+          "0.25": 0.7266266793012619,
+          "0.5": 0.926831066608429,
+          "0.75": 1.133653163909912,
+          "0.9": 1.520131230354309,
+          "0.95": 1.7529752254486084,
+          "0.99": 1.8536592543125154,
+          "1.0": 2.337416648864746
+        },
+        "development_quantile_thresholds": [
+          {
+            "quantile": 0.0,
+            "threshold": 0.3347042500972748,
+            "fraction_strictly_above": 0.9998359580052494
+          },
+          {
+            "quantile": 0.25,
+            "threshold": 0.7266266793012619,
+            "fraction_strictly_above": 0.75
+          },
+          {
+            "quantile": 0.5,
+            "threshold": 0.926831066608429,
+            "fraction_strictly_above": 0.5
+          },
+          {
+            "quantile": 0.75,
+            "threshold": 1.133653163909912,
+            "fraction_strictly_above": 0.25
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 1.520131230354309,
+            "fraction_strictly_above": 0.10006561679790026
+          },
+          {
+            "quantile": 0.95,
+            "threshold": 1.7529752254486084,
+            "fraction_strictly_above": 0.05003280839895013
+          },
+          {
+            "quantile": 0.99,
+            "threshold": 1.8536592543125154,
+            "fraction_strictly_above": 0.010006561679790027
+          },
+          {
+            "quantile": 1.0,
+            "threshold": 2.337416648864746,
+            "fraction_strictly_above": 0.0
+          }
+        ],
+        "recent_visible_action_entries": 35856,
+        "removed_visible_action_entries": 0
+      },
+      "self": {
+        "eligible_count": 2032,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 0.9914626341723786,
+        "negative_kl_count": 0,
+        "kl_quantiles": {
+          "0.0": 0.33121758699417114,
+          "0.25": 0.5762685835361481,
+          "0.5": 0.8560837805271149,
+          "0.75": 1.4470303356647491,
+          "0.9": 1.8562680721282963,
+          "0.95": 1.9734695732593532,
+          "0.99": 2.2603525543212895,
+          "1.0": 2.577732563018799
+        },
+        "development_quantile_thresholds": [
+          {
+            "quantile": 0.0,
+            "threshold": 0.33121758699417114,
+            "fraction_strictly_above": 0.999507874015748
+          },
+          {
+            "quantile": 0.25,
+            "threshold": 0.5762685835361481,
+            "fraction_strictly_above": 0.75
+          },
+          {
+            "quantile": 0.5,
+            "threshold": 0.8560837805271149,
+            "fraction_strictly_above": 0.5
+          },
+          {
+            "quantile": 0.75,
+            "threshold": 1.4470303356647491,
+            "fraction_strictly_above": 0.25
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 1.8562680721282963,
+            "fraction_strictly_above": 0.10039370078740158
+          },
+          {
+            "quantile": 0.95,
+            "threshold": 1.9734695732593532,
+            "fraction_strictly_above": 0.05019685039370079
+          },
+          {
+            "quantile": 0.99,
+            "threshold": 2.2603525543212895,
+            "fraction_strictly_above": 0.01033464566929134
+          },
+          {
+            "quantile": 1.0,
+            "threshold": 2.577732563018799,
+            "fraction_strictly_above": 0.0
+          }
+        ],
+        "recent_visible_action_entries": 11952,
+        "removed_visible_action_entries": 0
+      }
+    },
+    {
+      "threshold": 10000.0,
+      "short_length": 4,
+      "paper_joint_setting": true,
+      "configured_setting": true,
+      "peers": {
+        "eligible_count": 6096,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 2.744040577821531,
+        "negative_kl_count": 0,
+        "kl_quantiles": {
+          "0.0": 1.3294954299926758,
+          "0.25": 2.108829975128174,
+          "0.5": 2.6102746725082397,
+          "0.75": 3.006704032421112,
+          "0.9": 4.309678792953491,
+          "0.95": 4.479363441467285,
+          "0.99": 4.803900194168091,
+          "1.0": 6.741422653198242
+        },
+        "development_quantile_thresholds": [
+          {
+            "quantile": 0.0,
+            "threshold": 1.3294954299926758,
+            "fraction_strictly_above": 0.9998359580052494
+          },
+          {
+            "quantile": 0.25,
+            "threshold": 2.108829975128174,
+            "fraction_strictly_above": 0.75
+          },
+          {
+            "quantile": 0.5,
+            "threshold": 2.6102746725082397,
+            "fraction_strictly_above": 0.5
+          },
+          {
+            "quantile": 0.75,
+            "threshold": 3.006704032421112,
+            "fraction_strictly_above": 0.25
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 4.309678792953491,
+            "fraction_strictly_above": 0.10006561679790026
+          },
+          {
+            "quantile": 0.95,
+            "threshold": 4.479363441467285,
+            "fraction_strictly_above": 0.05003280839895013
+          },
+          {
+            "quantile": 0.99,
+            "threshold": 4.803900194168091,
+            "fraction_strictly_above": 0.010006561679790027
+          },
+          {
+            "quantile": 1.0,
+            "threshold": 6.741422653198242,
+            "fraction_strictly_above": 0.0
+          }
+        ],
+        "recent_visible_action_entries": 24096,
+        "removed_visible_action_entries": 0
+      },
+      "self": {
+        "eligible_count": 2032,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 2.83703347846983,
+        "negative_kl_count": 0,
+        "kl_quantiles": {
+          "0.0": 1.1138805150985718,
+          "0.25": 1.6554099023342133,
+          "0.5": 2.37915301322937,
+          "0.75": 4.0799853801727295,
+          "0.9": 5.335941457748413,
+          "0.95": 5.791349387168884,
+          "0.99": 6.481864404678346,
+          "1.0": 7.447774410247803
+        },
+        "development_quantile_thresholds": [
+          {
+            "quantile": 0.0,
+            "threshold": 1.1138805150985718,
+            "fraction_strictly_above": 0.999507874015748
+          },
+          {
+            "quantile": 0.25,
+            "threshold": 1.6554099023342133,
+            "fraction_strictly_above": 0.75
+          },
+          {
+            "quantile": 0.5,
+            "threshold": 2.37915301322937,
+            "fraction_strictly_above": 0.5
+          },
+          {
+            "quantile": 0.75,
+            "threshold": 4.0799853801727295,
+            "fraction_strictly_above": 0.25
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 5.335941457748413,
+            "fraction_strictly_above": 0.10039370078740158
+          },
+          {
+            "quantile": 0.95,
+            "threshold": 5.791349387168884,
+            "fraction_strictly_above": 0.05019685039370079
+          },
+          {
+            "quantile": 0.99,
+            "threshold": 6.481864404678346,
+            "fraction_strictly_above": 0.01033464566929134
+          },
+          {
+            "quantile": 1.0,
+            "threshold": 7.447774410247803,
+            "fraction_strictly_above": 0.0
+          }
+        ],
+        "recent_visible_action_entries": 8032,
+        "removed_visible_action_entries": 0
+      }
+    },
+    {
+      "threshold": 1000000.0,
+      "short_length": 2,
+      "paper_joint_setting": true,
+      "configured_setting": false,
+      "peers": {
+        "eligible_count": 6096,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 9.588134860898567,
+        "negative_kl_count": 0,
+        "kl_quantiles": {
+          "0.0": 5.627678394317627,
+          "0.25": 7.8419435024261475,
+          "0.5": 9.14577579498291,
+          "0.75": 10.755524158477783,
+          "0.9": 13.25993299484253,
+          "0.95": 15.162786960601807,
+          "0.99": 15.914534902572635,
+          "1.0": 19.6574764251709
+        },
+        "development_quantile_thresholds": [
+          {
+            "quantile": 0.0,
+            "threshold": 5.627678394317627,
+            "fraction_strictly_above": 0.9998359580052494
+          },
+          {
+            "quantile": 0.25,
+            "threshold": 7.8419435024261475,
+            "fraction_strictly_above": 0.75
+          },
+          {
+            "quantile": 0.5,
+            "threshold": 9.14577579498291,
+            "fraction_strictly_above": 0.5
+          },
+          {
+            "quantile": 0.75,
+            "threshold": 10.755524158477783,
+            "fraction_strictly_above": 0.25
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 13.25993299484253,
+            "fraction_strictly_above": 0.10006561679790026
+          },
+          {
+            "quantile": 0.95,
+            "threshold": 15.162786960601807,
+            "fraction_strictly_above": 0.05003280839895013
+          },
+          {
+            "quantile": 0.99,
+            "threshold": 15.914534902572635,
+            "fraction_strictly_above": 0.010006561679790027
+          },
+          {
+            "quantile": 1.0,
+            "threshold": 19.6574764251709,
+            "fraction_strictly_above": 0.0
+          }
+        ],
+        "recent_visible_action_entries": 12144,
+        "removed_visible_action_entries": 0
+      },
+      "self": {
+        "eligible_count": 2032,
+        "rejected_count": 0,
+        "rejection_fraction": 0.0,
+        "kl_mean": 10.138432964799911,
+        "negative_kl_count": 0,
+        "kl_quantiles": {
+          "0.0": 4.798308372497559,
+          "0.25": 6.1093127727508545,
+          "0.5": 8.450770378112793,
+          "0.75": 13.493089437484741,
+          "0.9": 18.811733627319335,
+          "0.95": 20.040005779266355,
+          "0.99": 22.361574172973633,
+          "1.0": 25.33334732055664
+        },
+        "development_quantile_thresholds": [
+          {
+            "quantile": 0.0,
+            "threshold": 4.798308372497559,
+            "fraction_strictly_above": 0.999507874015748
+          },
+          {
+            "quantile": 0.25,
+            "threshold": 6.1093127727508545,
+            "fraction_strictly_above": 0.75
+          },
+          {
+            "quantile": 0.5,
+            "threshold": 8.450770378112793,
+            "fraction_strictly_above": 0.5
+          },
+          {
+            "quantile": 0.75,
+            "threshold": 13.493089437484741,
+            "fraction_strictly_above": 0.25
+          },
+          {
+            "quantile": 0.9,
+            "threshold": 18.811733627319335,
+            "fraction_strictly_above": 0.10039370078740158
+          },
+          {
+            "quantile": 0.95,
+            "threshold": 20.040005779266355,
+            "fraction_strictly_above": 0.05019685039370079
+          },
+          {
+            "quantile": 0.99,
+            "threshold": 22.361574172973633,
+            "fraction_strictly_above": 0.01033464566929134
+          },
+          {
+            "quantile": 1.0,
+            "threshold": 25.33334732055664,
+            "fraction_strictly_above": 0.0
+          }
+        ],
+        "recent_visible_action_entries": 4048,
+        "removed_visible_action_entries": 0
+      }
+    }
+  ],
+  "result_summary": "No rejection at any paper joint setting on this frozen 600k-step seed101 checkpoint: 0/6096 eligible peer prefixes and 0/2032 self prefixes per setting. Scores are finite; no model updates. This establishes sampled inactivity only, not training-wide inactivity or return benefit from changed cutoffs.",
+  "logs_sha256": {
+    "stdout": "77d6604575cee03220b50c0218b734a6bab3a6db25a2d567f97683c98920ac95",
+    "stderr": "981750f50007d3410dac6f7cc78a3e29c94f9aceaa04560552c9ec3fcaa5e9ca"
+  }
+}

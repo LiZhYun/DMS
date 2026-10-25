@@ -18,6 +18,8 @@ The implementation is a work in progress. **Performance exceeding the paper has 
 
 The code preserves observer, peer, time, and environment dimensions explicitly. Policies receive local observations and locally inferred intentions. Global-state reconstruction is disabled. [Implementation decisions](docs/IMPLEMENTATION_DECISIONS.md) explain the deliberate differences from the manuscript.
 
+The optional [local policy memory](docs/LOCAL_POLICY_MEMORY.md) adds a bounded observation-history GRU to both IPPO and DMS. It keeps the same local information boundary and recomputes features during PPO; development experiments are testing whether it improves learning.
+
 ## Install
 
 Use Python 3.10 or newer in an isolated environment. Install a PyTorch build compatible with the compute node first; then install this package and the required environment extras. The existing Triton environment is `dms/.venv` and currently uses PyTorch 2.6 with CUDA 12.6.
@@ -55,6 +57,8 @@ Use a dedicated installation or verify existing map hashes before copying over m
 The [SMAC environment audit](docs/SMAC_ENVIRONMENT.md) records the verified map hashes, game selection, observation/reward defaults, and remaining historical-version gaps. Each new run saves this environment metadata.
 
 For the historical MuJoCo compatibility track, use a separate Python 3.10 environment with Gym 0.23.1, `mujoco-py` 2.1.2.14, and MuJoCo 2.1.0. The prepared Triton setup is `.venv-legacy`; it leaves the modern environment intact. Follow the [historical environment setup](docs/HISTORICAL_ENVIRONMENT.md#isolated-preparation-and-allocated-smoke) to prepare dependencies and compile the native extension on a compute node. The original graph, v2 rewards, and XML assets are preserved, with corrected actuator routing and explicit local control sensing. This is a documented compatibility track, not verified parity with the paper's unrecorded binaries.
+
+The pinned native Ant simulator leaves contact-force buffers zero. The optional [computed-force variant](docs/ANT_CONTACT_FORCES.md) populates those existing local observations and the contact penalty. Its configuration, benchmark label, and results remain separate from native Ant; passing its execution checks does not establish historical comparability.
 
 ## Run the synthetic check
 
@@ -161,6 +165,7 @@ The report validates matching settings, budgets, and evaluation protocols, then 
 | Synthetic task | Interface, optimization, evaluation, and checkpoint plumbing |
 | Original SMAC / StarCraft II 4.10 | Potential paper comparison after matching maps, difficulty, observation flags, and evaluation protocol |
 | Historical MaMuJoCo v2 compatibility | Original observation graph, v2 rewards and XML assets on the documented Gym 0.23 / MuJoCo 2.1 stack; binary parity and empirical improvement remain unverified |
+| Ant with explicitly computed contact forces | A separate legacy-backend adaptation that populates force observations and contact penalties; historical equivalence remains unverified and the reference release gate is blocked |
 | Modern MaMuJoCo v5 | A declared modern adaptation; higher scores alone do not establish improvement over original MuJoCo v2 results |
 
 For MuJoCo, native joint observations do not expose actuator commands. The adapter explicitly adds a locally sensed previous-control channel, restricted to joints in each observer's configured graph. IPPO receives the same channel. The manuscript also conflicts on observation radius: its task table says `agent_obsk=0`, while its prose says `1`. Initial configs follow the prose (k=1), because a strict k=0 action sensor exposes no peers. The plan also requires the table setting k=0 as a separate sensitivity run. Author clarification is pending. These distinctions must remain visible in any public result claim.
@@ -169,6 +174,6 @@ For MuJoCo, native joint observations do not expose actuator commands. The adapt
 
 The software follows the original repository’s [MIT license](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) identify the adapted graph and Swimmer source, packaged XML, and separately installed benchmark assets. Cite the published method using [CITATION.bib](CITATION.bib); no benchmark reproduction result is claimed by this development release.
 
-A copied public checkout passed 277 tests (22 native-legacy tests skipped) on an allocated CPU node without the workspace’s `runs`, `reference`, or environment directories. It reused the installed test dependencies; [the recorded check](reports/clean-checkout-tests.json) does not claim a new dependency installation.
+The current copied public checkout passed **442 tests** (32 native-legacy tests skipped); a separate allocation passed **56 native legacy tests** on the same package source. Offline wheel and isolated import checks verified the modules, licenses, and packaged Swimmer XML. [The integrated validation](reports/current-source-validation.json) reused installed dependencies; it does not claim a fresh dependency installation or benchmark performance. Earlier real-SMAC CUDA smokes separately validated local policy memory and inactive-agent masking.
 
 The [CPU CI workflow](.github/workflows/tests.yml) installs the pinned direct dependencies, runs the synthetic, mocked SMAC, and modern MuJoCo tests, and builds a wheel. Native legacy MuJoCo and real StarCraft checks run separately on allocated Triton nodes. The workflow has not yet run on GitHub because this repository has not been published.

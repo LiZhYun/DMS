@@ -1,0 +1,1269 @@
+{
+  "purpose": "Bounded development diagnosis of initial Gaussian action scale and explicit computed local Ant contact forces",
+  "created_utc": "2026-10-25T10:35:51.356362+00:00",
+  "status": "all_four_running_startup_verified",
+  "base_config": "configs/development/legacy-ant-4x2-dms-latent-decoder-beta-01-1m.json",
+  "base_config_sha256": "48ad0bad09cc4dd01eb551547b2f988739b5cfb2179e3753fb833325f7412fbc",
+  "training_seed": 101,
+  "held_out_training_seeds_used": false,
+  "steps_per_run": 500000,
+  "eval_every": 100000,
+  "eval_episodes": 5,
+  "eval_seed_start": 10001,
+  "selection_note": "Native Ant pilots largely learned standing behavior. A paired simulator diagnostic found native cfrc_ext remained zero despite contacts; explicitly computed forces restore existing graph-local force slots and contact penalties. Lower initial Gaussian scale tests the separately identified high initial Ant control cost. These are development diagnostics, not selected final results.",
+  "interpretation_limits": [
+    "One training seed and a short budget do not establish a robust learning advantage.",
+    "The four configurations support the three listed controlled comparisons; they do not identify a full scale-by-force interaction.",
+    "Computed forces change both existing local force observations and contact reward. They are an explicit adaptation with unverified historical simulator parity.",
+    "All results, including underperforming and failed trials, must be retained; no paper-performance claim follows from submission or smoke tests.",
+    "The unchanged warmup_episodes=100 is episode-based. Scale/force variants can reach it at different transition counts because episode lengths differ; compare completed-episode and gate metrics when interpreting early learning."
+  ],
+  "required_full_validation": {
+    "status": "passed",
+    "job_id": "21197934",
+    "snapshot_manifest": "runs/current-source-validation-20261025-01/snapshot.json",
+    "tests": {
+      "tests": 474,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 32,
+      "passed": 442,
+      "seconds": 18.897
+    },
+    "result_artifact": "runs/current-source-validation-20261025-01/validation.json",
+    "result_sha256": "c6367d98e607354f80bfb183f05822136b35456a74179b634c45a05630b15096",
+    "confirmation": "intention_fix confirmed COMPLETED 0:0, 442 passed, 32 legacy-only skipped; packaging/import checks passed"
+  },
+  "prior_native_validation": {
+    "job_id": "21197871",
+    "report": "reports/ant-computed-validation.json",
+    "source_root": "runs/ant-computed-validation-02/source",
+    "tests_passed": 56,
+    "smoke_transitions": 128
+  },
+  "frozen_source": {
+    "source_root": "runs/development-ant-forces-scale-seed101/source",
+    "absolute_source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/source",
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "3bd2de5162ea115fd1dbccbe0a598e7cdaa7183230ab98a6435cbbacedbe0bfc"
+    },
+    "source_mapping_sha256": "dc47d51fe4507dfc9c57f010a0c09d0bde18220a9dad176143ff7bd3f297cc79",
+    "source_file_count": 22,
+    "copied_from": "/scratch/work/liz23/reproduce/dms/runs/current-source-validation-20261025-01/checkout/src",
+    "snapshot_manifest": "runs/current-source-validation-20261025-01/snapshot.json",
+    "snapshot_manifest_sha256": "3e53aa4bbbff6aa8b498445257264de6a82e0b5a87e9efa683b6e39a956fe707",
+    "all_files_match_native_validation_21197871": true,
+    "copied_utc": "2026-10-25T10:38:18.757441+00:00"
+  },
+  "resources_per_run": {
+    "cpus": 4,
+    "memory": "16G",
+    "time": "03:00:00",
+    "partitions": [
+      "batch-milan",
+      "batch-csl",
+      "batch-skl"
+    ]
+  },
+  "contrasts": [
+    {
+      "contrast": "initial_action_scale_in_native",
+      "left": "dms-native-logstd-m05",
+      "right": "dms-native-logstd-m1",
+      "only_resolved_config_differences": [
+        "initial_log_std",
+        "output"
+      ],
+      "actual_runtime_config_differences_verified": [
+        "initial_log_std",
+        "output"
+      ]
+    },
+    {
+      "contrast": "contact_force_variant_at_logstd_minus1",
+      "left": "dms-native-logstd-m1",
+      "right": "dms-computed-logstd-m1",
+      "only_resolved_config_differences": [
+        "ant_contact_forces",
+        "output"
+      ],
+      "actual_runtime_config_differences_verified": [
+        "ant_contact_forces",
+        "output"
+      ]
+    },
+    {
+      "contrast": "algorithm_in_computed_at_logstd_minus1",
+      "left": "dms-computed-logstd-m1",
+      "right": "ippo-computed-logstd-m1",
+      "only_resolved_config_differences": [
+        "algorithm",
+        "output"
+      ],
+      "actual_runtime_config_differences_verified": [
+        "algorithm",
+        "output"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "variant": "dms-native-logstd-m05",
+      "config": "configs/development/legacy-ant-4x2-dms-native-logstd-m05-500k.json",
+      "config_sha256": "fbc554734bd87717de550abd9a36d69726cb135bc04b6952089b8db3c3488983",
+      "output": "runs/dev-legacy-ant-4x2-dms-native-logstd-m05-500k-101",
+      "resolved_changes_from_baseline": {
+        "total_steps": {
+          "baseline": 1000000,
+          "trial": 500000
+        },
+        "eval_every": {
+          "baseline": 200000,
+          "trial": 100000
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+          "trial": "runs/dev-legacy-ant-4x2-dms-native-logstd-m05-500k-101"
+        }
+      },
+      "job_id": "21197957",
+      "status": "running_startup_verified",
+      "frozen_config": "runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-dms-native-logstd-m05-500k.json",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=4",
+        "--mem=16G",
+        "--time=03:00:00",
+        "--job-name=dms-ant-native-m05",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-dms-native-logstd-m05-500k.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-native-logstd-m05-500k-101",
+        "101"
+      ],
+      "submission_environment": {
+        "DMS_SOURCE_ROOT": "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/source",
+        "DMS_ROOT": "/scratch/work/liz23/reproduce/dms"
+      },
+      "submission_started_utc": "2026-10-25T10:39:23.452648+00:00",
+      "job_name": "dms-ant-native-m05",
+      "submitted_utc": "2026-10-25T10:39:23.477618+00:00",
+      "submission_stdout": "21197957\n",
+      "submission_stderr": "",
+      "log_stdout": "logs/dms-ant-native-m05_21197957.out",
+      "log_stderr": "logs/dms-ant-native-m05_21197957.err",
+      "startup_verification": {
+        "checked_utc": "2026-10-25T10:42:23.562146+00:00",
+        "resolved_config_matches_frozen_config": true,
+        "all_22_archived_source_and_asset_hashes_match": true,
+        "all_21_manifest_python_source_hashes_match": true,
+        "source_manifest_hashes_match_all_other_pilots": true,
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "4x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            31,
+            31,
+            31,
+            31
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "native",
+          "contact_force_computation": {
+            "mode": "native",
+            "api": null,
+            "after_control_substeps_before_reward": false,
+            "after_reset_before_observation": false,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+            "variant_source_sha256": null,
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          }
+        },
+        "versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "runtime": {
+          "host": "milan1.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21197957",
+          "slurm_partition": "batch-milan"
+        },
+        "first_metric": {
+          "policy_loss": -0.0017508863282273523,
+          "value_loss": 0.6163470678031444,
+          "entropy": 1.834511537849903,
+          "approx_kl": 0.001908831826858659,
+          "peer_gate_fraction": 0.0,
+          "intention_feature_std": 0.0,
+          "intention_loss": 1.6377612352371216,
+          "intention_nll": 1.6019892245531082,
+          "intention_kl": 0.3577200695872307,
+          "forecast_target_count": 4080,
+          "forecast_comparison_count": 4032,
+          "forecast_component_count": 5040,
+          "history_baseline_target_count": 4032,
+          "history_baseline_component_count": 5040,
+          "forecast_rmse": 0.7947832720524235,
+          "persistence_rmse": 0.7947832720524235,
+          "history_mean_rmse": 0.5718347382744645,
+          "history_baseline_coverage_fraction": 0.9882352941176471,
+          "steps": 4000,
+          "episodes": 18,
+          "elapsed_seconds": 11.437517888029106,
+          "training_return_mean": -21.231658303142467
+        },
+        "latest_metric": {
+          "policy_loss": -0.001317945101800433,
+          "value_loss": 0.5340066406875849,
+          "entropy": 1.7837748914957046,
+          "approx_kl": 0.0005678206977506762,
+          "peer_gate_fraction": 0.9935,
+          "intention_feature_std": 0.4795035719871521,
+          "intention_loss": 1.454655036330223,
+          "intention_nll": 1.4531210511922836,
+          "intention_kl": 0.015339795616455376,
+          "forecast_target_count": 4080,
+          "forecast_comparison_count": 4032,
+          "forecast_component_count": 5040,
+          "history_baseline_target_count": 4032,
+          "history_baseline_component_count": 5040,
+          "forecast_rmse": 0.7481965336852597,
+          "persistence_rmse": 0.7791475659032574,
+          "history_mean_rmse": 0.53871961869326,
+          "history_baseline_coverage_fraction": 0.9882352941176471,
+          "steps": 28000,
+          "episodes": 157,
+          "elapsed_seconds": 137.9734199460363,
+          "training_return_mean": -39.481309886058554
+        },
+        "metric_rows_checked": 7,
+        "all_numeric_metrics_finite": true,
+        "runtime_config_sha256": "492e06b13fd666aaa0b28de4cc9613ab6f06b330b3c39a8e719f1db3e1ece617"
+      }
+    },
+    {
+      "variant": "dms-native-logstd-m1",
+      "config": "configs/development/legacy-ant-4x2-dms-native-logstd-m1-500k.json",
+      "config_sha256": "ba7823825fe96668d2b0c57c81bd243032ceb2882a4fdd2d63720ee0e0b34462",
+      "output": "runs/dev-legacy-ant-4x2-dms-native-logstd-m1-500k-101",
+      "resolved_changes_from_baseline": {
+        "total_steps": {
+          "baseline": 1000000,
+          "trial": 500000
+        },
+        "initial_log_std": {
+          "baseline": -0.5,
+          "trial": -1.0
+        },
+        "eval_every": {
+          "baseline": 200000,
+          "trial": 100000
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+          "trial": "runs/dev-legacy-ant-4x2-dms-native-logstd-m1-500k-101"
+        }
+      },
+      "job_id": "21197958",
+      "status": "running_startup_verified",
+      "frozen_config": "runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-dms-native-logstd-m1-500k.json",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=4",
+        "--mem=16G",
+        "--time=03:00:00",
+        "--job-name=dms-ant-native-m1",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-dms-native-logstd-m1-500k.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-native-logstd-m1-500k-101",
+        "101"
+      ],
+      "submission_environment": {
+        "DMS_SOURCE_ROOT": "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/source",
+        "DMS_ROOT": "/scratch/work/liz23/reproduce/dms"
+      },
+      "submission_started_utc": "2026-10-25T10:39:23.478803+00:00",
+      "job_name": "dms-ant-native-m1",
+      "submitted_utc": "2026-10-25T10:39:23.566905+00:00",
+      "submission_stdout": "21197958\n",
+      "submission_stderr": "",
+      "log_stdout": "logs/dms-ant-native-m1_21197958.out",
+      "log_stderr": "logs/dms-ant-native-m1_21197958.err",
+      "startup_verification": {
+        "checked_utc": "2026-10-25T10:42:23.663220+00:00",
+        "resolved_config_matches_frozen_config": true,
+        "all_22_archived_source_and_asset_hashes_match": true,
+        "all_21_manifest_python_source_hashes_match": true,
+        "source_manifest_hashes_match_all_other_pilots": true,
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "4x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            31,
+            31,
+            31,
+            31
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "native",
+          "contact_force_computation": {
+            "mode": "native",
+            "api": null,
+            "after_control_substeps_before_reward": false,
+            "after_reset_before_observation": false,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+            "variant_source_sha256": null,
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          }
+        },
+        "versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "runtime": {
+          "host": "milan2.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21197958",
+          "slurm_partition": "batch-milan"
+        },
+        "first_metric": {
+          "policy_loss": -0.0016091983861770132,
+          "value_loss": 1.4470688372850418,
+          "entropy": 0.8356304958462715,
+          "approx_kl": 0.0024419539462542162,
+          "peer_gate_fraction": 0.0,
+          "intention_feature_std": 0.0,
+          "intention_loss": 0.9921626523137093,
+          "intention_nll": 0.9772392734885216,
+          "intention_kl": 0.1492337454110384,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 5120,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 5120,
+          "forecast_rmse": 0.5352139120853234,
+          "persistence_rmse": 0.5352139120853234,
+          "history_mean_rmse": 0.3587863382772821,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 4000,
+          "episodes": 6,
+          "elapsed_seconds": 9.037003614008427,
+          "training_return_mean": 227.39497207972212
+        },
+        "latest_metric": {
+          "policy_loss": -0.0017205037927851663,
+          "value_loss": 0.1889456331729889,
+          "entropy": 0.7461440853774548,
+          "approx_kl": 0.000900261346453135,
+          "peer_gate_fraction": 0.0,
+          "intention_feature_std": 0.0,
+          "intention_loss": 0.8581760972738266,
+          "intention_nll": 0.8575498908758163,
+          "intention_kl": 0.006262093142140657,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 5120,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 5120,
+          "forecast_rmse": 0.45960265098698916,
+          "persistence_rmse": 0.5127886068081551,
+          "history_mean_rmse": 0.3700670668129029,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 64000,
+          "episodes": 95,
+          "elapsed_seconds": 144.3031178372912,
+          "training_return_mean": 445.1345806037789
+        },
+        "metric_rows_checked": 16,
+        "all_numeric_metrics_finite": true,
+        "runtime_config_sha256": "b5d86faf1e2e39cee3abcd6fc02a032ebe194a71f925a7dbdbf13287186a2b0a"
+      }
+    },
+    {
+      "variant": "dms-computed-logstd-m1",
+      "config": "configs/development/legacy-ant-4x2-dms-computed-logstd-m1-500k.json",
+      "config_sha256": "15c388ce6ef9cacaded0905d5ccaef67b1f753f8e240f15857788b5f21a079c1",
+      "output": "runs/dev-legacy-ant-4x2-dms-computed-logstd-m1-500k-101",
+      "resolved_changes_from_baseline": {
+        "ant_contact_forces": {
+          "baseline": "native",
+          "trial": "computed"
+        },
+        "total_steps": {
+          "baseline": 1000000,
+          "trial": 500000
+        },
+        "initial_log_std": {
+          "baseline": -0.5,
+          "trial": -1.0
+        },
+        "eval_every": {
+          "baseline": 200000,
+          "trial": 100000
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+          "trial": "runs/dev-legacy-ant-4x2-dms-computed-logstd-m1-500k-101"
+        }
+      },
+      "job_id": "21197959",
+      "status": "running_startup_verified",
+      "frozen_config": "runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-dms-computed-logstd-m1-500k.json",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=4",
+        "--mem=16G",
+        "--time=03:00:00",
+        "--job-name=dms-ant-computed-m1",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-dms-computed-logstd-m1-500k.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-dms-computed-logstd-m1-500k-101",
+        "101"
+      ],
+      "submission_environment": {
+        "DMS_SOURCE_ROOT": "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/source",
+        "DMS_ROOT": "/scratch/work/liz23/reproduce/dms"
+      },
+      "submission_started_utc": "2026-10-25T10:39:23.568228+00:00",
+      "job_name": "dms-ant-computed-m1",
+      "submitted_utc": "2026-10-25T10:39:23.655254+00:00",
+      "submission_stdout": "21197959\n",
+      "submission_stderr": "",
+      "log_stdout": "logs/dms-ant-computed-m1_21197959.out",
+      "log_stderr": "logs/dms-ant-computed-m1_21197959.err",
+      "startup_verification": {
+        "checked_utc": "2026-10-25T10:42:23.793261+00:00",
+        "resolved_config_matches_frozen_config": true,
+        "all_22_archived_source_and_asset_hashes_match": true,
+        "all_21_manifest_python_source_hashes_match": true,
+        "source_manifest_hashes_match_all_other_pilots": true,
+        "benchmark_track": "historical_gym_v2_ant_computed_forces_adaptation",
+        "environment": {
+          "benchmark_track": "historical_gym_v2_ant_computed_forces_adaptation",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "4x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            31,
+            31,
+            31,
+            31
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "computed",
+          "contact_force_computation": {
+            "mode": "computed",
+            "api": "mujoco_py.functions.mj_rnePostConstraint",
+            "after_control_substeps_before_reward": true,
+            "after_reset_before_observation": true,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "Gym Ant contact penalty reads explicitly computed forces",
+            "variant_source_sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          }
+        },
+        "versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "runtime": {
+          "host": "milan2.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21197959",
+          "slurm_partition": "batch-milan"
+        },
+        "first_metric": {
+          "policy_loss": -0.0012160602549556644,
+          "value_loss": 1.0696267649531364,
+          "entropy": 0.8348815083503723,
+          "approx_kl": 0.0020977665244572563,
+          "peer_gate_fraction": 0.0,
+          "intention_feature_std": 0.0,
+          "intention_loss": 1.0228721052408218,
+          "intention_nll": 1.0064005255699158,
+          "intention_kl": 0.1647158144041896,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 5120,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 5120,
+          "forecast_rmse": 0.5351939634929884,
+          "persistence_rmse": 0.5351939634929884,
+          "history_mean_rmse": 0.37593453153719536,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 4000,
+          "episodes": 10,
+          "elapsed_seconds": 10.637597145047039,
+          "training_return_mean": 137.1497814101982
+        },
+        "latest_metric": {
+          "policy_loss": -0.0026733576789411016,
+          "value_loss": 0.261759970150888,
+          "entropy": 0.7625646524131298,
+          "approx_kl": 0.0010858699877417167,
+          "peer_gate_fraction": 0.0,
+          "intention_feature_std": 0.0,
+          "intention_loss": 0.8718046024441719,
+          "intention_nll": 0.8713380768895149,
+          "intention_kl": 0.004665176646085456,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 5120,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 5120,
+          "forecast_rmse": 0.46301062098651624,
+          "persistence_rmse": 0.4957820251064531,
+          "history_mean_rmse": 0.36566276553827864,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 52000,
+          "episodes": 93,
+          "elapsed_seconds": 137.98925250722095,
+          "training_return_mean": 371.7233907522541
+        },
+        "metric_rows_checked": 13,
+        "all_numeric_metrics_finite": true,
+        "runtime_config_sha256": "590548dbde2c28ea8914cb372c8be881a7c864c07a935586b4760bf4ff663690"
+      }
+    },
+    {
+      "variant": "ippo-computed-logstd-m1",
+      "config": "configs/development/legacy-ant-4x2-ippo-computed-logstd-m1-500k.json",
+      "config_sha256": "ac627707c3a40b0b2fda633f842e0dffc37a490f476eeb745bdfc82823eb56c2",
+      "output": "runs/dev-legacy-ant-4x2-ippo-computed-logstd-m1-500k-101",
+      "resolved_changes_from_baseline": {
+        "algorithm": {
+          "baseline": "dms",
+          "trial": "ippo"
+        },
+        "ant_contact_forces": {
+          "baseline": "native",
+          "trial": "computed"
+        },
+        "total_steps": {
+          "baseline": 1000000,
+          "trial": 500000
+        },
+        "initial_log_std": {
+          "baseline": -0.5,
+          "trial": -1.0
+        },
+        "eval_every": {
+          "baseline": 200000,
+          "trial": 100000
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+          "trial": "runs/dev-legacy-ant-4x2-ippo-computed-logstd-m1-500k-101"
+        }
+      },
+      "job_id": "21197960",
+      "status": "running_startup_verified",
+      "frozen_config": "runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-ippo-computed-logstd-m1-500k.json",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=4",
+        "--mem=16G",
+        "--time=03:00:00",
+        "--job-name=ippo-ant-computed-m1",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/configs/legacy-ant-4x2-ippo-computed-logstd-m1-500k.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-ippo-computed-logstd-m1-500k-101",
+        "101"
+      ],
+      "submission_environment": {
+        "DMS_SOURCE_ROOT": "/scratch/work/liz23/reproduce/dms/runs/development-ant-forces-scale-seed101/source",
+        "DMS_ROOT": "/scratch/work/liz23/reproduce/dms"
+      },
+      "submission_started_utc": "2026-10-25T10:39:23.656617+00:00",
+      "job_name": "ippo-ant-computed-m1",
+      "submitted_utc": "2026-10-25T10:39:23.679354+00:00",
+      "submission_stdout": "21197960\n",
+      "submission_stderr": "",
+      "log_stdout": "logs/ippo-ant-computed-m1_21197960.out",
+      "log_stderr": "logs/ippo-ant-computed-m1_21197960.err",
+      "startup_verification": {
+        "checked_utc": "2026-10-25T10:42:23.950353+00:00",
+        "resolved_config_matches_frozen_config": true,
+        "all_22_archived_source_and_asset_hashes_match": true,
+        "all_21_manifest_python_source_hashes_match": true,
+        "source_manifest_hashes_match_all_other_pilots": true,
+        "benchmark_track": "historical_gym_v2_ant_computed_forces_adaptation",
+        "environment": {
+          "benchmark_track": "historical_gym_v2_ant_computed_forces_adaptation",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "4x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              0,
+              1
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            31,
+            31,
+            31,
+            31
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "computed",
+          "contact_force_computation": {
+            "mode": "computed",
+            "api": "mujoco_py.functions.mj_rnePostConstraint",
+            "after_control_substeps_before_reward": true,
+            "after_reset_before_observation": true,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "Gym Ant contact penalty reads explicitly computed forces",
+            "variant_source_sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          }
+        },
+        "versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "runtime": {
+          "host": "milan3.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21197960",
+          "slurm_partition": "batch-milan"
+        },
+        "first_metric": {
+          "policy_loss": -0.0016702874650036392,
+          "value_loss": 1.5575424790382386,
+          "entropy": 0.8356048986315727,
+          "approx_kl": 0.002472647221020452,
+          "peer_gate_fraction": 0.0,
+          "steps": 4000,
+          "episodes": 9,
+          "elapsed_seconds": 5.70700896019116,
+          "training_return_mean": 195.99935937350932
+        },
+        "latest_metric": {
+          "policy_loss": -0.002848374557652278,
+          "value_loss": 0.11404515532776713,
+          "entropy": 0.6849677547812462,
+          "approx_kl": 0.001626240070413587,
+          "peer_gate_fraction": 0.0,
+          "steps": 92000,
+          "episodes": 154,
+          "elapsed_seconds": 127.46020244807005,
+          "training_return_mean": 321.99304491056535
+        },
+        "metric_rows_checked": 23,
+        "all_numeric_metrics_finite": true,
+        "runtime_config_sha256": "a72f5737983590162f890b947bcba76f6fd8c6d4a5a830538fe1008deeeb6f7b"
+      }
+    }
+  ],
+  "submission_support": {
+    "wrapper": "scripts/triton/train_legacy_cpu.sbatch",
+    "wrapper_sha256": "45612ec5e621e708e15dca8a10775589b9624e6f147ea3841e6639374890607d",
+    "legacy_bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7"
+  },
+  "startup_accounting": [
+    "21197957|RUNNING|0:0|00:02:31|batch-milan|milan1|4|16G|03:00:00",
+    "21197957.batch|RUNNING|0:0|00:02:31||milan1|4||",
+    "21197957.extern|RUNNING|0:0|00:02:31||milan1|4||",
+    "21197958|RUNNING|0:0|00:02:31|batch-milan|milan2|4|16G|03:00:00",
+    "21197958.batch|RUNNING|0:0|00:02:31||milan2|4||",
+    "21197958.extern|RUNNING|0:0|00:02:31||milan2|4||",
+    "21197959|RUNNING|0:0|00:02:31|batch-milan|milan2|4|16G|03:00:00",
+    "21197959.batch|RUNNING|0:0|00:02:31||milan2|4||",
+    "21197959.extern|RUNNING|0:0|00:02:31||milan2|4||",
+    "21197960|RUNNING|0:0|00:02:31|batch-milan|milan3|4|16G|03:00:00",
+    "21197960.batch|RUNNING|0:0|00:02:31||milan3|4||",
+    "21197960.extern|RUNNING|0:0|00:02:31||milan3|4||"
+  ]
+}

@@ -331,6 +331,22 @@ def _comparison_metadata(record: dict[str, Any], family: str, target: dict[str, 
     return config, environment
 
 
+def _computed_ant_forces(record: dict[str, Any]) -> bool:
+    """Recognize an override even in an old or incomplete provenance record."""
+    if (record.get("config") or {}).get("ant_contact_forces") == "computed":
+        return True
+    for metadata in ((record.get("manifest") or {}).get("environment"),
+                     record.get("evaluation_environment")):
+        if not isinstance(metadata, dict):
+            continue
+        force = metadata.get("contact_force_computation")
+        if (metadata.get("ant_contact_forces") == "computed"
+                or isinstance(force, dict) and force.get("mode") == "computed"
+                or "computed_forces" in str(metadata.get("benchmark_track", ""))):
+            return True
+    return False
+
+
 def _compare(
     records: list[dict[str, Any]], report: dict[str, Any],
     target_id: str, targets: dict[str, Any],
@@ -372,6 +388,12 @@ def _compare(
         diagnostic = set(range(int(cfg["eval_seed"]), int(cfg["eval_seed"]) + int(cfg["eval_episodes"])))
         disjoint = disjoint and not diagnostic.intersection(row["seed"] for row in record["results"])
     checks["final_episode_seeds_disjoint_from_diagnostics"] = disjoint
+    # Explicit force recomputation changes Ant observations and its contact
+    # penalty. Keep the numerical reference comparison, but do not certify an
+    # unverified simulator modification as a registered benchmark result.
+    computed_ant = (family == "mamujoco" and target["environment"] == "Ant"
+                    and any(_computed_ant_forces(record) for record in records))
+    checks["no_unverified_contact_force_override"] = not computed_ant
     modern = family == "mamujoco" and "modern" in environment["benchmark_track"].lower()
     if family == "smac":
         scope = "published_point_under_declared_evaluation"
@@ -379,6 +401,13 @@ def _compare(
             "Exceedance concerns the published point under the declared evaluation. "
             "The paper's median aggregation and raw sampling uncertainty are unresolved; "
             "this is not an exact statistical reproduction of its raw results."
+        )
+    elif computed_ant:
+        scope = "computed_ant_contact_forces_adaptation_reference_only"
+        interpretation = (
+            "Explicit Ant force recomputation changes local force observations and the contact penalty. "
+            "Historical environment equivalence has not been established. The manuscript plot threshold "
+            "is retained only as an engineering reference; this variant cannot pass the release reference gate."
         )
     else:
         scope = "modern_adaptation_reference_only" if modern else "unverified_mujoco_reference_only"

@@ -24,6 +24,9 @@ class EnvStep:
     controls observed before the next decision. ``visibility`` is
     [observer, peer]. Discrete action masks are [agent, action]. No adapter
     auto-resets, so final observations remain available for timeout bootstrap.
+    The optional ObservationHistoryEnv wrapper replaces obs with local windows
+    [agent, history, base observation + validity channel]; other fields retain
+    their meanings. Its metadata records that layout explicitly.
     """
 
     obs: np.ndarray
