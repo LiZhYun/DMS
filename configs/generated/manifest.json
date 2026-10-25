@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "targets": {
+    "path": "configs/paper_targets.json",
+    "sha256": "2d8daea42b9fda5eb5172260765137996ab5f375b384a8fa6505220fc827a8b8"
+  },
+  "reference_templates": {
+    "mamujoco": {
+      "path": "configs/halfcheetah_2x3_dms.json",
+      "sha256": "2b5637f82e05c37c0a7c835c1c75deaa068c4c3c8f62315691c296d7ea5e56fe"
+    },
+    "smac": {
+      "path": "configs/smac_3s5z_dms.json",
+      "sha256": "711eed2b25887e06d0070088c215d0742367c8f6cfd112631ae9b1c309c5454e"
+    }
+  },
+  "total_environment_steps": 10000000,
+  "agent_obsk": 1,
+  "observation_track": "paper_prose_k1",
+  "placeholder_seed": 101,
+  "training_seeds": [
+    11,
+    23,
+    37,
+    53,
+    71,
+    89
+  ],
+  "development_seeds": [
+    101,
+    103,
+    107
+  ],
+  "seed_usage": "Override --seed and --output for every run; use development seeds for tuning and training_seeds for the locked final protocol.",
+  "rollout_protocol": {
+    "mamujoco": {
+      "num_envs": 4,
+      "rollout_steps": 1000
+    },
+    "smac": {
+      "num_envs": 4,
+      "rollout_steps": 160
+    },
+    "provenance": "Declared matched independent-PPO redesign; SMAC uses four environments instead of the paper's twenty."
+  },
+  "final_evaluation": {
+    "checkpoint_selection": "predeclared final checkpoint at matched step budget; no selection on final test seeds",
+    "mamujoco_episodes_per_seed": 100,
+    "smac_episodes_per_seed": 1000
+  },
+  "experiments": [
+    {
+      "task": "Ant_2x4",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-ant-2x4-ippo.json"
+    },
+    {
+      "task": "Ant_2x4",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-ant-2x4-dms-soft.json"
+    },
+    {
+      "task": "Ant_2x4",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-ant-2x4-dms-causal.json"
+    },
+    {
+      "task": "Ant_2x4",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-ant-2x4-dms-all.json"
+    },
+    {
+      "task": "Ant_2x4",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-ant-2x4-dms-no-history-filter.json"
+    },
+    {
+      "task": "Ant_4x2",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-ant-4x2-ippo.json"
+    },
+    {
+      "task": "Ant_4x2",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-ant-4x2-dms-soft.json"
+    },
+    {
+      "task": "Ant_4x2",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-ant-4x2-dms-causal.json"
+    },
+    {
+      "task": "Ant_4x2",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-ant-4x2-dms-all.json"
+    },
+    {
+      "task": "Ant_4x2",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-ant-4x2-dms-no-history-filter.json"
+    },
+    {
+      "task": "Ant_8x1",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-ant-8x1-ippo.json"
+    },
+    {
+      "task": "Ant_8x1",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-ant-8x1-dms-soft.json"
+    },
+    {
+      "task": "Ant_8x1",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-ant-8x1-dms-causal.json"
+    },
+    {
+      "task": "Ant_8x1",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-ant-8x1-dms-all.json"
+    },
+    {
+      "task": "Ant_8x1",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-ant-8x1-dms-no-history-filter.json"
+    },
+    {
+      "task": "HalfCheetah_2x3",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-halfcheetah-2x3-ippo.json"
+    },
+    {
+      "task": "HalfCheetah_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-halfcheetah-2x3-dms-soft.json"
+    },
+    {
+      "task": "HalfCheetah_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-halfcheetah-2x3-dms-causal.json"
+    },
+    {
+      "task": "HalfCheetah_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-halfcheetah-2x3-dms-all.json"
+    },
+    {
+      "task": "HalfCheetah_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-halfcheetah-2x3-dms-no-history-filter.json"
+    },
+    {
+      "task": "HalfCheetah_3x2",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-halfcheetah-3x2-ippo.json"
+    },
+    {
+      "task": "HalfCheetah_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-halfcheetah-3x2-dms-soft.json"
+    },
+    {
+      "task": "HalfCheetah_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-halfcheetah-3x2-dms-causal.json"
+    },
+    {
+      "task": "HalfCheetah_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-halfcheetah-3x2-dms-all.json"
+    },
+    {
+      "task": "HalfCheetah_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-halfcheetah-3x2-dms-no-history-filter.json"
+    },
+    {
+      "task": "HalfCheetah_6x1",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-halfcheetah-6x1-ippo.json"
+    },
+    {
+      "task": "HalfCheetah_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-halfcheetah-6x1-dms-soft.json"
+    },
+    {
+      "task": "HalfCheetah_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-halfcheetah-6x1-dms-causal.json"
+    },
+    {
+      "task": "HalfCheetah_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-halfcheetah-6x1-dms-all.json"
+    },
+    {
+      "task": "HalfCheetah_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-halfcheetah-6x1-dms-no-history-filter.json"
+    },
+    {
+      "task": "Walker2d_2x3",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-walker2d-2x3-ippo.json"
+    },
+    {
+      "task": "Walker2d_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-walker2d-2x3-dms-soft.json"
+    },
+    {
+      "task": "Walker2d_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-walker2d-2x3-dms-causal.json"
+    },
+    {
+      "task": "Walker2d_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-walker2d-2x3-dms-all.json"
+    },
+    {
+      "task": "Walker2d_2x3",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-walker2d-2x3-dms-no-history-filter.json"
+    },
+    {
+      "task": "Walker2d_3x2",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-walker2d-3x2-ippo.json"
+    },
+    {
+      "task": "Walker2d_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-walker2d-3x2-dms-soft.json"
+    },
+    {
+      "task": "Walker2d_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-walker2d-3x2-dms-causal.json"
+    },
+    {
+      "task": "Walker2d_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-walker2d-3x2-dms-all.json"
+    },
+    {
+      "task": "Walker2d_3x2",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-walker2d-3x2-dms-no-history-filter.json"
+    },
+    {
+      "task": "Walker2d_6x1",
+      "environment": "mamujoco",
+      "variant": "ippo",
+      "config": "mamujoco-walker2d-6x1-ippo.json"
+    },
+    {
+      "task": "Walker2d_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-soft",
+      "config": "mamujoco-walker2d-6x1-dms-soft.json"
+    },
+    {
+      "task": "Walker2d_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-causal",
+      "config": "mamujoco-walker2d-6x1-dms-causal.json"
+    },
+    {
+      "task": "Walker2d_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-all",
+      "config": "mamujoco-walker2d-6x1-dms-all.json"
+    },
+    {
+      "task": "Walker2d_6x1",
+      "environment": "mamujoco",
+      "variant": "dms-no-history-filter",
+      "config": "mamujoco-walker2d-6x1-dms-no-history-filter.json"
+    },
+    {
+      "task": "3s5z",
+      "environment": "smac",
+      "variant": "ippo",
+      "config": "smac-3s5z-ippo.json"
+    },
+    {
+      "task": "3s5z",
+      "environment": "smac",
+      "variant": "dms-soft",
+      "config": "smac-3s5z-dms-soft.json"
+    },
+    {
+      "task": "3s5z",
+      "environment": "smac",
+      "variant": "dms-causal",
+      "config": "smac-3s5z-dms-causal.json"
+    },
+    {
+      "task": "3s5z",
+      "environment": "smac",
+      "variant": "dms-all",
+      "config": "smac-3s5z-dms-all.json"
+    },
+    {
+      "task": "3s5z",
+      "environment": "smac",
+      "variant": "dms-no-history-filter",
+      "config": "smac-3s5z-dms-no-history-filter.json"
+    },
+    {
+      "task": "8m_vs_9m",
+      "environment": "smac",
+      "variant": "ippo",
+      "config": "smac-8m-vs-9m-ippo.json"
+    },
+    {
+      "task": "8m_vs_9m",
+      "environment": "smac",
+      "variant": "dms-soft",
+      "config": "smac-8m-vs-9m-dms-soft.json"
+    },
+    {
+      "task": "8m_vs_9m",
+      "environment": "smac",
+      "variant": "dms-causal",
+      "config": "smac-8m-vs-9m-dms-causal.json"
+    },
+    {
+      "task": "8m_vs_9m",
+      "environment": "smac",
+      "variant": "dms-all",
+      "config": "smac-8m-vs-9m-dms-all.json"
+    },
+    {
+      "task": "8m_vs_9m",
+      "environment": "smac",
+      "variant": "dms-no-history-filter",
+      "config": "smac-8m-vs-9m-dms-no-history-filter.json"
+    },
+    {
+      "task": "MMM2",
+      "environment": "smac",
+      "variant": "ippo",
+      "config": "smac-mmm2-ippo.json"
+    },
+    {
+      "task": "MMM2",
+      "environment": "smac",
+      "variant": "dms-soft",
+      "config": "smac-mmm2-dms-soft.json"
+    },
+    {
+      "task": "MMM2",
+      "environment": "smac",
+      "variant": "dms-causal",
+      "config": "smac-mmm2-dms-causal.json"
+    },
+    {
+      "task": "MMM2",
+      "environment": "smac",
+      "variant": "dms-all",
+      "config": "smac-mmm2-dms-all.json"
+    },
+    {
+      "task": "MMM2",
+      "environment": "smac",
+      "variant": "dms-no-history-filter",
+      "config": "smac-mmm2-dms-no-history-filter.json"
+    }
+  ]
+}

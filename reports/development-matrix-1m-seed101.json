@@ -1,0 +1,743 @@
+{
+  "purpose": "bounded_development_matrix_not_final_selection_or_paper_comparison",
+  "created_utc": "2026-10-25T08:26:38.964465+00:00",
+  "training_seed": 101,
+  "total_steps_per_run": 1000000,
+  "evaluation_every_steps": 200000,
+  "evaluation_episodes_per_checkpoint": 5,
+  "selection_note": "Provisional decoder_history=false, kl_beta=0.1 following the historical HalfCheetah 500k seed-101 return and positive predictive peer-latent probes; this is not a final hyperparameter selection. Current per-sequence KL reduction remains unchanged.",
+  "pair_validation": "Each IPPO/DMS pair differs only in algorithm and output; intention settings are present but unused by IPPO.",
+  "source_note": "Training automatically saves its source snapshot and manifest on startup. No previous checkpoint is resumed.",
+  "wrapper": "scripts/triton/train_legacy_cpu.sbatch",
+  "resources": {
+    "partitions": [
+      "batch-milan",
+      "batch-csl",
+      "batch-skl"
+    ],
+    "cpus_per_task": 4,
+    "memory": "16G",
+    "time_limit": "06:00:00",
+    "gpus": 0
+  },
+  "jobs": [
+    {
+      "task": "halfcheetah-2x3",
+      "algorithm": "ippo",
+      "baseline_config": "configs/development/legacy-halfcheetah-2x3-ippo.json",
+      "config": "configs/development/legacy-halfcheetah-2x3-ippo-1m.json",
+      "output": "runs/dev-legacy-halfcheetah-2x3-ippo-1m-101",
+      "job_name": "dms-dev1m-halfcheetah-2x3-ippo",
+      "baseline_differences": {
+        "eval_every": {
+          "baseline": 100000,
+          "new": 200000
+        },
+        "total_steps": {
+          "baseline": 500000,
+          "new": 1000000
+        },
+        "kl_beta": {
+          "baseline": 1.0,
+          "new": 0.1
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-halfcheetah-2x3-ippo-101",
+          "new": "runs/dev-legacy-halfcheetah-2x3-ippo-1m-101"
+        },
+        "decoder_history": {
+          "baseline": null,
+          "new": false
+        }
+      },
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-ippo-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21196012",
+      "submission_state": "accepted",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-dev1m-halfcheetah-2x3-ippo",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-ippo-1m.json",
+        "runs/dev-legacy-halfcheetah-2x3-ippo-1m-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:27:22.765545+00:00",
+      "submission_stdout": "21196012",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:27:22.791028+00:00",
+      "stdout_log": "logs/dms-dev1m-halfcheetah-2x3-ippo_21196012.out",
+      "stderr_log": "logs/dms-dev1m-halfcheetah-2x3-ippo_21196012.err",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196012",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:37",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "06:00:00",
+        "nodes": "milan1"
+      },
+      "startup_manifest_available": true,
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan1.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196012",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16
+    },
+    {
+      "task": "halfcheetah-2x3",
+      "algorithm": "dms",
+      "baseline_config": "configs/development/legacy-halfcheetah-2x3-ippo.json",
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m.json",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m-101",
+      "job_name": "dms-dev1m-halfcheetah-2x3-dms",
+      "baseline_differences": {
+        "eval_every": {
+          "baseline": 100000,
+          "new": 200000
+        },
+        "total_steps": {
+          "baseline": 500000,
+          "new": 1000000
+        },
+        "kl_beta": {
+          "baseline": 1.0,
+          "new": 0.1
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-halfcheetah-2x3-ippo-101",
+          "new": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m-101"
+        },
+        "decoder_history": {
+          "baseline": null,
+          "new": false
+        },
+        "algorithm": {
+          "baseline": "ippo",
+          "new": "dms"
+        }
+      },
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21196013",
+      "submission_state": "accepted",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-dev1m-halfcheetah-2x3-dms",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m.json",
+        "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-1m-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:27:22.847637+00:00",
+      "submission_stdout": "21196013",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:27:22.901631+00:00",
+      "stdout_log": "logs/dms-dev1m-halfcheetah-2x3-dms_21196013.out",
+      "stderr_log": "logs/dms-dev1m-halfcheetah-2x3-dms_21196013.err",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196013",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:37",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "06:00:00",
+        "nodes": "milan1"
+      },
+      "startup_manifest_available": true,
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan1.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196013",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16
+    },
+    {
+      "task": "ant-4x2",
+      "algorithm": "ippo",
+      "baseline_config": "configs/development/legacy-ant-4x2-ippo.json",
+      "config": "configs/development/legacy-ant-4x2-ippo-1m.json",
+      "output": "runs/dev-legacy-ant-4x2-ippo-1m-101",
+      "job_name": "dms-dev1m-ant-4x2-ippo",
+      "baseline_differences": {
+        "eval_every": {
+          "baseline": 100000,
+          "new": 200000
+        },
+        "total_steps": {
+          "baseline": 500000,
+          "new": 1000000
+        },
+        "kl_beta": {
+          "baseline": 1.0,
+          "new": 0.1
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-ant-4x2-ippo-101",
+          "new": "runs/dev-legacy-ant-4x2-ippo-1m-101"
+        },
+        "decoder_history": {
+          "baseline": null,
+          "new": false
+        }
+      },
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-ant-4x2-ippo-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21196014",
+      "submission_state": "accepted",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-dev1m-ant-4x2-ippo",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-ant-4x2-ippo-1m.json",
+        "runs/dev-legacy-ant-4x2-ippo-1m-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:27:22.947598+00:00",
+      "submission_stdout": "21196014",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:27:22.972329+00:00",
+      "stdout_log": "logs/dms-dev1m-ant-4x2-ippo_21196014.out",
+      "stderr_log": "logs/dms-dev1m-ant-4x2-ippo_21196014.err",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196014",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:37",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "06:00:00",
+        "nodes": "milan1"
+      },
+      "startup_manifest_available": true,
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan1.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196014",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16
+    },
+    {
+      "task": "ant-4x2",
+      "algorithm": "dms",
+      "baseline_config": "configs/development/legacy-ant-4x2-ippo.json",
+      "config": "configs/development/legacy-ant-4x2-dms-latent-decoder-beta-01-1m.json",
+      "output": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+      "job_name": "dms-dev1m-ant-4x2-dms",
+      "baseline_differences": {
+        "eval_every": {
+          "baseline": 100000,
+          "new": 200000
+        },
+        "total_steps": {
+          "baseline": 500000,
+          "new": 1000000
+        },
+        "kl_beta": {
+          "baseline": 1.0,
+          "new": 0.1
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-ant-4x2-ippo-101",
+          "new": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101"
+        },
+        "decoder_history": {
+          "baseline": null,
+          "new": false
+        },
+        "algorithm": {
+          "baseline": "ippo",
+          "new": "dms"
+        }
+      },
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21196015",
+      "submission_state": "accepted",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-dev1m-ant-4x2-dms",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-ant-4x2-dms-latent-decoder-beta-01-1m.json",
+        "runs/dev-legacy-ant-4x2-dms-latent-decoder-beta-01-1m-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:27:22.973674+00:00",
+      "submission_stdout": "21196015",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:27:23.063998+00:00",
+      "stdout_log": "logs/dms-dev1m-ant-4x2-dms_21196015.out",
+      "stderr_log": "logs/dms-dev1m-ant-4x2-dms_21196015.err",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196015",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:37",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "06:00:00",
+        "nodes": "milan3"
+      },
+      "startup_manifest_available": true,
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan3.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196015",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16
+    },
+    {
+      "task": "walker2d-3x2",
+      "algorithm": "ippo",
+      "baseline_config": "configs/development/legacy-walker2d-3x2-ippo.json",
+      "config": "configs/development/legacy-walker2d-3x2-ippo-1m.json",
+      "output": "runs/dev-legacy-walker2d-3x2-ippo-1m-101",
+      "job_name": "dms-dev1m-walker2d-3x2-ippo",
+      "baseline_differences": {
+        "eval_every": {
+          "baseline": 100000,
+          "new": 200000
+        },
+        "total_steps": {
+          "baseline": 500000,
+          "new": 1000000
+        },
+        "kl_beta": {
+          "baseline": 1.0,
+          "new": 0.1
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-walker2d-3x2-ippo-101",
+          "new": "runs/dev-legacy-walker2d-3x2-ippo-1m-101"
+        },
+        "decoder_history": {
+          "baseline": null,
+          "new": false
+        }
+      },
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-walker2d-3x2-ippo-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21196016",
+      "submission_state": "accepted",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-dev1m-walker2d-3x2-ippo",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-walker2d-3x2-ippo-1m.json",
+        "runs/dev-legacy-walker2d-3x2-ippo-1m-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:27:23.065517+00:00",
+      "submission_stdout": "21196016",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:27:23.160625+00:00",
+      "stdout_log": "logs/dms-dev1m-walker2d-3x2-ippo_21196016.out",
+      "stderr_log": "logs/dms-dev1m-walker2d-3x2-ippo_21196016.err",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196016",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:37",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "06:00:00",
+        "nodes": "milan4"
+      },
+      "startup_manifest_available": true,
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan4.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196016",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16
+    },
+    {
+      "task": "walker2d-3x2",
+      "algorithm": "dms",
+      "baseline_config": "configs/development/legacy-walker2d-3x2-ippo.json",
+      "config": "configs/development/legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m.json",
+      "output": "runs/dev-legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m-101",
+      "job_name": "dms-dev1m-walker2d-3x2-dms",
+      "baseline_differences": {
+        "eval_every": {
+          "baseline": 100000,
+          "new": 200000
+        },
+        "total_steps": {
+          "baseline": 500000,
+          "new": 1000000
+        },
+        "kl_beta": {
+          "baseline": 1.0,
+          "new": 0.1
+        },
+        "output": {
+          "baseline": "runs/dev-legacy-walker2d-3x2-ippo-101",
+          "new": "runs/dev-legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m-101"
+        },
+        "decoder_history": {
+          "baseline": null,
+          "new": false
+        },
+        "algorithm": {
+          "baseline": "ippo",
+          "new": "dms"
+        }
+      },
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21196017",
+      "submission_state": "accepted",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-dev1m-walker2d-3x2-dms",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m.json",
+        "runs/dev-legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:27:23.162192+00:00",
+      "submission_stdout": "21196017",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:27:23.186144+00:00",
+      "stdout_log": "logs/dms-dev1m-walker2d-3x2-dms_21196017.out",
+      "stderr_log": "logs/dms-dev1m-walker2d-3x2-dms_21196017.err",
+      "startup_scheduler_snapshot": {
+        "job_id": "21196017",
+        "state": "RUNNING",
+        "exit_code": "0:0",
+        "elapsed": "00:00:37",
+        "allocated_cpus": "4",
+        "requested_memory": "16G",
+        "time_limit": "06:00:00",
+        "nodes": "milan4"
+      },
+      "startup_manifest_available": true,
+      "startup_manifest_status": "training; no paper performance claim",
+      "startup_runtime": {
+        "host": "milan4.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196017",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16
+    }
+  ],
+  "all_submitted_utc": "2026-10-25T08:27:23.247540+00:00",
+  "startup_checked_utc": "2026-10-25T08:28:21.890951+00:00",
+  "startup_source_snapshots_all_present": true,
+  "startup_source_snapshots_identical": true
+}

@@ -1,0 +1,84 @@
+{
+  "purpose": "multi_peer_coordination_development_ablation_not_final_performance",
+  "created_utc": "2026-10-25T08:39:54.966657+00:00",
+  "reference_soft_job": "21196015",
+  "reference_soft_config": "configs/development/legacy-ant-4x2-dms-latent-decoder-beta-01-1m.json",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-coordination-source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "budget_per_run": 1000000,
+  "seed": 101,
+  "comparison_notes": [
+    "Only coordination and output differ in configurations; soft pooled inputs versus concatenated all/causal inputs change policy parameter count and initialization RNG.",
+    "Causal selection retains manuscript KL threshold0.6 and explicit100episode additional gatewarmup.",
+    "Same local sensors,environment,optimizer,auxiliaryobjective and5episode development evaluations."
+  ],
+  "jobs": [
+    {
+      "job_id": "21196123",
+      "coordination": "all",
+      "config": "configs/development/legacy-ant-4x2-dms-all-beta-01-1m.json",
+      "config_sha256": "6e6a00911bdb5bcda6b769381450b8fa63c52e7d2742f45a8583b3acee6f3bc8",
+      "output": "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-ant-all-1m",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-ant-4x2-dms-all-beta-01-1m.json",
+        "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101",
+        "101"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "time_limit": "06:00:00"
+      },
+      "submission_state": "accepted",
+      "startup_verified": true,
+      "verified_source_count": 16
+    },
+    {
+      "job_id": "21196124",
+      "coordination": "causal",
+      "config": "configs/development/legacy-ant-4x2-dms-causal-beta-01-1m.json",
+      "config_sha256": "7d3dc56d47823fbcffc28dc87ebba0d8704e39d6b5ac4bc336362c0802540c69",
+      "output": "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-ant-causal-1m",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-ant-4x2-dms-causal-beta-01-1m.json",
+        "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101",
+        "101"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "time_limit": "06:00:00"
+      },
+      "submission_state": "accepted",
+      "startup_verified": true,
+      "verified_source_count": 16
+    }
+  ]
+}

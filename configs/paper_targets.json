@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "paper_title": "Coordination as Inference in Multi-Agent Reinforcement Learning",
+  "source": "paper/source/Coordination as Inference in MARL.tex",
+  "method_contract": "docs/PAPER_CONTRACT.md",
+  "result_status": "No reproduction performance verified by this contract.",
+  "target_semantics": "SMAC thresholds are exact reported central values. MuJoCo thresholds are conservative engineering goals based on cited manuscript plots, not recovered raw results. All require comparable pinned environments.",
+  "external_legacy_plots_used": false,
+  "paper_hyperparameters": {
+    "common_dms": {
+      "hidden_size": 64,
+      "ppo_epochs": 5,
+      "minibatches": 1,
+      "optimizer_epsilon": 0.00001,
+      "initialization_gain": 0.01,
+      "stacked_frames": 1,
+      "discount": 0.99,
+      "intention_learning_rate": 0.001,
+      "critic_learning_rate": 0.0001,
+      "max_gradient_norm": 0.5,
+      "ppo_clip": 0.2,
+      "actor_update_frequency": 2,
+      "critic_update_frequency": 2,
+      "coordination_threshold": 0.6,
+      "long_short_kl_threshold": 10000,
+      "short_history_length": 4,
+      "warmup_episodes": 100
+    },
+    "smac": {"rollout_environments": 20, "rollout_length": 160, "training_threads": 32, "actor_learning_rate": 0.00001},
+    "mamujoco": {"rollout_environments": 4, "rollout_length": 1000, "training_threads": 8, "actor_learning_rate": 0.000001}
+  },
+  "missing_paper_hyperparameters": ["latent_dimension", "polyak_rho", "gae_lambda", "entropy_coefficient", "past_future_split", "history_training_window", "evaluation_interval", "exact_environment_versions", "mamujoco_evaluation_episode_count", "mamujoco_training_seed_count"],
+  "paper_evaluation": {
+    "smac": {
+      "training_seeds": 6,
+      "test_games_per_training_phase": 10,
+      "central_statistic_description": "median winning rate",
+      "aggregation_ambiguity": "The manuscript does not explain how its fractional percentages and standard deviations are obtained from ten binary games and six seeds."
+    },
+    "mamujoco": {"central_statistic_description": "average episode reward plotted against environment steps", "training_seeds": null, "evaluation_episodes": null}
+  },
+  "reproduction_evaluation_policy": {
+    "status": "engineering_protocol_not_a_claim_about_paper",
+    "training_seeds": [11, 23, 37, 53, 71, 89],
+    "development_seeds": [101, 103, 107],
+    "smac_final_evaluation_episodes_per_seed": 1000,
+    "mamujoco_final_evaluation_episodes_per_seed": 100,
+    "checkpoint_selection": "predeclared final checkpoint at matched step budget; no selection on final test seeds",
+    "report_statistics": ["per_seed_mean", "across_seed_mean", "across_seed_median", "across_seed_standard_deviation", "seed_bootstrap_95_percent_confidence_interval"],
+    "improvement_evidence": "Report positive point-estimate difference; describe improvement as statistically supported only when seed-based uncertainty analysis supports it. Paper sampling uncertainty cannot be reconstructed from figure bands."
+  },
+  "smac": [
+    {
+      "id": "3s5z", "environment_steps": 10000000, "metric": "evaluation_win_rate", "unit": "fraction",
+      "paper_value": 0.975, "paper_standard_deviation": 0.022,
+      "source_kind": "exact_manuscript_table", "source_label": "eval-smac", "source_lines": [903, 915],
+      "paper_baseline_values": {"ippo": 0.984, "happo_il": 0.900, "happo": 0.991},
+      "acceptance": {"operator": ">", "threshold": 0.975, "status": "unverified", "requires_independent_training_seeds": 6}
+    },
+    {
+      "id": "8m_vs_9m", "environment_steps": 10000000, "metric": "evaluation_win_rate", "unit": "fraction",
+      "paper_value": 0.826, "paper_standard_deviation": 0.061,
+      "source_kind": "exact_manuscript_table", "source_label": "eval-smac", "source_lines": [903, 915],
+      "paper_baseline_values": {"ippo": 0.818, "happo_il": 0.725, "happo": 0.873},
+      "acceptance": {"operator": ">", "threshold": 0.826, "status": "unverified", "requires_independent_training_seeds": 6}
+    },
+    {
+      "id": "MMM2", "environment_steps": 10000000, "metric": "evaluation_win_rate", "unit": "fraction",
+      "paper_value": 0.621, "paper_standard_deviation": 0.088,
+      "source_kind": "exact_manuscript_table", "source_label": "eval-smac", "source_lines": [903, 915],
+      "paper_baseline_values": {"ippo": 0.518, "happo_il": 0.392, "happo": 0.633},
+      "acceptance": {"operator": ">", "threshold": 0.621, "status": "unverified", "requires_independent_training_seeds": 6}
+    }
+  ],
+  "mamujoco_shared": {
+    "environment_steps": 10000000,
+    "budget_source": "main_figure_x_axis_extent_1e7",
+    "metric": "evaluation_episode_return",
+    "unit": "undiscounted_environment_return",
+    "paper_value": null,
+    "paper_standard_deviation": null,
+    "source_kind": "visual_estimate_from_manuscript_raster_figure",
+    "source_label": "Exp_Mujoco",
+    "agent_obsk_table": 0,
+    "agent_obsk_prose": 1,
+    "interval_meaning": "visual_reading_range_only_not_statistical_uncertainty",
+    "acceptance_threshold_kind": "conservative_engineering_goal_not_exact_paper_value",
+    "requires_observation_ambiguity_resolution": true,
+    "requires_independent_training_seeds": 6
+  },
+  "mamujoco": [
+    {"id": "Ant_2x4", "environment": "Ant", "agent_configuration": "2x4", "source_path": "paper/source/2x4_Agent_Ant.pdf", "estimated_final_curve_value": 1650, "estimated_final_curve_interval": [1600, 1700], "acceptance": {"operator": ">", "threshold": 1900, "status": "unverified"}},
+    {"id": "Ant_4x2", "environment": "Ant", "agent_configuration": "4x2", "source_path": "paper/source/4x2_Agent_Ant.pdf", "estimated_final_curve_value": 1550, "estimated_final_curve_interval": [1500, 1600], "acceptance": {"operator": ">", "threshold": 1700, "status": "unverified"}},
+    {"id": "Ant_8x1", "environment": "Ant", "agent_configuration": "8x1", "source_path": "paper/source/8x1_Agent_Ant.pdf", "estimated_final_curve_value": 1800, "estimated_final_curve_interval": [1750, 1850], "acceptance": {"operator": ">", "threshold": 2000, "status": "unverified"}},
+    {"id": "HalfCheetah_2x3", "environment": "HalfCheetah", "agent_configuration": "2x3", "source_path": "paper/source/2x3_Agent_HalfCheetah.pdf", "estimated_final_curve_value": 3500, "estimated_final_curve_interval": [3400, 3600], "acceptance": {"operator": ">", "threshold": 3800, "status": "unverified"}},
+    {"id": "HalfCheetah_3x2", "environment": "HalfCheetah", "agent_configuration": "3x2", "source_path": "paper/source/3x2_Agent_HalfCheetah.pdf", "estimated_final_curve_value": 4700, "estimated_final_curve_interval": [4600, 4800], "acceptance": {"operator": ">", "threshold": 5200, "status": "unverified"}},
+    {"id": "HalfCheetah_6x1", "environment": "HalfCheetah", "agent_configuration": "6x1", "source_path": "paper/source/6x1_Agent_HalfCheetah.pdf", "estimated_final_curve_value": 4100, "estimated_final_curve_interval": [4000, 4200], "acceptance": {"operator": ">", "threshold": 4300, "status": "unverified"}},
+    {"id": "Walker2d_2x3", "environment": "Walker2d", "agent_configuration": "2x3", "source_path": "paper/source/2x3_Agent_Walker.pdf", "estimated_final_curve_value": 600, "estimated_final_curve_interval": [550, 650], "acceptance": {"operator": ">", "threshold": 850, "status": "unverified"}},
+    {"id": "Walker2d_3x2", "environment": "Walker2d", "agent_configuration": "3x2", "source_path": "paper/source/3x2_Agent_Walker.pdf", "estimated_final_curve_value": 1000, "estimated_final_curve_interval": [950, 1050], "acceptance": {"operator": ">", "threshold": 1100, "status": "unverified"}},
+    {"id": "Walker2d_6x1", "environment": "Walker2d", "agent_configuration": "6x1", "source_path": "paper/source/6x1_Agent_Walker.pdf", "estimated_final_curve_value": 700, "estimated_final_curve_interval": [650, 750], "acceptance": {"operator": ">", "threshold": 1000, "status": "unverified"}}
+  ],
+  "supplementary_swimmer": {
+    "id": "ManyAgentSwimmer_10x2", "agent_configuration": "10x2", "agent_obsk_table": 0, "agent_obsk_prose": 1, "environment_steps": 10000000,
+    "source_kind": "manuscript_parameter_study_plots",
+    "source_paths": ["paper/source/Coordination_Threshold_10x2_Agent_Swimmer.pdf", "paper/source/Long_Short_Term_Intention_Threshold.pdf"],
+    "paper_value": null,
+    "estimated_final_selected_parameter_curve_interval": [45, 65],
+    "engineering_target": 85, "engineering_target_operator": ">", "status": "unverified",
+    "note": "10x2_Agent_Swimmer.pdf is bundled but not included as a main-results figure by the TeX. Parameter-study plots are the cited evidence; do not promote the unused asset into a published main result."
+  },
+  "known_ambiguities": [
+    "MuJoCo prose observation distance k=1 conflicts with all config-mujoco table rows agent_obsk=0.",
+    "Exact action observability and sensing API are not defined for either benchmark.",
+    "Gaussian likelihood sign, Gaussian KL logarithm direction, and feature reconstruction parentheses need mathematical correction.",
+    "Optional global feature reconstruction uses privileged information and is not strict independent learning.",
+    "SMAC coordination-threshold prose claims delta=.6 is best, but 8m_vs_9m table delta=.2 reports 84.4%, higher than 82.6% at .6.",
+    "Algorithm describes HAPPO sequential updates with local critics; replacing them with independent PPO is a declared redesign."
+  ],
+  "readiness_gates": [
+    "method_contract_and_visibility_tests_pass",
+    "all_required_environments_pinned_and_comparability_audited",
+    "matched_step_budget_completed_for_all_registered_seeds",
+    "final_evaluations_saved_with_seed_and_checkpoint_provenance",
+    "all_primary_performance_thresholds_exceeded",
+    "intention_causal_attention_and_visibility_ablations_reported",
+    "readable_documentation_and_one_command_reproduction_validated"
+  ]
+}

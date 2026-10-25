@@ -1,0 +1,279 @@
+{
+  "purpose": "bounded_real_smac_map_training_coverage_not_benchmark_performance",
+  "created_utc": "2026-10-25T08:31:59.289862+00:00",
+  "base_config": "configs/smac_smoke.json",
+  "config_changed_fields": [
+    "map_name",
+    "output",
+    "parallel_env_steps"
+  ],
+  "training_seed": 101,
+  "training_transitions": 64,
+  "parallel_env_steps": true,
+  "num_envs": 1,
+  "warmup_episodes": 0,
+  "final_evaluation_episodes": 1,
+  "device_override": "cpu via existing CPU wrapper",
+  "wrapper": "scripts/triton/train_cpu.sbatch",
+  "resources": {
+    "cpus_per_task": 4,
+    "memory": "16G",
+    "wall_time": "00:20:00",
+    "gpus": 0
+  },
+  "jobs": [
+    {
+      "map_name": "8m_vs_9m",
+      "config": "configs/development/smac-8m-vs-9m-smoke.json",
+      "output": "runs/smac-8m-vs-9m-smoke-101",
+      "job_name": "dms-smoke-8m-vs-9m",
+      "submission_state": "accepted",
+      "config_sha256": "3b3a4b1e2a659640501ca01112af57c59ff46e80f3423c2f631311d41e232528",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=00:20:00",
+        "--job-name=dms-smoke-8m-vs-9m",
+        "scripts/triton/train_cpu.sbatch",
+        "configs/development/smac-8m-vs-9m-smoke.json",
+        "runs/smac-8m-vs-9m-smoke-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:32:19.777125+00:00",
+      "submission_stdout": "21196095",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:32:19.861831+00:00",
+      "job_id": "21196095",
+      "stdout_log": "logs/dms-smoke-8m-vs-9m_21196095.out",
+      "stderr_log": "logs/dms-smoke-8m-vs-9m_21196095.err",
+      "completion_scheduler_snapshot": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:00:51",
+        "allocated_cpus": 4,
+        "requested_memory": "16G",
+        "nodes": "milan5"
+      },
+      "manifest_status": "completed; no paper performance claim",
+      "completed_steps": 64,
+      "checks": {
+        "slurm_completed_exit_zero": true,
+        "training_completed_64": true,
+        "two_32_transition_updates": true,
+        "finite_ppo_auxiliary_and_categorical_forecast_metrics": true,
+        "nonempty_forecast_targets": true,
+        "peer_features_enabled": true,
+        "cpu_seed101_parallel_collector": true,
+        "zero_warmup": true,
+        "one_final_diagnostic_episode": true,
+        "finite_diagnostic_return_and_battle_result": true,
+        "intended_map": true,
+        "official_map_asset_sha256": true,
+        "expected_game_build": true,
+        "scheduled_lifetime_policy_present": true,
+        "native_action_validation_completed": true,
+        "checkpoint_saved": true,
+        "source_snapshot_saved": true
+      },
+      "coverage_passed": true,
+      "action_legality_evidence": "Every executed action passed SMACEnv.step shape/range/available-action validation; invalid actions raise and fail the run.",
+      "last_metrics": {
+        "policy_loss": -1.8044374883174896e-08,
+        "value_loss": 1.95517697930336,
+        "entropy": 1.1526930555701256,
+        "approx_kl": 0.0,
+        "peer_gate_fraction": 0.96875,
+        "intention_feature_std": 0.5626360177993774,
+        "intention_loss": 3.486324727535248,
+        "intention_nll": 2.6949172914028168,
+        "intention_kl": 0.791407473385334,
+        "forecast_target_count": 1255,
+        "forecast_comparison_count": 1255,
+        "history_baseline_target_count": 1255,
+        "forecast_nll": 2.6928225787037396,
+        "forecast_accuracy": 0.10597609601677414,
+        "persistence_accuracy": 0.1633466105655845,
+        "history_histogram_accuracy": 0.19282868776425896,
+        "history_histogram_nll": 2.379092860886775,
+        "forecast_history_comparison_nll": 2.6928225787037396,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 64,
+        "episodes": 2,
+        "elapsed_seconds": 5.446441572858021,
+        "training_return_mean": 1.3812949657440186,
+        "scheduled_environment_restarts": 0
+      },
+      "diagnostic_evaluation": {
+        "steps": 64,
+        "seed": 10001,
+        "return": 0.6906474828720093,
+        "length": 120,
+        "battle_won": false
+      },
+      "map_asset": {
+        "status": "resolved",
+        "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+        "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+        "size_bytes": 14927,
+        "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+      },
+      "runtime_selection": {
+        "source": "pysc2_run_config_selection_not_launched_binary",
+        "game_version": "4.10.0",
+        "build_version": 75689,
+        "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+      },
+      "process_lifetime": {
+        "restart_at_episode_boundary_after_game_loops": 500000,
+        "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+        "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+      },
+      "environment_runtime": [
+        {
+          "scheduled_restarts": 0,
+          "seed_generation": 0,
+          "process_seed": 101,
+          "game_loop": 516,
+          "backend_force_restarts": 0
+        }
+      ],
+      "runtime": {
+        "host": "milan5.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196095",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16,
+      "training_source_sha256": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+    },
+    {
+      "map_name": "MMM2",
+      "config": "configs/development/smac-mmm2-smoke.json",
+      "output": "runs/smac-mmm2-smoke-101",
+      "job_name": "dms-smoke-mmm2",
+      "submission_state": "accepted",
+      "config_sha256": "6b82c042d93c2f4fa4b8ccefa691a169439d6aed626d5cfe99078dc915d957ea",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--time=00:20:00",
+        "--job-name=dms-smoke-mmm2",
+        "scripts/triton/train_cpu.sbatch",
+        "configs/development/smac-mmm2-smoke.json",
+        "runs/smac-mmm2-smoke-101",
+        "101"
+      ],
+      "submission_started_utc": "2026-10-25T08:32:19.862788+00:00",
+      "submission_stdout": "21196096",
+      "submission_stderr": "",
+      "submission_returncode": 0,
+      "submitted_utc": "2026-10-25T08:32:19.884914+00:00",
+      "job_id": "21196096",
+      "stdout_log": "logs/dms-smoke-mmm2_21196096.out",
+      "stderr_log": "logs/dms-smoke-mmm2_21196096.err",
+      "completion_scheduler_snapshot": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:00:51",
+        "allocated_cpus": 4,
+        "requested_memory": "16G",
+        "nodes": "milan5"
+      },
+      "manifest_status": "completed; no paper performance claim",
+      "completed_steps": 64,
+      "checks": {
+        "slurm_completed_exit_zero": true,
+        "training_completed_64": true,
+        "two_32_transition_updates": true,
+        "finite_ppo_auxiliary_and_categorical_forecast_metrics": true,
+        "nonempty_forecast_targets": true,
+        "peer_features_enabled": true,
+        "cpu_seed101_parallel_collector": true,
+        "zero_warmup": true,
+        "one_final_diagnostic_episode": true,
+        "finite_diagnostic_return_and_battle_result": true,
+        "intended_map": true,
+        "official_map_asset_sha256": true,
+        "expected_game_build": true,
+        "scheduled_lifetime_policy_present": true,
+        "native_action_validation_completed": true,
+        "checkpoint_saved": true,
+        "source_snapshot_saved": true
+      },
+      "coverage_passed": true,
+      "action_legality_evidence": "Every executed action passed SMACEnv.step shape/range/available-action validation; invalid actions raise and fail the run.",
+      "last_metrics": {
+        "policy_loss": -1.918524503707886e-08,
+        "value_loss": 1.442826148867607,
+        "entropy": 1.1783356487751007,
+        "approx_kl": 0.0,
+        "peer_gate_fraction": 0.96875,
+        "intention_feature_std": 0.5608202219009399,
+        "intention_loss": 3.574815773963928,
+        "intention_nll": 2.862426519393921,
+        "intention_kl": 0.7123892188072205,
+        "forecast_target_count": 4487,
+        "forecast_comparison_count": 4087,
+        "history_baseline_target_count": 4087,
+        "forecast_nll": 2.8548061977337165,
+        "forecast_accuracy": 0.09591387498851274,
+        "persistence_accuracy": 0.2055297288118495,
+        "history_histogram_accuracy": 0.1676046015042561,
+        "history_histogram_nll": 2.5179590916382764,
+        "forecast_history_comparison_nll": 2.8543825274958188,
+        "history_baseline_coverage_fraction": 0.9108535770002228,
+        "steps": 64,
+        "episodes": 1,
+        "elapsed_seconds": 7.328798667062074,
+        "training_return_mean": 2.20405693911016,
+        "scheduled_environment_restarts": 0
+      },
+      "diagnostic_evaluation": {
+        "steps": 64,
+        "seed": 10001,
+        "return": 1.9365112770474298,
+        "length": 63,
+        "battle_won": false
+      },
+      "map_asset": {
+        "status": "resolved",
+        "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/MMM2.SC2Map",
+        "relative_path": "SMAC_Maps/MMM2.SC2Map",
+        "size_bytes": 17419,
+        "sha256": "797df232260bc50678cc5b48438b606056b2dd799469c872a2635e98d4f5c1d6"
+      },
+      "runtime_selection": {
+        "source": "pysc2_run_config_selection_not_launched_binary",
+        "game_version": "4.10.0",
+        "build_version": 75689,
+        "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+      },
+      "process_lifetime": {
+        "restart_at_episode_boundary_after_game_loops": 500000,
+        "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+        "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+      },
+      "environment_runtime": [
+        {
+          "scheduled_restarts": 0,
+          "seed_generation": 0,
+          "process_seed": 101,
+          "game_loop": 514,
+          "backend_force_restarts": 0
+        }
+      ],
+      "runtime": {
+        "host": "milan5.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196096",
+        "slurm_partition": "batch-milan"
+      },
+      "source_file_count": 16,
+      "training_source_sha256": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+    }
+  ],
+  "completion_checked_utc": "2026-10-25T08:36:02.852005+00:00",
+  "all_coverage_checks_passed": true,
+  "interpretation": "Execution and environment coverage only;64 transitions and one diagnostic episode establish no learned performance or paper comparison."
+}

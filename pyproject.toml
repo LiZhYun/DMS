@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dms-marl"
+version = "0.1.0"
+readme = "README.md"
+license = {file = "LICENSE"}
+description = "Readable reproduction of Coordination as Inference in Multi-Agent Reinforcement Learning"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "torch>=2.6,<3"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<9"]
+mujoco = ["gymnasium==1.4.0", "gymnasium-robotics==1.4.2", "mujoco==3.17.0"]
+smac = ["pysc2==3.0.0", "protobuf==3.20.3"]
+
+[project.scripts]
+dms-train = "dms.train:main"
+
+[tool.setuptools]
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
