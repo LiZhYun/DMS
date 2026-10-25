@@ -26,6 +26,20 @@ Reviewed 2026-10-25 against the current working tree. This was a read-only walkt
 
 4. **Experimental readiness remains open.** The registered requirements in [EXPERIMENT_PLAN.md:31](EXPERIMENT_PLAN.md#L31) and [EXPERIMENT_PLAN.md:56](EXPERIMENT_PLAN.md#L56) require frozen settings, complete budgets, held-out seeds, comparative performance, and mechanism evidence. Current development jobs and smoke checks do not satisfy them. The historical binary stack and observation-radius ambiguity remain declared comparability gaps. These are release blockers for a claim of successful paper reproduction, separate from whether the software is useful as an explicitly labeled development release.
 
+
+**Subsequent installation evidence, 2026-10-25.** Commit `56394f6` passed a
+fresh Python 3.10 CPU installation from an initially empty pip cache in job
+**21198078**: 442 tests passed, 32 native-only tests skipped, and `pip check`
+passed. Fresh SMAC installation job **21198390** followed the documented
+pinned upstream checkout and install commands, then tested an installed wheel
+outside the source checkout with real 3s5z training, evaluation, checkpoint
+saving, and a separately loaded-checkpoint evaluation. The existing game
+binary/maps were reused read-only; installing those assets from scratch and
+cross-platform support were not tested. See the [CPU ledger](../reports/fresh-install-validation.json)
+and [SMAC ledger](../reports/fresh-smac-install-validation.json). This closes
+the missing fresh-dependency-install check for those tested workflows; public
+artifact hosting and experimental acceptance remain open.
+
 **Saved-source evaluation compatibility.** The modern command in [README.md:129](../README.md#L129) runs the evaluator from a completed run's saved `source` directory. Historical evaluation must use the same native environment through `DMS_SOURCE_ROOT` and `bootstrap.sh run`, as shown in [HISTORICAL_ENVIRONMENT.md:124](HISTORICAL_ENVIRONMENT.md#L124); merely selecting `.venv/bin/python` or exporting an inherited `PYTHONPATH` does not load those native prerequisites.
 
 Current [evaluate.py:43](../src/dms/evaluate.py#L43) records the environment and dependency versions actually used for evaluation, plus evaluation-source hashes. The new one-million-step HalfCheetah beta-0.1 snapshot contains these fields. The earlier completed 500,000-step beta-0.1 snapshot's evaluator does not. Executing that older saved evaluator remains valid for a descriptive result, but cannot manufacture the newer provenance fields. [report.py:162](../src/dms/report.py#L162) and [report.py:206](../src/dms/report.py#L206) preserve summaries with explicit warnings while blocking the release reference gate when source, environment, or dependency evidence is missing or inconsistent. Do not edit archived source or copy training metadata into a result as if it had been observed during evaluation. Freeze a sufficiently instrumented source version before final runs.

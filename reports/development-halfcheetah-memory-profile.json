@@ -1,0 +1,382 @@
+{
+  "purpose": "Bounded historical HalfCheetah2x3 IPPO local-observation history32 CPU/CUDA runtime check; independent updates; no learning-job submission or performance claim",
+  "status": "completed_pass",
+  "created_utc": "2026-10-25T11:38:52.568392+00:00",
+  "artifact": "runs/halfcheetah-memory-profile-01",
+  "prior_control": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src",
+  "validated_source_manifest": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/snapshot.json",
+  "validated_source_manifest_sha256": "8baec6ee2dcef1239d6de6bd4d8818058b8d4f378071c5a843425a1fddba10e8",
+  "inputs_manifest": "runs/halfcheetah-memory-profile-01/inputs.json",
+  "inputs_manifest_sha256": "6499291693663f299ae2c1f2c069fdfd0b21f73bb766738502ef52845fe4af7b",
+  "runner_sha256": "9a06e1c089e33e061d3a54e667b61fa429aaae6e286c29a89e61e6709430cb75",
+  "wrapper_sha256": "608c1ffeefeab2428973929a16d6e9da5b8aec75278a9ed83d480f4dc82a5b62",
+  "configs": {
+    "cpu": {
+      "path": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/cpu-config.json",
+      "sha256": "df53330aa31f1cb397540caa80240792e2beac514b8fe623e39661cc13e00990",
+      "changes_from_control": {
+        "total_steps": {
+          "control": 10000000,
+          "profile": 12000
+        },
+        "output": {
+          "control": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+          "profile": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/profile-only-cpu"
+        },
+        "policy_history_length": {
+          "control": null,
+          "profile": 32
+        },
+        "update_mode": {
+          "control": null,
+          "profile": "independent"
+        }
+      }
+    },
+    "cuda": {
+      "path": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/cuda-config.json",
+      "sha256": "e5a640247a72bce6ae83a508e896c74e008e435348f3966107f5dd3b42294ecd",
+      "changes_from_control": {
+        "device": {
+          "control": "cpu",
+          "profile": "cuda"
+        },
+        "total_steps": {
+          "control": 10000000,
+          "profile": 12000
+        },
+        "output": {
+          "control": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+          "profile": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/profile-only-cuda"
+        },
+        "policy_history_length": {
+          "control": null,
+          "profile": 32
+        },
+        "update_mode": {
+          "control": null,
+          "profile": "independent"
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "profiler_sha256": "726734169241f5626705d843e7cd5e6348e53dc47bd3a19b6804aedb44503a35",
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "resources": {
+    "gpus": 1,
+    "cpus": 4,
+    "memory": "16G",
+    "time": "00:15:00",
+    "partitions": [
+      "gpu-h200-141g-ellis",
+      "gpu-debug",
+      "gpu-a100-80g",
+      "gpu-h100-80g"
+    ]
+  },
+  "command": [
+    "sbatch",
+    "--parsable",
+    "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/retry-02/run.sbatch"
+  ],
+  "protocol": {
+    "device_order": [
+      "cpu",
+      "cuda"
+    ],
+    "fresh_subprocess_each_device": true,
+    "torch_threads": 1,
+    "num_envs": 4,
+    "rollout_steps": 1000,
+    "minibatch_size": 1000,
+    "epochs": 5,
+    "history_length": 32,
+    "policy_history_length": 32,
+    "update_mode": "independent",
+    "seed": 101,
+    "warmup_rollouts_per_device": 1,
+    "timed_rollouts_per_device": 2,
+    "transitions_per_device": 12000,
+    "total_profile_transitions": 24000,
+    "held_out_final_seeds_used": false
+  },
+  "interpretation": "Additional local-memory baseline measures the cost of remembering past available local inputs. It does not replace an equal-history IPPO/DMS pair or establish an intention benefit.",
+  "scope": "Native existing legacy dependencies reused; exact validated package imports checked. Main training/evaluation/checkpoint I/O are excluded from timing; project with explicit margin.",
+  "submitted_utc": "2026-10-25T11:43:10.769246+00:00",
+  "submission_stdout": "21198505\n",
+  "submission_stderr": "",
+  "attempts": [
+    {
+      "job_id": "21198500",
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "elapsed": "00:00:09",
+      "reason": "Harness profile.py shadowed standard-library profile imported by torch.optim; no rollout data collected",
+      "runner": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/profile.py",
+      "runner_sha256": "15465d5283d50dd847e76c7ce9dfdabe29d361eae5dc6a833e344b5124b699ca",
+      "wrapper_sha256": "6edbf1a5210eeaa5b5f02747f830fa4d59cd4e04ece5bac9bdc7d179a528c0ab",
+      "failure_result": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/cpu-profile.json",
+      "failure_result_sha256": "5cb2dc5deefa7d4e42090a53f61973142a63336bc6d2877ab7555ff2e288b314"
+    },
+    {
+      "job_id": "21198505",
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "artifact": "runs/halfcheetah-memory-profile-01/retry-02",
+      "runner_sha256": "9a06e1c089e33e061d3a54e667b61fa429aaae6e286c29a89e61e6709430cb75",
+      "wrapper_sha256": "608c1ffeefeab2428973929a16d6e9da5b8aec75278a9ed83d480f4dc82a5b62",
+      "correction": "Harness renamed and isolated to avoid standard-library profile shadowing; package and configs unchanged"
+    }
+  ],
+  "attempt_artifact": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-memory-profile-01/retry-02",
+  "job_id": "21198505",
+  "completed_utc": "2026-10-25T11:48:56.584433+00:00",
+  "slurm": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:03:10",
+    "partition": "gpu-debug",
+    "node": "dgx1",
+    "accounting_path": "runs/halfcheetah-memory-profile-01/retry-02/slurm-accounting.txt"
+  },
+  "results": {
+    "cpu": {
+      "host": "dgx1.int.triton.aalto.fi",
+      "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v4 @ 2.20GHz",
+      "gpu": null,
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "timed_collection_seconds_per_4000": 16.324878927320242,
+      "timed_update_seconds_per_4000": 24.32705636555329,
+      "timed_total_seconds_per_4000": 40.65193529287353,
+      "timed_transitions_per_second": 98.39629949182809,
+      "estimated_3m_training_hours": 8.469153186015319,
+      "estimated_3m_hours_with_1_5_margin": 12.703729779022979,
+      "host_process_peak_rss_bytes": 1017958400,
+      "gpu_memory": null,
+      "parameter_counts": {
+        "agents": 105998,
+        "intentions": 0,
+        "total": 105998
+      },
+      "all_three_rollouts_finite": true,
+      "observed_episode_counts": [
+        4,
+        8,
+        12
+      ],
+      "history_reset_and_timeout_checks_passed": true,
+      "initial_import_guard_passed": true,
+      "source_unchanged": true,
+      "environment_differences_from_old_history0_control": {
+        "adapted_graph_sha256": {
+          "control": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "profile": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+        }
+      },
+      "observation_history_metadata": {
+        "length": 32,
+        "base_observation_dim": 28,
+        "shape": [
+          2,
+          32,
+          29
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "cuda": {
+      "host": "dgx1.int.triton.aalto.fi",
+      "cpu_model": "Intel(R) Xeon(R) CPU E5-2698 v4 @ 2.20GHz",
+      "gpu": {
+        "name": "Tesla V100-SXM2-16GB",
+        "capability": [
+          7,
+          0
+        ],
+        "compiled_architectures": [
+          "sm_50",
+          "sm_60",
+          "sm_70",
+          "sm_75",
+          "sm_80",
+          "sm_86",
+          "sm_90"
+        ],
+        "torch_cuda": "12.6",
+        "kernel_preflight_passed": true
+      },
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "timed_collection_seconds_per_4000": 16.73735979385674,
+      "timed_update_seconds_per_4000": 0.7233754380140454,
+      "timed_total_seconds_per_4000": 17.460735231870785,
+      "timed_transitions_per_second": 229.08542778306767,
+      "estimated_3m_training_hours": 3.6376531733064135,
+      "estimated_3m_hours_with_1_5_margin": 5.45647975995962,
+      "host_process_peak_rss_bytes": 1555931136,
+      "gpu_memory": {
+        "peak_allocated_bytes": 232291328,
+        "peak_reserved_bytes": 373293056
+      },
+      "parameter_counts": {
+        "agents": 105998,
+        "intentions": 0,
+        "total": 105998
+      },
+      "all_three_rollouts_finite": true,
+      "observed_episode_counts": [
+        4,
+        8,
+        12
+      ],
+      "history_reset_and_timeout_checks_passed": true,
+      "initial_import_guard_passed": true,
+      "source_unchanged": true,
+      "environment_differences_from_old_history0_control": {
+        "adapted_graph_sha256": {
+          "control": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "profile": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+        }
+      },
+      "observation_history_metadata": {
+        "length": 32,
+        "base_observation_dim": 28,
+        "shape": [
+          2,
+          32,
+          29
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    }
+  },
+  "result_files": {
+    "cpu": {
+      "path": "runs/halfcheetah-memory-profile-01/retry-02/cpu-profile.json",
+      "sha256": "ba45ee472ad5f3179428f555a886296a238a371a5e30536cb20134dd90398880"
+    },
+    "cuda": {
+      "path": "runs/halfcheetah-memory-profile-01/retry-02/cuda-profile.json",
+      "sha256": "943b6ddb66d74d4b7a4b35357aa8373b49ee5c1f9a3f85a880a709c462ad60ad"
+    }
+  },
+  "prior_runtime_evidence": {
+    "path": "runs/halfcheetah-memory-profile-01/prior-runtime-at-3m.json",
+    "sha256": "324382c074e72d89dd34931feb59475856795b52cfb094e54be8b0933a8ac030",
+    "elapsed_hours_at_3m": {
+      "ippo_history0": 0.5302685867278423,
+      "dms_history0": 2.2182191618584977
+    }
+  },
+  "source_version_comparison": {
+    "prior_source_files_unchanged": [
+      "dms/__init__.py",
+      "dms/benchmark_configs.py",
+      "dms/diagnostics.py",
+      "dms/distributions.py",
+      "dms/evaluate.py",
+      "dms/intention.py",
+      "dms/parallel.py",
+      "dms/returns.py",
+      "dms/sequences.py",
+      "dms/smac_env.py"
+    ],
+    "prior_source_files_changed_or_removed": {
+      "dms/envs.py": {
+        "control": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+        "current": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      "dms/legacy_env.py": {
+        "control": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+        "current": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      "dms/legacy_graph.py": {
+        "control": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "current": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      "dms/policy.py": {
+        "control": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+        "current": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      "dms/report.py": {
+        "control": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "current": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      "dms/train.py": {
+        "control": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+        "current": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      }
+    }
+  },
+  "learning_job_submitted": false,
+  "planning": {
+    "transitions": 3000000,
+    "preferred_device": "cuda",
+    "suggested_request": {
+      "gpus": 1,
+      "cpus": 4,
+      "memory": "8G",
+      "time": "06:00:00"
+    },
+    "reason": "On this node CUDA lowers timed update cost from 24.33s to 0.72s per 4k; collection remains 16.7s. Raw 3M projection 3.64h and 1.5x planning margin 5.46h. Six hours leaves additional slack; evaluation/checkpoint overhead is not directly measured.",
+    "not_authorization": "No learning job submitted; parent reviews this bounded cost evidence first."
+  },
+  "limitations": [
+    "One older Xeon/V100 host, CPU then CUDA, two timed rounds per device after one warmup. These are repeated early-training rounds, not independent trials or a learning-result comparison.",
+    "Linear projections exclude initialization, evaluation and checkpoint I/O; 1.5x is a planning allowance, not a statistical confidence interval.",
+    "Per-rollout collection includes small episode/reset assertion overhead.",
+    "Prior history0 IPPO/DMS runtime observations came from milan2 CPU and earlier source; their 0.530h/2.218h elapsed-at-3M values are descriptive context, not measured same-hardware speed ratios.",
+    "Environment settings and assets matched the historical control. The adapted graph source fingerprint differs because the current validated package includes later support; full old/current source differences are retained in inputs.json.",
+    "Actual initial package imports are recorded under the frozen source, all 22 Python/XML hashes are checked before and after, and environment metadata identifies the current graph and unchanged native XML.",
+    "Existing legacy dependency environment is reused; this is not a fresh-install validation.",
+    "Additional local-memory baseline remembers available local observations. It does not replace an equal-history IPPO/DMS pair or establish an intention benefit."
+  ],
+  "artifact_hashes": {
+    "runs/halfcheetah-memory-profile-01/retry-02/hc_memory_runtime.py": "9a06e1c089e33e061d3a54e667b61fa429aaae6e286c29a89e61e6709430cb75",
+    "runs/halfcheetah-memory-profile-01/retry-02/run.sbatch": "608c1ffeefeab2428973929a16d6e9da5b8aec75278a9ed83d480f4dc82a5b62",
+    "runs/halfcheetah-memory-profile-01/retry-02/inputs.json": "6499291693663f299ae2c1f2c069fdfd0b21f73bb766738502ef52845fe4af7b",
+    "runs/halfcheetah-memory-profile-01/retry-02/slurm-accounting.txt": "741e75f03dab3ec196772cb2cdee3b49060b49e5b9790e0cfcea8295cf1835a0",
+    "runs/halfcheetah-memory-profile-01/dms-hc-memory-profile_21198505.out": "0637ac31caabe74c90346307fbfe5e6dd9eb2cb40e67582f273975f7b26c7b62",
+    "runs/halfcheetah-memory-profile-01/dms-hc-memory-profile_21198505.err": "26cecff365f40c5aefeb36d4990455d62cc609cd7a1e881d6a4db883f0faf4e3"
+  }
+}

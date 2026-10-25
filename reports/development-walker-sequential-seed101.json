@@ -1,0 +1,1148 @@
+{
+  "purpose": "Predeclared Walker2d3x2 development control: update order and intentions",
+  "created_utc": "2026-10-25T11:35:18.885709+00:00",
+  "status": "all_four_running_startup_verified",
+  "training_seed": 101,
+  "held_out_training_seeds_used": false,
+  "steps_per_run": 1000000,
+  "selection_note": "The completed1M Walker matrix returned339.4104 for DMS versus778.5857 for IPPO on five diagnostic episodes. This fresh same-source four-way control tests the sequential optimizer hypothesis on that underperforming task. No improvement is assumed and all results will be retained.",
+  "previous_results": [
+    {
+      "algorithm": "ippo",
+      "job_id": "21196016",
+      "output": "runs/dev-legacy-walker2d-3x2-ippo-1m-101",
+      "endpoint": {
+        "training_steps": 1000000,
+        "episodes": 5,
+        "mean_return": 778.5857134277933,
+        "population_episode_sd": 250.745612231322,
+        "records": [
+          {
+            "steps": 1000000,
+            "seed": 10001,
+            "return": 474.5711945295334,
+            "length": 227,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10002,
+            "return": 1012.3319800794125,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10003,
+            "return": 956.9288610792719,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10004,
+            "return": 979.1639521718025,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10005,
+            "return": 469.9325792789459,
+            "length": 221,
+            "battle_won": null
+          }
+        ],
+        "evaluation_sha256": "91e3a06923bae2410e042dca52d9d791043ed52d9f6c6e388dde410a39703f19",
+        "manifest_sha256": "be14ff0d3d670330ab8d446c4fa3ec86bf2994b0593818cf6bf536f75ccce11e",
+        "training_elapsed_seconds": 967.6766349752434,
+        "uncertainty_note": "Episode SD is not training-seed uncertainty; development only."
+      }
+    },
+    {
+      "algorithm": "dms",
+      "job_id": "21196017",
+      "output": "runs/dev-legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m-101",
+      "endpoint": {
+        "training_steps": 1000000,
+        "episodes": 5,
+        "mean_return": 339.4103981375694,
+        "population_episode_sd": 1.909317288552249,
+        "records": [
+          {
+            "steps": 1000000,
+            "seed": 10001,
+            "return": 342.70889073610306,
+            "length": 207,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10002,
+            "return": 338.41854310035706,
+            "length": 203,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10003,
+            "return": 340.3898369669914,
+            "length": 207,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10004,
+            "return": 337.81826800107956,
+            "length": 203,
+            "battle_won": null
+          },
+          {
+            "steps": 1000000,
+            "seed": 10005,
+            "return": 337.71645188331604,
+            "length": 204,
+            "battle_won": null
+          }
+        ],
+        "evaluation_sha256": "ab7202a574c019c0c1cad036eb3ef125fcdd086808f493ccaae590ba00684456",
+        "manifest_sha256": "8ac31fa08e242ceaafdbed1ee5cf013f577913a4973f3e19102410d229a640ac",
+        "training_elapsed_seconds": 4597.953214154113,
+        "uncertainty_note": "Episode SD is not training-seed uncertainty; development only."
+      }
+    }
+  ],
+  "resources_per_run": {
+    "cpus": 1,
+    "memory": "4G",
+    "time": "03:00:00",
+    "partitions": [
+      "batch-milan",
+      "batch-csl",
+      "batch-skl"
+    ]
+  },
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "source_mapping_sha256": "5b7a21ac4db312950e14f65df383cd44fc3f490e7859aef3534e0dae3bf72573",
+  "source_validation": {
+    "report": "reports/sequential-update-validation.json",
+    "report_sha256": "e92fbbc7beeb0515fdc66d424400c2a1997c33684558a3e56f83333d6ec05adb",
+    "modern_job_id": "21198407",
+    "native_legacy_job_id": "21198408",
+    "smac_cuda_job_id": "21198409",
+    "all_passed": true
+  },
+  "contrasts": [
+    {
+      "left": "no-intention-independent",
+      "right": "no-intention-sequential",
+      "only_resolved_config_differences": [
+        "update_mode",
+        "output"
+      ]
+    },
+    {
+      "left": "dms-independent-beta-01",
+      "right": "dms-sequential-beta-01",
+      "only_resolved_config_differences": [
+        "update_mode",
+        "output"
+      ]
+    },
+    {
+      "left": "no-intention-independent",
+      "right": "dms-independent-beta-01",
+      "only_resolved_config_differences": [
+        "algorithm",
+        "output"
+      ]
+    },
+    {
+      "left": "no-intention-sequential",
+      "right": "dms-sequential-beta-01",
+      "only_resolved_config_differences": [
+        "algorithm",
+        "output"
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "variant": "no-intention-independent",
+      "display_label": "IPPO",
+      "algorithm_config_field": "ippo",
+      "update_mode": "independent",
+      "config": "configs/development/legacy-walker2d-3x2-no-intention-independent-1m.json",
+      "config_sha256": "c9525194a916442fd95bd51e8a04d22d8b7760334931270bde9fad6bcc81dba0",
+      "frozen_config": "runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-no-intention-independent-1m.json",
+      "output": "runs/dev-legacy-walker2d-3x2-no-intention-independent-1m-101",
+      "baseline_config": "configs/development/legacy-walker2d-3x2-ippo-1m.json",
+      "baseline_config_sha256": "fcb6a29c9d2a765d72ee4b837d4de0fc6f947d2e876eee8dbfa9dd4f112cf292",
+      "resolved_changes_from_baseline": {
+        "output": {
+          "base": "runs/dev-legacy-walker2d-3x2-ippo-1m-101",
+          "new": "runs/dev-legacy-walker2d-3x2-no-intention-independent-1m-101"
+        }
+      },
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-walker2d-3x2-no-intention-independent-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21198485",
+      "status": "running_startup_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-no-intention-independent",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=03:00:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/train.sbatch",
+        "no-intention-independent",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-no-intention-independent-1m.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-no-intention-independent-1m-101"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T11:40:06.880021+00:00",
+      "startup_validation": {
+        "checked_utc": "2026-10-25T11:42:00.292198+00:00",
+        "status": "passed",
+        "all_observed_updates_finite": true,
+        "observed_update_count": 25,
+        "first_update": {
+          "policy_loss": -0.009452137875390084,
+          "value_loss": 0.4976310595870018,
+          "entropy": 1.836201790968577,
+          "approx_kl": 0.006541403922043779,
+          "peer_gate_fraction": 0.0,
+          "steps": 4000,
+          "episodes": 188,
+          "elapsed_seconds": 4.013024749991018,
+          "training_return_mean": 2.216364818760822
+        },
+        "last_observed_update": {
+          "policy_loss": -0.0019480265415040775,
+          "value_loss": 0.18363331854343415,
+          "entropy": 1.751254536708196,
+          "approx_kl": 0.0025192913767568825,
+          "peer_gate_fraction": 0.0,
+          "steps": 100000,
+          "episodes": 1291,
+          "elapsed_seconds": 98.13994804403046,
+          "training_return_mean": 251.73222478503442
+        },
+        "active_intention_updates": 0,
+        "sequential_factor_summary": null,
+        "runtime_import_preflight": "runs/development-walker-sequential-seed101/no-intention-independent-runtime-preflight.json",
+        "runtime_import_preflight_sha256": "68c30bed8009fd237346ad86a4f1230202bf98056167b49b839880d64d0d4747",
+        "actual_package_file": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "all_22_archived_source_files_match": true,
+        "resolved_config_matches_predeclared": true,
+        "budget_transitions": 1000000,
+        "manifest_sha256": "413bbc7303ef9ee860379176ae5ddbcf588b511e57fd357e3dd57536aba51747",
+        "scheduler": {
+          "state": "RUNNING",
+          "allocated_cpus": 1,
+          "requested_memory": "4G",
+          "time_limit": "03:00:00",
+          "node": "milan32",
+          "partition": "batch-milan"
+        },
+        "stdout": "logs/dms-walker-no-intention-independent_21198485.out",
+        "stderr": "logs/dms-walker-no-intention-independent_21198485.err"
+      }
+    },
+    {
+      "variant": "no-intention-sequential",
+      "display_label": "HAPPO-style without intentions",
+      "algorithm_config_field": "ippo",
+      "update_mode": "sequential",
+      "config": "configs/development/legacy-walker2d-3x2-no-intention-sequential-1m.json",
+      "config_sha256": "688cc6831ed6c8ed5b90d21a9d2aba3d80ad832ac693e669d5275db099a0c78e",
+      "frozen_config": "runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-no-intention-sequential-1m.json",
+      "output": "runs/dev-legacy-walker2d-3x2-no-intention-sequential-1m-101",
+      "baseline_config": "configs/development/legacy-walker2d-3x2-ippo-1m.json",
+      "baseline_config_sha256": "fcb6a29c9d2a765d72ee4b837d4de0fc6f947d2e876eee8dbfa9dd4f112cf292",
+      "resolved_changes_from_baseline": {
+        "update_mode": {
+          "base": "independent",
+          "new": "sequential"
+        },
+        "output": {
+          "base": "runs/dev-legacy-walker2d-3x2-ippo-1m-101",
+          "new": "runs/dev-legacy-walker2d-3x2-no-intention-sequential-1m-101"
+        }
+      },
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "sequential",
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-walker2d-3x2-no-intention-sequential-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21198486",
+      "status": "running_startup_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-no-intention-sequential",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=03:00:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/train.sbatch",
+        "no-intention-sequential",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-no-intention-sequential-1m.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-no-intention-sequential-1m-101"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T11:40:06.972065+00:00",
+      "startup_validation": {
+        "checked_utc": "2026-10-25T11:42:00.292198+00:00",
+        "status": "passed",
+        "all_observed_updates_finite": true,
+        "observed_update_count": 25,
+        "first_update": {
+          "policy_loss": -0.03567145691098025,
+          "value_loss": 0.4971714332699776,
+          "entropy": 1.8360762516657512,
+          "approx_kl": 0.0067348527652939085,
+          "sequential_agent_order": [
+            2,
+            1,
+            0
+          ],
+          "sequential_factor_min": 0.32025474309921265,
+          "sequential_factor_max": 2.651301622390747,
+          "sequential_factor_ess": 3697.9737728693817,
+          "sequential_factor_ess_fraction": 0.9244934432173454,
+          "peer_gate_fraction": 0.0,
+          "steps": 4000,
+          "episodes": 188,
+          "elapsed_seconds": 4.026270850969013,
+          "training_return_mean": 2.216364818760822
+        },
+        "last_observed_update": {
+          "policy_loss": -0.00655704871302684,
+          "value_loss": 0.15575132444500922,
+          "entropy": 1.7713503499825796,
+          "approx_kl": 0.002355550333049905,
+          "sequential_agent_order": [
+            2,
+            0,
+            1
+          ],
+          "sequential_factor_min": 0.48015812039375305,
+          "sequential_factor_max": 2.0858945846557617,
+          "sequential_factor_ess": 3869.3734376851917,
+          "sequential_factor_ess_fraction": 0.9673433594212979,
+          "peer_gate_fraction": 0.0,
+          "steps": 100000,
+          "episodes": 1319,
+          "elapsed_seconds": 98.89676746999612,
+          "training_return_mean": 271.82430115958635
+        },
+        "active_intention_updates": 0,
+        "sequential_factor_summary": {
+          "factor_min_across_observed_updates": 0.32025474309921265,
+          "factor_max_across_observed_updates": 2.651301622390747,
+          "minimum_ess_fraction": 0.9244934432173454,
+          "observed_agent_orders": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              2,
+              0,
+              1
+            ],
+            [
+              1,
+              2,
+              0
+            ],
+            [
+              1,
+              0,
+              2
+            ],
+            [
+              1,
+              2,
+              0
+            ],
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              1,
+              2,
+              0
+            ],
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              1,
+              2,
+              0
+            ],
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              1,
+              2,
+              0
+            ],
+            [
+              2,
+              0,
+              1
+            ],
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              1,
+              0,
+              2
+            ],
+            [
+              1,
+              0,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              2,
+              0,
+              1
+            ]
+          ]
+        },
+        "runtime_import_preflight": "runs/development-walker-sequential-seed101/no-intention-sequential-runtime-preflight.json",
+        "runtime_import_preflight_sha256": "f9f5b13adcdb6cdb9e517618380429d5efe75164ead1590a32c01c9aacf0dd4d",
+        "actual_package_file": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "all_22_archived_source_files_match": true,
+        "resolved_config_matches_predeclared": true,
+        "budget_transitions": 1000000,
+        "manifest_sha256": "a387b14c4dd1ad028a90d7e506a9ecf9533b5c506f4d257f87d60ee55308ef5d",
+        "scheduler": {
+          "state": "RUNNING",
+          "allocated_cpus": 1,
+          "requested_memory": "4G",
+          "time_limit": "03:00:00",
+          "node": "milan32",
+          "partition": "batch-milan"
+        },
+        "stdout": "logs/dms-walker-no-intention-sequential_21198486.out",
+        "stderr": "logs/dms-walker-no-intention-sequential_21198486.err"
+      }
+    },
+    {
+      "variant": "dms-independent-beta-01",
+      "display_label": "DMS soft, independent PPO",
+      "algorithm_config_field": "dms",
+      "update_mode": "independent",
+      "config": "configs/development/legacy-walker2d-3x2-dms-independent-beta-01-1m.json",
+      "config_sha256": "c9c9eafe73c7e44dbba7d67c49f99b8f32fd348c1d86a0dfbb157ad960d802ed",
+      "frozen_config": "runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-dms-independent-beta-01-1m.json",
+      "output": "runs/dev-legacy-walker2d-3x2-dms-independent-beta-01-1m-101",
+      "baseline_config": "configs/development/legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m.json",
+      "baseline_config_sha256": "3f0357291a344f20ef574ed703dc5fce2f05069305ca5ed7f34b1dd1fcb5d4d0",
+      "resolved_changes_from_baseline": {
+        "output": {
+          "base": "runs/dev-legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m-101",
+          "new": "runs/dev-legacy-walker2d-3x2-dms-independent-beta-01-1m-101"
+        }
+      },
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-walker2d-3x2-dms-independent-beta-01-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21198487",
+      "status": "running_startup_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-dms-independent-beta-01",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=03:00:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/train.sbatch",
+        "dms-independent-beta-01",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-dms-independent-beta-01-1m.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-dms-independent-beta-01-1m-101"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T11:40:07.057863+00:00",
+      "startup_validation": {
+        "checked_utc": "2026-10-25T11:42:00.292198+00:00",
+        "status": "passed",
+        "all_observed_updates_finite": true,
+        "observed_update_count": 5,
+        "first_update": {
+          "policy_loss": -0.011297775632313763,
+          "value_loss": 0.4959464341402054,
+          "entropy": 1.836924527088801,
+          "approx_kl": 0.007457990925710571,
+          "peer_gate_fraction": 0.286,
+          "intention_feature_std": 0.37146782875061035,
+          "intention_loss": 2.1765369375546775,
+          "intention_nll": 2.125895142555237,
+          "intention_kl": 0.5064184591174126,
+          "forecast_target_count": 1778,
+          "forecast_comparison_count": 1736,
+          "forecast_component_count": 2976,
+          "history_baseline_target_count": 1736,
+          "history_baseline_component_count": 2976,
+          "forecast_rmse": 0.7817220291378068,
+          "persistence_rmse": 0.7817220291378068,
+          "history_mean_rmse": 0.6198219426098451,
+          "history_baseline_coverage_fraction": 0.9763779527559056,
+          "steps": 4000,
+          "episodes": 191,
+          "elapsed_seconds": 12.494083349010907,
+          "training_return_mean": 2.240451043907718
+        },
+        "last_observed_update": {
+          "policy_loss": -0.003386591800199312,
+          "value_loss": 1.0146334807078043,
+          "entropy": 1.8121278524398803,
+          "approx_kl": 0.0028459825025038297,
+          "peer_gate_fraction": 0.6605,
+          "intention_feature_std": 0.5279718637466431,
+          "intention_loss": 2.118575870990753,
+          "intention_nll": 2.1144426266352334,
+          "intention_kl": 0.04133199993520975,
+          "forecast_target_count": 1792,
+          "forecast_comparison_count": 1792,
+          "forecast_component_count": 3072,
+          "history_baseline_target_count": 1792,
+          "history_baseline_component_count": 3072,
+          "forecast_rmse": 0.7857379501525146,
+          "persistence_rmse": 0.8013570757658298,
+          "history_mean_rmse": 0.5767837173313564,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 20000,
+          "episodes": 576,
+          "elapsed_seconds": 87.99897468899144,
+          "training_return_mean": 59.278050450548356
+        },
+        "active_intention_updates": 5,
+        "sequential_factor_summary": null,
+        "runtime_import_preflight": "runs/development-walker-sequential-seed101/dms-independent-beta-01-runtime-preflight.json",
+        "runtime_import_preflight_sha256": "b29e20a2ea2da16dda2c3183afdcba232a238660d988a20ac659b748c6f89341",
+        "actual_package_file": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "all_22_archived_source_files_match": true,
+        "resolved_config_matches_predeclared": true,
+        "budget_transitions": 1000000,
+        "manifest_sha256": "2e8a7052ea7ebfde479f1f6f858bb9baf3028ee99772fedc241d850ddd9a2f45",
+        "scheduler": {
+          "state": "RUNNING",
+          "allocated_cpus": 1,
+          "requested_memory": "4G",
+          "time_limit": "03:00:00",
+          "node": "milan32",
+          "partition": "batch-milan"
+        },
+        "stdout": "logs/dms-walker-dms-independent-beta-01_21198487.out",
+        "stderr": "logs/dms-walker-dms-independent-beta-01_21198487.err"
+      }
+    },
+    {
+      "variant": "dms-sequential-beta-01",
+      "display_label": "DMS soft, sequential PPO",
+      "algorithm_config_field": "dms",
+      "update_mode": "sequential",
+      "config": "configs/development/legacy-walker2d-3x2-dms-sequential-beta-01-1m.json",
+      "config_sha256": "e5c13d4179e3dbed775bf1b756a4ae47d9c40f010409711f18493da2d9d351cd",
+      "frozen_config": "runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-dms-sequential-beta-01-1m.json",
+      "output": "runs/dev-legacy-walker2d-3x2-dms-sequential-beta-01-1m-101",
+      "baseline_config": "configs/development/legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m.json",
+      "baseline_config_sha256": "3f0357291a344f20ef574ed703dc5fce2f05069305ca5ed7f34b1dd1fcb5d4d0",
+      "resolved_changes_from_baseline": {
+        "update_mode": {
+          "base": "independent",
+          "new": "sequential"
+        },
+        "output": {
+          "base": "runs/dev-legacy-walker2d-3x2-dms-latent-decoder-beta-01-1m-101",
+          "new": "runs/dev-legacy-walker2d-3x2-dms-sequential-beta-01-1m-101"
+        }
+      },
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "sequential",
+        "total_steps": 1000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-walker2d-3x2-dms-sequential-beta-01-1m-101",
+        "torch_threads": 1
+      },
+      "job_id": "21198488",
+      "status": "running_startup_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-dms-sequential-beta-01",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=03:00:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/train.sbatch",
+        "dms-sequential-beta-01",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-sequential-seed101/configs/legacy-walker2d-3x2-dms-sequential-beta-01-1m.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-dms-sequential-beta-01-1m-101"
+      ],
+      "submission_stderr": "",
+      "submitted_utc": "2026-10-25T11:40:07.085234+00:00",
+      "startup_validation": {
+        "checked_utc": "2026-10-25T11:42:00.292198+00:00",
+        "status": "passed",
+        "all_observed_updates_finite": true,
+        "observed_update_count": 5,
+        "first_update": {
+          "policy_loss": -0.035635867049374305,
+          "value_loss": 0.49635874181985856,
+          "entropy": 1.836786816517512,
+          "approx_kl": 0.0076375563050532945,
+          "sequential_agent_order": [
+            0,
+            2,
+            1
+          ],
+          "sequential_factor_min": 0.3533342182636261,
+          "sequential_factor_max": 2.8124217987060547,
+          "sequential_factor_ess": 3706.1365239575684,
+          "sequential_factor_ess_fraction": 0.9265341309893921,
+          "peer_gate_fraction": 0.286,
+          "intention_feature_std": 0.37146782875061035,
+          "intention_loss": 2.176860193411509,
+          "intention_nll": 2.1262183785438538,
+          "intention_kl": 0.506418377161026,
+          "forecast_target_count": 1778,
+          "forecast_comparison_count": 1736,
+          "forecast_component_count": 2976,
+          "history_baseline_target_count": 1736,
+          "history_baseline_component_count": 2976,
+          "forecast_rmse": 0.7817220291378068,
+          "persistence_rmse": 0.7817220291378068,
+          "history_mean_rmse": 0.6198219426098451,
+          "history_baseline_coverage_fraction": 0.9763779527559056,
+          "steps": 4000,
+          "episodes": 191,
+          "elapsed_seconds": 12.621779130015057,
+          "training_return_mean": 2.240451043907718
+        },
+        "last_observed_update": {
+          "policy_loss": -0.009936030965764075,
+          "value_loss": 1.4851242303848267,
+          "entropy": 1.8155560652414957,
+          "approx_kl": 0.002272396667058274,
+          "sequential_agent_order": [
+            2,
+            0,
+            1
+          ],
+          "sequential_factor_min": 0.4865017533302307,
+          "sequential_factor_max": 2.001126289367676,
+          "sequential_factor_ess": 3864.402614415474,
+          "sequential_factor_ess_fraction": 0.9661006536038685,
+          "peer_gate_fraction": 0.6616666666666666,
+          "intention_feature_std": 0.5535246133804321,
+          "intention_loss": 2.079447408517202,
+          "intention_nll": 2.075631598631541,
+          "intention_kl": 0.038157700250546135,
+          "forecast_target_count": 1792,
+          "forecast_comparison_count": 1792,
+          "forecast_component_count": 3072,
+          "history_baseline_target_count": 1792,
+          "history_baseline_component_count": 3072,
+          "forecast_rmse": 0.7419338018633047,
+          "persistence_rmse": 0.7586923676652567,
+          "history_mean_rmse": 0.549379656553043,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 20000,
+          "episodes": 595,
+          "elapsed_seconds": 88.42667151999194,
+          "training_return_mean": 115.66834696524698
+        },
+        "active_intention_updates": 5,
+        "sequential_factor_summary": {
+          "factor_min_across_observed_updates": 0.3114100396633148,
+          "factor_max_across_observed_updates": 3.3709607124328613,
+          "minimum_ess_fraction": 0.9265341309893921,
+          "observed_agent_orders": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              1,
+              0,
+              2
+            ],
+            [
+              1,
+              2,
+              0
+            ],
+            [
+              1,
+              0,
+              2
+            ],
+            [
+              2,
+              0,
+              1
+            ]
+          ]
+        },
+        "runtime_import_preflight": "runs/development-walker-sequential-seed101/dms-sequential-beta-01-runtime-preflight.json",
+        "runtime_import_preflight_sha256": "9c3d467624f0c1d08dc6fa8a922bbeb0003ac05f3f007389948749a3f6809b2a",
+        "actual_package_file": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src/dms/__init__.py",
+        "all_22_archived_source_files_match": true,
+        "resolved_config_matches_predeclared": true,
+        "budget_transitions": 1000000,
+        "manifest_sha256": "a0c2ee9a88edee4943316b89ef07838cae949298a0677ce1a5dee9c4328a8c76",
+        "scheduler": {
+          "state": "RUNNING",
+          "allocated_cpus": 1,
+          "requested_memory": "4G",
+          "time_limit": "03:00:00",
+          "node": "milan32",
+          "partition": "batch-milan"
+        },
+        "stdout": "logs/dms-walker-dms-sequential-beta-01_21198488.out",
+        "stderr": "logs/dms-walker-dms-sequential-beta-01_21198488.err"
+      }
+    }
+  ],
+  "submission_gate": "Released by root after exact config/source review and all modern/native/CUDA validation passed; four predeclared development runs only.",
+  "interpretation_limits": [
+    "One development training seed does not establish a robust performance advantage.",
+    "Sequential no-intention uses algorithm=ippo only as the code switch disabling intentions; the experiment is labelled HAPPO-style, not independent PPO.",
+    "The sequential correction coordinates training likelihoods while keeping the same local actor/critic inputs.",
+    "The historical compatibility backend has unverified binary parity with the paper.",
+    "New independent controls are rerun with the same validated source as sequential controls; prior runs remain contextual evidence."
+  ],
+  "submission_started_utc": "2026-10-25T11:40:06.852764+00:00",
+  "submission_artifacts": {
+    "runs/development-walker-sequential-seed101/verify_runtime.py": "29bc2c74fbbb4f7431a392068bd11ebcba2041b7ed176e6cc8c86ec72ccc4041",
+    "runs/development-walker-sequential-seed101/train.sbatch": "90992f16b493611026bcda68dfcee2d668c99f0841babda165702347d316c692",
+    "scripts/triton/train_legacy_cpu.sbatch": "7e36f966988d9897a2cd3761d2caaecddb31e69b60e4c81897d0e977716c26a1",
+    "scripts/legacy/bootstrap.sh": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7"
+  },
+  "startup_validation_completed_utc": "2026-10-25T11:42:00.292198+00:00",
+  "actual_common_environment": {
+    "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+    "historical_binary_parity_verified": false,
+    "scenario": "Walker2d",
+    "native_env_id": "Walker2d-v2",
+    "agent_conf": "3x2",
+    "agent_obsk": 1,
+    "k_categories": [
+      [
+        "qpos",
+        "qvel"
+      ],
+      [
+        "qpos"
+      ]
+    ],
+    "global_categories": [],
+    "max_episode_steps": 1000,
+    "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+    "packages": {
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14",
+      "numpy": "1.26.4"
+    },
+    "mujoco_engine_version": 210,
+    "xml_asset": "walker2d.xml",
+    "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+    "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+    "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+    "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "action_routing": "graph_node_actuator_indices",
+    "control_processing": "clip_native_bounds_before_simulation_and_reward",
+    "action_ids": [
+      [
+        2,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "action_dims": [
+      2,
+      2,
+      2
+    ],
+    "observation_dims": [
+      5,
+      7,
+      6
+    ],
+    "action_sensor": "previous_executed_control_on_observed_joints",
+    "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+    "reward": {
+      "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+      "alive_bonus_on_terminal": true,
+      "healthy_height_open_interval": [
+        0.8,
+        2.0
+      ],
+      "healthy_angle_open_interval": [
+        -1.0,
+        1.0
+      ]
+    },
+    "frame_skip": 4,
+    "physics_timestep": 0.002,
+    "native_geom_friction": [
+      [
+        0.7,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        1.9,
+        0.1,
+        0.1
+      ]
+    ]
+  },
+  "actual_common_versions": {
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "protobuf": "6.33.0",
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14"
+  },
+  "startup_accounting": {
+    "path": "runs/development-walker-sequential-seed101/startup-accounting.txt",
+    "sha256": "0ab06307b88a64a68fdb8adf46febb18365a3a873fa41f43dbc82d6a4ff5f6aa"
+  },
+  "startup_note": "All four native jobs imported the frozen package and archived identical validated source, matched exact predeclared settings and 1M budgets, and produced finite updates. Sequential factors/ESS and active DMS auxiliary updates verified. These are startup correctness checks, not endpoint performance evidence."
+}

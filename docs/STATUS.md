@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-25 11:33 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
+Snapshot: **2026-10-25 11:53 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
 
 ## Latest verified updates
 
@@ -23,9 +23,11 @@ job **21196571**, completed with mean **975.1578** and final selected-peer
 fraction **0.9889**. Opening nearly every gate did not improve the observed
 return over the threshold-0.6 run on this seed. In the separate computed-force
 adaptation, IPPO job **21197960** completed 500,000 transitions with mean
-**1,237.3109** over five episodes. The three matching DMS scale/force pilots
-continue; their [ledger](../reports/development-ant-forces-scale-seed101.json)
-keeps this adaptation distinct from native Ant.
+**1,237.3109** over five episodes. The matching DMS pilots also completed: native/log-std −0.5 mean
+**974.5479**, native/−1 mean **998.9410**, computed/−1 mean **1,274.7967**.
+DMS minus IPPO on computed forces is **+37.4858** on this single development
+seed. Their [ledger](../reports/development-ant-forces-scale-seed101.json)
+retains all endpoint episodes and keeps this adaptation distinct from native Ant.
 
 HalfCheetah DMS job **21196472** reached a **3M-step intermediate** mean of
 **4,077.3705** over ten diagnostic episodes: nine returns were 4,352–4,752,
@@ -35,6 +37,24 @@ IPPO/DMS replicas on development seeds **103 and 107** are running as jobs
 [the ledger](../reports/development-halfcheetah-10m-replications.json) records
 the exact seed/output-only changes. They check stability; the earlier negative 500k comparisons remain part of the
 record.
+
+The lower auxiliary-rate HalfCheetah run's exact **2M** checkpoint now has
+measurable latent dependence: forecast RMSE **0.5942** versus its own-trajectory
+history baseline **0.7765**; peer latent shuffling raises forecast MSE by
+**6.4% / 7.7%**, with asymmetric policy KL **0.00095 / 0.05323**. Job
+**21198533** passed source, checkpoint, environment and zero-update checks.
+[The ledger](../reports/development-halfcheetah-aux-lr-2m-diagnostic.json)
+retains the initial postflight-check failure and the identical verified retry.
+This does not attribute a return gain to the latent, and trajectories differ
+from the higher-rate checkpoint's probe.
+
+A **32-observation local-memory IPPO** profile passed native checks in job
+**21198505**. On that host, CPU took **40.65 s** per 4,000 transitions and CUDA
+**17.46 s**; CUDA reduced the update cost while collection remained about
+16.7 s. [The profile](../reports/development-halfcheetah-memory-profile.json)
+records measured memory, source hashes, an initial harness-name collision,
+and an unchanged-source retry. Matched CUDA memory-length 0/32 development
+controls are being prepared; this is runtime evidence, not a learning result.
 
 The Swimmer history-filter probe **21198220** passed all 41 checks at the
 200,000-step checkpoint. Each manuscript `(K,l)` setting rejected **0/9,144
@@ -60,7 +80,11 @@ dead-unit masking and local history; corrections and losses stayed finite.
 Exact prepatch checks found zero changes to default independent metrics,
 model/optimizer state, or random states across five cases. The
 [validation ledger](../reports/sequential-update-validation.json) records all
-source hashes. Learning benefit remains untested.
+source hashes. Learning benefit remains untested. Four matched Walker2d 3x2 1M controls
+are running as **21198485–21198488**: independent/sequential updates crossed
+with no-intention/DMS. [The ledger](../reports/development-walker-sequential-seed101.json)
+verifies configurations differing only by the intended mode/algorithm and output,
+plus exact frozen-source imports and finite initial updates.
 
 ## Verified compute results
 

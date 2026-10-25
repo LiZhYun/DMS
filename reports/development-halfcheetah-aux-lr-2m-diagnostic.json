@@ -1,0 +1,711 @@
+{
+  "purpose": "Pure 512-transition development mechanism diagnostic at exactly2M lower auxiliary-rate training steps; no optimizer updates or performance claim",
+  "created_utc": "2026-10-25T11:46:18.295406+00:00",
+  "status": "completed_verified",
+  "training_job_id": "21197271",
+  "training_run": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101",
+  "training_ledger": "reports/development-halfcheetah-aux-lr-10m-seed101.json",
+  "actual_training_source_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-10m-101/source",
+  "training_manifest_sha256": "a71d3a3f747c3d22d126c19e9d48ef82e225ec84ea21cca3eef572844034e4a8",
+  "checkpoint": "runs/halfcheetah-aux-lr-2m-diagnostic-01/checkpoint-2m.pt",
+  "checkpoint_sha256": "601ed0ad4729353dc83677294734b60ec365403f0278482253d89a036171b35b",
+  "expected_training_steps": 2000000,
+  "training_seed": 101,
+  "training_episodes": 2000,
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-aux-lr-2m-diagnostic-01/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "frozen_files_sha256": {
+    "checkpoint-2m.pt": "601ed0ad4729353dc83677294734b60ec365403f0278482253d89a036171b35b",
+    "config.json": "6236401ce0850a80d6e12c0fc96b2c5e51f8453b71e76a617bace5fd7727d94f",
+    "legacy-dependencies.json": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b",
+    "manifest.json": "a71d3a3f747c3d22d126c19e9d48ef82e225ec84ea21cca3eef572844034e4a8",
+    "source/dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "source/dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "source/dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "source/dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "source/dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "source/dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "source/dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "source/dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "source/dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "source/dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "source/dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "source/dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "source/dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "source/dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "source/dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "source/dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+    "source/scripts/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01"
+  },
+  "helper_source": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101/mechanism-source-2m-01/scripts/diagnose_intentions.py",
+  "script_sha256": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01",
+  "output": "runs/halfcheetah-aux-lr-2m-diagnostic-01/diagnostic-02.json",
+  "protocol": {
+    "steps_per_environment": 128,
+    "num_environments": 4,
+    "out_of_training_transitions": 512,
+    "seed": 200001,
+    "pairing_seed": 200002,
+    "windows": 256,
+    "parameter_updates": 0,
+    "device": "cpu"
+  },
+  "resources": {
+    "cpus": 1,
+    "memory": "4G",
+    "time": "00:15:00",
+    "partitions": [
+      "batch-milan",
+      "batch-csl",
+      "batch-skl"
+    ]
+  },
+  "comparison_report": "reports/development-halfcheetah-2m-diagnostic.json",
+  "limitations": [
+    "One development checkpoint and one diagnostic seed; held-out training seeds unused.",
+    "Different policies induce different trajectories; equal diagnostic reset seeds do not make RMSE a matched-distribution ranking.",
+    "Policy sensitivity and predictive dependence do not establish return benefit.",
+    "Only one peer per observer; no multi-peer ranking or causal-selection benefit claim."
+  ],
+  "execution_artifacts_sha256": {
+    "runs/halfcheetah-aux-lr-2m-diagnostic-01/run_probe.py": "d625f489246a3259121dbb7542d28710c9bf58c37c142a69f7bb5bd62de5285f",
+    "runs/halfcheetah-aux-lr-2m-diagnostic-01/probe.sbatch": "66f37a13a46af6ce2cb7ea0e977d101b072c66982d361982584544ad10913b49",
+    "scripts/legacy/bootstrap.sh": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+    "runs/halfcheetah-aux-lr-2m-diagnostic-01/run_probe-02.py": "4891f0efd7f8be890c299b6dbc9da514c0d724b060a90db6aca3348b37cd9443",
+    "runs/halfcheetah-aux-lr-2m-diagnostic-01/probe-02.sbatch": "e6d0d5f14d50063606ceba4ca069663f6cbd35f3fca75bda4aa4719041901e99"
+  },
+  "job_id": "21198533",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=dms-hc-aux1e4-2m-probe",
+    "--partition=batch-milan,batch-csl,batch-skl",
+    "--cpus-per-task=1",
+    "--mem=4G",
+    "--time=00:15:00",
+    "--output=logs/%x_%j.out",
+    "--error=logs/%x_%j.err",
+    "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-aux-lr-2m-diagnostic-01/probe-02.sbatch"
+  ],
+  "submitted_utc": "2026-10-25T11:49:32.786584+00:00",
+  "submission_stdout": "21198533",
+  "submission_stderr": "",
+  "attempts": [
+    {
+      "job_id": "21198530",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc-aux1e4-2m-probe",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:15:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-aux-lr-2m-diagnostic-01/probe.sbatch"
+      ],
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "reason": "Probe itself completed. New postflight wrapper incorrectly equated the16-package training mapping with the diagnostic mapping that intentionally also includes the helper script.",
+      "output": "runs/halfcheetah-aux-lr-2m-diagnostic-01/diagnostic.json",
+      "output_sha256": "fdfe1a032b90fb98beea90adb497bf417671386607c9a8aac8c08f24931fde12",
+      "simulation_completed": true,
+      "wrapper_path": "runs/halfcheetah-aux-lr-2m-diagnostic-01/run_probe.py"
+    },
+    {
+      "job_id": "21198533",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc-aux1e4-2m-probe",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:15:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-aux-lr-2m-diagnostic-01/probe-02.sbatch"
+      ],
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "output": "runs/halfcheetah-aux-lr-2m-diagnostic-01/diagnostic-02.json",
+      "output_sha256": "bf2948d7d085dbb384dcfb1621fcd9380840bd8e848b23b51df9f3a24e3ae4cd",
+      "guard_output": "runs/halfcheetah-aux-lr-2m-diagnostic-01/guard-02.json",
+      "all_postflight_checks_passed": true
+    }
+  ],
+  "guard_output": "runs/halfcheetah-aux-lr-2m-diagnostic-01/guard-02.json",
+  "checked_utc": "2026-10-25T11:51:27.980146+00:00",
+  "checks": {
+    "exact_2m_checkpoint": true,
+    "actual_lower_rate_training_source_verified": true,
+    "all_frozen_inputs_read_only_and_unchanged": true,
+    "actual_import_path_matches": true,
+    "package_plus_helper_hashes_match": true,
+    "environment_and_used_versions_match_training": true,
+    "zero_optimizer_steps": true,
+    "model_and_normalization_state_unchanged": true,
+    "expected512transitions": true,
+    "own_query_preserved": true,
+    "first_and_retry_scientific_results_identical": true
+  },
+  "raw_sha256": "bf2948d7d085dbb384dcfb1621fcd9380840bd8e848b23b51df9f3a24e3ae4cd",
+  "guard_sha256": "b3e2042f25bec32b4d85038fb2a26dea8238ac2311b5b6d3aa7479de1d0a51fe",
+  "scheduler_accounting": [
+    "21198533|COMPLETED|0:0|00:00:07|milan30|1|4G|",
+    "21198533.batch|COMPLETED|0:0|00:00:07|milan30|1||403092K",
+    "21198533.extern|COMPLETED|0:0|00:00:07|milan30|1||"
+  ],
+  "runtime": {
+    "host": "milan30.int.triton.aalto.fi",
+    "slurm_job_id": "21198533",
+    "device": "cpu",
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "diagnostic_package_root": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-aux-lr-2m-diagnostic-01/source/dms",
+    "python_executable": "/scratch/work/liz23/reproduce/dms/.venv-legacy/bin/python",
+    "python_version": "3.10.19"
+  },
+  "used_package_versions": {
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14"
+  },
+  "actual_environment": {
+    "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+    "historical_binary_parity_verified": false,
+    "scenario": "HalfCheetah",
+    "native_env_id": "HalfCheetah-v2",
+    "agent_conf": "2x3",
+    "agent_obsk": 1,
+    "k_categories": [
+      [
+        "qpos",
+        "qvel"
+      ],
+      [
+        "qpos"
+      ]
+    ],
+    "global_categories": [],
+    "max_episode_steps": 1000,
+    "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+    "packages": {
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14",
+      "numpy": "1.26.4"
+    },
+    "mujoco_engine_version": 210,
+    "xml_asset": "half_cheetah.xml",
+    "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+    "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+    "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+    "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "action_routing": "graph_node_actuator_indices",
+    "control_processing": "clip_native_bounds_before_simulation_and_reward",
+    "action_ids": [
+      [
+        2,
+        1,
+        0
+      ],
+      [
+        5,
+        4,
+        3
+      ]
+    ],
+    "action_dims": [
+      3,
+      3
+    ],
+    "observation_dims": [
+      7,
+      7
+    ],
+    "action_sensor": "previous_executed_control_on_observed_joints",
+    "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+    "reward": {
+      "formula": "root_x_velocity - 0.1*sum(control**2)",
+      "native_termination": "never"
+    },
+    "frame_skip": 5,
+    "physics_timestep": 0.01,
+    "native_geom_friction": [
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ],
+      [
+        0.4,
+        0.1,
+        0.1
+      ]
+    ]
+  },
+  "forecast": {
+    "forecast_target_count": 4088,
+    "forecast_comparison_count": 4064,
+    "forecast_component_count": 8128,
+    "history_baseline_target_count": 4064,
+    "history_baseline_component_count": 8128,
+    "forecast_rmse": 0.5941710264419904,
+    "persistence_rmse": 1.1813975095943177,
+    "history_mean_rmse": 0.7764564766445585,
+    "history_baseline_coverage_fraction": 0.9941291585127201
+  },
+  "latent_temporal_variation": [
+    {
+      "observer": 0,
+      "peer": 0,
+      "self": true,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.021680869832652723,
+          0.025682236464151055,
+          0.19381477426939767,
+          0.3387425695892846,
+          0.022669864862988703,
+          0.01288145184356632,
+          0.1877886003713377,
+          0.43273878095530555
+        ],
+        "rms_coordinate_std": 0.2169814502757563,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.2580387616316409
+      },
+      "gated": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      }
+    },
+    {
+      "observer": 0,
+      "peer": 1,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.028706670871605108,
+          0.026551446703491195,
+          0.09097096930669651,
+          0.11817186320856397,
+          0.025434873568120176,
+          0.012268480230042947,
+          0.12546898312384294,
+          0.20286174189500802
+        ],
+        "rms_coordinate_std": 0.10090971164657028,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.12382954360008815
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.028706670871605108,
+          0.026551446703491195,
+          0.09097096930669651,
+          0.11817186320856397,
+          0.025434873568120176,
+          0.012268480230042947,
+          0.12546898312384294,
+          0.20286174189500802
+        ],
+        "rms_coordinate_std": 0.10090971164657028,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.12382954360008815
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.5155845750524202,
+          0.023759894223854366,
+          0.6040086212872067,
+          0.615198169522655,
+          0.3427544328234973,
+          0.2396290984341333,
+          0.014069057672779522,
+          0.05666370752706077
+        ],
+        "rms_coordinate_std": 0.3853567517816829,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.45734216551877316
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.5155845750524202,
+          0.023759894223854366,
+          0.6040086212872067,
+          0.615198169522655,
+          0.3427544328234973,
+          0.2396290984341333,
+          0.014069057672779522,
+          0.05666370752706077
+        ],
+        "rms_coordinate_std": 0.3853567517816829,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.45734216551877316
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 1,
+      "self": true,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.24634282842785524,
+          0.017902293586332794,
+          0.3038306470997624,
+          0.32560793109744857,
+          0.1573476891270125,
+          0.11824288176611013,
+          0.02016859800305496,
+          0.03394376329464457
+        ],
+        "rms_coordinate_std": 0.19353213361031454,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.228160105781862
+      },
+      "gated": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      }
+    }
+  ],
+  "policy_shuffle": [
+    {
+      "observer": 0,
+      "eligible_peer_entries": 508,
+      "matched_peer_entries": 504,
+      "compared_policy_count": 504,
+      "mean_kl_full_to_shuffled": 0.0009531686082482338,
+      "max_kl_full_to_shuffled": 0.012157618999481201,
+      "own_query_preserved": true
+    },
+    {
+      "observer": 1,
+      "eligible_peer_entries": 508,
+      "matched_peer_entries": 502,
+      "compared_policy_count": 502,
+      "mean_kl_full_to_shuffled": 0.05322606489062309,
+      "max_kl_full_to_shuffled": 1.1006516218185425,
+      "own_query_preserved": true
+    }
+  ],
+  "peer_decoder_shuffle": [
+    {
+      "observer": 0,
+      "peer": 1,
+      "self": false,
+      "matched_history_count": 247,
+      "scored_target_count": 988,
+      "scored_component_count": 988,
+      "prediction_change_rmse": 0.1120995432138443,
+      "forecast_rmse": 0.7283652424812317,
+      "shuffled_forecast_rmse": 0.751456618309021,
+      "mse_increase_after_shuffle": 0.034171104431152344
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "self": false,
+      "matched_history_count": 245,
+      "scored_target_count": 980,
+      "scored_component_count": 980,
+      "prediction_change_rmse": 0.6832322478294373,
+      "forecast_rmse": 0.9006388783454895,
+      "shuffled_forecast_rmse": 0.9348491430282593,
+      "mse_increase_after_shuffle": 0.06279247999191284
+    }
+  ],
+  "full_to_removed_policy_kl": [
+    {
+      "observer": 0,
+      "peer": 1,
+      "visible_policy_count": 508,
+      "mean_kl": 3.1699127172391246,
+      "quantiles": {
+        "0.0": 0.12384504079818726,
+        "0.25": 1.9506680369377136,
+        "0.5": 2.8569012880325317,
+        "0.75": 4.216105937957764,
+        "0.9": 6.046124839782715,
+        "0.95": 6.662103891372681,
+        "0.99": 9.003694458007814,
+        "1.0": 12.150613784790039
+      },
+      "fraction_above_threshold": {
+        "0.0001": 1.0,
+        "0.001": 1.0,
+        "0.01": 1.0,
+        "0.1": 1.0,
+        "0.2": 0.9803149606299213,
+        "0.6": 0.8385826771653543
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "visible_policy_count": 508,
+      "mean_kl": 18.175243001988555,
+      "quantiles": {
+        "0.0": 0.16397923231124878,
+        "0.25": 3.508501887321472,
+        "0.5": 13.624858856201172,
+        "0.75": 24.557196140289307,
+        "0.9": 48.01247749328614,
+        "0.95": 56.08789138793945,
+        "0.99": 67.76870574951172,
+        "1.0": 74.28295135498047
+      },
+      "fraction_above_threshold": {
+        "0.0001": 1.0,
+        "0.001": 1.0,
+        "0.01": 1.0,
+        "0.1": 1.0,
+        "0.2": 0.9960629921259843,
+        "0.6": 0.9291338582677166
+      }
+    }
+  ],
+  "interpretation": {
+    "aggregate_forecast_rmse": 0.5941710264419904,
+    "same_trajectory_visible_history_mean_rmse": 0.7764564766445585,
+    "same_trajectory_persistence_rmse": 1.1813975095943177,
+    "aggregate_forecast_beats_both_simple_baselines": true,
+    "peer_shuffle_mse_increases": [
+      0.034171104431152344,
+      0.06279247999191284
+    ],
+    "peer_shuffle_relative_mse_increases": [
+      0.06441108122711066,
+      0.07741163763086631
+    ],
+    "policy_peer_shuffle_mean_kls": [
+      0.0009531686082482338,
+      0.05322606489062309
+    ],
+    "interpretation": "At this2M lower-rate checkpoint, the aggregate action predictor beats its own same-trajectory history and persistence baselines, and peer-latent shuffles worsen both peer forecasts. Policy sensitivity is asymmetric and much smaller numerically than in the higher-rate2M diagnostic. This supports some learned predictive dependence and policy use on these probe states, not a demonstrated return benefit.",
+    "aggregation_note": "The aggregate forecast pools observed self and peer action components; peer-only shuffle results are reported separately."
+  },
+  "comparisons": [
+    {
+      "label": "lower-rate500k development checkpoint from separate training run",
+      "report": "reports/development-halfcheetah-aux-lr-diagnostics.json",
+      "report_sha256": "77a8bd37c6bb49d48131c5084a913ad419f6269eedfcc9141697b97db9bde93a",
+      "training_job_id": "21196480",
+      "probe_job_id": "21196915",
+      "checkpoint_sha256": "879ac6c55dadceb3694957b54f2afcf3193b94e4fa4d86d2f2c54738ca154a3a",
+      "forecast": {
+        "forecast_target_count": 4088,
+        "forecast_comparison_count": 4064,
+        "forecast_component_count": 8128,
+        "history_baseline_target_count": 4064,
+        "history_baseline_component_count": 8128,
+        "forecast_rmse": 0.8396762761731658,
+        "persistence_rmse": 0.9608882349855238,
+        "history_mean_rmse": 0.6695845095837714,
+        "history_baseline_coverage_fraction": 0.9941291585127201
+      },
+      "policy_shuffle": [
+        {
+          "observer": 0,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 508,
+          "compared_policy_count": 508,
+          "mean_kl_full_to_shuffled": 0.00010254239896312356,
+          "max_kl_full_to_shuffled": 0.0010457038879394531,
+          "own_query_preserved": true
+        },
+        {
+          "observer": 1,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 508,
+          "compared_policy_count": 508,
+          "mean_kl_full_to_shuffled": 0.0003063503827434033,
+          "max_kl_full_to_shuffled": 0.0055501461029052734,
+          "own_query_preserved": true
+        }
+      ],
+      "peer_decoder_shuffle": [
+        {
+          "observer": 0,
+          "peer": 1,
+          "self": false,
+          "matched_history_count": 247,
+          "scored_target_count": 988,
+          "scored_component_count": 988,
+          "prediction_change_rmse": 0.0018250568537041545,
+          "forecast_rmse": 0.7426440715789795,
+          "shuffled_forecast_rmse": 0.7432544827461243,
+          "mse_increase_after_shuffle": 0.0009070634841918945
+        },
+        {
+          "observer": 1,
+          "peer": 0,
+          "self": false,
+          "matched_history_count": 247,
+          "scored_target_count": 988,
+          "scored_component_count": 988,
+          "prediction_change_rmse": 0.014349127188324928,
+          "forecast_rmse": 1.0908851623535156,
+          "shuffled_forecast_rmse": 1.0954290628433228,
+          "mse_increase_after_shuffle": 0.009934544563293457
+        }
+      ],
+      "caution": "Separate training run and different on-policy diagnostic trajectories; descriptive comparison only, not a paired longitudinal effect."
+    },
+    {
+      "label": "higher-rate2M development checkpoint",
+      "report": "reports/development-halfcheetah-2m-diagnostic.json",
+      "report_sha256": "e7d79c2ddfb382ada13c65106ea4c20f3bad2a83c83d96d7b746924b7ad0426c",
+      "training_job_id": "21196472",
+      "probe_job_id": "21197951",
+      "checkpoint_sha256": "b1bd84898456d3ee76928537be56800ebee4abc566045954fcbaa67f6d952cb0",
+      "same_helper_sha256": true,
+      "forecast": {
+        "forecast_target_count": 4088,
+        "forecast_comparison_count": 4064,
+        "forecast_component_count": 8128,
+        "history_baseline_target_count": 4064,
+        "history_baseline_component_count": 8128,
+        "forecast_rmse": 0.33836828513805733,
+        "persistence_rmse": 1.0527123419435842,
+        "history_mean_rmse": 0.723292227213588,
+        "history_baseline_coverage_fraction": 0.9941291585127201
+      },
+      "policy_shuffle": [
+        {
+          "observer": 0,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 508,
+          "compared_policy_count": 508,
+          "mean_kl_full_to_shuffled": 2.2840311527252197,
+          "max_kl_full_to_shuffled": 24.45162582397461,
+          "own_query_preserved": true
+        },
+        {
+          "observer": 1,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 496,
+          "compared_policy_count": 496,
+          "mean_kl_full_to_shuffled": 1.9697703123092651,
+          "max_kl_full_to_shuffled": 13.91082763671875,
+          "own_query_preserved": true
+        }
+      ],
+      "peer_decoder_shuffle": [
+        {
+          "observer": 0,
+          "peer": 1,
+          "self": false,
+          "matched_history_count": 247,
+          "scored_target_count": 988,
+          "scored_component_count": 988,
+          "prediction_change_rmse": 0.8686466813087463,
+          "forecast_rmse": 0.3902551829814911,
+          "shuffled_forecast_rmse": 0.9245017766952515,
+          "mse_increase_after_shuffle": 0.7024043798446655
+        },
+        {
+          "observer": 1,
+          "peer": 0,
+          "self": false,
+          "matched_history_count": 245,
+          "scored_target_count": 980,
+          "scored_component_count": 980,
+          "prediction_change_rmse": 0.8604400157928467,
+          "forecast_rmse": 0.3470292389392853,
+          "shuffled_forecast_rmse": 0.8902572989463806,
+          "mse_increase_after_shuffle": 0.6721287369728088
+        }
+      ],
+      "caution": "Same diagnostic protocol with different trained policies and induced trajectories; cross-policy RMSE/KL differences do not isolate learning-rate causality."
+    }
+  ]
+}
