@@ -92,7 +92,7 @@ The full configs use exactly 10,000,000 environment transitions. Initial shorter
 
 Scripts use `.venv/bin/python` by default; override `PYTHON` with an absolute interpreter path if needed. `DMS_ROOT` can identify this directory when submitting elsewhere, and `SC2PATH` overrides the shared installation. `PYTHONPATH` includes `src` so the module also runs without an editable package install.
 
-For CPU training, use `scripts/triton/train_cpu.sbatch` with the same arguments. A short compute-node profile found CPU faster for the small IPPO networks; DMS should be profiled on the chosen task and configuration. The profiling command is `sbatch scripts/triton/profile.sbatch`. Device choice does not change the registered environment-transition budget.
+For CPU training, use `scripts/triton/train_cpu.sbatch` with the same arguments. A short compute-node profile found CPU faster for the small IPPO networks; DMS should be profiled on the chosen task and configuration. The profiling command is `sbatch scripts/triton/profile.sbatch`. The [Ant scaling measurements](docs/RUNTIME_SCALING.md) include four- and eight-agent CPU/H100 timings, memory use, and full-budget planning estimates. Device choice does not change the registered environment-transition budget.
 
 For independent SMAC processes, `parallel_env_steps=true` enables concurrent simulator steps with an ordered batch barrier. The policy and update order remain synchronous. The [bounded stepping profile](docs/SMAC_STEP_PROFILE.md) measured simulator throughput separately from model inference; it does not establish a full training speedup. SMAC also restarts long-lived game processes between episodes before their native clock limit, recording the restart count in training metrics.
 
@@ -124,9 +124,13 @@ The repository ships 60 configurations in `configs/generated`. To regenerate the
 
 The command creates 60 configurations and a manifest listing development and held-out training seeds. The default is the modern v5 track. Add `--mamujoco-backend legacy` and choose another new output directory for historical v2 compatibility configs; these use distinct `mamujoco-legacy-` output names and require the legacy launcher. Generated settings are provisional templates, not a frozen final protocol. It refuses to replace existing files. Generated configurations use k=1; `--agent-obsk 0` generates the separately labelled table-setting sensitivity track into another directory.
 
+The paper's supplementary parameter studies use historical ManyAgentSwimmer 10x2. [Its environment and configuration guide](docs/SWIMMER_ENVIRONMENT.md) documents the fixed packaged XML, native validation, and separate `dms.swimmer_configs` generator. Those study configurations remain unverified and separate from the twelve primary tasks.
+
 ## Evaluate and inspect a run
 
 Runs contain `config.json`, `manifest.json`, `metrics.jsonl`, `evaluation.jsonl`, and `latest.pt`. Training metrics include policy/value losses, approximate KL, entropy, and the intention reconstruction/KL terms. Evaluation rows preserve individual episode returns, seeds, lengths, and SMAC wins. Check actual recorded steps rather than inferring progress from file names.
+
+[Artifact export instructions](docs/ARTIFACTS.md) describe a verified local bundle of nine completed HalfCheetah development runs, including checkpoints and negative results. The exporter checks completed budgets, source hashes, and archive contents; no result bundle has been uploaded.
 
 For a fresh final evaluation, run the checkpoint evaluator on an allocated compute node:
 
@@ -163,7 +167,7 @@ For MuJoCo, native joint observations do not expose actuator commands. The adapt
 
 ## Citation and license
 
-The software follows the original repository’s [MIT license](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) identify the adapted graph code and separately installed benchmark assets. Cite the published method using [CITATION.bib](CITATION.bib); no benchmark reproduction result is claimed by this development release.
+The software follows the original repository’s [MIT license](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) identify the adapted graph and Swimmer source, packaged XML, and separately installed benchmark assets. Cite the published method using [CITATION.bib](CITATION.bib); no benchmark reproduction result is claimed by this development release.
 
 A copied public checkout passed 277 tests (22 native-legacy tests skipped) on an allocated CPU node without the workspace’s `runs`, `reference`, or environment directories. It reused the installed test dependencies; [the recorded check](reports/clean-checkout-tests.json) does not claim a new dependency installation.
 

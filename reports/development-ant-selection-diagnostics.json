@@ -1,0 +1,112 @@
+{
+  "purpose": "measure_causal_selection_KL_scale_before_threshold_redesign",
+  "created_utc": "2026-10-25T09:19:56.689036+00:00",
+  "protocol": "512freshtransitions,frozencheckpoint,alllocallyknownpeersvsonepeerremoved; nooptimization; policy sensitivity,notreturneffect",
+  "tests": "tests/test_selection_diagnostics.py:2passed",
+  "jobs": [
+    {
+      "job_id": "21196554",
+      "coordination": "causal",
+      "run": "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101",
+      "checkpoint": "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101/selection-diagnostic-checkpoint-01.pt",
+      "checkpoint_sha256": "36956b941fffbb6c81d8340779d6125915c2105ca75fc72b173587f7363c46c8",
+      "frozen_source": "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101/selection-diagnostic-source-01",
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+        "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+        "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+      },
+      "diagnostic_script_sha256": "c78d8795a38bdbd6e53a7ae44e1f407827cf8eb9c50bbbcec5be173ded92ba73",
+      "output": "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101/selection-diagnostic-01.json",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-ant-causal-gate-probe",
+        "scripts/triton/diagnose_legacy_cpu.sbatch",
+        "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101/selection-diagnostic-checkpoint-01.pt",
+        "runs/dev-legacy-ant-4x2-dms-causal-beta-01-1m-101/selection-diagnostic-01.json"
+      ],
+      "state": "completed_artifact_verified",
+      "summary": {
+        "training_steps": 200000,
+        "policy_comparison_count": 6012,
+        "weighted_mean_kl": 0.013932952802338286,
+        "fractions_above": {
+          "0.0001": 0.9915169660678643,
+          "0.001": 0.8852295409181636,
+          "0.01": 0.4041916167664671,
+          "0.1": 0.002162341982701264,
+          "0.2": 0.0,
+          "0.6": 0.0
+        },
+        "largest_observer_peer_median": 0.05882120132446289,
+        "largest_kl": 0.12350064516067505
+      }
+    },
+    {
+      "job_id": "21196555",
+      "coordination": "all",
+      "run": "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101",
+      "checkpoint": "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101/selection-diagnostic-checkpoint-01.pt",
+      "checkpoint_sha256": "b62dafcc27935d11d736055867f2be6f65e8d1988df97c2bbfe42e0bcceb1e56",
+      "frozen_source": "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101/selection-diagnostic-source-01",
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+        "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+        "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+      },
+      "diagnostic_script_sha256": "c78d8795a38bdbd6e53a7ae44e1f407827cf8eb9c50bbbcec5be173ded92ba73",
+      "output": "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101/selection-diagnostic-01.json",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-ant-all-gate-probe",
+        "scripts/triton/diagnose_legacy_cpu.sbatch",
+        "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101/selection-diagnostic-checkpoint-01.pt",
+        "runs/dev-legacy-ant-4x2-dms-all-beta-01-1m-101/selection-diagnostic-01.json"
+      ],
+      "state": "completed_artifact_verified",
+      "summary": {
+        "training_steps": 200000,
+        "policy_comparison_count": 6060,
+        "weighted_mean_kl": 0.005772783073655056,
+        "fractions_above": {
+          "0.0001": 0.9886138613861386,
+          "0.001": 0.8721122112211221,
+          "0.01": 0.1848184818481848,
+          "0.1": 0.0,
+          "0.2": 0.0,
+          "0.6": 0.0
+        },
+        "largest_observer_peer_median": 0.01683211326599121,
+        "largest_kl": 0.032580554485321045
+      }
+    }
+  ]
+}

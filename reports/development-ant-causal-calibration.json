@@ -1,0 +1,92 @@
+{
+  "purpose": "development_causal_gate_threshold_calibration_not_final_selection",
+  "created_utc": "2026-10-25T09:22:57.074114+00:00",
+  "job_id": "21196571",
+  "control_job": "21196124",
+  "config": "configs/development/legacy-ant-4x2-dms-causal-beta-01-delta-001-1m.json",
+  "config_sha256": "68b85adb11b134bf2ba98bf16087f0bb49bb23d0fb31fa320ce1b1939fb244b5",
+  "output": "runs/dev-legacy-ant-4x2-dms-causal-beta-01-delta-001-1m-101",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--time=06:00:00",
+    "--job-name=dms-ant-causal-d001",
+    "scripts/triton/train_legacy_cpu.sbatch",
+    "configs/development/legacy-ant-4x2-dms-causal-beta-01-delta-001-1m.json",
+    "runs/dev-legacy-ant-4x2-dms-causal-beta-01-delta-001-1m-101",
+    "101"
+  ],
+  "source_root": "runs/development-ant-coordination-source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "configuration_difference": [
+    "coordination_threshold",
+    "output"
+  ],
+  "old_threshold": 0.6,
+  "new_threshold": 0.01,
+  "basis": "At frozen200kcausalcheckpoint,6012visiblepeer-policycomparisons,maxKL0.1235;noneabove0.2or0.6,40.42%above0.01. Counterfactualsensitivitydoesnotpredictreturnbenefit. All-peer200kcheckpointalsohadnoneabove0.1. Existing0.6controlcontinuesunchanged.",
+  "diagnostic_ledger": "reports/development-ant-selection-diagnostics.json",
+  "resources": {
+    "cpus": 4,
+    "memory": "16G",
+    "time_limit": "06:00:00"
+  },
+  "state": "running",
+  "startup_verified_utc": "2026-10-25T09:32:08.823812+00:00",
+  "startup_checks": {
+    "config_matches_except_resolved_output": true,
+    "resolved_output_matches": true,
+    "manifest_source_matches": true,
+    "actual_source_matches": true,
+    "finite_metrics": true,
+    "positive_peer_gate_after_warmup": true,
+    "job_matches": true
+  },
+  "observed_progress": {
+    "policy_loss": -0.0025670228904346006,
+    "value_loss": 0.47544933333992956,
+    "entropy": 1.6842067003250123,
+    "approx_kl": 0.0014056581369516151,
+    "peer_gate_fraction": 0.18129166666666666,
+    "intention_feature_std": 1.1556370258331299,
+    "intention_loss": 1.1222922950983047,
+    "intention_nll": 1.1190899014472961,
+    "intention_kl": 0.032023708801716566,
+    "forecast_target_count": 4080,
+    "forecast_comparison_count": 4032,
+    "forecast_component_count": 5040,
+    "history_baseline_target_count": 4032,
+    "history_baseline_component_count": 5040,
+    "forecast_rmse": 0.5805456375493043,
+    "persistence_rmse": 0.7182294446553771,
+    "history_mean_rmse": 0.533823327159015,
+    "history_baseline_coverage_fraction": 0.9882352941176471,
+    "steps": 88000,
+    "episodes": 483,
+    "elapsed_seconds": 528.0144492809195,
+    "training_return_mean": -35.743093870052085
+  },
+  "runtime": {
+    "host": "milan1.int.triton.aalto.fi",
+    "device": "cpu",
+    "slurm_job_id": "21196571",
+    "slurm_partition": "batch-milan"
+  }
+}

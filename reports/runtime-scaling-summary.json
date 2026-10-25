@@ -1,0 +1,1938 @@
+{
+  "schema_version": 1,
+  "purpose": "single_host_runtime_scaling_diagnostic_not_learning_performance",
+  "verified_utc": "2026-10-25T09:20:37.262287+00:00",
+  "job": {
+    "id": "21196516",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed_seconds": 372,
+    "partition": "gpu-h100-80g",
+    "host": "gpu46.int.triton.aalto.fi",
+    "allocated_cpus": 8,
+    "allocated_memory_bytes": 34359738368,
+    "allocated_gpus": 1,
+    "time_limit_seconds": 1800,
+    "slurm_batch_max_rss_bytes": 2709835776,
+    "scheduler_records": [
+      "21196516|COMPLETED|00:06:12|0:0||billing=85,cpu=8,energy=152348,gres/gpu:h100=1,gres/gpu=1,mem=32G,node=1",
+      "21196516.batch|COMPLETED|00:06:12|0:0|2646324K|cpu=8,gres/gpu:h100=1,gres/gpu=1,mem=32G,node=1",
+      "21196516.extern|COMPLETED|00:06:12|0:0||billing=85,cpu=8,gres/gpu:h100=1,gres/gpu=1,mem=32G,node=1"
+    ]
+  },
+  "hardware": {
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8468",
+    "gpu": {
+      "name": "NVIDIA H100 80GB HBM3",
+      "capability": [
+        9,
+        0
+      ],
+      "compiled_architectures": [
+        "sm_50",
+        "sm_60",
+        "sm_70",
+        "sm_75",
+        "sm_80",
+        "sm_86",
+        "sm_90"
+      ],
+      "torch_cuda": "12.6",
+      "kernel_preflight_passed": true
+    }
+  },
+  "python": "3.10.19",
+  "versions": {
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14"
+  },
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+    "scripts/profile_runtime.py": "6c3e9f983589cb42154b5647567e37510cbe9d88856bd392d5212b08d7df1cb9"
+  },
+  "source_unchanged_during_profile": true,
+  "original_source_root": "/scratch/work/liz23/reproduce/dms/runs/ant-scaling-profile-seed101-01/source",
+  "artifacts": [
+    {
+      "path": "runs/ant-scaling-profile-seed101-01/profile.json",
+      "sha256": "642f8c9b68febc9c6e7ba82d506d256fd3a19b72fe36017b1b3f2aef3649b16f",
+      "availability": "retained workspace artifact; include the run bundle when distributing raw evidence"
+    },
+    {
+      "path": "runs/ant-scaling-profile-seed101-01/submission.json",
+      "sha256": "fa22decd01026b94a2968fed7f1e5be3c38158dac598ffdd9c62840a042d6ad9",
+      "availability": "retained workspace artifact; include the run bundle when distributing raw evidence"
+    },
+    {
+      "path": "runs/ant-scaling-profile-seed101-01/profile_runtime.py",
+      "sha256": "6c3e9f983589cb42154b5647567e37510cbe9d88856bd392d5212b08d7df1cb9",
+      "availability": "retained workspace artifact; include the run bundle when distributing raw evidence"
+    },
+    {
+      "path": "logs/dms-ant-scaling_21196516.out",
+      "sha256": "5dddb95fe2ec778c573cf12154468d881a000da0bed49e42f3e2192d928d1556",
+      "availability": "retained workspace artifact; include the run bundle when distributing raw evidence"
+    },
+    {
+      "path": "logs/dms-ant-scaling_21196516.err",
+      "sha256": "fea800b42e2c4940fe010f7a803780c5b4d15909cf48257629891dbc15720272",
+      "availability": "retained workspace artifact; include the run bundle when distributing raw evidence"
+    }
+  ],
+  "public_evidence_note": "This summary embeds all four configurations, actual backend metadata, all twenty round timings and update metrics, source hashes, memory measurements and arithmetic. The retained raw artifacts under runs/ and logs/ are not required to read these embedded measurements.",
+  "seed": 101,
+  "protocol": {
+    "condition_order": "partition, then device, then algorithm, in CLI order",
+    "warmup_iterations": 2,
+    "timed_iterations": 3,
+    "warmup": "Real collect/PPO/auxiliary updates; timings retained but excluded from estimates",
+    "torch_threads": 1,
+    "environment_steps_parallel": false,
+    "timing": "CUDA synchronized before collection, after collection, and after PPO/auxiliary updates",
+    "host_peak_memory": "Process-wide cumulative RSS high-water mark, not a per-condition isolated peak",
+    "scope": "One host and short early-training trajectories; repeated rounds are not independent trials",
+    "extrapolation": "Linear 10M transition estimate excludes evaluation, checkpoint I/O and startup; margin is planning allowance, not uncertainty interval"
+  },
+  "total_environment_transitions": 80000,
+  "total_timed_environment_transitions": 48000,
+  "all_20_updates_finite": true,
+  "all_20_updates_have_active_peer_gates": true,
+  "conditions": [
+    {
+      "condition_order": 0,
+      "config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 20000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000.0,
+        "warmup_episodes": 0,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 2048,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/toy-dms-101",
+        "torch_threads": 1
+      },
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ]
+      },
+      "initial_environment_seeds": [
+        101,
+        1101,
+        2101,
+        3101
+      ],
+      "parameter_counts": {
+        "agents": 81172,
+        "intentions": 125008,
+        "total": 206180
+      },
+      "iterations": [
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 0,
+          "iteration": 0,
+          "phase": "warmup",
+          "collection_seconds": 11.468909217976034,
+          "update_seconds": 0.9463724899105728,
+          "total_seconds": 12.415281707886606,
+          "transitions": 4000,
+          "transitions_per_second": 322.1835874621407,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0020015248867821358,
+            "value_loss": 0.5571858089417219,
+            "entropy": 1.8353148996829987,
+            "approx_kl": 0.002297004418079086,
+            "peer_gate_fraction": 0.99375,
+            "intention_feature_std": 0.5337422490119934,
+            "intention_loss": 1.5912497341632843,
+            "intention_nll": 1.5590971857309341,
+            "intention_kl": 0.321525227278471,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7683007360179954,
+            "persistence_rmse": 0.7683007360179954,
+            "history_mean_rmse": 0.55369796559407,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 955445248,
+            "current_rss_bytes": 942481408
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 0,
+          "iteration": 1,
+          "phase": "warmup",
+          "collection_seconds": 11.304612582083791,
+          "update_seconds": 0.6857953830622137,
+          "total_seconds": 11.990407965146005,
+          "transitions": 4000,
+          "transitions_per_second": 333.5999918957964,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.001352789642987773,
+            "value_loss": 0.6163359478116035,
+            "entropy": 1.8302603587508202,
+            "approx_kl": 0.00034390124558851743,
+            "peer_gate_fraction": 0.9925,
+            "intention_feature_std": 0.5212180018424988,
+            "intention_loss": 1.5476164519786835,
+            "intention_nll": 1.5313466042280197,
+            "intention_kl": 0.16269829217344522,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7817609780606476,
+            "persistence_rmse": 0.7855939233991582,
+            "history_mean_rmse": 0.569861162974002,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 959799296,
+            "current_rss_bytes": 967282688
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 0,
+          "iteration": 2,
+          "phase": "timed",
+          "collection_seconds": 11.216672521084547,
+          "update_seconds": 0.6748390980064869,
+          "total_seconds": 11.891511619091034,
+          "transitions": 4000,
+          "transitions_per_second": 336.3743927709127,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.000992054750463467,
+            "value_loss": 0.4700001150369644,
+            "entropy": 1.8252225294709206,
+            "approx_kl": 0.0003336086881383834,
+            "peer_gate_fraction": 0.99475,
+            "intention_feature_std": 0.5054686069488525,
+            "intention_loss": 1.4894503206014633,
+            "intention_nll": 1.4818776845932007,
+            "intention_kl": 0.0757264755666256,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7662729494369714,
+            "persistence_rmse": 0.7749430847636818,
+            "history_mean_rmse": 0.5453177444871526,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 959799296,
+            "current_rss_bytes": 967294976
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 0,
+          "iteration": 3,
+          "phase": "timed",
+          "collection_seconds": 11.26071875798516,
+          "update_seconds": 0.6777998609468341,
+          "total_seconds": 11.938518618931994,
+          "transitions": 4000,
+          "transitions_per_second": 335.04994444259074,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0015078805832672514,
+            "value_loss": 0.45683896355330944,
+            "entropy": 1.8174996286630631,
+            "approx_kl": 0.00047328046289778707,
+            "peer_gate_fraction": 0.994,
+            "intention_feature_std": 0.49464327096939087,
+            "intention_loss": 1.507207229733467,
+            "intention_nll": 1.5022274851799011,
+            "intention_kl": 0.049797417130321264,
+            "forecast_target_count": 4080,
+            "forecast_comparison_count": 4032,
+            "forecast_component_count": 5040,
+            "history_baseline_target_count": 4032,
+            "history_baseline_component_count": 5040,
+            "forecast_rmse": 0.7634533709934912,
+            "persistence_rmse": 0.7764456210308198,
+            "history_mean_rmse": 0.5519416713779056,
+            "history_baseline_coverage_fraction": 0.9882352941176471
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 959799296,
+            "current_rss_bytes": 967331840
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 0,
+          "iteration": 4,
+          "phase": "timed",
+          "collection_seconds": 11.222473411122337,
+          "update_seconds": 0.6783483359031379,
+          "total_seconds": 11.900821747025475,
+          "transitions": 4000,
+          "transitions_per_second": 336.11124383068517,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0017545670679510294,
+            "value_loss": 0.47183971889317033,
+            "entropy": 1.8105706036090852,
+            "approx_kl": 0.0006278980007537939,
+            "peer_gate_fraction": 0.99475,
+            "intention_feature_std": 0.48188135027885437,
+            "intention_loss": 1.467154085636139,
+            "intention_nll": 1.4646190255880356,
+            "intention_kl": 0.02535069698933512,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7471921960923128,
+            "persistence_rmse": 0.7642986903661289,
+            "history_mean_rmse": 0.5725192729509809,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 959799296,
+            "current_rss_bytes": 932347904
+          }
+        }
+      ],
+      "condition_wall_seconds": 65.91621902002953,
+      "host_memory": {
+        "process_peak_rss_bytes": 959799296,
+        "current_rss_bytes": 932347904
+      },
+      "gpu_memory": null,
+      "summary": {
+        "timed_iterations": 3,
+        "timed_transitions": 12000,
+        "timed_total_seconds": 35.7308519850485,
+        "transitions_per_second": 335.8442167855772,
+        "collection_seconds_mean": 11.233288230064014,
+        "update_seconds_mean": 0.676995764952153,
+        "iteration_seconds_sd": 0.020323469377217178,
+        "estimated_10m_training_hours": 8.271030552094562,
+        "planning_margin_multiplier": 1.5,
+        "estimated_10m_hours_with_margin": 12.406545828141843
+      }
+    },
+    {
+      "condition_order": 1,
+      "config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 20000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000.0,
+        "warmup_episodes": 0,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 2048,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/toy-dms-101",
+        "torch_threads": 1
+      },
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ]
+      },
+      "initial_environment_seeds": [
+        101,
+        1101,
+        2101,
+        3101
+      ],
+      "parameter_counts": {
+        "agents": 81172,
+        "intentions": 125008,
+        "total": 206180
+      },
+      "iterations": [
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 1,
+          "iteration": 0,
+          "phase": "warmup",
+          "collection_seconds": 12.438293901039287,
+          "update_seconds": 2.0558665487915277,
+          "total_seconds": 14.494160449830815,
+          "transitions": 4000,
+          "transitions_per_second": 275.9732109938586,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0020279962480344695,
+            "value_loss": 0.5894589327275753,
+            "entropy": 1.8340918093919754,
+            "approx_kl": 0.0024916173548997903,
+            "peer_gate_fraction": 0.9915,
+            "intention_feature_std": 0.5338039994239807,
+            "intention_loss": 1.5643667131662369,
+            "intention_nll": 1.5292248874902725,
+            "intention_kl": 0.35141823068261147,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7509687378880461,
+            "persistence_rmse": 0.7509687378880461,
+            "history_mean_rmse": 0.5712836191802217,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1676058624,
+            "current_rss_bytes": 1685151744
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 1,
+          "iteration": 1,
+          "phase": "warmup",
+          "collection_seconds": 10.194151997100562,
+          "update_seconds": 0.372612927807495,
+          "total_seconds": 10.566764924908057,
+          "transitions": 4000,
+          "transitions_per_second": 378.5453758483044,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0014437663266107848,
+            "value_loss": 0.4908922232687473,
+            "entropy": 1.8257424980401993,
+            "approx_kl": 0.0002934239734078232,
+            "peer_gate_fraction": 0.99175,
+            "intention_feature_std": 0.5203431248664856,
+            "intention_loss": 1.5307019501924515,
+            "intention_nll": 1.5143919885158539,
+            "intention_kl": 0.16309958323836327,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7632204233491138,
+            "persistence_rmse": 0.7664419236113503,
+            "history_mean_rmse": 0.5578153450174818,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1705046016,
+            "current_rss_bytes": 1714556928
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 1,
+          "iteration": 2,
+          "phase": "timed",
+          "collection_seconds": 10.217444757930934,
+          "update_seconds": 0.3752496619708836,
+          "total_seconds": 10.592694419901818,
+          "transitions": 4000,
+          "transitions_per_second": 377.61874754780996,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0015956817170717842,
+            "value_loss": 0.43417585268616676,
+            "entropy": 1.8188719153404236,
+            "approx_kl": 0.0006422139287215941,
+            "peer_gate_fraction": 0.99375,
+            "intention_feature_std": 0.5075950026512146,
+            "intention_loss": 1.5256295502185822,
+            "intention_nll": 1.5158509612083435,
+            "intention_kl": 0.09778600558638573,
+            "forecast_target_count": 4064,
+            "forecast_comparison_count": 3968,
+            "forecast_component_count": 4960,
+            "history_baseline_target_count": 3968,
+            "history_baseline_component_count": 4960,
+            "forecast_rmse": 0.7779793930608265,
+            "persistence_rmse": 0.7850412789719055,
+            "history_mean_rmse": 0.5710012312390167,
+            "history_baseline_coverage_fraction": 0.9763779527559056
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1706618880,
+            "current_rss_bytes": 1715138560
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 1,
+          "iteration": 3,
+          "phase": "timed",
+          "collection_seconds": 10.218725972110406,
+          "update_seconds": 0.3748809639364481,
+          "total_seconds": 10.593606936046854,
+          "transitions": 4000,
+          "transitions_per_second": 377.58622008045296,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0013491488429281163,
+            "value_loss": 0.5094139002263546,
+            "entropy": 1.8116883963346482,
+            "approx_kl": 0.0004546422963991058,
+            "peer_gate_fraction": 0.991,
+            "intention_feature_std": 0.4982152581214905,
+            "intention_loss": 1.512742057442665,
+            "intention_nll": 1.5085922628641129,
+            "intention_kl": 0.04149789363145828,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7399844448756062,
+            "persistence_rmse": 0.750936580913039,
+            "history_mean_rmse": 0.5537726963831076,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1706618880,
+            "current_rss_bytes": 1716490240
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "4x2",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 1,
+          "iteration": 4,
+          "phase": "timed",
+          "collection_seconds": 10.131882472895086,
+          "update_seconds": 0.37323769903741777,
+          "total_seconds": 10.505120171932504,
+          "transitions": 4000,
+          "transitions_per_second": 380.7667056191483,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.001431569122541987,
+            "value_loss": 0.39935441836714747,
+            "entropy": 1.8040063425898551,
+            "approx_kl": 0.0005386775451792345,
+            "peer_gate_fraction": 0.9965,
+            "intention_feature_std": 0.4905068874359131,
+            "intention_loss": 1.513487696647644,
+            "intention_nll": 1.5110836774110794,
+            "intention_kl": 0.02404019539244473,
+            "forecast_target_count": 4096,
+            "forecast_comparison_count": 4096,
+            "forecast_component_count": 5120,
+            "history_baseline_target_count": 4096,
+            "history_baseline_component_count": 5120,
+            "forecast_rmse": 0.7592302373241426,
+            "persistence_rmse": 0.7766645974770303,
+            "history_mean_rmse": 0.5550053324871592,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1706618880,
+            "current_rss_bytes": 1716531200
+          }
+        }
+      ],
+      "condition_wall_seconds": 57.21609135903418,
+      "host_memory": {
+        "process_peak_rss_bytes": 1706618880,
+        "current_rss_bytes": 1716531200
+      },
+      "gpu_memory": {
+        "peak_allocated_bytes": 163878400,
+        "peak_reserved_bytes": 211812352
+      },
+      "summary": {
+        "timed_iterations": 3,
+        "timed_transitions": 12000,
+        "timed_total_seconds": 31.691421527881175,
+        "transitions_per_second": 378.65136435873524,
+        "collection_seconds_mean": 10.189351067645475,
+        "update_seconds_mean": 0.3744561083149165,
+        "iteration_seconds_sd": 0.041499650623073606,
+        "estimated_10m_training_hours": 7.335977205528049,
+        "planning_margin_multiplier": 1.5,
+        "estimated_10m_hours_with_margin": 11.003965808292074
+      }
+    },
+    {
+      "condition_order": 2,
+      "config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "agent_conf": "8x1",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 20000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000.0,
+        "warmup_episodes": 0,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 2048,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/toy-dms-101",
+        "torch_threads": 1
+      },
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "8x1",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            7
+          ],
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "action_dims": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "observation_dims": [
+          18,
+          21,
+          18,
+          21,
+          18,
+          21,
+          18,
+          21
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ]
+      },
+      "initial_environment_seeds": [
+        101,
+        1101,
+        2101,
+        3101
+      ],
+      "parameter_counts": {
+        "agents": 145432,
+        "intentions": 258704,
+        "total": 404136
+      },
+      "iterations": [
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 2,
+          "iteration": 0,
+          "phase": "warmup",
+          "collection_seconds": 24.232197125209495,
+          "update_seconds": 1.8724633338861167,
+          "total_seconds": 26.104660459095612,
+          "transitions": 4000,
+          "transitions_per_second": 153.22934409615297,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.000888918401687988,
+            "value_loss": 0.5884273733943701,
+            "entropy": 0.9176900211721659,
+            "approx_kl": 0.001488057227525678,
+            "peer_gate_fraction": 0.35464285714285715,
+            "intention_feature_std": 0.578748345375061,
+            "intention_loss": 1.276855580508709,
+            "intention_nll": 1.251131720840931,
+            "intention_kl": 0.2572385258972645,
+            "forecast_target_count": 7168,
+            "forecast_comparison_count": 7168,
+            "forecast_component_count": 7168,
+            "history_baseline_target_count": 7168,
+            "history_baseline_component_count": 7168,
+            "forecast_rmse": 0.7850372422035902,
+            "persistence_rmse": 0.7850372422035902,
+            "history_mean_rmse": 0.574864609082671,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1912471552,
+            "current_rss_bytes": 1879306240
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 2,
+          "iteration": 1,
+          "phase": "warmup",
+          "collection_seconds": 24.589415302034467,
+          "update_seconds": 1.8232062668539584,
+          "total_seconds": 26.412621568888426,
+          "transitions": 4000,
+          "transitions_per_second": 151.4427482924157,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0007674078243439908,
+            "value_loss": 0.621664671972394,
+            "entropy": 0.9148778453469276,
+            "approx_kl": 0.00030278429797433114,
+            "peer_gate_fraction": 0.35410714285714284,
+            "intention_feature_std": 0.5718503594398499,
+            "intention_loss": 1.2617503851652145,
+            "intention_nll": 1.250835232436657,
+            "intention_kl": 0.10915159224532545,
+            "forecast_target_count": 7168,
+            "forecast_comparison_count": 7168,
+            "forecast_component_count": 7168,
+            "history_baseline_target_count": 7168,
+            "history_baseline_component_count": 7168,
+            "forecast_rmse": 0.793631183881846,
+            "persistence_rmse": 0.796206624688306,
+            "history_mean_rmse": 0.577788424033459,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1912471552,
+            "current_rss_bytes": 1894039552
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 2,
+          "iteration": 2,
+          "phase": "timed",
+          "collection_seconds": 24.389745484106243,
+          "update_seconds": 1.8961975290440023,
+          "total_seconds": 26.285943013150245,
+          "transitions": 4000,
+          "transitions_per_second": 152.17258890042078,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0005493476983247092,
+            "value_loss": 0.5645941648632288,
+            "entropy": 0.9117268398404121,
+            "approx_kl": 0.00029110555529559287,
+            "peer_gate_fraction": 0.35544642857142855,
+            "intention_feature_std": 0.5590212345123291,
+            "intention_loss": 1.2056916803121567,
+            "intention_nll": 1.2005519047379494,
+            "intention_kl": 0.0513977607479319,
+            "forecast_target_count": 7168,
+            "forecast_comparison_count": 7168,
+            "forecast_component_count": 7168,
+            "history_baseline_target_count": 7168,
+            "history_baseline_component_count": 7168,
+            "forecast_rmse": 0.7556819093920493,
+            "persistence_rmse": 0.7618164651404387,
+            "history_mean_rmse": 0.5738249821760288,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926184960,
+            "current_rss_bytes": 1935216640
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 2,
+          "iteration": 3,
+          "phase": "timed",
+          "collection_seconds": 24.556160253006965,
+          "update_seconds": 1.891475355019793,
+          "total_seconds": 26.447635608026758,
+          "transitions": 4000,
+          "transitions_per_second": 151.24225315574202,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0006089324131608009,
+            "value_loss": 0.5294436383992434,
+            "entropy": 0.9077523533254862,
+            "approx_kl": 0.00029565681624409867,
+            "peer_gate_fraction": 0.3547321428571429,
+            "intention_feature_std": 0.5488897562026978,
+            "intention_loss": 1.2237992659211159,
+            "intention_nll": 1.2202345728874207,
+            "intention_kl": 0.0356468838872388,
+            "forecast_target_count": 7140,
+            "forecast_comparison_count": 7056,
+            "forecast_component_count": 7056,
+            "history_baseline_target_count": 7056,
+            "history_baseline_component_count": 7056,
+            "forecast_rmse": 0.7530445162094782,
+            "persistence_rmse": 0.7647852282720136,
+            "history_mean_rmse": 0.5666198270352556,
+            "history_baseline_coverage_fraction": 0.9882352941176471
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926205440,
+            "current_rss_bytes": 1935237120
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cpu",
+          "algorithm": "dms",
+          "condition_order": 2,
+          "iteration": 4,
+          "phase": "timed",
+          "collection_seconds": 24.43675479805097,
+          "update_seconds": 1.8847239539027214,
+          "total_seconds": 26.32147875195369,
+          "transitions": 4000,
+          "transitions_per_second": 151.96714583154272,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0003462544471403817,
+            "value_loss": 0.40240923315286636,
+            "entropy": 0.9036629844456912,
+            "approx_kl": 0.00021741219485287496,
+            "peer_gate_fraction": 0.35526785714285714,
+            "intention_feature_std": 0.5439595580101013,
+            "intention_loss": 1.2045409381389618,
+            "intention_nll": 1.2027921825647354,
+            "intention_kl": 0.01748763379873708,
+            "forecast_target_count": 7168,
+            "forecast_comparison_count": 7168,
+            "forecast_component_count": 7168,
+            "history_baseline_target_count": 7168,
+            "history_baseline_component_count": 7168,
+            "forecast_rmse": 0.7743769976355547,
+            "persistence_rmse": 0.7904212956155873,
+            "history_mean_rmse": 0.5647031011946954,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926205440,
+            "current_rss_bytes": 1935249408
+          }
+        }
+      ],
+      "condition_wall_seconds": 131.6216571808327,
+      "host_memory": {
+        "process_peak_rss_bytes": 1926205440,
+        "current_rss_bytes": 1935249408
+      },
+      "gpu_memory": null,
+      "summary": {
+        "timed_iterations": 3,
+        "timed_transitions": 12000,
+        "timed_total_seconds": 79.0550573731307,
+        "transitions_per_second": 151.79294530597065,
+        "collection_seconds_mean": 24.460886845054727,
+        "update_seconds_mean": 1.8907989459888388,
+        "iteration_seconds_sd": 0.06938046179056409,
+        "estimated_10m_training_hours": 18.299781799335808,
+        "planning_margin_multiplier": 1.5,
+        "estimated_10m_hours_with_margin": 27.449672699003713
+      }
+    },
+    {
+      "condition_order": 3,
+      "config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "agent_conf": "8x1",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "total_steps": 20000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000.0,
+        "warmup_episodes": 0,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 2048,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/toy-dms-101",
+        "torch_threads": 1
+      },
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "8x1",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            7
+          ],
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "action_dims": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "observation_dims": [
+          18,
+          21,
+          18,
+          21,
+          18,
+          21,
+          18,
+          21
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ]
+      },
+      "initial_environment_seeds": [
+        101,
+        1101,
+        2101,
+        3101
+      ],
+      "parameter_counts": {
+        "agents": 145432,
+        "intentions": 258704,
+        "total": 404136
+      },
+      "iterations": [
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 3,
+          "iteration": 0,
+          "phase": "warmup",
+          "collection_seconds": 18.54174029896967,
+          "update_seconds": 0.7399540778715163,
+          "total_seconds": 19.281694376841187,
+          "transitions": 4000,
+          "transitions_per_second": 207.45064836233016,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0011768560575092124,
+            "value_loss": 0.5585944121703506,
+            "entropy": 0.9175104457885027,
+            "approx_kl": 0.0019595959536508416,
+            "peer_gate_fraction": 0.354375,
+            "intention_feature_std": 0.5787383317947388,
+            "intention_loss": 1.2621597275137901,
+            "intention_nll": 1.236898511648178,
+            "intention_kl": 0.25261226342990994,
+            "forecast_target_count": 7168,
+            "forecast_comparison_count": 7168,
+            "forecast_component_count": 7168,
+            "history_baseline_target_count": 7168,
+            "history_baseline_component_count": 7168,
+            "forecast_rmse": 0.7694140225919466,
+            "persistence_rmse": 0.7694140225919466,
+            "history_mean_rmse": 0.5700871969557143,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926205440,
+            "current_rss_bytes": 1853456384
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 3,
+          "iteration": 1,
+          "phase": "warmup",
+          "collection_seconds": 18.61045242403634,
+          "update_seconds": 0.7165235909633338,
+          "total_seconds": 19.326976014999673,
+          "transitions": 4000,
+          "transitions_per_second": 206.96460723579304,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0006794870089834148,
+            "value_loss": 0.5671910716220736,
+            "entropy": 0.913689649105072,
+            "approx_kl": 0.00021163789793109166,
+            "peer_gate_fraction": 0.3545535714285714,
+            "intention_feature_std": 0.5698282718658447,
+            "intention_loss": 1.2744204849004745,
+            "intention_nll": 1.2624865472316742,
+            "intention_kl": 0.11933944001793861,
+            "forecast_target_count": 7168,
+            "forecast_comparison_count": 7168,
+            "forecast_component_count": 7168,
+            "history_baseline_target_count": 7168,
+            "history_baseline_component_count": 7168,
+            "forecast_rmse": 0.7815337411153054,
+            "persistence_rmse": 0.7850589168321657,
+            "history_mean_rmse": 0.5562445156458702,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926205440,
+            "current_rss_bytes": 1853472768
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 3,
+          "iteration": 2,
+          "phase": "timed",
+          "collection_seconds": 18.55412442306988,
+          "update_seconds": 0.7165516070090234,
+          "total_seconds": 19.270676030078903,
+          "transitions": 4000,
+          "transitions_per_second": 207.56926190635681,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0005542375810364319,
+            "value_loss": 0.4195060981437564,
+            "entropy": 0.9095731504261494,
+            "approx_kl": 0.000254848267315128,
+            "peer_gate_fraction": 0.35517857142857145,
+            "intention_feature_std": 0.5588012933731079,
+            "intention_loss": 1.1882933303713799,
+            "intention_nll": 1.183319829404354,
+            "intention_kl": 0.04973489051917568,
+            "forecast_target_count": 7168,
+            "forecast_comparison_count": 7168,
+            "forecast_component_count": 7168,
+            "history_baseline_target_count": 7168,
+            "history_baseline_component_count": 7168,
+            "forecast_rmse": 0.7516870943684748,
+            "persistence_rmse": 0.7596161355351865,
+            "history_mean_rmse": 0.565963686814238,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926205440,
+            "current_rss_bytes": 1853489152
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 3,
+          "iteration": 3,
+          "phase": "timed",
+          "collection_seconds": 18.589121652999893,
+          "update_seconds": 0.7155680719297379,
+          "total_seconds": 19.30468972492963,
+          "transitions": 4000,
+          "transitions_per_second": 207.20353743031117,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.000739448627064121,
+            "value_loss": 0.5248946715146303,
+            "entropy": 0.9054297707974911,
+            "approx_kl": 0.0003584073176037975,
+            "peer_gate_fraction": 0.35464285714285715,
+            "intention_feature_std": 0.5495380163192749,
+            "intention_loss": 1.2124099880456924,
+            "intention_nll": 1.2088495194911957,
+            "intention_kl": 0.03560476761776954,
+            "forecast_target_count": 7140,
+            "forecast_comparison_count": 7056,
+            "forecast_component_count": 7056,
+            "history_baseline_target_count": 7056,
+            "history_baseline_component_count": 7056,
+            "forecast_rmse": 0.7518392399127163,
+            "persistence_rmse": 0.764292012074402,
+            "history_mean_rmse": 0.5655773682070578,
+            "history_baseline_coverage_fraction": 0.9882352941176471
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926205440,
+            "current_rss_bytes": 1853505536
+          }
+        },
+        {
+          "backend": "legacy",
+          "scenario": "Ant",
+          "agent_conf": "8x1",
+          "device": "cuda",
+          "algorithm": "dms",
+          "condition_order": 3,
+          "iteration": 4,
+          "phase": "timed",
+          "collection_seconds": 18.483424289152026,
+          "update_seconds": 0.7142606938723475,
+          "total_seconds": 19.197684983024374,
+          "transitions": 4000,
+          "transitions_per_second": 208.35845590429344,
+          "finite_update": true,
+          "metrics": {
+            "policy_loss": -0.0005499714798133937,
+            "value_loss": 0.4862884286791086,
+            "entropy": 0.9021562594920397,
+            "approx_kl": 0.0003538059101703312,
+            "peer_gate_fraction": 0.35535714285714287,
+            "intention_feature_std": 0.5441251397132874,
+            "intention_loss": 1.1935985311865807,
+            "intention_nll": 1.1909432709217072,
+            "intention_kl": 0.0265525946742855,
+            "forecast_target_count": 7140,
+            "forecast_comparison_count": 7056,
+            "forecast_component_count": 7056,
+            "history_baseline_target_count": 7056,
+            "history_baseline_component_count": 7056,
+            "forecast_rmse": 0.7737132012591925,
+            "persistence_rmse": 0.7925685444418543,
+            "history_mean_rmse": 0.574012073739385,
+            "history_baseline_coverage_fraction": 0.9882352941176471
+          },
+          "host_memory": {
+            "process_peak_rss_bytes": 1926205440,
+            "current_rss_bytes": 1853534208
+          }
+        }
+      ],
+      "condition_wall_seconds": 96.43747457209975,
+      "host_memory": {
+        "process_peak_rss_bytes": 1926205440,
+        "current_rss_bytes": 1853534208
+      },
+      "gpu_memory": {
+        "peak_allocated_bytes": 252755968,
+        "peak_reserved_bytes": 343932928
+      },
+      "summary": {
+        "timed_iterations": 3,
+        "timed_transitions": 12000,
+        "timed_total_seconds": 57.77305073803291,
+        "transitions_per_second": 207.70930125211842,
+        "collection_seconds_mean": 18.542223455073934,
+        "update_seconds_mean": 0.7154601242703696,
+        "iteration_seconds_sd": 0.044640090573541145,
+        "estimated_10m_training_hours": 13.373391374544656,
+        "planning_margin_multiplier": 1.5,
+        "estimated_10m_hours_with_margin": 20.060087061816986
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "agent_conf": "4x2",
+      "cpu_cuda_config_differences": {
+        "device": [
+          "cpu",
+          "cuda"
+        ]
+      },
+      "environment_metadata_equal": true,
+      "initial_seeds_equal": true,
+      "parameter_counts_equal": true,
+      "cuda_over_cpu_throughput_ratio": 1.1274613211532198,
+      "cpu_transitions_per_second": 335.8442167855772,
+      "cuda_transitions_per_second": 378.65136435873524,
+      "cpu_estimated_10m_hours": 8.271030552094562,
+      "cuda_estimated_10m_hours": 7.335977205528049,
+      "cpu_10m_hours_with_50percent_margin": 12.406545828141843,
+      "cuda_10m_hours_with_50percent_margin": 11.003965808292074,
+      "gpu_peak_allocated_mib": 156.28662109375,
+      "gpu_peak_reserved_mib": 202.0
+    },
+    {
+      "agent_conf": "8x1",
+      "cpu_cuda_config_differences": {
+        "device": [
+          "cpu",
+          "cuda"
+        ]
+      },
+      "environment_metadata_equal": true,
+      "initial_seeds_equal": true,
+      "parameter_counts_equal": true,
+      "cuda_over_cpu_throughput_ratio": 1.3683725606182593,
+      "cpu_transitions_per_second": 151.79294530597065,
+      "cuda_transitions_per_second": 207.70930125211842,
+      "cpu_estimated_10m_hours": 18.299781799335808,
+      "cuda_estimated_10m_hours": 13.373391374544656,
+      "cpu_10m_hours_with_50percent_margin": 27.449672699003713,
+      "cuda_10m_hours_with_50percent_margin": 20.060087061816986,
+      "gpu_peak_allocated_mib": 241.046875,
+      "gpu_peak_reserved_mib": 328.0
+    }
+  ],
+  "estimate_formula": {
+    "transitions_per_second": "sum(timed round transitions) / sum(timed collect + update seconds)",
+    "hours_for_10m": "10000000 / transitions_per_second / 3600",
+    "planning_hours": "hours_for_10m * 1.5"
+  },
+  "limitations": [
+    "One host, one seed, fixed sequential condition order, and three consecutive early-training timed rounds; these are not independent hardware trials.",
+    "CPU and CUDA have equal initial seed labels, configuration except device, environment metadata and parameter counts, but device RNG streams and numerical trajectories need not match.",
+    "CPU timing on the H100 node uses Intel Xeon Platinum 8468, eight allocated CPUs, one Torch thread and serial environment stepping. Existing four-CPU batch-milan job rates are separate measurements and are not interchangeable with these timings.",
+    "Ten-million-step estimates extrapolate collect plus PPO and auxiliary updates linearly. Evaluation, checkpoint I/O and startup are excluded; the 50% margin is a planning allowance, not a confidence interval or completion guarantee.",
+    "PyTorch peak allocated/reserved GPU memory excludes driver/context and other untracked allocations. Host process peak RSS is cumulative across all conditions; Slurm MaxRSS is a separate process-accounting measurement.",
+    "The environment is Gym 0.23.1 Ant-v2 with MuJoCo 2.1.0 compatibility; exact historical binary parity remains unverified. No learning-performance or paper-reproduction claim follows from these systems measurements."
+  ]
+}

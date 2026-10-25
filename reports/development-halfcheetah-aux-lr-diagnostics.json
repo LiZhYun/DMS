@@ -1,0 +1,509 @@
+{
+  "purpose": "frozen auxiliary-rate mechanism diagnostics, not final benchmark or independent training confirmation",
+  "created_utc": "2026-10-25T09:40:00.303022+00:00",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-aux-lr-diagnostic-source",
+  "source_and_script_sha256": {
+    "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "7623620183e93155dd34b79f4cddea0c49abe3943d3c24ab3423b0b48355b708",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "1593b94f267c2ebfc07f576759fb261509276c11bfef1583a46b959495dfd259",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+    "dms/intention.py": "1663eba23a90a1ff216c92b3bf7cdb2b2709a8a01a158c6b415d3dcfb2d15189",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+    "dms/train.py": "4d844744296b2c10cc7bc4cb8ac556f8afe141724ba6e3d55b415f430d67eba1",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "scripts/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01"
+  },
+  "protocol": {
+    "steps_per_environment": 128,
+    "environments": 4,
+    "forecast_windows": 256,
+    "seed": 200001,
+    "parameter_updates": 0
+  },
+  "jobs": [
+    {
+      "rate": "3e-4",
+      "run": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101",
+      "training_job": "21196479",
+      "checkpoint": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101/mechanism-diagnostic-checkpoint-01.pt",
+      "checkpoint_sha256": "99b64192f6601c40ecbe5396c185772c88d8c23c258123addeeb2fa56267aae0",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101/mechanism-diagnostic-01.json",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-aux-3e-4-probe",
+        "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101/mechanism-diagnostic-01.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101/mechanism-diagnostic-checkpoint-01.pt",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-3e-4-101/mechanism-diagnostic-01.json"
+      ],
+      "returncode": 0,
+      "stdout": "21196914",
+      "stderr": "",
+      "job_id": "21196914",
+      "status": "completed_artifact_verified",
+      "verified_utc": "2026-10-25T09:47:59.992484+00:00",
+      "checks": {
+        "source_unchanged": true,
+        "model_unchanged": true,
+        "checkpoint_matches": true,
+        "source_matches": true,
+        "actual_source_matches": true,
+        "zero_updates": true,
+        "steps_match": true,
+        "package_root_matches": true
+      },
+      "output_sha256": "1b5dbd91b5b8d902403e9e3aaf206aa211dcd817f496241586b78e3af52b83a4",
+      "forecast": {
+        "forecast_target_count": 4088,
+        "forecast_comparison_count": 4064,
+        "forecast_component_count": 8128,
+        "history_baseline_target_count": 4064,
+        "history_baseline_component_count": 8128,
+        "forecast_rmse": 0.6383111748965529,
+        "persistence_rmse": 0.9337918239567513,
+        "history_mean_rmse": 0.6572984028961788,
+        "history_baseline_coverage_fraction": 0.9941291585127201
+      },
+      "policy_shuffle": [
+        {
+          "observer": 0,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 508,
+          "compared_policy_count": 508,
+          "mean_kl_full_to_shuffled": 3.88059088436421e-05,
+          "max_kl_full_to_shuffled": 0.0009645223617553711,
+          "own_query_preserved": true
+        },
+        {
+          "observer": 1,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 508,
+          "compared_policy_count": 508,
+          "mean_kl_full_to_shuffled": 5.897703522350639e-05,
+          "max_kl_full_to_shuffled": 0.0015603899955749512,
+          "own_query_preserved": true
+        }
+      ],
+      "peer_decoder_shuffle": [
+        {
+          "observer": 0,
+          "peer": 1,
+          "self": false,
+          "matched_history_count": 247,
+          "scored_target_count": 988,
+          "scored_component_count": 988,
+          "prediction_change_rmse": 0.011282148770987988,
+          "forecast_rmse": 0.5595439672470093,
+          "shuffled_forecast_rmse": 0.5604045391082764,
+          "mse_increase_after_shuffle": 0.0009637773036956787
+        },
+        {
+          "observer": 1,
+          "peer": 0,
+          "self": false,
+          "matched_history_count": 247,
+          "scored_target_count": 988,
+          "scored_component_count": 988,
+          "prediction_change_rmse": 0.011995344422757626,
+          "forecast_rmse": 0.8194323778152466,
+          "shuffled_forecast_rmse": 0.8204917311668396,
+          "mse_increase_after_shuffle": 0.0017372369766235352
+        }
+      ],
+      "latent_temporal_variation": [
+        {
+          "observer": 0,
+          "peer": 0,
+          "self": true,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.03049391475824551,
+              0.06611577881433661,
+              0.033598908590965204,
+              0.023731311077255637,
+              0.0630647054633106,
+              0.01138797020948609,
+              0.08718673902734955,
+              0.014797852340111821
+            ],
+            "rms_coordinate_std": 0.04863201577436939,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.06290818208973582
+          },
+          "gated": {
+            "valid_steps": 0,
+            "variance_steps": 0,
+            "segments_with_multiple_samples": 0,
+            "coordinate_std": null,
+            "rms_coordinate_std": null,
+            "adjacent_pair_count": 0,
+            "adjacent_delta_rms": null
+          }
+        },
+        {
+          "observer": 0,
+          "peer": 1,
+          "self": false,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.01499742276612123,
+              0.02730717405710434,
+              0.01744679793712182,
+              0.015738368911240645,
+              0.033174669139423185,
+              0.004439958600141438,
+              0.029158717539158444,
+              0.008539520413030067
+            ],
+            "rms_coordinate_std": 0.021113140402217463,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.0185239625536776
+          },
+          "gated": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.01499742276612123,
+              0.02730717405710434,
+              0.01744679793712182,
+              0.015738368911240645,
+              0.033174669139423185,
+              0.004439958600141438,
+              0.029158717539158444,
+              0.008539520413030067
+            ],
+            "rms_coordinate_std": 0.021113140402217463,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.0185239625536776
+          }
+        },
+        {
+          "observer": 1,
+          "peer": 0,
+          "self": false,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.020256282753915198,
+              0.012452607529802234,
+              0.030976196274958897,
+              0.054034526898874835,
+              0.02474333949071843,
+              0.03534754446578383,
+              0.016480211396132715,
+              0.030576517572885095
+            ],
+            "rms_coordinate_std": 0.030644823791318207,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.03263846546654334
+          },
+          "gated": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.020256282753915198,
+              0.012452607529802234,
+              0.030976196274958897,
+              0.054034526898874835,
+              0.02474333949071843,
+              0.03534754446578383,
+              0.016480211396132715,
+              0.030576517572885095
+            ],
+            "rms_coordinate_std": 0.030644823791318207,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.03263846546654334
+          }
+        },
+        {
+          "observer": 1,
+          "peer": 1,
+          "self": true,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.019679362401246497,
+              0.011601377459104311,
+              0.034417067801188216,
+              0.04334485428584177,
+              0.017203697993092015,
+              0.03067903493126562,
+              0.018035484083968246,
+              0.03547981337652861
+            ],
+            "rms_coordinate_std": 0.02829851247170148,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.024240462192286868
+          },
+          "gated": {
+            "valid_steps": 0,
+            "variance_steps": 0,
+            "segments_with_multiple_samples": 0,
+            "coordinate_std": null,
+            "rms_coordinate_std": null,
+            "adjacent_pair_count": 0,
+            "adjacent_delta_rms": null
+          }
+        }
+      ]
+    },
+    {
+      "rate": "1e-4",
+      "run": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101",
+      "training_job": "21196480",
+      "checkpoint": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101/mechanism-diagnostic-checkpoint-01.pt",
+      "checkpoint_sha256": "879ac6c55dadceb3694957b54f2afcf3193b94e4fa4d86d2f2c54738ca154a3a",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101/mechanism-diagnostic-01.json",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-aux-1e-4-probe",
+        "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101/mechanism-diagnostic-01.sbatch",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101/mechanism-diagnostic-checkpoint-01.pt",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-101/mechanism-diagnostic-01.json"
+      ],
+      "returncode": 0,
+      "stdout": "21196915",
+      "stderr": "",
+      "job_id": "21196915",
+      "status": "completed_artifact_verified",
+      "verified_utc": "2026-10-25T09:47:59.996000+00:00",
+      "checks": {
+        "source_unchanged": true,
+        "model_unchanged": true,
+        "checkpoint_matches": true,
+        "source_matches": true,
+        "actual_source_matches": true,
+        "zero_updates": true,
+        "steps_match": true,
+        "package_root_matches": true
+      },
+      "output_sha256": "9dac74d55b580b7e2ca16aee351bd9eac30aeee59c98194ce26cb0869e8eda1c",
+      "forecast": {
+        "forecast_target_count": 4088,
+        "forecast_comparison_count": 4064,
+        "forecast_component_count": 8128,
+        "history_baseline_target_count": 4064,
+        "history_baseline_component_count": 8128,
+        "forecast_rmse": 0.8396762761731658,
+        "persistence_rmse": 0.9608882349855238,
+        "history_mean_rmse": 0.6695845095837714,
+        "history_baseline_coverage_fraction": 0.9941291585127201
+      },
+      "policy_shuffle": [
+        {
+          "observer": 0,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 508,
+          "compared_policy_count": 508,
+          "mean_kl_full_to_shuffled": 0.00010254239896312356,
+          "max_kl_full_to_shuffled": 0.0010457038879394531,
+          "own_query_preserved": true
+        },
+        {
+          "observer": 1,
+          "eligible_peer_entries": 508,
+          "matched_peer_entries": 508,
+          "compared_policy_count": 508,
+          "mean_kl_full_to_shuffled": 0.0003063503827434033,
+          "max_kl_full_to_shuffled": 0.0055501461029052734,
+          "own_query_preserved": true
+        }
+      ],
+      "peer_decoder_shuffle": [
+        {
+          "observer": 0,
+          "peer": 1,
+          "self": false,
+          "matched_history_count": 247,
+          "scored_target_count": 988,
+          "scored_component_count": 988,
+          "prediction_change_rmse": 0.0018250568537041545,
+          "forecast_rmse": 0.7426440715789795,
+          "shuffled_forecast_rmse": 0.7432544827461243,
+          "mse_increase_after_shuffle": 0.0009070634841918945
+        },
+        {
+          "observer": 1,
+          "peer": 0,
+          "self": false,
+          "matched_history_count": 247,
+          "scored_target_count": 988,
+          "scored_component_count": 988,
+          "prediction_change_rmse": 0.014349127188324928,
+          "forecast_rmse": 1.0908851623535156,
+          "shuffled_forecast_rmse": 1.0954290628433228,
+          "mse_increase_after_shuffle": 0.009934544563293457
+        }
+      ],
+      "latent_temporal_variation": [
+        {
+          "observer": 0,
+          "peer": 0,
+          "self": true,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.04951715455578472,
+              0.04300500445478807,
+              0.06435158792548161,
+              0.06234086296221557,
+              0.05108820163998012,
+              0.04632959510147819,
+              0.05501395407297017,
+              0.09727197860423459
+            ],
+            "rms_coordinate_std": 0.06080059391184253,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.0763184140589156
+          },
+          "gated": {
+            "valid_steps": 0,
+            "variance_steps": 0,
+            "segments_with_multiple_samples": 0,
+            "coordinate_std": null,
+            "rms_coordinate_std": null,
+            "adjacent_pair_count": 0,
+            "adjacent_delta_rms": null
+          }
+        },
+        {
+          "observer": 0,
+          "peer": 1,
+          "self": false,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.02827533839252825,
+              0.02506318397211173,
+              0.026564723857318187,
+              0.02286190348908401,
+              0.03638355031999838,
+              0.023687999798941557,
+              0.030520687954188188,
+              0.021014190683928048
+            ],
+            "rms_coordinate_std": 0.027189156405752063,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.031022728489956044
+          },
+          "gated": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.02827533839252825,
+              0.02506318397211173,
+              0.026564723857318187,
+              0.02286190348908401,
+              0.03638355031999838,
+              0.023687999798941557,
+              0.030520687954188188,
+              0.021014190683928048
+            ],
+            "rms_coordinate_std": 0.027189156405752063,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.031022728489956044
+          }
+        },
+        {
+          "observer": 1,
+          "peer": 0,
+          "self": false,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.07361168993775327,
+              0.055347978508629145,
+              0.02926157169772619,
+              0.05545018195572955,
+              0.07173878605072528,
+              0.06460874381698081,
+              0.02802250703963041,
+              0.016833744089172556
+            ],
+            "rms_coordinate_std": 0.053388225434212275,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.0680443790052003
+          },
+          "gated": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.07361168993775327,
+              0.055347978508629145,
+              0.02926157169772619,
+              0.05545018195572955,
+              0.07173878605072528,
+              0.06460874381698081,
+              0.02802250703963041,
+              0.016833744089172556
+            ],
+            "rms_coordinate_std": 0.053388225434212275,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.0680443790052003
+          }
+        },
+        {
+          "observer": 1,
+          "peer": 1,
+          "self": true,
+          "visible": {
+            "valid_steps": 508,
+            "variance_steps": 508,
+            "segments_with_multiple_samples": 4,
+            "coordinate_std": [
+              0.04501418625986147,
+              0.04469694396686671,
+              0.0467504067188453,
+              0.03448571431456349,
+              0.0563395118335622,
+              0.03591555513424777,
+              0.02537043432288975,
+              0.04346725473752293
+            ],
+            "rms_coordinate_std": 0.04242064304553257,
+            "adjacent_pair_count": 504,
+            "adjacent_delta_rms": 0.050020616233790255
+          },
+          "gated": {
+            "valid_steps": 0,
+            "variance_steps": 0,
+            "segments_with_multiple_samples": 0,
+            "coordinate_std": null,
+            "rms_coordinate_std": null,
+            "adjacent_pair_count": 0,
+            "adjacent_delta_rms": null
+          }
+        }
+      ]
+    }
+  ],
+  "interpretation": "Both rates have small positive peer forecast-loss changes after shuffling. The1e-4model has higher seed101return but forecastRMSE0.83968 worse than visible-historymean0.66958; predictive usefulness is not established. Different policies collect different trajectories; cross-model RMSE is not an accuracy ranking on matched data. Replication and longer budgets remain open."
+}

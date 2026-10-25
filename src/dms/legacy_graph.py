@@ -1,4 +1,4 @@
-"""The three paper robot graphs and their original local observation ordering.
+"""The paper robot graphs and their original local observation ordering.
 
 Adapted from LiZhYun/DMS, commit ed94ab0795d794f8bf43cab54ec4737f33319af3,
 envs/ma_mujoco/multiagent_mujoco/obsk.py (SHA256 below). This small adaptation
@@ -44,6 +44,12 @@ class Joint:
 
 def graph_for(scenario: str, agent_conf: str) -> tuple[list[tuple[Joint, ...]], list[frozenset[Joint]]]:
     """Return original ordered partitions and undirected joint hyperedges."""
+    if scenario == "ManyAgentSwimmer":
+        if agent_conf != "10x2":
+            raise ValueError("unsupported historical partition: ManyAgentSwimmer requires '10x2'")
+        nodes = [Joint(f"rot{index}", index - 20, index - 20, index) for index in range(20)]
+        edges = [frozenset(nodes[index:index + 2]) for index in range(19)]
+        return [tuple(nodes[index:index + 2]) for index in range(0, 20, 2)], edges
     if scenario == "Ant":
         nodes = []
         for leg in range(4):

@@ -146,12 +146,46 @@ def collect_fresh(learner, environments, steps, seed):
 
 
 @torch.no_grad()
+def selection_diagnostics(agent, observations, intentions, visible, available, threshold):
+    """Measure the paper's full-policy vs one-peer-removed KL on fixed inputs.
+
+    Use all locally known peers, before the actual causal gate. This can expose
+    a threshold that selects nobody. It is a counterfactual policy-sensitivity
+    measurement, not a return effect or evidence that masked inputs were trained.
+    """
+    visible = visible.clone()
+    visible[:, agent.observer_id] = False
+    full = agent.distribution(observations, intentions, visible, available)
+    thresholds = sorted({0.0001, 0.001, 0.01, 0.1, 0.2, 0.6, float(threshold)})
+    rows = []
+    for peer in range(visible.shape[1]):
+        if peer == agent.observer_id:
+            continue
+        removed = visible.clone()
+        removed[:, peer] = False
+        altered = agent.distribution(observations, intentions, removed, available)
+        values = kl_divergence(full, altered)[visible[:, peer]].double()
+        row = {'observer': agent.observer_id, 'peer': peer,
+               'visible_policy_count': len(values), 'mean_kl': None,
+               'quantiles': None, 'fraction_above_threshold': None}
+        if len(values):
+            probabilities = [0.0, 0.25, 0.5, 0.75, 0.9, 0.95, 0.99, 1.0]
+            quantiles = torch.quantile(values, values.new_tensor(probabilities)).cpu().tolist()
+            row.update(mean_kl=float(values.mean().item()),
+                       quantiles=dict(zip(map(str, probabilities), quantiles)),
+                       fraction_above_threshold={str(cutoff): float((values > cutoff).double().mean().item())
+                                                 for cutoff in thresholds})
+        rows.append(row)
+    return rows
+
+
+@torch.no_grad()
 def diagnose(learner, data, seed, max_windows):
     config = learner.config
     steps, environments = data['ends'].shape
     rng = np.random.default_rng(seed)
     active = learner.completed_episodes >= config.warmup_episodes
-    variation, policy_rows, decoder_rows, forecasts = [], [], [], []
+    variation, policy_rows, decoder_rows, forecasts, selection_rows = [], [], [], [], []
     candidates = [(t, e) for t in range(steps - config.prediction_horizon + 1)
                   for e in range(environments)
                   if not data['ends'][t:t + config.prediction_horizon - 1, e].any()]
@@ -187,6 +221,8 @@ def diagnose(learner, data, seed, max_windows):
         shuffled = shuffle_latents(context, donors)
         obs = data['obs'][:, :, observer].flatten(0, 1)
         available = data['available'][:, :, observer].flatten(0, 1) if learner.discrete else None
+        selection_rows.extend(selection_diagnostics(agent, obs, context, known & active, available,
+                                                    config.coordination_threshold))
         full = agent.distribution(obs, context, gates, available)
         altered = agent.distribution(obs, shuffled, gates, available)
         compared = torch.as_tensor(paired.any(1), device=learner.device)
@@ -243,13 +279,17 @@ def diagnose(learner, data, seed, max_windows):
                            mse_increase_after_shuffle=float((mse_after - mse_before).item()))
             decoder_rows.append(row)
     return {'latent_temporal_variation': variation, 'policy_shuffle': policy_rows,
+            'full_to_removed_policy_kl': selection_rows,
             'decoder_shuffle': decoder_rows, 'forecast': summarize_forecasts(forecasts),
             'forecast_windows': len(selected), 'candidate_forecast_windows': len(candidates)}
 
 
 def current_source_hashes():
+    """Fingerprint diagnostic code and packaged simulator assets separately from training."""
     package = Path(dms.__file__).parent
-    paths = {f'dms/{path.name}': path for path in package.glob('*.py')}
+    paths = {f'dms/{path.relative_to(package)}': path for path in package.rglob('*.py')}
+    paths.update({f'dms/{path.relative_to(package)}': path
+                  for path in (package / 'assets').rglob('*.xml')})
     paths['scripts/diagnose_intentions.py'] = Path(__file__)
     return {name: hashlib.sha256(path.read_bytes()).hexdigest() for name, path in sorted(paths.items())}
 
@@ -340,6 +380,7 @@ def main():
             'pairing': 'same observer and peer; exact history visibility pattern; distinct sensed action histories; no fallback',
             'policy_intervention': 'shuffle eligible peer latents; preserve own query, observations, gates and action masks',
             'decoder_intervention': 'shuffle prior means; retain original past, action anchor and peer identity',
+            'selection_statistic': 'KL(full locally visible peer set || one peer removed), before gating; frozen inputs and policy; sensitivity only',
             'decoder_history_input': getattr(config, 'decoder_history', True),
             'temporal_variance': 'center each coordinate within each environment episode; exclude warmup placeholders',
             'history_baseline': 'visible past component mean or categorical mode; histogram NLL adds one pseudocount per real category; unknown histories excluded',

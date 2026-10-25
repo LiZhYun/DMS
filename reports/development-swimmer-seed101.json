@@ -1,0 +1,118 @@
+{
+  "purpose": "supplemental swimmer baseline and causal DMS development pilots, not reproduced parameter-study curves",
+  "created_utc": "2026-10-25T09:39:07.178402+00:00",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/swimmer-validation-20261025-01/source",
+  "source_and_asset_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "d4847f2b0c5da7d73a71d5e2817d69dd300480cb00d894969975f16dee2fb642",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+  },
+  "prior_validation": {
+    "native_test_job": "21196579",
+    "passed": 44,
+    "smoke_job": "21196586",
+    "smoke_transitions": 128
+  },
+  "seed": 101,
+  "held_out_seeds_used": false,
+  "budget_per_run": 500000,
+  "jobs": [
+    {
+      "variant": "ippo",
+      "config": "configs/development/swimmer10x2-ippo-pilot.json",
+      "config_sha256": "577206978bdf9d93cd8cf6c4afcd599e089160d638cc3d05dacdb3ec037897f6",
+      "output": "runs/dev-legacy-swimmer10x2-ippo-500k-101",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=04:00:00",
+        "--job-name=dms-swimmer-ippo",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/swimmer10x2-ippo-pilot.json",
+        "runs/dev-legacy-swimmer10x2-ippo-500k-101",
+        "101"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "hours": 4
+      },
+      "returncode": 0,
+      "stdout": "21196867",
+      "stderr": "",
+      "job_id": "21196867",
+      "startup_checks": {
+        "source_and_asset_match": true,
+        "manifest_xml_matches": true,
+        "config_matches": true,
+        "output_matches": true,
+        "finite_metrics": true,
+        "job_matches": true
+      },
+      "checked_utc": "2026-10-25T09:48:00.060722+00:00",
+      "steps": 156000,
+      "runtime": {
+        "host": "milan5.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196867",
+        "slurm_partition": "batch-milan"
+      }
+    },
+    {
+      "variant": "dms-causal",
+      "config": "configs/development/swimmer10x2-dms-causal-pilot.json",
+      "config_sha256": "0dd821d374de58c0e1ed2a7348c4a95f7c74b0f9d3ee956c891323b8a4a7af2d",
+      "output": "runs/dev-legacy-swimmer10x2-dms-causal-500k-101",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=06:00:00",
+        "--job-name=dms-swimmer-dms-causal",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/swimmer10x2-dms-causal-pilot.json",
+        "runs/dev-legacy-swimmer10x2-dms-causal-500k-101",
+        "101"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "hours": 6
+      },
+      "returncode": 0,
+      "stdout": "21196868",
+      "stderr": "",
+      "job_id": "21196868",
+      "startup_checks": {
+        "source_and_asset_match": true,
+        "manifest_xml_matches": true,
+        "config_matches": true,
+        "output_matches": true,
+        "finite_metrics": true,
+        "job_matches": true
+      },
+      "checked_utc": "2026-10-25T09:48:00.105919+00:00",
+      "steps": 40000,
+      "runtime": {
+        "host": "milan5.int.triton.aalto.fi",
+        "device": "cpu",
+        "slurm_job_id": "21196868",
+        "slurm_partition": "batch-milan"
+      }
+    }
+  ]
+}

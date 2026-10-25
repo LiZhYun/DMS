@@ -79,8 +79,11 @@ def state_hash(learner):
 
 
 def source_hashes():
+    """Include fixed simulator assets in the unchanged-source assertion."""
     package = Path(dms.__file__).resolve().parent
     paths = {f'dms/{p.relative_to(package)}': p for p in package.rglob('*.py')}
+    paths.update({f'dms/{p.relative_to(package)}': p
+                  for p in (package / 'assets').rglob('*.xml')})
     paths['scripts/evaluate_interventions.py'] = Path(__file__).resolve()
     return {name: hashlib.sha256(path.read_bytes()).hexdigest()
             for name, path in sorted(paths.items())}

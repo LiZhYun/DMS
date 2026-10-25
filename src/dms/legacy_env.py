@@ -20,6 +20,10 @@ from .envs import EnvStep, _augment_local_observations, _joint_action_visibility
 
 
 _REWARDS = {
+    "ManyAgentSwimmer": {
+        "formula": "root_x_velocity - 0.0001*sum(control**2)",
+        "native_termination": "never",
+    },
     "Ant": {
         "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
         "alive_bonus_on_terminal": True,
@@ -85,9 +89,14 @@ class LegacyMaMuJoCoEnv:
             raise RuntimeError(f"legacy compatibility backend requires MuJoCo 210, found {engine_version}")
         # Gym 0.23 forwards make() kwargs to the robot constructor, unlike
         # modern Gymnasium. Configure its existing TimeLimit wrapper directly.
-        self.backend = gym.make(f"{scenario}-v2")
-        self.backend._max_episode_steps = max_episode_steps
-        self.backend.spec.max_episode_steps = max_episode_steps
+        if scenario == "ManyAgentSwimmer":
+            from .legacy_swimmer import make_swimmer
+
+            self.backend = gym.wrappers.TimeLimit(make_swimmer(), max_episode_steps=max_episode_steps)
+        else:
+            self.backend = gym.make(f"{scenario}-v2")
+            self.backend._max_episode_steps = max_episode_steps
+            self.backend.spec.max_episode_steps = max_episode_steps
         self.native = self.backend.unwrapped
         self._done = True
         self._elapsed_steps = 0
@@ -108,13 +117,18 @@ class LegacyMaMuJoCoEnv:
                 self._raw_valid[agent, :size] = True
             self.obs_dim = 2 * self.raw_obs_dim + self.n_agents + 2 * self.n_agents * self.action_dim
 
-            asset = Path(inspect.getfile(type(self.native))).parent / "assets" / _ASSETS[scenario]
+            if scenario == "ManyAgentSwimmer":
+                from .legacy_swimmer import ASSET_PATH
+
+                asset = ASSET_PATH
+            else:
+                asset = Path(inspect.getfile(type(self.native))).parent / "assets" / _ASSETS[scenario]
             graph_path = Path(legacy_graph.__file__)
             self.metadata = {
                 "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
                 "historical_binary_parity_verified": False,
                 "scenario": scenario,
-                "native_env_id": f"{scenario}-v2",
+                "native_env_id": "custom_manyagent_swimmer_10x2" if scenario == "ManyAgentSwimmer" else f"{scenario}-v2",
                 "agent_conf": agent_conf,
                 "agent_obsk": agent_obsk,
                 "k_categories": [list(categories) for categories in self.k_categories],
@@ -140,6 +154,15 @@ class LegacyMaMuJoCoEnv:
                 "physics_timestep": float(self.native.model.opt.timestep),
                 "native_geom_friction": self.native.model.geom_friction.tolist(),
             }
+            if scenario == "ManyAgentSwimmer":
+                from .legacy_swimmer import ORIGINAL_SOURCE_SHA256, ORIGINAL_TEMPLATE_SHA256
+
+                self.metadata["original_environment_sha256"] = ORIGINAL_SOURCE_SHA256
+                self.metadata["original_xml_template_sha256"] = ORIGINAL_TEMPLATE_SHA256
+                self.metadata["asset_generation"] = "packaged_fixed_10x2; no runtime generation"
+                self.metadata["native_integrator"] = "RK4"
+                self.metadata["fluid_density"] = float(self.native.model.opt.density)
+                self.metadata["fluid_viscosity"] = float(self.native.model.opt.viscosity)
         except Exception:
             self.backend.close()
             raise

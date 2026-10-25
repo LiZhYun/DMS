@@ -1,0 +1,152 @@
+{
+  "purpose": "replicate promising lower auxiliary learning rate on both remaining development seeds; not final selection",
+  "created_utc": "2026-10-25T09:32:08.824993+00:00",
+  "selected_rate": 0.0001,
+  "screen_evidence": {
+    "seed": 101,
+    "budget": 500000,
+    "rates_and_returns": {
+      "0.001": 3109.834,
+      "0.0003": 2157.0452997786224,
+      "0.0001": 3628.5830403324217
+    },
+    "limitation": "Rate selected from two alternatives on seed101; all outcomes retained. Replications required, held-out seeds unused."
+  },
+  "jobs": [
+    {
+      "seed": 103,
+      "control_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103",
+      "control_job": "21196091",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103/source",
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+        "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+        "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+      },
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-seed103.json",
+      "config_sha256": "6a8a0bb71e31a920c7bc44d5aa10fedad990cb890ce712f3b56854bec678cde8",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-103",
+      "config_changes": {
+        "intention_lr": {
+          "old": 0.001,
+          "new": 0.0001
+        },
+        "output": {
+          "old": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-103",
+          "new": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-103"
+        }
+      },
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=02:00:00",
+        "--job-name=dms-hc-aux1e4-s103",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-seed103.json",
+        "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-103",
+        "103"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "time": "02:00:00"
+      },
+      "submitted_utc": "2026-10-25T09:32:08.861731+00:00",
+      "returncode": 0,
+      "stdout": "21196699",
+      "stderr": "",
+      "job_id": "21196699",
+      "observed_utc": "2026-10-25T09:36:28.066623+00:00",
+      "observed_status": "training; no paper performance claim",
+      "observed_steps": 132000,
+      "verification": {
+        "config_matches": true,
+        "output_matches": true,
+        "source_matches_manifest": true,
+        "finite_metrics": true,
+        "job_matches": true
+      }
+    },
+    {
+      "seed": 107,
+      "control_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107",
+      "control_job": "21196093",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107/source",
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "b8917a15a45a4dccf04ee007d25ef0a6743b1d9a7b9b63a8481b524428a38630",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+        "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+        "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e"
+      },
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-seed107.json",
+      "config_sha256": "3edd81e5960a27d6c969f1545ed02bf1340eeaab04c3bca7aa9ece28fa6e4558",
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-107",
+      "config_changes": {
+        "intention_lr": {
+          "old": 0.001,
+          "new": 0.0001
+        },
+        "output": {
+          "old": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-107",
+          "new": "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-107"
+        }
+      },
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--time=02:00:00",
+        "--job-name=dms-hc-aux1e4-s107",
+        "scripts/triton/train_legacy_cpu.sbatch",
+        "configs/development/legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-seed107.json",
+        "runs/dev-legacy-halfcheetah-2x3-dms-beta-01-aux-lr-1e-4-107",
+        "107"
+      ],
+      "resources": {
+        "cpus": 4,
+        "memory": "16G",
+        "time": "02:00:00"
+      },
+      "submitted_utc": "2026-10-25T09:32:08.892230+00:00",
+      "returncode": 0,
+      "stdout": "21196700",
+      "stderr": "",
+      "job_id": "21196700",
+      "observed_utc": "2026-10-25T09:36:28.066623+00:00",
+      "observed_status": "training; no paper performance claim",
+      "observed_steps": 128000,
+      "verification": {
+        "config_matches": true,
+        "output_matches": true,
+        "source_matches_manifest": true,
+        "finite_metrics": true,
+        "job_matches": true
+      }
+    }
+  ],
+  "last_checked_utc": "2026-10-25T09:36:28.066623+00:00"
+}
