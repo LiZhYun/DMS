@@ -1,7 +1,7 @@
 {
   "purpose": "Matched historical HalfCheetah2x3 IPPO local observation history development comparison",
   "created_utc": "2026-10-25T11:54:00.781815+00:00",
-  "status": "both_running_startup_verified",
+  "status": "running_readiness_verified_no_fixed_endpoint_yet",
   "artifact": "runs/development-halfcheetah-memory-seed101",
   "training_seed": 101,
   "held_out_training_seeds_used": false,
@@ -142,7 +142,7 @@
           "gpu-h100-80g"
         ]
       },
-      "status": "running_startup_verified",
+      "status": "running_verified_partial_evaluations",
       "submission_command": [
         "sbatch",
         "--parsable",
@@ -208,6 +208,244 @@
         "host_memory_headroom_bytes": 2139258880,
         "startup_free_gpu_bytes": 84533706752,
         "interpretation": "Early throughput excludes evaluation/checkpoint costs;1.5x planning allowance, no performance conclusion."
+      },
+      "readiness_review": {
+        "checked_utc": "2026-10-25T12:30:52.848830+00:00",
+        "checks_passed": true,
+        "status": "RUNNING",
+        "source_identity_all22files_verified": true,
+        "actual_imports_from_frozen_package": true,
+        "exact_config_verified": true,
+        "native_environment_equal_apart_from_declared_history_wrapper": true,
+        "all_complete_metric_rows_finite": true,
+        "metric_rows": 511,
+        "latest_metrics": {
+          "policy_loss": -0.004056153053807065,
+          "value_loss": 0.05849961834028363,
+          "entropy": 0.37297222167253496,
+          "approx_kl": 0.0044024392205319505,
+          "peer_gate_fraction": 0.0,
+          "steps": 2044000,
+          "episodes": 2044,
+          "elapsed_seconds": 2067.6660638852045,
+          "training_return_mean": 2360.5609784860717
+        },
+        "complete_scheduled_evaluations": [
+          {
+            "training_steps": 1000000,
+            "complete": true,
+            "episodes": 10,
+            "records": [
+              {
+                "steps": 1000000,
+                "seed": 10001,
+                "return": 3301.032083380036,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10002,
+                "return": 3152.5715928208083,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10003,
+                "return": 3156.1418307572603,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10004,
+                "return": 3285.2128909751773,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10005,
+                "return": 3286.6844935268164,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10006,
+                "return": 3160.8352961093187,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10007,
+                "return": 3280.083593740128,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10008,
+                "return": 3231.5361246429384,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10009,
+                "return": 3052.440794770606,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10010,
+                "return": 3269.8553499169648,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "mean_return": 3217.6394050640056,
+            "population_episode_sd": 78.51095396175216
+          },
+          {
+            "training_steps": 2000000,
+            "complete": true,
+            "episodes": 10,
+            "records": [
+              {
+                "steps": 2000000,
+                "seed": 10001,
+                "return": 3962.500412762165,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10002,
+                "return": 4045.99226911366,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10003,
+                "return": 4100.278635121882,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10004,
+                "return": 4096.90675444901,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10005,
+                "return": 4101.615769326687,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10006,
+                "return": 4028.9077061265707,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10007,
+                "return": 4106.673799090087,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10008,
+                "return": 4164.930466692895,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10009,
+                "return": 3999.3509954791516,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10010,
+                "return": 4016.0124585181475,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "mean_return": 4062.3169266680256,
+            "population_episode_sd": 58.424170021802844
+          }
+        ],
+        "incomplete_evaluation_groups": [],
+        "fixed3m_endpoint_available": false,
+        "metric_snapshot": {
+          "path": "runs/development-halfcheetah-memory-seed101/readiness-review-01/history0-metrics.jsonl",
+          "sha256": "8f0f95ec80813fdf3df29979c667fc925514803fdf52a936a51feeedce81e348",
+          "bytes": 145553,
+          "ignored_incomplete_final_line": false
+        },
+        "evaluation_snapshot": {
+          "path": "runs/development-halfcheetah-memory-seed101/readiness-review-01/history0-evaluation.jsonl",
+          "sha256": "118a246028ef0f2e3d50b9d92a520dd494d26d7b7fd46270b1d92cb2e525c999"
+        },
+        "parameters": {
+          "actor_critic": 24590,
+          "intention": 0
+        },
+        "observation_history_metadata": null,
+        "runtime_projection": {
+          "window_start_steps": 1844000,
+          "window_end_steps": 2044000,
+          "window_updates": 50,
+          "recent_transitions_per_second": 933.0374720950679,
+          "remaining_transitions": 956000,
+          "slurm_elapsed_hours": 0.5822222222222222,
+          "remaining_hours_at_recent_rate": 0.28461403051612694,
+          "projected_total_hours": 0.8668362527383492,
+          "projected_total_hours_with1_5remaining_margin": 1.0091432679964125,
+          "allocation_limit_hours": 3.0,
+          "walltime_risk_at_margin": false,
+          "caveat": "Linear projection from latest50 update intervals; includes any evaluation delay inside that interval, but future learning/evaluation/I/O and host contention may differ. Margin is planning, not a confidence interval."
+        },
+        "cpu_allocation": {
+          "submitted_cpus_per_task": 1,
+          "slurm_cpus_per_task": 1,
+          "slurm_requested_tres": "cpu=1,mem=4G,node=1,billing=1,gres/gpu=1",
+          "slurm_allocated_tres": "cpu=2,mem=4G,node=1,billing=75,gres/gpu=1,gres/gpu:a100=1",
+          "slurm_allocated_logical_cpus": 2,
+          "node_topology": {
+            "CoresPerSocket": 24,
+            "ThreadsPerCore": 2,
+            "Sockets": 2,
+            "CPUTot": 96
+          },
+          "selection_policy": "CR_CORE_MEMORY",
+          "physical_core_interpretation": "The two allocated logical CPUs are consistent with one physical core reserved with two SMT threads under core-based selection; actual process affinity was not separately sampled.",
+          "torch_threads": 1,
+          "serial_environment_steps": true,
+          "preflight_field_note": "The immutable runtime-preflight field named allocated_cpus was populated from SLURM_CPUS_PER_TASK and equals1; it denotes the per-task request, not sacct/scontrol AllocCPUS2."
+        },
+        "current_host_memory": {
+          "sstat_max_rss_bytes": 2287992832,
+          "requested_bytes": 4294967296,
+          "observed_headroom_bytes": 2006974464
+        },
+        "native_deprecation_warnings_only": true,
+        "runtime_failures_found": []
       }
     },
     {
@@ -282,7 +520,7 @@
           "gpu-h100-80g"
         ]
       },
-      "status": "running_startup_verified",
+      "status": "running_verified_partial_evaluations",
       "submission_command": [
         "sbatch",
         "--parsable",
@@ -348,6 +586,97 @@
         "host_memory_headroom_bytes": 1984765952,
         "startup_free_gpu_bytes": 84533706752,
         "interpretation": "Early throughput excludes evaluation/checkpoint costs;1.5x planning allowance, no performance conclusion."
+      },
+      "readiness_review": {
+        "checked_utc": "2026-10-25T12:30:52.848830+00:00",
+        "checks_passed": true,
+        "status": "RUNNING",
+        "source_identity_all22files_verified": true,
+        "actual_imports_from_frozen_package": true,
+        "exact_config_verified": true,
+        "native_environment_equal_apart_from_declared_history_wrapper": true,
+        "all_complete_metric_rows_finite": true,
+        "metric_rows": 218,
+        "latest_metrics": {
+          "policy_loss": -0.0037894628767389804,
+          "value_loss": 0.007530302251689136,
+          "entropy": 1.5919941693544388,
+          "approx_kl": 0.004608786649363594,
+          "peer_gate_fraction": 0.0,
+          "steps": 872000,
+          "episodes": 872,
+          "elapsed_seconds": 2069.4910091951024,
+          "training_return_mean": 2108.364094763878
+        },
+        "complete_scheduled_evaluations": [],
+        "incomplete_evaluation_groups": [],
+        "fixed3m_endpoint_available": false,
+        "metric_snapshot": {
+          "path": "runs/development-halfcheetah-memory-seed101/readiness-review-01/history32-metrics.jsonl",
+          "sha256": "87e38c5c7cec95792014c6b2be9e6ea38cb068916e8caa462210670c6ebef261",
+          "bytes": 61745,
+          "ignored_incomplete_final_line": false
+        },
+        "evaluation_snapshot": {
+          "path": "runs/development-halfcheetah-memory-seed101/readiness-review-01/history32-evaluation.jsonl",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "parameters": {
+          "actor_critic": 105998,
+          "intention": 0
+        },
+        "observation_history_metadata": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        },
+        "runtime_projection": {
+          "window_start_steps": 672000,
+          "window_end_steps": 872000,
+          "window_updates": 50,
+          "recent_transitions_per_second": 421.39852234907306,
+          "remaining_transitions": 2128000,
+          "slurm_elapsed_hours": 0.5825,
+          "remaining_hours_at_recent_rate": 1.4027365540248704,
+          "projected_total_hours": 1.9852365540248704,
+          "projected_total_hours_with1_5remaining_margin": 2.6866048310373056,
+          "allocation_limit_hours": 6.0,
+          "walltime_risk_at_margin": false,
+          "caveat": "Linear projection from latest50 update intervals; includes any evaluation delay inside that interval, but future learning/evaluation/I/O and host contention may differ. Margin is planning, not a confidence interval."
+        },
+        "cpu_allocation": {
+          "submitted_cpus_per_task": 1,
+          "slurm_cpus_per_task": 1,
+          "slurm_requested_tres": "cpu=1,mem=4G,node=1,billing=1,gres/gpu=1",
+          "slurm_allocated_tres": "cpu=2,mem=4G,node=1,billing=75,gres/gpu=1,gres/gpu:a100=1",
+          "slurm_allocated_logical_cpus": 2,
+          "node_topology": {
+            "CoresPerSocket": 24,
+            "ThreadsPerCore": 2,
+            "Sockets": 2,
+            "CPUTot": 96
+          },
+          "selection_policy": "CR_CORE_MEMORY",
+          "physical_core_interpretation": "The two allocated logical CPUs are consistent with one physical core reserved with two SMT threads under core-based selection; actual process affinity was not separately sampled.",
+          "torch_threads": 1,
+          "serial_environment_steps": true,
+          "preflight_field_note": "The immutable runtime-preflight field named allocated_cpus was populated from SLURM_CPUS_PER_TASK and equals1; it denotes the per-task request, not sacct/scontrol AllocCPUS2."
+        },
+        "current_host_memory": {
+          "sstat_max_rss_bytes": 2359205888,
+          "requested_bytes": 4294967296,
+          "observed_headroom_bytes": 1935761408
+        },
+        "native_deprecation_warnings_only": true,
+        "runtime_failures_found": []
       }
     }
   ],
@@ -500,5 +829,72 @@
   "startup_evidence": {
     "runs/development-halfcheetah-memory-seed101/startup-observations.json": "ff5be808cd0b8766fa84ae18c15cea2b1b50eb318f6224a1553682be137a5ec4",
     "runs/development-halfcheetah-memory-seed101/startup-accounting.txt": "7acefbe8c49912704eaffc15759e30cd4adc37cd289e4e2c12b5728085fc6116"
+  },
+  "readiness_review_completed_utc": "2026-10-25T12:30:52.848830+00:00",
+  "matched_complete_evaluation_steps": [],
+  "current_comparison_note": "No paired checkpoint comparison is available until both histories have all10 scheduled episodes at the same training step; stochastic training-batch returns are not compared with deterministic evaluation returns.",
+  "resource_accounting_clarification": "resources.cpus=1 is the submitted --cpus-per-task request. Actual Slurm allocations on these A100 nodes report2 logical CPUs with2 SMT threads/core under CR_CORE_MEMORY. Original preflight artifacts are preserved and their mislabeled allocated_cpus field is interpreted explicitly in each readiness review.",
+  "optional_dms_history32_review": {
+    "recommendation": "An equal-history DMS/IPPO comparison is needed before claiming intention benefit beyond a recurrent local-information baseline. It is not needed to interpret the current IPPO memory/capacity contrast, and no new training should be inferred from this recommendation.",
+    "timing": "Review the existing predeclared3M IPPO endpoints first; do not choose history length from incomplete or unequal-step evaluations.",
+    "minimal_followup": "One DMS history32 seed1013M pilot matched to current IPPO history32 directly tests adding intentions at the same local-history access. It does not complete a two-by-two history\u00d7intention interaction experiment.",
+    "base_config": "configs/development/legacy-halfcheetah-2x3-ippo-history32-3m-cuda.json",
+    "base_config_sha256": "6f72e34ebacf1143d17d2e5e097e697eee20fe96549583c0b1d9dc085631b2f9",
+    "source_root": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src",
+    "source_mapping_sha256": "5b7a21ac4db312950e14f65df383cd44fc3f490e7859aef3534e0dae3bf72573",
+    "only_config_changes": {
+      "algorithm": {
+        "old": "ippo",
+        "new": "dms"
+      },
+      "output": "new distinct run directory"
+    },
+    "fixed_settings": {
+      "training_seed": 101,
+      "total_steps": 3000000,
+      "device": "cuda",
+      "policy_history_length": 32,
+      "update_mode": "independent",
+      "decoder_history": false,
+      "kl_beta": 0.1,
+      "intention_lr": 0.001,
+      "warmup_episodes": 100,
+      "num_envs": 4,
+      "rollout_steps": 1000,
+      "epochs": 5,
+      "minibatch_size": 1000,
+      "hidden_dim": 64,
+      "latent_dim": 8,
+      "eval_every": 1000000,
+      "eval_episodes": 10,
+      "eval_seed": 10001
+    },
+    "why_rate1e3": "This preserves the existing matched config and corresponds to the higher-rate2M checkpoint with stronger demonstrated latent forecast/policy dependence. Switching to1e-4 simultaneously would confound the intention contrast with a new optimization choice.",
+    "two_by_two_requirement": "To estimate how memory changes the intention effect, also add fresh DMS history0 on the same frozen source/CUDA3M settings. Older CPU16-file-source DMS history0 runs are contextual, not exact same-source/device controls.",
+    "resource_gate": "Measure a bounded active-intention DMS history32 CUDA rollout/update before setting a learning walltime; the current profile measures IPPO only and does not bound DMS inference/auxiliary costs.",
+    "evidence": [
+      {
+        "report": "reports/development-halfcheetah-memory-profile.json",
+        "scope": "Native history32 correctness/runtime and memory-only throughput, not DMS throughput"
+      },
+      {
+        "report": "reports/development-halfcheetah-2m-diagnostic.json",
+        "scope": "Higher-rate feedforward DMS forecast and shuffle sensitivity on its own trajectories"
+      },
+      {
+        "report": "reports/development-halfcheetah-2m-interventions.json",
+        "scope": "Within-checkpoint return dependence on changing peer latent inputs; intervention distribution shifts remain a limitation"
+      },
+      {
+        "report": "reports/development-halfcheetah-aux-lr-2m-diagnostic.json",
+        "scope": "Lower-rate2M has weaker/asymmetric sensitivity; cross-policy trajectories differ"
+      }
+    ],
+    "limits": [
+      "History0\u219232 changes local actor/critic encoder capacity as well as temporal inputs:24590\u2192105998 actor+critic parameters in IPPO.",
+      "One added DMS seed101 run would remain development evidence, not independent-seed confirmation.",
+      "Added DMS models/attention still change parameter capacity; equal observation history alone does not isolate prediction from all architecture differences."
+    ],
+    "new_training_submitted": false
   }
 }

@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-25 12:15 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
+Snapshot: **2026-10-25 12:35 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
 
 ## Latest verified updates
 
@@ -14,7 +14,20 @@ pilots are development experiments. A separate **20-environment recurrent IPPO c
 smoke **21198024** passed: **0/10 final wins**, mean shaped return **8.1568**,
 and zero wins in **8,678** training battles. It changes both sample diversity and PPO update cadence;
 [the ledger](../reports/development-smac-original-batch-seed101.json) records
-this joint change. There is no corresponding DMS batch result yet.
+this joint change. There is no corresponding completed DMS batch result yet. A matched
+**3M-step sequential PPO pair**, jobs **21199182 / 21199183**, is now running
+with 20 environments, history length 16, and inactive-agent masking. Both
+passed native startup checks; DMS intentions activate after its 100-episode
+warmup. [The sequential-batch ledger](../reports/development-smac-sequential-batch-seed101.json)
+retains the smaller smoke checks and the unsubmitted 1M plans. The 20-environment
+DMS configuration performs fewer auxiliary updates per transition than the
+four-environment runs, so this is not an isolated batch-size comparison.
+
+A separate four-core active-DMS smoke, **21199309**, completed 6,400 transitions
+and checkpoint/evaluation checks using **20.35 GiB** peak host memory and
+**1.345** average CPU cores. Its rollout time was 2.06 times the earlier
+20-core smoke, but the GPUs were V100 versus A100. This does not establish
+throughput preservation at four cores; the running 3M jobs remain unchanged.
 
 The Ant all-peer and causal-0.6 jobs **21196123 / 21196124** completed their
 one-million-transition budgets with five-episode means **972.6429 / 1,044.8874**.
@@ -36,8 +49,11 @@ and one was −235.87. This is not its fixed 10M endpoint. Matched full-budget
 IPPO/DMS replicas on development seeds **103 and 107** are running as jobs
 **21198414–21198417**, with 98 startup checks passed;
 [the ledger](../reports/development-halfcheetah-10m-replications.json) records
-the exact seed/output-only changes. They check stability; the earlier negative 500k comparisons remain part of the
-record.
+the exact seed/output-only changes. Their complete 1M diagnostic means are IPPO/DMS **2,859.91 / 2,959.12**
+for seed 103 and **2,993.38 / 3,318.80** for seed 107. One DMS seed-103 episode
+returned only 879.39; stability remains unresolved. These intermediate paired
+comparisons do not replace the fixed 10M endpoints, and the earlier negative
+500k comparisons remain part of the record.
 
 At **4M**, the same DMS run's ten diagnostic episodes average **4,383.5675**:
 nine exceeded 4,700 and one returned 1,000.68. Training continues to the
@@ -56,7 +72,10 @@ history baseline **0.7765**; peer latent shuffling raises forecast MSE by
 [The ledger](../reports/development-halfcheetah-aux-lr-2m-diagnostic.json)
 retains the initial postflight-check failure and the identical verified retry.
 This does not attribute a return gain to the latent, and trajectories differ
-from the higher-rate checkpoint's probe.
+from the higher-rate checkpoint's probe. Its subsequent **3M-step** diagnostic
+mean is **4,418.2096** over ten episodes (population episode SD **36.0756**);
+[the longer-run ledger](../reports/development-halfcheetah-aux-lr-10m-seed101.json)
+retains the intermediate records while training continues to 10M.
 
 A **32-observation local-memory IPPO** profile passed native checks in job
 **21198505**. On that host, CPU took **40.65 s** per 4,000 transitions and CUDA
@@ -67,8 +86,12 @@ and an unchanged-source retry. Matched CUDA memory-length 0/32 development
 controls are now running as **21198566 / 21198567**, respectively. Both use
 the same A100 GPU model and the exact validated source, with only memory
 length/output differing. [Their ledger](../reports/development-halfcheetah-memory-seed101.json)
-records matching settings and finite startup updates. This profile is runtime
-evidence, not a learning result.
+records matching settings and finite startup updates. The history-0 control
+has complete 1M/2M diagnostic means **3,217.6394 / 4,062.3169**; history-32 has
+not yet completed a scheduled evaluation in this snapshot, so there is no
+matched learning comparison. Slurm reports two allocated logical CPUs for the
+one-core requests on these SMT hosts. The earlier profile is runtime evidence,
+not a learning result.
 
 The Swimmer history-filter probe **21198220** passed all 41 checks at the
 200,000-step checkpoint. Each manuscript `(K,l)` setting rejected **0/9,144

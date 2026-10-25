@@ -1,6 +1,6 @@
 {
   "purpose": "Matched full-budget development replicas; budget expansion of earlier negative 500k development comparison, not independent confirmation or release evidence",
-  "status": "all_running_startup_verified",
+  "status": "running_intermediate_checkpoints_verified",
   "created_at_utc": "2026-10-25T11:28:25.358058+00:00",
   "control_ledger": "reports/development-halfcheetah-10m-seed101.json",
   "control_ledger_sha256_at_creation": "0aa481924f9a10a0cd659f5f2dead513df17d1f556c02b49412db5c6fc901312",
@@ -384,7 +384,574 @@
         "window_updates": 20,
         "intentions_active": false,
         "projection_caveat": "Startup timing can be optimistic; DMS becomes slower after its first100 completed episodes. Use steady-state control estimate until active-intention updates are observed."
-      }
+      },
+      "latest_monitoring": {
+        "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+        "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414",
+        "scheduler": {
+          "job_id": "21198414",
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:57:47",
+          "time_limit": "03:00:00",
+          "allocated_cpus": "1",
+          "requested_memory": "4G",
+          "node": "milan32"
+        },
+        "live_resources": {
+          "job_id": "21198414.batch",
+          "max_rss": "413848K",
+          "average_rss": "401744K",
+          "average_cpu_time": "00:57:07"
+        },
+        "manifest_status": "training; no paper performance claim",
+        "complete_training_metric_rows": 1264,
+        "ignored_partial_metric_line": false,
+        "ignored_partial_evaluation_line": false,
+        "latest_training_metric": {
+          "policy_loss": -0.002921296065323986,
+          "value_loss": 0.02890987703576684,
+          "entropy": -2.3394650280475617,
+          "approx_kl": 0.007977295697492082,
+          "peer_gate_fraction": 0.0,
+          "steps": 5056000,
+          "episodes": 5056,
+          "elapsed_seconds": 3458.3716317029903,
+          "training_return_mean": 3723.8169130688766
+        },
+        "complete_checkpoint_evaluations": [
+          {
+            "training_steps": 1000000,
+            "training_seed": 103,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 2859.9129850424824,
+            "population_episode_sd": 51.94066123677918,
+            "median_return": 2865.4633246064186,
+            "minimum_return": 2726.5902094356716,
+            "maximum_return": 2922.3422700613737,
+            "records": [
+              {
+                "steps": 1000000,
+                "seed": 10001,
+                "return": 2857.3303634673357,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10002,
+                "return": 2913.0542656332254,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10003,
+                "return": 2885.0590154901147,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10004,
+                "return": 2883.7324668467045,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10005,
+                "return": 2922.3422700613737,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10006,
+                "return": 2726.5902094356716,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10007,
+                "return": 2871.956583276391,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10008,
+                "return": 2827.001985192299,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10009,
+                "return": 2858.970065936446,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10010,
+                "return": 2853.0926250852644,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 2000000,
+            "training_seed": 103,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 3845.0157598499673,
+            "population_episode_sd": 57.48230738324222,
+            "median_return": 3870.903564954875,
+            "minimum_return": 3721.095695987344,
+            "maximum_return": 3897.2857380099595,
+            "records": [
+              {
+                "steps": 2000000,
+                "seed": 10001,
+                "return": 3897.2857380099595,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10002,
+                "return": 3872.0004843585193,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10003,
+                "return": 3872.3512736335397,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10004,
+                "return": 3750.843665025197,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10005,
+                "return": 3869.8066455512308,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10006,
+                "return": 3721.095695987344,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10007,
+                "return": 3875.8414110578597,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10008,
+                "return": 3829.4284490421414,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10009,
+                "return": 3869.6146352142096,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10010,
+                "return": 3891.8896006196737,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 3000000,
+            "training_seed": 103,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 4515.157749478705,
+            "population_episode_sd": 90.89663908779157,
+            "median_return": 4544.732863454148,
+            "minimum_return": 4292.23049026262,
+            "maximum_return": 4600.220674291253,
+            "records": [
+              {
+                "steps": 3000000,
+                "seed": 10001,
+                "return": 4554.251930847764,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10002,
+                "return": 4585.309060692787,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10003,
+                "return": 4582.925446923822,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10004,
+                "return": 4292.23049026262,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10005,
+                "return": 4462.66106146574,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10006,
+                "return": 4600.220674291253,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10007,
+                "return": 4599.950221806765,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10008,
+                "return": 4476.944154821336,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10009,
+                "return": 4461.870657614432,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10010,
+                "return": 4535.213796060532,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 4000000,
+            "training_seed": 103,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 4491.154495299515,
+            "population_episode_sd": 22.01770051482089,
+            "median_return": 4487.1040193066,
+            "minimum_return": 4466.917289049365,
+            "maximum_return": 4530.59924675338,
+            "records": [
+              {
+                "steps": 4000000,
+                "seed": 10001,
+                "return": 4490.644377708435,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10002,
+                "return": 4466.92583572492,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10003,
+                "return": 4466.917289049365,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10004,
+                "return": 4521.6870055273175,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10005,
+                "return": 4470.334913626313,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10006,
+                "return": 4510.80915042758,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10007,
+                "return": 4530.59924675338,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10008,
+                "return": 4495.8155408501625,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10009,
+                "return": 4474.247932422906,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10010,
+                "return": 4483.563660904765,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 5000000,
+            "training_seed": 103,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 4429.065536772459,
+            "population_episode_sd": 37.12474117919186,
+            "median_return": 4415.220927244052,
+            "minimum_return": 4371.804378472269,
+            "maximum_return": 4475.777709688991,
+            "records": [
+              {
+                "steps": 5000000,
+                "seed": 10001,
+                "return": 4371.804378472269,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10002,
+                "return": 4474.778754755855,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10003,
+                "return": 4398.430351290852,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10004,
+                "return": 4400.192688845098,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10005,
+                "return": 4463.973843768239,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10006,
+                "return": 4475.777709688991,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10007,
+                "return": 4400.873101860285,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10008,
+                "return": 4413.058879636228,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10009,
+                "return": 4417.3829748518765,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10010,
+                "return": 4474.382684554905,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          }
+        ],
+        "incomplete_evaluations": [],
+        "checks": {
+          "running_or_completed": true,
+          "expected_cpu_memory_walltime": true,
+          "source_manifest_and_saved_bytes_exact": true,
+          "saved_guard_unchanged": true,
+          "actual_import_guard_correct": true,
+          "config_matches_predeclared": true,
+          "config_files_unchanged": true,
+          "versions_match_controls": true,
+          "environment_matches_controls": true,
+          "dependency_manifest_exact": true,
+          "runtime_job_and_cpu_correct": true,
+          "numeric_training_finite": true,
+          "numeric_evaluation_finite": true,
+          "exact_training_step_sequence": true,
+          "ppo_metrics_present": true,
+          "budget_not_exceeded": true,
+          "episode_counts_match_1000_step_horizon": true,
+          "no_runtime_exception_markers": true,
+          "all_logged_checkpoints_complete": true
+        },
+        "all_checks_passed": true,
+        "snapshot_files": {
+          "config.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414/config.json",
+            "bytes": 1167,
+            "sha256": "2821817576a2b0aac39ad5bbc6d9ede9aa33ef228bc0d93278c6ea35266acb42"
+          },
+          "manifest.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414/manifest.json",
+            "bytes": 4471,
+            "sha256": "765b5ca21fb01c5c16fd24d1aa5b3f9f4f6312a1845452fdc93ebf8e16e41c8a"
+          },
+          "startup-guard.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414/startup-guard.json",
+            "bytes": 3736,
+            "sha256": "16ec144e89f783cdc886c22d637f7f96fa4ab372fea39d3757b49b10d5f890f1"
+          },
+          "metrics.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414/metrics.jsonl",
+            "bytes": 361249,
+            "sha256": "55285cf5bd9c78d432b2c1dec425e00195a5c33e7ad10dbc68d476c1ba129c38"
+          },
+          "evaluation.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414/evaluation.jsonl",
+            "bytes": 4963,
+            "sha256": "6a0b2a279676d7723f792aa5e65820572e340e8c20e802fba8b6142c6c6737d9"
+          },
+          "legacy-dependencies.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414/legacy-dependencies.json",
+            "bytes": 4287,
+            "sha256": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b"
+          }
+        },
+        "walltime_projection": {
+          "recent_steps_per_second_by_update_window": {
+            "20": 1207.3562905542922,
+            "100": 1425.2080477525583
+          },
+          "planning_steps_per_second": 1207.3562905542922,
+          "latest_training_steps": 5056000,
+          "scheduler_elapsed_seconds": 3467,
+          "allocated_seconds": 10800,
+          "projected_remaining_seconds": 4094.897288132098,
+          "projected_total_hours": 2.1005270244811385,
+          "projected_total_hours_with1_5x_remaining_contingency": 2.6692627589439297,
+          "allocation_hours": 3.0,
+          "nominal_walltime_risk": false,
+          "walltime_risk_with_contingency": false,
+          "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+        },
+        "not_final_endpoint": true
+      },
+      "monitoring_history": [
+        {
+          "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+          "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198414",
+          "latest_steps": 5056000,
+          "complete_evaluation_steps": [
+            1000000,
+            2000000,
+            3000000,
+            4000000,
+            5000000
+          ],
+          "all_checks_passed": true,
+          "walltime_projection": {
+            "recent_steps_per_second_by_update_window": {
+              "20": 1207.3562905542922,
+              "100": 1425.2080477525583
+            },
+            "planning_steps_per_second": 1207.3562905542922,
+            "latest_training_steps": 5056000,
+            "scheduler_elapsed_seconds": 3467,
+            "allocated_seconds": 10800,
+            "projected_remaining_seconds": 4094.897288132098,
+            "projected_total_hours": 2.1005270244811385,
+            "projected_total_hours_with1_5x_remaining_contingency": 2.6692627589439297,
+            "allocation_hours": 3.0,
+            "nominal_walltime_risk": false,
+            "walltime_risk_with_contingency": false,
+            "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+          }
+        }
+      ]
     },
     {
       "algorithm": "dms",
@@ -591,7 +1158,245 @@
         "window_updates": 20,
         "intentions_active": false,
         "projection_caveat": "Startup timing can be optimistic; DMS becomes slower after its first100 completed episodes. Use steady-state control estimate until active-intention updates are observed."
-      }
+      },
+      "latest_monitoring": {
+        "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+        "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415",
+        "scheduler": {
+          "job_id": "21198415",
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:57:47",
+          "time_limit": "12:00:00",
+          "allocated_cpus": "1",
+          "requested_memory": "4G",
+          "node": "milan32"
+        },
+        "live_resources": {
+          "job_id": "21198415.batch",
+          "max_rss": "420272K",
+          "average_rss": "404820K",
+          "average_cpu_time": "00:57:09"
+        },
+        "manifest_status": "training; no paper performance claim",
+        "complete_training_metric_rows": 312,
+        "ignored_partial_metric_line": false,
+        "ignored_partial_evaluation_line": false,
+        "latest_training_metric": {
+          "policy_loss": -0.002124800298770424,
+          "value_loss": 0.02948877802118659,
+          "entropy": 1.2124155521392823,
+          "approx_kl": 0.003462155118904775,
+          "peer_gate_fraction": 0.999,
+          "intention_feature_std": 2.3509273529052734,
+          "intention_loss": 0.8876519650220871,
+          "intention_nll": 0.6685350239276886,
+          "intention_kl": 2.191169261932373,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.566578276856272,
+          "persistence_rmse": 1.0811572244421157,
+          "history_mean_rmse": 0.7342859533578513,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 1248000,
+          "episodes": 1248,
+          "elapsed_seconds": 3459.35559276602,
+          "training_return_mean": 2949.3816440026276
+        },
+        "complete_checkpoint_evaluations": [
+          {
+            "training_steps": 1000000,
+            "training_seed": 103,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 2959.1165724049556,
+            "population_episode_sd": 694.2915304794057,
+            "median_return": 3186.7476344779134,
+            "minimum_return": 879.3903982273769,
+            "maximum_return": 3244.0843619927764,
+            "records": [
+              {
+                "steps": 1000000,
+                "seed": 10001,
+                "return": 3182.0852874815464,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10002,
+                "return": 3242.9047599663027,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10003,
+                "return": 3244.0843619927764,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10004,
+                "return": 3196.493478242308,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10005,
+                "return": 3098.9434779156,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10006,
+                "return": 3200.6397619508207,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10007,
+                "return": 3191.4099814742804,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10008,
+                "return": 3174.4732260629535,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10009,
+                "return": 3180.7409907355905,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10010,
+                "return": 879.3903982273769,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          }
+        ],
+        "incomplete_evaluations": [],
+        "checks": {
+          "running_or_completed": true,
+          "expected_cpu_memory_walltime": true,
+          "source_manifest_and_saved_bytes_exact": true,
+          "saved_guard_unchanged": true,
+          "actual_import_guard_correct": true,
+          "config_matches_predeclared": true,
+          "config_files_unchanged": true,
+          "versions_match_controls": true,
+          "environment_matches_controls": true,
+          "dependency_manifest_exact": true,
+          "runtime_job_and_cpu_correct": true,
+          "numeric_training_finite": true,
+          "numeric_evaluation_finite": true,
+          "exact_training_step_sequence": true,
+          "ppo_metrics_present": true,
+          "budget_not_exceeded": true,
+          "episode_counts_match_1000_step_horizon": true,
+          "finite_auxiliary_updates_nonempty_targets": true,
+          "active_intention_inputs_observed": true,
+          "no_runtime_exception_markers": true,
+          "all_logged_checkpoints_complete": true
+        },
+        "all_checks_passed": true,
+        "snapshot_files": {
+          "config.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415/config.json",
+            "bytes": 1188,
+            "sha256": "e911e448229be529385b89ab8057dc11426805041da6fef532e05ad6fbf34e51"
+          },
+          "manifest.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415/manifest.json",
+            "bytes": 4475,
+            "sha256": "ffd4b5112f96d19e68d6729b247bdc7723f5646b0625d99f632ebce68c57a393"
+          },
+          "startup-guard.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415/startup-guard.json",
+            "bytes": 3757,
+            "sha256": "82d479928bf3ead9102db4e2865f46b32f3a2854b13a1a57b5d449f438a93259"
+          },
+          "metrics.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415/metrics.jsonl",
+            "bytes": 244064,
+            "sha256": "4af0772583de482489ad5e41488f7d4f1adf47ebd42b60b5cd720b806a51acf5"
+          },
+          "evaluation.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415/evaluation.jsonl",
+            "bytes": 995,
+            "sha256": "2e3d8cb6fa16ac48d3eff08898f3201b285d4ee78291e71f82e4a6c329622adb"
+          },
+          "legacy-dependencies.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415/legacy-dependencies.json",
+            "bytes": 4287,
+            "sha256": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b"
+          }
+        },
+        "walltime_projection": {
+          "recent_steps_per_second_by_update_window": {
+            "20": 351.13510368120933,
+            "100": 327.53775152979705
+          },
+          "planning_steps_per_second": 327.53775152979705,
+          "latest_training_steps": 1248000,
+          "scheduler_elapsed_seconds": 3467,
+          "allocated_seconds": 43200,
+          "projected_remaining_seconds": 26720.583991075622,
+          "projected_total_hours": 8.385439997521006,
+          "projected_total_hours_with1_5x_remaining_contingency": 12.096632218503732,
+          "allocation_hours": 12.0,
+          "nominal_walltime_risk": false,
+          "walltime_risk_with_contingency": true,
+          "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+        },
+        "not_final_endpoint": true
+      },
+      "monitoring_history": [
+        {
+          "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+          "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198415",
+          "latest_steps": 1248000,
+          "complete_evaluation_steps": [
+            1000000
+          ],
+          "all_checks_passed": true,
+          "walltime_projection": {
+            "recent_steps_per_second_by_update_window": {
+              "20": 351.13510368120933,
+              "100": 327.53775152979705
+            },
+            "planning_steps_per_second": 327.53775152979705,
+            "latest_training_steps": 1248000,
+            "scheduler_elapsed_seconds": 3467,
+            "allocated_seconds": 43200,
+            "projected_remaining_seconds": 26720.583991075622,
+            "projected_total_hours": 8.385439997521006,
+            "projected_total_hours_with1_5x_remaining_contingency": 12.096632218503732,
+            "allocation_hours": 12.0,
+            "nominal_walltime_risk": false,
+            "walltime_risk_with_contingency": true,
+            "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+          }
+        }
+      ]
     },
     {
       "algorithm": "ippo",
@@ -771,7 +1576,574 @@
         "window_updates": 20,
         "intentions_active": false,
         "projection_caveat": "Startup timing can be optimistic; DMS becomes slower after its first100 completed episodes. Use steady-state control estimate until active-intention updates are observed."
-      }
+      },
+      "latest_monitoring": {
+        "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+        "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416",
+        "scheduler": {
+          "job_id": "21198416",
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:57:47",
+          "time_limit": "03:00:00",
+          "allocated_cpus": "1",
+          "requested_memory": "4G",
+          "node": "milan32"
+        },
+        "live_resources": {
+          "job_id": "21198416.batch",
+          "max_rss": "400272K",
+          "average_rss": "394368K",
+          "average_cpu_time": "00:57:09"
+        },
+        "manifest_status": "training; no paper performance claim",
+        "complete_training_metric_rows": 1258,
+        "ignored_partial_metric_line": false,
+        "ignored_partial_evaluation_line": false,
+        "latest_training_metric": {
+          "policy_loss": -0.0017600568797206506,
+          "value_loss": 0.02768101873807609,
+          "entropy": -2.3389536291360855,
+          "approx_kl": 0.007274529786081984,
+          "peer_gate_fraction": 0.0,
+          "steps": 5032000,
+          "episodes": 5032,
+          "elapsed_seconds": 3458.126803015999,
+          "training_return_mean": 3313.5466992570437
+        },
+        "complete_checkpoint_evaluations": [
+          {
+            "training_steps": 1000000,
+            "training_seed": 107,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 2993.376907959528,
+            "population_episode_sd": 28.89516948926489,
+            "median_return": 3000.16347674164,
+            "minimum_return": 2949.7113538611447,
+            "maximum_return": 3042.435360401869,
+            "records": [
+              {
+                "steps": 1000000,
+                "seed": 10001,
+                "return": 2994.892453817185,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10002,
+                "return": 3011.669760150835,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10003,
+                "return": 3005.434499666095,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10004,
+                "return": 2989.7181239631027,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10005,
+                "return": 3016.964144207537,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10006,
+                "return": 3042.435360401869,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10007,
+                "return": 2949.7383809015155,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10008,
+                "return": 2949.7113538611447,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10009,
+                "return": 2964.379378666694,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10010,
+                "return": 3008.825623959303,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 2000000,
+            "training_seed": 107,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 3312.1183567161206,
+            "population_episode_sd": 31.738404272024823,
+            "median_return": 3303.1148451510817,
+            "minimum_return": 3269.1270175278187,
+            "maximum_return": 3359.648078695871,
+            "records": [
+              {
+                "steps": 2000000,
+                "seed": 10001,
+                "return": 3286.915224775672,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10002,
+                "return": 3269.1270175278187,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10003,
+                "return": 3359.3788209552877,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10004,
+                "return": 3303.6276718750596,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10005,
+                "return": 3275.845075506717,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10006,
+                "return": 3359.648078695871,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10007,
+                "return": 3338.479478077963,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10008,
+                "return": 3334.2625968530774,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10009,
+                "return": 3291.297584466636,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 2000000,
+                "seed": 10010,
+                "return": 3302.6020184271038,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 3000000,
+            "training_seed": 107,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 3560.176524634438,
+            "population_episode_sd": 549.4973895257962,
+            "median_return": 3767.529820535332,
+            "minimum_return": 1984.7018603692995,
+            "maximum_return": 3913.2165658921003,
+            "records": [
+              {
+                "steps": 3000000,
+                "seed": 10001,
+                "return": 1984.7018603692995,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10002,
+                "return": 3825.671503610909,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10003,
+                "return": 3779.318905927241,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10004,
+                "return": 3807.768667064607,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10005,
+                "return": 3755.740735143423,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10006,
+                "return": 3700.2526590963826,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10007,
+                "return": 3730.546462913044,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10008,
+                "return": 3913.2165658921003,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10009,
+                "return": 3822.3533620536327,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10010,
+                "return": 3282.194524273742,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 4000000,
+            "training_seed": 107,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 4064.7114778742193,
+            "population_episode_sd": 32.10968681321931,
+            "median_return": 4065.2649772167206,
+            "minimum_return": 3994.6519757695496,
+            "maximum_return": 4114.535216707736,
+            "records": [
+              {
+                "steps": 4000000,
+                "seed": 10001,
+                "return": 4046.689485680312,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10002,
+                "return": 4067.3242557644844,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10003,
+                "return": 4114.535216707736,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10004,
+                "return": 4046.2657292541116,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10005,
+                "return": 4046.8601719504222,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10006,
+                "return": 4063.2056986689568,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10007,
+                "return": 4098.450475666672,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10008,
+                "return": 4084.7464816346765,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10009,
+                "return": 4084.385287645273,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 4000000,
+                "seed": 10010,
+                "return": 3994.6519757695496,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          },
+          {
+            "training_steps": 5000000,
+            "training_seed": 107,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 4249.294461381622,
+            "population_episode_sd": 22.98129576442052,
+            "median_return": 4252.058197798207,
+            "minimum_return": 4188.103398382664,
+            "maximum_return": 4275.639747157693,
+            "records": [
+              {
+                "steps": 5000000,
+                "seed": 10001,
+                "return": 4244.504236756824,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10002,
+                "return": 4275.639747157693,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10003,
+                "return": 4269.084746442735,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10004,
+                "return": 4245.379774369299,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10005,
+                "return": 4251.877458699048,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10006,
+                "return": 4242.036115217954,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10007,
+                "return": 4258.867966412567,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10008,
+                "return": 4252.238936897367,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10009,
+                "return": 4188.103398382664,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 5000000,
+                "seed": 10010,
+                "return": 4265.212233480066,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          }
+        ],
+        "incomplete_evaluations": [],
+        "checks": {
+          "running_or_completed": true,
+          "expected_cpu_memory_walltime": true,
+          "source_manifest_and_saved_bytes_exact": true,
+          "saved_guard_unchanged": true,
+          "actual_import_guard_correct": true,
+          "config_matches_predeclared": true,
+          "config_files_unchanged": true,
+          "versions_match_controls": true,
+          "environment_matches_controls": true,
+          "dependency_manifest_exact": true,
+          "runtime_job_and_cpu_correct": true,
+          "numeric_training_finite": true,
+          "numeric_evaluation_finite": true,
+          "exact_training_step_sequence": true,
+          "ppo_metrics_present": true,
+          "budget_not_exceeded": true,
+          "episode_counts_match_1000_step_horizon": true,
+          "no_runtime_exception_markers": true,
+          "all_logged_checkpoints_complete": true
+        },
+        "all_checks_passed": true,
+        "snapshot_files": {
+          "config.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416/config.json",
+            "bytes": 1167,
+            "sha256": "9cca953a6eee23a41e861546e8cca48d7a2d58dc884c406eca35b0fda0613bb9"
+          },
+          "manifest.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416/manifest.json",
+            "bytes": 4471,
+            "sha256": "1f0efbbe563d174e7cca4561decded1c165abd7b433a8ccecbe23153b5dbac73"
+          },
+          "startup-guard.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416/startup-guard.json",
+            "bytes": 3736,
+            "sha256": "41b7eb74a7f669ce90a4fa94766309507173de1f64ed02d9e20267b1866303ed"
+          },
+          "metrics.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416/metrics.jsonl",
+            "bytes": 359887,
+            "sha256": "5c2ce777844159f1cb1fb5da8084fa30561a8b0f2b2a2f1b1f09f8453618ab1a"
+          },
+          "evaluation.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416/evaluation.jsonl",
+            "bytes": 4968,
+            "sha256": "5343de3942bb7cc1ce5e3258d5eba03c5f3ce4efb9af8e8f0af29f044d3c0270"
+          },
+          "legacy-dependencies.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416/legacy-dependencies.json",
+            "bytes": 4287,
+            "sha256": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b"
+          }
+        },
+        "walltime_projection": {
+          "recent_steps_per_second_by_update_window": {
+            "20": 1200.5902815572208,
+            "100": 1416.588275713148
+          },
+          "planning_steps_per_second": 1200.5902815572208,
+          "latest_training_steps": 5032000,
+          "scheduler_elapsed_seconds": 3467,
+          "allocated_seconds": 10800,
+          "projected_remaining_seconds": 4137.964529877982,
+          "projected_total_hours": 2.1124901471883284,
+          "projected_total_hours_with1_5x_remaining_contingency": 2.6872074430047146,
+          "allocation_hours": 3.0,
+          "nominal_walltime_risk": false,
+          "walltime_risk_with_contingency": false,
+          "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+        },
+        "not_final_endpoint": true
+      },
+      "monitoring_history": [
+        {
+          "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+          "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198416",
+          "latest_steps": 5032000,
+          "complete_evaluation_steps": [
+            1000000,
+            2000000,
+            3000000,
+            4000000,
+            5000000
+          ],
+          "all_checks_passed": true,
+          "walltime_projection": {
+            "recent_steps_per_second_by_update_window": {
+              "20": 1200.5902815572208,
+              "100": 1416.588275713148
+            },
+            "planning_steps_per_second": 1200.5902815572208,
+            "latest_training_steps": 5032000,
+            "scheduler_elapsed_seconds": 3467,
+            "allocated_seconds": 10800,
+            "projected_remaining_seconds": 4137.964529877982,
+            "projected_total_hours": 2.1124901471883284,
+            "projected_total_hours_with1_5x_remaining_contingency": 2.6872074430047146,
+            "allocation_hours": 3.0,
+            "nominal_walltime_risk": false,
+            "walltime_risk_with_contingency": false,
+            "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+          }
+        }
+      ]
     },
     {
       "algorithm": "dms",
@@ -978,7 +2350,245 @@
         "window_updates": 20,
         "intentions_active": false,
         "projection_caveat": "Startup timing can be optimistic; DMS becomes slower after its first100 completed episodes. Use steady-state control estimate until active-intention updates are observed."
-      }
+      },
+      "latest_monitoring": {
+        "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+        "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417",
+        "scheduler": {
+          "job_id": "21198417",
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:57:47",
+          "time_limit": "12:00:00",
+          "allocated_cpus": "1",
+          "requested_memory": "4G",
+          "node": "milan32"
+        },
+        "live_resources": {
+          "job_id": "21198417.batch",
+          "max_rss": "425824K",
+          "average_rss": "425552K",
+          "average_cpu_time": "00:57:09"
+        },
+        "manifest_status": "training; no paper performance claim",
+        "complete_training_metric_rows": 311,
+        "ignored_partial_metric_line": false,
+        "ignored_partial_evaluation_line": false,
+        "latest_training_metric": {
+          "policy_loss": -0.003142724683311826,
+          "value_loss": 0.06950809843838215,
+          "entropy": 1.2214085072278977,
+          "approx_kl": 0.003634080607071155,
+          "peer_gate_fraction": 0.999,
+          "intention_feature_std": 2.321331024169922,
+          "intention_loss": 0.9992590695619583,
+          "intention_nll": 0.775315061211586,
+          "intention_kl": 2.2394397854804993,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.5645066459581254,
+          "persistence_rmse": 1.0455199446022314,
+          "history_mean_rmse": 0.6864500184616398,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 1244000,
+          "episodes": 1244,
+          "elapsed_seconds": 3449.5163208899903,
+          "training_return_mean": 1581.5718639820116
+        },
+        "complete_checkpoint_evaluations": [
+          {
+            "training_steps": 1000000,
+            "training_seed": 107,
+            "episodes": 10,
+            "episode_seed_start": 10001,
+            "mean_return": 3318.795675003622,
+            "population_episode_sd": 130.65554381376577,
+            "median_return": 3363.9349345378578,
+            "minimum_return": 2940.581845759414,
+            "maximum_return": 3393.399877861142,
+            "records": [
+              {
+                "steps": 1000000,
+                "seed": 10001,
+                "return": 3389.431600153446,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10002,
+                "return": 2940.581845759414,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10003,
+                "return": 3349.4533417839557,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10004,
+                "return": 3378.0104460306466,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10005,
+                "return": 3349.859423045069,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10006,
+                "return": 3384.518276065588,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10007,
+                "return": 3270.6424539238214,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10008,
+                "return": 3348.7635288983583,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10009,
+                "return": 3393.399877861142,
+                "length": 1000,
+                "battle_won": null
+              },
+              {
+                "steps": 1000000,
+                "seed": 10010,
+                "return": 3383.2959565147758,
+                "length": 1000,
+                "battle_won": null
+              }
+            ],
+            "complete": true,
+            "scope": "Completed intermediate checkpoint evaluation; same development episode seeds, not a final10M endpoint or independent-training-seed uncertainty."
+          }
+        ],
+        "incomplete_evaluations": [],
+        "checks": {
+          "running_or_completed": true,
+          "expected_cpu_memory_walltime": true,
+          "source_manifest_and_saved_bytes_exact": true,
+          "saved_guard_unchanged": true,
+          "actual_import_guard_correct": true,
+          "config_matches_predeclared": true,
+          "config_files_unchanged": true,
+          "versions_match_controls": true,
+          "environment_matches_controls": true,
+          "dependency_manifest_exact": true,
+          "runtime_job_and_cpu_correct": true,
+          "numeric_training_finite": true,
+          "numeric_evaluation_finite": true,
+          "exact_training_step_sequence": true,
+          "ppo_metrics_present": true,
+          "budget_not_exceeded": true,
+          "episode_counts_match_1000_step_horizon": true,
+          "finite_auxiliary_updates_nonempty_targets": true,
+          "active_intention_inputs_observed": true,
+          "no_runtime_exception_markers": true,
+          "all_logged_checkpoints_complete": true
+        },
+        "all_checks_passed": true,
+        "snapshot_files": {
+          "config.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417/config.json",
+            "bytes": 1188,
+            "sha256": "04a2ac514efd19aa09adae9f6a395ea0b06cb94adc2692fbc7e3c7b892ca892d"
+          },
+          "manifest.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417/manifest.json",
+            "bytes": 4475,
+            "sha256": "499ad43e1c514400ad7ab15085f0b98bbf66f3db66a510e6b8f98afe17989303"
+          },
+          "startup-guard.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417/startup-guard.json",
+            "bytes": 3757,
+            "sha256": "d6a9a70fb1b5bb5bdd3331565fa1f8ead71eb7c813b59e7515a85f5ec4b04690"
+          },
+          "metrics.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417/metrics.jsonl",
+            "bytes": 243319,
+            "sha256": "a93b44d99e7e44aed0833dbd247ed5645543ece514c9d4aed49e10318edbe0c7"
+          },
+          "evaluation.jsonl": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417/evaluation.jsonl",
+            "bytes": 995,
+            "sha256": "630fcf78a98eae523d3605a555f08372c0d741db504516a07756c8cd394985fa"
+          },
+          "legacy-dependencies.json": {
+            "snapshot": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417/legacy-dependencies.json",
+            "bytes": 4287,
+            "sha256": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b"
+          }
+        },
+        "walltime_projection": {
+          "recent_steps_per_second_by_update_window": {
+            "20": 349.9493711510479,
+            "100": 326.63347273655666
+          },
+          "planning_steps_per_second": 326.63347273655666,
+          "latest_training_steps": 1244000,
+          "scheduler_elapsed_seconds": 3467,
+          "allocated_seconds": 43200,
+          "projected_remaining_seconds": 26806.8055813192,
+          "projected_total_hours": 8.409390439255333,
+          "projected_total_hours_with1_5x_remaining_contingency": 12.132557881105221,
+          "allocation_hours": 12.0,
+          "nominal_walltime_risk": false,
+          "walltime_risk_with_contingency": true,
+          "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+        },
+        "not_final_endpoint": true
+      },
+      "monitoring_history": [
+        {
+          "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+          "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z/21198417",
+          "latest_steps": 1244000,
+          "complete_evaluation_steps": [
+            1000000
+          ],
+          "all_checks_passed": true,
+          "walltime_projection": {
+            "recent_steps_per_second_by_update_window": {
+              "20": 349.9493711510479,
+              "100": 326.63347273655666
+            },
+            "planning_steps_per_second": 326.63347273655666,
+            "latest_training_steps": 1244000,
+            "scheduler_elapsed_seconds": 3467,
+            "allocated_seconds": 43200,
+            "projected_remaining_seconds": 26806.8055813192,
+            "projected_total_hours": 8.409390439255333,
+            "projected_total_hours_with1_5x_remaining_contingency": 12.132557881105221,
+            "allocation_hours": 12.0,
+            "nominal_walltime_risk": false,
+            "walltime_risk_with_contingency": true,
+            "scope": "Uses slower of recent20/100 update rates after warmup; inclusive elapsed intervals can include completed scheduled evaluations. Future evaluation overhead, CPU contention and changing workload remain uncertain; this is a planning estimate, not guaranteed completion."
+          }
+        }
+      ]
     }
   ],
   "interpretation_limits": [
@@ -1011,5 +2621,38 @@
     },
     "scope": "Measured on seed101 milan2; replicas run on milan32. Host differences and nonstationary workloads may change throughput; no current control-based walltime risk."
   },
-  "all_startup_checks_passed": true
+  "all_startup_checks_passed": true,
+  "latest_monitoring": {
+    "checked_at_utc": "2026-10-25T12:27:51.476500+00:00",
+    "snapshot_directory": "runs/development-halfcheetah-10m-replications-01/monitoring-20261025T122751476500Z",
+    "frozen_control_checks": {
+      "frozen_source_16files_exact": true,
+      "frozen_source_readonly": true,
+      "runner_unchanged": true,
+      "wrapper_unchanged": true,
+      "input_guard_unchanged": true
+    },
+    "all_job_checks_passed": true,
+    "matched_complete_checkpoint_comparisons": [
+      {
+        "training_seed": 103,
+        "training_steps": 1000000,
+        "ippo_mean_return": 2859.9129850424824,
+        "dms_mean_return": 2959.1165724049556,
+        "dms_minus_ippo": 99.20358736247317,
+        "scope": "Descriptive same-budget development checkpoint contrast; no final10M advantage or independent confirmation claim."
+      },
+      {
+        "training_seed": 107,
+        "training_steps": 1000000,
+        "ippo_mean_return": 2993.376907959528,
+        "dms_mean_return": 3318.795675003622,
+        "dms_minus_ippo": 325.4187670440938,
+        "scope": "Descriptive same-budget development checkpoint contrast; no final10M advantage or independent confirmation claim."
+      }
+    ],
+    "next_concern": "Performance stability across seeds and later checkpoints remains unresolved. DMS seed103 first1M diagnostic evaluation contains one879.39 return among nine3098.94\u20133244.08 returns; preserve this low tail. The runs have not reached10M, and later IPPO checkpoints must not be compared with earlier DMS checkpoints as if budgets matched.",
+    "accounting_snapshot_sha256": "0774c62884a9925155e2b22946629f9d948d5c513a36f2782a7cfe3cf915df2c",
+    "resource_snapshot_sha256": "cfff076a78e1dd66f8b13714688643aef9f2c74a5c6091539018fd8c98ea14d1"
+  }
 }
