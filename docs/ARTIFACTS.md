@@ -1,5 +1,32 @@
 # Local development artifacts
 
+## Full-budget HalfCheetah development
+
+The [seven-run 10M bundle](../reports/development-halfcheetah-10m-artifacts.json)
+is available locally as
+[`dist/dms-halfcheetah-10m-development-20261026.zip`](../dist/dms-halfcheetah-10m-development-20261026.zip).
+It contains all IPPO/DMS auxiliary-LR-1e-3 runs for development seeds 101, 103
+and 107, plus the selected auxiliary-LR-1e-4 DMS run for seed 101. All seven
+fixed final checkpoints are included; weaker outcomes have not been removed.
+
+The verified ZIP has 147 payload files and is 7,230,792 bytes. Its SHA-256 is:
+
+```text
+5ca1ce582c8a6ee514b9962d781b1aca33c92d0a37b2206d6180409fe5efb4ce
+```
+
+The bundle's episode records are the ten training-time diagnostic games at each
+checkpoint. Separate 100-episode endpoint results are retained in the checked-in
+[evaluation queue](../reports/development-halfcheetah-10m-evaluation-queue.json)
+and [IPPO seed-101 evaluation](../reports/development-halfcheetah-ippo-10m-evaluation.json).
+[Current status](STATUS.md) reports the mixed three-seed results and their limits.
+The archive ledger records the exact export command and manifest/exporter hashes.
+The verifier below also accepts this ZIP by changing its `path` value.
+**Neither bundle has a public download URL yet.** Both are development evidence,
+not completed paper reproduction.
+
+## Earlier 500k pilots
+
 The nine completed historical HalfCheetah 2x3 pilots are packaged locally in
 [`dist/development-halfcheetah-500k-v1.zip`](../dist/development-halfcheetah-500k-v1.zip).
 The [artifact index](../reports/development-artifact-index.json) records its

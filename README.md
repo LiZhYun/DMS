@@ -144,7 +144,7 @@ The paper's supplementary parameter studies use historical ManyAgentSwimmer 10x2
 
 Runs contain `config.json`, `manifest.json`, `metrics.jsonl`, `evaluation.jsonl`, and `latest.pt`. Training metrics include policy/value losses, approximate KL, entropy, and the intention reconstruction/KL terms. Evaluation rows preserve individual episode returns, seeds, lengths, and SMAC wins. Check actual recorded steps rather than inferring progress from file names.
 
-[Artifact export instructions](docs/ARTIFACTS.md) describe a verified local bundle of nine completed HalfCheetah development runs, including checkpoints and negative results. The exporter checks completed budgets, source hashes, and archive contents; no result bundle has been uploaded.
+[Artifact export instructions](docs/ARTIFACTS.md) describe verified local bundles of seven full-budget 10M HalfCheetah runs and nine earlier 500k pilots, including checkpoints and negative results. The exporter checks completed budgets, source hashes, and archive contents; no result bundle has been uploaded.
 
 For a fresh final evaluation, run the checkpoint evaluator on an allocated compute node:
 
@@ -178,7 +178,7 @@ The report validates matching settings, budgets, and evaluation protocols, then 
 | Ant with explicitly computed contact forces | A separate legacy-backend adaptation that populates force observations and contact penalties; historical equivalence remains unverified and the reference release gate is blocked |
 | Modern MaMuJoCo v5 | A declared modern adaptation; higher scores alone do not establish improvement over original MuJoCo v2 results |
 
-For MuJoCo, native joint observations do not expose actuator commands. The adapter explicitly adds a locally sensed previous-control channel, restricted to joints in each observer's configured graph. IPPO receives the same channel. The manuscript also conflicts on observation radius: its task table says `agent_obsk=0`, while its prose says `1`. Initial configs follow the prose (k=1), because a strict k=0 action sensor exposes no peers. The plan also requires the table setting k=0 as a separate sensitivity run. Author clarification is pending. These distinctions must remain visible in any public result claim.
+For MuJoCo, native joint observations do not expose actuator commands. The adapter explicitly adds a locally sensed previous-control channel, restricted to joints in each observer's configured graph. IPPO receives the same channel. The manuscript also conflicts on observation radius: its task table says `agent_obsk=0`, while its prose says `1`. Initial configs follow the prose (k=1), because a strict k=0 action sensor exposes no peers. The plan also requires the table setting k=0 as a separate sensitivity run. The historical setting remains unresolved. These distinctions must remain visible in any public result claim.
 
 ## Citation and license
 
