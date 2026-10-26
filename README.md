@@ -26,7 +26,7 @@ The optional [local policy memory](docs/LOCAL_POLICY_MEMORY.md) adds a bounded o
 | --- | --- | --- |
 | Synthetic example and modern MuJoCo | Python 3.10 on Linux; CPU and Triton CUDA | Package extras below |
 | Original SMAC | Python 3.10 on Triton; CPU and CUDA | Official SMAC package, maps, and StarCraft II 4.10 |
-| Historical MuJoCo compatibility | Triton native environment or tested CPU Apptainer image | [Container guide](containers/README.md) or native setup; other hosts unverified |
+| Historical MuJoCo compatibility | Triton native environment or tested CPU/CUDA Apptainer image | [Container guide](containers/README.md) or native setup; other hosts unverified |
 
 Use Python 3.10 for the documented pinned environment. Install a PyTorch build compatible with the compute node first; then install this package and the required environment extras. The existing Triton environment is `dms/.venv` and currently uses PyTorch 2.6 with CUDA 12.6.
 
@@ -64,7 +64,7 @@ The [SMAC environment audit](docs/SMAC_ENVIRONMENT.md) records the verified map 
 
 For the historical MuJoCo compatibility track, use a separate Python 3.10 environment with Gym 0.23.1, `mujoco-py` 2.1.2.14, and MuJoCo 2.1.0. The prepared Triton setup is `.venv-legacy`; it leaves the modern environment intact. Follow the [historical environment setup](docs/HISTORICAL_ENVIRONMENT.md#isolated-preparation-and-allocated-smoke) to prepare dependencies and compile the native extension on a compute node. The original graph, v2 rewards, and XML assets are preserved, with corrected actuator routing and explicit local control sensing. This is a documented compatibility track, not verified parity with the paper's unrecorded binaries.
 
-A tested [CPU Apptainer image](containers/README.md) provides the same MuJoCo 2.1 compatibility backend without host Python packages or Triton library modules. Native tests, physics comparisons and training/checkpoint checks passed on Triton; GPU image execution and other hosts remain unverified.
+Tested [CPU and CUDA Apptainer images](containers/README.md) provide the same MuJoCo 2.1 compatibility backend without host Python packages or Triton library modules. Both passed native tests, physics comparisons and training/checkpoint checks on Triton; CUDA validation used an A100. Other hosts remain unverified.
 
 The pinned native Ant simulator leaves contact-force buffers zero. The optional [computed-force variant](docs/ANT_CONTACT_FORCES.md) populates those existing local observations and the contact penalty. Its configuration, benchmark label, and results remain separate from native Ant; passing its execution checks does not establish historical comparability.
 
@@ -144,7 +144,7 @@ The paper's supplementary parameter studies use historical ManyAgentSwimmer 10x2
 
 ## Evaluate and inspect a run
 
-Runs contain `config.json`, `manifest.json`, `metrics.jsonl`, `evaluation.jsonl`, and `latest.pt`. Training metrics include policy/value losses, approximate KL, entropy, and the intention reconstruction/KL terms. Evaluation rows preserve individual episode returns, seeds, lengths, and SMAC wins. Check actual recorded steps rather than inferring progress from file names.
+Runs contain `config.json`, `manifest.json`, `metrics.jsonl`, `evaluation.jsonl`, and `latest.pt`. New run and evaluation metadata include the accelerator model, compute capability, CUDA/cuDNN versions and numerical execution settings. Training metrics include policy/value losses, approximate KL, entropy, and the intention reconstruction/KL terms. Evaluation rows preserve individual episode returns, seeds, lengths, and SMAC wins. Check actual recorded steps rather than inferring progress from file names.
 
 [Artifact export instructions](docs/ARTIFACTS.md) describe verified local bundles of seven full-budget 10M HalfCheetah runs and nine earlier 500k pilots, including checkpoints and negative results. The exporter checks completed budgets, source hashes, and archive contents; no result bundle has been uploaded.
 

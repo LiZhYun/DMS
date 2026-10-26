@@ -1,16 +1,34 @@
 #!/usr/bin/env bash
-# CPU MuJoCo compatibility environment, independent of Triton modules.
+# MuJoCo compatibility environments, independent of Triton Python/modules.
 set -euo pipefail
 
 DMS_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/../.." && pwd)"
 mode="${1:-}"
 image="${2:-}"
-if [[ ! "$mode" =~ ^(build|test|run)$ || -z "$image" ]]; then
-  printf '%s\n' 'Usage: bash scripts/legacy/container.sh {build|test|run} IMAGE [PYTHON_ARGUMENTS...]' >&2
+if [[ ! "$mode" =~ ^(build|test|run)(-cuda)?$ || -z "$image" ]]; then
+  printf '%s\n' 'Usage: bash scripts/legacy/container.sh {build|test|run|build-cuda|test-cuda|run-cuda} IMAGE [PYTHON_ARGUMENTS...]' >&2
   exit 2
 fi
 shift 2
+cuda=false
+if [[ "$mode" == *-cuda ]]; then
+  cuda=true
+  mode="${mode%-cuda}"
+fi
 command -v apptainer >/dev/null
+
+gpu_args=()
+if $cuda && [[ "$mode" != build ]]; then
+  gpu_args=(--nv)
+  # Preserve scheduler visibility, including an explicitly empty value. The
+  # environment route also preserves comma-separated lists without CLI parsing.
+  if [[ ${CUDA_VISIBLE_DEVICES+x} ]]; then
+    export APPTAINERENV_CUDA_VISIBLE_DEVICES="$CUDA_VISIBLE_DEVICES"
+  fi
+  if [[ ${CUDA_DEVICE_ORDER+x} ]]; then
+    export APPTAINERENV_CUDA_DEVICE_ORDER="$CUDA_DEVICE_ORDER"
+  fi
+fi
 
 # A writable overlay is required for mujoco-py to open its import lock, even
 # though the native extension is already compiled inside the read-only image.
@@ -27,14 +45,22 @@ case "$mode" in
     mkdir -p -- "$APPTAINER_CACHEDIR"
     # Apptainer's automatic build test has a read-only root. Run the same native
     # test immediately afterward with the overlay used by normal execution.
-    apptainer build --fakeroot --notest "$image" "$DMS_ROOT/containers/legacy-cpu.def"
+    definition="$DMS_ROOT/containers/legacy-cpu.def"
+    if $cuda; then
+      definition="$DMS_ROOT/containers/legacy-cuda.def"
+    fi
+    apptainer build --fakeroot --notest "$image" "$definition"
     apptainer test "${isolation[@]}" "$image"
     sha256sum "$image" > "$image.sha256"
     apptainer inspect --json "$image" > "$image.inspect.json"
     ;;
   test)
     [[ $# == 0 ]]
-    apptainer test "${isolation[@]}" "$image"
+    test_args=()
+    if $cuda; then
+      test_args=(--env DMS_REQUIRE_CUDA=1)
+    fi
+    apptainer test "${isolation[@]}" "${gpu_args[@]}" "${test_args[@]}" "$image"
     ;;
   run)
     if [[ $# == 0 ]]; then
@@ -54,7 +80,7 @@ case "$mode" in
         runtime_env+=(--env "$name=${!name}")
       fi
     done
-    exec apptainer exec "${isolation[@]}" \
+    exec apptainer exec "${isolation[@]}" "${gpu_args[@]}" \
       --bind "$DMS_ROOT:/workspace:ro" \
       --bind "$DMS_ROOT/runs:/workspace/runs:rw" \
       --bind "$source_root:/dms-source:ro" \

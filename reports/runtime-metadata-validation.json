@@ -1,0 +1,1031 @@
+{
+  "purpose": "Verify explicit accelerator metadata without changing training, optimizer, normalizer or RNG behavior; test the documented CUDA reader CLI.",
+  "created_utc": "2026-10-26T14:55:14.854773+00:00",
+  "status": "completed_pass",
+  "artifact": "runs/runtime-metadata-validation-01",
+  "old_source": "/scratch/work/liz23/reproduce/dms/runs/legacy-cuda-container-validation-01/source",
+  "new_source": "/scratch/work/liz23/reproduce/dms/runs/runtime-metadata-validation-01/new-source",
+  "new_source_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "dd61b87be99eb97c32ede568a05adc27a125684b566297fed3fca569b74e823d",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "cuda_image": "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+  "cuda_image_sha256": "3995c125ca6b69ee9624a9a18ee2ed9a1988c1df3ea6955f2c9dfeb76ec9b221",
+  "cases": [
+    {
+      "device": "cpu",
+      "algorithm": "ippo",
+      "policy_history_length": 4,
+      "total_steps": 64
+    },
+    {
+      "device": "cpu",
+      "algorithm": "dms",
+      "policy_history_length": 4,
+      "total_steps": 64
+    },
+    {
+      "device": "cuda",
+      "algorithm": "ippo",
+      "policy_history_length": 4,
+      "total_steps": 64
+    },
+    {
+      "device": "cuda",
+      "algorithm": "dms",
+      "policy_history_length": 4,
+      "total_steps": 64
+    }
+  ],
+  "checks": [
+    "existing training and evaluation tests in the modern environment",
+    "same-node exact checkpoint/optimizer/RNG/evaluation comparisons before versus after metadata change",
+    "metadata call preserves RNG states and execution settings",
+    "public CUDA container4000-transition CLI and saved-source checkpoint evaluation"
+  ],
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-runtime-metadata",
+      "--partition=gpu-h200-141g-ellis,gpu-debug,gpu-a100-80g,gpu-h100-80g",
+      "--gpus=1",
+      "--cpus-per-task=2",
+      "--mem=8G",
+      "--time=00:15:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/runtime-metadata-validation-01/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/runtime-metadata-validation-01/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/runtime-metadata-validation-01/validate.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21215552\n",
+    "stderr": "",
+    "submitted_utc": "2026-10-26T14:57:06.659561+00:00"
+  },
+  "validation_scripts_sha256": {
+    "validate.py": "26059e83b99340682510f0c773e1efb478605284de204a906b1b74c060eeec58",
+    "case.py": "6c7f170a6b6bb1d18cb22a1b037c2272a6a80394ebb06f291dd1a948b7356319",
+    "validate.sbatch": "2c5f98407663e271a1f257caece5f9cad3560566d854e0ab83f6fc954473cde3",
+    "compare.py": "568c8bd3c0cafe92f0579a29bc97116818cc88a436fcb7f72ac70ff2155214ab"
+  },
+  "job_id": "21215552",
+  "completed_utc": "2026-10-26T15:01:47.050477+00:00",
+  "scheduler_record": "21215552|COMPLETED|0:0|00:02:36|gpu38",
+  "result_path": "runs/runtime-metadata-validation-01/result.json",
+  "result_sha256": "4ad1fe3b2c2eecab5c3c3bcaeeb6346c32387725306f042df56ba018699f0791",
+  "result": {
+    "success": true,
+    "job_id": "21215552",
+    "commands": [
+      {
+        "name": "focused-tests",
+        "command": [
+          "/scratch/work/liz23/reproduce/dms/.venv/bin/python",
+          "-m",
+          "pytest",
+          "tests/test_training.py",
+          "tests/test_evaluate.py",
+          "-q",
+          "-o",
+          "pythonpath=/scratch/work/liz23/reproduce/dms/runs/runtime-metadata-validation-01/new-source",
+          "--junitxml=/scratch/work/liz23/reproduce/dms/runs/runtime-metadata-validation-01/focused-tests.xml"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 29.429177145007998
+      },
+      {
+        "name": "old-cpu-ippo",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "old",
+          "cpu",
+          "ippo"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 13.778323004953563
+      },
+      {
+        "name": "new-cpu-ippo",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "new",
+          "cpu",
+          "ippo"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 7.250100322067738
+      },
+      {
+        "name": "old-cpu-dms",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "old",
+          "cpu",
+          "dms"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 8.111759539926425
+      },
+      {
+        "name": "new-cpu-dms",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "new",
+          "cpu",
+          "dms"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 8.050827580038458
+      },
+      {
+        "name": "old-cuda-ippo",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "old",
+          "cuda",
+          "ippo"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 11.414951898856089
+      },
+      {
+        "name": "new-cuda-ippo",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "new",
+          "cuda",
+          "ippo"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 9.343435029033571
+      },
+      {
+        "name": "old-cuda-dms",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "old",
+          "cuda",
+          "dms"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 10.805253528989851
+      },
+      {
+        "name": "new-cuda-dms",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/case.py",
+          "new",
+          "cuda",
+          "dms"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 10.587203084025532
+      },
+      {
+        "name": "compare",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "runs/runtime-metadata-validation-01/compare.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 3.9919122501742095
+      },
+      {
+        "name": "reader-cuda-cli",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "-m",
+          "dms.train",
+          "--config",
+          "configs/development/legacy-halfcheetah-2x3-dms-soft.json",
+          "--device",
+          "cuda",
+          "--total-steps",
+          "4000",
+          "--output",
+          "runs/runtime-metadata-validation-01/reader-cuda-cli"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 29.638158184010535
+      },
+      {
+        "name": "reader-saved-source-evaluation",
+        "command": [
+          "bash",
+          "scripts/legacy/container.sh",
+          "run-cuda",
+          "runs/legacy-cuda-container-validation-01/attempt-01/legacy-cuda.sif",
+          "-m",
+          "dms.evaluate",
+          "--checkpoint",
+          "runs/runtime-metadata-validation-01/reader-cuda-cli/latest.pt",
+          "--device",
+          "cuda",
+          "--episodes",
+          "2",
+          "--seed",
+          "400801",
+          "--output",
+          "runs/runtime-metadata-validation-01/reader-evaluation.json"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 13.857752199051902
+      }
+    ],
+    "focused_tests": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "regression": {
+      "success": true,
+      "cases": [
+        {
+          "device": "cpu",
+          "algorithm": "ippo",
+          "full_checkpoint_equal_except_output": true,
+          "logged_metrics_equal_except_elapsed": true,
+          "evaluation_records_equal": true,
+          "runtime": {
+            "host": "gpu38.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21215552",
+            "slurm_partition": "gpu-debug",
+            "torch_threads": 1,
+            "float32_matmul_precision": "highest",
+            "cudnn_benchmark": false,
+            "cudnn_deterministic": true,
+            "accelerator": null
+          }
+        },
+        {
+          "device": "cpu",
+          "algorithm": "dms",
+          "full_checkpoint_equal_except_output": true,
+          "logged_metrics_equal_except_elapsed": true,
+          "evaluation_records_equal": true,
+          "runtime": {
+            "host": "gpu38.int.triton.aalto.fi",
+            "device": "cpu",
+            "slurm_job_id": "21215552",
+            "slurm_partition": "gpu-debug",
+            "torch_threads": 1,
+            "float32_matmul_precision": "highest",
+            "cudnn_benchmark": false,
+            "cudnn_deterministic": true,
+            "accelerator": null
+          }
+        },
+        {
+          "device": "cuda",
+          "algorithm": "ippo",
+          "full_checkpoint_equal_except_output": true,
+          "logged_metrics_equal_except_elapsed": true,
+          "evaluation_records_equal": true,
+          "runtime": {
+            "host": "gpu38.int.triton.aalto.fi",
+            "device": "cuda",
+            "slurm_job_id": "21215552",
+            "slurm_partition": "gpu-debug",
+            "torch_threads": 1,
+            "float32_matmul_precision": "highest",
+            "cudnn_benchmark": false,
+            "cudnn_deterministic": true,
+            "accelerator": {
+              "name": "NVIDIA A100-SXM4-80GB",
+              "capability": [
+                8,
+                0
+              ],
+              "total_memory_bytes": 85093777408,
+              "cuda_runtime": "12.6",
+              "cudnn_version": 90501,
+              "cuda_visible_devices": "0",
+              "matmul_allow_tf32": false
+            }
+          }
+        },
+        {
+          "device": "cuda",
+          "algorithm": "dms",
+          "full_checkpoint_equal_except_output": true,
+          "logged_metrics_equal_except_elapsed": true,
+          "evaluation_records_equal": true,
+          "runtime": {
+            "host": "gpu38.int.triton.aalto.fi",
+            "device": "cuda",
+            "slurm_job_id": "21215552",
+            "slurm_partition": "gpu-debug",
+            "torch_threads": 1,
+            "float32_matmul_precision": "highest",
+            "cudnn_benchmark": false,
+            "cudnn_deterministic": true,
+            "accelerator": {
+              "name": "NVIDIA A100-SXM4-80GB",
+              "capability": [
+                8,
+                0
+              ],
+              "total_memory_bytes": 85093777408,
+              "cuda_runtime": "12.6",
+              "cudnn_version": 90501,
+              "cuda_visible_devices": "0",
+              "matmul_allow_tf32": false
+            }
+          }
+        }
+      ]
+    },
+    "reader_manifest": {
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "initial_info": {
+        "elapsed_steps": 0
+      },
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "dd61b87be99eb97c32ede568a05adc27a125684b566297fed3fca569b74e823d"
+      },
+      "runtime": {
+        "host": "gpu38.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21215552",
+        "slurm_partition": "gpu-debug",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA A100-SXM4-80GB",
+          "capability": [
+            8,
+            0
+          ],
+          "total_memory_bytes": 85093777408,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "information": "local observations and visibility-masked observed action sensors",
+      "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+      "value_time_limits": {
+        "mode": "bootstrap_truncations",
+        "native_environment_flags_preserved": true,
+        "scope": "value/advantage targets only; rewards, resets, observations and intention targets unchanged"
+      },
+      "ppo_update": {
+        "mode": "independent",
+        "agent_order": "fixed index order; independent objectives",
+        "training_signal": "no cross-agent likelihood correction",
+        "actor_information": "unchanged local cached observations, intentions and gates",
+        "sequential_scope": "HAPPO-style coordinated training; not the exact legacy stochastic-latent recipe"
+      },
+      "parameters": {
+        "actor_critic": 26894,
+        "intention": 70060
+      },
+      "history": "finite rolling action window; configurable redesign of full-history prior",
+      "status": "completed; no paper performance claim",
+      "completed_steps": 4000,
+      "completed_episodes": 4,
+      "environment_runtime": [
+        {},
+        {},
+        {},
+        {}
+      ]
+    },
+    "reader_evaluation": {
+      "checkpoint": "/workspace/runs/runtime-metadata-validation-01/reader-cuda-cli/latest.pt",
+      "training_steps": 4000,
+      "training_seed": 101,
+      "episode_seed_start": 400801,
+      "episodes": 2,
+      "config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 4000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": true,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 1.0,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 100000,
+        "eval_episodes": 5,
+        "eval_seed": 10001,
+        "output": "runs/runtime-metadata-validation-01/reader-cuda-cli",
+        "torch_threads": 1
+      },
+      "manifest": {
+        "versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ]
+        },
+        "initial_info": {
+          "elapsed_steps": 0
+        },
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "dd61b87be99eb97c32ede568a05adc27a125684b566297fed3fca569b74e823d"
+        },
+        "runtime": {
+          "host": "gpu38.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21215552",
+          "slurm_partition": "gpu-debug",
+          "torch_threads": 1,
+          "float32_matmul_precision": "highest",
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": true,
+          "accelerator": {
+            "name": "NVIDIA A100-SXM4-80GB",
+            "capability": [
+              8,
+              0
+            ],
+            "total_memory_bytes": 85093777408,
+            "cuda_runtime": "12.6",
+            "cudnn_version": 90501,
+            "cuda_visible_devices": "0",
+            "matmul_allow_tf32": false
+          }
+        },
+        "information": "local observations and visibility-masked observed action sensors",
+        "intention_control": "deterministic prior means; fixed rollout features/gates during PPO",
+        "value_time_limits": {
+          "mode": "bootstrap_truncations",
+          "native_environment_flags_preserved": true,
+          "scope": "value/advantage targets only; rewards, resets, observations and intention targets unchanged"
+        },
+        "ppo_update": {
+          "mode": "independent",
+          "agent_order": "fixed index order; independent objectives",
+          "training_signal": "no cross-agent likelihood correction",
+          "actor_information": "unchanged local cached observations, intentions and gates",
+          "sequential_scope": "HAPPO-style coordinated training; not the exact legacy stochastic-latent recipe"
+        },
+        "parameters": {
+          "actor_critic": 26894,
+          "intention": 70060
+        },
+        "history": "finite rolling action window; configurable redesign of full-history prior",
+        "status": "completed; no paper performance claim",
+        "completed_steps": 4000,
+        "completed_episodes": 4,
+        "environment_runtime": [
+          {},
+          {},
+          {},
+          {}
+        ]
+      },
+      "evaluation_environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "evaluation_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "evaluation_runtime": {
+        "host": "gpu38.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21215552",
+        "slurm_partition": "gpu-debug",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA A100-SXM4-80GB",
+          "capability": [
+            8,
+            0
+          ],
+          "total_memory_bytes": 85093777408,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        },
+        "initial_environment": {},
+        "final_environment": {}
+      },
+      "evaluation_source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "dd61b87be99eb97c32ede568a05adc27a125684b566297fed3fca569b74e823d"
+      },
+      "evaluation_protocol": {
+        "deterministic": true,
+        "episode_seeds": "consecutive from episode_seed_start"
+      },
+      "return_mean": 0.6073300605945735,
+      "return_std": 0.1426341843206731,
+      "results": [
+        {
+          "seed": 400801,
+          "return": 0.4646958762739004,
+          "length": 1000,
+          "battle_won": null
+        },
+        {
+          "seed": 400802,
+          "return": 0.7499642449152466,
+          "length": 1000,
+          "battle_won": null
+        }
+      ]
+    },
+    "reader_checkpoint_sha256": "4ed3f1f058cf6e0997db7ed141b50d2cd13ac07a1df6692b7e513541afec9c3a",
+    "reader_checkpoint_unchanged": true,
+    "elapsed_seconds": 156.30163679691032,
+    "completed_utc": "2026-10-26T14:59:43.694556+00:00"
+  },
+  "interpretation": "Four same-node before/after cases preserve full agent/intention/optimizer/normalization and RNG checkpoint state exactly, with only output config excluded. Metrics differ only by elapsed time; diagnostic evaluations are byte-equal. This validates the metadata-only change for these cases, not cross-device/full-budget trajectory equivalence."
+}

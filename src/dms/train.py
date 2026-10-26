@@ -174,6 +174,32 @@ def seed_everything(seed: int):
     torch.backends.cudnn.deterministic = True
 
 
+def runtime_metadata(device: str) -> dict:
+    """Record the hardware used; a seed alone does not ensure cross-GPU replay."""
+    result = {
+        'host': platform.node(), 'device': device,
+        'slurm_job_id': os.environ.get('SLURM_JOB_ID'),
+        'slurm_partition': os.environ.get('SLURM_JOB_PARTITION'),
+        'torch_threads': torch.get_num_threads(),
+        'float32_matmul_precision': torch.get_float32_matmul_precision(),
+        'cudnn_benchmark': torch.backends.cudnn.benchmark,
+        'cudnn_deterministic': torch.backends.cudnn.deterministic,
+        'accelerator': None,
+    }
+    if torch.device(device).type == 'cuda':
+        properties = torch.cuda.get_device_properties(device)
+        result['accelerator'] = {
+            'name': properties.name,
+            'capability': [properties.major, properties.minor],
+            'total_memory_bytes': properties.total_memory,
+            'cuda_runtime': torch.version.cuda,
+            'cudnn_version': torch.backends.cudnn.version(),
+            'cuda_visible_devices': os.environ.get('CUDA_VISIBLE_DEVICES'),
+            'matmul_allow_tf32': torch.backends.cuda.matmul.allow_tf32,
+        }
+    return result
+
+
 def append_json(path: Path, record: dict):
     with path.open('a') as stream:
         stream.write(json.dumps(record, allow_nan=False) + '\n')
@@ -570,11 +596,7 @@ def evaluate(learner: Learner, episodes: int, seed: int, *, metadata: dict | Non
                     metadata['versions'][package] = importlib.metadata.version(package)
                 except importlib.metadata.PackageNotFoundError:
                     pass
-            metadata['runtime'] = {
-                'host': platform.node(), 'device': learner.config.device,
-                'slurm_job_id': os.environ.get('SLURM_JOB_ID'),
-                'slurm_partition': os.environ.get('SLURM_JOB_PARTITION'),
-            }
+            metadata['runtime'] = runtime_metadata(learner.config.device)
         for episode in range(episodes):
             state = env.reset(seed=seed+episode)
             if metadata is not None and episode == 0:
@@ -633,9 +655,7 @@ def run(config: Config):
         (output/'manifest.json').write_text(json.dumps({'versions':versions,
             'environment':getattr(environments[0],'metadata',{}),'initial_info':states[0].info,
             'source_sha256':source_hashes,
-            'runtime':{'host':platform.node(),'device':config.device,
-                       'slurm_job_id':os.environ.get('SLURM_JOB_ID'),
-                       'slurm_partition':os.environ.get('SLURM_JOB_PARTITION')},
+            'runtime':runtime_metadata(config.device),
             'information':'local observations and visibility-masked observed action sensors',
             'intention_control':'deterministic prior means; fixed rollout features/gates during PPO',
             'value_time_limits':{

@@ -71,3 +71,24 @@ builds, hashes and observed dependency inventories. The image has been tested on
 Triton x86-64 only; other hosts, GPU execution, original MuJoCo 2.0 parity,
 fully locked rebuilds and public image hosting remain open. This adds a tested
 container route while preserving the limits of the earlier native-bootstrap audit.
+
+**Legacy CUDA container evidence, 2026-10-26.** The same public wrapper now offers
+`build-cuda`, `test-cuda` and `run-cuda`. Build **21215121** and A100 validation
+**21215206** passed 56 native tests without skips, thirteen physics cases with
+130 arrays exactly matching the validated CPU image, four active CUDA DMS
+training/checkpoint checks and a separate saved-source evaluation. Scheduler
+GPU visibility, including an explicitly empty device list, was preserved. The
+CPU wrapper regression also passed. [The CUDA ledger](../reports/legacy-cuda-container-validation.json)
+records image and source hashes, observed dependencies and raw results. This
+closes the missing native CUDA-image execution check on the tested A100 host;
+external hosts, other GPU models for this image, original binary parity and
+public image hosting remain open.
+
+**Accelerator provenance, 2026-10-26.** Training and evaluation now record the
+GPU model, capability, CUDA/cuDNN versions, visibility and numerical settings.
+Job **21215552** passed 12 training/evaluation tests and four same-node CPU/CUDA
+IPPO/DMS before/after checks with identical model, optimizer, normalization and
+RNG checkpoint state (excluding the output path), plus identical evaluation
+records. The documented 4,000-transition CUDA command and saved-source evaluation
+also passed on this source. [Evidence](../reports/runtime-metadata-validation.json).
+This does not assert equivalent trajectories across GPU families.
