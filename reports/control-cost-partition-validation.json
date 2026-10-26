@@ -1,0 +1,476 @@
+{
+  "status": "completed_pass",
+  "job_id": "21220365",
+  "artifact": "runs/control-cost-partition-validation-01",
+  "purpose": "Check the public diagnostic actuator mapping and shared-reward reduction for three-agent and six-agent native HalfCheetah; smoke policies only, no learning-performance claim.",
+  "script_sha256": "f69e78df72c5ccfd17b47ca6481c879289840ce54ee2f7cdba91262d0c67986d",
+  "cases": [
+    {
+      "label": "3x2",
+      "run": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-partition-coverage-3m-seed101/smoke/3x2-dms",
+      "checkpoint_sha256": "4da5a54f737e5f30df343bdadba63ef141989b10beb22756e656a9513ca482fd"
+    },
+    {
+      "label": "6x1",
+      "run": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-partition-coverage-3m-seed101/smoke/6x1-dms",
+      "checkpoint_sha256": "33667454b8a49eb9e779dac76e8ff76f750f9b4c6eac3e0d0d1128dc3976757d"
+    }
+  ],
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-control-cost-partitions",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:10:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/control-cost-partition-validation-01/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/control-cost-partition-validation-01/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/control-cost-partition-validation-01/run.sbatch"
+    ],
+    "stdout": "21220365\n",
+    "stderr": ""
+  },
+  "held_out_training_seeds_used": [],
+  "result": {
+    "success": true,
+    "job_id": "21220365",
+    "cases": [
+      {
+        "label": "3x2",
+        "exit_code": 0,
+        "success": true,
+        "result": {
+          "purpose": "raw_command_cost_sensitivity_not_retrained_performance",
+          "checkpoint_sha256": "4da5a54f737e5f30df343bdadba63ef141989b10beb22756e656a9513ca482fd",
+          "manifest_sha256": "5f9c465e318fca5ed14ef29c7ca310dc72df0d416f7766610df790449930e8bd",
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+          },
+          "script_sha256": "f69e78df72c5ccfd17b47ca6481c879289840ce54ee2f7cdba91262d0c67986d",
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "3x2",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              2,
+              2,
+              2
+            ],
+            "observation_dims": [
+              5,
+              7,
+              6
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ],
+            "policy_observation_history": {
+              "length": 32,
+              "base_observation_dim": 29,
+              "shape": [
+                3,
+                32,
+                30
+              ],
+              "validity_channel": "last; exact 0/1; never normalized",
+              "padding": "left zeros; current observation at final slot",
+              "reset": "episode reset",
+              "information": "only this agent's existing local observations"
+            }
+          },
+          "device": "cpu",
+          "training_seed": 101,
+          "training_steps": 8000,
+          "deterministic": true,
+          "optimizer_steps": 0,
+          "state_unchanged": true,
+          "checkpoint_manifest_source_unchanged": true,
+          "state_sha256": "1f8b568faf1a4e147755f880549a5e13651f31cfc7717f27e6e79745b83db85c",
+          "summary": {
+            "bounded_return_mean": -2.531979746410798,
+            "raw_command_cost_return_mean": -2.531979746410798,
+            "excess_control_cost_mean": 0.0,
+            "projected_step_fraction": 0.0,
+            "projected_coordinate_fraction": 0.0,
+            "max_absolute_raw_command": 0.06850866228342056
+          },
+          "episodes": [
+            {
+              "seed": 400305,
+              "bounded_return": -2.936299531529585,
+              "raw_command_cost_return": -2.936299531529585,
+              "excess_control_cost": 0.0,
+              "length": 1000,
+              "steps_with_projection": 0,
+              "projected_control_coordinates": 0,
+              "total_control_coordinates": 6000,
+              "max_absolute_raw_command": 0.06433092802762985
+            },
+            {
+              "seed": 400306,
+              "bounded_return": -2.127659961292011,
+              "raw_command_cost_return": -2.127659961292011,
+              "excess_control_cost": 0.0,
+              "length": 1000,
+              "steps_with_projection": 0,
+              "projected_control_coordinates": 0,
+              "total_control_coordinates": 6000,
+              "max_absolute_raw_command": 0.06850866228342056
+            }
+          ],
+          "trace": {
+            "path": "/scratch/work/liz23/reproduce/dms/runs/control-cost-partition-validation-01/3x2/trace.npz",
+            "sha256": "64a026e2b0111530cf5799b82288d964bdd2f38ef342519191e6b3ed307cef65"
+          }
+        }
+      },
+      {
+        "label": "6x1",
+        "exit_code": 0,
+        "success": true,
+        "result": {
+          "purpose": "raw_command_cost_sensitivity_not_retrained_performance",
+          "checkpoint_sha256": "33667454b8a49eb9e779dac76e8ff76f750f9b4c6eac3e0d0d1128dc3976757d",
+          "manifest_sha256": "31d92a7d9f6777f883bdeeead15620707a8d1e4cf3381c8a44dddd618ead4c8a",
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+          },
+          "script_sha256": "f69e78df72c5ccfd17b47ca6481c879289840ce54ee2f7cdba91262d0c67986d",
+          "versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14"
+          },
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "6x1",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2
+              ],
+              [
+                1
+              ],
+              [
+                0
+              ],
+              [
+                5
+              ],
+              [
+                4
+              ],
+              [
+                3
+              ]
+            ],
+            "action_dims": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "observation_dims": [
+              3,
+              4,
+              4,
+              3,
+              4,
+              4
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ],
+            "policy_observation_history": {
+              "length": 32,
+              "base_observation_dim": 26,
+              "shape": [
+                6,
+                32,
+                27
+              ],
+              "validity_channel": "last; exact 0/1; never normalized",
+              "padding": "left zeros; current observation at final slot",
+              "reset": "episode reset",
+              "information": "only this agent's existing local observations"
+            }
+          },
+          "device": "cpu",
+          "training_seed": 101,
+          "training_steps": 8000,
+          "deterministic": true,
+          "optimizer_steps": 0,
+          "state_unchanged": true,
+          "checkpoint_manifest_source_unchanged": true,
+          "state_sha256": "345413ef8a760a2cbdd4511e15f1e6ef920bd389375e5acb23cb61359c27dd1a",
+          "summary": {
+            "bounded_return_mean": -2.1775500699736767,
+            "raw_command_cost_return_mean": -2.1775500699736767,
+            "excess_control_cost_mean": 0.0,
+            "projected_step_fraction": 0.0,
+            "projected_coordinate_fraction": 0.0,
+            "max_absolute_raw_command": 0.05952192097902298
+          },
+          "episodes": [
+            {
+              "seed": 400305,
+              "bounded_return": -2.705977252343473,
+              "raw_command_cost_return": -2.705977252343473,
+              "excess_control_cost": 0.0,
+              "length": 1000,
+              "steps_with_projection": 0,
+              "projected_control_coordinates": 0,
+              "total_control_coordinates": 6000,
+              "max_absolute_raw_command": 0.058513838797807693
+            },
+            {
+              "seed": 400306,
+              "bounded_return": -1.6491228876038804,
+              "raw_command_cost_return": -1.6491228876038804,
+              "excess_control_cost": 0.0,
+              "length": 1000,
+              "steps_with_projection": 0,
+              "projected_control_coordinates": 0,
+              "total_control_coordinates": 6000,
+              "max_absolute_raw_command": 0.05952192097902298
+            }
+          ],
+          "trace": {
+            "path": "/scratch/work/liz23/reproduce/dms/runs/control-cost-partition-validation-01/6x1/trace.npz",
+            "sha256": "d19b9c66a7cb7cbcf582d654a562411024d7107ff0b74092bda03a7a300d039f"
+          }
+        }
+      }
+    ],
+    "script_sha256": "f69e78df72c5ccfd17b47ca6481c879289840ce54ee2f7cdba91262d0c67986d"
+  },
+  "scheduler": "21220365|COMPLETED|0:0|00:02:47|milan32",
+  "validation_sha256": "46cafa49cfc6590116547152638d05af56a782bd75ec75ea26a1632e09d642e5",
+  "collected_utc": "2026-10-26T19:38:47.728249+00:00"
+}

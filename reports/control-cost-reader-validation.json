@@ -1,0 +1,197 @@
+{
+  "purpose": "Repeat the public diagnostic on four frozen checkpoints and compare every recorded episode with the full fixed-policy audit.",
+  "status": "completed_pass",
+  "artifact": "runs/control-cost-reader-validation-01",
+  "script_sha256": "f69e78df72c5ccfd17b47ca6481c879289840ce54ee2f7cdba91262d0c67986d",
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-control-cost-reader",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=2",
+      "--mem=8G",
+      "--time=00:15:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/control-cost-reader-validation-01/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/control-cost-reader-validation-01/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/control-cost-reader-validation-01/run.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21220143\n",
+    "stderr": ""
+  },
+  "created_utc": "2026-10-26T19:24:59.005347+00:00",
+  "held_out_training_seeds_used": [],
+  "job_id": "21220143",
+  "result": {
+    "success": true,
+    "job_id": "21220143",
+    "cases": [
+      {
+        "label": "dms-101",
+        "exit_code": 0,
+        "success": true,
+        "episodes": [
+          {
+            "seed": 400101,
+            "bounded_return": 5454.180109538138,
+            "raw_command_cost_return": 4983.137378398329,
+            "excess_control_cost": 471.0427339076994,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 3985,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 2.800652503967285
+          },
+          {
+            "seed": 400102,
+            "bounded_return": 5273.9647722058,
+            "raw_command_cost_return": 4805.348718577996,
+            "excess_control_cost": 468.61605587005585,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 3950,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 2.7958691120147705
+          }
+        ],
+        "summary": {
+          "bounded_return_mean": 5364.072440871969,
+          "raw_command_cost_return_mean": 4894.2430484881625,
+          "excess_control_cost_mean": 469.82939488887763,
+          "projected_step_fraction": 1.0,
+          "projected_coordinate_fraction": 0.66125,
+          "max_absolute_raw_command": 2.800652503967285
+        },
+        "result_sha256": "5b02117bd9b8fc7c3303ded0b0fac79d401e3c814c4493a3c490b262038580dc",
+        "trace_sha256": "f4094dd0e4095ebddacf8e10048a6fcdb033dd7e642520da47500530e43bbeed",
+        "two_episodes_and_all_step_arrays_exact_full_audit_prefix": true
+      },
+      {
+        "label": "dms-103",
+        "exit_code": 0,
+        "success": true,
+        "episodes": [
+          {
+            "seed": 400101,
+            "bounded_return": 4706.4152694121,
+            "raw_command_cost_return": 4095.85877520591,
+            "excess_control_cost": 610.5564985752101,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 4186,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 2.7959017753601074
+          },
+          {
+            "seed": 400102,
+            "bounded_return": 4730.8243611902,
+            "raw_command_cost_return": 4120.483223587275,
+            "excess_control_cost": 610.3411451578133,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 4201,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 2.8100273609161377
+          }
+        ],
+        "summary": {
+          "bounded_return_mean": 4718.61981530115,
+          "raw_command_cost_return_mean": 4108.170999396592,
+          "excess_control_cost_mean": 610.4488218665117,
+          "projected_step_fraction": 1.0,
+          "projected_coordinate_fraction": 0.6989166666666666,
+          "max_absolute_raw_command": 2.8100273609161377
+        },
+        "result_sha256": "744563a65913796165d48207c95e9ae2eee12d7960e927639b5e62eceb4a0751",
+        "trace_sha256": "017682c53cc5b4de5d8c62ec5e53ff2d00f20da185c1dff29e0d2edd68d09806",
+        "two_episodes_and_all_step_arrays_exact_full_audit_prefix": true
+      },
+      {
+        "label": "ippo-101",
+        "exit_code": 0,
+        "success": true,
+        "episodes": [
+          {
+            "seed": 400101,
+            "bounded_return": 3883.886757369153,
+            "raw_command_cost_return": 3041.3420135080814,
+            "excess_control_cost": 842.5447487354263,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 4353,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 3.283024787902832
+          },
+          {
+            "seed": 400102,
+            "bounded_return": -22.31508834224951,
+            "raw_command_cost_return": -937.0588774383068,
+            "excess_control_cost": 914.7437863588322,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 3767,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 3.506629228591919
+          }
+        ],
+        "summary": {
+          "bounded_return_mean": 1930.7858345134518,
+          "raw_command_cost_return_mean": 1052.1415680348873,
+          "excess_control_cost_mean": 878.6442675471292,
+          "projected_step_fraction": 1.0,
+          "projected_coordinate_fraction": 0.6766666666666666,
+          "max_absolute_raw_command": 3.506629228591919
+        },
+        "result_sha256": "d08759b2cf86b579bbc7e19767ccd05bb0f2d2f1a79308599a0bc3466fbd0c61",
+        "trace_sha256": "b6289b4230c387082435af6f5879eb855ce2cdcef2f6aa3ce78a72471047778a",
+        "two_episodes_and_all_step_arrays_exact_full_audit_prefix": true
+      },
+      {
+        "label": "ippo-history32-h100-101",
+        "exit_code": 0,
+        "success": true,
+        "episodes": [
+          {
+            "seed": 400101,
+            "bounded_return": 5933.919410198927,
+            "raw_command_cost_return": 5003.4328137636185,
+            "excess_control_cost": 930.4865913152688,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 3827,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 2.6227340698242188
+          },
+          {
+            "seed": 400102,
+            "bounded_return": 5975.478662006557,
+            "raw_command_cost_return": 5044.808989282697,
+            "excess_control_cost": 930.6696640014651,
+            "length": 1000,
+            "steps_with_projection": 1000,
+            "projected_control_coordinates": 3840,
+            "total_control_coordinates": 6000,
+            "max_absolute_raw_command": 2.6228389739990234
+          }
+        ],
+        "summary": {
+          "bounded_return_mean": 5954.699036102742,
+          "raw_command_cost_return_mean": 5024.120901523158,
+          "excess_control_cost_mean": 930.578127658367,
+          "projected_step_fraction": 1.0,
+          "projected_coordinate_fraction": 0.6389166666666667,
+          "max_absolute_raw_command": 2.6228389739990234
+        },
+        "result_sha256": "cbe4b10e0fd816fd64a5c886acbf306d6d29a0bb561e751874127f7db120fe0f",
+        "trace_sha256": "ac513578d614e1c8d1bfe2a163d412331ac938b1323b61a1bb5c61f820add138",
+        "two_episodes_and_all_step_arrays_exact_full_audit_prefix": true
+      }
+    ],
+    "script_sha256": "f69e78df72c5ccfd17b47ca6481c879289840ce54ee2f7cdba91262d0c67986d",
+    "completed_utc": "2026-10-26T19:26:48.847423+00:00"
+  },
+  "validation_sha256": "412a6ef97077a73a9a8e60f87db2f1645bfbc34d72f0fe073c2e826f3fec65ec",
+  "scheduler": "21220143|COMPLETED|0:0|00:01:05|milan1",
+  "collected_utc": "2026-10-26T19:29:57.514918+00:00"
+}

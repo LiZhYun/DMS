@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 18:43 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-26 19:35 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -24,6 +24,7 @@ are not independent training replicates.
 | SMAC 3s5z, 3M, gamma 0.95, continuing value | 81/100 wins | 56/100 wins | Both improve over gamma 0.99; DMS remains below the matched baseline |
 | SMAC 8m_vs_9m, 3M, gamma 0.95 | 66/100 wins | Training | Baseline below the paper's full-budget target of 82.6%; this is a shorter development run |
 | Walker2d 3x2, 10M | 880.11 | Training | Baseline below the paper target of 1,100 |
+| Walker2d 3x2, history 32, H100, 3M | 2,322.92 | Training | 97/100 full-length episodes; 2 below 1,100. The DMS endpoint is still pending |
 | Ant 4x2, 10M, native contacts | 964.76 | Training | Baseline below the target of 1,700 |
 | Ant 4x2, 10M, computed contacts | 606.74 | Training | Separate environment adaptation; 4/100 negative-return episodes |
 
@@ -96,6 +97,15 @@ These CPU experiments remain separate from the CUDA controls above.
 [completed LR replications and aggregate](../reports/development-halfcheetah-aux-lr-10m-replications.json),
 [verified nine-run bundle](../reports/development-halfcheetah-10m-artifacts-v2.json).
 
+A [control-cost audit](CONTROL_COST_AUDIT.md) exactly replayed all 700 evaluation
+episodes of seven 10M HalfCheetah policies. Charging raw Gaussian commands instead
+of bounded controls lowers the three-seed CPU means to **3,914.75 DMS** and
+**3,350.12 IPPO**. DMS still leads on two seeds; its seed-103 result falls below
+the 3,800 engineering target. The bounded-policy endpoints above remain unchanged.
+This reward-only sensitivity does not establish performance after training with
+the old interface. Native physics and immutable-state checks passed, and the
+public diagnostic reproduced eight episodes and every associated step array.
+
 ## Active and queued experiments
 
 | Comparison | Training jobs | Registered endpoint and evidence |
@@ -108,7 +118,7 @@ These CPU experiments remain separate from the CUDA controls above.
 | SMAC 3s5z gamma 0.95, full budget | 21214432 / 21214434 running | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
 | SMAC 8m_vs_9m IPPO/DMS | 21213720 and endpoint completed / 21213722 training | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
 | SMAC MMM2 IPPO/DMS | 21213724 running / 21213726 queued | 3M; follows the corresponding 8m_vs_9m run in each chain. Same ledger |
-| Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Walker 21217029 / 21217031 running; Ant 21217033 / 21217035 queued | All four native CUDA smokes passed; 3M H100 pairs follow coordination controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
+| Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Walker baseline and endpoint completed; DMS 21217031 running; Ant 21217033 / 21217035 queued | All four native CUDA smokes passed; 3M H100 pairs follow coordination controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
 | Walker2d 3x2 IPPO/DMS | 21210999 completed / 21211001 running | 10M unchanged independent-update recipes. [Ledger](../reports/development-walker-10m-seed101.json) |
 | Ant 4x2, native/computed contacts, IPPO/DMS | 21212116 / 21212118 / 21212120 / 21212122 | 10M, initial log std −1.0. [Ledger](../reports/development-ant-10m-contact-seed101.json) |
 
@@ -133,6 +143,14 @@ before/after scheduler records retained in their ledgers. The 10M SMAC pair
 also shares H100, while its 3M references used A100; both logged prefixes
 already differ at the first update. Extra training is therefore not the sole
 changed condition in comparisons across those two budgets.
+
+The history-32 Walker baseline completed training **21217029** and evaluation
+**21217030** with all source, environment, checkpoint and immutable-state checks
+passing. Mean return is **2,322.92**, episode sample SD **251.41**; 97/100 episodes
+reach 1,000 steps, two returns are below 1,100, and none are negative. This is a
+stronger development baseline. Its difference from the earlier 10M CPU/no-memory
+run is not an isolated memory effect because hardware and budget also differ.
+The matched H100 DMS comparison is unfinished.
 
 ## Mechanism findings and development decisions
 
@@ -261,6 +279,12 @@ New training/evaluation records now include
 accelerator model and numerical settings. [Validation](../reports/runtime-metadata-validation.json)
 passed 12 tests, four exact CPU/CUDA before/after state comparisons, and the
 documented 4,000-step CUDA reader command with saved-source evaluation.
+
+The [current public-wheel check](../reports/public-wheel-joint-validation.json),
+job **21219592**, verified all 22 packaged Python/XML files, optional plotting
+metadata and notices. A fresh install target ran the joint-training synthetic
+example successfully. This used the existing tested dependencies, so it does
+not extend the older fresh-dependency validation to the new source.
 
 [Verified local artifact bundles](ARTIFACTS.md) preserve the nine completed 10M
 HalfCheetah runs, all four matched 3M memory controls, all six 3M coordination controls, all six

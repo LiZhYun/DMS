@@ -1,5 +1,24 @@
 # Local development artifacts
 
+## HalfCheetah control-cost audit
+
+Two [verified companion archives](../reports/halfcheetah-control-cost-artifacts.json)
+preserve the seven 10M policies and all 700,000 per-step control/reward records
+used in the [control-cost audit](CONTROL_COST_AUDIT.md):
+
+| Local archive | Size | Payload files |
+| --- | ---: | ---: |
+| `dist/dms-halfcheetah-control-cost-policies-20261026-v1.zip` | 7,185,785 bytes | 152 |
+| `dist/dms-halfcheetah-control-cost-traces-20261026-v1.zip` | 25,147,024 bytes | 26 |
+
+The policy archive contains the six matched CPU policies and the H100 history-32
+baseline, including checkpoints, saved source, configurations and diagnostics.
+The trace archive includes the audit code, per-episode records, step arrays,
+public diagnostic command, notices and a checksum manifest. Its manifest also
+identifies the companion policy archive. Every payload was read back and
+verified. These are local development artifacts with no public download URL.
+The ledger records both archive SHA-256 values and the policy export command.
+
 ## Latest nine-run HalfCheetah bundle
 
 The [nine-run 10M bundle](../reports/development-halfcheetah-10m-artifacts-v2.json)

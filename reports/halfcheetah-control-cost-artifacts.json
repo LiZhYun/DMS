@@ -1,0 +1,47 @@
+{
+  "status": "completed_pass",
+  "created_utc": "2026-10-26T19:33:32.809909+00:00",
+  "archives": {
+    "policies": {
+      "path": "dist/dms-halfcheetah-control-cost-policies-20261026-v1.zip",
+      "sha256": "60970171d590298b042c734ca4e821a5d1fd84321c0f5c70f15ee3c49bdb9f5a",
+      "bytes": 7185785,
+      "payload_files": 152,
+      "all_payloads_verified": true
+    },
+    "traces": {
+      "path": "dist/dms-halfcheetah-control-cost-traces-20261026-v1.zip",
+      "sha256": "31b3ede56aad30cd7c306d5030dbc717c3ee00e86c6d64d571ef7ecd895a404d",
+      "bytes": 25147024,
+      "payload_files": 26,
+      "all_payloads_verified": true
+    }
+  },
+  "policy_export_command": [
+    ".venv/bin/python",
+    "scripts/export_artifacts.py",
+    "--output",
+    "dist/dms-halfcheetah-control-cost-policies-20261026-v1.zip",
+    "--include-checkpoints",
+    "--verify",
+    "--run",
+    "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+    "--run",
+    "runs/dev-legacy-halfcheetah-2x3-ippo-10m-103",
+    "--run",
+    "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-103",
+    "--run",
+    "runs/dev-legacy-halfcheetah-2x3-ippo-10m-107",
+    "--run",
+    "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-107",
+    "--run",
+    "runs/dev-legacy-halfcheetah-2x3-ippo-10m-101",
+    "--run",
+    "runs/dev-legacy-halfcheetah-2x3-ippo-history32-10m-cuda-101"
+  ],
+  "policy_export_stdout": "{\n  \"archive\": \"/scratch/work/liz23/reproduce/dms/dist/dms-halfcheetah-control-cost-policies-20261026-v1.zip\",\n  \"sha256\": \"60970171d590298b042c734ca4e821a5d1fd84321c0f5c70f15ee3c49bdb9f5a\",\n  \"bytes\": 7185785,\n  \"payload_files\": 152\n}\n{\"verified_runs\": [\"dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101\", \"dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-103\", \"dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-107\", \"dev-legacy-halfcheetah-2x3-ippo-10m-101\", \"dev-legacy-halfcheetah-2x3-ippo-10m-103\", \"dev-legacy-halfcheetah-2x3-ippo-10m-107\", \"dev-legacy-halfcheetah-2x3-ippo-history32-10m-cuda-101\"]}\n",
+  "audit_ledger_sha256": "8ce1fd43ea94c8cc835a102089d6a47caf3addc1e45b3d5958dab105ae03de6a",
+  "public_urls": [],
+  "held_out_training_seeds_used": [],
+  "scope": "Development 10M policies and frozen-trajectory cost sensitivities, not final reproduction results. Contains no simulator installations or paper sources."
+}

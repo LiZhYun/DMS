@@ -39,6 +39,14 @@ For HalfCheetah 3x2 and Walker 3x2, the original named partition has actuator-ID
 
 Control clipping is another declared implementation difference. The old wrapper concatenated raw policy outputs and applied an affine action-range transform without clipping; Gym's reward penalty could therefore use an out-of-bounds command even when the simulator limited its actuator. Both new backends clip each sampled command to its native action bounds **before simulation and reward calculation**, and the local sensor records that executed command. PPO retains the original Gaussian sample for its likelihood ratio. This bounded-control convention is intentional and matched between IPPO and DMS; it is not evidence of numerical equivalence to the old raw-command reward path. Legacy runtime metadata records it as `control_processing`.
 
+A [fixed-policy control-cost audit](CONTROL_COST_AUDIT.md) now quantifies this
+choice on seven completed 10M HalfCheetah policies. Across three matched CPU
+training seeds, DMS averages 4,476.47 with bounded costs and 3,914.75 with raw
+command costs; IPPO averages 3,980.70 and 3,350.12. All 700 original evaluation
+episodes replayed exactly. This is a reward-only sensitivity on unchanged
+bounded-policy trajectories, not retraining under the old interface or proof
+of original binary parity. The audit includes a command readers can repeat.
+
 The installed Robotics presets omit four manuscript configurations. `envs.py` now constructs Ant 8x1, HalfCheetah 3x2, and Walker 3x2/6x1 using current graph node objects and the original named memberships. All nine main tasks were exercised at both radii with real resets and steps; the 23 environment tests passed, including direct checks of simulator actuator routing. This establishes executability and the declared information boundary, not historical return equivalence.
 
 The Ant and Walker reward/model differences are explicit in the installed `ant_v5.py` and `walker2d_v5.py` version histories. Gym's historical task implementations are independently available as [Ant v2 source](https://raw.githubusercontent.com/openai/gym/0.23.1/gym/envs/mujoco/ant.py), [HalfCheetah v2 source](https://raw.githubusercontent.com/openai/gym/0.23.1/gym/envs/mujoco/half_cheetah.py), and [Walker v2 source](https://raw.githubusercontent.com/openai/gym/0.23.1/gym/envs/mujoco/walker2d.py). Preserve their reward formulas and XML assets in the historical compatibility track.
