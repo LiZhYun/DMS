@@ -139,3 +139,24 @@ The source files and runtime manifests travel with each checkpoint. Environment
 setup remains documented in [HISTORICAL_ENVIRONMENT.md](HISTORICAL_ENVIRONMENT.md);
 the archive does not bundle simulator binaries or Python environments. It is a
 local review artifact while reproduction work continues.
+
+## SMAC development progress snapshot
+
+The [SMAC objective comparison](../reports/smac-objectives-development-20261026.png)
+plots win rates and native shaped returns from one preserved, checked-in
+[progress snapshot](../reports/development-progress-20261026T110133Z.json).
+It contains all six registered continuing-value/terminal-deadline and discount
+comparisons, with unequal progress, ten diagnostic games per checkpoint and no
+confidence bands. These are development observations from training seed 101.
+
+Regenerate it from the repository without access to ignored run directories:
+
+```bash
+.venv/bin/python scripts/plot_smac_development.py \
+  --snapshot reports/development-progress-20261026T110133Z.json \
+  --output /tmp/dms-smac-progress.png
+```
+
+The output path must be unused. The adjacent JSON records the exact source
+and figure hashes and the included per-episode outcomes. Rendering job
+21211946 completed successfully; the saved figure was visually inspected.

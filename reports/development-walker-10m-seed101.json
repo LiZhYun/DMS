@@ -1,7 +1,7 @@
 {
   "purpose": "Assess unchanged Walker3x2 independent recipes at full10M development budget after1M underperformance",
   "created_utc": "2026-10-26T09:43:48.366929+00:00",
-  "status": "both_running_startups_verified",
+  "status": "waiting_running_or_failed",
   "training_seed": 101,
   "held_out_training_seeds_used": false,
   "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/source",
@@ -223,7 +223,7 @@
       ],
       "time_limit": "05:00:00",
       "job_id": "21210999",
-      "status": "running_verified",
+      "status": "training_running_or_pending",
       "submission_command": [
         "sbatch",
         "--parsable",
@@ -240,25 +240,28 @@
         "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-no-intention-independent-10m-101"
       ],
       "evaluation": {
-        "job_id": "21211000",
         "command": [
           "sbatch",
           "--parsable",
-          "--job-name=dms-walker10m-eval-ippo",
+          "--job-name=dms-walker10m-eval-v2-ippo",
           "--partition=batch-milan,batch-csl,batch-skl",
           "--cpus-per-task=1",
           "--mem=4G",
-          "--time=00:15:00",
+          "--time=00:30:00",
           "--dependency=afterok:21210999",
           "--kill-on-invalid-dep=yes",
-          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/%x_%j.out",
-          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/%x_%j.err",
-          "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
-          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/spec.json"
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/ippo/spec.json"
         ],
-        "spec": "runs/development-walker-10m-seed101/evaluation-ippo/spec.json",
-        "spec_sha256": "083f79b87853d7a9c1762a66a86d59cd64c5bf7be3a9056012c5f687cd6fd31f",
+        "spec": "runs/development-walker-10m-seed101/evaluation-v2/ippo/spec.json",
+        "spec_sha256": "ee27c3dc47cabed52db77c40df4d8a02e2e8bce0960e43883ca7e2104f268337",
+        "submission_returncode": 0,
+        "stdout": "21211931\n",
+        "stderr": "",
         "status": "waiting_for_training",
+        "job_id": "21211931",
         "scheduler": {
           "state": "PENDING",
           "exit_code": "0:0",
@@ -271,7 +274,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:01:12",
+          "elapsed": "01:15:45",
           "node": "milan32"
         },
         "evaluation": {
@@ -309,7 +312,37 @@
           "slurm_job_id": "21210999",
           "slurm_partition": "batch-milan"
         }
-      }
+      },
+      "previous_evaluations": [
+        {
+          "job_id": "21211000",
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-walker10m-eval-ippo",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=00:15:00",
+            "--dependency=afterok:21210999",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/spec.json"
+          ],
+          "spec": "runs/development-walker-10m-seed101/evaluation-ippo/spec.json",
+          "spec_sha256": "083f79b87853d7a9c1762a66a86d59cd64c5bf7be3a9056012c5f687cd6fd31f",
+          "status": "cancelled_before_start_inventory_correction",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
     },
     {
       "variant": "dms",
@@ -383,7 +416,7 @@
       ],
       "time_limit": "20:00:00",
       "job_id": "21211001",
-      "status": "running_verified",
+      "status": "training_running_or_pending",
       "submission_command": [
         "sbatch",
         "--parsable",
@@ -400,25 +433,28 @@
         "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-dms-independent-10m-101"
       ],
       "evaluation": {
-        "job_id": "21211002",
         "command": [
           "sbatch",
           "--parsable",
-          "--job-name=dms-walker10m-eval-dms",
+          "--job-name=dms-walker10m-eval-v2-dms",
           "--partition=batch-milan,batch-csl,batch-skl",
           "--cpus-per-task=1",
           "--mem=4G",
-          "--time=00:15:00",
+          "--time=01:30:00",
           "--dependency=afterok:21211001",
           "--kill-on-invalid-dep=yes",
-          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/%x_%j.out",
-          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/%x_%j.err",
-          "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
-          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/spec.json"
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/dms/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/dms/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-v2/dms/spec.json"
         ],
-        "spec": "runs/development-walker-10m-seed101/evaluation-dms/spec.json",
-        "spec_sha256": "8f75af751cfa6ca89d56702073551fca1dbfd58b33c261b02c78d3b9bda2325c",
+        "spec": "runs/development-walker-10m-seed101/evaluation-v2/dms/spec.json",
+        "spec_sha256": "ab094d8580391c148236d669e507245f8d1dc0a945584f4eff15fd71ce8a89f6",
+        "submission_returncode": 0,
+        "stdout": "21211932\n",
+        "stderr": "",
         "status": "waiting_for_training",
+        "job_id": "21211932",
         "scheduler": {
           "state": "PENDING",
           "exit_code": "0:0",
@@ -431,7 +467,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:01:12",
+          "elapsed": "01:15:45",
           "node": "milan32"
         },
         "evaluation": {
@@ -482,7 +518,37 @@
           "slurm_job_id": "21211001",
           "slurm_partition": "batch-milan"
         }
-      }
+      },
+      "previous_evaluations": [
+        {
+          "job_id": "21211002",
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-walker10m-eval-dms",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=00:15:00",
+            "--dependency=afterok:21211001",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/spec.json"
+          ],
+          "spec": "runs/development-walker-10m-seed101/evaluation-dms/spec.json",
+          "spec_sha256": "8f75af751cfa6ca89d56702073551fca1dbfd58b33c261b02c78d3b9bda2325c",
+          "status": "cancelled_before_start_inventory_correction",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
     }
   ],
   "source_validation": "Exact completed1M independent replay controls21198485/21198487; unchanged package and environment. Walker optimizer diagnostic21210704 also passed on this package.",
@@ -506,9 +572,57 @@
     "train.sbatch": "953ac3d3f6ed20cddcc63a727c929904c3895c60794c054df4f707cc16d46aab"
   },
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-26T09:45:01.356160+00:00",
+  "last_refresh_utc": "2026-10-26T10:59:34.867491+00:00",
+  "evaluation_inventory_revision": {
+    "created_utc": "2026-10-26T10:56:56.464669+00:00",
+    "reason": "Replace evaluator and its collector before any evaluation starts. All training jobs, budgets and settings unchanged.",
+    "runner_sha256": "37192002aac60fedb7957dff4ff86c5a9c9334cafc30337560fc6d817c0f1fcf",
+    "launcher_sha256": "a5f0b011d976d3519b627f10a40370bb00ea93fa628d593176ed37fe04349ff7",
+    "original_runner_sha256": "e8c0a92b8bb7503960158a0a0650369b79b018ec4c7e6e1c5971fcdc6451d045",
+    "runs": [
+      {
+        "algorithm": "ippo",
+        "training_job_id": "21210999",
+        "old_evaluation_job_id": "21211000",
+        "spec": "runs/development-walker-10m-seed101/evaluation-v2/ippo/spec.json",
+        "spec_sha256": "ee27c3dc47cabed52db77c40df4d8a02e2e8bce0960e43883ca7e2104f268337"
+      },
+      {
+        "algorithm": "dms",
+        "training_job_id": "21211001",
+        "old_evaluation_job_id": "21211002",
+        "spec": "runs/development-walker-10m-seed101/evaluation-v2/dms/spec.json",
+        "spec_sha256": "ab094d8580391c148236d669e507245f8d1dc0a945584f4eff15fd71ce8a89f6"
+      }
+    ],
+    "verified_shared_inventory_smoke_job": "21211839",
+    "cancelled_pending_jobs": [
+      "21211000",
+      "21211002",
+      "21211007"
+    ],
+    "cancelled_utc": "2026-10-26T10:59:34.585211+00:00"
+  },
+  "previous_completion_collectors": [
+    {
+      "job_id": "21211007",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker10m-collect",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=512M",
+        "--time=00:02:00",
+        "--dependency=afterany:21210999:21211000:21211001:21211002",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/refresh_status.sbatch"
+      ],
+      "script_sha256": "59135d43a0063807ac00838e48bd0146708e6b844fb98b4734e88f646cebefde"
+    }
+  ],
   "completion_collector": {
-    "job_id": "21211007",
     "command": [
       "sbatch",
       "--parsable",
@@ -517,11 +631,15 @@
       "--cpus-per-task=1",
       "--mem=512M",
       "--time=00:02:00",
-      "--dependency=afterany:21210999:21211000:21211001:21211002",
+      "--dependency=afterany:21210999:21211931:21211001:21211932",
       "--output=logs/%x_%j.out",
       "--error=logs/%x_%j.err",
       "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/refresh_status.sbatch"
     ],
-    "script_sha256": "59135d43a0063807ac00838e48bd0146708e6b844fb98b4734e88f646cebefde"
+    "submission_returncode": 0,
+    "stdout": "21211933\n",
+    "stderr": "",
+    "script_sha256": "59135d43a0063807ac00838e48bd0146708e6b844fb98b4734e88f646cebefde",
+    "job_id": "21211933"
   }
 }
