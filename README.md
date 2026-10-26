@@ -146,7 +146,7 @@ The paper's supplementary parameter studies use historical ManyAgentSwimmer 10x2
 
 Runs contain `config.json`, `manifest.json`, `metrics.jsonl`, `evaluation.jsonl`, and `latest.pt`. New run and evaluation metadata include the accelerator model, compute capability, CUDA/cuDNN versions and numerical execution settings. Training metrics include policy/value losses, approximate KL, entropy, and the intention reconstruction/KL terms. Evaluation rows preserve individual episode returns, seeds, lengths, and SMAC wins. Check actual recorded steps rather than inferring progress from file names.
 
-[Artifact export instructions](docs/ARTIFACTS.md) describe verified local bundles of seven full-budget 10M HalfCheetah runs and nine earlier 500k pilots, including checkpoints and negative results. The exporter checks completed budgets, source hashes, and archive contents; no result bundle has been uploaded.
+[Artifact export instructions](docs/ARTIFACTS.md) describe verified local bundles of seven full-budget 10M HalfCheetah runs, four 3M memory controls, six 3M SMAC controls, and nine earlier 500k pilots, including checkpoints and negative results. The exporter checks completed budgets, source hashes, and archive contents; no result bundle has been uploaded.
 
 For a fresh final evaluation, run the checkpoint evaluator on an allocated compute node:
 

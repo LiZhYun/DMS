@@ -75,7 +75,9 @@ def main():
     axes[1, 0].set_ylabel('Native shaped return')
     axes[0, 0].legend(loc='center left', frameon=False)
     fig.suptitle('SMAC 3s5z development diagnostics · training seed 101', fontsize=14)
-    fig.text(.5, .015, f"Snapshot {snapshot['captured_utc'][:19]} UTC · unequal progress · no confidence bands\n"
+    progress = ('all runs complete at 3M' if all(r['training_completed_verified'] for r in selected)
+                else 'unequal progress')
+    fig.text(.5, .015, f"Snapshot {snapshot['captured_utc'][:19]} UTC · {progress} · no confidence bands\n"
              'Ten reused diagnostic games per checkpoint. Dotted line: paper win-rate target 97.5%. '
              'These are not held-out results.', ha='center', fontsize=9)
     fig.tight_layout(rect=(0, .065, 1, .95))
@@ -87,7 +89,7 @@ def main():
                 'figure_sha256': hashlib.sha256(args.output.read_bytes()).hexdigest(),
                 'matplotlib_version': matplotlib.__version__,
                 'training_seed': 101, 'evaluation_seeds': list(range(10001, 10011)),
-                'interpretation': 'Partial development diagnostics; no smoothing, peak selection or uncertainty bands.',
+                'interpretation': f'Development diagnostics; {progress}; no smoothing, peak selection or uncertainty bands.',
                 'series': plotted}
     args.output.with_suffix('.json').write_text(json.dumps(metadata, indent=2, allow_nan=False) + '\n')
     print(json.dumps({key: value for key, value in metadata.items() if key != 'series'}))

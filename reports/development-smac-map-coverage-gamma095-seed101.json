@@ -280,7 +280,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:08:49",
+          "elapsed": "01:42:40",
           "node": "gpu47"
         },
         "evaluation": {
@@ -291,51 +291,52 @@
         }
       },
       "startup_verification": {
-        "utc": "2026-10-26T14:11:47.609492+00:00",
+        "utc": "2026-10-26T15:46:58.616363+00:00",
         "checks": {
+          "config_matches": true,
           "source_matches": true,
           "saved_source_matches": true,
-          "config_matches": true,
           "environment_matches": true,
-          "versions_match": true,
+          "used_versions_match": true,
           "runtime_cuda": true,
           "job_matches": true,
           "evaluation_config_sha_matches": true,
+          "native_preflight_passed": true,
           "finite_logged_numbers": true
         },
         "last_metric": {
-          "policy_loss": -0.020100512845215544,
-          "value_loss": 0.2185690723359585,
-          "entropy": 1.6626393914222717,
-          "approx_kl": 0.00025211018585608676,
+          "policy_loss": -0.023736208684703542,
+          "value_loss": 0.07549450974911451,
+          "entropy": 0.46641033589839936,
+          "approx_kl": 0.0007201227621221491,
           "sequential_agent_order": [
-            3,
-            7,
             1,
-            4,
             0,
-            2,
+            4,
+            7,
             5,
+            3,
+            2,
             6
           ],
-          "sequential_factor_min": 0.6261284351348877,
-          "sequential_factor_max": 1.6977906227111816,
-          "sequential_factor_ess": 3161.6171292745407,
-          "sequential_factor_ess_fraction": 0.988005352898294,
-          "alive_fraction": 0.6070703268051147,
+          "sequential_factor_min": 0.18159931898117065,
+          "sequential_factor_max": 5.9185991287231445,
+          "sequential_factor_ess": 3054.8469416061052,
+          "sequential_factor_ess_fraction": 0.9546396692519079,
+          "alive_fraction": 0.7363671660423279,
           "ppo_update_count": 40,
           "peer_gate_fraction": 0.0,
-          "steps": 102400,
-          "episodes": 3473,
-          "elapsed_seconds": 449.0562914479524,
-          "training_return_mean": 2.862365824277284,
-          "training_battles": 122,
-          "training_battles_won": 0,
-          "training_win_rate": 0.0,
-          "training_battles_total": 3473,
-          "training_battles_won_total": 0,
-          "training_win_rate_total": 0.0,
-          "scheduled_environment_restarts": 0
+          "steps": 1276800,
+          "episodes": 49854,
+          "elapsed_seconds": 6151.978098503081,
+          "training_return_mean": 12.968990162528794,
+          "training_battles": 116,
+          "training_battles_won": 20,
+          "training_win_rate": 0.1724137931034483,
+          "training_battles_total": 49854,
+          "training_battles_won_total": 2852,
+          "training_win_rate_total": 0.057207044570144826,
+          "scheduled_environment_restarts": 20
         },
         "runtime": {
           "host": "gpu47.int.triton.aalto.fi",
@@ -343,18 +344,7 @@
           "slurm_job_id": "21213720",
           "slurm_partition": "gpu-h100-80g"
         },
-        "observed_versions": {
-          "torch": "2.6.0+cu126",
-          "numpy": "2.2.6",
-          "gymnasium": "1.4.0",
-          "gymnasium-robotics": "1.4.2",
-          "mujoco": "3.17.0",
-          "pysc2": "3.0.0",
-          "smac": "1.0.0",
-          "s2clientprotocol": "5.0.17.98310.0",
-          "protobuf": "3.20.3"
-        },
-        "version_comparison": "Exact equality for every predeclared used package; any additional manifest package is retained above."
+        "preflight": "runs/development-smac-map-coverage-gamma095-3m-seed101/8m_vs_9m-ippo-preflight.json"
       }
     },
     {
@@ -427,7 +417,7 @@
       "reference_config": "configs/development/smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m.json",
       "reference_job_id": "21210586",
       "walltime_hours": 16,
-      "status": "training_running_or_pending",
+      "status": "running_verified",
       "environment": {
         "benchmark_track": "original_smac",
         "map_name": "8m_vs_9m",
@@ -569,10 +559,10 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:23:27",
+          "node": "gpu45"
         },
         "evaluation": {
           "state": "PENDING",
@@ -580,6 +570,76 @@
           "elapsed": "00:00:00",
           "node": "None assigned"
         }
+      },
+      "startup_verification": {
+        "utc": "2026-10-26T15:46:58.676510+00:00",
+        "checks": {
+          "config_matches": true,
+          "source_matches": true,
+          "saved_source_matches": true,
+          "environment_matches": true,
+          "used_versions_match": true,
+          "runtime_cuda": true,
+          "job_matches": true,
+          "evaluation_config_sha_matches": true,
+          "native_preflight_passed": true,
+          "finite_logged_numbers": true
+        },
+        "last_metric": {
+          "policy_loss": -0.004431375040311714,
+          "value_loss": 0.03186801429837942,
+          "entropy": 0.9993639439344406,
+          "approx_kl": 0.0001329556947664373,
+          "sequential_agent_order": [
+            5,
+            1,
+            4,
+            3,
+            2,
+            6,
+            7,
+            0
+          ],
+          "sequential_factor_min": 0.7056252956390381,
+          "sequential_factor_max": 1.5514776706695557,
+          "sequential_factor_ess": 3178.5937190504756,
+          "sequential_factor_ess_fraction": 0.9933105372032737,
+          "alive_fraction": 0.7513281106948853,
+          "ppo_update_count": 40,
+          "peer_gate_fraction": 0.950625,
+          "intention_feature_std": 2.3196396827697754,
+          "intention_loss": 1.754943199455738,
+          "intention_nll": 1.6501425430178642,
+          "intention_kl": 1.048006508499384,
+          "forecast_target_count": 10902,
+          "forecast_comparison_count": 10390,
+          "history_baseline_target_count": 10390,
+          "forecast_nll": 2.035217568155298,
+          "forecast_accuracy": 0.32820019070578954,
+          "persistence_accuracy": 0.37016361945517595,
+          "history_histogram_accuracy": 0.26929740338398933,
+          "history_histogram_nll": 2.445652894450565,
+          "forecast_history_comparison_nll": 2.0967453111698124,
+          "history_baseline_coverage_fraction": 0.9530361401577692,
+          "steps": 265600,
+          "episodes": 13342,
+          "elapsed_seconds": 1394.8793907058425,
+          "training_return_mean": 8.085968817929801,
+          "training_battles": 159,
+          "training_battles_won": 0,
+          "training_win_rate": 0.0,
+          "training_battles_total": 13342,
+          "training_battles_won_total": 0,
+          "training_win_rate_total": 0.0,
+          "scheduled_environment_restarts": 0
+        },
+        "runtime": {
+          "host": "gpu45.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21213722",
+          "slurm_partition": "gpu-h100-80g"
+        },
+        "preflight": "runs/development-smac-map-coverage-gamma095-3m-seed101/8m_vs_9m-dms-preflight.json"
       }
     },
     {
@@ -805,7 +865,24 @@
           "elapsed": "00:00:00",
           "node": "None assigned"
         }
-      }
+      },
+      "resource_updates": [
+        {
+          "utc": "2026-10-26T15:47:03.133548+00:00",
+          "reason": "Match GPU family within each algorithm pair before training; H100 native smokes and running jobs validated.",
+          "command": [
+            "scontrol",
+            "update",
+            "JobId=21213724",
+            "TresPerJob=gres/gpu:h100:1"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "before": "JobId=21213724 JobName=dms-map-MMM2-ippo\n   UserId=liz23(3278648) GroupId=liz23(3278648) MCS_label=N/A\n   Priority=286174 Nice=0 Account=aalto_users QOS=normal\n   JobState=PENDING Reason=Dependency Dependency=afterok:21213720(unfulfilled)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=12:00:00 TimeMin=N/A\n   SubmitTime=2026-10-26T14:45:16 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-26T14:45:16 Scheduler=Main\n   Partition=gpu-h100-80g,gpu-h200-141g-ellis,gpu-a100-80g AllocNode:Sid=login5:1336462\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=32G,node=1,billing=6,gres/gpu=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch\n   SubmitLine=sbatch --parsable --job-name=dms-map-MMM2-ippo --partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g --gpus=1 --cpus-per-task=4 --mem=32G --time=12:00:00 --dependency=afterok:21213720 --kill-on-invalid-dep=yes --output=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.out --error=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.err /scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch MMM2-ippo\n   WorkDir=/scratch/work/liz23/reproduce/dms\n   StdErr=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.err\n   StdIn=/dev/null\n   StdOut=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.out\n   KillOnInvalidDependent=Yes\n   TresPerJob=gres/gpu:1\n   TresPerTask=cpu=4\n\n",
+          "after": "JobId=21213724 JobName=dms-map-MMM2-ippo\n   UserId=liz23(3278648) GroupId=liz23(3278648) MCS_label=N/A\n   Priority=286174 Nice=0 Account=aalto_users QOS=normal\n   JobState=PENDING Reason=Dependency Dependency=afterok:21213720(unfulfilled)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=12:00:00 TimeMin=N/A\n   SubmitTime=2026-10-26T14:45:16 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-26T14:45:16 Scheduler=Main\n   Partition=gpu-h100-80g,gpu-h200-141g-ellis,gpu-a100-80g AllocNode:Sid=login5:1336462\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=32G,node=1,billing=6,gres/gpu=1,gres/gpu:h100=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch\n   SubmitLine=sbatch --parsable --job-name=dms-map-MMM2-ippo --partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g --gpus=1 --cpus-per-task=4 --mem=32G --time=12:00:00 --dependency=afterok:21213720 --kill-on-invalid-dep=yes --output=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.out --error=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.err /scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch MMM2-ippo\n   WorkDir=/scratch/work/liz23/reproduce/dms\n   StdErr=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.err\n   StdIn=/dev/null\n   StdOut=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.out\n   KillOnInvalidDependent=Yes\n   TresPerJob=gres/gpu:h100:1\n   TresPerTask=cpu=4\n\n"
+        }
+      ]
     },
     {
       "label": "MMM2-dms",
@@ -1030,7 +1107,24 @@
           "elapsed": "00:00:00",
           "node": "None assigned"
         }
-      }
+      },
+      "resource_updates": [
+        {
+          "utc": "2026-10-26T15:47:07.221344+00:00",
+          "reason": "Match GPU family within each algorithm pair before training; H100 native smokes and running jobs validated.",
+          "command": [
+            "scontrol",
+            "update",
+            "JobId=21213726",
+            "TresPerJob=gres/gpu:h100:1"
+          ],
+          "returncode": 0,
+          "stdout": "",
+          "stderr": "",
+          "before": "JobId=21213726 JobName=dms-map-MMM2-dms\n   UserId=liz23(3278648) GroupId=liz23(3278648) MCS_label=N/A\n   Priority=286174 Nice=0 Account=aalto_users QOS=normal\n   JobState=PENDING Reason=Dependency Dependency=afterok:21213722(unfulfilled)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=16:00:00 TimeMin=N/A\n   SubmitTime=2026-10-26T14:45:16 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-26T14:45:16 Scheduler=Main\n   Partition=gpu-h100-80g,gpu-h200-141g-ellis,gpu-a100-80g AllocNode:Sid=login5:1336462\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=32G,node=1,billing=6,gres/gpu=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch\n   SubmitLine=sbatch --parsable --job-name=dms-map-MMM2-dms --partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g --gpus=1 --cpus-per-task=4 --mem=32G --time=16:00:00 --dependency=afterok:21213722 --kill-on-invalid-dep=yes --output=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.out --error=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.err /scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch MMM2-dms\n   WorkDir=/scratch/work/liz23/reproduce/dms\n   StdErr=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-dms_21213726.err\n   StdIn=/dev/null\n   StdOut=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-dms_21213726.out\n   KillOnInvalidDependent=Yes\n   TresPerJob=gres/gpu:1\n   TresPerTask=cpu=4\n\n",
+          "after": "JobId=21213726 JobName=dms-map-MMM2-dms\n   UserId=liz23(3278648) GroupId=liz23(3278648) MCS_label=N/A\n   Priority=286174 Nice=0 Account=aalto_users QOS=normal\n   JobState=PENDING Reason=Dependency Dependency=afterok:21213722(unfulfilled)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=16:00:00 TimeMin=N/A\n   SubmitTime=2026-10-26T14:45:16 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-26T14:45:16 Scheduler=Main\n   Partition=gpu-h100-80g,gpu-h200-141g-ellis,gpu-a100-80g AllocNode:Sid=login5:1336462\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=32G,node=1,billing=6,gres/gpu=1,gres/gpu:h100=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch\n   SubmitLine=sbatch --parsable --job-name=dms-map-MMM2-dms --partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g --gpus=1 --cpus-per-task=4 --mem=32G --time=16:00:00 --dependency=afterok:21213722 --kill-on-invalid-dep=yes --output=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.out --error=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.err /scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch MMM2-dms\n   WorkDir=/scratch/work/liz23/reproduce/dms\n   StdErr=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-dms_21213726.err\n   StdIn=/dev/null\n   StdOut=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-dms_21213726.out\n   KillOnInvalidDependent=Yes\n   TresPerJob=gres/gpu:h100:1\n   TresPerTask=cpu=4\n\n"
+        }
+      ]
     }
   ],
   "comparison": {
@@ -2936,5 +3030,5 @@
     "collector_sha256": "aabef1e8260c3c1a3dc34df4e58c49eec16cf1d4833084254c7380dcee06e003"
   },
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-26T14:11:07.891096+00:00"
+  "last_refresh_utc": "2026-10-26T15:44:58.623476+00:00"
 }

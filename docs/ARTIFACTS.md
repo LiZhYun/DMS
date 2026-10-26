@@ -37,6 +37,18 @@ command. Both positive and negative matched comparisons are included. Archive
 This bundle has no public download URL and is development evidence from one
 reused training seed.
 
+## SMAC objective controls
+
+All six completed 3M SMAC 3s5z controls (IPPO/DMS × gamma 0.99,
+terminal-deadline gamma 0.99, and gamma 0.95) are packaged in
+`dist/development-smac-3m-v1.zip`. The [SMAC artifact ledger](../reports/development-smac-3m-artifacts.json)
+records the verified archive, all payload hashes and the exact rebuild command.
+Every fixed final checkpoint is retained, including the zero-win DMS run.
+Archive episode records are the ten-game training diagnostics; all six separate
+100-game endpoints remain in [the evaluation ledger](../reports/development-fixed3m-evaluation-queue.json).
+This one-training-seed development bundle has no public download URL and does
+not contain the StarCraft II installation or maps.
+
 ## Earlier 500k pilots
 
 The nine completed historical HalfCheetah 2x3 pilots are packaged locally in

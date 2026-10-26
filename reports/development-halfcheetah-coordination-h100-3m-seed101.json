@@ -1,0 +1,951 @@
+{
+  "purpose": "Restore same-GPU-family controls for the causal-threshold comparison; original A100 all/causal controls remain separate evidence.",
+  "created_utc": "2026-10-26T15:20:52.864053+00:00",
+  "status": "waiting_running_or_failed",
+  "artifact": "runs/development-halfcheetah-coordination-h100-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "used_versions": {
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14"
+  },
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "budget": 3000000,
+  "runs": [
+    {
+      "variant": "all",
+      "algorithm": "dms",
+      "seed": 101,
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-all-history0-3m-h100-control.json",
+      "frozen_config": "runs/development-halfcheetah-coordination-h100-3m-seed101/configs/legacy-halfcheetah-2x3-dms-all-history0-3m-h100-control.json",
+      "config_sha256": "cf997a543f61918e2d4ccf4fd7907cd1bb387134dbf55cb8d06b669beb15f192",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "all",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-dms-all-history0-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-all-history0-3m-h100-101",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "reference_training_job": "21212371",
+      "reference_gpu_family": "A100",
+      "required_gpu_family": "H100",
+      "changes_from_a100_reference": [
+        "output"
+      ],
+      "status": "running_verified",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-all-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=04:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/train.sbatch",
+          "all"
+        ],
+        "returncode": 0,
+        "stdout": "21216038\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T15:30:46.845676+00:00",
+        "job_id": "21216038"
+      },
+      "job_id": "21216038",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-all-3m-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=01:00:00",
+          "--dependency=afterok:21216038",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-all/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-all/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-all/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21216039\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T15:30:46.877398+00:00",
+        "job_id": "21216039",
+        "spec": "runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-all/spec.json",
+        "spec_sha256": "ef5f00585e50b10af6d9e9a92182cae21a0fe05041382ebc2d298f180374372d",
+        "status": "waiting_for_training",
+        "launcher_sha256": "9f1f6b27cb59c5b710419b07bb5d73537bf8d4a1207d6ca7883d7a5b11b28f30",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:08:45",
+          "node": "gpu46"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "startup_verification": {
+        "utc": "2026-10-26T15:46:27.126383+00:00",
+        "checks": {
+          "config_matches": true,
+          "source_matches": true,
+          "saved_source_matches": true,
+          "environment_matches": true,
+          "used_versions_match": true,
+          "runtime_cuda": true,
+          "job_matches": true,
+          "evaluation_config_sha_matches": true,
+          "finite_logged_numbers": true,
+          "native_preflight_passed": true,
+          "required_gpu_family": true,
+          "evaluation_legacy_dependencies_sha_matches": true
+        },
+        "last_metric": {
+          "policy_loss": -0.002884953807370039,
+          "value_loss": 0.04652923168614507,
+          "entropy": 2.1281820237636566,
+          "approx_kl": 0.0036717985766561477,
+          "peer_gate_fraction": 0.999,
+          "intention_feature_std": 1.7951136827468872,
+          "intention_loss": 1.636844426393509,
+          "intention_nll": 1.5523838102817535,
+          "intention_kl": 0.8446061611175537,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.5738600093933877,
+          "persistence_rmse": 0.9810448715474462,
+          "history_mean_rmse": 0.6615273889519682,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 548000,
+          "episodes": 548,
+          "elapsed_seconds": 591.6101027119439,
+          "training_return_mean": 1711.6518289677188
+        },
+        "runtime": {
+          "host": "gpu46.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21216038",
+          "slurm_partition": "gpu-h100-80g"
+        },
+        "preflight": "runs/development-halfcheetah-coordination-h100-3m-seed101/all-runtime-preflight.json"
+      }
+    },
+    {
+      "variant": "causal",
+      "algorithm": "dms",
+      "seed": 101,
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-causal-history0-3m-h100-control.json",
+      "frozen_config": "runs/development-halfcheetah-coordination-h100-3m-seed101/configs/legacy-halfcheetah-2x3-dms-causal-history0-3m-h100-control.json",
+      "config_sha256": "c39cf72b104154828b52fdd7a0ef6d92ff288e9cb1e6a538e99ce2401fbeae51",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "causal",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-dms-causal-history0-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-causal-history0-3m-h100-101",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "reference_training_job": "21212373",
+      "reference_gpu_family": "A100",
+      "required_gpu_family": "H100",
+      "changes_from_a100_reference": [
+        "output"
+      ],
+      "status": "running_verified",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-causal-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=04:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/train.sbatch",
+          "causal"
+        ],
+        "returncode": 0,
+        "stdout": "21216040\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T15:30:46.902000+00:00",
+        "job_id": "21216040"
+      },
+      "job_id": "21216040",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-causal-3m-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=01:00:00",
+          "--dependency=afterok:21216040",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-causal/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-causal/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-causal/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21216041\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T15:30:46.964683+00:00",
+        "job_id": "21216041",
+        "spec": "runs/development-halfcheetah-coordination-h100-3m-seed101/evaluation-causal/spec.json",
+        "spec_sha256": "f37a835acb53d6f032bfdedf37cf4027bf6454850a4c722714b4e6aa64f9c965",
+        "status": "waiting_for_training",
+        "launcher_sha256": "9f1f6b27cb59c5b710419b07bb5d73537bf8d4a1207d6ca7883d7a5b11b28f30",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:03:11",
+          "node": "gpu47"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "startup_verification": {
+        "utc": "2026-10-26T15:46:27.167854+00:00",
+        "checks": {
+          "config_matches": true,
+          "source_matches": true,
+          "saved_source_matches": true,
+          "environment_matches": true,
+          "used_versions_match": true,
+          "runtime_cuda": true,
+          "job_matches": true,
+          "evaluation_config_sha_matches": true,
+          "finite_logged_numbers": true,
+          "native_preflight_passed": true,
+          "required_gpu_family": true,
+          "evaluation_legacy_dependencies_sha_matches": true
+        },
+        "last_metric": {
+          "policy_loss": -0.0030672602471895514,
+          "value_loss": 0.4344715252518654,
+          "entropy": 2.5906336486339567,
+          "approx_kl": 0.003104821284614445,
+          "peer_gate_fraction": 0.999,
+          "intention_feature_std": 1.4891729354858398,
+          "intention_loss": 1.8912409245967865,
+          "intention_nll": 1.8799532055854797,
+          "intention_kl": 0.1128772534430027,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.6236608261949265,
+          "persistence_rmse": 0.8340441911720152,
+          "history_mean_rmse": 0.5979200500545512,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 172000,
+          "episodes": 172,
+          "elapsed_seconds": 268.07165619707666,
+          "training_return_mean": 17.84939159111491
+        },
+        "runtime": {
+          "host": "gpu47.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21216040",
+          "slurm_partition": "gpu-h100-80g"
+        },
+        "preflight": "runs/development-halfcheetah-coordination-h100-3m-seed101/causal-runtime-preflight.json"
+      }
+    }
+  ],
+  "reason": "H100 threshold0.1/0.2 runs differ from the original A100 controls from the first4000-step update, before threshold activation at200k. The first50 logged metrics of the A100 all/causal pair are exactly equal excluding elapsed. GPU-family effects must be separated from threshold changes.",
+  "reference": {
+    "lower_threshold_report": "reports/development-halfcheetah-causal-threshold-3m-seed101.json",
+    "lower_threshold_jobs": [
+      "21214579",
+      "21214581"
+    ],
+    "original_report": "reports/development-halfcheetah-coordination-3m-seed101.json"
+  },
+  "resources": {
+    "gpus": "h100:1",
+    "partitions": [
+      "gpu-h200-141g-ellis",
+      "gpu-a100-80g",
+      "gpu-h100-80g"
+    ],
+    "cpus_per_task": 1,
+    "memory": "4G",
+    "training_walltime_hours": 4
+  },
+  "scheduling_note": "TypedH100 request and a runtime model guard restrict eligibility to the matching GPU family; the shared multi-partition header is retained. Two controls follow the current threshold runs and a native H100 smoke.",
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "checkpoint_rule": "exact final3000000"
+  },
+  "comparison": "Settings/source/environment match the original all/causal runs; only output changes in configuration. Use these H100 controls for threshold-effect comparisons with H1000.1/0.2, and report earlier A100 observations separately.",
+  "concurrency_dependencies": [
+    "21214579",
+    "21214581"
+  ],
+  "early_prefix_audit": {
+    "lower_h100_threshold_prefixes_equal": true,
+    "logged_updates": 50,
+    "through_steps": 200000,
+    "note": "Logged metrics only; complete intermediate model/optimizer states are not available."
+  },
+  "scripts_sha256": {
+    "smoke.py": "c10c44f98631ad3a8d73b68ed6c6888f53eeb4363e2dd15456f4ebaef7ed5aa2",
+    "smoke.sbatch": "cb1ec9f549bfdefb4c5c4aedb369918a85cc1cbff7258850a5abee1cad76b3d4",
+    "launch_training.py": "b47793f9ac60bb38dffa64ba217965dd42df389fc4e9248d152671064f30a24c",
+    "train.sbatch": "08827a6d5e7e703658c8ae267c8301b809a4fa12b36ff39f014d85d177583188",
+    "refresh_status.py": "d171934f1bbcbe1192037ca20d754370b7910528946983596f360501c11bc554",
+    "submit.py": "4d1fc17b5873b681748a7bc2bd73dfa6e5c53c81c6fe9411606c0aa57db0bf5b"
+  },
+  "previous_smoke_submissions": [
+    {
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-hc-h100-controls-smoke",
+        "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+        "--gpus=h100:1",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=00:10:00",
+        "--dependency=afterok:21214581",
+        "--kill-on-invalid-dep=yes",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/smoke.sbatch"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "sbatch: error: Batch job submission failed: Job dependency problem\n",
+      "submitted_utc": "2026-10-26T15:22:01.228704+00:00"
+    }
+  ],
+  "smoke": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-h100-controls-smoke",
+      "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+      "--gpus=h100:1",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:10:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/smoke.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21215979\n",
+    "stderr": "",
+    "submitted_utc": "2026-10-26T15:24:33.565417+00:00",
+    "completed_parent_verification": {
+      "scheduler": "21214581|COMPLETED|0:0",
+      "manifest_sha256": "15d0949fe4ca2ac231ad0bb6912813e213662094fd615dd0f1d34b8f4cbe6ddb",
+      "reason": "Completed parent is no longer accepted as a new Slurm dependency; exact final budget/source/job identity verified before direct smoke submission."
+    },
+    "job_id": "21215979",
+    "status": "completed_pass",
+    "result": {
+      "success": true,
+      "job_id": "21215979",
+      "host": "gpu47.int.triton.aalto.fi",
+      "gpu": "NVIDIA H100 80GB HBM3",
+      "runs": [
+        {
+          "variant": "all",
+          "checks": {
+            "exact_budget": true,
+            "source_matches": true,
+            "config_matches": true,
+            "environment_matches": true,
+            "cuda_used": true,
+            "finite": true,
+            "auxiliary_active": true,
+            "episode_evaluated": true,
+            "all_peer_context_active": true
+          },
+          "final_metrics": {
+            "policy_loss": -0.003433207026682794,
+            "value_loss": 0.7775741666555405,
+            "entropy": 2.7571051359176635,
+            "approx_kl": 0.003123272836273827,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.48863741755485535,
+            "intention_loss": 2.4920265674591064,
+            "intention_nll": 2.44001567363739,
+            "intention_kl": 0.5201091095805168,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7653320499596749,
+            "persistence_rmse": 0.7653320499596749,
+            "history_mean_rmse": 0.5630242687609641,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 9.09367230697535,
+            "training_return_mean": -231.73863162926864
+          },
+          "evaluation": [
+            {
+              "steps": 4000,
+              "seed": 400301,
+              "return": -0.1601576936915592,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "elapsed_seconds": 18.47993277409114
+        },
+        {
+          "variant": "causal",
+          "checks": {
+            "exact_budget": true,
+            "source_matches": true,
+            "config_matches": true,
+            "environment_matches": true,
+            "cuda_used": true,
+            "finite": true,
+            "auxiliary_active": true,
+            "episode_evaluated": true
+          },
+          "final_metrics": {
+            "policy_loss": -0.0024530222812245484,
+            "value_loss": 0.7627429574728012,
+            "entropy": 2.757245260477066,
+            "approx_kl": 0.0019666675243570353,
+            "peer_gate_fraction": 0.0,
+            "intention_feature_std": 0.48860809206962585,
+            "intention_loss": 2.4916375875473022,
+            "intention_nll": 2.4396555423736572,
+            "intention_kl": 0.5198207348585129,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7653049940160936,
+            "persistence_rmse": 0.7653049940160936,
+            "history_mean_rmse": 0.5629258582137427,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 7.805760781047866,
+            "training_return_mean": -243.2943475509819
+          },
+          "evaluation": [
+            {
+              "steps": 4000,
+              "seed": 400301,
+              "return": -0.09162257963026832,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "elapsed_seconds": 14.114882043097168
+        }
+      ],
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      "source_inventory_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      "protocol_note": "4000transitions/variant;both warmups0 for activation and gating execution;one episode400301. Execution only, not performance."
+    },
+    "validation": "runs/development-halfcheetah-coordination-h100-3m-seed101/smoke-validation.json",
+    "validation_sha256": "7d14623589d465cd1a0416cc1cc96d3ad4bb66184c783f85d8cb5fcc8b1289f3"
+  },
+  "completed_concurrency_parents": [
+    "21214579|COMPLETED|0:0",
+    "21214581|COMPLETED|0:0"
+  ],
+  "completion_collector": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-h100-controls-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--dependency=afterany:21216038:21216039:21216040:21216041",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-h100-3m-seed101/collect.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21216042\n",
+    "stderr": "",
+    "submitted_utc": "2026-10-26T15:30:47.036600+00:00",
+    "job_id": "21216042"
+  },
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-26T15:44:58.418321+00:00",
+  "matched_h100_prefix_audit": {
+    "utc": "2026-10-26T15:51:42.993877+00:00",
+    "rows_compared": 50,
+    "last_step": 200000,
+    "excluded_fields": [
+      "elapsed_seconds"
+    ],
+    "all_metrics_exactly_equal_to_all_peer": {
+      "all": true,
+      "causal": true,
+      "eta01": true,
+      "eta02": true
+    },
+    "variants": [
+      "all",
+      "causal",
+      "eta01",
+      "eta02"
+    ],
+    "scope": "Inactive causal gate warmup only; exact logged-prefix equality does not establish later equivalence."
+  }
+}
