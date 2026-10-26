@@ -25,6 +25,18 @@ The verifier below also accepts this ZIP by changing its `path` value.
 **Neither bundle has a public download URL yet.** Both are development evidence,
 not completed paper reproduction.
 
+## Matched local-memory controls
+
+The four completed 3M CUDA HalfCheetah controls (IPPO/DMS, history 0/32) are
+packaged in `dist/development-halfcheetah-memory-3m-v1.zip`. The
+[memory artifact ledger](../reports/development-halfcheetah-memory-3m-artifacts.json)
+records all payload hashes, completion checks, checkpoints and the exact rebuild
+command. Both positive and negative matched comparisons are included. Archive
+`evaluation.jsonl` files contain the ten-episode diagnostics; separate
+100-episode endpoint results remain in [the evaluation ledger](../reports/development-fixed3m-evaluation-queue.json).
+This bundle has no public download URL and is development evidence from one
+reused training seed.
+
 ## Earlier 500k pilots
 
 The nine completed historical HalfCheetah 2x3 pilots are packaged locally in

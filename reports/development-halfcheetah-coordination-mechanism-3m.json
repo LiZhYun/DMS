@@ -1,0 +1,114 @@
+{
+  "purpose": "Frozen all-peer versus causal DMS mechanism probes at the predeclared 3M endpoint; sensitivity and prediction checks, not benchmark return tests.",
+  "created_utc": "2026-10-26T12:49:33.960587+00:00",
+  "status": "submitted_after_fixed_endpoint_evaluations",
+  "artifact": "runs/development-halfcheetah-coordination-mechanism-3m",
+  "training_seed": 101,
+  "training_steps": 3000000,
+  "held_out_training_seeds_used": false,
+  "protocol": {
+    "transitions": 4000,
+    "environments": 4,
+    "steps_per_environment": 1000,
+    "forecast_windows": 1024,
+    "episode_seed_start": 400701,
+    "parameter_updates": 0,
+    "actions": "stochastic fixed checkpoint policy",
+    "model_normalization_and_snapshot": "unchanged",
+    "gate_phase": "completed-episode count from final checkpoint; no forced threshold changes"
+  },
+  "script_sha256": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01",
+  "runs": [
+    {
+      "variant": "all",
+      "training_job_id": "21212371",
+      "evaluation_job_id": "21212372",
+      "evaluation_spec": "runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/spec.json",
+      "evaluation_spec_sha256": "9d79cf6f5543ee4f7831003c8b360f48300b861bd13fb602f6c8c1068cc92975",
+      "snapshot": "runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot",
+      "output": "runs/development-halfcheetah-coordination-mechanism-3m/all-diagnostic.json",
+      "validation": "runs/development-halfcheetah-coordination-mechanism-3m/all-validation.json",
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-mechanism-all",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--dependency=afterok:21212372",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/run.sbatch",
+          "all",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source"
+        ],
+        "returncode": 0,
+        "stdout": "21213779\n",
+        "stderr": "",
+        "job_id": "21213779"
+      },
+      "job_id": "21213779"
+    },
+    {
+      "variant": "causal",
+      "training_job_id": "21212373",
+      "evaluation_job_id": "21212374",
+      "evaluation_spec": "runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/spec.json",
+      "evaluation_spec_sha256": "f21d26bea3a022c6726d3003b87202b88c18cf4515f93d3d487be6b78c2849f4",
+      "snapshot": "runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot",
+      "output": "runs/development-halfcheetah-coordination-mechanism-3m/causal-diagnostic.json",
+      "validation": "runs/development-halfcheetah-coordination-mechanism-3m/causal-validation.json",
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-mechanism-causal",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--dependency=afterok:21212374",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/run.sbatch",
+          "causal",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source"
+        ],
+        "returncode": 0,
+        "stdout": "21213780\n",
+        "stderr": "",
+        "job_id": "21213780"
+      },
+      "job_id": "21213780"
+    }
+  ],
+  "interpretation": "Same concatenating actor architecture. Distribution changes between learned policies limit across-run RMSE interpretation. Peer shuffles and removal can be out of distribution; sensitivity is not return benefit.",
+  "runner.py_sha256": "9b0624d4343dda32147895b5471f159f37a34bfc3e96269f0ef017a455816838",
+  "run.sbatch_sha256": "cff1d7ed19c8555e57b2e34ab12f528a49b6a17cb082c8eb147a3aec2efd798a",
+  "refresh_status.py_sha256": "e8b6bbdc13a508e536478e1b75314876f2592d6de65388541cb19717ffd6f4cb",
+  "completion_collector": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-coord-mechanism-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=512M",
+      "--time=00:03:00",
+      "--dependency=afterany:21213779:21213780",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-mechanism-3m/refresh_status.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21213781\n",
+    "stderr": "",
+    "job_id": "21213781"
+  }
+}
