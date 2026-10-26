@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 14:23 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-26 15:10 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -140,19 +140,35 @@ descriptive gain leaves most of the all-peer gap unresolved. It is a test-time
 intervention on a policy trained at 0.6, distinct from the fresh threshold-0.1
 learning run and from independent training-seed evidence.
 
+[SMAC prediction probes](../reports/development-smac-gamma-mechanism-3m.json),
+jobs **21215316 / 21215317**, now compare the frozen gamma-0.99/0.95 DMS models
+on fresh stochastic trajectories. Both preserve parameters, normalizers and
+source, and evaluate prediction baselines and visibility-matched peer shuffles.
+Their datasets follow different policies, so cross-policy forecast errors are
+descriptive. The completed gamma-0.99 model predicts next actions with **77.05%**
+accuracy versus **69.00%** for persistence on matched targets, despite its
+**0/100** fixed-endpoint wins. Forecast quality alone does not establish useful
+coordination. The gamma-0.95 probe follows its fixed100-game evaluation.
+
 Earlier SMAC reward, gradient-clipping and Walker feature-drift diagnostics,
 including negative findings and exact default-update regression checks, remain
 in [the archived development history](DEVELOPMENT_HISTORY_20261026.md).
 
 ## Reader workflow and remaining release requirements
 
-The [CPU Apptainer route](../containers/README.md) runs without host Python
+The [CPU and CUDA Apptainer routes](../containers/README.md) run without host Python
 packages or Triton library modules. Validation passed **56 native tests with
 zero skips**, thirteen physics cases with **130 exactly matching arrays**, and
 four short native DMS training/checkpoint checks. The documented wrapper,
-public physics probe and saved-source evaluation also passed. Other hosts,
-GPU container execution and exact original MuJoCo 2.0 parity remain unverified.
-[Container evidence](../reports/legacy-container-validation.json).
+public physics probe and saved-source evaluation also passed. The CUDA image separately passed 56 native tests, all 130 matching physics arrays,
+four CUDA training/checkpoint smokes, saved-source evaluation and scheduler
+visibility checks on A100 (jobs **21215121 / 21215206**). Other hosts, other
+GPU models for this image and exact original MuJoCo 2.0 parity remain unverified.
+[CPU evidence](../reports/legacy-container-validation.json),
+[CUDA evidence](../reports/legacy-cuda-container-validation.json). New training/evaluation records now include
+accelerator model and numerical settings. [Validation](../reports/runtime-metadata-validation.json)
+passed 12 tests, four exact CPU/CUDA before/after state comparisons, and the
+documented 4,000-step CUDA reader command with saved-source evaluation.
 
 [Verified local artifact bundles](ARTIFACTS.md) preserve the seven earlier 10M
 HalfCheetah runs, all four matched 3M memory controls, and nine earlier pilots,
