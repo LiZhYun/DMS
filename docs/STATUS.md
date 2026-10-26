@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 17:27 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-26 18:07 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -47,13 +47,13 @@ count episodes below 1,000.
 | Training GPU family | All-peer | Threshold 0.6 | Threshold 0.2 | Threshold 0.1 |
 | --- | ---: | ---: | ---: | ---: |
 | A100 | 4,453.56 (0) | 3,394.71 (3) | — | — |
-| H100 | 4,498.75 (2) | Evaluation running | 4,613.06 (1) | 4,228.60 (0) |
+| H100 | 4,498.75 (2) | 4,277.42 (0) | 4,613.06 (1) | 4,228.60 (0) |
 
 All four H100 variants have exactly matching logged warmup metrics through
 200k steps before causal selection activates. Threshold 0.2 exceeds the H100
 all-peer control by **114.31**, with paired episode-difference sample SD
-**860.02**; 75 episode returns improve and 25 worsen. These are single-training-
-seed results, and threshold 0.6 remains unfinished. Cross-family trajectories
+**860.02**; 75 episode returns improve and 25 worsen. Threshold 0.6 trails all-peer by **221.32** but has no episodes below 1,000.
+These remain single-training-seed results; no threshold is promoted. Cross-family trajectories
 differ before threshold activation, so A100 and H100 scores do not isolate a
 threshold effect. [A100 coordination ledger](../reports/development-halfcheetah-coordination-3m-seed101.json),
 [H100 controls](../reports/development-halfcheetah-coordination-h100-3m-seed101.json),
@@ -96,14 +96,13 @@ These CPU experiments remain separate from the CUDA controls above.
 | Comparison | Training jobs | Registered endpoint and evidence |
 | --- | --- | --- |
 | HalfCheetah history-32 IPPO/DMS | 21213074 / 21213076 | Fresh 10M runs; only budget/output change from 3M. [Ledger](../reports/development-halfcheetah-history32-10m-seed101.json) |
+| Joint intention training: HalfCheetah history 32 / SMAC gamma 0.95 | 21218981 / 21218984 queued | 3M A100, RL LR 3e-4; native gradient and saved-source checks passed. [Ledger](../reports/development-joint-intention-3m-seed101.json) |
 | HalfCheetah history-32 A100 IPPO control | 21216270 running | Fresh 10M run matching the A100 DMS family; prior 3M A100 native run validated. [Ledger](../reports/development-halfcheetah-history32-a100-control-10m-seed101.json) |
-| HalfCheetah H100 all-peer/causal controls | 21216038 evaluation complete / 21216040 training complete, evaluation running | 3M; native H100 smoke passed. Restores matching hardware for the lower-threshold comparison. [Ledger](../reports/development-halfcheetah-coordination-h100-3m-seed101.json) |
-| HalfCheetah causal thresholds 0.1/0.2 | 21214579 / 21214581 completed | 3M; only threshold/output change from 0.6. Native CUDA smoke passed both variants. [Ledger](../reports/development-halfcheetah-causal-threshold-3m-seed101.json) |
 | HalfCheetah 3x2 / 6x1, matched history-32 IPPO/DMS | 21215078 / 21215080; 21215082 / 21215084 queued | 3M partition coverage; four native CUDA smokes passed. Two chains follow the corresponding 2x3 10M runs. [Ledger](../reports/development-halfcheetah-partition-coverage-3m-seed101.json) |
 | SMAC 3s5z gamma 0.95, full budget | 21214432 / 21214434 running | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
-| SMAC 8m_vs_9m IPPO/DMS | 21213720 / 21213722 running | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
-| SMAC MMM2 IPPO/DMS | 21213724 / 21213726 queued | 3M; follows the corresponding 8m_vs_9m run in each chain. Same ledger |
-| Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Walker 21217029 running / 21217031 queued; Ant 21217033 / 21217035 queued | All four native CUDA smokes passed; 3M H100 pairs follow coordination controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
+| SMAC 8m_vs_9m IPPO/DMS | 21213720 completed, endpoint running / 21213722 training | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
+| SMAC MMM2 IPPO/DMS | 21213724 running / 21213726 queued | 3M; follows the corresponding 8m_vs_9m run in each chain. Same ledger |
+| Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Walker 21217029 / 21217031 running; Ant 21217033 / 21217035 queued | All four native CUDA smokes passed; 3M H100 pairs follow coordination controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
 | Walker2d 3x2 IPPO/DMS | 21210999 completed / 21211001 running | 10M unchanged independent-update recipes. [Ledger](../reports/development-walker-10m-seed101.json) |
 | Ant 4x2, native/computed contacts, IPPO/DMS | 21212116 / 21212118 / 21212120 / 21212122 | 10M, initial log std −1.0. [Ledger](../reports/development-ant-10m-contact-seed101.json) |
 
@@ -116,13 +115,13 @@ jobs, limiting that queue to two simultaneous full training jobs.
 
 The fresh history-32 HalfCheetah 10M baseline differs from its 3M run from
 the first logged update. The earlier run used A100 and the new one H100; this
-does not isolate the cause of the difference. DMS's shared logged prefix and
-diagnostics match through the checked 2.14M steps. These are fresh development
+does not isolate the cause of the difference. DMS's full 750-update logged prefix matches its earlier A100 run through
+3M steps. These are fresh development
 runs, not exact-state continuations or independent seed replicas. The
 [ledger](../reports/development-halfcheetah-history32-10m-seed101.json) records
 the prefix audit. An additional A100 IPPO run now restores the same GPU family
-for this 10M comparison; its first 148k logged steps exactly match the prior
-A100 3M run, excluding elapsed time. The H100 baseline is retained. Pending HalfCheetah
+for this 10M comparison; all 750 logged updates through 3M exactly match the
+prior A100 run, excluding elapsed time. The H100 baseline is retained. Pending HalfCheetah
 3x2/6x1 and SMAC MMM2 pairs were restricted to H100 before training, with
 before/after scheduler records retained in their ledgers. The 10M SMAC pair
 also shares H100, while its 3M references used A100; both logged prefixes
@@ -130,6 +129,24 @@ already differ at the first update. Extra training is therefore not the sole
 changed condition in comparisons across those two budgets.
 
 ## Mechanism findings and development decisions
+
+An optional [joint-training path](JOINT_INTENTION_TRAINING.md) now allows PPO
+actor/value gradients into the local intention prior (`intention_rl_lr>0`).
+It remains disabled by default and has no performance result yet. The full
+modern suite passed **491 tests**, with 32 native legacy checks skipped because
+that suite uses the modern environment. A four-run native regression at
+8,000 steps per run exactly preserved IPPO/DMS states, optimizer moments,
+RNG, metrics and evaluation episodes when disabled. All four enabled CPU/CUDA native smokes passed, followed by saved-source
+evaluation of all four checkpoints with zero optimizer steps. Two fresh 3M
+development trials are queued on A100: HalfCheetah history 32 (**21218981**)
+and SMAC gamma 0.95 (**21218984**), each with a fixed 100-episode endpoint.
+Their baseline configurations differ only in `intention_rl_lr=3e-4` and output.
+[Trial declaration](../reports/development-joint-intention-3m-seed101.json).
+[Unit evidence](../reports/joint-intention-unit-validation.json),
+[default regression](../reports/joint-intention-default-regression.json),
+[native smoke](../reports/joint-intention-native-smoke.json),
+[saved-source checks](../reports/joint-intention-saved-source-evaluation.json).
+
 
 The frozen 3M HalfCheetah models contain predictive peer information. Forecast
 RMSE is **0.2032** without policy memory and **0.6878** with history 32, below
@@ -227,8 +244,10 @@ visibility checks on A100 (jobs **21215121 / 21215206**). Other hosts, other
 GPU models for this image and exact original MuJoCo 2.0 parity remain unverified.
 [CPU evidence](../reports/legacy-container-validation.json),
 [CUDA evidence](../reports/legacy-cuda-container-validation.json). A [native public-trainer comparison](../reports/native-public-trainer-bridge.json),
-job **21218446**, is checking the current public source against the older
-winning CPU trainer with active-intention, two-rollout IPPO/DMS cases.
+job **21218446**, passed four native 8,000-step runs comparing the public source
+with the older winning CPU trainer. Both IPPO and active DMS exactly matched
+parameters, buffers, optimizer states, RNG, common metrics and evaluation episodes.
+This short regression does not establish exact 10M-trajectory equivalence.
 New training/evaluation records now include
 accelerator model and numerical settings. [Validation](../reports/runtime-metadata-validation.json)
 passed 12 tests, four exact CPU/CUDA before/after state comparisons, and the

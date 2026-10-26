@@ -162,12 +162,17 @@ class IntentionModel(nn.Module):
         mean, log_std = self.gaussian_head(hidden).chunk(2, dim=-1)
         return DiagonalGaussian(mean, log_std.clamp(-5.0, 2.0))
 
+    def prior_parameters(self):
+        """Execution encoder parameters; decoder parameters receive ELBO only."""
+        for module in (self.encoder, self.encoder_norm, self.gaussian_head):
+            yield from module.parameters()
+
     def prior(self, past: Tensor, visible: Tensor) -> DiagonalGaussian:
         """Execution path: observed history only, one distribution per peer."""
         return self._distribution(self._encode(past, visible))
 
     def features(self, past: Tensor, visible: Tensor) -> Tensor:
-        """Deterministic actor features. Cache/detach these during PPO rollout."""
+        """Deterministic, differentiable actor features; rollout callers detach them."""
         return self.prior(past, visible).mean
 
     def posterior(

@@ -1,0 +1,1398 @@
+{
+  "purpose": "Two-episode saved-source evaluation of all joint-training smoke checkpoints, without any optimizer step.",
+  "status": "completed_pass",
+  "held_out_training_seeds_used": [],
+  "artifact": "runs/joint-intention-saved-source-evaluation-02",
+  "runs": [
+    {
+      "label": "hc-cpu",
+      "job_id": "21218916",
+      "spec": "runs/joint-intention-saved-source-evaluation-02/hc-cpu/spec.json",
+      "spec_sha256": "18b1f2090a57d271cbde2233d8608f83393d20e99f5ba6e75b84750e5a25433b",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-load-hc-cpu",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21218916\n",
+        "stderr": ""
+      },
+      "status": "completed_pass",
+      "validation": "runs/joint-intention-saved-source-evaluation-02/hc-cpu/validation.json",
+      "validation_sha256": "0737cad35e66dde16bd081ce7025cb26699f8932c1cc1670cf038b24610db932",
+      "result": {
+        "success": true,
+        "job_id": "21218916",
+        "training_job_id": "21218743",
+        "host": "milan32.int.triton.aalto.fi",
+        "partition": "batch-milan",
+        "started_utc": "2026-10-26T18:03:52.887048+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "9a091b261a6e7db5d58aa8cda08a06f630487471274cc8b09de435454fc94031",
+        "learner_state_sha256_after": "9a091b261a6e7db5d58aa8cda08a06f630487471274cc8b09de435454fc94031",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/evaluate.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/legacy_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": -2.3481793251412455,
+          "return_population_std": 0.6261300270853098,
+          "return_median": -2.3481793251412455,
+          "return_quantiles": {
+            "0": -2.9743093522265553,
+            "0.01": -2.961786751684849,
+            "0.05": -2.9116963495180244,
+            "0.1": -2.8490833468094934,
+            "0.25": -2.6612443386839004,
+            "0.5": -2.3481793251412455,
+            "0.75": -2.0351143115985906,
+            "0.9": -1.8472753034729976,
+            "0.95": -1.7846623007644666,
+            "0.99": -1.734571898597642,
+            "1": -1.7220492980559357
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 2,
+          "return_below1000_episodes": 2,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 1000.0,
+          "episode_length_min": 1000,
+          "episode_length_max": 1000
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": -2.9743093522265553,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "seed": 400306,
+            "return": -1.7220492980559357,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "checkpoint_sha256": "ec1f788a89c6a32fada6511195b0af3a58ea7af9e20cd28babb42e78bd5049ef",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 28,
+            "shape": [
+              2,
+              32,
+              29
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cpu/development-evaluation-2.json",
+        "evaluation_output_sha256": "4f7aedb81a41280a5d920871f466958975ad12e3ba70573a5f3971fd2eb91d6c",
+        "learner_state_unchanged": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 8000,
+              "seed": 400304,
+              "return": -0.6847722492093453,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "summary": {
+            "episodes": 1,
+            "return_mean": -0.6847722492093453,
+            "return_population_std": 0.0,
+            "return_median": -0.6847722492093453,
+            "return_quantiles": {
+              "0": -0.6847722492093453,
+              "0.01": -0.6847722492093453,
+              "0.05": -0.6847722492093453,
+              "0.1": -0.6847722492093453,
+              "0.25": -0.6847722492093453,
+              "0.5": -0.6847722492093453,
+              "0.75": -0.6847722492093453,
+              "0.9": -0.6847722492093453,
+              "0.95": -0.6847722492093453,
+              "0.99": -0.6847722492093453,
+              "1": -0.6847722492093453
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 1,
+            "return_below1000_episodes": 1,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 1000.0,
+            "episode_length_min": 1000,
+            "episode_length_max": 1000
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 34.032282255997416,
+        "completed_utc": "2026-10-26T18:04:26.919366+00:00"
+      }
+    },
+    {
+      "label": "hc-cuda",
+      "job_id": "21218917",
+      "spec": "runs/joint-intention-saved-source-evaluation-02/hc-cuda/spec.json",
+      "spec_sha256": "bf1c42650715ad4a7a69344cc7ca4de9866f02459fa315e8e654da1305095a25",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-load-hc-cuda",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21218917\n",
+        "stderr": ""
+      },
+      "status": "completed_pass",
+      "validation": "runs/joint-intention-saved-source-evaluation-02/hc-cuda/validation.json",
+      "validation_sha256": "e980d6abd4cc47a4117c7cf69a5a0245b2f6f189c6f172695e20b7c1744ee488",
+      "result": {
+        "success": true,
+        "job_id": "21218917",
+        "training_job_id": "21218743",
+        "host": "milan32.int.triton.aalto.fi",
+        "partition": "batch-milan",
+        "started_utc": "2026-10-26T18:04:01.541247+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "0f42b0066a37de981ab248e637012b843c06dcc4d683af047e2e44b86506b63f",
+        "learner_state_sha256_after": "0f42b0066a37de981ab248e637012b843c06dcc4d683af047e2e44b86506b63f",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/evaluate.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/legacy_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": -2.063218709155535,
+          "return_population_std": 0.5982334248133157,
+          "return_median": -2.063218709155535,
+          "return_quantiles": {
+            "0": -2.661452133968851,
+            "0.01": -2.6494874654725846,
+            "0.05": -2.6016287914875194,
+            "0.1": -2.541805449006188,
+            "0.25": -2.362335421562193,
+            "0.5": -2.063218709155535,
+            "0.75": -1.7641019967488774,
+            "0.9": -1.5846319693048827,
+            "0.95": -1.5248086268235512,
+            "0.99": -1.476949952838486,
+            "1": -1.4649852843422195
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 2,
+          "return_below1000_episodes": 2,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 1000.0,
+          "episode_length_min": 1000,
+          "episode_length_max": 1000
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": -2.661452133968851,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "seed": 400306,
+            "return": -1.4649852843422195,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "checkpoint_sha256": "3115171b2e0da054e3ed55a156dcbd231598a436843577a7217880676fa706a7",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 28,
+            "shape": [
+              2,
+              32,
+              29
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-cuda/development-evaluation-2.json",
+        "evaluation_output_sha256": "c174173b3f4f3ee5b0b9f3827266f55023c4618ca74336489318a4de78a28a7b",
+        "learner_state_unchanged": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 8000,
+              "seed": 400304,
+              "return": -0.29451986568483335,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "summary": {
+            "episodes": 1,
+            "return_mean": -0.29451986568483335,
+            "return_population_std": 0.0,
+            "return_median": -0.29451986568483335,
+            "return_quantiles": {
+              "0": -0.29451986568483335,
+              "0.01": -0.29451986568483335,
+              "0.05": -0.29451986568483335,
+              "0.1": -0.29451986568483335,
+              "0.25": -0.29451986568483335,
+              "0.5": -0.29451986568483335,
+              "0.75": -0.29451986568483335,
+              "0.9": -0.29451986568483335,
+              "0.95": -0.29451986568483335,
+              "0.99": -0.29451986568483335,
+              "1": -0.29451986568483335
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 1,
+            "return_below1000_episodes": 1,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 1000.0,
+            "episode_length_min": 1000,
+            "episode_length_max": 1000
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 34.26145390397869,
+        "completed_utc": "2026-10-26T18:04:35.802746+00:00"
+      }
+    },
+    {
+      "label": "hc-all-sequential",
+      "job_id": "21218918",
+      "spec": "runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/spec.json",
+      "spec_sha256": "9cd1dfac34bf12b22837b901b0c5bc0e8a76a4cd82974fc76019cd1e72a4b289",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-load-hc-all-sequential",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21218918\n",
+        "stderr": ""
+      },
+      "status": "completed_pass",
+      "validation": "runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/validation.json",
+      "validation_sha256": "c633dfa0ff869f91f9841978099d833aaf9275ea55e58fa937ec048104711077",
+      "result": {
+        "success": true,
+        "job_id": "21218918",
+        "training_job_id": "21218743",
+        "host": "milan32.int.triton.aalto.fi",
+        "partition": "batch-milan",
+        "started_utc": "2026-10-26T18:03:53.773537+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "553e43f28a81f59b0ad42b5d0683debc18fb27e76b1d80beafea0eece1399887",
+        "learner_state_sha256_after": "553e43f28a81f59b0ad42b5d0683debc18fb27e76b1d80beafea0eece1399887",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/evaluate.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/legacy_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": -2.327444499075227,
+          "return_population_std": 0.6001870072946076,
+          "return_median": -2.327444499075227,
+          "return_quantiles": {
+            "0": -2.927631506369835,
+            "0.01": -2.9156277662239427,
+            "0.05": -2.8676128056403742,
+            "0.1": -2.807594104910913,
+            "0.25": -2.627538002722531,
+            "0.5": -2.327444499075227,
+            "0.75": -2.0273509954279234,
+            "0.9": -1.847294893239541,
+            "0.95": -1.7872761925100804,
+            "0.99": -1.7392612319265117,
+            "1": -1.7272574917806196
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 2,
+          "return_below1000_episodes": 2,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 1000.0,
+          "episode_length_min": 1000,
+          "episode_length_max": 1000
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": -2.927631506369835,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "seed": 400306,
+            "return": -1.7272574917806196,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "checkpoint_sha256": "5a92c2d60f8360fca3307eba4340806bd42f0a713e77c2039a91e13306a4f88b",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 28,
+            "shape": [
+              2,
+              32,
+              29
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/development-evaluation-2.json",
+        "evaluation_output_sha256": "229ef0b2f11ac88208a253cf4fd7b43c825faf3b69777fe1fb251f9be53c4ae5",
+        "learner_state_unchanged": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 8000,
+              "seed": 400304,
+              "return": -0.2345384815853322,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "summary": {
+            "episodes": 1,
+            "return_mean": -0.2345384815853322,
+            "return_population_std": 0.0,
+            "return_median": -0.2345384815853322,
+            "return_quantiles": {
+              "0": -0.2345384815853322,
+              "0.01": -0.2345384815853322,
+              "0.05": -0.2345384815853322,
+              "0.1": -0.2345384815853322,
+              "0.25": -0.2345384815853322,
+              "0.5": -0.2345384815853322,
+              "0.75": -0.2345384815853322,
+              "0.9": -0.2345384815853322,
+              "0.95": -0.2345384815853322,
+              "0.99": -0.2345384815853322,
+              "1": -0.2345384815853322
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 1,
+            "return_below1000_episodes": 1,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 1000.0,
+            "episode_length_min": 1000,
+            "episode_length_max": 1000
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 51.58245386899216,
+        "completed_utc": "2026-10-26T18:04:45.356042+00:00"
+      }
+    },
+    {
+      "label": "smac-sequential",
+      "job_id": "21218919",
+      "spec": "runs/joint-intention-saved-source-evaluation-02/smac-sequential/spec.json",
+      "spec_sha256": "5993e3e801609a4e0b40cb1b205a623b59abd2ce92858f0e51049a20d4f2888e",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-load-smac-sequential",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21218919\n",
+        "stderr": ""
+      },
+      "status": "completed_pass",
+      "validation": "runs/joint-intention-saved-source-evaluation-02/smac-sequential/validation.json",
+      "validation_sha256": "067a41a7a4322efbe31c4b15f1f4858c83f48113a5333ca43e41132afb0c134f",
+      "result": {
+        "success": true,
+        "job_id": "21218919",
+        "training_job_id": "21218743",
+        "host": "milan32.int.triton.aalto.fi",
+        "partition": "batch-milan",
+        "started_utc": "2026-10-26T18:03:52.345575+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "f4f0b21530578126355c72be5a4ff98887d7d8ce72c439c778dbc480b551ec68",
+        "learner_state_sha256_after": "f4f0b21530578126355c72be5a4ff98887d7d8ce72c439c778dbc480b551ec68",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/evaluate.py",
+          "dms.smac_env": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/smac_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": 4.227649045875296,
+          "return_population_std": 1.5653973508160561,
+          "return_median": 4.227649045875296,
+          "return_quantiles": {
+            "0": 2.66225169505924,
+            "0.01": 2.693559642075561,
+            "0.05": 2.8187914301408457,
+            "0.1": 2.975331165222451,
+            "0.25": 3.444950370467268,
+            "0.5": 4.227649045875296,
+            "0.75": 5.010347721283324,
+            "0.9": 5.4799669265281405,
+            "0.95": 5.636506661609746,
+            "0.99": 5.761738449675031,
+            "1": 5.793046396691352
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 0,
+          "return_below1000_episodes": 2,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 105.5,
+          "episode_length_min": 61,
+          "episode_length_max": 150,
+          "wins": 0,
+          "win_rate": 0.0
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": 5.793046396691352,
+            "length": 150,
+            "battle_won": false
+          },
+          {
+            "seed": 400306,
+            "return": 2.66225169505924,
+            "length": 61,
+            "battle_won": false
+          }
+        ],
+        "checkpoint_sha256": "bb84a639e380dc42676a95056075ee6df6cee471fc016657371f638bb3e395a5",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 150
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+            "relative_path": "SMAC_Maps/3s5z.SC2Map",
+            "size_bytes": 15697,
+            "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          },
+          "policy_observation_history": {
+            "length": 16,
+            "base_observation_dim": 249,
+            "shape": [
+              8,
+              16,
+              250
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset and own SMAC death",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "2.2.6",
+          "gymnasium": "1.4.0",
+          "gymnasium-robotics": "1.4.2",
+          "mujoco": "3.17.0",
+          "pysc2": "3.0.0",
+          "smac": "1.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-02/smac-sequential/development-evaluation-2.json",
+        "evaluation_output_sha256": "0551c8d4c20d240b9091fcb0c10d1c7b838c285c9fe849c1c844bb6061dbbb56",
+        "learner_state_unchanged": true,
+        "training_steps": 1280,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 1280,
+              "seed": 400304,
+              "return": 4.552980126813054,
+              "length": 58,
+              "battle_won": false
+            }
+          ],
+          "summary": {
+            "episodes": 1,
+            "return_mean": 4.552980126813054,
+            "return_population_std": 0.0,
+            "return_median": 4.552980126813054,
+            "return_quantiles": {
+              "0": 4.552980126813054,
+              "0.01": 4.552980126813054,
+              "0.05": 4.552980126813054,
+              "0.1": 4.552980126813054,
+              "0.25": 4.552980126813054,
+              "0.5": 4.552980126813054,
+              "0.75": 4.552980126813054,
+              "0.9": 4.552980126813054,
+              "0.95": 4.552980126813054,
+              "0.99": 4.552980126813054,
+              "1": 4.552980126813054
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 1,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 58.0,
+            "episode_length_min": 58,
+            "episode_length_max": 58
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 35.425093050987925,
+        "completed_utc": "2026-10-26T18:04:27.770705+00:00"
+      }
+    }
+  ],
+  "previous_attempts": [
+    {
+      "purpose": "Two-episode saved-source evaluation of all joint-training smoke checkpoints, without any optimizer step.",
+      "status": "failed_before_snapshot",
+      "held_out_training_seeds_used": [],
+      "artifact": "runs/joint-intention-saved-source-evaluation-01",
+      "runs": [
+        {
+          "label": "hc-cpu",
+          "job_id": "21218879",
+          "spec": "runs/joint-intention-saved-source-evaluation-01/hc-cpu/spec.json",
+          "spec_sha256": "69687c0ab17a8f61c30571d96909d6733f787c45d123740268c000cb8ae38646",
+          "submission": {
+            "command": [
+              "sbatch",
+              "--parsable",
+              "--job-name=dms-joint-load-hc-cpu",
+              "--partition=batch-milan,batch-csl,batch-skl",
+              "--cpus-per-task=1",
+              "--mem=4G",
+              "--time=00:15:00",
+              "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-cpu/%x_%j.out",
+              "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-cpu/%x_%j.err",
+              "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation/evaluate.sbatch",
+              "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-cpu/spec.json",
+              "legacy"
+            ],
+            "returncode": 0,
+            "stdout": "21218879\n",
+            "stderr": ""
+          },
+          "scheduler_state": "FAILED",
+          "exit_code": "1:0",
+          "stderr_sha256": "bc1e8266d8bdbbab07d5eb36ad5f8852278fb6b02c5afab96d9c2cf0fd5a6276"
+        },
+        {
+          "label": "hc-cuda",
+          "job_id": "21218880",
+          "spec": "runs/joint-intention-saved-source-evaluation-01/hc-cuda/spec.json",
+          "spec_sha256": "918e18db434f166dccdfc5e5bdcc0d01a4bfa24da5ec2a62182b41015900f017",
+          "submission": {
+            "command": [
+              "sbatch",
+              "--parsable",
+              "--job-name=dms-joint-load-hc-cuda",
+              "--partition=batch-milan,batch-csl,batch-skl",
+              "--cpus-per-task=1",
+              "--mem=4G",
+              "--time=00:15:00",
+              "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-cuda/%x_%j.out",
+              "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-cuda/%x_%j.err",
+              "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation/evaluate.sbatch",
+              "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-cuda/spec.json",
+              "legacy"
+            ],
+            "returncode": 0,
+            "stdout": "21218880\n",
+            "stderr": ""
+          },
+          "scheduler_state": "FAILED",
+          "exit_code": "1:0",
+          "stderr_sha256": "bc1e8266d8bdbbab07d5eb36ad5f8852278fb6b02c5afab96d9c2cf0fd5a6276"
+        },
+        {
+          "label": "hc-all-sequential",
+          "job_id": "21218881",
+          "spec": "runs/joint-intention-saved-source-evaluation-01/hc-all-sequential/spec.json",
+          "spec_sha256": "8ade55c46c24f063436943b84f4849359a1350428eaeda715515173c7b2b4501",
+          "submission": {
+            "command": [
+              "sbatch",
+              "--parsable",
+              "--job-name=dms-joint-load-hc-all-sequential",
+              "--partition=batch-milan,batch-csl,batch-skl",
+              "--cpus-per-task=1",
+              "--mem=4G",
+              "--time=00:15:00",
+              "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-all-sequential/%x_%j.out",
+              "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-all-sequential/%x_%j.err",
+              "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation/evaluate.sbatch",
+              "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/hc-all-sequential/spec.json",
+              "legacy"
+            ],
+            "returncode": 0,
+            "stdout": "21218881\n",
+            "stderr": ""
+          },
+          "scheduler_state": "FAILED",
+          "exit_code": "1:0",
+          "stderr_sha256": "bc1e8266d8bdbbab07d5eb36ad5f8852278fb6b02c5afab96d9c2cf0fd5a6276"
+        },
+        {
+          "label": "smac-sequential",
+          "job_id": "21218882",
+          "spec": "runs/joint-intention-saved-source-evaluation-01/smac-sequential/spec.json",
+          "spec_sha256": "e98bb2452152af73f568f591a82dc0c3b2d37869397cf7301a3e48ac8c1877ae",
+          "submission": {
+            "command": [
+              "sbatch",
+              "--parsable",
+              "--job-name=dms-joint-load-smac-sequential",
+              "--partition=batch-milan,batch-csl,batch-skl",
+              "--cpus-per-task=1",
+              "--mem=4G",
+              "--time=00:15:00",
+              "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/smac-sequential/%x_%j.out",
+              "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/smac-sequential/%x_%j.err",
+              "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation/evaluate.sbatch",
+              "/scratch/work/liz23/reproduce/dms/runs/joint-intention-saved-source-evaluation-01/smac-sequential/spec.json",
+              "modern"
+            ],
+            "returncode": 0,
+            "stdout": "21218882\n",
+            "stderr": ""
+          },
+          "scheduler_state": "FAILED",
+          "exit_code": "1:0",
+          "stderr_sha256": "bc1e8266d8bdbbab07d5eb36ad5f8852278fb6b02c5afab96d9c2cf0fd5a6276"
+        }
+      ],
+      "reason": "Copied evaluator guard allowed seed400101/400301, while the new predeclared smoke block starts400305. All four jobs stopped before snapshot or model loading; training/checkpoint artifacts unchanged."
+    }
+  ],
+  "correction": "Version2 explicitly permits the predeclared two-game smoke block and the three-million-step 100-game endpoint block. Original guard/scripts and failed submissions retained.",
+  "collected_utc": "2026-10-26T18:05:44.311599+00:00"
+}

@@ -136,7 +136,7 @@
       "reference_config": "configs/development/smac-3s5z-no-intention-sequential-history16-mask-20env-gamma095-3m.json",
       "reference_job_id": "21210585",
       "walltime_hours": 12,
-      "status": "running_verified",
+      "status": "training_completed",
       "environment": {
         "benchmark_track": "original_smac",
         "map_name": "8m_vs_9m",
@@ -267,27 +267,27 @@
         "job_id": "21213721",
         "spec": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-ippo/spec.json",
         "spec_sha256": "8fa8d246ad0619a88c9d8a2b92b27dd49539bfeb6254c959c7b124f1d45c6be6",
-        "status": "waiting_for_training",
+        "status": "pending_or_running",
         "scheduler": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:03:16",
+          "node": "milan3"
         },
         "failure_artifacts": {}
       },
       "scheduler": {
         "training": {
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "exit_code": "0:0",
-          "elapsed": "01:42:40",
+          "elapsed": "04:02:13",
           "node": "gpu47"
         },
         "evaluation": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:03:16",
+          "node": "milan3"
         }
       },
       "startup_verification": {
@@ -417,7 +417,7 @@
       "reference_config": "configs/development/smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m.json",
       "reference_job_id": "21210586",
       "walltime_hours": 16,
-      "status": "running_verified",
+      "status": "training_running_or_pending",
       "environment": {
         "benchmark_track": "original_smac",
         "map_name": "8m_vs_9m",
@@ -561,7 +561,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:23:27",
+          "elapsed": "02:46:23",
           "node": "gpu45"
         },
         "evaluation": {
@@ -854,10 +854,10 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:03:22",
+          "node": "gpu47"
         },
         "evaluation": {
           "state": "PENDING",
@@ -882,7 +882,21 @@
           "before": "JobId=21213724 JobName=dms-map-MMM2-ippo\n   UserId=liz23(3278648) GroupId=liz23(3278648) MCS_label=N/A\n   Priority=286174 Nice=0 Account=aalto_users QOS=normal\n   JobState=PENDING Reason=Dependency Dependency=afterok:21213720(unfulfilled)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=12:00:00 TimeMin=N/A\n   SubmitTime=2026-10-26T14:45:16 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-26T14:45:16 Scheduler=Main\n   Partition=gpu-h100-80g,gpu-h200-141g-ellis,gpu-a100-80g AllocNode:Sid=login5:1336462\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=32G,node=1,billing=6,gres/gpu=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch\n   SubmitLine=sbatch --parsable --job-name=dms-map-MMM2-ippo --partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g --gpus=1 --cpus-per-task=4 --mem=32G --time=12:00:00 --dependency=afterok:21213720 --kill-on-invalid-dep=yes --output=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.out --error=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.err /scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch MMM2-ippo\n   WorkDir=/scratch/work/liz23/reproduce/dms\n   StdErr=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.err\n   StdIn=/dev/null\n   StdOut=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.out\n   KillOnInvalidDependent=Yes\n   TresPerJob=gres/gpu:1\n   TresPerTask=cpu=4\n\n",
           "after": "JobId=21213724 JobName=dms-map-MMM2-ippo\n   UserId=liz23(3278648) GroupId=liz23(3278648) MCS_label=N/A\n   Priority=286174 Nice=0 Account=aalto_users QOS=normal\n   JobState=PENDING Reason=Dependency Dependency=afterok:21213720(unfulfilled)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=12:00:00 TimeMin=N/A\n   SubmitTime=2026-10-26T14:45:16 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-26T14:45:16 Scheduler=Main\n   Partition=gpu-h100-80g,gpu-h200-141g-ellis,gpu-a100-80g AllocNode:Sid=login5:1336462\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=32G,node=1,billing=6,gres/gpu=1,gres/gpu:h100=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch\n   SubmitLine=sbatch --parsable --job-name=dms-map-MMM2-ippo --partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g --gpus=1 --cpus-per-task=4 --mem=32G --time=12:00:00 --dependency=afterok:21213720 --kill-on-invalid-dep=yes --output=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.out --error=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/%x_%j.err /scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/train.sbatch MMM2-ippo\n   WorkDir=/scratch/work/liz23/reproduce/dms\n   StdErr=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.err\n   StdIn=/dev/null\n   StdOut=/scratch/work/liz23/reproduce/dms/runs/development-smac-map-coverage-gamma095-3m-seed101/dms-map-MMM2-ippo_21213724.out\n   KillOnInvalidDependent=Yes\n   TresPerJob=gres/gpu:h100:1\n   TresPerTask=cpu=4\n\n"
         }
-      ]
+      ],
+      "startup_verification": {
+        "utc": "2026-10-26T18:07:54.554460+00:00",
+        "checks": {
+          "job": true,
+          "source": true,
+          "environment": true,
+          "config": true,
+          "evaluation_config": true,
+          "versions": true
+        },
+        "scheduler_node": "gpu47",
+        "gpu_family": "H100",
+        "gpu_evidence": "scontrol typed gpu:h100 allocation on gpu47; startup nvidia-smi log"
+      }
     },
     {
       "label": "MMM2-dms",
@@ -3030,5 +3044,5 @@
     "collector_sha256": "aabef1e8260c3c1a3dc34df4e58c49eec16cf1d4833084254c7380dcee06e003"
   },
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-26T15:44:58.623476+00:00"
+  "last_refresh_utc": "2026-10-26T18:07:54.500512+00:00"
 }

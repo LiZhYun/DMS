@@ -32,11 +32,11 @@ its agent permutation.
 
 ## Fixed information and inactive rows
 
-Reevaluation uses the same cached normalized observations, prior intentions,
+By default, reevaluation uses the same cached normalized observations, prior intentions,
 coordination gates, available-action masks, and bounded observation windows
 that generated the rollout. It uses the updated actor and attention parameters.
 Intention auxiliary learning occurs only after every agent finishes PPO, and
-no policy gradient enters the intention model. Actors and critics still receive
+with the default `intention_rl_lr=0`, no policy gradient enters the intention model. Actors and critics still receive
 only their local inputs.
 
 The trainer does access teammates' exact detached action likelihood ratios.
@@ -72,3 +72,8 @@ tests** passed, and sequential DMS completed 128 HalfCheetah 3x2 transitions and
 512 original-SMAC transitions with CUDA, local memory, and inactive-unit
 masking. The [validation ledger](../reports/sequential-update-validation.json)
 records exact source hashes, import checks, factor diagnostics, and checkpoints.
+
+With optional [joint intention training](JOINT_INTENTION_TRAINING.md), the
+predecessor ratio also includes its updated prior encoder. Re-encode the stored
+local history with the original filter mask; do not substitute the cached latent
+into that ratio. Normalized observations and selection gates remain fixed.

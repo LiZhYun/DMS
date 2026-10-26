@@ -738,5 +738,19 @@
       }
     ],
     "interpretation": "IPPO differs from its prior trajectory starting at the first logged update; its original allocation was A100 and the new one H100. GPU-family difference is a possible source, not an isolated causal diagnosis. DMS logged prefixes and shared diagnostics match through the observed2.14M steps. Neither fresh10M run is an exact-state resume or an independent seed replicate. Comparisons of the3M and10M endpoints must not be described as changing training duration on an identical trajectory."
+  },
+  "full_3m_prefix_audit": {
+    "collected_utc": "2026-10-26T17:54:18.804574+00:00",
+    "algorithm": "dms",
+    "reference": "runs/dev-legacy-halfcheetah-2x3-dms-history32-3m-cuda-101/metrics.jsonl",
+    "reference_sha256": "c973bb6ee6518da5e3f70b4c8e998420f6bb4608e197494144df1d0196eadac3",
+    "rows": 750,
+    "through_steps": 3000000,
+    "all_common_metrics_exact": true,
+    "first_difference": null,
+    "excluded": [
+      "elapsed_seconds"
+    ],
+    "scope": "Logged metric equality, not unavailable intermediate optimizer state equivalence."
   }
 }

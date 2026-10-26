@@ -1,0 +1,1015 @@
+{
+  "purpose": "Native execution and gradient/likelihood checks for optional joint intention training; no performance claim.",
+  "status": "completed_pass",
+  "created_utc": "2026-10-26T17:52:48.896909+00:00",
+  "artifact": "runs/joint-intention-native-smoke-01",
+  "source_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "runs": [
+    {
+      "label": "hc-cpu",
+      "kind": "hc",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/configs/hc-cpu.json",
+      "config_sha256": "6a8a738fed2622c547891e2939e2b0d7f620b4554091f2907565818c43b15c68",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/hc-cpu",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "validation": "runs/joint-intention-native-smoke-01/hc-cpu-validation.json",
+      "validation_sha256": "f8db9f656931613cfd933e0308ddfafeba1442f19850583dc9302f32d8200f17",
+      "result": {
+        "success": true,
+        "job_id": "21218743",
+        "label": "hc-cpu",
+        "checks": [
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 9.5367431640625e-07,
+            "finite_metrics": true
+          },
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 9.5367431640625e-07,
+            "finite_metrics": true
+          }
+        ],
+        "metrics": [
+          {
+            "policy_loss": -0.00330175720941952,
+            "value_loss": 0.8447836890816689,
+            "entropy": 2.7531106412410735,
+            "approx_kl": 0.002667447862404515,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.5841636657714844,
+            "intention_loss": 2.4408077001571655,
+            "intention_nll": 2.4017213582992554,
+            "intention_kl": 0.390863124281168,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7528455822524996,
+            "persistence_rmse": 0.7528455822524996,
+            "history_mean_rmse": 0.5661506887418316,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 61.695081947837025,
+            "training_return_mean": -264.6664023837566
+          },
+          {
+            "policy_loss": -0.0018077789660310372,
+            "value_loss": 0.92257000207901,
+            "entropy": 2.7451069235801695,
+            "approx_kl": 0.001005254495231611,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.5197840332984924,
+            "intention_loss": 2.5435869693756104,
+            "intention_nll": 2.5198625922203064,
+            "intention_kl": 0.23724377900362015,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7975701141890461,
+            "persistence_rmse": 0.7994187281049595,
+            "history_mean_rmse": 0.5710934602349635,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 8000,
+            "episodes": 8,
+            "elapsed_seconds": 122.21800221689045,
+            "training_return_mean": -288.6659953227809
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 8000,
+            "seed": 400304,
+            "return": -0.6847722492093453,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment_matches": true,
+        "checkpoint_restorable": true,
+        "elapsed_seconds": 147.20358250290155,
+        "sources_unchanged": true,
+        "completed_utc": "2026-10-26T17:55:43.724858+00:00"
+      }
+    },
+    {
+      "label": "hc-cuda",
+      "kind": "hc",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/configs/hc-cuda.json",
+      "config_sha256": "766a166c2a9ee33005ef79b8444ca6e929567772c15d93eb675cffd354329d15",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/hc-cuda",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "validation": "runs/joint-intention-native-smoke-01/hc-cuda-validation.json",
+      "validation_sha256": "3592f42518a82562a5dfd4839bb1b11db04ae4f0364550b1c5f1a2db6a750e47",
+      "result": {
+        "success": true,
+        "job_id": "21218743",
+        "label": "hc-cuda",
+        "gpu": "Tesla V100-SXM2-16GB",
+        "checks": [
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 9.5367431640625e-07,
+            "finite_metrics": true
+          },
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 9.5367431640625e-07,
+            "finite_metrics": true
+          }
+        ],
+        "metrics": [
+          {
+            "policy_loss": -0.0027003654584405014,
+            "value_loss": 0.8193235009908676,
+            "entropy": 2.7570744276046755,
+            "approx_kl": 0.001502257856191136,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.584274411201477,
+            "intention_loss": 2.4824487566947937,
+            "intention_nll": 2.4403639435768127,
+            "intention_kl": 0.42084769159555435,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.76549870601772,
+            "persistence_rmse": 0.76549870601772,
+            "history_mean_rmse": 0.5631465087320429,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 28.567661012988538,
+            "training_return_mean": -281.86977755921725
+          },
+          {
+            "policy_loss": -0.0011801520537119358,
+            "value_loss": 0.7368567168712616,
+            "entropy": 2.7561733543872835,
+            "approx_kl": 0.0004613340894962903,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.5187801718711853,
+            "intention_loss": 2.4868659377098083,
+            "intention_nll": 2.4646153450012207,
+            "intention_kl": 0.22250590473413467,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.771093327086215,
+            "persistence_rmse": 0.7731279718019076,
+            "history_mean_rmse": 0.5660974972377342,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 8000,
+            "episodes": 8,
+            "elapsed_seconds": 52.29217969207093,
+            "training_return_mean": -254.63769640479222
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 8000,
+            "seed": 400304,
+            "return": -0.29451986568483335,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment_matches": true,
+        "checkpoint_restorable": true,
+        "elapsed_seconds": 71.63799970084801,
+        "peak_gpu_allocated_bytes": 536954368,
+        "sources_unchanged": true,
+        "completed_utc": "2026-10-26T17:57:09.188700+00:00"
+      }
+    },
+    {
+      "label": "hc-all-sequential",
+      "kind": "hc",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/configs/hc-all-sequential.json",
+      "config_sha256": "6cf6471869f44777f1d527aa802cf63a0b8f5d82f1591d61b74c85cc1e7b4ed2",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/hc-all-sequential",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "validation": "runs/joint-intention-native-smoke-01/hc-all-sequential-validation.json",
+      "validation_sha256": "5db9371ce024273d3c2b5101ffe71f19738cdb314c3dd293fbc9a578e345bfd4",
+      "result": {
+        "success": true,
+        "job_id": "21218743",
+        "label": "hc-all-sequential",
+        "gpu": "Tesla V100-SXM2-16GB",
+        "checks": [
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 9.5367431640625e-07,
+            "finite_metrics": true
+          },
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 9.5367431640625e-07,
+            "finite_metrics": true
+          }
+        ],
+        "metrics": [
+          {
+            "policy_loss": -0.0069601388535375005,
+            "value_loss": 0.8817832767963409,
+            "entropy": 2.755286765098572,
+            "approx_kl": 0.0023237283599883084,
+            "sequential_agent_order": [
+              0,
+              1
+            ],
+            "sequential_factor_min": 0.6083248257637024,
+            "sequential_factor_max": 1.6500134468078613,
+            "sequential_factor_ess": 3921.311088969773,
+            "sequential_factor_ess_fraction": 0.9803277722424433,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.5736350417137146,
+            "intention_loss": 2.48287832736969,
+            "intention_nll": 2.4402026534080505,
+            "intention_kl": 0.4267565682530403,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7657683703087375,
+            "persistence_rmse": 0.7657683703087375,
+            "history_mean_rmse": 0.5631329365285256,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 21.50380850210786,
+            "training_return_mean": -338.0620341301619
+          },
+          {
+            "policy_loss": -0.002198964782292023,
+            "value_loss": 0.6068238958716392,
+            "entropy": 2.7500556826591493,
+            "approx_kl": 0.00032788036523356823,
+            "sequential_agent_order": [
+              1,
+              0
+            ],
+            "sequential_factor_min": 0.7000538110733032,
+            "sequential_factor_max": 1.3545124530792236,
+            "sequential_factor_ess": 3972.4666960504937,
+            "sequential_factor_ess_fraction": 0.9931166740126235,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.5625631213188171,
+            "intention_loss": 2.4936413168907166,
+            "intention_nll": 2.467205226421356,
+            "intention_kl": 0.2643609791994095,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7877729797083599,
+            "persistence_rmse": 0.790277976814379,
+            "history_mean_rmse": 0.5758878265876066,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 8000,
+            "episodes": 8,
+            "elapsed_seconds": 42.92475548805669,
+            "training_return_mean": -250.4136791669007
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 8000,
+            "seed": 400304,
+            "return": -0.2345384815853322,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment_matches": true,
+        "checkpoint_restorable": true,
+        "elapsed_seconds": 60.44020286202431,
+        "peak_gpu_allocated_bytes": 537048064,
+        "sources_unchanged": true,
+        "completed_utc": "2026-10-26T17:58:13.378240+00:00"
+      }
+    },
+    {
+      "label": "smac-sequential",
+      "kind": "smac",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/configs/smac-sequential.json",
+      "config_sha256": "f7ffb3194dac5c2e05c6a72e5b9a1a45053dcb6b1c8d59514f4796c4272bc7d2",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/smac-sequential",
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "3s5z",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 150
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+          "relative_path": "SMAC_Maps/3s5z.SC2Map",
+          "size_bytes": 15697,
+          "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 249,
+          "shape": [
+            8,
+            16,
+            250
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "validation": "runs/joint-intention-native-smoke-01/smac-sequential-validation.json",
+      "validation_sha256": "1d7f868081881ce9df4e299c46f767f092e365b0a1799bebdc95c955c53ef20a",
+      "result": {
+        "success": true,
+        "job_id": "21218743",
+        "label": "smac-sequential",
+        "gpu": "Tesla V100-SXM2-16GB",
+        "checks": [
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 2.384185791015625e-07,
+            "finite_metrics": true
+          },
+          {
+            "prior_changed_by_ppo": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "decoder_unchanged_by_ppo": [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            "old_log_probability_max_absolute_error": 2.384185791015625e-07,
+            "finite_metrics": true
+          }
+        ],
+        "metrics": [
+          {
+            "policy_loss": -0.010985280083811767,
+            "value_loss": 2.362538194656372,
+            "entropy": 2.0591989696025848,
+            "approx_kl": 6.341107147136426e-05,
+            "sequential_agent_order": [
+              6,
+              3,
+              5,
+              7,
+              1,
+              2,
+              4,
+              0
+            ],
+            "sequential_factor_min": 0.8471078276634216,
+            "sequential_factor_max": 1.2337143421173096,
+            "sequential_factor_ess": 637.8505340732104,
+            "sequential_factor_ess_fraction": 0.9966414594893913,
+            "alive_fraction": 0.685546875,
+            "ppo_update_count": 40,
+            "peer_gate_fraction": 0.941796875,
+            "intention_feature_std": 0.5757864713668823,
+            "intention_loss": 2.720896393060684,
+            "intention_nll": 2.642335906624794,
+            "intention_kl": 0.7856047507375479,
+            "forecast_target_count": 8344,
+            "forecast_comparison_count": 8088,
+            "history_baseline_target_count": 8088,
+            "forecast_nll": 2.640543744782359,
+            "forecast_accuracy": 0.08024233783287586,
+            "persistence_accuracy": 0.10867952796769662,
+            "history_histogram_accuracy": 0.1109050467774331,
+            "history_histogram_nll": 2.554331400156257,
+            "forecast_history_comparison_nll": 2.640976915579993,
+            "history_baseline_coverage_fraction": 0.9693192713326941,
+            "steps": 640,
+            "episodes": 12,
+            "elapsed_seconds": 18.60076008690521,
+            "training_return_mean": 4.822847729102553,
+            "training_battles": 12,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 12,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          },
+          {
+            "policy_loss": -0.004850235125272206,
+            "value_loss": 2.081828472018242,
+            "entropy": 2.031879821419716,
+            "approx_kl": 9.51084813465286e-06,
+            "sequential_agent_order": [
+              0,
+              5,
+              4,
+              1,
+              6,
+              2,
+              3,
+              7
+            ],
+            "sequential_factor_min": 0.9138607978820801,
+            "sequential_factor_max": 1.092145323753357,
+            "sequential_factor_ess": 639.6202640905224,
+            "sequential_factor_ess_fraction": 0.9994066626414413,
+            "alive_fraction": 0.617382824420929,
+            "ppo_update_count": 40,
+            "peer_gate_fraction": 0.8726004464285714,
+            "intention_feature_std": 0.5841364860534668,
+            "intention_loss": 2.667700007557869,
+            "intention_nll": 2.6207412034273148,
+            "intention_kl": 0.46958780847489834,
+            "forecast_target_count": 6375,
+            "forecast_comparison_count": 6375,
+            "history_baseline_target_count": 6375,
+            "forecast_nll": 2.6163202134674672,
+            "forecast_accuracy": 0.11356863066145018,
+            "persistence_accuracy": 0.10525490391838785,
+            "history_histogram_accuracy": 0.12454902107107874,
+            "history_histogram_nll": 2.5179147155986112,
+            "forecast_history_comparison_nll": 2.6163202134674672,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 1280,
+            "episodes": 22,
+            "elapsed_seconds": 36.06931563373655,
+            "training_return_mean": 4.730298044835218,
+            "training_battles": 10,
+            "training_battles_won": 0,
+            "training_win_rate": 0.0,
+            "training_battles_total": 22,
+            "training_battles_won_total": 0,
+            "training_win_rate_total": 0.0,
+            "scheduled_environment_restarts": 0
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 1280,
+            "seed": 400304,
+            "return": 4.552980126813054,
+            "length": 58,
+            "battle_won": false
+          }
+        ],
+        "environment_matches": true,
+        "checkpoint_restorable": true,
+        "elapsed_seconds": 82.41620160778984,
+        "peak_gpu_allocated_bytes": 1329425920,
+        "sources_unchanged": true,
+        "completed_utc": "2026-10-26T17:59:39.495744+00:00"
+      }
+    }
+  ],
+  "held_out_training_seeds_used": [],
+  "unit_job": "21218708",
+  "default_regression_job": "21218707",
+  "scripts_sha256": {
+    "runner.py": "f6f32371752e410bd85d63396f9df0e02d791e1efa2bc3b4d87c3c624619521d",
+    "run.sbatch": "ade8d06f4f7909ad6f724daab72d912396ec159e33c5995ff6a7923a63d32603"
+  },
+  "job_id": "21218743",
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-joint-native-smoke",
+      "--partition=gpu-h200-141g-ellis,gpu-debug,gpu-a100-80g,gpu-h100-80g",
+      "--gpus=1",
+      "--cpus-per-task=4",
+      "--mem=12G",
+      "--time=00:30:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/joint-intention-native-smoke-01/run.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21218743\n",
+    "stderr": ""
+  },
+  "scheduler": "21218743|COMPLETED|0:0|00:06:49|dgx8",
+  "collected_utc": "2026-10-26T18:01:44.728060+00:00"
+}

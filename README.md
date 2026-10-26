@@ -20,6 +20,8 @@ The code preserves observer, peer, time, and environment dimensions explicitly. 
 
 The optional [local policy memory](docs/LOCAL_POLICY_MEMORY.md) adds a bounded observation-history GRU to both IPPO and DMS. It keeps the same local information boundary and recomputes features during PPO; development experiments are testing whether it improves learning.
 
+The optional [joint intention training](docs/JOINT_INTENTION_TRAINING.md) lets PPO train the local intention encoder as well as the actor and critic. It is disabled by default; native validation has passed, while performance trials remain in development.
+
 ## Install
 
 | Workflow | Tested setup | Additional requirement |

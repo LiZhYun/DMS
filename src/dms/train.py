@@ -3,7 +3,8 @@
 Read in order: Config -> Learner -> collect -> update -> evaluate -> main.
 Rollouts use [time, environment, observer, ...]. Intention histories add
 [history, peer, action_feature]. Inference features/gates are cached for PPO;
-the auxiliary model is updated only after the policy update is finished.
+the auxiliary model is updated after PPO. Optional joint training re-encodes
+local past histories during PPO, keeping rollout gates and filtering fixed.
 """
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ from dataclasses import asdict, dataclass, fields
 import importlib.metadata
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import platform
@@ -70,6 +72,7 @@ class Config:
     actor_lr: float = 3e-4
     critic_lr: float = 1e-3
     intention_lr: float = 1e-3
+    intention_rl_lr: float = 0.0
     aux_updates: int = 2
     aux_batch_size: int = 64
     kl_beta: float = 1.0
@@ -89,6 +92,12 @@ class Config:
     torch_threads: int = 1
 
     def validate(self):
+        if (isinstance(self.intention_rl_lr, bool)
+                or not isinstance(self.intention_rl_lr, (int, float))
+                or not math.isfinite(self.intention_rl_lr) or self.intention_rl_lr < 0):
+            raise ValueError('intention_rl_lr must be finite and nonnegative')
+        if self.intention_rl_lr and self.algorithm == 'dms' and self.coordination == 'causal':
+            raise ValueError('intention_rl_lr currently requires soft or all coordination')
         if not isinstance(self.smac_time_limit_terminal, bool):
             raise ValueError('smac_time_limit_terminal must be boolean')
         if self.smac_time_limit_terminal and self.env != 'smac':
@@ -228,14 +237,19 @@ class Learner:
             for i in range(env.n_agents)
         ]).to(self.device) if self.latent_dim else nn.ModuleList()
         self.optimizers = []
-        for agent in self.agents:
+        for i, agent in enumerate(self.agents):
             critic_parameters = list(agent.critic_parameters())
             critic_ids = {id(p) for p in critic_parameters}
             actor_parameters = [p for p in agent.parameters() if id(p) not in critic_ids]
-            self.optimizers.append(torch.optim.Adam([
+            groups = [
                 {'params': actor_parameters, 'lr': config.actor_lr},
                 {'params': critic_parameters, 'lr': config.critic_lr},
-            ], eps=1e-5))
+            ]
+            if self.latent_dim and config.intention_rl_lr:
+                # Alternating RL/ELBO updates deliberately use separate Adam moments.
+                groups.append({'params': list(self.intentions[i].prior_parameters()),
+                               'lr': config.intention_rl_lr})
+            self.optimizers.append(torch.optim.Adam(groups, eps=1e-5))
         self.aux_optimizers = [torch.optim.Adam(m.parameters(), lr=config.intention_lr)
                                for m in self.intentions]
 
@@ -373,6 +387,34 @@ def collect(learner, environments, states, history, visible, episodes, episode_r
 
 
 
+@torch.no_grad()
+def prepare_intention_inputs(learner, data, agent_index):
+    """Freeze local history filtering before this observer's first PPO update.
+
+    Return [time*environment, history, peer, (action)] tensors. Future targets
+    never enter this path. Rollout gates remain fixed even across warmup changes.
+    """
+    c, i = learner.config, agent_index
+    if not (learner.latent_dim and c.intention_rl_lr and data['gates'][:, :, i].any()):
+        return None
+    past = learner.tensor(data['history'][:, :, :, i]).flatten(0, 1)
+    visible = learner.tensor(data['visible'][:, :, :, i], torch.bool).flatten(0, 1)
+    if c.filter_history:
+        visible = torch.cat([learner.intentions[i].filtered_history(
+            past[rows], visible[rows], c.short_history, c.intention_threshold)[0]
+            for rows in torch.arange(len(past), device=learner.device).split(c.minibatch_size)])
+    return past, visible
+
+
+def ppo_context(learner, agent_index, cached, gates, intention_inputs, indices):
+    """Differentiate through the current prior, or reuse the frozen default."""
+    if intention_inputs is None or not gates[indices].any():
+        # Avoid zero-gradient Adam momentum updates when no peer is used.
+        return cached[indices]
+    past, visible = intention_inputs
+    return learner.intentions[agent_index].features(past[indices], visible[indices])
+
+
 def sequential_factor(log_correction):
     """Detached predecessor likelihood product, without clipping or rescaling."""
     factor = log_correction.detach().exp()
@@ -382,15 +424,19 @@ def sequential_factor(log_correction):
 
 
 @torch.no_grad()
-def advance_sequential_correction(learner, data, agent_index, log_correction):
+def advance_sequential_correction(learner, data, agent_index, log_correction, intention_inputs=None):
     """Reevaluate stored actions after one agent finishes all its PPO epochs.
 
     Each distribution already returns the joint action log probability. Keep
     the full time/environment row index even when this agent trained on only
     its active subset. Cached normalized observations, contexts and gates keep
-    the likelihood comparison conditional on the same rollout information.
+    the likelihood comparison conditional on the same rollout information. Joint
+    training re-encodes that history with updated parameters and the old filter.
     """
     i, agent = agent_index, learner.agents[agent_index]
+    if (learner.latent_dim and learner.config.intention_rl_lr
+            and data['gates'][:, :, i].any() and intention_inputs is None):
+        raise ValueError('Joint sequential correction requires the original intention filter inputs')
     old_log_prob = data['log_prob'][:, :, i].flatten()
     obs = data['obs'][:, :, i].flatten(0, 1)
     context = data['context'][:, :, i].flatten(0, 1)
@@ -401,7 +447,8 @@ def advance_sequential_correction(learner, data, agent_index, log_correction):
     available = data['available'][:, :, i].flatten(0, 1) if learner.discrete else None
     updated_log_prob = []
     for indices in torch.arange(len(obs), device=learner.device).split(learner.config.minibatch_size):
-        distribution = agent.distribution(obs[indices], context[indices], gates[indices],
+        current_context = ppo_context(learner, i, context, gates, intention_inputs, indices)
+        distribution = agent.distribution(obs[indices], current_context, gates[indices],
                                            available[indices] if available is not None else None)
         joint_log_prob = distribution.log_prob(actions[indices])
         if joint_log_prob.shape != old_log_prob[indices].shape:
@@ -443,6 +490,9 @@ def update(learner: Learner, data):
     log_correction = torch.zeros_like(data['log_prob'][:, :, 0].flatten()) if sequential else None
     for i in order:
         agent, optimizer = learner.agents[i], learner.optimizers[i]
+        intention_inputs = prepare_intention_inputs(learner, data, i)
+        full_intention_inputs = intention_inputs
+        gradient_parameters = [p for group in optimizer.param_groups for p in group['params']]
         obs = data['obs'][:, :, i].flatten(0, 1)
         contexts = data['context'][:, :, i].flatten(0, 1)
         gates = data['gates'][:, :, i].flatten(0, 1)
@@ -465,6 +515,8 @@ def update(learner: Learner, data):
                 # through existing momentum. Skip the optimizer and all moments.
                 optimizer.zero_grad(set_to_none=True)
                 continue
+            if intention_inputs is not None:
+                intention_inputs = tuple(value[active] for value in intention_inputs)
             obs, contexts, gates = obs[active], contexts[active], gates[active]
             actions, old_log_prob = actions[active], old_log_prob[active]
             available = available[active]
@@ -480,7 +532,8 @@ def update(learner: Learner, data):
         stop = False
         for _ in range(c.epochs):
             for indices in torch.randperm(len(obs), device=learner.device).split(c.minibatch_size):
-                dist = agent.distribution(obs[indices], contexts[indices], gates[indices],
+                context = ppo_context(learner, i, contexts, gates, intention_inputs, indices)
+                dist = agent.distribution(obs[indices], context, gates[indices],
                                           available[indices] if available is not None else None)
                 log_ratio = dist.log_prob(actions[indices]) - old_log_prob[indices]
                 ratio = log_ratio.exp()
@@ -493,7 +546,7 @@ def update(learner: Learner, data):
                 else:
                     policy_loss = -torch.minimum(ratio * advantage[indices],
                         ratio.clamp(1-c.clip,1+c.clip) * advantage[indices]).mean()
-                predicted = agent.normalized_value(obs[indices], contexts[indices], gates[indices])
+                predicted = agent.normalized_value(obs[indices], context, gates[indices])
                 clipped = old_value[indices] + (predicted-old_value[indices]).clamp(-c.value_clip,c.value_clip)
                 value_loss = 0.5 * torch.maximum((predicted-target[indices]).square(),
                                                  (clipped-target[indices]).square()).mean()
@@ -503,7 +556,8 @@ def update(learner: Learner, data):
                     raise FloatingPointError('Nonfinite PPO loss')
                 optimizer.zero_grad(set_to_none=True)
                 loss.backward()
-                nn.utils.clip_grad_norm_(agent.parameters(), c.max_grad_norm, error_if_nonfinite=True)
+                parameters = gradient_parameters if full_intention_inputs is not None else agent.parameters()
+                nn.utils.clip_grad_norm_(parameters, c.max_grad_norm, error_if_nonfinite=True)
                 optimizer.step()
                 approx_kl = ((ratio - 1) - log_ratio).mean().detach().item()
                 metrics.append({'policy_loss': policy_loss.item(), 'value_loss': value_loss.item(),
@@ -514,7 +568,11 @@ def update(learner: Learner, data):
             if stop:
                 break
         if sequential:
-            log_correction = advance_sequential_correction(learner, data, i, log_correction)
+            if full_intention_inputs is None:
+                log_correction = advance_sequential_correction(learner, data, i, log_correction)
+            else:
+                log_correction = advance_sequential_correction(
+                    learner, data, i, log_correction, full_intention_inputs)
         raw_obs = learner.tensor(data['raw_obs'][:, :, i])
         agent.update_observation_scale(raw_obs.flatten(0, 1)[active] if mask_inactive else raw_obs)
     result = {key: float(np.mean([row[key] for row in metrics])) if metrics else 0.0

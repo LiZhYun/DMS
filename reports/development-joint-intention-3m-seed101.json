@@ -1,0 +1,636 @@
+{
+  "purpose": "Test whether actor/value gradients make locally inferred intentions more useful, holding each existing A100 development recipe fixed except intention_rl_lr and output.",
+  "created_utc": "2026-10-26T17:59:14.520286+00:00",
+  "status": "submitted_after_native_validation",
+  "artifact": "runs/development-joint-intention-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/source",
+  "source_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "source_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+  },
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "budget": 3000000,
+  "runs": [
+    {
+      "label": "hc-history32",
+      "variant": "hc-history32",
+      "algorithm": "dms",
+      "seed": 101,
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-history32-3m-cuda-joint-rl.json",
+      "frozen_config": "runs/development-joint-intention-3m-seed101/configs/hc-history32.json",
+      "config_sha256": "1b98af394b798b3aea1e54a2daf539d9c5f03bb850e419ee07809c277a4c302c",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0003,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-dms-history32-3m-cuda-joint-rl-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-history32-3m-cuda-joint-rl-101",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "comparison_reference_run": "runs/dev-legacy-halfcheetah-2x3-dms-history32-3m-cuda-101",
+      "changes_from_reference": {
+        "intention_rl_lr": [
+          0.0,
+          0.0003
+        ],
+        "output": [
+          "runs/dev-legacy-halfcheetah-2x3-dms-history32-3m-cuda-101",
+          "runs/dev-legacy-halfcheetah-2x3-dms-history32-3m-cuda-joint-rl-101"
+        ]
+      },
+      "required_gpu_family": "A100",
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 9,
+      "evaluation_spec_template": "runs/development-halfcheetah-history32-a100-control-10m-seed101/evaluation-ippo/spec.json",
+      "evaluation_launcher": "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+      "evaluation_launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e",
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-hc-history32-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=9:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/train.sbatch",
+          "hc-history32"
+        ],
+        "returncode": 0,
+        "stdout": "21218981\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:05:44.426196+00:00",
+        "job_id": "21218981"
+      },
+      "job_id": "21218981",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-hc-history32-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21218981",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-hc-history32/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-hc-history32/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-hc-history32/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21218982\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:05:44.459726+00:00",
+        "job_id": "21218982",
+        "spec": "runs/development-joint-intention-3m-seed101/evaluation-hc-history32/spec.json",
+        "spec_sha256": "72d729cbc270156edcfc9e59a2ef2ee6dd94f6b5e3f1de6472fa9587cfdeb77c",
+        "status": "waiting_for_training",
+        "launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e"
+      }
+    },
+    {
+      "label": "smac-gamma095",
+      "variant": "smac-gamma095",
+      "algorithm": "dms",
+      "seed": 101,
+      "config": "configs/development/smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m-joint-rl.json",
+      "frozen_config": "runs/development-joint-intention-3m-seed101/configs/smac-gamma095.json",
+      "config_sha256": "8e409cb6727931181593bd9a2372fd96ddbd7ad98528ee598392c512ef6ade21",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "smac",
+        "mamujoco_backend": "modern",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 20,
+        "parallel_env_steps": true,
+        "mask_inactive_agents": true,
+        "smac_time_limit_terminal": false,
+        "update_mode": "sequential",
+        "total_steps": 3000000,
+        "rollout_steps": 160,
+        "epochs": 5,
+        "minibatch_size": 3200,
+        "hidden_dim": 64,
+        "policy_history_length": 16,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0003,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.95,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m-joint-rl-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m-joint-rl-101",
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "3s5z",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 150
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+          "relative_path": "SMAC_Maps/3s5z.SC2Map",
+          "size_bytes": 15697,
+          "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 249,
+          "shape": [
+            8,
+            16,
+            250
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "comparison_reference_run": "runs/dev-smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m-101",
+      "changes_from_reference": {
+        "intention_rl_lr": [
+          0.0,
+          0.0003
+        ],
+        "output": [
+          "runs/dev-smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m-101",
+          "runs/dev-smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m-joint-rl-101"
+        ]
+      },
+      "required_gpu_family": "A100",
+      "cpus": 4,
+      "memory": "32G",
+      "walltime_hours": 20,
+      "evaluation_spec_template": "runs/development-smac-gamma095-10m-seed101/evaluation-dms/spec.json",
+      "evaluation_launcher": "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+      "evaluation_launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e",
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-smac-gamma095-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=4",
+          "--mem=32G",
+          "--time=20:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/train.sbatch",
+          "smac-gamma095"
+        ],
+        "returncode": 0,
+        "stdout": "21218984\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:05:44.486193+00:00",
+        "job_id": "21218984"
+      },
+      "job_id": "21218984",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-joint-smac-gamma095-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21218984",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-smac-gamma095/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-smac-gamma095/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-smac-gamma095/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21218985\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:05:44.511869+00:00",
+        "job_id": "21218985",
+        "spec": "runs/development-joint-intention-3m-seed101/evaluation-smac-gamma095/spec.json",
+        "spec_sha256": "b2c659576d8390b97dc237c655c81dd3633f22cec7bf0b6da37ab047193072ce",
+        "status": "waiting_for_training",
+        "launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e"
+      }
+    }
+  ],
+  "smoke_artifact": "runs/joint-intention-native-smoke-01",
+  "smoke_job": "21218743",
+  "unit_validation": "reports/joint-intention-unit-validation.json",
+  "default_regression": "reports/joint-intention-default-regression.json",
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "checkpoint": "fixed final 3M",
+    "parameter_updates": 0,
+    "device": "cpu"
+  },
+  "rationale": "RL LR equals actor LR3e-4; auxiliary LR1e-3 and two updates remain fixed. One candidate per task; retain failed endpoints and no best-checkpoint selection. New default source passed exact native CPU comparison; both long trials require A100 as did their 3M controls.",
+  "scheduling": "Two independent development trials, at most two additional training jobs; no held-out seeds or queued replica sweep.",
+  "required_validation": [
+    {
+      "path": "runs/joint-intention-native-smoke-01/hc-cpu-validation.json",
+      "sha256": "f8db9f656931613cfd933e0308ddfafeba1442f19850583dc9302f32d8200f17"
+    },
+    {
+      "path": "runs/joint-intention-native-smoke-01/hc-cuda-validation.json",
+      "sha256": "3592f42518a82562a5dfd4839bb1b11db04ae4f0364550b1c5f1a2db6a750e47"
+    },
+    {
+      "path": "runs/joint-intention-native-smoke-01/hc-all-sequential-validation.json",
+      "sha256": "5db9371ce024273d3c2b5101ffe71f19738cdb314c3dd293fbc9a578e345bfd4"
+    },
+    {
+      "path": "runs/joint-intention-native-smoke-01/smac-sequential-validation.json",
+      "sha256": "1d7f868081881ce9df4e299c46f767f092e365b0a1799bebdc95c955c53ef20a"
+    },
+    {
+      "path": "runs/joint-intention-default-regression-01/validation.json",
+      "sha256": "ae6434609453ba4ab1614b47e0b53b36b66615c0a1afd358ffbf40db0dcb7ec3"
+    },
+    {
+      "path": "runs/joint-intention-saved-source-evaluation-02/hc-cpu/validation.json",
+      "sha256": "0737cad35e66dde16bd081ce7025cb26699f8932c1cc1670cf038b24610db932"
+    },
+    {
+      "path": "runs/joint-intention-saved-source-evaluation-02/hc-cuda/validation.json",
+      "sha256": "e980d6abd4cc47a4117c7cf69a5a0245b2f6f189c6f172695e20b7c1744ee488"
+    },
+    {
+      "path": "runs/joint-intention-saved-source-evaluation-02/hc-all-sequential/validation.json",
+      "sha256": "c633dfa0ff869f91f9841978099d833aaf9275ea55e58fa937ec048104711077"
+    },
+    {
+      "path": "runs/joint-intention-saved-source-evaluation-02/smac-sequential/validation.json",
+      "sha256": "067a41a7a4322efbe31c4b15f1f4858c83f48113a5333ca43e41132afb0c134f"
+    }
+  ],
+  "scripts_sha256": {
+    "guarded_train.py": "d74b730dbd4fc984008c57b8576ac701a996d43101f2540ae5454ee385951e5c",
+    "collect.sbatch": "f7d22b04560cec9fd72ca9eca54799472c7a135690392b759f9d321f42675aee",
+    "refresh_status.py": "032daa19510ab1162774afc93b0d6e957942e5eca33584324a3ee825a1dc944b",
+    "submit.py": "7b08745380774e47d817e6b4eb749d442bd5422282a38adccae3432fd723a55f",
+    "train.sbatch": "a7dd82da6f1b4482c807a588d202ef067ac1c3334548efb8e044a2bdbd08605f",
+    "evaluation-v2/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation-v2/evaluate.sbatch": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e",
+    "evaluation/runner.py": "518d2bdac19b477e1f99ca7fa99d22d9c7c41a70b6dc0ca8b533140b1cd6941c",
+    "evaluation/evaluate.sbatch": "01e32181d1e0001d4f77f052de44d38d6d5bf7ac3d8ee8334c621f17bb75a55b"
+  },
+  "saved_source_validation": "reports/joint-intention-saved-source-evaluation.json",
+  "completed_preflight_jobs": [
+    "21218707|COMPLETED|0:0",
+    "21218708|COMPLETED|0:0",
+    "21218743|COMPLETED|0:0"
+  ],
+  "completion_collector": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-joint-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--dependency=afterany:21218981:21218982:21218984:21218985",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/collect.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21218986\n",
+    "stderr": "",
+    "submitted_utc": "2026-10-26T18:05:44.536101+00:00",
+    "job_id": "21218986"
+  }
+}

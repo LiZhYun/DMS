@@ -1,7 +1,7 @@
 {
   "purpose": "Check that current readable public training code preserves the older winning HalfCheetah CPU default algorithm, using exact native two-rollout comparisons before a future final freeze.",
   "created_utc": "2026-10-26T17:24:54.350962+00:00",
-  "status": "submitted",
+  "status": "completed_pass",
   "artifact": "runs/native-public-trainer-bridge-01",
   "reference_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
   "reference_train_source_sha256": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
@@ -121,5 +121,729 @@
     "stderr": "",
     "submitted_utc": "2026-10-26T17:26:21.833217+00:00"
   },
-  "job_id": "21218446"
+  "job_id": "21218446",
+  "validation": "runs/native-public-trainer-bridge-01/validation.json",
+  "validation_sha256": "bb6965a0cd53d3f17687f6003578e9a5eb687fe11ef8dcb31c7fefe113279d47",
+  "result": {
+    "success": true,
+    "job_id": "21218446",
+    "runs": [
+      {
+        "algorithm": "ippo",
+        "version": "old",
+        "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/old-source",
+        "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/ippo-old.json",
+        "config_sha256": "f4c8e62d0e8db182bbd0c35880308007407d31c1894e31ea5722c1b3f1230932",
+        "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/ippo-old",
+        "elapsed_seconds": 13.098879149009008,
+        "metrics": [
+          {
+            "policy_loss": -0.003208455444837455,
+            "value_loss": 0.9513323560357094,
+            "entropy": 2.7572958767414093,
+            "approx_kl": 0.002670243298598507,
+            "peer_gate_fraction": 0.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 2.5773281299625523,
+            "training_return_mean": -298.64034587607057
+          },
+          {
+            "policy_loss": -0.0018638228917552623,
+            "value_loss": 0.7421880438923836,
+            "entropy": 2.7537600219249727,
+            "approx_kl": 0.0004974119864954218,
+            "peer_gate_fraction": 0.0,
+            "steps": 8000,
+            "episodes": 8,
+            "elapsed_seconds": 5.076552432961762,
+            "training_return_mean": -210.21452808737013
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 8000,
+            "seed": 400303,
+            "return": 0.6070065339290522,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ]
+        }
+      },
+      {
+        "algorithm": "ippo",
+        "version": "public",
+        "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/public-source",
+        "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/ippo-public.json",
+        "config_sha256": "2ba59c7c5b351a31224526a4d953160e5eeb097e226a0b763bd2193123ec5bdd",
+        "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/ippo-public",
+        "elapsed_seconds": 13.17439945996739,
+        "metrics": [
+          {
+            "policy_loss": -0.003208455444837455,
+            "value_loss": 0.9513323560357094,
+            "entropy": 2.7572958767414093,
+            "approx_kl": 0.002670243298598507,
+            "peer_gate_fraction": 0.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 2.5751333679654635,
+            "training_return_mean": -298.64034587607057
+          },
+          {
+            "policy_loss": -0.0018638228917552623,
+            "value_loss": 0.7421880438923836,
+            "entropy": 2.7537600219249727,
+            "approx_kl": 0.0004974119864954218,
+            "peer_gate_fraction": 0.0,
+            "steps": 8000,
+            "episodes": 8,
+            "elapsed_seconds": 5.1640310469665565,
+            "training_return_mean": -210.21452808737013
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 8000,
+            "seed": 400303,
+            "return": 0.6070065339290522,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ]
+        }
+      },
+      {
+        "algorithm": "dms",
+        "version": "old",
+        "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/old-source",
+        "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/dms-old.json",
+        "config_sha256": "213e9105e7e2b33a6cc79d2a7fd9914b67b030f734798e8331e6261ad7be5e24",
+        "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/dms-old",
+        "elapsed_seconds": 36.49864303396316,
+        "metrics": [
+          {
+            "policy_loss": -0.0031918974564177915,
+            "value_loss": 0.8596444621682167,
+            "entropy": 2.756117618083954,
+            "approx_kl": 0.0027178938427823594,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.5415542125701904,
+            "intention_loss": 2.585415244102478,
+            "intention_nll": 2.545362949371338,
+            "intention_kl": 0.40052303671836853,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7895111425510105,
+            "persistence_rmse": 0.7895111425510105,
+            "history_mean_rmse": 0.5671583961378834,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 11.005280670011416,
+            "training_return_mean": -276.99478854363224
+          },
+          {
+            "policy_loss": -0.0015141231764573605,
+            "value_loss": 0.7596799090504647,
+            "entropy": 2.7530318558216096,
+            "approx_kl": 0.00030553412206302255,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.534797728061676,
+            "intention_loss": 2.4821274280548096,
+            "intention_nll": 2.459815502166748,
+            "intention_kl": 0.2231190875172615,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7648652589799738,
+            "persistence_rmse": 0.7684265687320401,
+            "history_mean_rmse": 0.5718549278443456,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 8000,
+            "episodes": 8,
+            "elapsed_seconds": 21.939875653013587,
+            "training_return_mean": -240.38584553635883
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 8000,
+            "seed": 400303,
+            "return": 0.5413880042706296,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ]
+        }
+      },
+      {
+        "algorithm": "dms",
+        "version": "public",
+        "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/public-source",
+        "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/dms-public.json",
+        "config_sha256": "bfc2a4186d30a3822e223aad47b5b6e213f0fbc3cd0648e0317cab6c42180ad4",
+        "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/dms-public",
+        "elapsed_seconds": 36.528635895985644,
+        "metrics": [
+          {
+            "policy_loss": -0.0031918974564177915,
+            "value_loss": 0.8596444621682167,
+            "entropy": 2.756117618083954,
+            "approx_kl": 0.0027178938427823594,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.5415542125701904,
+            "intention_loss": 2.585415244102478,
+            "intention_nll": 2.545362949371338,
+            "intention_kl": 0.40052303671836853,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7895111425510105,
+            "persistence_rmse": 0.7895111425510105,
+            "history_mean_rmse": 0.5671583961378834,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 11.057165685982909,
+            "training_return_mean": -276.99478854363224
+          },
+          {
+            "policy_loss": -0.0015141231764573605,
+            "value_loss": 0.7596799090504647,
+            "entropy": 2.7530318558216096,
+            "approx_kl": 0.00030553412206302255,
+            "peer_gate_fraction": 0.999,
+            "intention_feature_std": 0.534797728061676,
+            "intention_loss": 2.4821274280548096,
+            "intention_nll": 2.459815502166748,
+            "intention_kl": 0.2231190875172615,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.7648652589799738,
+            "persistence_rmse": 0.7684265687320401,
+            "history_mean_rmse": 0.5718549278443456,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 8000,
+            "episodes": 8,
+            "elapsed_seconds": 22.00988636299735,
+            "training_return_mean": -240.38584553635883
+          }
+        ],
+        "evaluation": [
+          {
+            "steps": 8000,
+            "seed": 400303,
+            "return": 0.5413880042706296,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "HalfCheetah",
+          "native_env_id": "HalfCheetah-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "half_cheetah.xml",
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity - 0.1*sum(control**2)",
+            "native_termination": "never"
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ],
+            [
+              0.4,
+              0.1,
+              0.1
+            ]
+          ]
+        }
+      }
+    ],
+    "comparisons": [
+      {
+        "algorithm": "ippo",
+        "checks": {
+          "agents": true,
+          "intentions": true,
+          "optimizers": true,
+          "aux_optimizers": true,
+          "python_rng": true,
+          "numpy_rng": true,
+          "torch_rng": true,
+          "cuda_rng": true,
+          "steps": true,
+          "episodes": true,
+          "common_metrics_exact": true,
+          "episodes_exact": true,
+          "native_contract_exact": true
+        },
+        "added_metrics": [],
+        "removed_metrics": [],
+        "added_config_fields": [
+          "ant_contact_forces",
+          "initial_log_std",
+          "mask_inactive_agents",
+          "policy_history_length",
+          "smac_time_limit_terminal",
+          "update_mode"
+        ]
+      },
+      {
+        "algorithm": "dms",
+        "checks": {
+          "agents": true,
+          "intentions": true,
+          "optimizers": true,
+          "aux_optimizers": true,
+          "python_rng": true,
+          "numpy_rng": true,
+          "torch_rng": true,
+          "cuda_rng": true,
+          "steps": true,
+          "episodes": true,
+          "common_metrics_exact": true,
+          "episodes_exact": true,
+          "native_contract_exact": true
+        },
+        "added_metrics": [],
+        "removed_metrics": [],
+        "added_config_fields": [
+          "ant_contact_forces",
+          "initial_log_std",
+          "mask_inactive_agents",
+          "policy_history_length",
+          "smac_time_limit_terminal",
+          "update_mode"
+        ]
+      }
+    ],
+    "sources_unchanged": true,
+    "elapsed_seconds": 99.42407126101898,
+    "children_peak_rss_bytes": 603516928,
+    "completed_utc": "2026-10-26T17:28:22.283534+00:00"
+  },
+  "scheduler": "21218446|COMPLETED|0:0|00:01:43|milan32",
+  "collected_utc": "2026-10-26T17:47:13.349411+00:00"
 }
