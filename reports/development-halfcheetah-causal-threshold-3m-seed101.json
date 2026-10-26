@@ -236,7 +236,7 @@
         "coordination_threshold",
         "output"
       ],
-      "status": "training_running_or_pending",
+      "status": "running_verified",
       "submission": {
         "command": [
           "sbatch",
@@ -307,6 +307,51 @@
           "exit_code": "0:0",
           "elapsed": "00:00:00",
           "node": "None assigned"
+        }
+      },
+      "startup_verification": {
+        "utc": "2026-10-26T13:56:39.467493+00:00",
+        "checks": {
+          "source_matches": true,
+          "saved_source_matches": true,
+          "config_matches": true,
+          "environment_matches": true,
+          "versions_match": true,
+          "runtime_cuda": true,
+          "job_matches": true,
+          "evaluation_config_sha_matches": true,
+          "evaluation_legacy_deps_sha_matches": true,
+          "finite_logged_numbers": true
+        },
+        "last_metric": {
+          "policy_loss": -0.0036435148445889353,
+          "value_loss": 0.20378115437924862,
+          "entropy": 2.472372031211853,
+          "approx_kl": 0.0034105017722140473,
+          "peer_gate_fraction": 0.564875,
+          "intention_feature_std": 1.7808362245559692,
+          "intention_loss": 1.7377799153327942,
+          "intention_nll": 1.7186407446861267,
+          "intention_kl": 0.19139200635254383,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.5818668703955611,
+          "persistence_rmse": 0.9598237343199579,
+          "history_mean_rmse": 0.6863108924006951,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 284000,
+          "episodes": 284,
+          "elapsed_seconds": 479.92175357299857,
+          "training_return_mean": 229.62178506935015
+        },
+        "runtime": {
+          "host": "gpu47.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21214579",
+          "slurm_partition": "gpu-h100-80g"
         }
       }
     },

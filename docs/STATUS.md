@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 13:50 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-26 14:04 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -31,11 +31,13 @@ wins in the separate block. CPU replay exactly reproduced the original ten
 CUDA games for both continuing-value SMAC controls; it found no device
 discrepancy in that replay. [Replay evidence](../reports/development-smac-evaluation-device-replay.json).
 
-**All-peer coordination:** the separate 3M no-memory DMS run averages **4,453.56**
-over 100 episodes, with zero below 1,000. Its concatenating actor/critic differs
-from soft attention's pooled architecture. The matched causal variant uses the
-same concatenating architecture and has finished training; its separate
-100-episode evaluation is running. Only coordination/output differ. [Coordination ledger](../reports/development-halfcheetah-coordination-3m-seed101.json).
+**All-peer versus causal coordination:** the two 3M no-memory DMS variants use
+the same concatenating actor/critic architecture and differ only by coordination
+mode/output. All-peer averages **4,453.56** with **0/100** episodes below 1,000;
+causal threshold 0.6 averages **3,394.71** with **3/100** below 1,000. Soft
+attention's pooled architecture is separate. The causal selector underperforms
+this architecture-matched control on the reused development seed.
+[Coordination ledger](../reports/development-halfcheetah-coordination-3m-seed101.json).
 
 **Earlier 10M HalfCheetah CPU controls**, training seeds 101/103/107:
 
@@ -60,8 +62,8 @@ are distinct from the newer matched CUDA memory controls above.
 | --- | --- | --- |
 | HalfCheetah history-32 IPPO/DMS | 21213074 / 21213076 | Fresh 10M runs; only budget/output change from 3M. [Ledger](../reports/development-halfcheetah-history32-10m-seed101.json) |
 | HalfCheetah auxiliary LR 1e-4, seeds 103/107 | 21208968 / 21208970 | 10M, same settings as seed 101. [Ledger](../reports/development-halfcheetah-aux-lr-10m-replications.json) |
-| HalfCheetah all-peer/causal | 21212371 / 21212373 completed | 3M; causal evaluation and both mechanism probes registered. [Ledger](../reports/development-halfcheetah-coordination-3m-seed101.json) |
-| HalfCheetah causal thresholds 0.1/0.2 | 21214579 / 21214581 queued | 3M; only threshold/output change from 0.6. Native CUDA smoke passed both variants. [Ledger](../reports/development-halfcheetah-causal-threshold-3m-seed101.json) |
+| HalfCheetah all-peer/causal | 21212371 / 21212373 completed | 3M; both 100-episode evaluations and mechanism probes passed. [Ledger](../reports/development-halfcheetah-coordination-3m-seed101.json) |
+| HalfCheetah causal thresholds 0.1/0.2 | 21214579 running / 21214581 queued | 3M; only threshold/output change from 0.6. Native CUDA smoke passed both variants. [Ledger](../reports/development-halfcheetah-causal-threshold-3m-seed101.json) |
 | SMAC terminal deadline | 21208999 / 21209000 completed | Both 100-game endpoints complete. [Ledger](../reports/development-fixed3m-evaluation-queue.json) |
 | SMAC gamma 0.95 | 21210585 / 21210586 | 3M; native rewards and continuing value unchanged. [Ledger](../reports/development-smac-gamma095-seed101.json) |
 | SMAC 3s5z gamma 0.95, full budget | 21214432 / 21214434 queued | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
@@ -109,11 +111,20 @@ changed intention features rose from **0.00080** to **0.00474**. These small,
 variable local changes do not justify a full-training change; the 10M recipe
 remains as registered. No benchmark return was measured by this probe.
 
-The all-peer/causal [mechanism checks](../reports/development-halfcheetah-coordination-mechanism-3m.json)
-use 4,000 fixed-policy transitions each. The completed all-peer model has forecast
-RMSE **0.2554**, versus **1.1969** for persistence and **0.7761** for the visible
-history mean. Causal results follow its endpoint evaluation. Sensitivity to
-removing or shuffling a peer is distinct from a measured coordination benefit.
+The completed all-peer/causal [mechanism checks](../reports/development-halfcheetah-coordination-mechanism-3m.json)
+use 4,000 fixed-policy stochastic transitions each. All-peer forecast RMSE is
+**0.2554**, versus **1.1969** for persistence and **0.7761** for the visible
+history mean. The causal model's respective values are **0.1890**, **1.2673**
+and **0.8124**. Forecast error does not track the return ranking here. On these
+stochastic probe trajectories the causal selector retains the visible peer for
+99.9% and 94.2% of the two observers' eligible steps; these are not gate counts
+from the deterministic 100-episode evaluation.
+
+A separate [frozen-policy threshold intervention](../reports/development-halfcheetah-causal-gate-intervention-3m.json),
+job **21214676**, first replays ten original evaluation episodes, then changes
+only execution threshold 0.6 to 0.1 for 100 paired episode seeds. It cannot update
+weights or normalizers. Its outcome will be labeled as a test-time intervention
+on a policy trained at 0.6, distinct from the fresh threshold-0.1 learning run.
 
 Earlier SMAC reward, gradient-clipping and Walker feature-drift diagnostics,
 including negative findings and exact default-update regression checks, remain
