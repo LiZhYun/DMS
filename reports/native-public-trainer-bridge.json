@@ -1,0 +1,125 @@
+{
+  "purpose": "Check that current readable public training code preserves the older winning HalfCheetah CPU default algorithm, using exact native two-rollout comparisons before a future final freeze.",
+  "created_utc": "2026-10-26T17:24:54.350962+00:00",
+  "status": "submitted",
+  "artifact": "runs/native-public-trainer-bridge-01",
+  "reference_run": "runs/dev-legacy-halfcheetah-2x3-dms-latent-decoder-beta-01-10m-101",
+  "reference_train_source_sha256": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+  "public_train_source_sha256": "dd61b87be99eb97c32ede568a05adc27a125684b566297fed3fca569b74e823d",
+  "source_inventory_sha256": {
+    "old": {
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+      "dms/policy.py": "97eb932b840f8914565b26decf37249186f732eb9e83bcb19095387049d0ac3e",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/legacy_graph.py": "61b0607aa94362e6b3ec9a5e681ddcb7aa397d062e9995d2dca6d55fe26d309a",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/envs.py": "94efa659b33a6dbfa4b5bc1c3733be671556d63bd035329e2e05687b176a31ba",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/legacy_env.py": "be6894be9f857add15c02c9b043473a382de2b960760a514fe0c22bd634183cf",
+      "dms/train.py": "067aaaf7e52cb9dfff24962422276e8be685530f8c3c9c60b7822c2ad86ebd7e",
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+    },
+    "public": {
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/train.py": "dd61b87be99eb97c32ede568a05adc27a125684b566297fed3fca569b74e823d",
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+    }
+  },
+  "runs": [
+    {
+      "algorithm": "ippo",
+      "version": "old",
+      "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/old-source",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/ippo-old.json",
+      "config_sha256": "f4c8e62d0e8db182bbd0c35880308007407d31c1894e31ea5722c1b3f1230932",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/ippo-old"
+    },
+    {
+      "algorithm": "ippo",
+      "version": "public",
+      "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/public-source",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/ippo-public.json",
+      "config_sha256": "2ba59c7c5b351a31224526a4d953160e5eeb097e226a0b763bd2193123ec5bdd",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/ippo-public"
+    },
+    {
+      "algorithm": "dms",
+      "version": "old",
+      "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/old-source",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/dms-old.json",
+      "config_sha256": "213e9105e7e2b33a6cc79d2a7fd9914b67b030f734798e8331e6261ad7be5e24",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/dms-old"
+    },
+    {
+      "algorithm": "dms",
+      "version": "public",
+      "source": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/public-source",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/configs/dms-public.json",
+      "config_sha256": "bfc2a4186d30a3822e223aad47b5b6e213f0fbc3cd0648e0317cab6c42180ad4",
+      "output": "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/dms-public"
+    }
+  ],
+  "held_out_training_seeds_used": [],
+  "protocol": {
+    "algorithms": [
+      "ippo",
+      "dms"
+    ],
+    "training_seed": 101,
+    "steps_per_run": 8000,
+    "full_rollouts_per_run": 2,
+    "warmup_episodes": 0,
+    "reason_for_zero_warmup": "Exercise active intention features and auxiliary updates in both short DMS executions.",
+    "comparison": "Exact actor/intention parameters, buffers, optimizer states and RNG; common numeric training metrics and episode outcomes. Added metadata/default configuration fields are documented separately.",
+    "scope": "A native regression and throughput check, not full-trajectory equivalence or paper performance evidence."
+  },
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "scripts_sha256": {
+    "runner.py": "653899c14f0cdefd538d06f11a504959d6459574b0621fdcf86b4fd7b521a17d",
+    "run.sbatch": "22e5ef4bf4a30df30c403975f1bf7bf2306311c24c50c21f85d8890a8cb2466f"
+  },
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-native-public-bridge",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:20:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/native-public-trainer-bridge-01/run.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21218446\n",
+    "stderr": "",
+    "submitted_utc": "2026-10-26T17:26:21.833217+00:00"
+  },
+  "job_id": "21218446"
+}

@@ -3767,5 +3767,47 @@
     "collector_sha256": "00f86b2d64052bb4542026ab1985b28df9d1069a81d93d559012a888ea221957",
     "submitted_utc": "2026-10-26T11:12:16.771516+00:00",
     "job_id": "21212124"
+  },
+  "baseline_endpoint_diagnosis": {
+    "utc": "2026-10-26T16:50:16.649208+00:00",
+    "method": "Derived from the existing100 fixed-endpoint episode returns and lengths, using the native+1 alive bonus on every step, including a terminal step. No additional rollout or policy selection.",
+    "rows": [
+      {
+        "variant": "ippo-native",
+        "training_job_id": "21212116",
+        "episodes": 100,
+        "episodes_reaching1000_steps": 99,
+        "episodes_ending_before1000": 1,
+        "mean_length": 991.77,
+        "mean_return_minus_unit_alive_bonus": -27.006978718059205,
+        "formula": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        }
+      },
+      {
+        "variant": "ippo-computed",
+        "training_job_id": "21212120",
+        "episodes": 100,
+        "episodes_reaching1000_steps": 87,
+        "episodes_ending_before1000": 13,
+        "mean_length": 936.94,
+        "mean_return_minus_unit_alive_bonus": -330.2012391090668,
+        "formula": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        }
+      }
+    ],
+    "interpretation": "Native-contact Ant reaches1000 in99/100 episodes, but velocity reward minus control/contact costs averages below zero. Early endings are not its main observed limitation. Computed contacts remain a separate adaptation.",
+    "limit": "Residual return does not separately identify velocity, control cost or contact cost, and does not identify a cause of the learning failure."
   }
 }

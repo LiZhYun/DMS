@@ -1584,5 +1584,34 @@
     "stderr": "",
     "script_sha256": "59135d43a0063807ac00838e48bd0146708e6b844fb98b4734e88f646cebefde",
     "job_id": "21211933"
+  },
+  "baseline_endpoint_diagnosis": {
+    "utc": "2026-10-26T16:50:16.252243+00:00",
+    "method": "Derived from the existing100 fixed-endpoint episode returns and lengths, using the native+1 alive bonus on every step, including a terminal step. No additional rollout or policy selection.",
+    "rows": [
+      {
+        "variant": "no-intention",
+        "training_job_id": "21210999",
+        "episodes": 100,
+        "episodes_reaching1000_steps": 57,
+        "episodes_ending_before1000": 43,
+        "mean_length": 715.97,
+        "mean_return_minus_unit_alive_bonus": 164.1353054216227,
+        "formula": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        }
+      }
+    ],
+    "interpretation": "Walker ends before1000 in43/100 episodes; net velocity-minus-control reward is positive on average. Survival is an observed limitation.",
+    "limit": "Residual return does not separately identify velocity, control cost or contact cost, and does not identify a cause of the learning failure."
   }
 }

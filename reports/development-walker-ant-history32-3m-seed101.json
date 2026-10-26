@@ -252,7 +252,7 @@
       ],
       "walltime_hours": 9,
       "evaluation_walltime_hours": 3,
-      "status": "submitted",
+      "status": "running_verified",
       "environment": {
         "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
         "historical_binary_parity_verified": false,
@@ -432,6 +432,59 @@
         "spec_sha256": "9f6f2c9d3ca9e339aa18a13c82c52ef8079a211bf798d9bfaa371a1964d1c794",
         "launcher_sha256": "9f1f6b27cb59c5b710419b07bb5d73537bf8d4a1207d6ca7883d7a5b11b28f30",
         "status": "waiting_for_training"
+      },
+      "startup_verification": {
+        "utc": "2026-10-26T16:42:51.865982+00:00",
+        "checks": {
+          "config_matches": true,
+          "source_matches": true,
+          "saved_source_matches": true,
+          "native_environment_matches_smoke": true,
+          "used_versions_match": true,
+          "cuda_h100": true,
+          "job_matches": true,
+          "evaluation_config_sha_matches": true,
+          "evaluation_dependencies_match": true,
+          "preflight_passed": true,
+          "finite_metrics": true
+        },
+        "runtime": {
+          "host": "gpu46.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21217029",
+          "slurm_partition": "gpu-h100-80g"
+        },
+        "gpu": {
+          "name": "NVIDIA H100 80GB HBM3",
+          "capability": [
+            9,
+            0
+          ],
+          "compiled_architectures": [
+            "sm_50",
+            "sm_60",
+            "sm_70",
+            "sm_75",
+            "sm_80",
+            "sm_86",
+            "sm_90"
+          ],
+          "cuda_version": "12.6",
+          "free_bytes": 84262387712,
+          "total_bytes": 85017493504,
+          "kernel_preflight_passed": true
+        },
+        "last_metric": {
+          "policy_loss": -0.0021507559421782693,
+          "value_loss": 0.13236995674669744,
+          "entropy": 1.7806682805220286,
+          "approx_kl": 0.0030744160942840124,
+          "peer_gate_fraction": 0.0,
+          "steps": 120000,
+          "episodes": 1188,
+          "elapsed_seconds": 381.1215240370948,
+          "training_return_mean": 279.8674814930884
+        }
       }
     },
     {
@@ -2777,5 +2830,17 @@
     "stderr": "",
     "submitted_utc": "2026-10-26T16:21:22.677476+00:00",
     "job_id": "21217037"
+  },
+  "evaluation_serialization_validation": {
+    "performed_on": "2026-10-26",
+    "method": "Import each frozen Config class, reconstruct full dataclass config, validate all fields, and compare its exact serialized bytes with the registered endpoint SHA-256.",
+    "variants_passed": [
+      "walker-ippo",
+      "walker-dms",
+      "ant-ippo",
+      "ant-dms"
+    ],
+    "environment_matches_native_smoke": true,
+    "result": "all four passed"
   }
 }

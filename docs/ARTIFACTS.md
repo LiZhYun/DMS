@@ -1,6 +1,26 @@
 # Local development artifacts
 
-## Full-budget HalfCheetah development
+## Latest nine-run HalfCheetah bundle
+
+The [nine-run 10M bundle](../reports/development-halfcheetah-10m-artifacts-v2.json)
+is available locally at
+`dist/dms-halfcheetah-10m-development-20261026-v2.zip`. It includes IPPO and
+DMS with auxiliary LR 1e-3/1e-4, each at training seeds 101, 103 and 107.
+Both poor lower-LR replications are retained. The earlier seven-run archive
+below is also preserved.
+
+The verified archive contains 189 payload files and is 10,084,330 bytes. SHA-256:
+
+```text
+5da4991b824786d70ab3e7b2e16caf550d557c2d133c505bda97d2129aab9e58
+```
+
+The manifest records every payload, checkpoint and saved source. Fixed100-episode
+endpoint records are in the checked-in ledgers; archive `evaluation.jsonl` files
+hold the training diagnostics. The bundle has no public download URL and is
+three-seed development evidence, not a completed reproduction.
+
+## Earlier seven-run HalfCheetah bundle
 
 The [seven-run 10M bundle](../reports/development-halfcheetah-10m-artifacts.json)
 is available locally as
@@ -22,7 +42,7 @@ and [IPPO seed-101 evaluation](../reports/development-halfcheetah-ippo-10m-evalu
 [Current status](STATUS.md) reports the mixed three-seed results and their limits.
 The archive ledger records the exact export command and manifest/exporter hashes.
 The verifier below also accepts this ZIP by changing its `path` value.
-**Neither bundle has a public download URL yet.** Both are development evidence,
+**These bundles have no public download URLs yet.** They are development evidence,
 not completed paper reproduction.
 
 ## Matched local-memory controls
