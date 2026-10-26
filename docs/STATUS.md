@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 18:07 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-26 18:43 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -18,9 +18,11 @@ are not independent training replicates.
 | --- | ---: | ---: | --- |
 | HalfCheetah 2x3, CUDA, 3M, no policy memory, soft attention | 4,075.60 | 4,434.98 | +359.38; episodes below 1,000: 1 / 0 |
 | HalfCheetah 2x3, CUDA, 3M, history-32 GRU, soft attention | 5,179.43 | 4,332.78 | −846.65; episodes below 1,000: 1 / 0 |
+| HalfCheetah 2x3, 10M, history 32, H100 IPPO | 5,844.91 | — | One episode below 1,000; the separate A100 IPPO/DMS pair is still running |
 | SMAC 3s5z, 3M, gamma 0.99, continuing value | 23/100 wins | 0/100 wins | DMS has higher shaped return but fewer wins |
 | SMAC 3s5z, 3M, gamma 0.99, terminal deadline | 13/100 wins | 8/100 wins | DMS still below its matched baseline |
 | SMAC 3s5z, 3M, gamma 0.95, continuing value | 81/100 wins | 56/100 wins | Both improve over gamma 0.99; DMS remains below the matched baseline |
+| SMAC 8m_vs_9m, 3M, gamma 0.95 | 66/100 wins | Training | Baseline below the paper's full-budget target of 82.6%; this is a shorter development run |
 | Walker2d 3x2, 10M | 880.11 | Training | Baseline below the paper target of 1,100 |
 | Ant 4x2, 10M, native contacts | 964.76 | Training | Baseline below the target of 1,700 |
 | Ant 4x2, 10M, computed contacts | 606.74 | Training | Separate environment adaptation; 4/100 negative-return episodes |
@@ -58,6 +60,9 @@ differ before threshold activation, so A100 and H100 scores do not isolate a
 threshold effect. [A100 coordination ledger](../reports/development-halfcheetah-coordination-3m-seed101.json),
 [H100 controls](../reports/development-halfcheetah-coordination-h100-3m-seed101.json),
 [threshold trials](../reports/development-halfcheetah-causal-threshold-3m-seed101.json).
+[All six episode distributions](../reports/halfcheetah-coordination-development-3m.png)
+and a [verified six-run bundle](../reports/development-halfcheetah-coordination-artifacts.json)
+preserve both hardware families and every threshold result.
 
 The completed locomotion baselines fail in different ways. Walker reaches the
 1,000-step limit in **57/100** episodes; Ant with native contacts does so in
@@ -95,12 +100,13 @@ These CPU experiments remain separate from the CUDA controls above.
 
 | Comparison | Training jobs | Registered endpoint and evidence |
 | --- | --- | --- |
-| HalfCheetah history-32 IPPO/DMS | 21213074 / 21213076 | Fresh 10M runs; only budget/output change from 3M. [Ledger](../reports/development-halfcheetah-history32-10m-seed101.json) |
-| Joint intention training: HalfCheetah history 32 / SMAC gamma 0.95 | 21218981 / 21218984 queued | 3M A100, RL LR 3e-4; native gradient and saved-source checks passed. [Ledger](../reports/development-joint-intention-3m-seed101.json) |
+| HalfCheetah history-32 IPPO/DMS | 21213074 and endpoint completed / 21213076 training | Fresh 10M runs; only budget/output change from 3M. [Ledger](../reports/development-halfcheetah-history32-10m-seed101.json) |
+| Joint intention training: HalfCheetah history 32 / SMAC gamma 0.95 | 21218981 / 21218984 running | 3M A100, RL LR 3e-4; native gradient and saved-source checks passed. [Ledger](../reports/development-joint-intention-3m-seed101.json) |
 | HalfCheetah history-32 A100 IPPO control | 21216270 running | Fresh 10M run matching the A100 DMS family; prior 3M A100 native run validated. [Ledger](../reports/development-halfcheetah-history32-a100-control-10m-seed101.json) |
-| HalfCheetah 3x2 / 6x1, matched history-32 IPPO/DMS | 21215078 / 21215080; 21215082 / 21215084 queued | 3M partition coverage; four native CUDA smokes passed. Two chains follow the corresponding 2x3 10M runs. [Ledger](../reports/development-halfcheetah-partition-coverage-3m-seed101.json) |
+| HalfCheetah H100 all-peer / causal 0.2, seed 103 | 21219343 / 21219345 queued in series | 3M independent development-seed replication; same frozen source/environment, 100 fixed endpoint episodes each. [Ledger](../reports/development-halfcheetah-causal-replication-3m-seed103.json) |
+| HalfCheetah 3x2 / 6x1, matched history-32 IPPO/DMS | 21215078 running; 21215080 / 21215082 / 21215084 queued | 3M partition coverage; four native CUDA smokes passed. Two chains follow the corresponding 2x3 10M runs. [Ledger](../reports/development-halfcheetah-partition-coverage-3m-seed101.json) |
 | SMAC 3s5z gamma 0.95, full budget | 21214432 / 21214434 running | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
-| SMAC 8m_vs_9m IPPO/DMS | 21213720 completed, endpoint running / 21213722 training | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
+| SMAC 8m_vs_9m IPPO/DMS | 21213720 and endpoint completed / 21213722 training | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
 | SMAC MMM2 IPPO/DMS | 21213724 running / 21213726 queued | 3M; follows the corresponding 8m_vs_9m run in each chain. Same ledger |
 | Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Walker 21217029 / 21217031 running; Ant 21217033 / 21217035 queued | All four native CUDA smokes passed; 3M H100 pairs follow coordination controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
 | Walker2d 3x2 IPPO/DMS | 21210999 completed / 21211001 running | 10M unchanged independent-update recipes. [Ledger](../reports/development-walker-10m-seed101.json) |
@@ -138,9 +144,12 @@ that suite uses the modern environment. A four-run native regression at
 8,000 steps per run exactly preserved IPPO/DMS states, optimizer moments,
 RNG, metrics and evaluation episodes when disabled. All four enabled CPU/CUDA native smokes passed, followed by saved-source
 evaluation of all four checkpoints with zero optimizer steps. Two fresh 3M
-development trials are queued on A100: HalfCheetah history 32 (**21218981**)
+development trials are running on A100: HalfCheetah history 32 (**21218981**)
 and SMAC gamma 0.95 (**21218984**), each with a fixed 100-episode endpoint.
 Their baseline configurations differ only in `intention_rl_lr=3e-4` and output.
+All logged inactive-warmup metrics match their original A100 controls exactly:
+25 updates through 100k HalfCheetah steps and one update through 3,200 SMAC
+steps. Both have now completed active-intention updates with finite metrics.
 [Trial declaration](../reports/development-joint-intention-3m-seed101.json).
 [Unit evidence](../reports/joint-intention-unit-validation.json),
 [default regression](../reports/joint-intention-default-regression.json),
@@ -254,7 +263,8 @@ passed 12 tests, four exact CPU/CUDA before/after state comparisons, and the
 documented 4,000-step CUDA reader command with saved-source evaluation.
 
 [Verified local artifact bundles](ARTIFACTS.md) preserve the nine completed 10M
-HalfCheetah runs, all four matched 3M memory controls, all six 3M SMAC controls, and nine earlier pilots,
+HalfCheetah runs, all four matched 3M memory controls, all six 3M coordination controls, all six
+3M SMAC controls, and nine earlier pilots,
 including negative results. They have no public download URLs. Full raw
 100-episode endpoint results are also retained in the checked-in ledgers.
 

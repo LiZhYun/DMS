@@ -57,6 +57,37 @@ command. Both positive and negative matched comparisons are included. Archive
 This bundle has no public download URL and is development evidence from one
 reused training seed.
 
+## Coordination thresholds and hardware controls
+
+The six completed 3M HalfCheetah coordination runs are packaged in
+`dist/dms-halfcheetah-coordination-development-20261026-v1.zip`: A100 all-peer
+and causal 0.6, plus H100 all-peer and causal 0.6/0.2/0.1. Every endpoint is
+included. The [artifact ledger](../reports/development-halfcheetah-coordination-artifacts.json)
+records the verified 156-payload archive, all checkpoints, saved sources and
+rebuild command. It is 7,143,982 bytes; SHA-256:
+
+```text
+afc87b3212968ebb1d576635097bf48fc038500136677c3050e1eb6ce72d7029
+```
+
+The [episode-distribution figure](../reports/halfcheetah-coordination-development-3m.png)
+keeps hardware families separate and shows all 100 fixed-checkpoint evaluation
+episodes per policy. Its [data and hashes](../reports/halfcheetah-coordination-development-3m.json)
+and [SVG](../reports/halfcheetah-coordination-development-3m.svg) are also retained.
+Archive `evaluation.jsonl` files contain training diagnostics; the checked-in
+source ledgers hold the separate 100-episode endpoints. This is one-training-seed
+development evidence, with no public download URL.
+
+Rebuild the coordination figure from the checked-in ledgers alone:
+
+```bash
+.venv/bin/python -m pip install -e '.[plots]'
+.venv/bin/python scripts/plot_coordination_endpoints.py --output /tmp/dms-coordination.png
+```
+
+The plot extra pins the tested Matplotlib 3.10.8. Choose an unused output path;
+the script also writes an SVG and the selected episodes with source hashes.
+
 ## SMAC objective controls
 
 All six completed 3M SMAC 3s5z controls (IPPO/DMS × gamma 0.99,

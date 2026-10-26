@@ -1,0 +1,587 @@
+{
+  "purpose": "Second development-seed check of H100 all-peer versus causal threshold0.2; no additional threshold search.",
+  "created_utc": "2026-10-26T18:22:55.661373+00:00",
+  "status": "submitted_serial_replication",
+  "artifact": "runs/development-halfcheetah-causal-replication-3m-seed103",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/source",
+  "source_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "used_versions": {
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14"
+  },
+  "training_seed": 103,
+  "held_out_training_seeds_used": [],
+  "budget": 3000000,
+  "runs": [
+    {
+      "variant": "all",
+      "algorithm": "dms",
+      "seed": 103,
+      "config": "configs/development/legacy-halfcheetah-2x3-all-h100-3m-seed103.json",
+      "frozen_config": "runs/development-halfcheetah-causal-replication-3m-seed103/configs/all.json",
+      "config_sha256": "1298d6d1db57d19ce0a7cfa21e9643c2653b8fcc9e2d258788a5d4707b4d21e6",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 103,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "all",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-all-h100-3m-103",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-halfcheetah-2x3-all-h100-3m-103",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "source_101_run": "runs/dev-legacy-halfcheetah-2x3-dms-all-history0-3m-h100-101",
+      "changes_from_seed101": {
+        "seed": [
+          101,
+          103
+        ],
+        "output": [
+          "runs/dev-legacy-halfcheetah-2x3-dms-all-history0-3m-h100-101",
+          "runs/dev-legacy-halfcheetah-2x3-all-h100-3m-103"
+        ]
+      },
+      "required_gpu_family": "H100",
+      "walltime_hours": 3,
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-all-103",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=3:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/train.sbatch",
+          "all"
+        ],
+        "returncode": 0,
+        "stdout": "21219343\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:24:18.648407+00:00",
+        "job_id": "21219343"
+      },
+      "job_id": "21219343",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-all-103-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=01:00:00",
+          "--dependency=afterok:21219343",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-all/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-all/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-all/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21219344\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:24:18.679518+00:00",
+        "job_id": "21219344",
+        "spec": "runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-all/spec.json",
+        "spec_sha256": "a1662eee8d1c19c82ca26377729c4cd79ae324e6f7bfd4756515e69f49b8cac2",
+        "launcher_sha256": "df42e822c405a354b64230fe2849762ef8ed621cc617e271be199addb405c9ea",
+        "status": "waiting_for_training"
+      }
+    },
+    {
+      "variant": "eta02",
+      "algorithm": "dms",
+      "seed": 103,
+      "config": "configs/development/legacy-halfcheetah-2x3-eta02-h100-3m-seed103.json",
+      "frozen_config": "runs/development-halfcheetah-causal-replication-3m-seed103/configs/eta02.json",
+      "config_sha256": "dc08ae05ffb2f7ef8151d89230b6256abe63dae837bc960cf79d823ef8aa9d4a",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 103,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "causal",
+        "coordination_threshold": 0.2,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-eta02-h100-3m-103",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-halfcheetah-2x3-eta02-h100-3m-103",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "source_101_run": "runs/dev-legacy-halfcheetah-2x3-dms-causal-eta02-history0-3m-cuda-101",
+      "changes_from_seed101": {
+        "seed": [
+          101,
+          103
+        ],
+        "output": [
+          "runs/dev-legacy-halfcheetah-2x3-dms-causal-eta02-history0-3m-cuda-101",
+          "runs/dev-legacy-halfcheetah-2x3-eta02-h100-3m-103"
+        ]
+      },
+      "required_gpu_family": "H100",
+      "walltime_hours": 4,
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-eta02-103",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=4:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/%x_%j.err",
+          "--dependency=afterok:21219343",
+          "--kill-on-invalid-dep=yes",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/train.sbatch",
+          "eta02"
+        ],
+        "returncode": 0,
+        "stdout": "21219345\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:24:18.714827+00:00",
+        "job_id": "21219345"
+      },
+      "job_id": "21219345",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-h100-eta02-103-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=01:00:00",
+          "--dependency=afterok:21219345",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-eta02/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-eta02/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-eta02/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21219346\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T18:24:18.773399+00:00",
+        "job_id": "21219346",
+        "spec": "runs/development-halfcheetah-causal-replication-3m-seed103/evaluation-eta02/spec.json",
+        "spec_sha256": "9c90c23de9d0ebf6fd5316a625a7eba83a4f980676cc1446ea79a52ba618011f",
+        "launcher_sha256": "df42e822c405a354b64230fe2849762ef8ed621cc617e271be199addb405c9ea",
+        "status": "waiting_for_training"
+      }
+    }
+  ],
+  "native_smoke": [
+    {
+      "path": "runs/development-halfcheetah-coordination-h100-3m-seed101/smoke-validation.json",
+      "sha256": "7d14623589d465cd1a0416cc1cc96d3ad4bb66184c783f85d8cb5fcc8b1289f3",
+      "job_id": "21215979"
+    },
+    {
+      "path": "runs/development-halfcheetah-causal-threshold-3m-seed101/smoke-validation.json",
+      "sha256": "68f7192efc8bd9f45619dd565b5129a09244ee8f6f64dc4990bafb26c2e2475d",
+      "job_id": "21214550"
+    }
+  ],
+  "rationale": "Threshold0.2 has the highest mean on seed101 but only a small one-seed advantage. Repeat the same frozen 3M recipes at development seed103 before any promotion. Source, native environment and GPU family stay fixed.",
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "parameter_updates": 0,
+    "checkpoint": "fixed final3M",
+    "device": "cpu"
+  },
+  "scheduling": "Serial training chain, at most one additional GPU training job; endpoint evaluations may overlap training.",
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "scripts_sha256": {
+    "collect.sbatch": "58e588e8983a860718bbee0f231db73e9c04f4ce94bbdfde4d731de4ff7eb41a",
+    "launch_training.py": "9a222ffd8e2aaf30ea53928d0bc73525cb3fd63e6d5c6682c54d804ad002d3d4",
+    "refresh_status.py": "e98a112954f668e4b11c2bb9e4d07b3969d7a6f8551c3a74653ad8580a68785c",
+    "submit.py": "559af18987ba9aadd93e73fbdd740840b99b144dc4859a55b2ed8ae44dfc3a53",
+    "train.sbatch": "edc15e5f8ea457164048f886e2a4a627f9dfe50920415af0403ad96d061a18b8",
+    "evaluation/runner.py": "58303efe6cfdb6551b2ae755e4a36250da2d4046788fb3e6f041135bd4d5bc79",
+    "evaluation/evaluate.sbatch": "df42e822c405a354b64230fe2849762ef8ed621cc617e271be199addb405c9ea"
+  },
+  "completion_collector": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-h100-103-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--dependency=afterany:21219343:21219344:21219345:21219346",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-replication-3m-seed103/collect.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21219347\n",
+    "stderr": "",
+    "submitted_utc": "2026-10-26T18:24:18.796669+00:00",
+    "job_id": "21219347"
+  }
+}

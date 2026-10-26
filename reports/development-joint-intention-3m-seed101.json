@@ -265,7 +265,7 @@
       "evaluation_spec_template": "runs/development-halfcheetah-history32-a100-control-10m-seed101/evaluation-ippo/spec.json",
       "evaluation_launcher": "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
       "evaluation_launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e",
-      "status": "submitted",
+      "status": "training_running",
       "submission": {
         "command": [
           "sbatch",
@@ -314,6 +314,37 @@
         "spec_sha256": "72d729cbc270156edcfc9e59a2ef2ee6dd94f6b5e3f1de6472fa9587cfdeb77c",
         "status": "waiting_for_training",
         "launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e"
+      },
+      "startup_verification": {
+        "checks": {
+          "job": true,
+          "source": true,
+          "environment": true,
+          "config": true,
+          "evaluation_config": true,
+          "versions": true,
+          "gpu": true
+        },
+        "utc": "2026-10-26T18:19:11.151227+00:00",
+        "preflight_sha256": "eede6fe5c6183869a3279f22db94ff849e88551208594f6db85c3da9c55c4ec3"
+      },
+      "inactive_warmup_prefix_audit": {
+        "utc": "2026-10-26T18:19:11.178860+00:00",
+        "rows": 25,
+        "through_steps": 100000,
+        "all_logged_metrics_exact": true,
+        "first_difference": null,
+        "excluded": [
+          "elapsed_seconds"
+        ],
+        "scope": "Logged metrics before peer activation only, not optimizer-state equivalence."
+      },
+      "first_active_update": {
+        "steps": 104000,
+        "peer_gate_fraction": 0.999,
+        "intention_feature_std": 1.331620693206787,
+        "approx_kl": 0.003856574290024595,
+        "elapsed_seconds": 308.039857939817
       }
     },
     {
@@ -491,7 +522,7 @@
       "evaluation_spec_template": "runs/development-smac-gamma095-10m-seed101/evaluation-dms/spec.json",
       "evaluation_launcher": "/scratch/work/liz23/reproduce/dms/runs/development-joint-intention-3m-seed101/evaluation-v2/evaluate.sbatch",
       "evaluation_launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e",
-      "status": "submitted",
+      "status": "training_running",
       "submission": {
         "command": [
           "sbatch",
@@ -540,6 +571,37 @@
         "spec_sha256": "b2c659576d8390b97dc237c655c81dd3633f22cec7bf0b6da37ab047193072ce",
         "status": "waiting_for_training",
         "launcher_sha256": "0f681e1164280f8a7bbe3bdeff43b5cb48a499641642107884319988cbbba18e"
+      },
+      "startup_verification": {
+        "checks": {
+          "job": true,
+          "source": true,
+          "environment": true,
+          "config": true,
+          "evaluation_config": true,
+          "versions": true,
+          "gpu": true
+        },
+        "utc": "2026-10-26T18:19:11.182642+00:00",
+        "preflight_sha256": "0dbd233d851f6f855a430f7f0d25d991fe581abbd6c73097665700678970c3b3"
+      },
+      "inactive_warmup_prefix_audit": {
+        "utc": "2026-10-26T18:19:11.298652+00:00",
+        "rows": 1,
+        "through_steps": 3200,
+        "all_logged_metrics_exact": true,
+        "first_difference": null,
+        "excluded": [
+          "elapsed_seconds"
+        ],
+        "scope": "Logged metrics before peer activation only, not optimizer-state equivalence."
+      },
+      "first_active_update": {
+        "steps": 6400,
+        "peer_gate_fraction": 0.11633928571428571,
+        "intention_feature_std": 0.21481159329414368,
+        "approx_kl": 6.486144693068976e-06,
+        "elapsed_seconds": 38.522582795936614
       }
     }
   ],
