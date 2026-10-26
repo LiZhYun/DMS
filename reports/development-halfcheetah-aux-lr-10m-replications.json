@@ -1,7 +1,7 @@
 {
   "purpose": "Replicate the lower auxiliary learning rate at the fixed10M endpoint on existing development seeds103/107",
   "created_utc": "2026-10-26T08:35:19.067565+00:00",
-  "status": "running_startups_verified",
+  "status": "waiting_running_or_failed",
   "selection_evidence": "Seed101100-episode mean4857.72 and2/100 returns below1000, versus higher-rate4897.10 and7/100. Lower tails motivated replication; seed101 selected the rate and is not confirmation.",
   "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-10m-replications-01/source",
   "source_sha256": {
@@ -129,7 +129,14 @@
         "episodes": 100,
         "seed_start": 400101,
         "seed_end": 400200,
-        "optimizer_updates": 0
+        "optimizer_updates": 0,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
       },
       "startup_verification": {
         "checked_utc": "2026-10-26T08:41:45.106011+00:00",
@@ -176,7 +183,21 @@
         "source_files": 16,
         "dependent_evaluation_config_hash_verified": true
       },
-      "status": "running_verified"
+      "status": "training_running_or_pending",
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:42:55",
+          "node": "milan32"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
     },
     {
       "algorithm": "dms",
@@ -275,7 +296,14 @@
         "episodes": 100,
         "seed_start": 400101,
         "seed_end": 400200,
-        "optimizer_updates": 0
+        "optimizer_updates": 0,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
       },
       "startup_verification": {
         "checked_utc": "2026-10-26T08:41:45.106011+00:00",
@@ -322,12 +350,46 @@
         "source_files": 16,
         "dependent_evaluation_config_hash_verified": true
       },
-      "status": "running_verified"
+      "status": "training_running_or_pending",
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:42:55",
+          "node": "milan32"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
     }
   ],
   "scripts_sha256": {
     "run_guard.py": "d4b0cb008356ffc9a1a149e23d653988eba41c0ebc926d8cbb2d9d153594a606",
     "train.sbatch": "562b8f320bb0780c82900f83fd2b9f07b63e31696d63e54d5835f2e1c31c57f6",
     "inputs.json": "828486fe8656b1fb65e1f31cb8445bd40d6c60145a7dfa93b84083dc28a22d4c"
+  },
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-26T09:18:23.451399+00:00",
+  "completion_collector": {
+    "job_id": "21210303",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-aux1e4-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=512M",
+      "--time=00:02:00",
+      "--dependency=afterany:21208968:21208969:21208970:21208971",
+      "--output=logs/%x_%j.out",
+      "--error=logs/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-aux-lr-10m-replications-01/refresh_status.sbatch"
+    ],
+    "script_sha256": "12ef563d5c261f8ef365deb93def1b5160ac488a37c55db00b768e78c6820cd6",
+    "behavior": "read scheduler and saved immutable-evaluation checks; collect success or preserve failure; never resubmit or train"
   }
 }

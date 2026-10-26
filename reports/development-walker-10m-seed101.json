@@ -1,0 +1,527 @@
+{
+  "purpose": "Assess unchanged Walker3x2 independent recipes at full10M development budget after1M underperformance",
+  "created_utc": "2026-10-26T09:43:48.366929+00:00",
+  "status": "both_running_startups_verified",
+  "training_seed": 101,
+  "held_out_training_seeds_used": false,
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "artifact": "runs/development-walker-10m-seed101",
+  "environment": {
+    "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+    "historical_binary_parity_verified": false,
+    "scenario": "Walker2d",
+    "native_env_id": "Walker2d-v2",
+    "agent_conf": "3x2",
+    "agent_obsk": 1,
+    "k_categories": [
+      [
+        "qpos",
+        "qvel"
+      ],
+      [
+        "qpos"
+      ]
+    ],
+    "global_categories": [],
+    "max_episode_steps": 1000,
+    "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+    "packages": {
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14",
+      "numpy": "1.26.4"
+    },
+    "mujoco_engine_version": 210,
+    "xml_asset": "walker2d.xml",
+    "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+    "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+    "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+    "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "action_routing": "graph_node_actuator_indices",
+    "control_processing": "clip_native_bounds_before_simulation_and_reward",
+    "action_ids": [
+      [
+        2,
+        1
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "action_dims": [
+      2,
+      2,
+      2
+    ],
+    "observation_dims": [
+      5,
+      7,
+      6
+    ],
+    "action_sensor": "previous_executed_control_on_observed_joints",
+    "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+    "reward": {
+      "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+      "alive_bonus_on_terminal": true,
+      "healthy_height_open_interval": [
+        0.8,
+        2.0
+      ],
+      "healthy_angle_open_interval": [
+        -1.0,
+        1.0
+      ]
+    },
+    "frame_skip": 4,
+    "physics_timestep": 0.002,
+    "native_geom_friction": [
+      [
+        0.7,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        1.9,
+        0.1,
+        0.1
+      ]
+    ]
+  },
+  "used_versions": {
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14"
+  },
+  "runs": [
+    {
+      "variant": "no-intention",
+      "algorithm": "ippo",
+      "seed": 101,
+      "config": "configs/development/legacy-walker2d-3x2-no-intention-independent-10m.json",
+      "frozen_config": "runs/development-walker-10m-seed101/configs/legacy-walker2d-3x2-no-intention-independent-10m.json",
+      "config_sha256": "38af95b2b33c3381bb2bfa7fbab28afc24577d46355df1acb3038adb11591951",
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 10000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-no-intention-independent-10m-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-walker2d-3x2-no-intention-independent-10m-101",
+      "reference_run": "runs/dev-legacy-walker2d-3x2-no-intention-independent-1m-101",
+      "reference_manifest_sha256": "148d056b7de289a989f5581bc4034d68fb46e3a3937fca7542d5b865eeb4e415",
+      "differences_from_1m": [
+        "total_steps",
+        "eval_every",
+        "eval_episodes",
+        "output"
+      ],
+      "time_limit": "05:00:00",
+      "job_id": "21210999",
+      "status": "running_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker10m-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=05:00:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/train.sbatch",
+        "no-intention",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/configs/legacy-walker2d-3x2-no-intention-independent-10m.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-no-intention-independent-10m-101"
+      ],
+      "evaluation": {
+        "job_id": "21211000",
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker10m-eval-ippo",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--dependency=afterok:21210999",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-ippo/spec.json"
+        ],
+        "spec": "runs/development-walker-10m-seed101/evaluation-ippo/spec.json",
+        "spec_sha256": "083f79b87853d7a9c1762a66a86d59cd64c5bf7be3a9056012c5f687cd6fd31f",
+        "status": "waiting_for_training",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:01:12",
+          "node": "milan32"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "startup_verification": {
+        "checked_utc": "2026-10-26T09:46:14.252695+00:00",
+        "checks": {
+          "source_matches": true,
+          "config_matches": true,
+          "environment_matches": true,
+          "versions_match": true,
+          "job_matches": true,
+          "finite_metrics": true,
+          "evaluation_expected_config_hash": true
+        },
+        "last_metrics": {
+          "policy_loss": -0.0020862672245129943,
+          "value_loss": 0.1449121329933405,
+          "entropy": 1.7461748639742534,
+          "approx_kl": 0.002529365029128409,
+          "peer_gate_fraction": 0.0,
+          "steps": 132000,
+          "episodes": 1475,
+          "elapsed_seconds": 131.5871662060381,
+          "training_return_mean": 254.91068161100148
+        },
+        "runtime": {
+          "host": "milan32.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21210999",
+          "slurm_partition": "batch-milan"
+        }
+      }
+    },
+    {
+      "variant": "dms",
+      "algorithm": "dms",
+      "seed": 101,
+      "config": "configs/development/legacy-walker2d-3x2-dms-independent-10m.json",
+      "frozen_config": "runs/development-walker-10m-seed101/configs/legacy-walker2d-3x2-dms-independent-10m.json",
+      "config_sha256": "d71e77446caa177a4a2c3502a2a10bfba12ebc12958953eab14732dc7cc156d2",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cpu",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 10000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-dms-independent-10m-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-walker2d-3x2-dms-independent-10m-101",
+      "reference_run": "runs/dev-legacy-walker2d-3x2-dms-independent-beta-01-1m-101",
+      "reference_manifest_sha256": "11cded4e64f991b54beb4858ceb30007c34ad09ffa45877791af788c08de0233",
+      "differences_from_1m": [
+        "total_steps",
+        "eval_every",
+        "eval_episodes",
+        "output"
+      ],
+      "time_limit": "20:00:00",
+      "job_id": "21211001",
+      "status": "running_verified",
+      "submission_command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker10m-dms",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=4G",
+        "--time=20:00:00",
+        "--output=logs/%x_%j.out",
+        "--error=logs/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/train.sbatch",
+        "dms",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/configs/legacy-walker2d-3x2-dms-independent-10m.json",
+        "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-dms-independent-10m-101"
+      ],
+      "evaluation": {
+        "job_id": "21211002",
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker10m-eval-dms",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=00:15:00",
+          "--dependency=afterok:21211001",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-10m-development-evaluation-queue-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/evaluation-dms/spec.json"
+        ],
+        "spec": "runs/development-walker-10m-seed101/evaluation-dms/spec.json",
+        "spec_sha256": "8f75af751cfa6ca89d56702073551fca1dbfd58b33c261b02c78d3b9bda2325c",
+        "status": "waiting_for_training",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "00:01:12",
+          "node": "milan32"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "startup_verification": {
+        "checked_utc": "2026-10-26T09:46:14.449158+00:00",
+        "checks": {
+          "source_matches": true,
+          "config_matches": true,
+          "environment_matches": true,
+          "versions_match": true,
+          "job_matches": true,
+          "finite_metrics": true,
+          "evaluation_expected_config_hash": true
+        },
+        "last_metrics": {
+          "policy_loss": -0.001596419441436107,
+          "value_loss": 0.8491403639316559,
+          "entropy": 1.8040396610895792,
+          "approx_kl": 0.0021859383756539803,
+          "peer_gate_fraction": 0.6625,
+          "intention_feature_std": 0.5204619765281677,
+          "intention_loss": 1.9902302622795105,
+          "intention_nll": 1.9881557424863179,
+          "intention_kl": 0.020744996688639123,
+          "forecast_target_count": 1778,
+          "forecast_comparison_count": 1736,
+          "forecast_component_count": 2976,
+          "history_baseline_target_count": 1736,
+          "history_baseline_component_count": 2976,
+          "forecast_rmse": 0.7177445415423575,
+          "persistence_rmse": 0.7394254894568151,
+          "history_mean_rmse": 0.5547589478130651,
+          "history_baseline_coverage_fraction": 0.9763779527559056,
+          "steps": 28000,
+          "episodes": 624,
+          "elapsed_seconds": 125.30715788900852,
+          "training_return_mean": 99.41883803423974
+        },
+        "runtime": {
+          "host": "milan32.int.triton.aalto.fi",
+          "device": "cpu",
+          "slurm_job_id": "21211001",
+          "slurm_partition": "batch-milan"
+        }
+      }
+    }
+  ],
+  "source_validation": "Exact completed1M independent replay controls21198485/21198487; unchanged package and environment. Walker optimizer diagnostic21210704 also passed on this package.",
+  "resources": {
+    "cpus": 1,
+    "memory": "4G"
+  },
+  "runtime_basis": "IPPO1M completed in about17min; DMS1M in1h16m22s.5h/20h limits include more than50percent margin for10M plus diagnostics.",
+  "selection": "Only training budget, diagnostic frequency/count, and output change. No optimizer, intention, sensor, reward, or memory tuning; no resume and no peak checkpoint selection.",
+  "fixed_endpoint_evaluation": {
+    "episodes": 100,
+    "seeds": [
+      400101,
+      400200
+    ],
+    "optimizer_updates": 0,
+    "held_out": false
+  },
+  "scripts_sha256": {
+    "verify_runtime.py": "bd437bc7983560b7e634abfe49569558d9d5ca31d42a3b2b8dafd65b583008e9",
+    "train.sbatch": "953ac3d3f6ed20cddcc63a727c929904c3895c60794c054df4f707cc16d46aab"
+  },
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-26T09:45:01.356160+00:00",
+  "completion_collector": {
+    "job_id": "21211007",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-walker10m-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=512M",
+      "--time=00:02:00",
+      "--dependency=afterany:21210999:21211000:21211001:21211002",
+      "--output=logs/%x_%j.out",
+      "--error=logs/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-walker-10m-seed101/refresh_status.sbatch"
+    ],
+    "script_sha256": "59135d43a0063807ac00838e48bd0146708e6b844fb98b4734e88f646cebefde"
+  }
+}

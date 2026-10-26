@@ -47,3 +47,14 @@ Current [evaluate.py:43](../src/dms/evaluate.py#L43) records the environment and
 **Optional reader improvements.** Add a small support matrix distinguishing modern workstation, original SMAC with an external game, and Triton-only automated legacy setup. Link the current development ledger from the README so the older 500,000-step example is not mistaken for the selected final method. These are usability improvements; neither should be used to imply that final benchmark acceptance has already passed.
 
 Validation evidence available during this review: full compute job 21196035 reported 230 passed and 22 native-legacy skips; separate native legacy job 21195881 reported 35 passed. Later wrapper changes have the focused evidence above, rather than inheriting coverage from the earlier full-suite snapshot. The new CPU CI workflow has not run on GitHub because the repository is unpublished. No broad tests were rerun for this documentation-only audit.
+
+**Development artifacts, 2026-10-26.** A verified local archive now contains all
+seven completed 10M HalfCheetah development runs, including all three matched
+training seeds and their weaker outcomes. The archive includes configs, saved
+source, training diagnostics, per-episode diagnostic evaluations and checkpoints;
+separate 100-episode evaluations remain in the checked-in reports. The
+[archive ledger](../reports/development-halfcheetah-10m-artifacts.json) records
+its SHA-256, 147 payload members and exact regeneration command. No public URL
+has been created, so hosting remains open. The README's support matrix and
+current-status link are now present; the earlier optional usability items have
+been addressed.
