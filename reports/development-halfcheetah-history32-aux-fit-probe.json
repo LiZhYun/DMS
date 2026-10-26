@@ -1,0 +1,1037 @@
+{
+  "purpose": "Bounded auxiliary-only fitting on ephemeral history32 checkpoint clones; test forecast improvement and policy-feature drift before choosing any full-training change.",
+  "created_utc": "2026-10-26T13:17:39.206778+00:00",
+  "status": "completed_pass",
+  "artifact": "runs/development-halfcheetah-history32-aux-fit-probe",
+  "snapshot": "runs/development-round-3m-followup-01/hc-dms-history32/snapshot",
+  "evaluation_spec": "runs/development-round-3m-followup-01/hc-dms-history32/spec.json",
+  "evaluation_spec_sha256": "8f5796c255eb9e5c3f4b1cc9579eeb0176b4735cc42ead43025be5e580da1374",
+  "checkpoint_sha256": "871a47087c819521b85f5ce9b00281518a3dc9ae81386d19bb890e4a572dd17b",
+  "model_state_sha256": "053c84f5e50d9c154a12e31afaf83e137d5ffc3fab3b3cb88b939fd146078875",
+  "helper_sha256": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01",
+  "protocol": {
+    "training_seed": 101,
+    "training_checkpoint_steps": 3000000,
+    "fit_data_seed": 400701,
+    "validation_data_seed": 400901,
+    "collection": "two independent fixed-policy blocks of four environments by1000 transitions; no policy or normalization updates during collection",
+    "aux_updates": [
+      2,
+      8
+    ],
+    "aux_batch_size": [
+      64,
+      256
+    ],
+    "aux_rng_seeds": [
+      90001,
+      90002,
+      90003
+    ],
+    "optimizer": "original checkpoint auxiliary Adam state restored separately for every arm; same existing trainer update_intentions function",
+    "validation_windows": 1024,
+    "validation_window_seed": 400902,
+    "policy_drift_windows": 512,
+    "policy_drift_window_seed": 400903,
+    "policy_parameters_and_normalizers": "frozen; only cloned intention model and its optimizer may update",
+    "limits": "A one-update local diagnostic, not evidence of a full-training return benefit or a hyperparameter selection guarantee."
+  },
+  "held_out_training_seeds_used": false,
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-h32-aux-fit-probe",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:10:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-history32-aux-fit-probe/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-history32-aux-fit-probe/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-history32-aux-fit-probe/run.sbatch"
+    ],
+    "job_id": "21214279",
+    "stdout": "21214279\n",
+    "stderr": ""
+  },
+  "job_id": "21214279",
+  "runner_sha256": "739969a8d94453aabd4dae07d222bd02a1d454bdfa0607014628eb43cbad9197",
+  "result": {
+    "success": true,
+    "job_id": "21214279",
+    "arms": [
+      {
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "aux_rng_seed": 90001,
+        "optimizer_calls": {
+          "aux": 4,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.4291592612862587,
+          "intention_nll": 0.12613681331276894,
+          "intention_kl": 3.0302245020866394,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.6891159308996576,
+          "persistence_rmse": 1.086198102459962,
+          "history_mean_rmse": 0.7991823460499567,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.683622682104779,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7241342067718506,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6405541300773621,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0006412186194211245,
+              "max_policy_kl": 0.004635334014892578
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0009411277715116739,
+              "max_policy_kl": 0.010851383209228516
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "aux_rng_seed": 90002,
+        "optimizer_calls": {
+          "aux": 4,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.390308253467083,
+          "intention_nll": 0.09191331756301224,
+          "intention_kl": 2.9839492440223694,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.6574548546043141,
+          "persistence_rmse": 1.1305298531656398,
+          "history_mean_rmse": 0.8016750251740334,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6810131490785744,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7238091230392456,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6353409886360168,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0004723075544461608,
+              "max_policy_kl": 0.003757774829864502
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0017555439844727516,
+              "max_policy_kl": 0.02250850200653076
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "aux_rng_seed": 90003,
+        "optimizer_calls": {
+          "aux": 4,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.3722929283976555,
+          "intention_nll": 0.07443432579748333,
+          "intention_kl": 2.978585958480835,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.6766401613826575,
+          "persistence_rmse": 1.1690491430834513,
+          "history_mean_rmse": 0.8482459580528813,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6831208237895882,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7246953845024109,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6388463973999023,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0006673721363767982,
+              "max_policy_kl": 0.004560410976409912
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0003409370547160506,
+              "max_policy_kl": 0.0026317834854125977
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 2,
+        "aux_batch_size": 256,
+        "aux_rng_seed": 90001,
+        "optimizer_calls": {
+          "aux": 4,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.42865652590990067,
+          "intention_nll": 0.1252091322094202,
+          "intention_kl": 3.034473955631256,
+          "forecast_target_count": 4092,
+          "forecast_comparison_count": 4080,
+          "forecast_component_count": 8160,
+          "history_baseline_target_count": 4080,
+          "history_baseline_component_count": 8160,
+          "forecast_rmse": 0.6961833103682441,
+          "persistence_rmse": 1.1112631538546627,
+          "history_mean_rmse": 0.8007043263335175,
+          "history_baseline_coverage_fraction": 0.9970674486803519
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.681571676210319,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7237097024917603,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6366507411003113,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0007461442146450281,
+              "max_policy_kl": 0.005191445350646973
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.001534100854769349,
+              "max_policy_kl": 0.01997697353363037
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 2,
+        "aux_batch_size": 256,
+        "aux_rng_seed": 90002,
+        "optimizer_calls": {
+          "aux": 4,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.4057479798793793,
+          "intention_nll": 0.10265263530891389,
+          "intention_kl": 3.030953347682953,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 8192,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 8192,
+          "forecast_rmse": 0.6811950952945156,
+          "persistence_rmse": 1.1249312447552502,
+          "history_mean_rmse": 0.8048890631911814,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6815018099961316,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7238824963569641,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6363046169281006,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0007430415134876966,
+              "max_policy_kl": 0.005228638648986816
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0013428634265437722,
+              "max_policy_kl": 0.01801156997680664
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 2,
+        "aux_batch_size": 256,
+        "aux_rng_seed": 90003,
+        "optimizer_calls": {
+          "aux": 4,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.4043615609407425,
+          "intention_nll": 0.09927314124070108,
+          "intention_kl": 3.050884187221527,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 8192,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 8192,
+          "forecast_rmse": 0.6799424607281911,
+          "persistence_rmse": 1.1302082647510112,
+          "history_mean_rmse": 0.8133762081072405,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6816850464893112,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7243544459342957,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6361600756645203,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0007265096064656973,
+              "max_policy_kl": 0.004926919937133789
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.001581659191288054,
+              "max_policy_kl": 0.020956337451934814
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 8,
+        "aux_batch_size": 64,
+        "aux_rng_seed": 90001,
+        "optimizer_calls": {
+          "aux": 16,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.425602987408638,
+          "intention_nll": 0.09902390243951231,
+          "intention_kl": 3.265790805220604,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.6891159308996576,
+          "persistence_rmse": 1.086198102459962,
+          "history_mean_rmse": 0.7991823460499567,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6777328102291817,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7106411457061768,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.643142819404602,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0030041243880987167,
+              "max_policy_kl": 0.041829586029052734
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0019790902733802795,
+              "max_policy_kl": 0.029553532600402832
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 8,
+        "aux_batch_size": 64,
+        "aux_rng_seed": 90002,
+        "optimizer_calls": {
+          "aux": 16,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.39866177178919315,
+          "intention_nll": 0.07927939487854019,
+          "intention_kl": 3.1938236951828003,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.6574548546043141,
+          "persistence_rmse": 1.1305298531656398,
+          "history_mean_rmse": 0.8016750251740334,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6806400789353342,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7192028164863586,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6397570967674255,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0008139515994116664,
+              "max_policy_kl": 0.007501363754272461
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0042118895798921585,
+              "max_policy_kl": 0.06410199403762817
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 8,
+        "aux_batch_size": 64,
+        "aux_rng_seed": 90003,
+        "optimizer_calls": {
+          "aux": 16,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.3973085004836321,
+          "intention_nll": 0.07507004833314568,
+          "intention_kl": 3.2223844826221466,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.6766401613826575,
+          "persistence_rmse": 1.1690491430834513,
+          "history_mean_rmse": 0.8482459580528813,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6826408543870303,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7192529439926147,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6439505219459534,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0013324759202077985,
+              "max_policy_kl": 0.0075730085372924805
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0027411121409386396,
+              "max_policy_kl": 0.036119818687438965
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 8,
+        "aux_batch_size": 256,
+        "aux_rng_seed": 90001,
+        "optimizer_calls": {
+          "aux": 16,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.4149019801989198,
+          "intention_nll": 0.09062579134479165,
+          "intention_kl": 3.2427618503570557,
+          "forecast_target_count": 4092,
+          "forecast_comparison_count": 4080,
+          "forecast_component_count": 8160,
+          "history_baseline_target_count": 4080,
+          "history_baseline_component_count": 8160,
+          "forecast_rmse": 0.6961833103682441,
+          "persistence_rmse": 1.1112631538546627,
+          "history_mean_rmse": 0.8007043263335175,
+          "history_baseline_coverage_fraction": 0.9970674486803519
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6790449229984846,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7085811495780945,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6481641530990601,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0030470332130789757,
+              "max_policy_kl": 0.02364373207092285
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.00571591779589653,
+              "max_policy_kl": 0.07792603969573975
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 8,
+        "aux_batch_size": 256,
+        "aux_rng_seed": 90002,
+        "optimizer_calls": {
+          "aux": 16,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.4039263501763344,
+          "intention_nll": 0.08116782616707496,
+          "intention_kl": 3.227585196495056,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 8192,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 8192,
+          "forecast_rmse": 0.6811950952945156,
+          "persistence_rmse": 1.1249312447552502,
+          "history_mean_rmse": 0.8048890631911814,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6839990509249145,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7209738492965698,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6449078321456909,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.0014315821463242173,
+              "max_policy_kl": 0.010764479637145996
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.0051050130277872086,
+              "max_policy_kl": 0.06798529624938965
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      },
+      {
+        "aux_updates": 8,
+        "aux_batch_size": 256,
+        "aux_rng_seed": 90003,
+        "optimizer_calls": {
+          "aux": 16,
+          "ppo": 0
+        },
+        "update_metrics": {
+          "intention_loss": 0.4206957034766674,
+          "intention_nll": 0.09461546008242294,
+          "intention_kl": 3.2608023583889008,
+          "forecast_target_count": 4096,
+          "forecast_comparison_count": 4096,
+          "forecast_component_count": 8192,
+          "history_baseline_target_count": 4096,
+          "history_baseline_component_count": 8192,
+          "forecast_rmse": 0.6799424607281911,
+          "persistence_rmse": 1.1302082647510112,
+          "history_mean_rmse": 0.8133762081072405,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "after": {
+          "forecast": {
+            "forecast_target_count": 16384,
+            "forecast_comparison_count": 16384,
+            "forecast_component_count": 32768,
+            "history_baseline_target_count": 16384,
+            "history_baseline_component_count": 32768,
+            "forecast_rmse": 0.6744032473243317,
+            "persistence_rmse": 1.1293364565084385,
+            "history_mean_rmse": 0.8004344907328195,
+            "history_baseline_coverage_fraction": 1.0
+          },
+          "per_observer_forecasts": [
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.7024329900741577,
+              "persistence_rmse": 1.2045435905456543,
+              "history_mean_rmse": 0.8477555513381958
+            },
+            {
+              "forecast_target_count": 8192,
+              "forecast_comparison_count": 8192,
+              "history_baseline_target_count": 8192,
+              "history_baseline_coverage_fraction": 1.0,
+              "forecast_component_count": 16384,
+              "history_baseline_component_count": 16384,
+              "forecast_rmse": 0.6451568603515625,
+              "persistence_rmse": 1.0487499237060547,
+              "history_mean_rmse": 0.7501341700553894
+            }
+          ],
+          "policy_drift": [
+            {
+              "observer": 0,
+              "mean_policy_kl": 0.008767376653850079,
+              "max_policy_kl": 0.05134183168411255
+            },
+            {
+              "observer": 1,
+              "mean_policy_kl": 0.004394980147480965,
+              "max_policy_kl": 0.05790954828262329
+            }
+          ]
+        },
+        "actor_and_normalization_unchanged": true
+      }
+    ],
+    "ppo_optimizer_steps": 0,
+    "before": {
+      "forecast": {
+        "forecast_target_count": 16384,
+        "forecast_comparison_count": 16384,
+        "forecast_component_count": 32768,
+        "history_baseline_target_count": 16384,
+        "history_baseline_component_count": 32768,
+        "forecast_rmse": 0.6819327484520099,
+        "persistence_rmse": 1.1293364565084385,
+        "history_mean_rmse": 0.8004344907328195,
+        "history_baseline_coverage_fraction": 1.0
+      },
+      "per_observer_forecasts": [
+        {
+          "forecast_target_count": 8192,
+          "forecast_comparison_count": 8192,
+          "history_baseline_target_count": 8192,
+          "history_baseline_coverage_fraction": 1.0,
+          "forecast_component_count": 16384,
+          "history_baseline_component_count": 16384,
+          "forecast_rmse": 0.7220456600189209,
+          "persistence_rmse": 1.2045435905456543,
+          "history_mean_rmse": 0.8477555513381958
+        },
+        {
+          "forecast_target_count": 8192,
+          "forecast_comparison_count": 8192,
+          "history_baseline_target_count": 8192,
+          "history_baseline_coverage_fraction": 1.0,
+          "forecast_component_count": 16384,
+          "history_baseline_component_count": 16384,
+          "forecast_rmse": 0.6393079161643982,
+          "persistence_rmse": 1.0487499237060547,
+          "history_mean_rmse": 0.7501341700553894
+        }
+      ],
+      "policy_drift": [
+        {
+          "observer": 0,
+          "mean_policy_kl": 0.0,
+          "max_policy_kl": 0.0
+        },
+        {
+          "observer": 1,
+          "mean_policy_kl": 0.0,
+          "max_policy_kl": 0.0
+        }
+      ]
+    },
+    "data_sha256": {
+      "fit": "92220690054f3943ddfcf5801c1eea5cc7001c0a5ca9acc0c8c449ba1e4ec022",
+      "validation": "d324ec0861a547df027a0871c52146b357b6d4fe20d9433b28a77e9f79876d76"
+    },
+    "original_checkpoint_and_snapshot_unchanged": true,
+    "baseline_model_unchanged": true,
+    "fit_validation_data_unchanged": true,
+    "training_transitions_per_block": 4000,
+    "elapsed_seconds": 56.5168181299814
+  },
+  "result_sha256": "975fa4c41a2b79464766a78d8656b993fbbcc853940e73e673ec8d97e969a5a9",
+  "summary": [
+    {
+      "aux_updates": 2,
+      "aux_batch_size": 64,
+      "update_rng_replicates": 3,
+      "forecast_rmse_mean": 0.6825855516576471,
+      "forecast_rmse_sample_sd": 0.001384667052087839,
+      "mean_policy_kl_across_observers_and_rngs": 0.0008030845201574266
+    },
+    {
+      "aux_updates": 2,
+      "aux_batch_size": 256,
+      "update_rng_replicates": 3,
+      "forecast_rmse_mean": 0.681586177565254,
+      "forecast_rmse_sample_sd": 9.24749700156454e-05,
+      "mean_policy_kl_across_observers_and_rngs": 0.0011123864678665996
+    },
+    {
+      "aux_updates": 8,
+      "aux_batch_size": 64,
+      "update_rng_replicates": 3,
+      "forecast_rmse_mean": 0.6803379145171821,
+      "forecast_rmse_sample_sd": 0.002467934736889457,
+      "mean_policy_kl_across_observers_and_rngs": 0.0023471073169882097
+    },
+    {
+      "aux_updates": 8,
+      "aux_batch_size": 256,
+      "update_rng_replicates": 3,
+      "forecast_rmse_mean": 0.6791490737492436,
+      "forecast_rmse_sample_sd": 0.00479874954747615,
+      "mean_policy_kl_across_observers_and_rngs": 0.004743650497402996
+    }
+  ],
+  "completed_utc": "2026-10-26T13:21:45.056658+00:00",
+  "decision": "No full-training auxiliary-rate change registered from this diagnostic. The mean forecast change is small and not consistent across update RNG seeds; larger update budgets cause greater policy feature drift. This local test does not establish long-run return effects."
+}

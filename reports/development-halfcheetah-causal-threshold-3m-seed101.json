@@ -1,0 +1,876 @@
+{
+  "purpose": "Controlled causal-threshold development comparison after the threshold0.6 policy underperformed the architecture-matched all-peer diagnostic.",
+  "created_utc": "2026-10-26T13:44:10.975355+00:00",
+  "status": "waiting_running_or_failed",
+  "artifact": "runs/development-halfcheetah-causal-threshold-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "used_versions": {
+    "torch": "2.6.0+cu126",
+    "numpy": "1.26.4",
+    "gym": "0.23.1",
+    "mujoco-py": "2.1.2.14"
+  },
+  "training_seed": 101,
+  "held_out_training_seeds_used": false,
+  "budget": 3000000,
+  "runs": [
+    {
+      "variant": "eta01",
+      "algorithm": "dms",
+      "seed": 101,
+      "threshold": 0.1,
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-causal-eta01-history0-3m-cuda.json",
+      "frozen_config": "runs/development-halfcheetah-causal-threshold-3m-seed101/configs/legacy-halfcheetah-2x3-dms-causal-eta01-history0-3m-cuda.json",
+      "config_sha256": "da429340bd74094eac4e716b6f986abc7aad3f416d973b0b6a068d1015898316",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "causal",
+        "coordination_threshold": 0.1,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-dms-causal-eta01-history0-3m-cuda-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-causal-eta01-history0-3m-cuda-101",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "changes_from_threshold06": [
+        "coordination_threshold",
+        "output"
+      ],
+      "status": "training_running_or_pending",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-eta01-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=04:00:00",
+          "--dependency=afterok:21212374",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/train.sbatch",
+          "eta01"
+        ],
+        "returncode": 0,
+        "stdout": "21214579\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T13:46:19.806544+00:00",
+        "job_id": "21214579"
+      },
+      "job_id": "21214579",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-eta01-3m-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=01:00:00",
+          "--dependency=afterok:21214579",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta01/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta01/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta01/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21214580\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T13:46:19.874016+00:00",
+        "job_id": "21214580",
+        "spec": "runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta01/spec.json",
+        "spec_sha256": "eef3090142a20ccc3bbc143c83a136ed355539cacac0d484e54775fd73fcf232",
+        "status": "waiting_for_training",
+        "launcher_sha256": "9f1f6b27cb59c5b710419b07bb5d73537bf8d4a1207d6ca7883d7a5b11b28f30",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    },
+    {
+      "variant": "eta02",
+      "algorithm": "dms",
+      "seed": 101,
+      "threshold": 0.2,
+      "config": "configs/development/legacy-halfcheetah-2x3-dms-causal-eta02-history0-3m-cuda.json",
+      "frozen_config": "runs/development-halfcheetah-causal-threshold-3m-seed101/configs/legacy-halfcheetah-2x3-dms-causal-eta02-history0-3m-cuda.json",
+      "config_sha256": "f463424b913d46c352c8dd909acf0569dcbc35f94492d7a802266bd0d8e6105a",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 0,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "causal",
+        "coordination_threshold": 0.2,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-legacy-halfcheetah-2x3-dms-causal-eta02-history0-3m-cuda-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-legacy-halfcheetah-2x3-dms-causal-eta02-history0-3m-cuda-101",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      },
+      "changes_from_threshold06": [
+        "coordination_threshold",
+        "output"
+      ],
+      "status": "training_running_or_pending",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-eta02-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=04:00:00",
+          "--dependency=afterok:21212374",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/train.sbatch",
+          "eta02"
+        ],
+        "returncode": 0,
+        "stdout": "21214581\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T13:46:19.900391+00:00",
+        "job_id": "21214581"
+      },
+      "job_id": "21214581",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-eta02-3m-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=01:00:00",
+          "--dependency=afterok:21214581",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta02/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta02/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta02/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21214582\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T13:46:19.927386+00:00",
+        "job_id": "21214582",
+        "spec": "runs/development-halfcheetah-causal-threshold-3m-seed101/evaluation-eta02/spec.json",
+        "spec_sha256": "ffc847dbaa70a2146f5ab211c7af72abedd0b754232e1845bb0a2eea4aaaeb20",
+        "status": "waiting_for_training",
+        "launcher_sha256": "9f1f6b27cb59c5b710419b07bb5d73537bf8d4a1207d6ca7883d7a5b11b28f30",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    }
+  ],
+  "reference": {
+    "threshold06_training_job": "21212373",
+    "threshold06_evaluation_job": "21212374",
+    "threshold06_final10episode_diagnostic": 3508.687425118778,
+    "all_peer100episode_mean": 4453.560463782886,
+    "report": "reports/development-halfcheetah-coordination-3m-seed101.json",
+    "note": "The threshold0.6 separate100-episode evaluation was still running when these settings were declared.",
+    "threshold06_final10episode_records": [
+      {
+        "steps": 3000000,
+        "seed": 10001,
+        "return": 3511.2455033659935,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10002,
+        "return": 3500.2624483555555,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10003,
+        "return": 3485.60870487988,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10004,
+        "return": 3532.0441094487906,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10005,
+        "return": 3493.5201174095273,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10006,
+        "return": 3527.875793237239,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10007,
+        "return": 3572.90791349113,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10008,
+        "return": 3496.188270682469,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10009,
+        "return": 3316.3405580045655,
+        "length": 1000,
+        "battle_won": null
+      },
+      {
+        "steps": 3000000,
+        "seed": 10010,
+        "return": 3650.8808323126286,
+        "length": 1000,
+        "battle_won": null
+      }
+    ]
+  },
+  "comparison": {
+    "only_changes": [
+      "coordination_threshold",
+      "output"
+    ],
+    "architecture": "same concatenating actor and critic; same prior encoder and decoder",
+    "warmup_episodes": 100,
+    "additional_causal_warmup_episodes": 100,
+    "hypothesis": "Lower action-distribution KL thresholds retain more locally visible peers; test whether less aggressive removal improves learning.",
+    "selection": "exact3M final checkpoint; no early stopping or best-diagnostic selection",
+    "limits": "Two development thresholds on reused seed101; a gain would need further-seed confirmation."
+  },
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "deterministic": true,
+    "parameter_updates": 0,
+    "device": "cpu"
+  },
+  "resources": {
+    "cpus": 1,
+    "memory": "4G",
+    "gpus": 1,
+    "hours": 4
+  },
+  "runtime_basis": "Completed architecture-matched threshold0.6 run took1h55m42; only the threshold/output changes.",
+  "smoke": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-causal-threshold-smoke",
+      "--partition=gpu-debug,gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+      "--gpus=1",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:15:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/smoke.sbatch"
+    ],
+    "job_id": "21214550",
+    "stdout": "21214550\n",
+    "stderr": "",
+    "status": "completed_pass",
+    "script_sha256": "69d5b4db03ecf4a6e4600a6e599648c85305f3029ffb2f9149340c7ebd6123f7",
+    "launcher_sha256": "2af4afbcc8b25136c87e0ca99a2f12d8a6f23600d085b91f38ce71d2e81d9a07",
+    "result": {
+      "success": true,
+      "job_id": "21214550",
+      "host": "dgx1.int.triton.aalto.fi",
+      "gpu": "Tesla V100-SXM2-16GB",
+      "runs": [
+        {
+          "variant": "eta01",
+          "checks": {
+            "exact_budget": true,
+            "source_matches": true,
+            "config_matches": true,
+            "environment_matches": true,
+            "cuda_used": true,
+            "finite": true,
+            "auxiliary_active": true,
+            "episode_evaluated": true
+          },
+          "final_metrics": {
+            "policy_loss": -0.003520715008926345,
+            "value_loss": 0.7942428171634675,
+            "entropy": 2.7536630809307097,
+            "approx_kl": 0.002868130095703236,
+            "peer_gate_fraction": 0.0,
+            "intention_feature_std": 0.4885983467102051,
+            "intention_loss": 2.491788864135742,
+            "intention_nll": 2.4397993683815002,
+            "intention_kl": 0.5198951065540314,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.76534051314446,
+            "persistence_rmse": 0.76534051314446,
+            "history_mean_rmse": 0.562955153172661,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 16.319780189543962,
+            "training_return_mean": -257.17103752733965
+          },
+          "evaluation": [
+            {
+              "steps": 4000,
+              "seed": 400301,
+              "return": -0.12041890364190522,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "elapsed_seconds": 35.438090389594436
+        },
+        {
+          "variant": "eta02",
+          "checks": {
+            "exact_budget": true,
+            "source_matches": true,
+            "config_matches": true,
+            "environment_matches": true,
+            "cuda_used": true,
+            "finite": true,
+            "auxiliary_active": true,
+            "episode_evaluated": true
+          },
+          "final_metrics": {
+            "policy_loss": -0.003520715008926345,
+            "value_loss": 0.7942428171634675,
+            "entropy": 2.7536630809307097,
+            "approx_kl": 0.002868130095703236,
+            "peer_gate_fraction": 0.0,
+            "intention_feature_std": 0.4885983467102051,
+            "intention_loss": 2.491788864135742,
+            "intention_nll": 2.4397993683815002,
+            "intention_kl": 0.5198951065540314,
+            "forecast_target_count": 1024,
+            "forecast_comparison_count": 1024,
+            "forecast_component_count": 2048,
+            "history_baseline_target_count": 1024,
+            "history_baseline_component_count": 2048,
+            "forecast_rmse": 0.76534051314446,
+            "persistence_rmse": 0.76534051314446,
+            "history_mean_rmse": 0.562955153172661,
+            "history_baseline_coverage_fraction": 1.0,
+            "steps": 4000,
+            "episodes": 4,
+            "elapsed_seconds": 15.672746516764164,
+            "training_return_mean": -257.17103752733965
+          },
+          "evaluation": [
+            {
+              "steps": 4000,
+              "seed": 400301,
+              "return": -0.12041890364190522,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "elapsed_seconds": 28.605234331451356
+        }
+      ],
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      "source_inventory_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      "protocol_note": "4000transitions/variant;both warmups0 for activation and gating execution;one episode400301. Execution only, not performance."
+    },
+    "validation": "runs/development-halfcheetah-causal-threshold-3m-seed101/smoke-validation.json",
+    "validation_sha256": "68f7192efc8bd9f45619dd565b5129a09244ee8f6f64dc4990bafb26c2e2475d"
+  },
+  "reference_precision_correction": "The reference diagnostic mean was recomputed directly from its ten records before long-run submission; no configuration or hypothesis changed.",
+  "scripts_sha256": {
+    "submit.py": "7135b473bde64c404dde73face1a83d33a830fb4cdcc1e1bb6755e42844d8db0",
+    "refresh_status.py": "70060306bb28ab56a3b66eca23086c37d525547d5397d4e5b26359fed0aacf5f",
+    "refresh_status.sbatch": "116cde10708e79ba6fefaabeb224fd48760e281ba7a4998da41c6b8a032863e1",
+    "launch_training.py": "83eee7761f5cdd70ffa2644070547529e7dd4016d82e771f8dafce08393b21dd",
+    "train.sbatch": "9f4b5a8cd4c9587d39409b5277d10a2918a60b475c812b9b2eca4b27f9f8b410",
+    "smoke.py": "69d5b4db03ecf4a6e4600a6e599648c85305f3029ffb2f9149340c7ebd6123f7",
+    "smoke.sbatch": "2af4afbcc8b25136c87e0ca99a2f12d8a6f23600d085b91f38ce71d2e81d9a07"
+  },
+  "completion_collector": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-causal-threshold-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=512M",
+      "--time=00:03:00",
+      "--dependency=afterany:21214579:21214580:21214581:21214582",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-causal-threshold-3m-seed101/refresh_status.sbatch"
+    ],
+    "job_id": "21214583",
+    "returncode": 0,
+    "stdout": "21214583\n",
+    "stderr": "",
+    "submitted_utc": "2026-10-26T13:46:20.001954+00:00",
+    "collector_sha256": "70060306bb28ab56a3b66eca23086c37d525547d5397d4e5b26359fed0aacf5f"
+  },
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-26T13:46:20.078235+00:00"
+}

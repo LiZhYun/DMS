@@ -1,0 +1,329 @@
+{
+  "purpose": "Separate predictor quality from policy-generated data distribution with a 2x2 frozen cross-forecast comparison.",
+  "created_utc": "2026-10-26T13:07:47.180428+00:00",
+  "status": "completed_pass",
+  "artifact": "runs/development-halfcheetah-memory-cross-forecast-3m",
+  "rows": [
+    {
+      "history": 0,
+      "training_job_id": "21208868",
+      "evaluation_job_id": "21211915",
+      "snapshot": "runs/development-round-3m-followup-01/hc-dms-history0/snapshot",
+      "evaluation_spec": "runs/development-round-3m-followup-01/hc-dms-history0/spec.json",
+      "evaluation_spec_sha256": "a87bf4b6325c833254d3079fe30eb222fbb1f28e2843f933d7c3060a04a832e5",
+      "expected_forecast": {
+        "forecast_target_count": 16380,
+        "forecast_comparison_count": 16368,
+        "forecast_component_count": 32736,
+        "history_baseline_target_count": 16368,
+        "history_baseline_component_count": 32736,
+        "forecast_rmse": 0.2031653534830758,
+        "persistence_rmse": 1.1326130621721309,
+        "history_mean_rmse": 0.7889770272194624,
+        "history_baseline_coverage_fraction": 0.9992673992673993
+      },
+      "expected_checkpoint_sha256": "8af280a714929d464c9500fcbdead16dfb675c2f9d718ba6b83ee3a44b8ae581",
+      "expected_model_state_sha256": "0a6bbbe8255006f3b79e72ffff4247f2a271d78de204b7578059c83a42b77482"
+    },
+    {
+      "history": 32,
+      "training_job_id": "21208869",
+      "evaluation_job_id": "21211916",
+      "snapshot": "runs/development-round-3m-followup-01/hc-dms-history32/snapshot",
+      "evaluation_spec": "runs/development-round-3m-followup-01/hc-dms-history32/spec.json",
+      "evaluation_spec_sha256": "8f5796c255eb9e5c3f4b1cc9579eeb0176b4735cc42ead43025be5e580da1374",
+      "expected_forecast": {
+        "forecast_target_count": 16380,
+        "forecast_comparison_count": 16368,
+        "forecast_component_count": 32736,
+        "history_baseline_target_count": 16368,
+        "history_baseline_component_count": 32736,
+        "forecast_rmse": 0.6878071559728649,
+        "persistence_rmse": 1.120283971521279,
+        "history_mean_rmse": 0.8089575668017555,
+        "history_baseline_coverage_fraction": 0.9992673992673993
+      },
+      "expected_checkpoint_sha256": "871a47087c819521b85f5ce9b00281518a3dc9ae81386d19bb890e4a572dd17b",
+      "expected_model_state_sha256": "053c84f5e50d9c154a12e31afaf83e137d5ffc3fab3b3cb88b939fd146078875"
+    }
+  ],
+  "protocol": {
+    "policy_histories": [
+      0,
+      32
+    ],
+    "forecaster_histories": [
+      0,
+      32
+    ],
+    "training_seed": 101,
+    "training_steps": 3000000,
+    "steps_per_environment": 1000,
+    "num_environments": 4,
+    "diagnostic_seed": 400701,
+    "window_selection_seed": 400702,
+    "forecast_windows": 1024,
+    "parameter_updates": 0,
+    "posterior_calls": 0,
+    "diagonal_check": "Each forecaster on its own replayed dataset must exactly reproduce the previously archived forecast summary.",
+    "interpretation": "Cross-policy data are out of the other model training distribution; forecast errors do not prove a return effect."
+  },
+  "script_sha256": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01",
+  "held_out_training_seeds_used": false,
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-cross-forecast",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:10:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-cross-forecast-3m/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-cross-forecast-3m/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-cross-forecast-3m/run.sbatch"
+    ],
+    "job_id": "21213988",
+    "stdout": "21213988\n",
+    "stderr": ""
+  },
+  "job_id": "21213988",
+  "runner_sha256": "712ed61aca81111f2c7382d776a701383fff2419d00e7519b2900bb16ada36f9",
+  "result": {
+    "success": true,
+    "job_id": "21213988",
+    "host": "milan32.int.triton.aalto.fi",
+    "optimizer_steps": 0,
+    "posterior_calls": 0,
+    "comparisons": [
+      {
+        "policy_history": 0,
+        "forecaster_history": 0,
+        "forecast": {
+          "forecast_target_count": 16380,
+          "forecast_comparison_count": 16368,
+          "forecast_component_count": 32736,
+          "history_baseline_target_count": 16368,
+          "history_baseline_component_count": 32736,
+          "forecast_rmse": 0.2031653534830758,
+          "persistence_rmse": 1.1326130621721309,
+          "history_mean_rmse": 0.7889770272194624,
+          "history_baseline_coverage_fraction": 0.9992673992673993
+        },
+        "per_observer": [
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.19354647397994995,
+            "persistence_rmse": 1.2305467128753662,
+            "history_mean_rmse": 0.8570114374160767
+          },
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.21234896779060364,
+            "persistence_rmse": 1.0253679752349854,
+            "history_mean_rmse": 0.714493453502655
+          }
+        ],
+        "dataset_sha256": "d8818f3b346eb67544f0d47d363c82af78952598155a3396bcebb19f53e2ce7a"
+      },
+      {
+        "policy_history": 0,
+        "forecaster_history": 32,
+        "forecast": {
+          "forecast_target_count": 16380,
+          "forecast_comparison_count": 16368,
+          "forecast_component_count": 32736,
+          "history_baseline_target_count": 16368,
+          "history_baseline_component_count": 32736,
+          "forecast_rmse": 0.7031536971961225,
+          "persistence_rmse": 1.1326130621721309,
+          "history_mean_rmse": 0.7889770272194624,
+          "history_baseline_coverage_fraction": 0.9992673992673993
+        },
+        "per_observer": [
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.5127350091934204,
+            "persistence_rmse": 1.2305467128753662,
+            "history_mean_rmse": 0.8570114374160767
+          },
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.8520287871360779,
+            "persistence_rmse": 1.0253679752349854,
+            "history_mean_rmse": 0.714493453502655
+          }
+        ],
+        "dataset_sha256": "d8818f3b346eb67544f0d47d363c82af78952598155a3396bcebb19f53e2ce7a"
+      },
+      {
+        "policy_history": 32,
+        "forecaster_history": 0,
+        "forecast": {
+          "forecast_target_count": 16380,
+          "forecast_comparison_count": 16368,
+          "forecast_component_count": 32736,
+          "history_baseline_target_count": 16368,
+          "history_baseline_component_count": 32736,
+          "forecast_rmse": 0.8265903272187644,
+          "persistence_rmse": 1.120283971521279,
+          "history_mean_rmse": 0.8089575668017555,
+          "history_baseline_coverage_fraction": 0.9992673992673993
+        },
+        "per_observer": [
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.7543835043907166,
+            "persistence_rmse": 1.195610761642456,
+            "history_mean_rmse": 0.8561586737632751
+          },
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.8929774165153503,
+            "persistence_rmse": 1.0395129919052124,
+            "history_mean_rmse": 0.7588260769844055
+          }
+        ],
+        "dataset_sha256": "ca90632eb85984ce22440fb8df8d17033910274a446097cb64a3927710ff5ce9"
+      },
+      {
+        "policy_history": 32,
+        "forecaster_history": 32,
+        "forecast": {
+          "forecast_target_count": 16380,
+          "forecast_comparison_count": 16368,
+          "forecast_component_count": 32736,
+          "history_baseline_target_count": 16368,
+          "history_baseline_component_count": 32736,
+          "forecast_rmse": 0.6878071559728649,
+          "persistence_rmse": 1.120283971521279,
+          "history_mean_rmse": 0.8089575668017555,
+          "history_baseline_coverage_fraction": 0.9992673992673993
+        },
+        "per_observer": [
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.740077555179596,
+            "persistence_rmse": 1.195610761642456,
+            "history_mean_rmse": 0.8561586737632751
+          },
+          {
+            "forecast_target_count": 8190,
+            "forecast_comparison_count": 8184,
+            "history_baseline_target_count": 8184,
+            "history_baseline_coverage_fraction": 0.9992673992673993,
+            "forecast_component_count": 16368,
+            "history_baseline_component_count": 16368,
+            "forecast_rmse": 0.6312230825424194,
+            "persistence_rmse": 1.0395129919052124,
+            "history_mean_rmse": 0.7588260769844055
+          }
+        ],
+        "dataset_sha256": "ca90632eb85984ce22440fb8df8d17033910274a446097cb64a3927710ff5ce9"
+      }
+    ],
+    "diagonal_forecasts_exact": true,
+    "model_and_normalization_unchanged": true,
+    "snapshots_unchanged": true,
+    "imported_paths": {
+      "dms": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/__init__.py",
+      "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/intention.py",
+      "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/diagnostics.py",
+      "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/envs.py",
+      "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/distributions.py",
+      "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/recurrent.py",
+      "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/policy.py",
+      "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/parallel.py",
+      "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/returns.py",
+      "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/train.py",
+      "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/legacy_graph.py",
+      "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/legacy_env.py",
+      "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/observation_history.py"
+    },
+    "collections": {
+      "0": {
+        "intentions_active": true,
+        "episode_seeds_by_environment": [
+          [
+            400701,
+            400705
+          ],
+          [
+            400702,
+            400706
+          ],
+          [
+            400703,
+            400707
+          ],
+          [
+            400704,
+            400708
+          ]
+        ],
+        "completed_diagnostic_episodes": 4
+      },
+      "32": {
+        "intentions_active": true,
+        "episode_seeds_by_environment": [
+          [
+            400701,
+            400705
+          ],
+          [
+            400702,
+            400706
+          ],
+          [
+            400703,
+            400707
+          ],
+          [
+            400704,
+            400708
+          ]
+        ],
+        "completed_diagnostic_episodes": 4
+      }
+    },
+    "elapsed_seconds": 30.967639621987473
+  },
+  "result_sha256": "f92f2e6939de0799573544139cb42582e5bccd029c6c33f594d3478a8ccb8eb5",
+  "completed_utc": "2026-10-26T13:13:27.838067+00:00",
+  "interpretation": "Each model forecasts its own policy better than the other model does. The history32 model is less accurate on both recorded distributions than the history0 model is on its own distribution. Cross-policy results do not identify a single cause: policies change the target distribution and each forecaster is specialized to its training policy. Both diagonal summaries exactly replay the earlier diagnostic."
+}

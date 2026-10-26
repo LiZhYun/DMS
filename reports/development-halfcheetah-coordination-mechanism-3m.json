@@ -1,7 +1,7 @@
 {
   "purpose": "Frozen all-peer versus causal DMS mechanism probes at the predeclared 3M endpoint; sensitivity and prediction checks, not benchmark return tests.",
   "created_utc": "2026-10-26T12:49:33.960587+00:00",
-  "status": "submitted_after_fixed_endpoint_evaluations",
+  "status": "completed_pass",
   "artifact": "runs/development-halfcheetah-coordination-mechanism-3m",
   "training_seed": 101,
   "training_steps": 3000000,
@@ -28,7 +28,7 @@
       "snapshot": "runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot",
       "output": "runs/development-halfcheetah-coordination-mechanism-3m/all-diagnostic.json",
       "validation": "runs/development-halfcheetah-coordination-mechanism-3m/all-validation.json",
-      "status": "submitted",
+      "status": "completed_pass",
       "submission": {
         "command": [
           "sbatch",
@@ -51,7 +51,615 @@
         "stderr": "",
         "job_id": "21213779"
       },
-      "job_id": "21213779"
+      "job_id": "21213779",
+      "scheduler": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:00:20",
+        "node": "milan32"
+      },
+      "validation_sha256": "6fb7d09c05df221962a19c4ffdd6dc95f7d2410774fb3a3949ec6c3198717c29",
+      "result": {
+        "success": true,
+        "job_id": "21213779",
+        "variant": "all",
+        "optimizer_step_calls": 0,
+        "host": "milan32.int.triton.aalto.fi",
+        "snapshot_files_unchanged": true,
+        "imported_paths": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/__init__.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/diagnostics.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/envs.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/train.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms/legacy_env.py"
+        },
+        "diagnostic_sha256": "4be4aa71d8d039e5b6ddfb652f3c432264773dc827c381360fc1393de7a09941",
+        "checkpoint_sha256": "d5c3ba8b53104d788e370f501d96b114448cdba114765559669d29ac08d170a4",
+        "source_inventory_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "diagnostic": {
+          "purpose": "out_of_training_mechanism_diagnostic_not_benchmark_performance",
+          "checkpoint": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/checkpoint.pt",
+          "checkpoint_sha256": "d5c3ba8b53104d788e370f501d96b114448cdba114765559669d29ac08d170a4",
+          "training_steps": 3000000,
+          "training_seed": 101,
+          "training_episodes": 3000,
+          "config": {
+            "algorithm": "dms",
+            "env": "mamujoco",
+            "mamujoco_backend": "legacy",
+            "scenario": "HalfCheetah",
+            "ant_contact_forces": "native",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "map_name": "3s5z",
+            "seed": 101,
+            "device": "cpu",
+            "num_envs": 4,
+            "parallel_env_steps": false,
+            "mask_inactive_agents": false,
+            "update_mode": "independent",
+            "total_steps": 3000000,
+            "rollout_steps": 1000,
+            "epochs": 5,
+            "minibatch_size": 1000,
+            "hidden_dim": 64,
+            "policy_history_length": 0,
+            "initial_log_std": -0.5,
+            "latent_dim": 8,
+            "decoder_history": false,
+            "history_length": 32,
+            "prediction_horizon": 4,
+            "coordination": "all",
+            "coordination_threshold": 0.6,
+            "short_history": 4,
+            "filter_history": true,
+            "intention_threshold": 10000,
+            "warmup_episodes": 100,
+            "causal_warmup_episodes": 100,
+            "actor_lr": 0.0003,
+            "critic_lr": 0.001,
+            "intention_lr": 0.001,
+            "aux_updates": 2,
+            "aux_batch_size": 64,
+            "kl_beta": 0.1,
+            "latent_samples": 2,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip": 0.2,
+            "value_clip": 0.2,
+            "entropy_coef": 0.0,
+            "value_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.02,
+            "eval_every": 1000000,
+            "eval_episodes": 10,
+            "eval_seed": 10001,
+            "output": "runs/dev-legacy-halfcheetah-2x3-dms-all-history0-3m-cuda-101",
+            "torch_threads": 1
+          },
+          "checkpoint_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+          },
+          "diagnostic_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+            "scripts/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01"
+          },
+          "source_unchanged_during_diagnostic": true,
+          "diagnostic_seed": 400701,
+          "pairing_seed": 400702,
+          "steps_per_environment": 1000,
+          "num_environments": 4,
+          "out_of_training_transitions": 4000,
+          "parameter_updates": 0,
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "model_state_sha256": "7dd96a7943ab4e2d0fbf708b7b121ff326ec09e734d28c8271a29f47650f90ed",
+          "model_state_unchanged": true,
+          "runtime": {
+            "host": "milan32.int.triton.aalto.fi",
+            "slurm_job_id": "21213779",
+            "device": "cpu",
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "diagnostic_package_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-all/snapshot/source/dms",
+            "python_executable": "/scratch/work/liz23/reproduce/dms/.venv-legacy/bin/python",
+            "python_version": "3.10.19"
+          },
+          "protocol": {
+            "actions": "stochastic checkpoint policy; fixed parameters and normalization statistics",
+            "training_phase": "checkpoint completed-episode counter is frozen, including warmup and causal gate phase",
+            "pairing": "same observer and peer; exact history visibility pattern; distinct sensed action histories; no fallback",
+            "policy_intervention": "shuffle eligible peer latents; preserve own query, observations, gates and action masks",
+            "decoder_intervention": "shuffle prior means; retain original past, action anchor and peer identity",
+            "selection_statistic": "KL(full locally visible peer set || one peer removed), before gating; frozen inputs and policy; sensitivity only",
+            "decoder_history_input": false,
+            "temporal_variance": "center each coordinate within each environment episode; exclude warmup placeholders",
+            "history_baseline": "visible past component mean or categorical mode; histogram NLL adds one pseudocount per real category; unknown histories excluded",
+            "interpretation": "sensitivity is not usefulness; inspect paired forecast-loss changes and comparison counts"
+          },
+          "collection": {
+            "intentions_active": true,
+            "episode_seeds_by_environment": [
+              [
+                400701,
+                400705
+              ],
+              [
+                400702,
+                400706
+              ],
+              [
+                400703,
+                400707
+              ],
+              [
+                400704,
+                400708
+              ]
+            ],
+            "completed_diagnostic_episodes": 4
+          },
+          "latent_temporal_variation": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.6689872015592163,
+                  1.6918473672728707,
+                  1.435729223237736,
+                  0.10936080738115883,
+                  0.24913357292109797,
+                  0.5478792897426442,
+                  1.002009026091585,
+                  0.48783314461114613
+                ],
+                "rms_coordinate_std": 0.9345729036091572,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.1041343617372106
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.7631078145998768,
+                  1.8040946192637048,
+                  1.5880692507173604,
+                  0.12567564948161633,
+                  0.34119768560503266,
+                  0.5213893695123113,
+                  0.9824245455502039,
+                  0.6495675525974579
+                ],
+                "rms_coordinate_std": 1.009344340048029,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.1822299864692083
+              },
+              "gated": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.7631078145998768,
+                  1.8040946192637048,
+                  1.5880692507173604,
+                  0.12567564948161633,
+                  0.34119768560503266,
+                  0.5213893695123113,
+                  0.9824245455502039,
+                  0.6495675525974579
+                ],
+                "rms_coordinate_std": 1.009344340048029,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.1822299864692083
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.7848744748073103,
+                  0.9286114879908037,
+                  0.38962643247420875,
+                  2.143178589403561,
+                  1.0558946388437642,
+                  0.5253439499196099,
+                  0.4144048108391866,
+                  1.2323909760898766
+                ],
+                "rms_coordinate_std": 1.0784705071908274,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.268290404715251
+              },
+              "gated": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.7848744748073103,
+                  0.9286114879908037,
+                  0.38962643247420875,
+                  2.143178589403561,
+                  1.0558946388437642,
+                  0.5253439499196099,
+                  0.4144048108391866,
+                  1.2323909760898766
+                ],
+                "rms_coordinate_std": 1.0784705071908274,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.268290404715251
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.6465305445609376,
+                  1.1195077406351635,
+                  0.18669422753584566,
+                  1.9739096179933882,
+                  1.1896824048871644,
+                  0.32021799936233103,
+                  0.47548018549773396,
+                  1.2570637052716784
+                ],
+                "rms_coordinate_std": 1.0563289969583556,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.237262964132924
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            }
+          ],
+          "policy_shuffle": [
+            {
+              "observer": 0,
+              "eligible_peer_entries": 3996,
+              "matched_peer_entries": 3984,
+              "compared_policy_count": 3984,
+              "mean_kl_full_to_shuffled": 1.4770760536193848,
+              "max_kl_full_to_shuffled": 14.970212936401367,
+              "own_query_preserved": true
+            },
+            {
+              "observer": 1,
+              "eligible_peer_entries": 3996,
+              "matched_peer_entries": 3992,
+              "compared_policy_count": 3992,
+              "mean_kl_full_to_shuffled": 12.69799518585205,
+              "max_kl_full_to_shuffled": 106.08909606933594,
+              "own_query_preserved": true
+            }
+          ],
+          "full_to_removed_policy_kl": [
+            {
+              "observer": 0,
+              "peer": 1,
+              "visible_policy_count": 3996,
+              "mean_kl": 5.876317841855733,
+              "quantiles": {
+                "0.0": 0.5560341477394104,
+                "0.25": 1.8058984577655792,
+                "0.5": 3.7509223222732544,
+                "0.75": 6.184921026229858,
+                "0.9": 14.631980895996094,
+                "0.95": 21.156904697418213,
+                "0.99": 30.954760456085207,
+                "1.0": 41.93451690673828
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 1.0,
+                "0.1": 1.0,
+                "0.2": 1.0,
+                "0.6": 0.9992492492492493
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "visible_policy_count": 3996,
+              "mean_kl": 34.447941069846394,
+              "quantiles": {
+                "0.0": 2.721064329147339,
+                "0.25": 21.036057472229004,
+                "0.5": 32.834896087646484,
+                "0.75": 47.25483703613281,
+                "0.9": 59.648738861083984,
+                "0.95": 65.05584716796875,
+                "0.99": 74.34646720886231,
+                "1.0": 97.27182006835938
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 1.0,
+                "0.1": 1.0,
+                "0.2": 1.0,
+                "0.6": 1.0
+              }
+            }
+          ],
+          "decoder_shuffle": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 0.7321872115135193,
+              "forecast_rmse": 0.2249199002981186,
+              "shuffled_forecast_rmse": 0.7756025195121765,
+              "mse_increase_after_shuffle": 0.5509703159332275
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 0.9240383505821228,
+              "forecast_rmse": 0.34121397137641907,
+              "shuffled_forecast_rmse": 0.9789732098579407,
+              "mse_increase_after_shuffle": 0.8419616222381592
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 1.0864179134368896,
+              "forecast_rmse": 0.2538323700428009,
+              "shuffled_forecast_rmse": 1.1402857303619385,
+              "mse_increase_after_shuffle": 1.2358207702636719
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 0.7691904306411743,
+              "forecast_rmse": 0.2462814450263977,
+              "shuffled_forecast_rmse": 0.8213951587677002,
+              "mse_increase_after_shuffle": 0.6140355467796326
+            }
+          ],
+          "forecast": {
+            "forecast_target_count": 16380,
+            "forecast_comparison_count": 16368,
+            "forecast_component_count": 32736,
+            "history_baseline_target_count": 16368,
+            "history_baseline_component_count": 32736,
+            "forecast_rmse": 0.2554215390912499,
+            "persistence_rmse": 1.196924003982763,
+            "history_mean_rmse": 0.7761003533325013,
+            "history_baseline_coverage_fraction": 0.9992673992673993
+          },
+          "forecast_windows": 1024,
+          "candidate_forecast_windows": 3988
+        },
+        "elapsed_seconds": 14.438909785996657
+      }
     },
     {
       "variant": "causal",
@@ -62,7 +670,7 @@
       "snapshot": "runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot",
       "output": "runs/development-halfcheetah-coordination-mechanism-3m/causal-diagnostic.json",
       "validation": "runs/development-halfcheetah-coordination-mechanism-3m/causal-validation.json",
-      "status": "submitted",
+      "status": "completed_pass",
       "submission": {
         "command": [
           "sbatch",
@@ -85,7 +693,615 @@
         "stderr": "",
         "job_id": "21213780"
       },
-      "job_id": "21213780"
+      "job_id": "21213780",
+      "scheduler": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:00:20",
+        "node": "milan32"
+      },
+      "validation_sha256": "8fd3c1b551c7e4b1843f1c5cbd4079d55e2c45912c3a25ef890dcfd8936a76e3",
+      "result": {
+        "success": true,
+        "job_id": "21213780",
+        "variant": "causal",
+        "optimizer_step_calls": 0,
+        "host": "milan32.int.triton.aalto.fi",
+        "snapshot_files_unchanged": true,
+        "imported_paths": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/__init__.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/diagnostics.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/envs.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/train.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms/legacy_env.py"
+        },
+        "diagnostic_sha256": "539faa8c35b6209efde7e4841a297cfefa6472a4f9c0b82d085727723cf9b233",
+        "checkpoint_sha256": "c9aca2899a005d297c1009c13befd22bde808d537c871adf3d5f98f2919452eb",
+        "source_inventory_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "diagnostic": {
+          "purpose": "out_of_training_mechanism_diagnostic_not_benchmark_performance",
+          "checkpoint": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/checkpoint.pt",
+          "checkpoint_sha256": "c9aca2899a005d297c1009c13befd22bde808d537c871adf3d5f98f2919452eb",
+          "training_steps": 3000000,
+          "training_seed": 101,
+          "training_episodes": 3000,
+          "config": {
+            "algorithm": "dms",
+            "env": "mamujoco",
+            "mamujoco_backend": "legacy",
+            "scenario": "HalfCheetah",
+            "ant_contact_forces": "native",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "map_name": "3s5z",
+            "seed": 101,
+            "device": "cpu",
+            "num_envs": 4,
+            "parallel_env_steps": false,
+            "mask_inactive_agents": false,
+            "update_mode": "independent",
+            "total_steps": 3000000,
+            "rollout_steps": 1000,
+            "epochs": 5,
+            "minibatch_size": 1000,
+            "hidden_dim": 64,
+            "policy_history_length": 0,
+            "initial_log_std": -0.5,
+            "latent_dim": 8,
+            "decoder_history": false,
+            "history_length": 32,
+            "prediction_horizon": 4,
+            "coordination": "causal",
+            "coordination_threshold": 0.6,
+            "short_history": 4,
+            "filter_history": true,
+            "intention_threshold": 10000,
+            "warmup_episodes": 100,
+            "causal_warmup_episodes": 100,
+            "actor_lr": 0.0003,
+            "critic_lr": 0.001,
+            "intention_lr": 0.001,
+            "aux_updates": 2,
+            "aux_batch_size": 64,
+            "kl_beta": 0.1,
+            "latent_samples": 2,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip": 0.2,
+            "value_clip": 0.2,
+            "entropy_coef": 0.0,
+            "value_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.02,
+            "eval_every": 1000000,
+            "eval_episodes": 10,
+            "eval_seed": 10001,
+            "output": "runs/dev-legacy-halfcheetah-2x3-dms-causal-history0-3m-cuda-101",
+            "torch_threads": 1
+          },
+          "checkpoint_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+          },
+          "diagnostic_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+            "scripts/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01"
+          },
+          "source_unchanged_during_diagnostic": true,
+          "diagnostic_seed": 400701,
+          "pairing_seed": 400702,
+          "steps_per_environment": 1000,
+          "num_environments": 4,
+          "out_of_training_transitions": 4000,
+          "parameter_updates": 0,
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "model_state_sha256": "80e0a5e914bca193bcfd6dda2276e178fe88e3ba823a02d7c0498745e9d392ba",
+          "model_state_unchanged": true,
+          "runtime": {
+            "host": "milan32.int.triton.aalto.fi",
+            "slurm_job_id": "21213780",
+            "device": "cpu",
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "diagnostic_package_root": "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-coordination-3m-seed101/evaluation-causal/snapshot/source/dms",
+            "python_executable": "/scratch/work/liz23/reproduce/dms/.venv-legacy/bin/python",
+            "python_version": "3.10.19"
+          },
+          "protocol": {
+            "actions": "stochastic checkpoint policy; fixed parameters and normalization statistics",
+            "training_phase": "checkpoint completed-episode counter is frozen, including warmup and causal gate phase",
+            "pairing": "same observer and peer; exact history visibility pattern; distinct sensed action histories; no fallback",
+            "policy_intervention": "shuffle eligible peer latents; preserve own query, observations, gates and action masks",
+            "decoder_intervention": "shuffle prior means; retain original past, action anchor and peer identity",
+            "selection_statistic": "KL(full locally visible peer set || one peer removed), before gating; frozen inputs and policy; sensitivity only",
+            "decoder_history_input": false,
+            "temporal_variance": "center each coordinate within each environment episode; exclude warmup placeholders",
+            "history_baseline": "visible past component mean or categorical mode; histogram NLL adds one pseudocount per real category; unknown histories excluded",
+            "interpretation": "sensitivity is not usefulness; inspect paired forecast-loss changes and comparison counts"
+          },
+          "collection": {
+            "intentions_active": true,
+            "episode_seeds_by_environment": [
+              [
+                400701,
+                400705
+              ],
+              [
+                400702,
+                400706
+              ],
+              [
+                400703,
+                400707
+              ],
+              [
+                400704,
+                400708
+              ]
+            ],
+            "completed_diagnostic_episodes": 4
+          },
+          "latent_temporal_variation": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.709944926235269,
+                  1.8919080950109772,
+                  1.1978565789725337,
+                  0.1113046188522335,
+                  0.05787435603792606,
+                  0.5823521375703867,
+                  1.5208643106570956,
+                  0.9765633783048974
+                ],
+                "rms_coordinate_std": 1.0688647527117996,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.2636222492774736
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.5379172064834634,
+                  1.6038271203123422,
+                  1.0681044308766174,
+                  0.1006971802247737,
+                  0.10538478427003356,
+                  0.5188392741822442,
+                  1.2752721345987303,
+                  0.8099846551191229
+                ],
+                "rms_coordinate_std": 0.9065937385514723,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.0644387444026073
+              },
+              "gated": {
+                "valid_steps": 3993,
+                "variance_steps": 3993,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.5377222375945252,
+                  1.6044238458658266,
+                  1.0678797500222863,
+                  0.1007033167113326,
+                  0.10540712099941443,
+                  0.5189268791093943,
+                  1.2757506086573522,
+                  0.8098014288839619
+                ],
+                "rms_coordinate_std": 0.9067485275162147,
+                "adjacent_pair_count": 3986,
+                "adjacent_delta_rms": 1.0645189879121955
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.2992604335135998,
+                  0.13718066496823872,
+                  0.8727326584691876,
+                  1.9866797641181255,
+                  0.8286513202921687,
+                  0.2971941552001127,
+                  0.06186422474658556,
+                  1.13068981930105
+                ],
+                "rms_coordinate_std": 0.9269714225978479,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.0913262911067343
+              },
+              "gated": {
+                "valid_steps": 3763,
+                "variance_steps": 3763,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.29259193146392337,
+                  0.13961760738959747,
+                  0.855759475621219,
+                  2.006200671838779,
+                  0.801869330245412,
+                  0.28652147674026374,
+                  0.06157067334408099,
+                  1.1444011269563357
+                ],
+                "rms_coordinate_std": 0.9287627789880928,
+                "adjacent_pair_count": 3533,
+                "adjacent_delta_rms": 1.083154963097611
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.2688473339463347,
+                  0.19042553833860348,
+                  1.0159276937232686,
+                  1.890666291248575,
+                  1.2631350414939082,
+                  0.2583780776694183,
+                  0.10513277332594541,
+                  1.1578683808215702
+                ],
+                "rms_coordinate_std": 0.9829324957596689,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.161423168120222
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            }
+          ],
+          "policy_shuffle": [
+            {
+              "observer": 0,
+              "eligible_peer_entries": 3993,
+              "matched_peer_entries": 3993,
+              "compared_policy_count": 3993,
+              "mean_kl_full_to_shuffled": 8.384773254394531,
+              "max_kl_full_to_shuffled": 48.97477340698242,
+              "own_query_preserved": true
+            },
+            {
+              "observer": 1,
+              "eligible_peer_entries": 3763,
+              "matched_peer_entries": 3751,
+              "compared_policy_count": 3751,
+              "mean_kl_full_to_shuffled": 11.554600715637207,
+              "max_kl_full_to_shuffled": 49.80017852783203,
+              "own_query_preserved": true
+            }
+          ],
+          "full_to_removed_policy_kl": [
+            {
+              "observer": 0,
+              "peer": 1,
+              "visible_policy_count": 3996,
+              "mean_kl": 8.661737402235424,
+              "quantiles": {
+                "0.0": 0.18376117944717407,
+                "0.25": 3.0439333319664,
+                "0.5": 6.164522409439087,
+                "0.75": 13.000166416168213,
+                "0.9": 20.1191987991333,
+                "0.95": 24.243300914764404,
+                "0.99": 28.59837112426758,
+                "1.0": 35.55358123779297
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 1.0,
+                "0.1": 1.0,
+                "0.2": 0.9997497497497497,
+                "0.6": 0.9992492492492493
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "visible_policy_count": 3996,
+              "mean_kl": 7.274128269728598,
+              "quantiles": {
+                "0.0": 0.030300557613372803,
+                "0.25": 1.654878407716751,
+                "0.5": 6.261340379714966,
+                "0.75": 11.412341833114624,
+                "0.9": 16.599992752075195,
+                "0.95": 18.155693531036377,
+                "0.99": 21.90558271408081,
+                "1.0": 28.118885040283203
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 1.0,
+                "0.1": 0.9994994994994995,
+                "0.2": 0.9967467467467468,
+                "0.6": 0.9416916916916916
+              }
+            }
+          ],
+          "decoder_shuffle": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 0.9180703163146973,
+              "forecast_rmse": 0.1975056380033493,
+              "shuffled_forecast_rmse": 0.9398931264877319,
+              "mse_increase_after_shuffle": 0.8443905711174011
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 0.9720645546913147,
+              "forecast_rmse": 0.17513714730739594,
+              "shuffled_forecast_rmse": 1.0118789672851562,
+              "mse_increase_after_shuffle": 0.9932259321212769
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 1.1572468280792236,
+              "forecast_rmse": 0.17627668380737305,
+              "shuffled_forecast_rmse": 1.168599009513855,
+              "mse_increase_after_shuffle": 1.334550142288208
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 0.8311737775802612,
+              "forecast_rmse": 0.1849014163017273,
+              "shuffled_forecast_rmse": 0.8478625416755676,
+              "mse_increase_after_shuffle": 0.6846823692321777
+            }
+          ],
+          "forecast": {
+            "forecast_target_count": 16380,
+            "forecast_comparison_count": 16368,
+            "forecast_component_count": 32736,
+            "history_baseline_target_count": 16368,
+            "history_baseline_component_count": 32736,
+            "forecast_rmse": 0.1890003288276697,
+            "persistence_rmse": 1.2672526446385919,
+            "history_mean_rmse": 0.8124291641874318,
+            "history_baseline_coverage_fraction": 0.9992673992673993
+          },
+          "forecast_windows": 1024,
+          "candidate_forecast_windows": 3988
+        },
+        "elapsed_seconds": 15.13238426001044
+      }
     }
   ],
   "interpretation": "Same concatenating actor architecture. Distribution changes between learned policies limit across-run RMSE interpretation. Peer shuffles and removal can be out of distribution; sensitivity is not return benefit.",
@@ -110,5 +1326,6 @@
     "stdout": "21213781\n",
     "stderr": "",
     "job_id": "21213781"
-  }
+  },
+  "last_refresh_utc": "2026-10-26T13:48:49.884202+00:00"
 }
