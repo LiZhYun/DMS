@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 15:56 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-26 16:26 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -34,6 +34,10 @@ the terminal-deadline SMAC baseline had 5/10 final diagnostic wins but 13/100
 wins in the separate block. CPU replay exactly reproduced the original ten
 CUDA games for both continuing-value SMAC controls; it found no device
 discrepancy in that replay. [Replay evidence](../reports/development-smac-evaluation-device-replay.json).
+A separate [gamma-0.95 replay](../reports/development-smac-gamma095-evaluation-device-replay.json)
+also exactly reproduces all ten original CUDA returns, lengths and outcomes:
+IPPO **7/10**, DMS **10/10**. The 100-game endpoints remain **81/100** and
+**56/100**; the original ten games do not represent that separate seed block.
 
 **All-peer versus causal coordination:** the two 3M no-memory DMS variants use
 the same concatenating actor/critic architecture and differ only by coordination
@@ -82,10 +86,10 @@ are distinct from the newer matched CUDA memory controls above.
 | HalfCheetah 3x2 / 6x1, matched history-32 IPPO/DMS | 21215078 / 21215080; 21215082 / 21215084 queued | 3M partition coverage; four native CUDA smokes passed. Two chains follow the corresponding 2x3 10M runs. [Ledger](../reports/development-halfcheetah-partition-coverage-3m-seed101.json) |
 | SMAC terminal deadline | 21208999 / 21209000 completed | Both 100-game endpoints complete. [Ledger](../reports/development-fixed3m-evaluation-queue.json) |
 | SMAC gamma 0.95 | 21210585 / 21210586 completed | 3M; both fixed100-game endpoints passed; native rewards and continuing value unchanged. [Ledger](../reports/development-smac-gamma095-seed101.json) |
-| SMAC 3s5z gamma 0.95, full budget | 21214432 running / 21214434 queued | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
+| SMAC 3s5z gamma 0.95, full budget | 21214432 / 21214434 running | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
 | SMAC 8m_vs_9m IPPO/DMS | 21213720 / 21213722 running | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
 | SMAC MMM2 IPPO/DMS | 21213724 / 21213726 queued | 3M; follows the corresponding 8m_vs_9m run in each chain. Same ledger |
-| Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Native H100 smoke 21216531 queued | Four 8k checks before any 3M submission; later jobs replace completed H100 controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
+| Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Walker 21217029 / 21217031; Ant 21217033 / 21217035 queued | All four native CUDA smokes passed; 3M H100 pairs follow coordination controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
 | Walker2d 3x2 IPPO/DMS | 21210999 completed / 21211001 running | 10M unchanged independent-update recipes. [Ledger](../reports/development-walker-10m-seed101.json) |
 | Ant 4x2, native/computed contacts, IPPO/DMS | 21212116 / 21212118 / 21212120 / 21212122 | 10M, initial log std −1.0. [Ledger](../reports/development-ant-10m-contact-seed101.json) |
 
@@ -103,9 +107,13 @@ diagnostics match through the checked 2.14M steps. These are fresh development
 runs, not exact-state continuations or independent seed replicas. The
 [ledger](../reports/development-halfcheetah-history32-10m-seed101.json) records
 the prefix audit. An additional A100 IPPO run now restores the same GPU family
-for this 10M comparison; the H100 baseline is retained. Pending HalfCheetah
+for this 10M comparison; its first 148k logged steps exactly match the prior
+A100 3M run, excluding elapsed time. The H100 baseline is retained. Pending HalfCheetah
 3x2/6x1 and SMAC MMM2 pairs were restricted to H100 before training, with
-before/after scheduler records retained in their ledgers.
+before/after scheduler records retained in their ledgers. The 10M SMAC pair
+also shares H100, while its 3M references used A100; both logged prefixes
+already differ at the first update. Extra training is therefore not the sole
+changed condition in comparisons across those two budgets.
 
 ## Mechanism findings and development decisions
 
@@ -170,6 +178,15 @@ coordination. The completed gamma-0.95 model reaches **74.68%** prediction accur
 **68.85%** for persistence on matched targets. Training and diagnostic windows
 accept partial past histories; the four-step future must remain within its
 episode. A source audit found no exclusion of episodes shorter than history 32.
+
+A [paired SMAC peer-intention intervention](../reports/development-smac-gamma095-peer-interventions-3m.json),
+job **21216843**, is running on the frozen gamma-0.95 DMS endpoint. It must
+first reproduce all 100 normal evaluation episodes exactly; that replay has
+passed, including all 56 wins. It now evaluates
+holding peer latents fixed and masking peer gates on the same 100 initial
+seeds. Weights, normalizers, local observations and legal-action masks stay
+unchanged. This measures downstream dependence under interventions, not the
+performance of retrained alternatives.
 
 Earlier SMAC reward, gradient-clipping and Walker feature-drift diagnostics,
 including negative findings and exact default-update regression checks, remain

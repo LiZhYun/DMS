@@ -1,0 +1,834 @@
+{
+  "purpose": "Replay the original ten gamma0.95 CUDA diagnostic games on CPU with frozen final3M checkpoints.",
+  "created_utc": "2026-10-26T15:59:42.822302+00:00",
+  "status": "completed_pass",
+  "reason": "DMS finished with10/10 diagnostic wins but56/100 separate CPU evaluation wins. Gamma0.99 CPU replay already matched exactly; verify gamma0.95 independently before attributing this difference to episode seeds.",
+  "protocol": {
+    "episodes": 10,
+    "seed_start": 10001,
+    "seed_end": 10010,
+    "device": "cpu",
+    "parameter_updates": 0,
+    "training_steps": 3000000,
+    "training_seed": 101,
+    "checkpoint_selection": "fixed final, unchanged"
+  },
+  "held_out_training_seeds_used": [],
+  "runner": "runs/smac-evaluation-device-replay-01/runner.py",
+  "runner_sha256": "74e164b4727723bfaed4e0baea8a151aaeeec743b71e74de4608bb30e196c77f",
+  "launcher_sha256": "eb5213b8feeccc37b6b1b23257f9cc114f54dc753518e6ad7037a1e2649e7970",
+  "runs": [
+    {
+      "algorithm": "ippo",
+      "training_job_id": "21210585",
+      "training_run": "runs/dev-smac-3s5z-no-intention-sequential-history16-mask-20env-gamma095-3m-101",
+      "spec": "runs/smac-gamma095-evaluation-device-replay-01/ippo/spec.json",
+      "spec_sha256": "d010fb8376c0be1fb26e48de937e0041145ab8c97e48b2d9df46ba7be2aadfb6",
+      "status": "completed_pass",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-smac-g095-device-ippo",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=2",
+          "--mem=8G",
+          "--time=00:10:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-evaluation-device-replay-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21216634\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T15:59:42.853422+00:00"
+      },
+      "job_id": "21216634",
+      "validation": "runs/smac-gamma095-evaluation-device-replay-01/ippo/validation.json",
+      "validation_sha256": "131c9e38bb58a0f002befbcb942a667b4f4f8dac076000e3a845f02a1910c1ac",
+      "original_cuda_diagnostic_replayed_exactly": true,
+      "result": {
+        "success": true,
+        "job_id": "21216634",
+        "training_job_id": "21210585",
+        "host": "milan2.int.triton.aalto.fi",
+        "partition": "batch-milan",
+        "started_utc": "2026-10-26T16:00:02.712457+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/checkpoint.pt",
+          "--episodes",
+          "10",
+          "--seed",
+          "10001",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/development-evaluation-10.json"
+        ],
+        "learner_state_sha256_before": "24a91ff164993ffe3c318454f80523cdf55d8d3365b5b701e3656bdb260a0593",
+        "learner_state_sha256_after": "24a91ff164993ffe3c318454f80523cdf55d8d3365b5b701e3656bdb260a0593",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/evaluate.py",
+          "dms.smac_env": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/smac_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 10,
+          "return_mean": 18.898344430583528,
+          "return_population_std": 1.7709864944610394,
+          "return_median": 20.00000011175871,
+          "return_quantiles": {
+            "0": 15.403973639011383,
+            "0.01": 15.492185553633607,
+            "0.05": 15.845033212122507,
+            "0.1": 16.28609278523363,
+            "0.25": 17.71523183491081,
+            "0.5": 20.00000011175871,
+            "0.75": 20.028973548382055,
+            "0.9": 20.060927194915713,
+            "0.95": 20.096688791830093,
+            "0.99": 20.125298069361598,
+            "1": 20.132450388744473
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 0,
+          "return_below1000_episodes": 10,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 73.2,
+          "episode_length_min": 58,
+          "episode_length_max": 150,
+          "wins": 7,
+          "win_rate": 0.7
+        },
+        "development_episodes": [
+          {
+            "seed": 10001,
+            "return": 20.026490109041333,
+            "length": 64,
+            "battle_won": true
+          },
+          {
+            "seed": 10002,
+            "return": 20.000000149011612,
+            "length": 61,
+            "battle_won": true
+          },
+          {
+            "seed": 10003,
+            "return": 20.02980136149563,
+            "length": 61,
+            "battle_won": true
+          },
+          {
+            "seed": 10004,
+            "return": 19.999999910593033,
+            "length": 72,
+            "battle_won": true
+          },
+          {
+            "seed": 10005,
+            "return": 20.132450388744473,
+            "length": 59,
+            "battle_won": true
+          },
+          {
+            "seed": 10006,
+            "return": 16.95364247635007,
+            "length": 86,
+            "battle_won": false
+          },
+          {
+            "seed": 10007,
+            "return": 20.000000074505806,
+            "length": 58,
+            "battle_won": true
+          },
+          {
+            "seed": 10008,
+            "return": 16.38410602370277,
+            "length": 150,
+            "battle_won": false
+          },
+          {
+            "seed": 10009,
+            "return": 20.052980173379183,
+            "length": 58,
+            "battle_won": true
+          },
+          {
+            "seed": 10010,
+            "return": 15.403973639011383,
+            "length": 63,
+            "battle_won": false
+          }
+        ],
+        "checkpoint_sha256": "22d44b6cfc4fbb5ac798883afb4f643258db6170525ca6a41a92812bf9ea7662",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 150
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+            "relative_path": "SMAC_Maps/3s5z.SC2Map",
+            "size_bytes": 15697,
+            "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          },
+          "policy_observation_history": {
+            "length": 16,
+            "base_observation_dim": 249,
+            "shape": [
+              8,
+              16,
+              250
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset and own SMAC death",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "2.2.6",
+          "gymnasium": "1.4.0",
+          "gymnasium-robotics": "1.4.2",
+          "mujoco": "3.17.0",
+          "pysc2": "3.0.0",
+          "smac": "1.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/ippo/development-evaluation-10.json",
+        "evaluation_output_sha256": "207c777ad1fc2f2d3d0510c8d94c5bf6c35bc1dd36a0b52a9f989ac915014174",
+        "learner_state_unchanged": true,
+        "training_steps": 3000000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 3000000,
+              "seed": 10001,
+              "return": 20.026490109041333,
+              "length": 64,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10002,
+              "return": 20.000000149011612,
+              "length": 61,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10003,
+              "return": 20.02980136149563,
+              "length": 61,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10004,
+              "return": 19.999999910593033,
+              "length": 72,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10005,
+              "return": 20.132450388744473,
+              "length": 59,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10006,
+              "return": 16.95364247635007,
+              "length": 86,
+              "battle_won": false
+            },
+            {
+              "steps": 3000000,
+              "seed": 10007,
+              "return": 20.000000074505806,
+              "length": 58,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10008,
+              "return": 16.38410602370277,
+              "length": 150,
+              "battle_won": false
+            },
+            {
+              "steps": 3000000,
+              "seed": 10009,
+              "return": 20.052980173379183,
+              "length": 58,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10010,
+              "return": 15.403973639011383,
+              "length": 63,
+              "battle_won": false
+            }
+          ],
+          "summary": {
+            "episodes": 10,
+            "return_mean": 18.898344430583528,
+            "return_population_std": 1.7709864944610394,
+            "return_median": 20.00000011175871,
+            "return_quantiles": {
+              "0": 15.403973639011383,
+              "0.01": 15.492185553633607,
+              "0.05": 15.845033212122507,
+              "0.1": 16.28609278523363,
+              "0.25": 17.71523183491081,
+              "0.5": 20.00000011175871,
+              "0.75": 20.028973548382055,
+              "0.9": 20.060927194915713,
+              "0.95": 20.096688791830093,
+              "0.99": 20.125298069361598,
+              "1": 20.132450388744473
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 10,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 73.2,
+            "episode_length_min": 58,
+            "episode_length_max": 150
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 97.26214063167572,
+        "completed_utc": "2026-10-26T16:01:39.974632+00:00"
+      }
+    },
+    {
+      "algorithm": "dms",
+      "training_job_id": "21210586",
+      "training_run": "runs/dev-smac-3s5z-dms-sequential-history16-mask-20env-gamma095-3m-101",
+      "spec": "runs/smac-gamma095-evaluation-device-replay-01/dms/spec.json",
+      "spec_sha256": "27b6c4a3d902e0127db899df130426e1f9e2b26116b067233fe8786001e3e2a3",
+      "status": "completed_pass",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-smac-g095-device-dms",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=2",
+          "--mem=8G",
+          "--time=00:10:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-evaluation-device-replay-01/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21216635\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T15:59:42.876495+00:00"
+      },
+      "job_id": "21216635",
+      "validation": "runs/smac-gamma095-evaluation-device-replay-01/dms/validation.json",
+      "validation_sha256": "40ed12013404ae5c15b956b3c65b252ea80c7dcf3b41b9e088b1f7a5f8e3c2de",
+      "original_cuda_diagnostic_replayed_exactly": true,
+      "result": {
+        "success": true,
+        "job_id": "21216635",
+        "training_job_id": "21210586",
+        "host": "milan3.int.triton.aalto.fi",
+        "partition": "batch-milan",
+        "started_utc": "2026-10-26T16:00:03.926395+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/checkpoint.pt",
+          "--episodes",
+          "10",
+          "--seed",
+          "10001",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/development-evaluation-10.json"
+        ],
+        "learner_state_sha256_before": "8659b55984bcf7517ff163d5a735e33e2f34e594f8c1cb0a19d01d3ee2890595",
+        "learner_state_sha256_after": "8659b55984bcf7517ff163d5a735e33e2f34e594f8c1cb0a19d01d3ee2890595",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/evaluate.py",
+          "dms.smac_env": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/smac_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 10,
+          "return_mean": 20.000000037252903,
+          "return_population_std": 9.23992156858891e-08,
+          "return_median": 20.000000044703484,
+          "return_quantiles": {
+            "0": 19.99999986588955,
+            "0.01": 19.999999872595073,
+            "0.05": 19.999999899417162,
+            "0.1": 19.999999932944775,
+            "0.25": 19.99999998882413,
+            "0.5": 20.000000044703484,
+            "0.75": 20.000000070780516,
+            "0.9": 20.000000166893006,
+            "0.95": 20.00000018030405,
+            "0.99": 20.000000191032886,
+            "1": 20.000000193715096
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 0,
+          "return_below1000_episodes": 10,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 44.1,
+          "episode_length_min": 40,
+          "episode_length_max": 49,
+          "wins": 10,
+          "win_rate": 1.0
+        },
+        "development_episodes": [
+          {
+            "seed": 10001,
+            "return": 19.99999998509884,
+            "length": 49,
+            "battle_won": true
+          },
+          {
+            "seed": 10002,
+            "return": 20.000000044703484,
+            "length": 44,
+            "battle_won": true
+          },
+          {
+            "seed": 10003,
+            "return": 20.000000193715096,
+            "length": 40,
+            "battle_won": true
+          },
+          {
+            "seed": 10004,
+            "return": 20.000000059604645,
+            "length": 48,
+            "battle_won": true
+          },
+          {
+            "seed": 10005,
+            "return": 19.999999940395355,
+            "length": 42,
+            "battle_won": true
+          },
+          {
+            "seed": 10006,
+            "return": 20.000000074505806,
+            "length": 41,
+            "battle_won": true
+          },
+          {
+            "seed": 10007,
+            "return": 20.0,
+            "length": 44,
+            "battle_won": true
+          },
+          {
+            "seed": 10008,
+            "return": 20.000000163912773,
+            "length": 43,
+            "battle_won": true
+          },
+          {
+            "seed": 10009,
+            "return": 20.000000044703484,
+            "length": 45,
+            "battle_won": true
+          },
+          {
+            "seed": 10010,
+            "return": 19.99999986588955,
+            "length": 45,
+            "battle_won": true
+          }
+        ],
+        "checkpoint_sha256": "8d9dd89c113a8b5b0ee6050a3d91c37750969aceb4172261d9878bd1f735d5cc",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "3s5z",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "3s5z",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 150
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/3s5z.SC2Map",
+            "relative_path": "SMAC_Maps/3s5z.SC2Map",
+            "size_bytes": 15697,
+            "sha256": "20ce045f7442eba0010548cb26c03f80db93a4b5a4d94eae1d2486404774e088"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          },
+          "policy_observation_history": {
+            "length": 16,
+            "base_observation_dim": 249,
+            "shape": [
+              8,
+              16,
+              250
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset and own SMAC death",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "2.2.6",
+          "gymnasium": "1.4.0",
+          "gymnasium-robotics": "1.4.2",
+          "mujoco": "3.17.0",
+          "pysc2": "3.0.0",
+          "smac": "1.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/smac-gamma095-evaluation-device-replay-01/dms/development-evaluation-10.json",
+        "evaluation_output_sha256": "7b3b4865a3b08c5bb2b364e1cdf13538da614fa71fed96c64eaf2db2ed6add0a",
+        "learner_state_unchanged": true,
+        "training_steps": 3000000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 3000000,
+              "seed": 10001,
+              "return": 19.99999998509884,
+              "length": 49,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10002,
+              "return": 20.000000044703484,
+              "length": 44,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10003,
+              "return": 20.000000193715096,
+              "length": 40,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10004,
+              "return": 20.000000059604645,
+              "length": 48,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10005,
+              "return": 19.999999940395355,
+              "length": 42,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10006,
+              "return": 20.000000074505806,
+              "length": 41,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10007,
+              "return": 20.0,
+              "length": 44,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10008,
+              "return": 20.000000163912773,
+              "length": 43,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10009,
+              "return": 20.000000044703484,
+              "length": 45,
+              "battle_won": true
+            },
+            {
+              "steps": 3000000,
+              "seed": 10010,
+              "return": 19.99999986588955,
+              "length": 45,
+              "battle_won": true
+            }
+          ],
+          "summary": {
+            "episodes": 10,
+            "return_mean": 20.000000037252903,
+            "return_population_std": 9.23992156858891e-08,
+            "return_median": 20.000000044703484,
+            "return_quantiles": {
+              "0": 19.99999986588955,
+              "0.01": 19.999999872595073,
+              "0.05": 19.999999899417162,
+              "0.1": 19.999999932944775,
+              "0.25": 19.99999998882413,
+              "0.5": 20.000000044703484,
+              "0.75": 20.000000070780516,
+              "0.9": 20.000000166893006,
+              "0.95": 20.00000018030405,
+              "0.99": 20.000000191032886,
+              "1": 20.000000193715096
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 10,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 44.1,
+            "episode_length_min": 40,
+            "episode_length_max": 49
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 113.70248562423512,
+        "completed_utc": "2026-10-26T16:01:57.630714+00:00"
+      }
+    }
+  ],
+  "completed_utc": "2026-10-26T16:06:02.214958+00:00",
+  "interpretation": "Both CPU replays exactly reproduce all ten original CUDA episode outcomes, lengths and float returns:IPPO7/10,DMS10/10. The separate100-game results remain81/100 and56/100. No device discrepancy was found in these replayed games; this does not establish device equivalence for every possible episode."
+}
