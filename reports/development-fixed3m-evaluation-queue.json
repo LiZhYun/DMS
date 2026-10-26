@@ -6637,7 +6637,7 @@
       "history": 16,
       "gamma": 0.99,
       "smac_time_limit_terminal": true,
-      "status": "training_running_or_pending",
+      "status": "training_completed_verified",
       "source_sha256": {
         "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
         "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
@@ -6664,7 +6664,7 @@
       "evaluation": {
         "spec": "runs/development-round-3m-followup-01/smac-ippo-terminal/spec.json",
         "spec_sha256": "ea536eeb48e43fda5f85064ddac6e8d5c4d8209ba930bd5c735b4a3aea7e73fa",
-        "status": "waiting_for_training",
+        "status": "pending_or_running",
         "command": [
           "sbatch",
           "--parsable",
@@ -6691,17 +6691,110 @@
       "runtime": "modern",
       "scheduler": {
         "training": {
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "exit_code": "0:0",
-          "elapsed": "03:36:24",
+          "elapsed": "03:50:27",
           "node": "gpu47"
         },
         "evaluation": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:15:11",
+          "node": "milan2"
         }
+      },
+      "completion_audit": {
+        "checks": {
+          "complete_status": true,
+          "runtime_job_matches": true,
+          "exact_budget": true,
+          "config_matches": true,
+          "source_matches": true,
+          "environment_matches": true,
+          "used_versions_match": true,
+          "finite_metrics_and_evaluations": true,
+          "monotonic_steps": true,
+          "exact_endpoint_evaluation_seeds": true
+        },
+        "training_steps": 3000000,
+        "checkpoint_sha256": "ff7656584a86246c618208da8a56b7ec00e830976a93eb6f00cb014c58e7135a",
+        "manifest_sha256": "0a3199a944d2396b16968ae73cfc0cffba272fc1d2f652533d6748eb0d7b76fd",
+        "metrics_sha256": "45c83f26398b02353f79cf729fbf3cb9c71e5b0a82abcc27074f6917420e269a",
+        "evaluation_sha256": "6ca4b9e0bff86e25f56c529e24c4b0c5ad352988e8a32e30de3be5c56ed60d38",
+        "final_diagnostic_records": [
+          {
+            "steps": 3000000,
+            "seed": 10001,
+            "return": 19.999999970197678,
+            "length": 77,
+            "battle_won": true
+          },
+          {
+            "steps": 3000000,
+            "seed": 10002,
+            "return": 12.064569699577987,
+            "length": 83,
+            "battle_won": false
+          },
+          {
+            "steps": 3000000,
+            "seed": 10003,
+            "return": 20.00000025331974,
+            "length": 87,
+            "battle_won": true
+          },
+          {
+            "steps": 3000000,
+            "seed": 10004,
+            "return": 7.928808061406016,
+            "length": 80,
+            "battle_won": false
+          },
+          {
+            "steps": 3000000,
+            "seed": 10005,
+            "return": 20.00000010430813,
+            "length": 100,
+            "battle_won": true
+          },
+          {
+            "steps": 3000000,
+            "seed": 10006,
+            "return": 11.165563181508332,
+            "length": 150,
+            "battle_won": false
+          },
+          {
+            "steps": 3000000,
+            "seed": 10007,
+            "return": 20.00000023841858,
+            "length": 78,
+            "battle_won": true
+          },
+          {
+            "steps": 3000000,
+            "seed": 10008,
+            "return": 16.26490080356598,
+            "length": 85,
+            "battle_won": false
+          },
+          {
+            "steps": 3000000,
+            "seed": 10009,
+            "return": 17.748344428371638,
+            "length": 150,
+            "battle_won": false
+          },
+          {
+            "steps": 3000000,
+            "seed": 10010,
+            "return": 20.000000178813934,
+            "length": 95,
+            "battle_won": true
+          }
+        ],
+        "final_diagnostic_mean_return": 16.517218691948802,
+        "final_diagnostic_wins": 5
       }
     },
     {
@@ -6770,7 +6863,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "03:36:10",
+          "elapsed": "04:05:46",
           "node": "gpu47"
         },
         "evaluation": {
@@ -6847,7 +6940,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "02:36:17",
+          "elapsed": "03:05:53",
           "node": "gpu14"
         },
         "evaluation": {
@@ -6924,7 +7017,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "02:36:17",
+          "elapsed": "03:05:53",
           "node": "gpu38"
         },
         "evaluation": {
@@ -8071,7 +8164,7 @@
   },
   "runtime_basis": "CPU smoke: DMS memory0 two1000-step episodes40.64s; IPPO memory32 two1000-step episodes18.14s; SMAC DMS two games196steps36.09s. Requests include startup and conservative full-length episode margin.",
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-26T12:16:48.486382+00:00",
+  "last_refresh_utc": "2026-10-26T12:46:23.697429+00:00",
   "matched_comparisons": {
     "hc-history0": {
       "ippo": {
