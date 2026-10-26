@@ -58,3 +58,16 @@ its SHA-256, 147 payload members and exact regeneration command. No public URL
 has been created, so hosting remains open. The README's support matrix and
 current-status link are now present; the earlier optional usability items have
 been addressed.
+
+**Legacy CPU container evidence, 2026-10-26.** The [Apptainer route](../containers/README.md)
+now runs without host Python packages or Triton library modules. Build 21213009
+and validation 21213010 passed 56 native tests without skips, thirteen fixed-action
+physics cases with 130 arrays exactly matching the existing stack, and four
+short DMS training/checkpoint checks. Reader command check 21213356 and the
+public physics probe 21213435 also passed. Saved-source checkpoint evaluation
+21213471 verified actual source, environment and package versions and an unchanged
+checkpoint. [The ledger](../reports/legacy-container-validation.json) retains failed
+builds, hashes and observed dependency inventories. The image has been tested on
+Triton x86-64 only; other hosts, GPU execution, original MuJoCo 2.0 parity,
+fully locked rebuilds and public image hosting remain open. This adds a tested
+container route while preserving the limits of the earlier native-bootstrap audit.

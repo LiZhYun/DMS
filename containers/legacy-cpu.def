@@ -1,0 +1,62 @@
+Bootstrap: docker
+From: python@sha256:7de0b3589a2b35452fab55d753aa773d59afcbb88220ab118d6604a398cd65e1
+
+%labels
+    org.opencontainers.image.title DMS legacy MuJoCo compatibility environment
+    org.opencontainers.image.description CPU Python3.10, Torch2.6, Gym0.23.1 and MuJoCo2.1; historical binary parity unverified
+
+%post
+    set -eu
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update
+    apt-get install -y --no-install-recommends build-essential ca-certificates curl \
+        libosmesa6-dev libgl1-mesa-dev libglew-dev libglfw3 patchelf
+    mkdir -p /opt/dms-environment
+    curl --fail --location --retry 3 \
+        https://github.com/google-deepmind/mujoco/releases/download/2.1.0/mujoco210-linux-x86_64.tar.gz \
+        -o /opt/dms-environment/mujoco210.tar.gz
+    echo 'a436ca2f4144c38b837205635bbd60ffe1162d5b44c87df22232795978d7d012  /opt/dms-environment/mujoco210.tar.gz' | sha256sum -c -
+    tar -xzf /opt/dms-environment/mujoco210.tar.gz -C /opt
+    python -m pip install --no-cache-dir 'pip==25.3'
+    python -m pip install --no-cache-dir 'filelock==3.20.0' 'typing_extensions==4.15.0' \
+        'networkx==3.4.2' 'jinja2==3.1.6' 'MarkupSafe==3.0.3' \
+        'sympy==1.13.1' 'mpmath==1.3.0' 'fsspec==2025.9.0'
+    python -m pip install --no-cache-dir --no-deps 'torch==2.6.0' --index-url https://download.pytorch.org/whl/cpu
+    python -m pip install --no-cache-dir 'numpy==1.26.4' 'Cython==0.29.37' \
+        'setuptools==68.2.2' 'wheel==0.45.1'
+    python -m pip install --no-cache-dir --no-build-isolation \
+        'mujoco-py==2.1.2.14' 'gym==0.23.1' 'cffi==1.17.1' 'pycparser==2.22' \
+        'fasteners==0.19' 'glfw==2.9.0' 'imageio==2.37.0' 'pillow==11.3.0' \
+        'cloudpickle==2.2.1' 'gym-notices==0.0.8' 'pytest==8.4.2' \
+        'pluggy==1.6.0' 'iniconfig==2.1.0' 'pygments==2.19.2' 'tomli==2.3.0'
+    export MUJOCO_PY_MUJOCO_PATH=/opt/mujoco210
+    export MUJOCO_PY_FORCE_CPU=1
+    export LD_LIBRARY_PATH=/opt/mujoco210/bin:/usr/lib/x86_64-linux-gnu
+    python -c 'from pathlib import Path; import mujoco_py; assert mujoco_py.functions.mj_version() == 210; (Path(mujoco_py.__file__).parent / "generated" / "mujocopy-buildlock").chmod(0o666)'
+    python -m pip check
+    python -m pip freeze --all > /opt/dms-environment/python-packages.txt
+    dpkg-query -W > /opt/dms-environment/system-packages.txt
+    rm /opt/dms-environment/mujoco210.tar.gz
+    rm -rf /var/lib/apt/lists/*
+
+%environment
+    export MUJOCO_PY_MUJOCO_PATH=/opt/mujoco210
+    export MUJOCO_PY_FORCE_CPU=1
+    export LD_LIBRARY_PATH=/opt/mujoco210/bin:/usr/lib/x86_64-linux-gnu
+    export PYTHONNOUSERSITE=1
+    export PYTHONDONTWRITEBYTECODE=1
+    export OMP_NUM_THREADS=1
+    export OPENBLAS_NUM_THREADS=1
+    export MKL_NUM_THREADS=1
+
+%test
+    python -c 'import torch, gym, mujoco_py; assert torch.__version__ == "2.6.0+cpu"; e=gym.make("HalfCheetah-v2"); e.reset(seed=101); e.step(e.action_space.sample()); e.close()'
+
+%runscript
+    exec python "$@"
+
+%help
+    CPU compatibility environment. Source code and outputs are mounted explicitly.
+    Use --writable-tmpfs when executing a SIF: mujoco-py takes an import lock in
+    its installed package directory, even with a precompiled extension.
+    This image does not reproduce the original MuJoCo2.0 simulator binary.
