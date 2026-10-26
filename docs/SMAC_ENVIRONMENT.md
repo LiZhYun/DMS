@@ -64,6 +64,14 @@ The dense battle reward tracks enemy health/shield changes and enemy deaths. Wit
 
 The adapter preserves this native shared reward. It maps a native episode-limit event to truncation, preserves the final observation, and treats battle outcomes as termination. A genuine battle outcome at the limit takes precedence because native SMAC checks the outcome before its timeout branch. Individual unit death does not terminate the shared episode. Missing battle results after a protocol failure raise an infrastructure error instead of silently counting a loss.
 
+## Optional finite-battle objective
+
+`smac_time_limit_terminal=false` is the default: GAE bootstraps the final local value at native timeouts, treating the cutoff as a sampling limit. Set it to `true` to treat the SMAC battle deadline as part of the task, suppressing that bootstrap. The option is rejected for non-SMAC environments. Genuine terminations and unfinished rollout boundaries keep their existing treatment.
+
+This is an explicit objective comparison. The adapter still returns the native timeout as truncation, and the trainer preserves those raw flags. Only the masks passed to value/advantage computation change; rewards, local observations, masks, resets, and intention-training boundaries do not. Manifests record the choice under `value_time_limits`; saved configuration and source must match for comparisons. Use the same choice for DMS and its no-intention control.
+
+The archived SMAC setup treated the cutoff as terminal, while the initial redesign used continuation bootstrap. [The learning review](SMAC_LEARNING_REVIEW.md) explains the distinction. Native validation job **21208924** exercised four real timeout events and active sequential DMS; [its ledger](../reports/smac-time-limit-validation.json) records numeric tests and default regressions. Learning trials are separate from these software checks.
+
 ## SC2 game lifetime and scheduled process replacement
 
 The official [PySC2 environment source](https://github.com/google-deepmind/pysc2/blob/master/pysc2/env/sc2_env.py) defines `MAX_STEP_COUNT = 524000` and explains that SC2 fails beyond `2**19 = 524288` game loops. These are simulator loops, not agent decisions or aggregate vector-environment transitions. Native SMAC usually resets a battle by killing units and triggering their respawn in the same game; this keeps the cumulative game clock running.

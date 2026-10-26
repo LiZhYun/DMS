@@ -4,7 +4,7 @@ This repository redesigns the implementation of **Coordination as Inference in M
 
 The paper appeared in [Neural Networks, volume 172 (2024), article 106101](https://doi.org/10.1016/j.neunet.2024.106101). Use [CITATION.bib](CITATION.bib) to cite the method. The [original implementation](https://github.com/LiZhYun/DMS) is retained as an audit reference in this workspace.
 
-The implementation is a work in progress. **Performance exceeding the paper has not been demonstrated.** Passing tests or completing the synthetic example does not establish benchmark reproduction. The exact targets and outstanding comparability issues are recorded in [the paper contract](docs/PAPER_CONTRACT.md) and [paper_targets.json](configs/paper_targets.json).
+The implementation is a work in progress. **Performance exceeding the paper has not been demonstrated.** Passing tests or completing the synthetic example does not establish benchmark reproduction. The exact targets and outstanding comparability issues are recorded in [the paper contract](docs/PAPER_CONTRACT.md) and [paper_targets.json](configs/paper_targets.json). [Current development status](docs/STATUS.md) records completed results, negative findings, running experiments, and the remaining release requirements.
 
 ## Read the code in this order
 
@@ -21,6 +21,12 @@ The code preserves observer, peer, time, and environment dimensions explicitly. 
 The optional [local policy memory](docs/LOCAL_POLICY_MEMORY.md) adds a bounded observation-history GRU to both IPPO and DMS. It keeps the same local information boundary and recomputes features during PPO; development experiments are testing whether it improves learning.
 
 ## Install
+
+| Workflow | Tested setup | Additional requirement |
+| --- | --- | --- |
+| Synthetic example and modern MuJoCo | Python 3.10 on Linux; CPU and Triton CUDA | Package extras below |
+| Original SMAC | Python 3.10 on Triton; CPU and CUDA | Official SMAC package, maps, and StarCraft II 4.10 |
+| Historical MuJoCo compatibility | Separate Python 3.10 environment on Triton | Native MuJoCo 2.1 setup; other Linux systems are unverified |
 
 Use Python 3.10 for the documented pinned environment. Install a PyTorch build compatible with the compute node first; then install this package and the required environment extras. The existing Triton environment is `dms/.venv` and currently uses PyTorch 2.6 with CUDA 12.6.
 
@@ -61,6 +67,8 @@ For the historical MuJoCo compatibility track, use a separate Python 3.10 enviro
 The pinned native Ant simulator leaves contact-force buffers zero. The optional [computed-force variant](docs/ANT_CONTACT_FORCES.md) populates those existing local observations and the contact penalty. Its configuration, benchmark label, and results remain separate from native Ant; passing its execution checks does not establish historical comparability.
 
 The default optimizer is independent PPO. The optional [sequential update](docs/SEQUENTIAL_POLICY_UPDATE.md) adds predecessor likelihood correction with local actor/critic inputs; compare algorithms with the same update mode.
+
+SMAC also exposes an explicit [finite-battle objective](docs/SMAC_ENVIRONMENT.md#optional-finite-battle-objective) through `smac_time_limit_terminal`. The default bootstraps timeouts; the optional terminal setting is being tested in matched development runs.
 
 ## Run the synthetic check
 

@@ -12,7 +12,7 @@ Measure wall time, peak host memory, GPU memory, and transitions per second sepa
 
 ## Stage 2: development on separate seeds
 
-Use training seeds **101, 103, 107**. Begin with HalfCheetah 2x3 and SMAC 3s5z using the paired DMS/IPPO configs. Start with explicitly shorter development budgets, then move promising configurations to 10,000,000 transitions. Record every attempted setting and its budget. Keep equal sensor access, environment version, reward semantics, and evaluation settings across algorithms.
+Use training seeds **101, 103, 107**. Begin with HalfCheetah 2x3 and SMAC 3s5z using the paired DMS/IPPO configs. Start with explicitly shorter development budgets, then move promising configurations to 10,000,000 transitions. Record every attempted setting and its budget. Keep equal sensor access, environment version, reward semantics, and evaluation settings across algorithms. Match `smac_time_limit_terminal` within each pair: its optional finite-battle objective changes value targets at the native deadline and must be reported separately from continuing-value runs.
 
 Tune a small predeclared set: actor/critic learning rates, history length, auxiliary-loss/update strength, and coordination variant/threshold. Record negative results. Inspect held-out behavior prediction against a persistence predictor and latent/selection diagnostics alongside reward. Flat or collapsed latent features, near-zero selected-peer rates, or gains explainable entirely by a stronger PPO base require investigation.
 

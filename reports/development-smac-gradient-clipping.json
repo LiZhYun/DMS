@@ -1,0 +1,213 @@
+{
+  "status": "completed_verified",
+  "created_utc": "2026-10-25T12:42:40.576208+00:00",
+  "kind": "counterfactual_optimizer_diagnostic",
+  "control_run": "runs/dev-smac-3s5z-ippo-history16-mask-20env-1m-threaded-cuda-101",
+  "control_job_id": "21198103",
+  "artifact_directory": "runs/smac-gradient-clipping-01",
+  "checkpoint_sha256": "a79a0ba828718b3e7a14f4ba2ebe79adaffaa55d29da843d9f2ebe2d84eef346",
+  "control_checkpoint_sha256": "a79a0ba828718b3e7a14f4ba2ebe79adaffaa55d29da843d9f2ebe2d84eef346",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_env.py": "d4847f2b0c5da7d73a71d5e2817d69dd300480cb00d894969975f16dee2fb642",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cba59d4c43b04187857692df8b11104cab046b490febcd6f1159459034fd3615",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "a7256db706cb985f818ff5787cce66a1c6a02108747fe529e1889aa9ed4f56c6",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "a133c44edc56568d6f1d7b8cbabb18f5661a9a02c3f7c86f094433dcab68bbf8"
+  },
+  "config_sha256": "958948293a19a5ef15f5e76b76ba27a7e6a3dd118a2c0144d67aed6f5b258256",
+  "manifest_sha256": "3e833e9804eaf6ecd3fd95a73651bd4bd4745b56337d4e81365009c2fa1a3c68",
+  "protocol": {
+    "fresh_diagnostic_seed": 400301,
+    "num_envs": 20,
+    "rollout_steps": 160,
+    "transitions": 3200,
+    "max_grad_norm_branches": [
+      0.5,
+      10.0
+    ],
+    "clone_state": "identical learner, Adam moments, frozen rollout and initial RNG",
+    "timeout_sensitivity": "read-only current truncation bootstrap versus terminal-at-timeout GAE; no third optimizer branch",
+    "scope": "one late development IPPO checkpoint; no held-out training seeds or return-improvement evidence"
+  },
+  "resources": {
+    "gpus": 1,
+    "cpus": 4,
+    "memory_gb": 32,
+    "walltime": "00:15:00",
+    "partitions": [
+      "gpu-h200-141g-ellis",
+      "gpu-debug",
+      "gpu-a100-80g",
+      "gpu-h100-80g"
+    ],
+    "excluded": "B300 unsupported by Torch 2.6; ARM incompatible environment"
+  },
+  "attempts": [
+    {
+      "job_id": "21199502",
+      "status": "FAILED",
+      "script_note": "Inspect for execution of initial syntax-invalid version versus corrected version.",
+      "exit_code": "1:0",
+      "elapsed": "00:00:00",
+      "node": "dgx1",
+      "reason": "Python syntax error before imports or native environment launch",
+      "stderr": "logs/dms-smac-grad-probe_21199502.err",
+      "stderr_sha256": "d711fcfac76b48cc09126f6187ab79895546bff58ab27591f8954da6c47bbc9d"
+    },
+    {
+      "job_id": "21199511",
+      "state": "COMPLETED",
+      "exit_code": "0:0",
+      "result": "runs/smac-gradient-clipping-01/result.json"
+    }
+  ],
+  "preflight_correction": {
+    "issue": "Syntax error in norm-record dictionary update detected by AST check",
+    "correction": "Changed dictionary-style keys to keyword arguments; no package or model changes",
+    "submission_note": "Initial submit was issued in the same tool result before syntax-check output was inspected; inspect job and retain any failure evidence."
+  },
+  "diagnostic_scripts_sha256": {
+    "runs/smac-gradient-clipping-01/diagnose.py": "ad70eaeaa93879014b1b3738db6fff16d7604ec8857bc7da74dcbc1c573f5465",
+    "runs/smac-gradient-clipping-01/diagnose.sbatch": "c80cf25fe373a956c038aa902983180058c21733f3d42fba42e40840760a94a9"
+  },
+  "checked_utc": "2026-10-26T08:38:40.789195+00:00",
+  "completed_job": "21199511",
+  "accounting": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:02:58",
+    "node": "dgx1"
+  },
+  "raw_result": "runs/smac-gradient-clipping-01/result.json",
+  "raw_result_sha256": "c2f42545e83210cc542065d2db49886dc8fd0c07d8fd57e62e2a92315ac09870",
+  "checks": {
+    "exact_archived_source": true,
+    "checkpoint_unchanged": true,
+    "original_checkpoint_unchanged": true,
+    "config_unchanged": true,
+    "dependency_versions_equal": true,
+    "environment_metadata_equal": true,
+    "map_asset_unchanged": true,
+    "frozen_moments_during_collection": true,
+    "base_model_and_optimizer_unchanged": true,
+    "cached_rollout_unchanged": true,
+    "branch_start_states_equal": true,
+    "branch_start_rng_equal": true,
+    "exact_3200_transitions": true,
+    "all_numeric_rollout_values_finite": true,
+    "cached_old_logprob_replay_matches": true
+  },
+  "conclusion": {
+    "gradient_calls_per_branch": 40,
+    "global_norm_max": 0.3442366562560849,
+    "clipped_fraction_both_caps": 0,
+    "final_model_and_optimizer_state_identical": true,
+    "policy_kl_between_branches": 0,
+    "interpretation": "Cap0.5 was not binding on this sampled late-checkpoint rollout. No cap-change learning trial is justified by this diagnostic. Earlier states are not covered."
+  },
+  "timeout_summary": {
+    "true_termination_events": 1,
+    "timeout_events": 19,
+    "unfinished_environments_at_rollout_boundary": 20,
+    "events_count_environment_transitions_not_agent_rows": true,
+    "final_values_at_timeouts_all_agent_rows": {
+      "count": 152,
+      "mean": 1.0796081792367132,
+      "std_population": 0.31729606674327576,
+      "min": 0.05166125297546387,
+      "median": 1.0311222076416016,
+      "p90": 1.4417648315429696,
+      "p99": 2.113104455471039,
+      "max": 2.147202491760254
+    },
+    "final_values_at_timeouts_pretransition_active_rows": {
+      "count": 34,
+      "mean": 1.2879901633543127,
+      "std_population": 0.6177468501097977,
+      "min": 0.05166125297546387,
+      "median": 1.287294864654541,
+      "p90": 2.08393394947052,
+      "p99": 2.1368250036239624,
+      "max": 2.147202491760254
+    },
+    "discounted_timeout_bootstrap_active": {
+      "count": 34,
+      "mean": 1.2751102810177732,
+      "std_population": 0.6115693959747172,
+      "min": 0.051144640892744064,
+      "median": 1.2744219303131104,
+      "p90": 2.0630946159362793,
+      "p99": 2.115456802845001,
+      "max": 2.125730514526367
+    },
+    "current_advantage_active": {
+      "count": 14538,
+      "mean": 0.07365436804363971,
+      "std_population": 0.46432933307751434,
+      "min": -2.314875602722168,
+      "median": 0.0442846305668354,
+      "p90": 0.6634992659091954,
+      "p99": 1.2646174192428576,
+      "max": 2.0103635787963867
+    },
+    "terminal_timeout_advantage_active": {
+      "count": 14538,
+      "mean": 0.021817951930946215,
+      "std_population": 0.5191690625108761,
+      "min": -2.3151214122772217,
+      "median": 0.02789510414004326,
+      "p90": 0.6601876854896547,
+      "p99": 1.263190944194793,
+      "max": 2.0100934505462646
+    },
+    "current_returns_active": {
+      "count": 14538,
+      "mean": 3.3008211655574287,
+      "std_population": 1.344335841038379,
+      "min": 0.026490092277526855,
+      "median": 3.4353407621383667,
+      "p90": 4.992983818054199,
+      "p99": 5.945747308731079,
+      "max": 6.857002258300781
+    },
+    "terminal_timeout_returns_active": {
+      "count": 14538,
+      "mean": 3.248984749093375,
+      "std_population": 1.4218040409315924,
+      "min": 0.0,
+      "median": 3.433829188346863,
+      "p90": 4.992455434799195,
+      "p99": 5.945617280006409,
+      "max": 6.856657028198242
+    },
+    "current_minus_terminal_advantage_active": {
+      "count": 14538,
+      "mean": 0.051836416084634664,
+      "std_population": 0.19464367715146075,
+      "min": 0.0,
+      "median": 0.0007358789443969727,
+      "p90": 0.08254568278789523,
+      "p99": 1.1038583636283832,
+      "max": 2.125730514526367
+    },
+    "active_raw_advantage_sign_changed_fraction": 0.022836703807115555,
+    "difference_recurrence_max_error": 7.169437594711781e-07,
+    "interpretation": "Numerical objective sensitivity only. Current GAE correctly retains final-value bootstrap at truncations and stops recursion across both boundaries. Counterfactual removes that bootstrap; no optimizer uses this alternative."
+  }
+}

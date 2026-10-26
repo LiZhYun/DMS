@@ -1,0 +1,204 @@
+{
+  "purpose": "Explicit finite-deadline SMAC objective; default unchanged",
+  "status": "passed",
+  "checked_utc": "2026-10-26T08:38:40.830287+00:00",
+  "job_id": "21208924",
+  "accounting": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:05:31",
+    "node": "dgx17"
+  },
+  "source_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "8dc3e49a70302ab555403f2b31366e2c3c4a16c434c23ec20012265abd5ba172",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "full_suite": {
+    "passed": 470,
+    "skipped_native_legacy": 32,
+    "junit": "runs/smac-time-limit-validation-01/tests.xml",
+    "junit_sha256": "926b5aeb1be0a928490c842be0763b7db19885a300b5abc8db8deda5803bcc88"
+  },
+  "default_regressions": [
+    {
+      "algorithm": "ippo",
+      "mode": "independent",
+      "metrics_weights_buffers_rng_exact": true
+    },
+    {
+      "algorithm": "ippo",
+      "mode": "sequential",
+      "metrics_weights_buffers_rng_exact": true
+    },
+    {
+      "algorithm": "dms",
+      "mode": "independent",
+      "metrics_weights_buffers_rng_exact": true
+    },
+    {
+      "algorithm": "dms",
+      "mode": "sequential",
+      "metrics_weights_buffers_rng_exact": true
+    }
+  ],
+  "native_deadline_probe": {
+    "job_id": "21208924",
+    "timeout_events": 4,
+    "transitions": 640,
+    "input_flags_unchanged": true,
+    "metrics": {
+      "policy_loss": -0.005429645628411428,
+      "value_loss": 0.18869226817041634,
+      "entropy": 0.7823672875761986,
+      "approx_kl": 0.0016376516651742698,
+      "alive_fraction": 0.587695300579071,
+      "ppo_update_count": 40,
+      "peer_gate_fraction": 0.0
+    },
+    "original_checkpoint_sha256": "a79a0ba828718b3e7a14f4ba2ebe79adaffaa55d29da843d9f2ebe2d84eef346"
+  },
+  "active_dms_smoke": {
+    "transitions": 6400,
+    "updates": 2,
+    "finite_auxiliary_and_policy_losses": true,
+    "sequential_min_ess_fraction": 0.996957229236219,
+    "source_matches": true,
+    "manifest": "runs/smac-time-limit-validation-01/active-dms-smoke/manifest.json"
+  },
+  "failed_attempts": [
+    {
+      "job_id": "21208907",
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "cause": "Validation checkout omitted helper scripts needed during test collection; no native simulation or trainer update executed.",
+      "correction": "Added public scripts/configuration/package assets to the validation checkout; package and test source unchanged."
+    }
+  ],
+  "scope": "Software/native integration checks, not learning evidence.",
+  "source_root_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "8dc3e49a70302ab555403f2b31366e2c3c4a16c434c23ec20012265abd5ba172",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms_marl.egg-info/PKG-INFO": "d9323a9100dcd4185f79278d2dff21192f0887a636136d7fe1153112dfa1f07e",
+    "dms_marl.egg-info/SOURCES.txt": "11778ce995f0307004b0add8dd13213112d20f086fde67e86ca6519580c6e65c",
+    "dms_marl.egg-info/requires.txt": "71feeb41c5d25c58c5dab0a02efbb0a250092c50994f3671f5ccf021ec0bba74",
+    "dms_marl.egg-info/top_level.txt": "3406c2569c33d72059118b44aa459b0a6b41a9109a658f15de3579a7a3cf2238",
+    "dms_marl.egg-info/entry_points.txt": "2e7157c55ef2a6a1d8042dc8a18c7df584fc9f390e9bbc83042c945bd46e304e",
+    "dms_marl.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  "inventory_note": "The import-root inventory includes editable-install egg-info metadata. Run snapshots copy the dms package only; source_sha256 identifies that package. No source files or running jobs changed.",
+  "extended_default_regression": {
+    "result": "runs/smac-time-limit-validation-01/full-default-regression.json",
+    "result_sha256": "a2be51e22c43f270d34b89dadd279ce938b82658c17798ba3b7d9a5a2539c8d9",
+    "job_id": "21210170",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:00:21",
+    "cases": [
+      {
+        "algorithm": "ippo",
+        "update_mode": "independent",
+        "policy_history_length": 0,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": false
+      },
+      {
+        "algorithm": "ippo",
+        "update_mode": "independent",
+        "policy_history_length": 4,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": false
+      },
+      {
+        "algorithm": "ippo",
+        "update_mode": "sequential",
+        "policy_history_length": 0,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": false
+      },
+      {
+        "algorithm": "ippo",
+        "update_mode": "sequential",
+        "policy_history_length": 4,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": false
+      },
+      {
+        "algorithm": "dms",
+        "update_mode": "independent",
+        "policy_history_length": 0,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": true
+      },
+      {
+        "algorithm": "dms",
+        "update_mode": "independent",
+        "policy_history_length": 4,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": true
+      },
+      {
+        "algorithm": "dms",
+        "update_mode": "sequential",
+        "policy_history_length": 0,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": true
+      },
+      {
+        "algorithm": "dms",
+        "update_mode": "sequential",
+        "policy_history_length": 4,
+        "consecutive_updates": 3,
+        "metrics_models_all_optimizers_full_rng_inputs_exact": true,
+        "active_intentions": true
+      }
+    ],
+    "scope": "CPU default-path regression, all Python/NumPy/Torch RNG components and both optimizer families; no learning claim"
+  }
+}

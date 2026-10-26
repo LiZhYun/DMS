@@ -47,6 +47,7 @@ class Config:
     num_envs: int = 4
     parallel_env_steps: bool = False
     mask_inactive_agents: bool = False
+    smac_time_limit_terminal: bool = False
     update_mode: str = 'independent'
     total_steps: int = 4096
     rollout_steps: int = 128
@@ -88,6 +89,10 @@ class Config:
     torch_threads: int = 1
 
     def validate(self):
+        if not isinstance(self.smac_time_limit_terminal, bool):
+            raise ValueError('smac_time_limit_terminal must be boolean')
+        if self.smac_time_limit_terminal and self.env != 'smac':
+            raise ValueError('smac_time_limit_terminal requires env=smac')
         if self.update_mode not in ('independent', 'sequential'):
             raise ValueError('update_mode must be independent or sequential')
         if self.ant_contact_forces not in ('native', 'computed'):
@@ -395,9 +400,16 @@ def update(learner: Learner, data):
     alive = data['available'][..., 1:].any(-1) if c.env == 'smac' else None
     mask_inactive = c.env == 'smac' and c.mask_inactive_agents
     rewards = learner.tensor(data['rewards'])
+    terminated = learner.tensor(data['terminated'], torch.bool)
+    truncated = learner.tensor(data['truncated'], torch.bool)
+    if c.smac_time_limit_terminal:
+        # Optional finite-battle objective: the native cutoff ends the task.
+        # Preserve raw environment flags and auxiliary episode boundaries.
+        terminated = terminated | truncated
+        truncated = torch.zeros_like(truncated)
     advantages, returns = generalized_advantage_estimate(
         rewards, data['values'], data['next_values'],
-        learner.tensor(data['terminated'], torch.bool), learner.tensor(data['truncated'], torch.bool),
+        terminated, truncated,
         gamma=c.gamma, gae_lambda=c.gae_lambda)
     metrics = []
     sequential = c.update_mode == 'sequential'
@@ -626,6 +638,10 @@ def run(config: Config):
                        'slurm_partition':os.environ.get('SLURM_JOB_PARTITION')},
             'information':'local observations and visibility-masked observed action sensors',
             'intention_control':'deterministic prior means; fixed rollout features/gates during PPO',
+            'value_time_limits':{
+                'mode':'terminal_at_smac_limit' if config.smac_time_limit_terminal else 'bootstrap_truncations',
+                'native_environment_flags_preserved':True,
+                'scope':'value/advantage targets only; rewards, resets, observations and intention targets unchanged'},
             'ppo_update':{'mode':config.update_mode,
                 'agent_order':'one random permutation per rollout' if config.update_mode == 'sequential' else 'fixed index order; independent objectives',
                 'training_signal':'detached predecessor action likelihood ratios across agents' if config.update_mode == 'sequential' else 'no cross-agent likelihood correction',

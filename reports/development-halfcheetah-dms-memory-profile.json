@@ -1,0 +1,547 @@
+{
+  "purpose": "Bounded active DMS history0/history32 CUDA runtime and native integration check before any matched memory learning pilot",
+  "created_utc": "2026-10-25T12:39:29.271064+00:00",
+  "status": "completed_verified",
+  "artifact": "runs/halfcheetah-dms-memory-profile-01",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/sequential-validation-01/checkout/src",
+  "source_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "source_mapping_sha256": "5b7a21ac4db312950e14f65df383cd44fc3f490e7859aef3534e0dae3bf72573",
+  "base_memory_report": "reports/development-halfcheetah-memory-seed101.json",
+  "base_profile_report": "reports/development-halfcheetah-memory-profile.json",
+  "inputs_sha256": "082c4d8fc72a5f765dfac330177d91d92048234a20575b92bf63e7a1a335a026",
+  "configs": {
+    "history0": {
+      "path": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-dms-memory-profile-01/history0-config.json",
+      "sha256": "1526db2ca3962706a1050effd434ab4ad6ea3e7bce9c9a525378085a532cdf3c",
+      "base_config": "runs/development-halfcheetah-memory-seed101/configs/legacy-halfcheetah-2x3-ippo-history0-3m-cuda.json",
+      "base_config_sha256": "ac042e2f644eeec8b2bc11108e13b25e00b2d7d7b9be65619fd943d883c5a4d6",
+      "changes": {
+        "algorithm": {
+          "training_control": "ippo",
+          "profile": "dms"
+        },
+        "total_steps": {
+          "training_control": 3000000,
+          "profile": 12000
+        },
+        "warmup_episodes": {
+          "training_control": 100,
+          "profile": 0
+        },
+        "eval_every": {
+          "training_control": 1000000,
+          "profile": 12000
+        },
+        "eval_episodes": {
+          "training_control": 10,
+          "profile": 3
+        },
+        "eval_seed": {
+          "training_control": 10001,
+          "profile": 191001
+        },
+        "output": {
+          "training_control": "runs/dev-legacy-halfcheetah-2x3-ippo-history0-3m-cuda-101",
+          "profile": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-dms-memory-profile-01/profile-only-history0"
+        }
+      },
+      "expected_environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ]
+      }
+    },
+    "history32": {
+      "path": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-dms-memory-profile-01/history32-config.json",
+      "sha256": "3378651b3eea798f2018671392e13b4243434d0f5c46eb2896acbd91f6340f60",
+      "base_config": "runs/development-halfcheetah-memory-seed101/configs/legacy-halfcheetah-2x3-ippo-history32-3m-cuda.json",
+      "base_config_sha256": "6f72e34ebacf1143d17d2e5e097e697eee20fe96549583c0b1d9dc085631b2f9",
+      "changes": {
+        "algorithm": {
+          "training_control": "ippo",
+          "profile": "dms"
+        },
+        "total_steps": {
+          "training_control": 3000000,
+          "profile": 12000
+        },
+        "warmup_episodes": {
+          "training_control": 100,
+          "profile": 0
+        },
+        "eval_every": {
+          "training_control": 1000000,
+          "profile": 12000
+        },
+        "eval_episodes": {
+          "training_control": 10,
+          "profile": 3
+        },
+        "eval_seed": {
+          "training_control": 10001,
+          "profile": 191001
+        },
+        "output": {
+          "training_control": "runs/dev-legacy-halfcheetah-2x3-ippo-history32-3m-cuda-101",
+          "profile": "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-dms-memory-profile-01/profile-only-history32"
+        }
+      },
+      "expected_environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "HalfCheetah",
+        "native_env_id": "HalfCheetah-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "half_cheetah.xml",
+        "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity - 0.1*sum(control**2)",
+          "native_termination": "never"
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ],
+          [
+            0.4,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      }
+    }
+  },
+  "runner_sha256": "dca7d0aee45a4d32c619dd49008db55762418af7f6cd948fb0af2dad29a4ae67",
+  "profiler_sha256": "726734169241f5626705d843e7cd5e6348e53dc47bd3a19b6804aedb44503a35",
+  "wrapper_sha256": "da181f844468f64a7a79a7f1cffa7de798e4dbcafcfac5f666640c3344a53076",
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "protocol": {
+    "condition_order": [
+      "history0",
+      "history32"
+    ],
+    "fresh_subprocess_each": true,
+    "device": "cuda",
+    "warmup_iterations": 1,
+    "timed_iterations": 2,
+    "transitions_per_condition": 12000,
+    "active_intentions": true,
+    "timed_auxiliary_updates": true,
+    "torch_threads": 1,
+    "evaluation_episodes_per_condition": 3,
+    "evaluation_seeds": [
+      191001,
+      191002,
+      191003
+    ],
+    "planning_transitions": 3000000,
+    "planning_scheduled_evaluation_episodes": 30,
+    "planning_margin": 1.5,
+    "held_out_final_seeds_used": false
+  },
+  "resources": {
+    "gpus": 1,
+    "requested_cpus_per_task": 1,
+    "memory": "4G",
+    "time": "00:15:00",
+    "partitions": [
+      "gpu-h200-141g-ellis",
+      "gpu-debug",
+      "gpu-a100-80g",
+      "gpu-h100-80g"
+    ]
+  },
+  "learning_job_submitted": false,
+  "limitations": [
+    "Runtime and integration evidence only; short smoke returns do not indicate trained policy performance.",
+    "Measured active-intention timing is a planning input; changing trajectories and host/GPU hardware can change cost.",
+    "No final seeds or package edits."
+  ],
+  "preflight": {
+    "runner_ast_passed": true,
+    "wrapper_shell_passed": true,
+    "exact_config_changes_verified": true,
+    "same_native_environment_except_declared_history": true,
+    "fresh_outputs": true
+  },
+  "job_id": "21199488",
+  "command": [
+    "sbatch",
+    "--parsable",
+    "--job-name=dms-hc-memory-runtime",
+    "--partition=gpu-h200-141g-ellis,gpu-debug,gpu-a100-80g,gpu-h100-80g",
+    "--gpus=1",
+    "--cpus-per-task=1",
+    "--mem=4G",
+    "--time=00:15:00",
+    "--output=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-dms-memory-profile-01/%x_%j.out",
+    "--error=/scratch/work/liz23/reproduce/dms/runs/halfcheetah-dms-memory-profile-01/%x_%j.err",
+    "/scratch/work/liz23/reproduce/dms/runs/halfcheetah-dms-memory-profile-01/run.sbatch"
+  ],
+  "submitted_utc": "2026-10-25T12:40:42.354135+00:00",
+  "submission_stdout": "21199488",
+  "submission_stderr": "",
+  "verified_utc": "2026-10-26T08:21:22.473646+00:00",
+  "completed_results": {
+    "history0": {
+      "result": "runs/halfcheetah-dms-memory-profile-01/history0-profile.json",
+      "sha256": "7871dc63a03d06988dd1cdc154988af0757457e90565384fbbbdbc83f6c142c1",
+      "planning": {
+        "timed_transitions_per_second": 278.29393567895744,
+        "collection_seconds_per4000": 13.8057458861731,
+        "update_seconds_per4000": 0.5675461161881685,
+        "training3m_hours": 2.994435833825264,
+        "scheduled30evaluation_episodes_hours": 0.08475954389691145,
+        "total_training_and_evaluation_hours": 3.0791953777221757,
+        "total_hours_with1_5margin": 4.6187930665832635,
+        "limits": "One host, early active-intention iterations, two timed samples. Evaluation projected from three1000-step episodes. Startup/checkpoint I/O excluded;50%margin is planning, not uncertainty."
+      },
+      "host_memory": {
+        "process_peak_rss_bytes": 1522008064,
+        "current_rss_bytes": 1523580928
+      },
+      "episode_boundaries": [
+        {
+          "completed_episodes": 4,
+          "new_time_limit_episodes": 4,
+          "reset_valid_rows": null,
+          "finite_timeout_bootstrap": true
+        },
+        {
+          "completed_episodes": 8,
+          "new_time_limit_episodes": 4,
+          "reset_valid_rows": null,
+          "finite_timeout_bootstrap": true
+        },
+        {
+          "completed_episodes": 12,
+          "new_time_limit_episodes": 4,
+          "reset_valid_rows": null,
+          "finite_timeout_bootstrap": true
+        }
+      ],
+      "native_checks_passed": true
+    },
+    "history32": {
+      "result": "runs/halfcheetah-dms-memory-profile-01/history32-profile.json",
+      "sha256": "f9bd50336cb7522398b0ba934cd7ccff4cb2165b21ec57f80a35bd217e09fdb6",
+      "planning": {
+        "timed_transitions_per_second": 161.49327374742694,
+        "collection_seconds_per4000": 23.93405183358118,
+        "update_seconds_per4000": 0.8347816118039191,
+        "training3m_hours": 5.160173634455229,
+        "scheduled30evaluation_episodes_hours": 0.14211969633405616,
+        "total_training_and_evaluation_hours": 5.3022933307892846,
+        "total_hours_with1_5margin": 7.953439996183928,
+        "limits": "One host, early active-intention iterations, two timed samples. Evaluation projected from three1000-step episodes. Startup/checkpoint I/O excluded;50%margin is planning, not uncertainty."
+      },
+      "host_memory": {
+        "process_peak_rss_bytes": 1569247232,
+        "current_rss_bytes": 1571778560
+      },
+      "episode_boundaries": [
+        {
+          "completed_episodes": 4,
+          "new_time_limit_episodes": 4,
+          "reset_valid_rows": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "finite_timeout_bootstrap": true
+        },
+        {
+          "completed_episodes": 8,
+          "new_time_limit_episodes": 4,
+          "reset_valid_rows": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "finite_timeout_bootstrap": true
+        },
+        {
+          "completed_episodes": 12,
+          "new_time_limit_episodes": 4,
+          "reset_valid_rows": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ],
+            [
+              1.0,
+              1.0
+            ]
+          ],
+          "finite_timeout_bootstrap": true
+        }
+      ],
+      "native_checks_passed": true
+    }
+  },
+  "accounting": {
+    "job_id": "21199488",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:03:36",
+    "node": "dgx1"
+  }
+}

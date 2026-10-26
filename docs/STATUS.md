@@ -1,132 +1,61 @@
 # Reproduction status
 
-Snapshot: **2026-10-25 12:35 UTC**. **The reproduction is not release-ready, and performance exceeding the paper has not been established.** Development results remain mixed. The lower auxiliary rate has a higher three-seed mean but loses to IPPO on two seeds; Walker DMS underperforms. Native SMAC masking and bounded local memory pass execution checks and are being tested in matched pilots. An Ant contact-force omission is confirmed and an explicit corrected variant has passed native validation. Full-budget HalfCheetah development jobs continue. All six held-out training seeds remain unused.
+Snapshot: **2026-10-26 09:03 UTC**. **Not release-ready.** HalfCheetah has promising fixed-budget development results, but independent-seed improvement is inconsistent and low-return failures remain. SMAC still has zero final evaluation wins; Walker and Swimmer DMS remain below their matched baselines. The six held-out training seeds **11, 23, 37, 53, 71, 89** remain unused.
 
-## Latest verified updates
+## Completed development round
 
-The latent-only beta-0.1 SMAC run **21196342** completed one million
-transitions with **0/10 wins**, shaped-return mean **13.4689**, and population
-episode SD **2.2359**. The mask-only IPPO job **21197312** also completed one million transitions
-with **0/10 wins**, mean **6.7141**, and no wins in 8,390 training episodes.
-Masking alone did not solve learning. The remaining mask and local-memory
-pilots are development experiments. A separate **20-environment recurrent IPPO control**, job
-**21198103**, completed the original rollout batch-size control after native
-smoke **21198024** passed: **0/10 final wins**, mean shaped return **8.1568**,
-and zero wins in **8,678** training battles. It changes both sample diversity and PPO update cadence;
-[the ledger](../reports/development-smac-original-batch-seed101.json) records
-this joint change. There is no corresponding completed DMS batch result yet. A matched
-**3M-step sequential PPO pair**, jobs **21199182 / 21199183**, is now running
-with 20 environments, history length 16, and inactive-agent masking. Both
-passed native startup checks; DMS intentions activate after its 100-episode
-warmup. [The sequential-batch ledger](../reports/development-smac-sequential-batch-seed101.json)
-retains the smaller smoke checks and the unsubmitted 1M plans. The 20-environment
-DMS configuration performs fewer auxiliary updates per transition than the
-four-environment runs, so this is not an isolated batch-size comparison.
+[The completion audit](../reports/development-round-completed-20261026.json) verifies **20 completed training jobs**, their exact budgets, finite metrics, saved-source hashes, and complete endpoint evaluations. The original failed and cancelled attempts remain in their earlier ledgers. All values below are development evidence on the documented compatibility stack.
 
-A separate four-core active-DMS smoke, **21199309**, completed 6,400 transitions
-and checkpoint/evaluation checks using **20.35 GiB** peak host memory and
-**1.345** average CPU cores. Its rollout time was 2.06 times the earlier
-20-core smoke, but the GPUs were V100 versus A100. This does not establish
-throughput preservation at four cores; the running 3M jobs remain unchanged.
+**HalfCheetah 2x3, 10M transitions.** Separate deterministic evaluations used 100 episodes per policy, seeds 400101–400200, with immutable final checkpoints and zero optimizer updates:
 
-The Ant all-peer and causal-0.6 jobs **21196123 / 21196124** completed their
-one-million-transition budgets with five-episode means **972.6429 / 1,044.8874**.
-The causal job's final selected-peer fraction was zero. These scores do not
-establish useful selective coordination. The lower-threshold **0.01** trial,
-job **21196571**, completed with mean **975.1578** and final selected-peer
-fraction **0.9889**. Opening nearly every gate did not improve the observed
-return over the threshold-0.6 run on this seed. In the separate computed-force
-adaptation, IPPO job **21197960** completed 500,000 transitions with mean
-**1,237.3109** over five episodes. The matching DMS pilots also completed: native/log-std −0.5 mean
-**974.5479**, native/−1 mean **998.9410**, computed/−1 mean **1,274.7967**.
-DMS minus IPPO on computed forces is **+37.4858** on this single development
-seed. Their [ledger](../reports/development-ant-forces-scale-seed101.json)
-retains all endpoint episodes and keeps this adaptation distinct from native Ant.
+| Training seed | IPPO | DMS, auxiliary LR 1e-3 | DMS − IPPO |
+| --- | ---: | ---: | ---: |
+| 101 | 3,239.77 | 4,897.10 | +1,657.33 |
+| 103 | 4,469.78 | 3,957.49 | −512.29 |
+| 107 | 4,232.56 | 4,574.82 | +342.26 |
+| Mean across the three seeds | 3,980.70 | 4,476.47 | +495.77 |
 
-HalfCheetah DMS job **21196472** reached a **3M-step intermediate** mean of
-**4,077.3705** over ten diagnostic episodes: nine returns were 4,352–4,752,
-and one was −235.87. This is not its fixed 10M endpoint. Matched full-budget
-IPPO/DMS replicas on development seeds **103 and 107** are running as jobs
-**21198414–21198417**, with 98 startup checks passed;
-[the ledger](../reports/development-halfcheetah-10m-replications.json) records
-the exact seed/output-only changes. Their complete 1M diagnostic means are IPPO/DMS **2,859.91 / 2,959.12**
-for seed 103 and **2,993.38 / 3,318.80** for seed 107. One DMS seed-103 episode
-returned only 879.39; stability remains unresolved. These intermediate paired
-comparisons do not replace the fixed 10M endpoints, and the earlier negative
-500k comparisons remain part of the record.
+DMS leads on two seeds, but has **35/300 episodes below 1,000**, compared with **20/300** for IPPO. The sample SD of the three paired seed differences is **1,092.92**; the mean gain is not a stable or held-out confirmation. The lower auxiliary LR **1e-4** reached **4,857.72** on seed 101 with **2/100** episodes below 1,000. This seed informed rate selection; its smaller tail needs replication. [The evaluation ledger](../reports/development-halfcheetah-10m-evaluation-queue.json) retains all episodes and unchanged-state checks. Historical binary parity is still unverified.
 
-At **4M**, the same DMS run's ten diagnostic episodes average **4,383.5675**:
-nine exceeded 4,700 and one returned 1,000.68. Training continues to the
-registered 10M endpoint. Six dependent evaluation jobs, **21198612–21198617**,
-will evaluate the fixed 10M checkpoints of the remaining full-budget runs on
-100 development episode seeds **400101–400200**; job **21198618** records their
-outcomes or failures automatically. [The queue ledger](../reports/development-halfcheetah-10m-evaluation-queue.json)
-verifies every parent dependency, immutable evaluation specification, and
-zero-update requirement. These are not the reserved final evaluation seeds.
+[The complete learning curves](../reports/halfcheetah-10m-development-completed.png) show all ten checkpoints for each of seven runs. Those curves use ten diagnostic episodes per checkpoint, seeds 10001–10010, so their endpoint values differ from the separate 100-episode table above. [The snapshot JSON](../reports/halfcheetah-10m-development-completed.json) preserves all 700 diagnostic episodes; training seeds remain separate and there are no confidence bands. The earlier partial snapshot remains available.
 
-The lower auxiliary-rate HalfCheetah run's exact **2M** checkpoint now has
-measurable latent dependence: forecast RMSE **0.5942** versus its own-trajectory
-history baseline **0.7765**; peer latent shuffling raises forecast MSE by
-**6.4% / 7.7%**, with asymmetric policy KL **0.00095 / 0.05323**. Job
-**21198533** passed source, checkpoint, environment and zero-update checks.
-[The ledger](../reports/development-halfcheetah-aux-lr-2m-diagnostic.json)
-retains the initial postflight-check failure and the identical verified retry.
-This does not attribute a return gain to the latent, and trajectories differ
-from the higher-rate checkpoint's probe. Its subsequent **3M-step** diagnostic
-mean is **4,418.2096** over ten episodes (population episode SD **36.0756**);
-[the longer-run ledger](../reports/development-halfcheetah-aux-lr-10m-seed101.json)
-retains the intermediate records while training continues to 10M.
+**Other completed controls:**
 
-A **32-observation local-memory IPPO** profile passed native checks in job
-**21198505**. On that host, CPU took **40.65 s** per 4,000 transitions and CUDA
-**17.46 s**; CUDA reduced the update cost while collection remained about
-16.7 s. [The profile](../reports/development-halfcheetah-memory-profile.json)
-records measured memory, source hashes, an initial harness-name collision,
-and an unchanged-source retry. Matched CUDA memory-length 0/32 development
-controls are now running as **21198566 / 21198567**, respectively. Both use
-the same A100 GPU model and the exact validated source, with only memory
-length/output differing. [Their ledger](../reports/development-halfcheetah-memory-seed101.json)
-records matching settings and finite startup updates. The history-0 control
-has complete 1M/2M diagnostic means **3,217.6394 / 4,062.3169**; history-32 has
-not yet completed a scheduled evaluation in this snapshot, so there is no
-matched learning comparison. Slurm reports two allocated logical CPUs for the
-one-core requests on these SMT hosts. The earlier profile is runtime evidence,
-not a learning result.
+| Task and budget | Control | DMS | Interpretation |
+| --- | ---: | ---: | --- |
+| SMAC 3s5z, 3M, sequential updates, history 16, 20 environments | 0/10 wins; return 12.6437 | 0/10 wins; return 18.9575 | Larger shaped return does not meet the win-rate target |
+| SMAC 3s5z, 1M, independent updates, history 16, four environments | 0/10 wins; return 13.5177 | 0/10 wins; return 18.2219 | Neither learned a winning final policy in these ten games |
+| Walker2d 3x2, 1M, independent updates | 778.5857 | 339.4104 | DMS underperforms |
+| Walker2d 3x2, 1M, sequential updates | 744.3684 | 345.8036 | Sequential updates did not resolve the gap |
+| Swimmer 10x2, 500k | 74.8375 | 60.8993, causal coordination | Supplemental parameter studies remain incomplete |
 
-The Swimmer history-filter probe **21198220** passed all 41 checks at the
-200,000-step checkpoint. Each manuscript `(K,l)` setting rejected **0/9,144
-eligible peer prefixes** on 512 fresh transitions. The
-[diagnostic](HISTORY_FILTER_DIAGNOSTIC.md#verified-swimmer-probe) distinguishes
-this history-filter inactivity from the separate causal coordination gate.
+Walker and Swimmer use five diagnostic episodes; SMAC uses ten. These episode averages do not estimate training-seed uncertainty. The independent Walker reruns reproduce the old trajectories exactly at aligned steps, including the temporary DMS return peak near 1,020 at 600k and its later decline. [The replay audit](../reports/development-walker-independent-replay.json) records the comparison; these are repeated executions of one seed, not new independent evidence.
 
-Fresh CPU installation job **21198078** built commit `56394f6` in an isolated
-Python 3.10 environment with an initially empty pip cache. All **442 tests
-passed**, with 32 native-only skips; `pip check` passed. The
-[installation ledger](../reports/fresh-install-validation.json) records all
-downloaded artifacts and versions. Fresh SMAC installation job **21198390** also passed the documented dependency
-installation and `pip check`, then trained/evaluated an installed wheel and
-loaded its checkpoint on real 3s5z outside the checkout. It reused the existing
-game assets read-only; [the ledger](../reports/fresh-smac-install-validation.json)
-records this distinction. Both fresh-install results apply to commit `56394f6`.
+**The stronger memory baseline matters.** At 3M transitions, CUDA IPPO averaged **4,149.70** with no policy history and **5,252.55** with a 32-observation local GRU, ten episodes each. This single-seed result motivates comparing DMS with the same memory. Earlier CPU DMS curves are not the matched control for this CUDA pair.
 
-The optional [sequential PPO update](SEQUENTIAL_POLICY_UPDATE.md) has now
-passed **465 tests** (32 legacy-only skips), **56 native legacy tests**,
-128-transition HalfCheetah 3x2 and 512-transition SMAC CUDA smokes. Jobs
-**21198407–21198409** all completed with exit `0:0`. The SMAC run exercised
-dead-unit masking and local history; corrections and losses stayed finite.
-Exact prepatch checks found zero changes to default independent metrics,
-model/optimizer state, or random states across five cases. The
-[validation ledger](../reports/sequential-update-validation.json) records all
-source hashes. Learning benefit remains untested. Four matched Walker2d 3x2 1M controls
-are running as **21198485–21198488**: independent/sequential updates crossed
-with no-intention/DMS. [The ledger](../reports/development-walker-sequential-seed101.json)
-verifies configurations differing only by the intended mode/algorithm and output,
-plus exact frozen-source imports and finite initial updates. The two no-intention
-controls have completed: independent mean **778.5857**, sequential mean
-**744.3684**, five episodes each. All 250 independent training updates
-(excluding elapsed time) and all evaluation records exactly reproduce the
-preceding independent run. This is a same-seed reproducibility check, not an
-additional independent replicate. Both DMS controls continue.
+## Active experiments
+
+| Question | Jobs | Predeclared comparison |
+| --- | --- | --- |
+| Does intention inference help with equal local memory? | **21208868 / 21208869** | DMS history 0/32, 3M, seed 101; each differs from its completed IPPO control only by algorithm/output |
+| Does the lower auxiliary rate improve stability across development seeds? | **21208968 / 21208970** | DMS LR 1e-4, seeds 103/107, 10M; exact source/settings of lower-rate seed 101 |
+| Does treating the battle deadline as terminal improve SMAC learning? | **21208999 / 21209000** | No-intention/DMS sequential pair, 3M, 20 environments, history 16; only the deadline objective changes from the preceding controls |
+
+All six training runs passed startup source/configuration and finite-update checks. Lower-rate fixed-checkpoint evaluation jobs **21208969 / 21208971** wait on their exact training parents and will use 100 development episodes, seeds 400101–400200, without updates. [Memory ledger](../reports/development-halfcheetah-dms-memory-seed101.json), [lower-rate replica ledger](../reports/development-halfcheetah-aux-lr-10m-replications.json), [SMAC deadline ledger](../reports/development-smac-terminal-time-limit-seed101.json).
+
+The SMAC clipping diagnostic **21199511** found **zero clipped updates out of 40** with cap 0.5; the maximum raw gradient norm was **0.3442**. Caps 0.5 and 10 produced identical final model/optimizer states on that rollout. This does not support a clipping-rate learning trial at this checkpoint. Its same-rollout timeout probe observed 19 timeouts in 20 completed episodes and a mean discounted continuation value of **1.2751** on active timeout rows. Treating those cutoffs as terminal changes 2.28% of active raw advantage signs. [The diagnostic ledger](../reports/development-smac-gradient-clipping.json) distinguishes these objective differences from implementation bugs.
+
+The new opt-in **`smac_time_limit_terminal=true`** changes value/advantage targets at native SMAC cutoffs. Raw timeout flags, rewards, local observations, episode resets and intention targets remain as observed. Its default is false. Validation **21208924** passed **470 tests** with 32 native-legacy skips, four exact default-update regression cases, a real 640-transition probe with four native timeouts, and a 6,400-transition active sequential-DMS CUDA smoke. Additional CPU regression **21210170** passed eight algorithm/update/history combinations over three consecutive updates each, including active DMS. Model buffers, both optimizer families, complete Python/NumPy/Torch RNG states, metrics and unchanged inputs match the previous default exactly. The initial validation-checkout failure is preserved. [Validation record](../reports/smac-time-limit-validation.json) and [objective description](SMAC_ENVIRONMENT.md#optional-finite-battle-objective).
+
+Read-only behavior probe **21210192** examines the two completed SMAC 3M checkpoints. It compares their registered greedy decisions with sampled actions over the same ten diagnostic environment seeds and records actions, timeouts and surviving units. Native unit state is logged only after action selection and never enters the policy. [Probe ledger](../reports/development-smac-behavior-3m.json).
+
+## Remaining release requirements
+
+Freeze the final method and settings after development, establish useful intention inference against equal-memory controls, complete the twelve-task matrix and required ablations, and evaluate six held-out training seeds at the registered budgets. Resolve or explicitly qualify historical simulator parity, the paper's k=0/k=1 ambiguity, and public access to complete artifacts. A higher development return alone does not satisfy these requirements. [Experiment plan](EXPERIMENT_PLAN.md), [paper contract](PAPER_CONTRACT.md), [reader audit](READER_AUDIT.md).
+
+## Earlier validation and development history
+
+The records below describe their stated snapshots; the completed-round audit and active-experiment table above supersede earlier running-status statements.
 
 ## Verified compute results
 
