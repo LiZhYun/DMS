@@ -1,0 +1,1341 @@
+{
+  "purpose": "Fixed3M HalfCheetah memory controls: fresh-trajectory forecast usefulness and causal-selection sensitivity, no optimization",
+  "created_utc": "2026-10-26T11:19:54.172535+00:00",
+  "status": "completed_pass",
+  "artifact": "runs/development-halfcheetah-memory-mechanism-3m",
+  "training_seed": 101,
+  "training_steps": 3000000,
+  "held_out_training_seeds_used": false,
+  "protocol": {
+    "num_envs": 4,
+    "steps_per_env": 1000,
+    "transitions": 4000,
+    "seed_start": 400701,
+    "forecast_windows_max": 1024,
+    "parameter_updates": 0,
+    "policy": "stochastic frozen checkpoint policy, CPU",
+    "selection": "full locally visible peer policy versus one peer removed, before gating; fixed thresholds including0.6",
+    "selection_limits": "Sensitivity alone is not return benefit. Removed/shuffled features may be out of distribution. Each policy supplies its own trajectories."
+  },
+  "script_sha256": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01",
+  "runs": [
+    {
+      "history": 0,
+      "training_job_id": "21208868",
+      "evaluation_job_id": "21211915",
+      "evaluation_spec": "runs/development-round-3m-followup-01/hc-dms-history0/spec.json",
+      "evaluation_spec_sha256": "a87bf4b6325c833254d3079fe30eb222fbb1f28e2843f933d7c3060a04a832e5",
+      "snapshot": "runs/development-round-3m-followup-01/hc-dms-history0/snapshot",
+      "output": "runs/development-halfcheetah-memory-mechanism-3m/history0/diagnostic.json",
+      "validation": "runs/development-halfcheetah-memory-mechanism-3m/history0/validation.json",
+      "status": "completed_pass",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-mechanism-h0",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=6G",
+          "--time=00:15:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/run.sbatch",
+          "0"
+        ],
+        "returncode": 0,
+        "stdout": "21212205\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T11:19:54.470132+00:00"
+      },
+      "job_id": "21212205",
+      "validation_sha256": "4a40a9ea47d67df8b54ef3d190f5cee2cede613b65b0f41f4c3011f9438fe64c",
+      "result": {
+        "success": true,
+        "job_id": "21212205",
+        "history": 0,
+        "optimizer_step_calls": 0,
+        "host": "milan32.int.triton.aalto.fi",
+        "snapshot_files_unchanged": true,
+        "imported_paths": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/__init__.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/diagnostics.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/envs.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/train.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms/legacy_env.py"
+        },
+        "diagnostic_sha256": "1c2cd89a9f54bedfc34e3dfb7b88efef0b8f024abc9a195129829fa648c4c9fa",
+        "checkpoint_sha256": "8af280a714929d464c9500fcbdead16dfb675c2f9d718ba6b83ee3a44b8ae581",
+        "source_inventory_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "diagnostic": {
+          "purpose": "out_of_training_mechanism_diagnostic_not_benchmark_performance",
+          "checkpoint": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/checkpoint.pt",
+          "checkpoint_sha256": "8af280a714929d464c9500fcbdead16dfb675c2f9d718ba6b83ee3a44b8ae581",
+          "training_steps": 3000000,
+          "training_seed": 101,
+          "training_episodes": 3000,
+          "config": {
+            "algorithm": "dms",
+            "env": "mamujoco",
+            "mamujoco_backend": "legacy",
+            "scenario": "HalfCheetah",
+            "ant_contact_forces": "native",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "map_name": "3s5z",
+            "seed": 101,
+            "device": "cpu",
+            "num_envs": 4,
+            "parallel_env_steps": false,
+            "mask_inactive_agents": false,
+            "update_mode": "independent",
+            "total_steps": 3000000,
+            "rollout_steps": 1000,
+            "epochs": 5,
+            "minibatch_size": 1000,
+            "hidden_dim": 64,
+            "policy_history_length": 0,
+            "initial_log_std": -0.5,
+            "latent_dim": 8,
+            "decoder_history": false,
+            "history_length": 32,
+            "prediction_horizon": 4,
+            "coordination": "soft",
+            "coordination_threshold": 0.6,
+            "short_history": 4,
+            "filter_history": true,
+            "intention_threshold": 10000,
+            "warmup_episodes": 100,
+            "causal_warmup_episodes": 100,
+            "actor_lr": 0.0003,
+            "critic_lr": 0.001,
+            "intention_lr": 0.001,
+            "aux_updates": 2,
+            "aux_batch_size": 64,
+            "kl_beta": 0.1,
+            "latent_samples": 2,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip": 0.2,
+            "value_clip": 0.2,
+            "entropy_coef": 0.0,
+            "value_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.02,
+            "eval_every": 1000000,
+            "eval_episodes": 10,
+            "eval_seed": 10001,
+            "output": "runs/dev-legacy-halfcheetah-2x3-dms-history0-3m-cuda-101",
+            "torch_threads": 1
+          },
+          "checkpoint_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+          },
+          "diagnostic_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+            "scripts/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01"
+          },
+          "source_unchanged_during_diagnostic": true,
+          "diagnostic_seed": 400701,
+          "pairing_seed": 400702,
+          "steps_per_environment": 1000,
+          "num_environments": 4,
+          "out_of_training_transitions": 4000,
+          "parameter_updates": 0,
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ]
+          },
+          "model_state_sha256": "0a6bbbe8255006f3b79e72ffff4247f2a271d78de204b7578059c83a42b77482",
+          "model_state_unchanged": true,
+          "runtime": {
+            "host": "milan32.int.triton.aalto.fi",
+            "slurm_job_id": "21212205",
+            "device": "cpu",
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "diagnostic_package_root": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history0/snapshot/source/dms",
+            "python_executable": "/scratch/work/liz23/reproduce/dms/.venv-legacy/bin/python",
+            "python_version": "3.10.19"
+          },
+          "protocol": {
+            "actions": "stochastic checkpoint policy; fixed parameters and normalization statistics",
+            "training_phase": "checkpoint completed-episode counter is frozen, including warmup and causal gate phase",
+            "pairing": "same observer and peer; exact history visibility pattern; distinct sensed action histories; no fallback",
+            "policy_intervention": "shuffle eligible peer latents; preserve own query, observations, gates and action masks",
+            "decoder_intervention": "shuffle prior means; retain original past, action anchor and peer identity",
+            "selection_statistic": "KL(full locally visible peer set || one peer removed), before gating; frozen inputs and policy; sensitivity only",
+            "decoder_history_input": false,
+            "temporal_variance": "center each coordinate within each environment episode; exclude warmup placeholders",
+            "history_baseline": "visible past component mean or categorical mode; histogram NLL adds one pseudocount per real category; unknown histories excluded",
+            "interpretation": "sensitivity is not usefulness; inspect paired forecast-loss changes and comparison counts"
+          },
+          "collection": {
+            "intentions_active": true,
+            "episode_seeds_by_environment": [
+              [
+                400701,
+                400705
+              ],
+              [
+                400702,
+                400706
+              ],
+              [
+                400703,
+                400707
+              ],
+              [
+                400704,
+                400708
+              ]
+            ],
+            "completed_diagnostic_episodes": 4
+          },
+          "latent_temporal_variation": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  2.8382919957168924,
+                  0.12797140068980462,
+                  0.21560291099624732,
+                  2.458582310172766,
+                  0.246309863803751,
+                  0.5778170666586279,
+                  0.381039541818765,
+                  0.8032266665343731
+                ],
+                "rms_coordinate_std": 1.3851125877189543,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.8882129768789215
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  2.6608512709338403,
+                  0.049785830579025386,
+                  0.21677864736934754,
+                  2.2268593581442673,
+                  0.19978247185277115,
+                  0.6573343927545882,
+                  0.386064863215519,
+                  0.6072155891053744
+                ],
+                "rms_coordinate_std": 1.27858623526566,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.7461882648141245
+              },
+              "gated": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  2.6608512709338403,
+                  0.049785830579025386,
+                  0.21677864736934754,
+                  2.2268593581442673,
+                  0.19978247185277115,
+                  0.6573343927545882,
+                  0.386064863215519,
+                  0.6072155891053744
+                ],
+                "rms_coordinate_std": 1.27858623526566,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.7461882648141245
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  1.1387096576759324,
+                  0.1677461930932639,
+                  0.2206951027169466,
+                  0.49852488191712757,
+                  2.300213871034644,
+                  0.9141705550562745,
+                  2.4052637606496288,
+                  1.70855254001702
+                ],
+                "rms_coordinate_std": 1.4341011580673335,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.9527196542621919
+              },
+              "gated": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  1.1387096576759324,
+                  0.1677461930932639,
+                  0.2206951027169466,
+                  0.49852488191712757,
+                  2.300213871034644,
+                  0.9141705550562745,
+                  2.4052637606496288,
+                  1.70855254001702
+                ],
+                "rms_coordinate_std": 1.4341011580673335,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.9527196542621919
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  1.2593228432541546,
+                  0.18242902149490997,
+                  0.16571969621994453,
+                  0.6628047500809852,
+                  2.2604020409993764,
+                  0.7923082606027754,
+                  2.4622806529170322,
+                  1.5247939632879648
+                ],
+                "rms_coordinate_std": 1.423505353733037,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.9433892315091519
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            }
+          ],
+          "policy_shuffle": [
+            {
+              "observer": 0,
+              "eligible_peer_entries": 3996,
+              "matched_peer_entries": 3990,
+              "compared_policy_count": 3990,
+              "mean_kl_full_to_shuffled": 14.542542457580566,
+              "max_kl_full_to_shuffled": 108.11663818359375,
+              "own_query_preserved": true
+            },
+            {
+              "observer": 1,
+              "eligible_peer_entries": 3996,
+              "matched_peer_entries": 3992,
+              "compared_policy_count": 3992,
+              "mean_kl_full_to_shuffled": 19.832870483398438,
+              "max_kl_full_to_shuffled": 148.49179077148438,
+              "own_query_preserved": true
+            }
+          ],
+          "full_to_removed_policy_kl": [
+            {
+              "observer": 0,
+              "peer": 1,
+              "visible_policy_count": 3996,
+              "mean_kl": 6.84892136705769,
+              "quantiles": {
+                "0.0": 0.08061838150024414,
+                "0.25": 1.5013235807418823,
+                "0.5": 4.2110278606414795,
+                "0.75": 9.211440324783325,
+                "0.9": 18.45444393157959,
+                "0.95": 22.26213550567627,
+                "0.99": 30.10525665283208,
+                "1.0": 46.04130554199219
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 1.0,
+                "0.1": 0.9987487487487487,
+                "0.2": 0.9902402402402403,
+                "0.6": 0.9386886886886887
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "visible_policy_count": 3996,
+              "mean_kl": 33.55845057111125,
+              "quantiles": {
+                "0.0": 0.00624006986618042,
+                "0.25": 7.674435138702393,
+                "0.5": 28.418587684631348,
+                "0.75": 53.00057888031006,
+                "0.9": 78.86505126953125,
+                "0.95": 88.38951301574707,
+                "0.99": 100.10878715515143,
+                "1.0": 114.80613708496094
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 0.9997497497497497,
+                "0.1": 0.9962462462462462,
+                "0.2": 0.9897397397397397,
+                "0.6": 0.9602102102102102
+              }
+            }
+          ],
+          "decoder_shuffle": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 1.0125643014907837,
+              "forecast_rmse": 0.19616404175758362,
+              "shuffled_forecast_rmse": 1.0268454551696777,
+              "mse_increase_after_shuffle": 1.015931248664856
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 1.0936936140060425,
+              "forecast_rmse": 0.17434726655483246,
+              "shuffled_forecast_rmse": 1.11457359790802,
+              "mse_increase_after_shuffle": 1.2118773460388184
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 1.196922779083252,
+              "forecast_rmse": 0.17938105762004852,
+              "shuffled_forecast_rmse": 1.2276694774627686,
+              "mse_increase_after_shuffle": 1.4749947786331177
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 0.7598459720611572,
+              "forecast_rmse": 0.21877864003181458,
+              "shuffled_forecast_rmse": 0.7942110300064087,
+              "mse_increase_after_shuffle": 0.5829071402549744
+            }
+          ],
+          "forecast": {
+            "forecast_target_count": 16380,
+            "forecast_comparison_count": 16368,
+            "forecast_component_count": 32736,
+            "history_baseline_target_count": 16368,
+            "history_baseline_component_count": 32736,
+            "forecast_rmse": 0.2031653534830758,
+            "persistence_rmse": 1.1326130621721309,
+            "history_mean_rmse": 0.7889770272194624,
+            "history_baseline_coverage_fraction": 0.9992673992673993
+          },
+          "forecast_windows": 1024,
+          "candidate_forecast_windows": 3988
+        },
+        "elapsed_seconds": 19.83638555300422
+      },
+      "scheduler": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:00:25",
+        "node": "milan32"
+      }
+    },
+    {
+      "history": 32,
+      "training_job_id": "21208869",
+      "evaluation_job_id": "21211916",
+      "evaluation_spec": "runs/development-round-3m-followup-01/hc-dms-history32/spec.json",
+      "evaluation_spec_sha256": "8f5796c255eb9e5c3f4b1cc9579eeb0176b4735cc42ead43025be5e580da1374",
+      "snapshot": "runs/development-round-3m-followup-01/hc-dms-history32/snapshot",
+      "output": "runs/development-halfcheetah-memory-mechanism-3m/history32/diagnostic.json",
+      "validation": "runs/development-halfcheetah-memory-mechanism-3m/history32/validation.json",
+      "status": "completed_pass",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-hc-mechanism-h32",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=6G",
+          "--time=00:15:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/%x_%j.err",
+          "--dependency=afterok:21211916",
+          "--kill-on-invalid-dep=yes",
+          "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/run.sbatch",
+          "32"
+        ],
+        "returncode": 0,
+        "stdout": "21212206\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-26T11:19:54.648505+00:00"
+      },
+      "job_id": "21212206",
+      "scheduler": {
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:00:43",
+        "node": "milan32"
+      },
+      "validation_sha256": "84c23c5b7a4d5acb229c531f4bd4da355826b13c760842311ea308dbe0f05733",
+      "result": {
+        "success": true,
+        "job_id": "21212206",
+        "history": 32,
+        "optimizer_step_calls": 0,
+        "host": "milan32.int.triton.aalto.fi",
+        "snapshot_files_unchanged": true,
+        "imported_paths": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/__init__.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/diagnostics.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/envs.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/train.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/legacy_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms/observation_history.py"
+        },
+        "diagnostic_sha256": "bc5151424e208f2c58b25f2fa05148d8987576833875cfb5a8a8cca0f317b37a",
+        "checkpoint_sha256": "871a47087c819521b85f5ce9b00281518a3dc9ae81386d19bb890e4a572dd17b",
+        "source_inventory_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "diagnostic": {
+          "purpose": "out_of_training_mechanism_diagnostic_not_benchmark_performance",
+          "checkpoint": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/checkpoint.pt",
+          "checkpoint_sha256": "871a47087c819521b85f5ce9b00281518a3dc9ae81386d19bb890e4a572dd17b",
+          "training_steps": 3000000,
+          "training_seed": 101,
+          "training_episodes": 3000,
+          "config": {
+            "algorithm": "dms",
+            "env": "mamujoco",
+            "mamujoco_backend": "legacy",
+            "scenario": "HalfCheetah",
+            "ant_contact_forces": "native",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "map_name": "3s5z",
+            "seed": 101,
+            "device": "cpu",
+            "num_envs": 4,
+            "parallel_env_steps": false,
+            "mask_inactive_agents": false,
+            "update_mode": "independent",
+            "total_steps": 3000000,
+            "rollout_steps": 1000,
+            "epochs": 5,
+            "minibatch_size": 1000,
+            "hidden_dim": 64,
+            "policy_history_length": 32,
+            "initial_log_std": -0.5,
+            "latent_dim": 8,
+            "decoder_history": false,
+            "history_length": 32,
+            "prediction_horizon": 4,
+            "coordination": "soft",
+            "coordination_threshold": 0.6,
+            "short_history": 4,
+            "filter_history": true,
+            "intention_threshold": 10000,
+            "warmup_episodes": 100,
+            "causal_warmup_episodes": 100,
+            "actor_lr": 0.0003,
+            "critic_lr": 0.001,
+            "intention_lr": 0.001,
+            "aux_updates": 2,
+            "aux_batch_size": 64,
+            "kl_beta": 0.1,
+            "latent_samples": 2,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip": 0.2,
+            "value_clip": 0.2,
+            "entropy_coef": 0.0,
+            "value_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.02,
+            "eval_every": 1000000,
+            "eval_episodes": 10,
+            "eval_seed": 10001,
+            "output": "runs/dev-legacy-halfcheetah-2x3-dms-history32-3m-cuda-101",
+            "torch_threads": 1
+          },
+          "checkpoint_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+          },
+          "diagnostic_source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+            "scripts/diagnose_intentions.py": "9971f05d7e2067da2a027258f9656f255144a428d5bf460974c1f19462bf3a01"
+          },
+          "source_unchanged_during_diagnostic": true,
+          "diagnostic_seed": 400701,
+          "pairing_seed": 400702,
+          "steps_per_environment": 1000,
+          "num_environments": 4,
+          "out_of_training_transitions": 4000,
+          "parameter_updates": 0,
+          "environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "HalfCheetah",
+            "native_env_id": "HalfCheetah-v2",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "half_cheetah.xml",
+            "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1,
+                0
+              ],
+              [
+                5,
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              3,
+              3
+            ],
+            "observation_dims": [
+              7,
+              7
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity - 0.1*sum(control**2)",
+              "native_termination": "never"
+            },
+            "frame_skip": 5,
+            "physics_timestep": 0.01,
+            "native_geom_friction": [
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ],
+              [
+                0.4,
+                0.1,
+                0.1
+              ]
+            ],
+            "policy_observation_history": {
+              "length": 32,
+              "base_observation_dim": 28,
+              "shape": [
+                2,
+                32,
+                29
+              ],
+              "validity_channel": "last; exact 0/1; never normalized",
+              "padding": "left zeros; current observation at final slot",
+              "reset": "episode reset",
+              "information": "only this agent's existing local observations"
+            }
+          },
+          "model_state_sha256": "053c84f5e50d9c154a12e31afaf83e137d5ffc3fab3b3cb88b939fd146078875",
+          "model_state_unchanged": true,
+          "runtime": {
+            "host": "milan32.int.triton.aalto.fi",
+            "slurm_job_id": "21212206",
+            "device": "cpu",
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "diagnostic_package_root": "/scratch/work/liz23/reproduce/dms/runs/development-round-3m-followup-01/hc-dms-history32/snapshot/source/dms",
+            "python_executable": "/scratch/work/liz23/reproduce/dms/.venv-legacy/bin/python",
+            "python_version": "3.10.19"
+          },
+          "protocol": {
+            "actions": "stochastic checkpoint policy; fixed parameters and normalization statistics",
+            "training_phase": "checkpoint completed-episode counter is frozen, including warmup and causal gate phase",
+            "pairing": "same observer and peer; exact history visibility pattern; distinct sensed action histories; no fallback",
+            "policy_intervention": "shuffle eligible peer latents; preserve own query, observations, gates and action masks",
+            "decoder_intervention": "shuffle prior means; retain original past, action anchor and peer identity",
+            "selection_statistic": "KL(full locally visible peer set || one peer removed), before gating; frozen inputs and policy; sensitivity only",
+            "decoder_history_input": false,
+            "temporal_variance": "center each coordinate within each environment episode; exclude warmup placeholders",
+            "history_baseline": "visible past component mean or categorical mode; histogram NLL adds one pseudocount per real category; unknown histories excluded",
+            "interpretation": "sensitivity is not usefulness; inspect paired forecast-loss changes and comparison counts"
+          },
+          "collection": {
+            "intentions_active": true,
+            "episode_seeds_by_environment": [
+              [
+                400701,
+                400705
+              ],
+              [
+                400702,
+                400706
+              ],
+              [
+                400703,
+                400707
+              ],
+              [
+                400704,
+                400708
+              ]
+            ],
+            "completed_diagnostic_episodes": 4
+          },
+          "latent_temporal_variation": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.06604991812720744,
+                  0.07090566371091166,
+                  0.7731842819919926,
+                  1.9117833211629611,
+                  1.827316348078696,
+                  1.3492929662292399,
+                  0.06676977624231481,
+                  0.0759862390332267
+                ],
+                "rms_coordinate_std": 1.0858192910217885,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.3359144759474881
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.0685601610676595,
+                  0.06527969014432598,
+                  0.4765543350187314,
+                  1.2448500972796408,
+                  1.2646994906862616,
+                  2.0219063938867197,
+                  0.046678614035172504,
+                  0.0561103122995485
+                ],
+                "rms_coordinate_std": 0.9668644721527628,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 0.958696810807612
+              },
+              "gated": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.0685601610676595,
+                  0.06527969014432598,
+                  0.4765543350187314,
+                  1.2448500972796408,
+                  1.2646994906862616,
+                  2.0219063938867197,
+                  0.046678614035172504,
+                  0.0561103122995485
+                ],
+                "rms_coordinate_std": 0.9668644721527628,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 0.958696810807612
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.2892851674931694,
+                  0.5435880163460873,
+                  0.2239219315468456,
+                  2.8881635984134495,
+                  2.290625623487163,
+                  0.8691921709250807,
+                  0.4725216768524261,
+                  0.5115728189715197
+                ],
+                "rms_coordinate_std": 1.381043450776175,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.8100840557941833
+              },
+              "gated": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.2892851674931694,
+                  0.5435880163460873,
+                  0.2239219315468456,
+                  2.8881635984134495,
+                  2.290625623487163,
+                  0.8691921709250807,
+                  0.4725216768524261,
+                  0.5115728189715197
+                ],
+                "rms_coordinate_std": 1.381043450776175,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.8100840557941833
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "visible": {
+                "valid_steps": 3996,
+                "variance_steps": 3996,
+                "segments_with_multiple_samples": 4,
+                "coordinate_std": [
+                  0.14047909858119728,
+                  0.40237522320646996,
+                  0.21210511301575433,
+                  2.317302341217346,
+                  1.7651105977484964,
+                  0.7622576636299672,
+                  0.4131476974876643,
+                  0.25225442806601805
+                ],
+                "rms_coordinate_std": 1.09130050864968,
+                "adjacent_pair_count": 3992,
+                "adjacent_delta_rms": 1.3312849116609742
+              },
+              "gated": {
+                "valid_steps": 0,
+                "variance_steps": 0,
+                "segments_with_multiple_samples": 0,
+                "coordinate_std": null,
+                "rms_coordinate_std": null,
+                "adjacent_pair_count": 0,
+                "adjacent_delta_rms": null
+              }
+            }
+          ],
+          "policy_shuffle": [
+            {
+              "observer": 0,
+              "eligible_peer_entries": 3996,
+              "matched_peer_entries": 3980,
+              "compared_policy_count": 3980,
+              "mean_kl_full_to_shuffled": 1.557357907295227,
+              "max_kl_full_to_shuffled": 22.7833251953125,
+              "own_query_preserved": true
+            },
+            {
+              "observer": 1,
+              "eligible_peer_entries": 3996,
+              "matched_peer_entries": 3996,
+              "compared_policy_count": 3996,
+              "mean_kl_full_to_shuffled": 2.4836061000823975,
+              "max_kl_full_to_shuffled": 24.058425903320312,
+              "own_query_preserved": true
+            }
+          ],
+          "full_to_removed_policy_kl": [
+            {
+              "observer": 0,
+              "peer": 1,
+              "visible_policy_count": 3996,
+              "mean_kl": 4.267384283311732,
+              "quantiles": {
+                "0.0": 0.0020946860313415527,
+                "0.25": 1.456561654806137,
+                "0.5": 3.624173641204834,
+                "0.75": 6.480581283569336,
+                "0.9": 8.99557638168335,
+                "0.95": 9.664170265197754,
+                "0.99": 11.208581542968755,
+                "1.0": 21.676666259765625
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 0.9997497497497497,
+                "0.1": 0.9992492492492493,
+                "0.2": 0.998998998998999,
+                "0.6": 0.9787287287287287
+              }
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "visible_policy_count": 3996,
+              "mean_kl": 3.939644022717013,
+              "quantiles": {
+                "0.0": 0.014451086521148682,
+                "0.25": 0.7487106174230576,
+                "0.5": 2.593804359436035,
+                "0.75": 5.015005111694336,
+                "0.9": 9.405442237854004,
+                "0.95": 14.165203094482422,
+                "0.99": 21.642097377777116,
+                "1.0": 39.79399108886719
+              },
+              "fraction_above_threshold": {
+                "0.0001": 1.0,
+                "0.001": 1.0,
+                "0.01": 1.0,
+                "0.1": 0.9867367367367368,
+                "0.2": 0.9642142142142142,
+                "0.6": 0.8028028028028028
+              }
+            }
+          ],
+          "decoder_shuffle": [
+            {
+              "observer": 0,
+              "peer": 0,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 0.8888935446739197,
+              "forecast_rmse": 0.6227110624313354,
+              "shuffled_forecast_rmse": 0.9632558822631836,
+              "mse_increase_after_shuffle": 0.5400927066802979
+            },
+            {
+              "observer": 0,
+              "peer": 1,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 0.9678084254264832,
+              "forecast_rmse": 1.0102895498275757,
+              "shuffled_forecast_rmse": 1.059391736984253,
+              "mse_increase_after_shuffle": 0.10162591934204102
+            },
+            {
+              "observer": 1,
+              "peer": 0,
+              "self": false,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 4036,
+              "prediction_change_rmse": 1.087844729423523,
+              "forecast_rmse": 0.6361756324768066,
+              "shuffled_forecast_rmse": 1.1273568868637085,
+              "mse_increase_after_shuffle": 0.8662139177322388
+            },
+            {
+              "observer": 1,
+              "peer": 1,
+              "self": true,
+              "matched_history_count": 1009,
+              "scored_target_count": 4036,
+              "scored_component_count": 12108,
+              "prediction_change_rmse": 0.636427104473114,
+              "forecast_rmse": 0.6278294920921326,
+              "shuffled_forecast_rmse": 0.7889440059661865,
+              "mse_increase_after_shuffle": 0.22826272249221802
+            }
+          ],
+          "forecast": {
+            "forecast_target_count": 16380,
+            "forecast_comparison_count": 16368,
+            "forecast_component_count": 32736,
+            "history_baseline_target_count": 16368,
+            "history_baseline_component_count": 32736,
+            "forecast_rmse": 0.6878071559728649,
+            "persistence_rmse": 1.120283971521279,
+            "history_mean_rmse": 0.8089575668017555,
+            "history_baseline_coverage_fraction": 0.9992673992673993
+          },
+          "forecast_windows": 1024,
+          "candidate_forecast_windows": 3988
+        },
+        "elapsed_seconds": 34.33778446901124
+      }
+    }
+  ],
+  "runner.py_sha256": "0cf9b1c16d3e22f428fd5a923a75d3bf80faefa1cd98336a4259338254dbff15",
+  "run.sbatch_sha256": "1230766b6977aa5ef3e61692cc5a8cff0b0fe927586a1ae682b501fe620b2b27",
+  "interpretation": "The history0 soft-attention checkpoint predicts fresh sensed actions better than persistence/history means and depends on peer latents. Its full-to-removed KL is policy sensitivity, not evidence of return gains from causal masking. Soft attention and the concatenating all/causal actors have different input architectures; do not transfer threshold success between them.",
+  "completion_collector": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-hc-memory-mechanism-collect",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=512M",
+      "--time=00:02:00",
+      "--dependency=afterany:21212206",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-halfcheetah-memory-mechanism-3m/refresh_status.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21212355\n",
+    "stderr": "",
+    "collector_sha256": "7eed087d9bcfa433a9207c50ca049aa9b492634d757fcd8cb35d4a15cd34a770",
+    "job_id": "21212355"
+  },
+  "last_refresh_utc": "2026-10-26T12:19:57.983223+00:00"
+}
