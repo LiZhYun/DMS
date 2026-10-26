@@ -129,6 +129,12 @@ SMAC-map smokes passed: four 1,280-transition runs, finite updates, and active
 DMS intention learning. Their two dependency chains replace completed 3s5z
 jobs, limiting that queue to two simultaneous full training jobs.
 
+Eighteen additional [endpoint collectors](../reports/development-endpoint-collectors.json)
+now refresh partial ledgers immediately after individual evaluations finish.
+They reuse the existing hash-checked, locked validation scripts and do not launch
+training or choose checkpoints. The original whole-queue collectors remain in
+place; queues with only one unfinished endpoint already have equivalent coverage.
+
 The fresh history-32 HalfCheetah 10M baseline differs from its 3M run from
 the first logged update. The earlier run used A100 and the new one H100; this
 does not isolate the cause of the difference. DMS's full 750-update logged prefix matches its earlier A100 run through
