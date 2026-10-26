@@ -236,7 +236,7 @@
         "coordination_threshold",
         "output"
       ],
-      "status": "running_verified",
+      "status": "training_running_or_pending",
       "submission": {
         "command": [
           "sbatch",
@@ -297,10 +297,10 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:22:49",
+          "node": "gpu47"
         },
         "evaluation": {
           "state": "PENDING",
@@ -530,7 +530,7 @@
         "coordination_threshold",
         "output"
       ],
-      "status": "training_running_or_pending",
+      "status": "running_verified",
       "submission": {
         "command": [
           "sbatch",
@@ -591,10 +591,10 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:11:20",
+          "node": "gpu45"
         },
         "evaluation": {
           "state": "PENDING",
@@ -602,6 +602,59 @@
           "elapsed": "00:00:00",
           "node": "None assigned"
         }
+      },
+      "startup_verification": {
+        "utc": "2026-10-26T14:11:47.548867+00:00",
+        "checks": {
+          "source_matches": true,
+          "saved_source_matches": true,
+          "config_matches": true,
+          "environment_matches": true,
+          "versions_match": true,
+          "runtime_cuda": true,
+          "job_matches": true,
+          "evaluation_config_sha_matches": true,
+          "finite_logged_numbers": true,
+          "evaluation_legacy_deps_sha_matches": true
+        },
+        "last_metric": {
+          "policy_loss": -0.004633407961682679,
+          "value_loss": 0.017956962110474706,
+          "entropy": 2.189070326089859,
+          "approx_kl": 0.003817540340529376,
+          "peer_gate_fraction": 0.62825,
+          "intention_feature_std": 1.7572424411773682,
+          "intention_loss": 1.5347833335399628,
+          "intention_nll": 1.4816667437553406,
+          "intention_kl": 0.5311657935380936,
+          "forecast_target_count": 1024,
+          "forecast_comparison_count": 1024,
+          "forecast_component_count": 2048,
+          "history_baseline_target_count": 1024,
+          "history_baseline_component_count": 2048,
+          "forecast_rmse": 0.5278649199848076,
+          "persistence_rmse": 1.0185249946556119,
+          "history_mean_rmse": 0.6963239695079461,
+          "history_baseline_coverage_fraction": 1.0,
+          "steps": 468000,
+          "episodes": 468,
+          "elapsed_seconds": 698.2181581589393,
+          "training_return_mean": 786.559116404118
+        },
+        "runtime": {
+          "host": "gpu45.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21214581",
+          "slurm_partition": "gpu-h100-80g"
+        },
+        "observed_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "version_comparison": "Exact equality for every predeclared used package; any additional manifest package is retained above."
       }
     }
   ],
@@ -917,5 +970,5 @@
     "collector_sha256": "70060306bb28ab56a3b66eca23086c37d525547d5397d4e5b26359fed0aacf5f"
   },
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-26T13:46:20.078235+00:00"
+  "last_refresh_utc": "2026-10-26T14:11:07.778558+00:00"
 }

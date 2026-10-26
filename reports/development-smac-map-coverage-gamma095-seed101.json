@@ -136,7 +136,7 @@
       "reference_config": "configs/development/smac-3s5z-no-intention-sequential-history16-mask-20env-gamma095-3m.json",
       "reference_job_id": "21210585",
       "walltime_hours": 12,
-      "status": "training_running_or_pending",
+      "status": "running_verified",
       "environment": {
         "benchmark_track": "original_smac",
         "map_name": "8m_vs_9m",
@@ -278,10 +278,10 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:08:49",
+          "node": "gpu47"
         },
         "evaluation": {
           "state": "PENDING",
@@ -289,6 +289,72 @@
           "elapsed": "00:00:00",
           "node": "None assigned"
         }
+      },
+      "startup_verification": {
+        "utc": "2026-10-26T14:11:47.609492+00:00",
+        "checks": {
+          "source_matches": true,
+          "saved_source_matches": true,
+          "config_matches": true,
+          "environment_matches": true,
+          "versions_match": true,
+          "runtime_cuda": true,
+          "job_matches": true,
+          "evaluation_config_sha_matches": true,
+          "finite_logged_numbers": true
+        },
+        "last_metric": {
+          "policy_loss": -0.020100512845215544,
+          "value_loss": 0.2185690723359585,
+          "entropy": 1.6626393914222717,
+          "approx_kl": 0.00025211018585608676,
+          "sequential_agent_order": [
+            3,
+            7,
+            1,
+            4,
+            0,
+            2,
+            5,
+            6
+          ],
+          "sequential_factor_min": 0.6261284351348877,
+          "sequential_factor_max": 1.6977906227111816,
+          "sequential_factor_ess": 3161.6171292745407,
+          "sequential_factor_ess_fraction": 0.988005352898294,
+          "alive_fraction": 0.6070703268051147,
+          "ppo_update_count": 40,
+          "peer_gate_fraction": 0.0,
+          "steps": 102400,
+          "episodes": 3473,
+          "elapsed_seconds": 449.0562914479524,
+          "training_return_mean": 2.862365824277284,
+          "training_battles": 122,
+          "training_battles_won": 0,
+          "training_win_rate": 0.0,
+          "training_battles_total": 3473,
+          "training_battles_won_total": 0,
+          "training_win_rate_total": 0.0,
+          "scheduled_environment_restarts": 0
+        },
+        "runtime": {
+          "host": "gpu47.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21213720",
+          "slurm_partition": "gpu-h100-80g"
+        },
+        "observed_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "2.2.6",
+          "gymnasium": "1.4.0",
+          "gymnasium-robotics": "1.4.2",
+          "mujoco": "3.17.0",
+          "pysc2": "3.0.0",
+          "smac": "1.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "version_comparison": "Exact equality for every predeclared used package; any additional manifest package is retained above."
       }
     },
     {
@@ -2870,5 +2936,5 @@
     "collector_sha256": "aabef1e8260c3c1a3dc34df4e58c49eec16cf1d4833084254c7380dcee06e003"
   },
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-26T12:45:17.132068+00:00"
+  "last_refresh_utc": "2026-10-26T14:11:07.891096+00:00"
 }

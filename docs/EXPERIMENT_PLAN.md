@@ -35,7 +35,7 @@ Do not implement a missing-action ablation by revealing hidden true controls. An
 
 ## Stage 3: freeze the final experiment
 
-Freeze code, environment versions, sensor definitions, selected hyperparameters, maps, budgets, and evaluation rules before final testing. Use six held-out training seeds **11, 23, 37, 53, 71, 89**. Choose a fixed 10,000,000-transition final checkpoint; do not choose each seed's best test checkpoint. The provided main configs divide their budgets exactly by rollout size; preserve this property when editing them.
+Freeze code, environment versions, sensor definitions, selected hyperparameters, maps, budgets, and evaluation rules before final testing. Also freeze the GPU family within each matched algorithm pair and record the actual accelerator model and library versions. Same-seed reruns on another GPU family need not follow the same training trajectory; they are fresh runs, not exact continuations. Use six held-out training seeds **11, 23, 37, 53, 71, 89**. Choose a fixed 10,000,000-transition final checkpoint; do not choose each seed's best test checkpoint. The provided main configs divide their budgets exactly by rollout size; preserve this property when editing them.
 
 Training-time diagnostics use evaluation seeds beginning at 10001. Final evaluation uses a disjoint seed range beginning at **500001**. Pair those episode seeds across algorithms for each task and report how randomness is controlled. Evaluate 100 MuJoCo episodes or 1,000 SMAC games for every independently trained seed. These stronger evaluation counts are the new protocol, not values claimed by the paper.
 

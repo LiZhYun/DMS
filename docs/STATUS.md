@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 14:04 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-26 14:23 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -20,6 +20,7 @@ are not independent training replicates.
 | HalfCheetah 2x3, CUDA, 3M, history-32 GRU, soft attention | 5,179.43 | 4,332.78 | −846.65; episodes below 1,000: 1 / 0 |
 | SMAC 3s5z, 3M, gamma 0.99, continuing value | 23/100 wins | 0/100 wins | DMS has higher shaped return but fewer wins |
 | SMAC 3s5z, 3M, gamma 0.99, terminal deadline | 13/100 wins | 8/100 wins | DMS still below its matched baseline |
+| SMAC 3s5z, 3M, gamma 0.95, continuing value | 81/100 wins | Training | Baseline improves over the matched gamma-0.99 run |
 | Walker2d 3x2, 10M | 880.11 | Training | Baseline below the paper target of 1,100 |
 
 [The 3M evaluation ledger](../reports/development-fixed3m-evaluation-queue.json)
@@ -63,11 +64,12 @@ are distinct from the newer matched CUDA memory controls above.
 | HalfCheetah history-32 IPPO/DMS | 21213074 / 21213076 | Fresh 10M runs; only budget/output change from 3M. [Ledger](../reports/development-halfcheetah-history32-10m-seed101.json) |
 | HalfCheetah auxiliary LR 1e-4, seeds 103/107 | 21208968 / 21208970 | 10M, same settings as seed 101. [Ledger](../reports/development-halfcheetah-aux-lr-10m-replications.json) |
 | HalfCheetah all-peer/causal | 21212371 / 21212373 completed | 3M; both 100-episode evaluations and mechanism probes passed. [Ledger](../reports/development-halfcheetah-coordination-3m-seed101.json) |
-| HalfCheetah causal thresholds 0.1/0.2 | 21214579 running / 21214581 queued | 3M; only threshold/output change from 0.6. Native CUDA smoke passed both variants. [Ledger](../reports/development-halfcheetah-causal-threshold-3m-seed101.json) |
+| HalfCheetah causal thresholds 0.1/0.2 | 21214579 / 21214581 running | 3M; only threshold/output change from 0.6. Native CUDA smoke passed both variants. [Ledger](../reports/development-halfcheetah-causal-threshold-3m-seed101.json) |
+| HalfCheetah 3x2 / 6x1, matched history-32 IPPO/DMS | 21215078 / 21215080; 21215082 / 21215084 queued | 3M partition coverage; four native CUDA smokes passed. Two chains follow the corresponding 2x3 10M runs. [Ledger](../reports/development-halfcheetah-partition-coverage-3m-seed101.json) |
 | SMAC terminal deadline | 21208999 / 21209000 completed | Both 100-game endpoints complete. [Ledger](../reports/development-fixed3m-evaluation-queue.json) |
 | SMAC gamma 0.95 | 21210585 / 21210586 | 3M; native rewards and continuing value unchanged. [Ledger](../reports/development-smac-gamma095-seed101.json) |
-| SMAC 3s5z gamma 0.95, full budget | 21214432 / 21214434 queued | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
-| SMAC 8m_vs_9m IPPO/DMS | 21213720 / 21213722 queued | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
+| SMAC 3s5z gamma 0.95, full budget | 21214432 running / 21214434 queued | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
+| SMAC 8m_vs_9m IPPO/DMS | 21213720 running / 21213722 queued | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
 | SMAC MMM2 IPPO/DMS | 21213724 / 21213726 queued | 3M; follows the corresponding 8m_vs_9m run in each chain. Same ledger |
 | Walker2d 3x2 IPPO/DMS | 21210999 completed / 21211001 running | 10M unchanged independent-update recipes. [Ledger](../reports/development-walker-10m-seed101.json) |
 | Ant 4x2, native/computed contacts, IPPO/DMS | 21212116 / 21212118 / 21212120 / 21212122 | 10M, initial log std −1.0. [Ledger](../reports/development-ant-10m-contact-seed101.json) |
@@ -78,6 +80,14 @@ they cannot retry training or select the best diagnostic checkpoint. All new
 SMAC-map smokes passed: four 1,280-transition runs, finite updates, and active
 DMS intention learning. Their two dependency chains replace completed 3s5z
 jobs, limiting that queue to two simultaneous full training jobs.
+
+The fresh history-32 HalfCheetah 10M baseline differs from its 3M run from
+the first logged update. The earlier run used A100 and the new one H100; this
+does not isolate the cause of the difference. DMS's shared logged prefix and
+diagnostics match through the checked 2.14M steps. These are fresh development
+runs, not exact-state continuations or independent seed replicas. The
+[ledger](../reports/development-halfcheetah-history32-10m-seed101.json) records
+the prefix audit, and final matched pairs will use the same GPU family.
 
 ## Mechanism findings and development decisions
 
@@ -121,10 +131,14 @@ stochastic probe trajectories the causal selector retains the visible peer for
 from the deterministic 100-episode evaluation.
 
 A separate [frozen-policy threshold intervention](../reports/development-halfcheetah-causal-gate-intervention-3m.json),
-job **21214676**, first replays ten original evaluation episodes, then changes
-only execution threshold 0.6 to 0.1 for 100 paired episode seeds. It cannot update
-weights or normalizers. Its outcome will be labeled as a test-time intervention
-on a policy trained at 0.6, distinct from the fresh threshold-0.1 learning run.
+job **21214676**, exactly replayed ten original evaluation episodes before changing
+only execution threshold 0.6 to 0.1 for 100 paired episode seeds. Mean return
+rose from **3,394.71 to 3,448.95**, a paired difference of **54.24** (episode-difference
+sample SD **432.49**); 54 episodes improved and 46 worsened. Weights, normalizers
+and checkpoint files stayed unchanged, with zero optimizer steps. This small
+descriptive gain leaves most of the all-peer gap unresolved. It is a test-time
+intervention on a policy trained at 0.6, distinct from the fresh threshold-0.1
+learning run and from independent training-seed evidence.
 
 Earlier SMAC reward, gradient-clipping and Walker feature-drift diagnostics,
 including negative findings and exact default-update regression checks, remain

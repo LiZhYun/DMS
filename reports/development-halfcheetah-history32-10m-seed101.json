@@ -671,5 +671,72 @@
     "collector_sha256": "5ee4a27b0c5ac3b04eff64dfdfc89dda101a6387fd76553e70f0d7aa05d09dd2",
     "job_id": "21213078"
   },
-  "last_refresh_utc": "2026-10-26T12:16:48.575677+00:00"
+  "last_refresh_utc": "2026-10-26T12:16:48.575677+00:00",
+  "budget_continuation_prefix_audit": {
+    "utc": "2026-10-26T14:21:06.022663+00:00",
+    "comparisons": [
+      {
+        "algorithm": "ippo",
+        "reference_job_id": "21198567",
+        "new_job_id": "21213074",
+        "observed_metric_rows": 750,
+        "observed_through_steps": 3000000,
+        "equal_logged_metrics_excluding_elapsed": false,
+        "first_metric_difference": {
+          "steps": 4000,
+          "fields": [
+            "approx_kl",
+            "entropy",
+            "policy_loss",
+            "training_return_mean",
+            "value_loss"
+          ]
+        },
+        "common_diagnostic_episodes": 30,
+        "equal_common_diagnostic_episodes": false,
+        "reference_metric_prefix_sha256": "1a67c5ee827ee305b566ebb473b1aec92de137486883a8413c33181aeb37903f",
+        "new_metric_prefix_sha256": "729a4d1ce4f6faa42aa0be6fd323b501e8a621231c2af42ae132ad63e82ab3d7",
+        "comparison_note": "Logged prefix equality only; no intermediate checkpoint or complete optimizer/RNG-state equality is asserted. This is a reused training seed, not an independent replicate.",
+        "reference_runtime": {
+          "host": "gpu42.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21198567",
+          "slurm_partition": "gpu-a100-80g"
+        },
+        "new_runtime": {
+          "host": "gpu46.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21213074",
+          "slurm_partition": "gpu-h100-80g"
+        }
+      },
+      {
+        "algorithm": "dms",
+        "reference_job_id": "21208869",
+        "new_job_id": "21213076",
+        "observed_metric_rows": 535,
+        "observed_through_steps": 2140000,
+        "equal_logged_metrics_excluding_elapsed": true,
+        "first_metric_difference": null,
+        "common_diagnostic_episodes": 20,
+        "equal_common_diagnostic_episodes": true,
+        "reference_metric_prefix_sha256": "c973bb6ee6518da5e3f70b4c8e998420f6bb4608e197494144df1d0196eadac3",
+        "new_metric_prefix_sha256": "9357335c0b30bb382e7be5c67f87ef5b3566de903cadc4d550a0dcfbf06079ec",
+        "comparison_note": "Logged prefix equality only; no intermediate checkpoint or complete optimizer/RNG-state equality is asserted. This is a reused training seed, not an independent replicate.",
+        "reference_runtime": {
+          "host": "gpu17.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21208869",
+          "slurm_partition": "gpu-a100-80g"
+        },
+        "new_runtime": {
+          "host": "gpu13.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21213076",
+          "slurm_partition": "gpu-a100-80g"
+        }
+      }
+    ],
+    "interpretation": "IPPO differs from its prior trajectory starting at the first logged update; its original allocation was A100 and the new one H100. GPU-family difference is a possible source, not an isolated causal diagnosis. DMS logged prefixes and shared diagnostics match through the observed2.14M steps. Neither fresh10M run is an exact-state resume or an independent seed replicate. Comparisons of the3M and10M endpoints must not be described as changing training duration on an identical trajectory."
+  }
 }
