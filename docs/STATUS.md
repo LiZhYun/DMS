@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-26 19:35 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-28 08:50 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -18,15 +18,20 @@ are not independent training replicates.
 | --- | ---: | ---: | --- |
 | HalfCheetah 2x3, CUDA, 3M, no policy memory, soft attention | 4,075.60 | 4,434.98 | +359.38; episodes below 1,000: 1 / 0 |
 | HalfCheetah 2x3, CUDA, 3M, history-32 GRU, soft attention | 5,179.43 | 4,332.78 | −846.65; episodes below 1,000: 1 / 0 |
-| HalfCheetah 2x3, 10M, history 32, H100 IPPO | 5,844.91 | — | One episode below 1,000; the separate A100 IPPO/DMS pair is still running |
-| SMAC 3s5z, 3M, gamma 0.99, continuing value | 23/100 wins | 0/100 wins | DMS has higher shaped return but fewer wins |
-| SMAC 3s5z, 3M, gamma 0.99, terminal deadline | 13/100 wins | 8/100 wins | DMS still below its matched baseline |
-| SMAC 3s5z, 3M, gamma 0.95, continuing value | 81/100 wins | 56/100 wins | Both improve over gamma 0.99; DMS remains below the matched baseline |
-| SMAC 8m_vs_9m, 3M, gamma 0.95 | 66/100 wins | Training | Baseline below the paper's full-budget target of 82.6%; this is a shorter development run |
-| Walker2d 3x2, 10M | 880.11 | Training | Baseline below the paper target of 1,100 |
-| Walker2d 3x2, history 32, H100, 3M | 2,322.92 | Training | 97/100 full-length episodes; 2 below 1,100. The DMS endpoint is still pending |
-| Ant 4x2, 10M, native contacts | 964.76 | Training | Baseline below the target of 1,700 |
-| Ant 4x2, 10M, computed contacts | 606.74 | Training | Separate environment adaptation; 4/100 negative-return episodes |
+| HalfCheetah 2x3, 10M, history 32, matched A100 | 5,724.01 | 4,609.94 | Both above 3,800; DMS remains below the stronger memory control |
+| HalfCheetah 3x2, 3M, history 32, H100 | 5,764.90 | 5,248.65 | DMS above 5,200 target on one development seed |
+| HalfCheetah 6x1, 3M, history 32, H100 | 5,480.36 | 4,651.34 | DMS above 4,300 target; two episodes below 1,000 |
+| SMAC 3s5z, 3M, gamma 0.99, continuing value | 23/100 wins | 0/100 wins | Higher DMS shaped return does not imply more wins |
+| SMAC 3s5z, 3M, gamma 0.99, terminal deadline | 13/100 wins | 8/100 wins | DMS below matched baseline |
+| SMAC 3s5z, 3M, gamma 0.95, A100 | 81/100 wins | 56/100 wins | Both improve over gamma 0.99 |
+| SMAC 3s5z, 10M, gamma 0.95, H100 | 100/100 wins | 80/100 wins | DMS below 97.5% target |
+| SMAC 8m_vs_9m, 3M, gamma 0.95, H100 | 66/100 wins | 0/100 wins | Both below full-budget target 82.6% |
+| SMAC MMM2, 3M, gamma 0.95, H100 | 13/100 wins | 8/100 wins | Both below full-budget target 62.1% |
+| Walker2d 3x2, 10M, no policy memory, CPU | 880.11 | 460.78 | Both below 1,100 target |
+| Walker2d 3x2, 3M, history 32, H100 | 2,322.92 | 391.09 | DMS episodes average only 169.48 steps |
+| Ant 4x2, 10M, native contacts, CPU | 964.76 | 950.75 | Both below 1,700 target |
+| Ant 4x2, 10M, computed contacts, CPU | 606.74 | 905.45 | Separate environment adaptation |
+| Ant 4x2, 3M, history 32, native contacts, H100 | 1,055.41 | 1,111.47 | Both below 1,700 target; all episodes last 1,000 steps |
 
 [The 3M evaluation ledger](../reports/development-fixed3m-evaluation-queue.json)
 and [Walker ledger](../reports/development-walker-10m-seed101.json) retain every
@@ -56,7 +61,7 @@ All four H100 variants have exactly matching logged warmup metrics through
 200k steps before causal selection activates. Threshold 0.2 exceeds the H100
 all-peer control by **114.31**, with paired episode-difference sample SD
 **860.02**; 75 episode returns improve and 25 worsen. Threshold 0.6 trails all-peer by **221.32** but has no episodes below 1,000.
-These remain single-training-seed results; no threshold is promoted. Cross-family trajectories
+These initial comparisons use one training seed. Cross-family trajectories
 differ before threshold activation, so A100 and H100 scores do not isolate a
 threshold effect. [A100 coordination ledger](../reports/development-halfcheetah-coordination-3m-seed101.json),
 [H100 controls](../reports/development-halfcheetah-coordination-h100-3m-seed101.json),
@@ -64,6 +69,13 @@ threshold effect. [A100 coordination ledger](../reports/development-halfcheetah-
 [All six episode distributions](../reports/halfcheetah-coordination-development-3m.png)
 and a [verified six-run bundle](../reports/development-halfcheetah-coordination-artifacts.json)
 preserve both hardware families and every threshold result.
+
+
+The independent **seed-103** H100 replication is now complete: all-peer
+**4,570.10**, threshold 0.2 **4,458.25**, a difference of **−111.85**.
+Together with seed 101's +114.31, the paired mean across two training seeds is
+only **+1.23**. The initial gain did not replicate; **no threshold is promoted**.
+[Replication ledger](../reports/development-halfcheetah-causal-replication-3m-seed103.json).
 
 The completed locomotion baselines fail in different ways. Walker reaches the
 1,000-step limit in **57/100** episodes; Ant with native contacts does so in
@@ -106,74 +118,88 @@ This reward-only sensitivity does not establish performance after training with
 the old interface. Native physics and immutable-state checks passed, and the
 public diagnostic reproduced eight episodes and every associated step array.
 
-## Active and queued experiments
+## Current diagnosis and queued work
 
-| Comparison | Training jobs | Registered endpoint and evidence |
+All **27 fixed endpoints** in the previous batch have completed. An independent
+[collection audit](../reports/development-completed-20261028.json) checked all
+54 training/evaluation jobs, validation-file and evaluation-output hashes, the
+exact 100-episode seed blocks, immutable model state and zero optimizer steps.
+The per-experiment ledgers retain individual episodes and unsuccessful attempts.
+The [endpoint collectors](../reports/development-endpoint-collectors.json) updated
+their ledgers automatically.
+
+The matched A100 HalfCheetah history-32 pair now has complete 10M endpoints.
+Both runs exactly match their original A100 first 750 logged updates through
+3M, excluding elapsed time. The separate H100 IPPO result **5,844.91** remains
+recorded, but is not the matched control for the A100 DMS result. The 3M and
+10M SMAC comparisons likewise differ in GPU family (A100 versus H100), so
+extra training is not their only changed condition.
+
+The initial joint RL/ELBO prior trials also completed. On A100, HalfCheetah
+history-32 DMS reaches **4,409.99** versus **4,332.78** without prior RL gradients;
+SMAC 3s5z gamma 0.95 reaches **59/100** wins versus **56/100**. These small
+single-seed differences do not establish robust improvement, and both remain
+below their matched IPPO controls. [Joint-training ledger](../reports/development-joint-intention-3m-seed101.json).
+
+The next bounded batch diagnoses the large Walker and 8m_vs_9m gaps:
+
+| Trial | Purpose | Status |
 | --- | --- | --- |
-| HalfCheetah history-32 IPPO/DMS | 21213074 and endpoint completed / 21213076 training | Fresh 10M runs; only budget/output change from 3M. [Ledger](../reports/development-halfcheetah-history32-10m-seed101.json) |
-| Joint intention training: HalfCheetah history 32 / SMAC gamma 0.95 | 21218981 / 21218984 running | 3M A100, RL LR 3e-4; native gradient and saved-source checks passed. [Ledger](../reports/development-joint-intention-3m-seed101.json) |
-| HalfCheetah history-32 A100 IPPO control | 21216270 running | Fresh 10M run matching the A100 DMS family; prior 3M A100 native run validated. [Ledger](../reports/development-halfcheetah-history32-a100-control-10m-seed101.json) |
-| HalfCheetah H100 all-peer / causal 0.2, seed 103 | 21219343 / 21219345 queued in series | 3M independent development-seed replication; same frozen source/environment, 100 fixed endpoint episodes each. [Ledger](../reports/development-halfcheetah-causal-replication-3m-seed103.json) |
-| HalfCheetah 3x2 / 6x1, matched history-32 IPPO/DMS | 21215078 running; 21215080 / 21215082 / 21215084 queued | 3M partition coverage; four native CUDA smokes passed. Two chains follow the corresponding 2x3 10M runs. [Ledger](../reports/development-halfcheetah-partition-coverage-3m-seed101.json) |
-| SMAC 3s5z gamma 0.95, full budget | 21214432 / 21214434 running | Fresh 10M runs after their verified 3M endpoints; only budget/output change. [Ledger](../reports/development-smac-gamma095-10m-seed101.json) |
-| SMAC 8m_vs_9m IPPO/DMS | 21213720 and endpoint completed / 21213722 training | 3M; same gamma-0.95 settings, only map/output change. [Ledger](../reports/development-smac-map-coverage-gamma095-seed101.json) |
-| SMAC MMM2 IPPO/DMS | 21213724 running / 21213726 queued | 3M; follows the corresponding 8m_vs_9m run in each chain. Same ledger |
-| Walker2d 3x2 / native Ant 4x2, matched history-32 IPPO/DMS | Walker baseline and endpoint completed; DMS 21217031 running; Ant 21217033 / 21217035 queued | All four native CUDA smokes passed; 3M H100 pairs follow coordination controls in two chains. [Ledger](../reports/development-walker-ant-history32-3m-seed101.json) |
-| Walker2d 3x2 IPPO/DMS | 21210999 completed / 21211001 running | 10M unchanged independent-update recipes. [Ledger](../reports/development-walker-10m-seed101.json) |
-| Ant 4x2, native/computed contacts, IPPO/DMS | 21212116 / 21212118 / 21212120 / 21212122 | 10M, initial log std −1.0. [Ledger](../reports/development-ant-10m-contact-seed101.json) |
+| Walker3x2 history 32, joint prior RL gradients | Test whether policy/value gradients improve intention conditioning | Queued: 21252282 → evaluation 21252283 |
+| Walker3x2 history 32, intention inputs disabled throughout training | Keep DMS architecture and auxiliary training, isolate conditioning | Queued: 21252284 → evaluation 21252285; ablation only |
+| SMAC 8m_vs_9m, joint prior RL gradients | Same hypothesis under the matched gamma-0.95 recipe | Queued: 21252286 → evaluation 21252287 |
+| SMAC 8m_vs_9m, intention inputs disabled throughout training | Same architecture ablation on the failing SMAC map | Queued: 21252288 → evaluation 21252289; ablation only |
 
-Each learning run has a separate **100-episode fixed-final-checkpoint evaluation**
-with a successful-parent dependency. Collectors preserve results and failures;
-they cannot retry training or select the best diagnostic checkpoint. All new
-SMAC-map smokes passed: four 1,280-transition runs, finite updates, and active
-DMS intention learning. Their two dependency chains replace completed 3s5z
-jobs, limiting that queue to two simultaneous full training jobs.
+These are fixed **3M**, development seed **101**, **H100** comparisons against
+completed H100 controls. Each will receive 100 separate endpoint episodes.
+The [native validation](../reports/conditioning-native-validation.json), job
+**21252072** on A100, passed all eight short runs, exact archived/current default
+state comparisons on both tasks, gradient-routing checks and all four
+saved-source evaluations. Collection-shape replay has zero log-probability
+error in every case. Larger PPO batches produce small float32 discrepancies
+(up to 6.20e-5 in these checks); this did not change the exact old/current
+comparison. Two prior attempts with stricter replay tolerances are preserved.
 
-Eighteen additional [endpoint collectors](../reports/development-endpoint-collectors.json)
-now refresh partial ledgers immediately after individual evaluations finish.
-They reuse the existing hash-checked, locked validation scripts and do not launch
-training or choose checkpoints. The original whole-queue collectors remain in
-place; queues with only one unfinished endpoint already have equivalent coverage.
+The guarded submit job **21252128** completed after validating and hashing all
+15 evidence files. All four training jobs are now pending for **H100**, matching
+their archived performance controls; no new training result exists yet. Their
+fixed 100-episode CPU evaluations depend on successful training. Five collectors
+(**21252290–21252294**) update individual and final results automatically.
+[Batch ledger and frozen configurations](../reports/development-conditioning-diagnosis-3m-seed101.json).
 
-The fresh history-32 HalfCheetah 10M baseline differs from its 3M run from
-the first logged update. The earlier run used A100 and the new one H100; this
-does not isolate the cause of the difference. DMS's full 750-update logged prefix matches its earlier A100 run through
-3M steps. These are fresh development
-runs, not exact-state continuations or independent seed replicas. The
-[ledger](../reports/development-halfcheetah-history32-10m-seed101.json) records
-the prefix audit. An additional A100 IPPO run now restores the same GPU family
-for this 10M comparison; all 750 logged updates through 3M exactly match the
-prior A100 run, excluding elapsed time. The H100 baseline is retained. Pending HalfCheetah
-3x2/6x1 and SMAC MMM2 pairs were restricted to H100 before training, with
-before/after scheduler records retained in their ledgers. The 10M SMAC pair
-also shares H100, while its 3M references used A100; both logged prefixes
-already differ at the first update. Extra training is therefore not the sole
-changed condition in comparisons across those two budgets.
-
-The history-32 Walker baseline completed training **21217029** and evaluation
-**21217030** with all source, environment, checkpoint and immutable-state checks
-passing. Mean return is **2,322.92**, episode sample SD **251.41**; 97/100 episodes
-reach 1,000 steps, two returns are below 1,100, and none are negative. This is a
-stronger development baseline. Its difference from the earlier 10M CPU/no-memory
-run is not an isolated memory effect because hardware and budget also differ.
-The matched H100 DMS comparison is unfinished.
+A completed [Walker history-32 drift probe](../reports/development-walker-history32-policy-drift.json),
+job **21251696**, made one ephemeral CPU update from the failed 3M checkpoint
+on 4,000 fresh stochastic transitions. PPO alone gives mean policy KL
+**0.007549**; observation-moment refresh gives **0.00000105**; auxiliary-feature
+refresh gives **0.004832**, with **5.12%** of sampled action-probability ratios
+outside [0.8, 1.2]. The latter is concentrated partly in the third agent
+(11.2% outside). Original parameters, checkpoints and source remain unchanged.
+The [bounded repeat](../reports/development-walker-history32-policy-drift-replicates.json)
+(**21252121**) completed on three fresh rollout seeds 400712–400714. Across
+all four rollouts at this same checkpoint, auxiliary-refresh KL averages
+**0.003958** and the mean fraction outside the PPO interval is
+**4.18%**. All original files
+remain unchanged. These are rollout repetitions, not independent training seeds.
+This differs from the earlier no-memory Walker probe, where auxiliary drift was
+small. It establishes a measurable mechanism at this checkpoint, not historical
+causation or a return improvement. The KL components are not additive.
 
 ## Mechanism findings and development decisions
 
 An optional [joint-training path](JOINT_INTENTION_TRAINING.md) now allows PPO
 actor/value gradients into the local intention prior (`intention_rl_lr>0`).
-It remains disabled by default and has no performance result yet. The full
+It remains disabled by default; the two completed development results are reported above. The full
 modern suite passed **491 tests**, with 32 native legacy checks skipped because
 that suite uses the modern environment. A four-run native regression at
 8,000 steps per run exactly preserved IPPO/DMS states, optimizer moments,
 RNG, metrics and evaluation episodes when disabled. All four enabled CPU/CUDA native smokes passed, followed by saved-source
 evaluation of all four checkpoints with zero optimizer steps. Two fresh 3M
-development trials are running on A100: HalfCheetah history 32 (**21218981**)
+development trials on A100 completed: HalfCheetah history 32 (**21218981**)
 and SMAC gamma 0.95 (**21218984**), each with a fixed 100-episode endpoint.
 Their baseline configurations differ only in `intention_rl_lr=3e-4` and output.
 All logged inactive-warmup metrics match their original A100 controls exactly:
 25 updates through 100k HalfCheetah steps and one update through 3,200 SMAC
-steps. Both have now completed active-intention updates with finite metrics.
+steps. The small observed endpoint gains have not been replicated.
 [Trial declaration](../reports/development-joint-intention-3m-seed101.json).
 [Unit evidence](../reports/joint-intention-unit-validation.json),
 [default regression](../reports/joint-intention-default-regression.json),

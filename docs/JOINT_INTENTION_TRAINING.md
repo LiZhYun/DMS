@@ -2,8 +2,7 @@
 
 `intention_rl_lr=0` preserves the frozen-feature trainer used by the existing
 experiments. A positive learning rate enables policy and value gradients into
-each observer's intention prior. This is a development option, with no measured
-performance improvement yet. The manuscript permits these gradients (source
+each observer's intention prior. This is a development option; initial single-seed gains are small and unreplicated. The manuscript permits these gradients (source
 line 486); its exact soft-update scheme remains unspecified and is not added.
 
 During rollout, the learner still acts from the prior mean computed from locally
@@ -44,6 +43,25 @@ future-target exclusion, warmup and reset likelihoods, inactive rows, sequential
 correction and existing Adam momentum. Four native 8,000-step default-regression
 runs reproduce the preceding public trainer exactly. Four enabled native smokes passed on CPU and V100 CUDA, followed by two-game
 saved-source evaluations for each checkpoint with zero optimizer steps and
-unchanged parameters/normalizers. Two A100 3M development trials are registered
-at RL LR 3e-4: HalfCheetah history 32 and SMAC gamma 0.95. No performance result
-is claimed. [Declaration and jobs](../reports/development-joint-intention-3m-seed101.json).
+unchanged parameters/normalizers.
+
+Two A100 3M development trials at RL LR 3e-4 completed, each evaluated on
+100 fixed episodes after training seed 101:
+
+| Task | Frozen-feature DMS | Joint prior DMS | Matched IPPO |
+| --- | ---: | ---: | ---: |
+| HalfCheetah 2x3, policy history 32 | 4,332.78 | 4,409.99 | 5,179.43 |
+| SMAC 3s5z, gamma 0.95 | 56/100 wins | 59/100 wins | 81/100 wins |
+
+These are descriptive development differences, not evidence of robust improvement.
+No new default is selected. [Declaration and results](../reports/development-joint-intention-3m-seed101.json).
+
+
+The next [controlled diagnosis](../reports/development-conditioning-diagnosis-3m-seed101.json)
+compares joint prior training and a separately trained no-input architecture
+ablation on Walker3x2 and SMAC 8m_vs_9m. The latter retains DMS initialization,
+actor/critic architecture and auxiliary updates, but keeps the peer gates off
+throughout training (`warmup_episodes=1000000000`). It tests the effect of
+conditioning without the distribution shift of masking a previously trained
+policy. It is an ablation, not a DMS performance candidate. Both variants use
+3M transitions and H100, matching their archived controls.

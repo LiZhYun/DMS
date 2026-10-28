@@ -1,0 +1,403 @@
+{
+  "purpose": "One CPU ephemeral update from the failed 3M H100 Walker history32 checkpoint, separating PPO, observation-normalization and auxiliary-feature effects. No original run is updated.",
+  "status": "completed_pass",
+  "artifact": "runs/walker-history32-policy-drift-01",
+  "job_id": "21251696",
+  "script_sha256": "d97c8f342d8953dbb84bf2a1551cf77689ecb148613ab744f798931c446bdef5",
+  "predeclared_sha256": "87c21632844249c2e496c9cb7ce672f5a48b2784ca8b4dd5442b57e1f7ef62e5",
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-walker-h32-drift",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:15:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/run.sbatch"
+    ],
+    "stdout": "21251696\n",
+    "stderr": ""
+  },
+  "created_utc": "2026-10-28T08:13:07.863480+00:00",
+  "held_out_training_seeds_used": [],
+  "success": true,
+  "scheduler": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:01:52",
+    "node": "milan32"
+  },
+  "result": {
+    "job_id": "21251696",
+    "checkpoint_steps": 3000000,
+    "checkpoint_sha256": "21d8c1bf5c895be18d75eba91961367d60656c7051a1c48e70137a26b06591b5",
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+    },
+    "transitions": 4000,
+    "episodes": 22,
+    "environment": {
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "historical_binary_parity_verified": false,
+      "scenario": "Walker2d",
+      "native_env_id": "Walker2d-v2",
+      "agent_conf": "3x2",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "walker2d.xml",
+      "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "action_dims": [
+        2,
+        2,
+        2
+      ],
+      "observation_dims": [
+        5,
+        7,
+        6
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+        "alive_bonus_on_terminal": true,
+        "healthy_height_open_interval": [
+          0.8,
+          2.0
+        ],
+        "healthy_angle_open_interval": [
+          -1.0,
+          1.0
+        ]
+      },
+      "frame_skip": 4,
+      "physics_timestep": 0.002,
+      "native_geom_friction": [
+        [
+          0.7,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          1.9,
+          0.1,
+          0.1
+        ]
+      ],
+      "policy_observation_history": {
+        "length": 32,
+        "base_observation_dim": 29,
+        "shape": [
+          3,
+          32,
+          30
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "metrics": {
+      "policy_loss": -0.004218389971341215,
+      "value_loss": 0.08290450169394413,
+      "entropy": 0.8019444018602371,
+      "approx_kl": 0.006756030047975945,
+      "peer_gate_fraction": 0.6623333333333333,
+      "intention_feature_std": 1.1167550086975098,
+      "intention_loss": 0.397712508837382,
+      "intention_nll": 0.17818304958442846,
+      "intention_kl": 2.195294658342997,
+      "forecast_target_count": 1792,
+      "forecast_comparison_count": 1792,
+      "forecast_component_count": 3072,
+      "history_baseline_target_count": 1792,
+      "history_baseline_component_count": 3072,
+      "forecast_rmse": 0.5197539052178751,
+      "persistence_rmse": 0.5908680269298202,
+      "history_mean_rmse": 0.6464930785122124,
+      "history_baseline_coverage_fraction": 1.0
+    },
+    "replay_before_update": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 0.0,
+          "kl_p90": 0.0,
+          "kl_max": 0.0,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0
+        },
+        {
+          "agent": 1,
+          "kl_mean": 0.0,
+          "kl_p90": 0.0,
+          "kl_max": 0.0,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0
+        },
+        {
+          "agent": 2,
+          "kl_mean": 0.0,
+          "kl_p90": 0.0,
+          "kl_max": 0.0,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0
+        }
+      ],
+      "mean_kl": 0.0,
+      "mean_ratio_outside_ppo_clip_fraction": 0.0
+    },
+    "ppo_only": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 0.009998147375881672,
+          "kl_p90": 0.026378817856311798,
+          "kl_max": 0.1707691252231598,
+          "ratio_outside_ppo_clip_fraction": 0.10625000298023224,
+          "mean_action_shift_in_old_std": 0.11971881240606308
+        },
+        {
+          "agent": 1,
+          "kl_mean": 0.006241593975573778,
+          "kl_p90": 0.015034384094178677,
+          "kl_max": 0.08938052505254745,
+          "ratio_outside_ppo_clip_fraction": 0.07975000143051147,
+          "mean_action_shift_in_old_std": 0.09440121054649353
+        },
+        {
+          "agent": 2,
+          "kl_mean": 0.006407256703823805,
+          "kl_p90": 0.013058139942586422,
+          "kl_max": 0.21388201415538788,
+          "ratio_outside_ppo_clip_fraction": 0.07124999910593033,
+          "mean_action_shift_in_old_std": 0.09794348478317261
+        }
+      ],
+      "mean_kl": 0.007548999351759751,
+      "mean_ratio_outside_ppo_clip_fraction": 0.08575000117222469
+    },
+    "observation_moments_only": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 7.249564077937976e-07,
+          "kl_p90": 1.5556724974885583e-06,
+          "kl_max": 2.950429916381836e-05,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0007653816719539464
+        },
+        {
+          "agent": 1,
+          "kl_mean": 3.7018955367784656e-07,
+          "kl_p90": 8.940696716308594e-07,
+          "kl_max": 1.5735626220703125e-05,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0006593828438781202
+        },
+        {
+          "agent": 2,
+          "kl_mean": 2.044692564595607e-06,
+          "kl_p90": 3.2782554626464844e-06,
+          "kl_max": 0.00014984607696533203,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0011803038651123643
+        }
+      ],
+      "mean_kl": 1.046612842022417e-06,
+      "mean_ratio_outside_ppo_clip_fraction": 0.0
+    },
+    "auxiliary_features_only": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 0.003328687511384487,
+          "kl_p90": 0.008758359588682652,
+          "kl_max": 0.10663098096847534,
+          "ratio_outside_ppo_clip_fraction": 0.03799999877810478,
+          "mean_action_shift_in_old_std": 0.05964221805334091
+        },
+        {
+          "agent": 1,
+          "kl_mean": 0.001123087015002966,
+          "kl_p90": 0.0028665477875620127,
+          "kl_max": 0.009788811206817627,
+          "ratio_outside_ppo_clip_fraction": 0.0035000001080334187,
+          "mean_action_shift_in_old_std": 0.03994618356227875
+        },
+        {
+          "agent": 2,
+          "kl_mean": 0.010044248774647713,
+          "kl_p90": 0.027986964210867882,
+          "kl_max": 0.13377153873443604,
+          "ratio_outside_ppo_clip_fraction": 0.1120000034570694,
+          "mean_action_shift_in_old_std": 0.10510830581188202
+        }
+      ],
+      "mean_kl": 0.004832007767011722,
+      "mean_ratio_outside_ppo_clip_fraction": 0.05116666744773587
+    },
+    "all_input_refresh_after_ppo": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 0.0033440955448895693,
+          "kl_p90": 0.008715573698282242,
+          "kl_max": 0.10723507404327393,
+          "ratio_outside_ppo_clip_fraction": 0.03824999928474426,
+          "mean_action_shift_in_old_std": 0.05966458469629288
+        },
+        {
+          "agent": 1,
+          "kl_mean": 0.0011233401019126177,
+          "kl_p90": 0.0028631268069148064,
+          "kl_max": 0.00992816686630249,
+          "ratio_outside_ppo_clip_fraction": 0.0035000001080334187,
+          "mean_action_shift_in_old_std": 0.03997785970568657
+        },
+        {
+          "agent": 2,
+          "kl_mean": 0.010022029280662537,
+          "kl_p90": 0.027811439707875252,
+          "kl_max": 0.13421207666397095,
+          "ratio_outside_ppo_clip_fraction": 0.11174999922513962,
+          "mean_action_shift_in_old_std": 0.10524871945381165
+        }
+      ],
+      "mean_kl": 0.004829821642488241,
+      "mean_ratio_outside_ppo_clip_fraction": 0.05116666620597243
+    },
+    "complete_effective_policy_change": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 0.012832959182560444,
+          "kl_p90": 0.03200206905603409,
+          "kl_max": 0.19391778111457825,
+          "ratio_outside_ppo_clip_fraction": 0.13699999451637268,
+          "mean_action_shift_in_old_std": 0.13742434978485107
+        },
+        {
+          "agent": 1,
+          "kl_mean": 0.005039673298597336,
+          "kl_p90": 0.012794369831681252,
+          "kl_max": 0.08490630239248276,
+          "ratio_outside_ppo_clip_fraction": 0.06224999949336052,
+          "mean_action_shift_in_old_std": 0.08531447499990463
+        },
+        {
+          "agent": 2,
+          "kl_mean": 0.022176342085003853,
+          "kl_p90": 0.05007912218570709,
+          "kl_max": 0.34013718366622925,
+          "ratio_outside_ppo_clip_fraction": 0.22499999403953552,
+          "mean_action_shift_in_old_std": 0.17019282281398773
+        }
+      ],
+      "mean_kl": 0.013349658188720545,
+      "mean_ratio_outside_ppo_clip_fraction": 0.14141666268308958
+    },
+    "original_checkpoint_unchanged": true,
+    "frozen_checkpoint_unchanged": true,
+    "rollout_unchanged": true,
+    "measurement_preserves_model_and_rng": true,
+    "ephemeral_trainer_updates": 1,
+    "original_training_run_updates": 0,
+    "held_out_training_seeds_used": false,
+    "scope": "One fresh rollout from one late development checkpoint; KL components are not additive; no return-improvement claim"
+  },
+  "result_sha256": "51c28481c91ce16d3eef401ed723304fa3e3716be1dacd0a52bcab28f87894bd",
+  "rollout_sha256": "b61490c44d938266d40086ffc40103b8017baac9760ff1d632388b4ffaa6f32b",
+  "collected_utc": "2026-10-28T08:31:26.959471+00:00",
+  "interpretation": "Auxiliary feature refresh induces measurable policy change at this H32 checkpoint: mean KL 0.004832 and 5.12% of sampled ratios outside [0.8,1.2]. One CPU ephemeral update does not establish historical training causation or improved return; components are not additive."
+}

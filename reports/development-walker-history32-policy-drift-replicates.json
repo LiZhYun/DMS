@@ -1,0 +1,1254 @@
+{
+  "purpose": "Repeat the Walker H32 one-update drift decomposition on three fresh stochastic development rollouts from the identical frozen 3M checkpoint. Diagnose consistency; no benchmark return or independent training replication.",
+  "status": "completed_pass",
+  "artifact": "runs/walker-history32-policy-drift-replicates",
+  "reference": "reports/development-walker-history32-policy-drift.json",
+  "checkpoint_sha256": "21d8c1bf5c895be18d75eba91961367d60656c7051a1c48e70137a26b06591b5",
+  "runs": [
+    {
+      "seed": 400712,
+      "artifact": "runs/walker-history32-policy-drift-replicates/400712",
+      "script_sha256": "6a48a74563de0f9f91a229ae5f32b37e1839e403a9212114c778ce0aeec01000",
+      "predeclared_sha256": "87c21632844249c2e496c9cb7ce672f5a48b2784ca8b4dd5442b57e1f7ef62e5",
+      "status": "completed_pass",
+      "result": {
+        "job_id": "21252121",
+        "checkpoint_steps": 3000000,
+        "checkpoint_sha256": "21d8c1bf5c895be18d75eba91961367d60656c7051a1c48e70137a26b06591b5",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "transitions": 4000,
+        "episodes": 23,
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            5,
+            7,
+            6
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 29,
+            "shape": [
+              3,
+              32,
+              30
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "metrics": {
+          "policy_loss": -0.003931305604904386,
+          "value_loss": 0.07227710646887621,
+          "entropy": 0.8012025247017542,
+          "approx_kl": 0.006290456613258962,
+          "peer_gate_fraction": 0.6621666666666667,
+          "intention_feature_std": 1.1170412302017212,
+          "intention_loss": 0.37054121990998584,
+          "intention_nll": 0.1414573285728693,
+          "intention_kl": 2.290838877360026,
+          "forecast_target_count": 1785,
+          "forecast_comparison_count": 1764,
+          "forecast_component_count": 3024,
+          "history_baseline_target_count": 1764,
+          "history_baseline_component_count": 3024,
+          "forecast_rmse": 0.5151787976873896,
+          "persistence_rmse": 0.5799839196427311,
+          "history_mean_rmse": 0.6660177602703237,
+          "history_baseline_coverage_fraction": 0.9882352941176471
+        },
+        "replay_before_update": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            }
+          ],
+          "mean_kl": 0.0,
+          "mean_ratio_outside_ppo_clip_fraction": 0.0
+        },
+        "ppo_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.008582101203501225,
+              "kl_p90": 0.020255807787179947,
+              "kl_max": 0.1223173439502716,
+              "ratio_outside_ppo_clip_fraction": 0.09974999725818634,
+              "mean_action_shift_in_old_std": 0.11016690731048584
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.005758871324360371,
+              "kl_p90": 0.01279686950147152,
+              "kl_max": 0.14548856019973755,
+              "ratio_outside_ppo_clip_fraction": 0.06700000166893005,
+              "mean_action_shift_in_old_std": 0.09380721300840378
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.0053823464550077915,
+              "kl_p90": 0.010517307557165623,
+              "kl_max": 0.0814790204167366,
+              "ratio_outside_ppo_clip_fraction": 0.06475000083446503,
+              "mean_action_shift_in_old_std": 0.09290242195129395
+            }
+          ],
+          "mean_kl": 0.006574439660956462,
+          "mean_ratio_outside_ppo_clip_fraction": 0.0771666665871938
+        },
+        "observation_moments_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 7.129013397388917e-07,
+              "kl_p90": 1.6689300537109375e-06,
+              "kl_max": 2.9206275939941406e-05,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0007721325964666903
+            },
+            {
+              "agent": 1,
+              "kl_mean": 3.7136675246074446e-07,
+              "kl_p90": 8.940696716308594e-07,
+              "kl_max": 1.1861324310302734e-05,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0006557161104865372
+            },
+            {
+              "agent": 2,
+              "kl_mean": 1.8608420759846922e-06,
+              "kl_p90": 3.64183506462723e-06,
+              "kl_max": 6.693601608276367e-05,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.00118705362547189
+            }
+          ],
+          "mean_kl": 9.817033893947762e-07,
+          "mean_ratio_outside_ppo_clip_fraction": 0.0
+        },
+        "auxiliary_features_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.0006706808344461024,
+              "kl_p90": 0.001870262436568737,
+              "kl_max": 0.014223635196685791,
+              "ratio_outside_ppo_clip_fraction": 0.0024999999441206455,
+              "mean_action_shift_in_old_std": 0.026983555406332016
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.001085182186216116,
+              "kl_p90": 0.002719935029745102,
+              "kl_max": 0.013403892517089844,
+              "ratio_outside_ppo_clip_fraction": 0.003000000026077032,
+              "mean_action_shift_in_old_std": 0.03947613015770912
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.010026163421571255,
+              "kl_p90": 0.029102498665452003,
+              "kl_max": 0.12418907880783081,
+              "ratio_outside_ppo_clip_fraction": 0.11275000125169754,
+              "mean_action_shift_in_old_std": 0.10473605990409851
+            }
+          ],
+          "mean_kl": 0.003927342147411157,
+          "mean_ratio_outside_ppo_clip_fraction": 0.03941666707396507
+        },
+        "all_input_refresh_after_ppo": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.0006551751284860075,
+              "kl_p90": 0.0018008406041190028,
+              "kl_max": 0.01383906602859497,
+              "ratio_outside_ppo_clip_fraction": 0.002749999985098839,
+              "mean_action_shift_in_old_std": 0.02661275863647461
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0010884890798479319,
+              "kl_p90": 0.002727317390963435,
+              "kl_max": 0.013425290584564209,
+              "ratio_outside_ppo_clip_fraction": 0.0032500000670552254,
+              "mean_action_shift_in_old_std": 0.03956734016537666
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.010009842924773693,
+              "kl_p90": 0.02910052426159382,
+              "kl_max": 0.12410235404968262,
+              "ratio_outside_ppo_clip_fraction": 0.11249999701976776,
+              "mean_action_shift_in_old_std": 0.10496105998754501
+            }
+          ],
+          "mean_kl": 0.0039178357110358775,
+          "mean_ratio_outside_ppo_clip_fraction": 0.03949999902397394
+        },
+        "complete_effective_policy_change": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.009078475646674633,
+              "kl_p90": 0.022410182282328606,
+              "kl_max": 0.17522171139717102,
+              "ratio_outside_ppo_clip_fraction": 0.10199999809265137,
+              "mean_action_shift_in_old_std": 0.11100263148546219
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.007567754480987787,
+              "kl_p90": 0.018430141732096672,
+              "kl_max": 0.11135810613632202,
+              "ratio_outside_ppo_clip_fraction": 0.10175000131130219,
+              "mean_action_shift_in_old_std": 0.10631991177797318
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.013008219189941883,
+              "kl_p90": 0.031661540269851685,
+              "kl_max": 0.16421397030353546,
+              "ratio_outside_ppo_clip_fraction": 0.13875000178813934,
+              "mean_action_shift_in_old_std": 0.1350039839744568
+            }
+          ],
+          "mean_kl": 0.009884816439201435,
+          "mean_ratio_outside_ppo_clip_fraction": 0.11416666706403096
+        },
+        "original_checkpoint_unchanged": true,
+        "frozen_checkpoint_unchanged": true,
+        "rollout_unchanged": true,
+        "measurement_preserves_model_and_rng": true,
+        "ephemeral_trainer_updates": 1,
+        "original_training_run_updates": 0,
+        "held_out_training_seeds_used": false,
+        "scope": "One fresh rollout from one late development checkpoint; KL components are not additive; no return-improvement claim"
+      },
+      "result_sha256": "8c1afcba8c47ba5bfef0677e8479d0018af020b30d4eb8b028ea6109650d411f",
+      "rollout_sha256": "a63d618ceba91a511846781f53a4f868b1b5ff0b1fc4321e1cdb6fc305127d4b"
+    },
+    {
+      "seed": 400713,
+      "artifact": "runs/walker-history32-policy-drift-replicates/400713",
+      "script_sha256": "720d04f7558aa48cd7c4e516ea09b8574c51bf9f80d13716d2232fb1034c8503",
+      "predeclared_sha256": "87c21632844249c2e496c9cb7ce672f5a48b2784ca8b4dd5442b57e1f7ef62e5",
+      "status": "completed_pass",
+      "result": {
+        "job_id": "21252121",
+        "checkpoint_steps": 3000000,
+        "checkpoint_sha256": "21d8c1bf5c895be18d75eba91961367d60656c7051a1c48e70137a26b06591b5",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "transitions": 4000,
+        "episodes": 20,
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            5,
+            7,
+            6
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 29,
+            "shape": [
+              3,
+              32,
+              30
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "metrics": {
+          "policy_loss": -0.0037362753830772516,
+          "value_loss": 0.08403710331767797,
+          "entropy": 0.8012516508499782,
+          "approx_kl": 0.006991840219235748,
+          "peer_gate_fraction": 0.6626666666666666,
+          "intention_feature_std": 1.1168714761734009,
+          "intention_loss": 0.3263212616244952,
+          "intention_nll": 0.11182641827811797,
+          "intention_kl": 2.144948403040568,
+          "forecast_target_count": 1792,
+          "forecast_comparison_count": 1792,
+          "forecast_component_count": 3072,
+          "history_baseline_target_count": 1792,
+          "history_baseline_component_count": 3072,
+          "forecast_rmse": 0.518237690983322,
+          "persistence_rmse": 0.6090868695352301,
+          "history_mean_rmse": 0.6527539498941067,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "replay_before_update": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            }
+          ],
+          "mean_kl": 0.0,
+          "mean_ratio_outside_ppo_clip_fraction": 0.0
+        },
+        "ppo_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.007872854359447956,
+              "kl_p90": 0.01681976206600666,
+              "kl_max": 0.267819881439209,
+              "ratio_outside_ppo_clip_fraction": 0.09025000035762787,
+              "mean_action_shift_in_old_std": 0.11242947727441788
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.010278268717229366,
+              "kl_p90": 0.019701672717928886,
+              "kl_max": 0.3342510163784027,
+              "ratio_outside_ppo_clip_fraction": 0.11174999922513962,
+              "mean_action_shift_in_old_std": 0.11936397850513458
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.007720232009887695,
+              "kl_p90": 0.014274530112743378,
+              "kl_max": 0.1671973317861557,
+              "ratio_outside_ppo_clip_fraction": 0.0989999994635582,
+              "mean_action_shift_in_old_std": 0.11288623511791229
+            }
+          ],
+          "mean_kl": 0.008623785028855005,
+          "mean_ratio_outside_ppo_clip_fraction": 0.1003333330154419
+        },
+        "observation_moments_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 7.092207852110732e-07,
+              "kl_p90": 1.7881393432617188e-06,
+              "kl_max": 2.9861927032470703e-05,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0007707405020482838
+            },
+            {
+              "agent": 1,
+              "kl_mean": 4.5733153797300474e-07,
+              "kl_p90": 1.1324882507324219e-06,
+              "kl_max": 1.4960765838623047e-05,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.000716827460564673
+            },
+            {
+              "agent": 2,
+              "kl_mean": 2.1650494090863504e-06,
+              "kl_p90": 2.9802322387695312e-06,
+              "kl_max": 0.00015503168106079102,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0011844002874568105
+            }
+          ],
+          "mean_kl": 1.1105339107568095e-06,
+          "mean_ratio_outside_ppo_clip_fraction": 0.0
+        },
+        "auxiliary_features_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.000967097410466522,
+              "kl_p90": 0.002620815997943282,
+              "kl_max": 0.019880175590515137,
+              "ratio_outside_ppo_clip_fraction": 0.0062500000931322575,
+              "mean_action_shift_in_old_std": 0.03218003362417221
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0010578879155218601,
+              "kl_p90": 0.00279629766009748,
+              "kl_max": 0.01138216257095337,
+              "ratio_outside_ppo_clip_fraction": 0.005499999970197678,
+              "mean_action_shift_in_old_std": 0.037521351128816605
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.008461765013635159,
+              "kl_p90": 0.02283836342394352,
+              "kl_max": 0.0986068844795227,
+              "ratio_outside_ppo_clip_fraction": 0.0989999994635582,
+              "mean_action_shift_in_old_std": 0.0966130793094635
+            }
+          ],
+          "mean_kl": 0.0034955834465411804,
+          "mean_ratio_outside_ppo_clip_fraction": 0.03691666650896271
+        },
+        "all_input_refresh_after_ppo": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.0009562635095790029,
+              "kl_p90": 0.0025637266226112843,
+              "kl_max": 0.019975006580352783,
+              "ratio_outside_ppo_clip_fraction": 0.0062500000931322575,
+              "mean_action_shift_in_old_std": 0.03188922628760338
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0010603074915707111,
+              "kl_p90": 0.002792143728584051,
+              "kl_max": 0.011392593383789062,
+              "ratio_outside_ppo_clip_fraction": 0.005499999970197678,
+              "mean_action_shift_in_old_std": 0.03760412335395813
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.00843900628387928,
+              "kl_p90": 0.02281036227941513,
+              "kl_max": 0.09784889221191406,
+              "ratio_outside_ppo_clip_fraction": 0.09849999845027924,
+              "mean_action_shift_in_old_std": 0.09677214175462723
+            }
+          ],
+          "mean_kl": 0.003485192428342998,
+          "mean_ratio_outside_ppo_clip_fraction": 0.03674999950453639
+        },
+        "complete_effective_policy_change": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.008231463842093945,
+              "kl_p90": 0.01790008880198002,
+              "kl_max": 0.20723147690296173,
+              "ratio_outside_ppo_clip_fraction": 0.09974999725818634,
+              "mean_action_shift_in_old_std": 0.1146920844912529
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.010556623339653015,
+              "kl_p90": 0.02141273207962513,
+              "kl_max": 0.31827637553215027,
+              "ratio_outside_ppo_clip_fraction": 0.11649999767541885,
+              "mean_action_shift_in_old_std": 0.12259534001350403
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.015103669837117195,
+              "kl_p90": 0.0329667292535305,
+              "kl_max": 0.1906972974538803,
+              "ratio_outside_ppo_clip_fraction": 0.17425000667572021,
+              "mean_action_shift_in_old_std": 0.14711450040340424
+            }
+          ],
+          "mean_kl": 0.011297252339621386,
+          "mean_ratio_outside_ppo_clip_fraction": 0.13016666720310846
+        },
+        "original_checkpoint_unchanged": true,
+        "frozen_checkpoint_unchanged": true,
+        "rollout_unchanged": true,
+        "measurement_preserves_model_and_rng": true,
+        "ephemeral_trainer_updates": 1,
+        "original_training_run_updates": 0,
+        "held_out_training_seeds_used": false,
+        "scope": "One fresh rollout from one late development checkpoint; KL components are not additive; no return-improvement claim"
+      },
+      "result_sha256": "8fdc94cb9836fc366c4e4c67a4d47db5272e81da618d8a8366fc5792451f993b",
+      "rollout_sha256": "abe1fba989bee8023884a7df475bd9585710ace5ffe2e591981831164f763378"
+    },
+    {
+      "seed": 400714,
+      "artifact": "runs/walker-history32-policy-drift-replicates/400714",
+      "script_sha256": "8dfbb1d3ef270b62faad135d918a5e062191f91cd855ac148d7414df3c35921f",
+      "predeclared_sha256": "87c21632844249c2e496c9cb7ce672f5a48b2784ca8b4dd5442b57e1f7ef62e5",
+      "status": "completed_pass",
+      "result": {
+        "job_id": "21252121",
+        "checkpoint_steps": 3000000,
+        "checkpoint_sha256": "21d8c1bf5c895be18d75eba91961367d60656c7051a1c48e70137a26b06591b5",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+        },
+        "transitions": 4000,
+        "episodes": 20,
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            5,
+            7,
+            6
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 29,
+            "shape": [
+              3,
+              32,
+              30
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "metrics": {
+          "policy_loss": -0.0047033985678960255,
+          "value_loss": 0.10006604393323262,
+          "entropy": 0.8007561653852463,
+          "approx_kl": 0.006188244334592795,
+          "peer_gate_fraction": 0.6626666666666666,
+          "intention_feature_std": 1.1149404048919678,
+          "intention_loss": 0.4304269353548686,
+          "intention_nll": 0.20824733190238476,
+          "intention_kl": 2.221795996030172,
+          "forecast_target_count": 1785,
+          "forecast_comparison_count": 1764,
+          "forecast_component_count": 3024,
+          "history_baseline_target_count": 1764,
+          "history_baseline_component_count": 3024,
+          "forecast_rmse": 0.5505823277547748,
+          "persistence_rmse": 0.6407557588609369,
+          "history_mean_rmse": 0.6455870147561562,
+          "history_baseline_coverage_fraction": 0.9882352941176471
+        },
+        "replay_before_update": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.0,
+              "kl_p90": 0.0,
+              "kl_max": 0.0,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0
+            }
+          ],
+          "mean_kl": 0.0,
+          "mean_ratio_outside_ppo_clip_fraction": 0.0
+        },
+        "ppo_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.004621880128979683,
+              "kl_p90": 0.012330377474427223,
+              "kl_max": 0.0729336217045784,
+              "ratio_outside_ppo_clip_fraction": 0.05274999886751175,
+              "mean_action_shift_in_old_std": 0.08160096406936646
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.008835849352180958,
+              "kl_p90": 0.0203924011439085,
+              "kl_max": 0.14242112636566162,
+              "ratio_outside_ppo_clip_fraction": 0.10925000160932541,
+              "mean_action_shift_in_old_std": 0.11489825695753098
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.0073564439080655575,
+              "kl_p90": 0.016720138490200043,
+              "kl_max": 0.28820377588272095,
+              "ratio_outside_ppo_clip_fraction": 0.08675000071525574,
+              "mean_action_shift_in_old_std": 0.09970768541097641
+            }
+          ],
+          "mean_kl": 0.0069380577964087324,
+          "mean_ratio_outside_ppo_clip_fraction": 0.08291666706403096
+        },
+        "observation_moments_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 7.333904363804322e-07,
+              "kl_p90": 1.9073486328125e-06,
+              "kl_max": 2.4378299713134766e-05,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0007891771383583546
+            },
+            {
+              "agent": 1,
+              "kl_mean": 4.5667587755815475e-07,
+              "kl_p90": 1.1324882507324219e-06,
+              "kl_max": 1.71661376953125e-05,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0007279913988895714
+            },
+            {
+              "agent": 2,
+              "kl_mean": 1.952454340425902e-06,
+              "kl_p90": 2.866974682547152e-06,
+              "kl_max": 0.00020325183868408203,
+              "ratio_outside_ppo_clip_fraction": 0.0,
+              "mean_action_shift_in_old_std": 0.0011316033778712153
+            }
+          ],
+          "mean_kl": 1.047506884788163e-06,
+          "mean_ratio_outside_ppo_clip_fraction": 0.0
+        },
+        "auxiliary_features_only": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.001223452971316874,
+              "kl_p90": 0.0032287996727973223,
+              "kl_max": 0.032247066497802734,
+              "ratio_outside_ppo_clip_fraction": 0.011250000447034836,
+              "mean_action_shift_in_old_std": 0.03603632375597954
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0010759260039776564,
+              "kl_p90": 0.0027576922439038754,
+              "kl_max": 0.015124380588531494,
+              "ratio_outside_ppo_clip_fraction": 0.004999999888241291,
+              "mean_action_shift_in_old_std": 0.038838114589452744
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.008431448601186275,
+              "kl_p90": 0.023141728714108467,
+              "kl_max": 0.11116546392440796,
+              "ratio_outside_ppo_clip_fraction": 0.10324999690055847,
+              "mean_action_shift_in_old_std": 0.0995670035481453
+            }
+          ],
+          "mean_kl": 0.003576942525493602,
+          "mean_ratio_outside_ppo_clip_fraction": 0.039833332411944866
+        },
+        "all_input_refresh_after_ppo": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.0012116007274016738,
+              "kl_p90": 0.0031918869353830814,
+              "kl_max": 0.032285332679748535,
+              "ratio_outside_ppo_clip_fraction": 0.011250000447034836,
+              "mean_action_shift_in_old_std": 0.03572707250714302
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.001074580941349268,
+              "kl_p90": 0.002748435828834772,
+              "kl_max": 0.014951527118682861,
+              "ratio_outside_ppo_clip_fraction": 0.004749999847263098,
+              "mean_action_shift_in_old_std": 0.038839079439640045
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.008416992612183094,
+              "kl_p90": 0.023048924282193184,
+              "kl_max": 0.11160916090011597,
+              "ratio_outside_ppo_clip_fraction": 0.10374999791383743,
+              "mean_action_shift_in_old_std": 0.09972697496414185
+            }
+          ],
+          "mean_kl": 0.003567724760311345,
+          "mean_ratio_outside_ppo_clip_fraction": 0.03991666606937846
+        },
+        "complete_effective_policy_change": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.004788815975189209,
+              "kl_p90": 0.012938426807522774,
+              "kl_max": 0.0570264533162117,
+              "ratio_outside_ppo_clip_fraction": 0.05575000122189522,
+              "mean_action_shift_in_old_std": 0.08266035467386246
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.010132296942174435,
+              "kl_p90": 0.023342233151197433,
+              "kl_max": 0.1680278778076172,
+              "ratio_outside_ppo_clip_fraction": 0.12475000321865082,
+              "mean_action_shift_in_old_std": 0.12345238029956818
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.016940390691161156,
+              "kl_p90": 0.0519883893430233,
+              "kl_max": 0.32569634914398193,
+              "ratio_outside_ppo_clip_fraction": 0.148499995470047,
+              "mean_action_shift_in_old_std": 0.13499118387699127
+            }
+          ],
+          "mean_kl": 0.0106205012028416,
+          "mean_ratio_outside_ppo_clip_fraction": 0.10966666663686435
+        },
+        "original_checkpoint_unchanged": true,
+        "frozen_checkpoint_unchanged": true,
+        "rollout_unchanged": true,
+        "measurement_preserves_model_and_rng": true,
+        "ephemeral_trainer_updates": 1,
+        "original_training_run_updates": 0,
+        "held_out_training_seeds_used": false,
+        "scope": "One fresh rollout from one late development checkpoint; KL components are not additive; no return-improvement claim"
+      },
+      "result_sha256": "c9eefce87ef0725e84ea8d14fe361b0e94e52f0ced186b6f520482c661aff8dd",
+      "rollout_sha256": "5f2ec071f40ba0ee4ed9d0fa5b5b92999f5233aa4a1c8eb5c9f22ed741e603e6"
+    }
+  ],
+  "held_out_training_seeds_used": [],
+  "script_sha256": "dbe6b9aee9112b30486e223180b89a2ebd626744139c90ffad8bbf7de3271d4c",
+  "created_utc": "2026-10-28T08:39:17.049546+00:00",
+  "job_id": "21252121",
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-walker-h32-drift-replicates",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:15:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/run.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21252121\n",
+    "stderr": ""
+  },
+  "success": true,
+  "scheduler": {
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:03:52",
+    "node": "milan29"
+  },
+  "including_original_probe_summary": {
+    "ppo_only": {
+      "mean_kl": {
+        "values": [
+          0.007548999351759751,
+          0.006574439660956462,
+          0.008623785028855005,
+          0.0069380577964087324
+        ],
+        "mean": 0.0074213204594949875,
+        "sample_sd": 0.0008968412770315233
+      },
+      "mean_ratio_outside_ppo_clip_fraction": {
+        "values": [
+          0.08575000117222469,
+          0.0771666665871938,
+          0.1003333330154419,
+          0.08291666706403096
+        ],
+        "mean": 0.08654166695972283,
+        "sample_sd": 0.009863536274924492
+      }
+    },
+    "observation_moments_only": {
+      "mean_kl": {
+        "values": [
+          1.046612842022417e-06,
+          9.817033893947762e-07,
+          1.1105339107568095e-06,
+          1.047506884788163e-06
+        ],
+        "mean": 1.0465892567405415e-06,
+        "sample_sd": 5.259891366423131e-08
+      },
+      "mean_ratio_outside_ppo_clip_fraction": {
+        "values": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "mean": 0.0,
+        "sample_sd": 0.0
+      }
+    },
+    "auxiliary_features_only": {
+      "mean_kl": {
+        "values": [
+          0.004832007767011722,
+          0.003927342147411157,
+          0.0034955834465411804,
+          0.003576942525493602
+        ],
+        "mean": 0.003957968971614415,
+        "sample_sd": 0.0006120629991161204
+      },
+      "mean_ratio_outside_ppo_clip_fraction": {
+        "values": [
+          0.05116666744773587,
+          0.03941666707396507,
+          0.03691666650896271,
+          0.039833332411944866
+        ],
+        "mean": 0.041833333360652133,
+        "sample_sd": 0.006354132981707274
+      }
+    },
+    "complete_effective_policy_change": {
+      "mean_kl": {
+        "values": [
+          0.013349658188720545,
+          0.009884816439201435,
+          0.011297252339621386,
+          0.0106205012028416
+        ],
+        "mean": 0.011288057042596241,
+        "sample_sd": 0.0014905255034600789
+      },
+      "mean_ratio_outside_ppo_clip_fraction": {
+        "values": [
+          0.14141666268308958,
+          0.11416666706403096,
+          0.13016666720310846,
+          0.10966666663686435
+        ],
+        "mean": 0.12385416589677334,
+        "sample_sd": 0.014644927847735703
+      }
+    }
+  },
+  "scope": "Four rollout seeds at one fixed training checkpoint. Ephemeral CPU updates only; not independent training seeds, not full-training causal evidence, not a return measurement. KL components are not additive.",
+  "collected_utc": "2026-10-28T08:45:17.354616+00:00"
+}
