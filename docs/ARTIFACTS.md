@@ -1,5 +1,19 @@
 # Local development artifacts
 
+## Walker and SMAC conditioning controls
+
+The [verified eight-run archive](../reports/development-conditioning-artifacts.json)
+is available locally at `dist/dms-conditioning-development-20261029-v1.zip`. It includes the H100 3M
+Walker3x2 and SMAC 8m_vs_9m IPPO/DMS controls, plus all four joint-gradient
+and trained no-input trials. Zero-win and weaker results remain included.
+
+The archive is **68,180,285 bytes**, with **208 payload files**.
+SHA-256: `15725e45c75b9f1e4c7d9ead8c92ff0dba01118adf7e0554bc2e76e6d88f01df`.
+Each run includes its final checkpoint, saved source, configuration and training
+diagnostics. The checked-in endpoint ledgers retain the separate 100-episode
+evaluations; the archive's evaluation JSONL files are training diagnostics.
+These are one-training-seed development results with no public download URL.
+
 ## HalfCheetah control-cost audit
 
 Two [verified companion archives](../reports/halfcheetah-control-cost-artifacts.json)

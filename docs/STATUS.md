@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-28 08:50 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-28 22:31 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -141,31 +141,71 @@ SMAC 3s5z gamma 0.95 reaches **59/100** wins versus **56/100**. These small
 single-seed differences do not establish robust improvement, and both remain
 below their matched IPPO controls. [Joint-training ledger](../reports/development-joint-intention-3m-seed101.json).
 
-The next bounded batch diagnoses the large Walker and 8m_vs_9m gaps:
+The conditioning batch completed all four **3M H100** runs, their fixed
+100-episode evaluations and all five collectors. The [independent collection
+audit](../reports/conditioning-diagnosis-results-20261029.json) verified all
+13 jobs, endpoint hashes, seed blocks and unchanged learner/checkpoint/source.
 
-| Trial | Purpose | Status |
+| Task | Original DMS | Joint prior RL gradients | Inputs disabled during training | Matched IPPO |
+| --- | ---: | ---: | ---: | ---: |
+| Walker3x2, history 32 | 391.09 | 529.25 | 964.63 | 2,322.92 |
+| SMAC 8m_vs_9m, gamma 0.95 | 0/100 wins | 0/100 wins | 38/100 wins | 66/100 wins |
+
+Joint gradients do not close the conditioning gap. Removing inputs throughout
+training improves both tasks on this development seed, but still trails IPPO.
+It retains DMS's architecture, initialization and auxiliary training; it is an
+ablation, not a DMS performance candidate. Comparing it with IPPO does not
+isolate conditioning because their architectures and RNG use differ. Walker's
+joint run averages only 214.76 steps per episode; the no-input run averages
+348.62. [Full batch ledger](../reports/development-conditioning-diagnosis-3m-seed101.json).
+
+The [preceding native validation](../reports/conditioning-native-validation.json)
+passed eight short runs, exact archived/current default state comparisons,
+gradient-routing checks and four saved-source evaluations. Its earlier failed
+replay-tolerance attempts are preserved. Larger PPO batch shapes had small
+float32 discrepancies; replay with the collection batch shape was exact.
+
+The next bounded batch tests two existing settings independently:
+
+| Task | Lower auxiliary update size | Concatenated peer intentions |
 | --- | --- | --- |
-| Walker3x2 history 32, joint prior RL gradients | Test whether policy/value gradients improve intention conditioning | Queued: 21252282 → evaluation 21252283 |
-| Walker3x2 history 32, intention inputs disabled throughout training | Keep DMS architecture and auxiliary training, isolate conditioning | Queued: 21252284 → evaluation 21252285; ablation only |
-| SMAC 8m_vs_9m, joint prior RL gradients | Same hypothesis under the matched gamma-0.95 recipe | Queued: 21252286 → evaluation 21252287 |
-| SMAC 8m_vs_9m, intention inputs disabled throughout training | Same architecture ablation on the failing SMAC map | Queued: 21252288 → evaluation 21252289; ablation only |
+| Walker3x2, history 32 | LR 1e-4, soft; job 21272830 | LR 1e-3, all-peer; job 21272832 |
+| SMAC 8m_vs_9m, gamma 0.95 | LR 1e-4, soft; job 21272834 | LR 1e-3, all-peer; job 21272836 |
 
-These are fixed **3M**, development seed **101**, **H100** comparisons against
-completed H100 controls. Each will receive 100 separate endpoint episodes.
-The [native validation](../reports/conditioning-native-validation.json), job
-**21252072** on A100, passed all eight short runs, exact archived/current default
-state comparisons on both tasks, gradient-routing checks and all four
-saved-source evaluations. Collection-shape replay has zero log-probability
-error in every case. Larger PPO batches produce small float32 discrepancies
-(up to 6.20e-5 in these checks); this did not change the exact old/current
-comparison. Two prior attempts with stricter replay tolerances are preserved.
+All four use development seed 101, a fixed 3M budget, H100, the same native
+environment and existing actor/critic rates; prior RL gradients remain disabled.
+Each differs from its archived DMS control in one configuration setting plus
+output. Concatenation also changes network width and initialization, so it does
+not isolate only the information lost by pooling. The lower rate previously
+hurt HalfCheetah on three seeds; no general promotion is intended.
 
-The guarded submit job **21252128** completed after validating and hashing all
-15 evidence files. All four training jobs are now pending for **H100**, matching
-their archived performance controls; no new training result exists yet. Their
-fixed 100-episode CPU evaluations depend on successful training. Five collectors
-(**21252290–21252294**) update individual and final results automatically.
-[Batch ledger and frozen configurations](../reports/development-conditioning-diagnosis-3m-seed101.json).
+The [native H100 smoke](../reports/stability-pooling-native-validation.json),
+job **21272750**, passed all four variants and all four saved-source CPU
+evaluations. The training source is unchanged from the preceding validated
+trainer. The guarded submit job (**21272769**) verified all eleven evidence files and
+registered four 3M runs, now pending for H100. Their fixed 100-episode CPU
+evaluations are **21272831 / 21272833 / 21272835 / 21272837**, each dependent
+on successful training. Five collectors (**21272838–21272842**) preserve
+individual endpoints and the final batch status automatically.
+[Next batch and frozen settings](../reports/development-stability-pooling-3m-seed101.json).
+
+The [paired auxiliary-drift probe](../reports/development-walker-history32-soft-update-probe.json),
+job **21272741**, completed twelve ephemeral CPU updates on four archived
+Walker rollouts. Each three-way comparison starts the auxiliary intervention
+from exactly the same post-PPO state and update RNG. Ordinary auxiliary Adam
+gives mean policy KL **0.003278**; per-step interpolation at rho=0.1 gives
+**0.00007398**, as does scaling the learning rate by 0.1. The two stabilized
+implementations differ by at most **2.39e-7** in a model parameter. The mean
+fraction of sampled action-probability ratios outside [0.8,1.2] falls from
+**3.375% to zero**. Original models, source and rollout files remain unchanged.
+This supports the local stabilization mechanism, not improved learned returns.
+The previously negative HalfCheetah learning-rate replications remain relevant.
+
+A [verified eight-run local archive](../reports/development-conditioning-artifacts.json)
+now preserves all four completed conditioning trials and their four matched
+H100 controls, including both zero-win SMAC policies. It contains 208 payload
+files and is 68,180,285 bytes. Separate fixed 100-episode endpoints remain in
+the checked-in ledgers. No archive has been published.
 
 A completed [Walker history-32 drift probe](../reports/development-walker-history32-policy-drift.json),
 job **21251696**, made one ephemeral CPU update from the failed 3M checkpoint

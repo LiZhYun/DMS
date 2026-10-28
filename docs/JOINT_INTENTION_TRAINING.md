@@ -57,11 +57,14 @@ These are descriptive development differences, not evidence of robust improvemen
 No new default is selected. [Declaration and results](../reports/development-joint-intention-3m-seed101.json).
 
 
-The next [controlled diagnosis](../reports/development-conditioning-diagnosis-3m-seed101.json)
-compares joint prior training and a separately trained no-input architecture
-ablation on Walker3x2 and SMAC 8m_vs_9m. The latter retains DMS initialization,
-actor/critic architecture and auxiliary updates, but keeps the peer gates off
-throughout training (`warmup_episodes=1000000000`). It tests the effect of
-conditioning without the distribution shift of masking a previously trained
-policy. It is an ablation, not a DMS performance candidate. Both variants use
-3M transitions and H100, matching their archived controls.
+The subsequent [controlled diagnosis](../reports/conditioning-diagnosis-results-20261029.json)
+on H100 also completed at 3M steps and training seed 101. Walker3x2 history-32
+return rose from 391.09 to 529.25 with joint gradients; SMAC 8m_vs_9m remained
+at 0/100 wins. A separately trained no-input architecture ablation reached
+964.63 and 38/100 wins respectively, still below matched IPPO (2,322.92 and
+66/100). The ablation retains DMS initialization, actor/critic architecture and
+auxiliary updates but keeps peer gates off throughout training
+(`warmup_episodes=1000000000`). It avoids the distribution shift of masking
+inputs in a previously trained policy. It is not a DMS performance candidate.
+These results leave the joint-gradient option unselected and the conditioning
+gap unresolved.

@@ -107,3 +107,17 @@ The proposed rates correspond to interpolation factors **0.3 and 0.1** under the
 Measure parameter-induced prior changes on identical sensed histories before and after auxiliary updates, separately from temporal feature changes caused by new histories. Retain fresh pre-update forecast baselines and per-seed returns. A held-latent episode intervention tests changing feature values, whereas this learning-rate screen changes how parameters evolve across updates; the interventions answer different questions. Neither the negative three-seed beta-0.1 result nor any single-checkpoint intervention establishes parameter drift as its cause.
 
 If a rate merits replication, compare it to each seed-103/107 control using that control's own archived source. Across-seed source differences must still be reported. The older archived evaluator lacks newer final-evaluation provenance fields, so these trials remain development evidence and cannot pass the current final reference gate. Freeze one common, sufficiently instrumented version before final experiments.
+
+
+**Walker history-32 update probe, 2026-10-29 (local date).** The
+[paired probe](../reports/development-walker-history32-soft-update-probe.json)
+used four saved rollouts from one fixed 3M Walker checkpoint. For each rollout,
+ordinary auxiliary Adam, per-step rho=0.1 interpolation, and LR scaled by 0.1
+started from the identical post-PPO state and update RNG. Across these twelve
+ephemeral CPU updates, explicit interpolation and scaled LR agreed within
+2.39e-7 per parameter. Mean auxiliary-induced policy KL fell from 0.003278 to
+0.00007398; sampled likelihood ratios outside [0.8,1.2] fell from 3.375% to
+zero. This verifies a local numerical mechanism, not return improvement or
+independent training-seed evidence. The lower rate is being tested separately
+on Walker and SMAC 8m_vs_9m; the negative three-seed HalfCheetah result is not
+superseded. The public training implementation remains unchanged.

@@ -1,0 +1,1296 @@
+{
+  "purpose": "Preserve the four completed conditioning trials and all four matched H100 IPPO/DMS controls, including zero-win results.",
+  "created_utc": "2026-10-28T22:23:58.304633+00:00",
+  "status": "verified_local_only",
+  "artifact": "runs/conditioning-artifacts-20261029",
+  "command": [
+    "python3",
+    "scripts/export_artifacts.py",
+    "--output",
+    "dist/dms-conditioning-development-20261029-v1.zip",
+    "--include-checkpoints",
+    "--verify",
+    "--run",
+    "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+    "--run",
+    "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101",
+    "--run",
+    "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101",
+    "--run",
+    "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101",
+    "--run",
+    "runs/dev-walker-joint-conditioning-3m-h100-101",
+    "--run",
+    "runs/dev-walker-no-input-conditioning-3m-h100-101",
+    "--run",
+    "runs/dev-8m-joint-conditioning-3m-h100-101",
+    "--run",
+    "runs/dev-8m-no-input-conditioning-3m-h100-101"
+  ],
+  "exporter_sha256": "e8af314c848d40ff0285d77a3d22383857a85acbf5cfacba0ca5cdf7a2ac8b49",
+  "endpoint_ledgers": [
+    "reports/development-walker-ant-history32-3m-seed101.json",
+    "reports/development-smac-map-coverage-gamma095-seed101.json",
+    "reports/development-conditioning-diagnosis-3m-seed101.json"
+  ],
+  "public_download_url": null,
+  "job_id": "21272797",
+  "submission": {
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-conditioning-artifacts",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/conditioning-artifacts-20261029/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/conditioning-artifacts-20261029/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/conditioning-artifacts-20261029/run.sbatch"
+    ],
+    "returncode": 0,
+    "stdout": "21272797\n",
+    "stderr": ""
+  },
+  "success": true,
+  "archive": "dist/dms-conditioning-development-20261029-v1.zip",
+  "sha256": "15725e45c75b9f1e4c7d9ead8c92ff0dba01118adf7e0554bc2e76e6d88f01df",
+  "bytes": 68180285,
+  "payload_files": 208,
+  "manifest": {
+    "files": [
+      {
+        "bytes": 1350,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/config.json",
+        "sha256": "9f15388651cfe17bae21c338c29525871453714bcc7350da0a998cd8684efcdd"
+      },
+      {
+        "bytes": 14653,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/evaluation.jsonl",
+        "sha256": "61d399319a63cff8646ee45aa2fafadc334c009987bb96c2316d793a3cfd9596"
+      },
+      {
+        "bytes": 17460562,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/latest.pt",
+        "sha256": "6642d9fe196edcfc3a86fc752633e2e3d7a2a72681a0b8839b8cc0a87c4c32dc"
+      },
+      {
+        "bytes": 10100,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/manifest.json",
+        "sha256": "b1c03d4db9fcd8b0b763dc4c28bb81d6175df8e2d34c00fd0326339f08cd2f30"
+      },
+      {
+        "bytes": 1328474,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/metrics.jsonl",
+        "sha256": "ae38a9408a25ecc3e52aa70fb8686a412eb9113c66eefd0a1826eae13a56f040"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15719,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/intention.py",
+        "sha256": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 44839,
+        "path": "runs/dev-8m-joint-conditioning-3m-h100-101/source/dms/train.py",
+        "sha256": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      },
+      {
+        "bytes": 1357,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/config.json",
+        "sha256": "adf77301e6a3b2735fb389c7a91ad9e64534561625c5b64fece56b8399204253"
+      },
+      {
+        "bytes": 14681,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/evaluation.jsonl",
+        "sha256": "d08ec6be618df0fba18848f419be12c3402d826feccec671a7c1f8f35752315d"
+      },
+      {
+        "bytes": 16225298,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/latest.pt",
+        "sha256": "6f7f20899f7492b319a5dc6ceae221f1a31ea8474cc11bd6dd4de22e035c9789"
+      },
+      {
+        "bytes": 10100,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/manifest.json",
+        "sha256": "4d5e4be40e8b178dd5f6ff316445f50ff85dc37a897ff522b406cf2f67300458"
+      },
+      {
+        "bytes": 1318432,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/metrics.jsonl",
+        "sha256": "22cea563e83b944e57fe7fe2fa84f2015196f7aaac8434c72499948a246ba1b4"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15719,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/intention.py",
+        "sha256": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 44839,
+        "path": "runs/dev-8m-no-input-conditioning-3m-h100-101/source/dms/train.py",
+        "sha256": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      },
+      {
+        "bytes": 1296,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/config.json",
+        "sha256": "eebcb30cf41fb5070cf864481414fb1077de6975b8b787703b69507582b6a356"
+      },
+      {
+        "bytes": 2943,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/evaluation.jsonl",
+        "sha256": "7e60e68651addc0476fc087a29b4ac483bd558a3e3bb3bdd43a58a021112157b"
+      },
+      {
+        "bytes": 3226449,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/latest.pt",
+        "sha256": "21d8c1bf5c895be18d75eba91961367d60656c7051a1c48e70137a26b06591b5"
+      },
+      {
+        "bytes": 5965,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/manifest.json",
+        "sha256": "9156a610a137a56918f1fa920a1fee499c90f99f2782bd96f38dce36f758e933"
+      },
+      {
+        "bytes": 598489,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/metrics.jsonl",
+        "sha256": "d00918e1d2cea554a29793174d4e7bfd9877ae2201186cc50a31288b56a9f53d"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15478,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/intention.py",
+        "sha256": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 39545,
+        "path": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/source/dms/train.py",
+        "sha256": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      {
+        "bytes": 1298,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/config.json",
+        "sha256": "7b4310df141f2d3678a284ed7c6356053ec8c97425debd173884d341841a7156"
+      },
+      {
+        "bytes": 2981,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/evaluation.jsonl",
+        "sha256": "432701d428902c0ae9a8f066a25975c09d6b2c621b2a228388de87d7627afe78"
+      },
+      {
+        "bytes": 2008116,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/latest.pt",
+        "sha256": "144ddcb7e117a7f7dd0369c2bb2d9cb11f6130f932a989fd1ad639d87e5ac439"
+      },
+      {
+        "bytes": 5960,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/manifest.json",
+        "sha256": "bc6673aec1a209a2c1448195f18218731fc3453dfd0cc52a53cddd5ec483e0d6"
+      },
+      {
+        "bytes": 213865,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/metrics.jsonl",
+        "sha256": "f741e251dded3284d8bc9806e57a5a384d38bdaf2f31dee087de161b31cd3e4d"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15478,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/intention.py",
+        "sha256": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 39545,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/train.py",
+        "sha256": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      {
+        "bytes": 1350,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/config.json",
+        "sha256": "606e7845eef35422ef39d45256a71818518ec702a4ba3d3cc2c432b39d743d44"
+      },
+      {
+        "bytes": 14683,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/evaluation.jsonl",
+        "sha256": "fa84fc597a2bf56f92f685434019d62a8ce4003a33e5bdab1d4e10ea1b7d8894"
+      },
+      {
+        "bytes": 16225234,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/latest.pt",
+        "sha256": "1eb893d3eb1406db44a8dddec3fde80174aecef961f22273a6dc7e46ce7fb097"
+      },
+      {
+        "bytes": 9460,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/manifest.json",
+        "sha256": "c21c7b01234a25c02f1d37842a7447ddf6242ff17f2d2326a2c082f79232ece4"
+      },
+      {
+        "bytes": 1330208,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/metrics.jsonl",
+        "sha256": "0ce4577e14cec0f4a111a2c51d737b1112c3292bc2b190c42d3068814272b9e4"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15478,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/intention.py",
+        "sha256": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 39545,
+        "path": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101/source/dms/train.py",
+        "sha256": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      {
+        "bytes": 1352,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/config.json",
+        "sha256": "dc0bfbffb3c728301e892cc2db492143ffa7b1efb627d795cffa700e84d86f94"
+      },
+      {
+        "bytes": 14590,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/evaluation.jsonl",
+        "sha256": "415aff9d0a6125a0ac48028204b17970ada80a7017fd8470ec5844a54c1ec51d"
+      },
+      {
+        "bytes": 12238056,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/latest.pt",
+        "sha256": "dc576170c770ae34af7a796a85c9a01326cf9d785eb4c704ff71635a42f9c250"
+      },
+      {
+        "bytes": 9455,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/manifest.json",
+        "sha256": "a5f05e4cdd9038043bbb3708cc419f32469a6f9b5e78eb3ce78fda6874bea903"
+      },
+      {
+        "bytes": 780447,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/metrics.jsonl",
+        "sha256": "47569cb05fa93c0e02eda9fb5191af40ea653ccaeb8331770474ee2e4b10c52b"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15478,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/intention.py",
+        "sha256": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 39545,
+        "path": "runs/dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101/source/dms/train.py",
+        "sha256": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      {
+        "bytes": 1354,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/config.json",
+        "sha256": "ee81fb0314499bc951b3c686b2b9ef661c6b82e0adcb52bc068e7b5c6f865ed7"
+      },
+      {
+        "bytes": 2944,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/evaluation.jsonl",
+        "sha256": "d8066172b9877b722f327d376e0a9b500040063438deb0004bdab4bff49e632a"
+      },
+      {
+        "bytes": 3606585,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/latest.pt",
+        "sha256": "9b7fa373f73e35e74c2a95a2edaf5f81374ef6a6a5e3f25ab92bdbce36b93a42"
+      },
+      {
+        "bytes": 6605,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/manifest.json",
+        "sha256": "1061f562e0f679d248488d027bfcd57eaa081b4219e6845f3f8d7b1518917c92"
+      },
+      {
+        "bytes": 598784,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/metrics.jsonl",
+        "sha256": "49183cb10db502a121f8a11ed8ee1e38ec68dcd93ac68ab6ea58cf50dd744708"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15719,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/intention.py",
+        "sha256": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 44839,
+        "path": "runs/dev-walker-joint-conditioning-3m-h100-101/source/dms/train.py",
+        "sha256": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      },
+      {
+        "bytes": 1361,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/config.json",
+        "sha256": "47cc8dadc779cf566bfe43b6b843be3ff14ff255c1af1f877ce20c2222669b6c"
+      },
+      {
+        "bytes": 2942,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/evaluation.jsonl",
+        "sha256": "b9b6dde3cf89cefa33f04a7b4d0135cdebc67d6ce7fc9377a01cf22fb0fec8c2"
+      },
+      {
+        "bytes": 3226513,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/latest.pt",
+        "sha256": "9483681f4c066a3913ab93e893d78e9a888dc4e69ba088a775be0a44cd7af75c"
+      },
+      {
+        "bytes": 6605,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/manifest.json",
+        "sha256": "c0ea60e48802d77102493e529b8a033b377edc09c660573178dfe11a072e81bd"
+      },
+      {
+        "bytes": 577624,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/metrics.jsonl",
+        "sha256": "b385b5729422ec7f8621a7d487b5c29aa6c09496c615f724570ea85984d3614c"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15719,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/intention.py",
+        "sha256": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 44839,
+        "path": "runs/dev-walker-no-input-conditioning-3m-h100-101/source/dms/train.py",
+        "sha256": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      }
+    ],
+    "include_checkpoints": true,
+    "manifest_scope": "files lists every payload member; this content manifest excludes its own hash",
+    "purpose": "local development artifacts; not final paper-performance evidence",
+    "runs": [
+      {
+        "completed_episodes": 146516,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-8m-joint-conditioning-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 105038,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-8m-no-input-conditioning-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 17477,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-legacy-walker2d-3x2-dms-history32-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 7891,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 142440,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 110060,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-smac-8m_vs_9m-ippo-sequential-history16-mask-20env-gamma095-3m-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 15165,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-walker-joint-conditioning-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 11964,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-walker-no-input-conditioning-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      }
+    ],
+    "schema_version": 1
+  },
+  "verified_utc": "2026-10-28T22:24:29.348746+00:00",
+  "limits": "One training seed, 3M development evidence. Archive evaluations are training diagnostics; the checked-in endpoint ledgers contain the separate fixed 100-episode evaluations. No simulator binaries or public download URL."
+}

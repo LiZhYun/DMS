@@ -1,0 +1,1044 @@
+{
+  "success": true,
+  "job_id": "21272750",
+  "collected_utc": "2026-10-28T22:26:53.373150+00:00",
+  "overall": {
+    "success": true,
+    "job_id": "21272750",
+    "default_regression_reference": "reports/conditioning-native-validation.json",
+    "native_cases": [
+      "walker-low-aux",
+      "walker-all",
+      "8m-low-aux",
+      "8m-all"
+    ],
+    "saved_source_evaluations": [
+      "walker-low-aux",
+      "walker-all",
+      "8m-low-aux",
+      "8m-all"
+    ],
+    "sources_and_checkpoints_guarded": true,
+    "completed_utc": "2026-10-28T22:24:27.137791+00:00"
+  },
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+  },
+  "native_cases": [
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-validation/8m-all.json",
+      "sha256": "c52d422571611231e251dd10fd017911e4cd96e15da7f8e2858d099cb4af7e44",
+      "result": {
+        "success": true,
+        "label": "8m-all",
+        "job_id": "21272750",
+        "gpu": "NVIDIA H100 80GB HBM3",
+        "checks": [
+          {
+            "old_log_probability_max_error": 8.344650268554688e-07,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.9443638392857143,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          },
+          {
+            "old_log_probability_max_error": 2.9802322387695312e-06,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.9258370535714285,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          }
+        ],
+        "environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "8m_vs_9m",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "8m_vs_9m",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 120
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+            "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+            "size_bytes": 14927,
+            "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          },
+          "policy_observation_history": {
+            "length": 16,
+            "base_observation_dim": 214,
+            "shape": [
+              8,
+              16,
+              215
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset and own SMAC death",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "elapsed_seconds": 47.21571803698316,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 347032576,
+        "config": {
+          "algorithm": "dms",
+          "env": "smac",
+          "mamujoco_backend": "modern",
+          "scenario": "HalfCheetah",
+          "ant_contact_forces": "native",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "8m_vs_9m",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": true,
+          "mask_inactive_agents": true,
+          "smac_time_limit_terminal": false,
+          "update_mode": "sequential",
+          "total_steps": 1280,
+          "rollout_steps": 160,
+          "epochs": 5,
+          "minibatch_size": 640,
+          "hidden_dim": 64,
+          "policy_history_length": 16,
+          "initial_log_std": -0.5,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "all",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 0,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.95,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.01,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 1280,
+          "eval_episodes": 1,
+          "eval_seed": 400304,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-stability-pooling-3m-seed101/smoke/8m-all",
+          "torch_threads": 1
+        }
+      }
+    },
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-validation/8m-low-aux.json",
+      "sha256": "82f1dc1322edaa8cf660275a6c6a7d3b8cd4fecb3857428faef1d62a115f7ea7",
+      "result": {
+        "success": true,
+        "label": "8m-low-aux",
+        "job_id": "21272750",
+        "gpu": "NVIDIA H100 80GB HBM3",
+        "checks": [
+          {
+            "old_log_probability_max_error": 1.1920928955078125e-06,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.9277901785714285,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          },
+          {
+            "old_log_probability_max_error": 2.5033950805664062e-06,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.8718191964285714,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          }
+        ],
+        "environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "8m_vs_9m",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "8m_vs_9m",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 120
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+            "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+            "size_bytes": 14927,
+            "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          },
+          "policy_observation_history": {
+            "length": 16,
+            "base_observation_dim": 214,
+            "shape": [
+              8,
+              16,
+              215
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset and own SMAC death",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "elapsed_seconds": 55.608594784047455,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 345246208,
+        "config": {
+          "algorithm": "dms",
+          "env": "smac",
+          "mamujoco_backend": "modern",
+          "scenario": "HalfCheetah",
+          "ant_contact_forces": "native",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "8m_vs_9m",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": true,
+          "mask_inactive_agents": true,
+          "smac_time_limit_terminal": false,
+          "update_mode": "sequential",
+          "total_steps": 1280,
+          "rollout_steps": 160,
+          "epochs": 5,
+          "minibatch_size": 640,
+          "hidden_dim": 64,
+          "policy_history_length": 16,
+          "initial_log_std": -0.5,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 0,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.0001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.95,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.01,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 1280,
+          "eval_episodes": 1,
+          "eval_seed": 400304,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-stability-pooling-3m-seed101/smoke/8m-low-aux",
+          "torch_threads": 1
+        }
+      }
+    },
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-validation/walker-all.json",
+      "sha256": "5ec4e8fc391ad4a7016888f8f5d2e93cceaee193d908d091401de856ba55d095",
+      "result": {
+        "success": true,
+        "label": "walker-all",
+        "job_id": "21272750",
+        "gpu": "NVIDIA H100 80GB HBM3",
+        "checks": [
+          {
+            "old_log_probability_max_error": 4.76837158203125e-06,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.6348333333333334,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          },
+          {
+            "old_log_probability_max_error": 1.1920928955078125e-05,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.6413333333333333,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            5,
+            7,
+            6
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 29,
+            "shape": [
+              3,
+              32,
+              30
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "elapsed_seconds": 43.080540067050606,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 231340032,
+        "config": {
+          "algorithm": "dms",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "Walker2d",
+          "ant_contact_forces": "native",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "smac_time_limit_terminal": false,
+          "update_mode": "independent",
+          "total_steps": 8000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "policy_history_length": 32,
+          "initial_log_std": -0.5,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "all",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 0,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 8000,
+          "eval_episodes": 1,
+          "eval_seed": 400304,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-stability-pooling-3m-seed101/smoke/walker-all",
+          "torch_threads": 1
+        }
+      }
+    },
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-validation/walker-low-aux.json",
+      "sha256": "90a6019f0651bfabf62e9a99f964ebf498d923cb12c760977f08103bd72b2843",
+      "result": {
+        "success": true,
+        "label": "walker-low-aux",
+        "job_id": "21272750",
+        "gpu": "NVIDIA H100 80GB HBM3",
+        "checks": [
+          {
+            "old_log_probability_max_error": 3.814697265625e-06,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.6345,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          },
+          {
+            "old_log_probability_max_error": 8.58306884765625e-06,
+            "same_collection_batch_max_error": 0.0,
+            "peer_gate_fraction": 0.6418333333333334,
+            "prior_ppo_update_expected": false,
+            "finite": true
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            5,
+            7,
+            6
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 29,
+            "shape": [
+              3,
+              32,
+              30
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "elapsed_seconds": 59.50609745597467,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 232861184,
+        "config": {
+          "algorithm": "dms",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "Walker2d",
+          "ant_contact_forces": "native",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "smac_time_limit_terminal": false,
+          "update_mode": "independent",
+          "total_steps": 8000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "policy_history_length": 32,
+          "initial_log_std": -0.5,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 0,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.0001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 8000,
+          "eval_episodes": 1,
+          "eval_seed": 400304,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-stability-pooling-3m-seed101/smoke/walker-low-aux",
+          "torch_threads": 1
+        }
+      }
+    }
+  ],
+  "saved_source_evaluations": [
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-evaluation-8m-all/validation.json",
+      "sha256": "bb3e6ca57b270fb0409be41f8b46f78e6ad2d5565a40ad8e58ec5980aa1349fc",
+      "summary": {
+        "episodes": 2,
+        "return_mean": 1.3812949657440186,
+        "return_population_std": 0.0,
+        "return_median": 1.3812949657440186,
+        "return_quantiles": {
+          "0": 1.3812949657440186,
+          "0.01": 1.3812949657440186,
+          "0.05": 1.3812949657440186,
+          "0.1": 1.3812949657440186,
+          "0.25": 1.3812949657440186,
+          "0.5": 1.3812949657440186,
+          "0.75": 1.3812949657440186,
+          "0.9": 1.3812949657440186,
+          "0.95": 1.3812949657440186,
+          "0.99": 1.3812949657440186,
+          "1": 1.3812949657440186
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 2,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 120.0,
+        "episode_length_min": 120,
+        "episode_length_max": 120,
+        "wins": 0,
+        "win_rate": 0.0
+      },
+      "training_steps": 1280,
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      },
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "original_files_unchanged": true
+    },
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-evaluation-8m-low-aux/validation.json",
+      "sha256": "90f98a71847b9e7b2be9407f6fcf621bcb554abb5e988e1ed41374df4bf721a5",
+      "summary": {
+        "episodes": 2,
+        "return_mean": 2.4172661900520325,
+        "return_population_std": 0.17266187071800232,
+        "return_median": 2.4172661900520325,
+        "return_quantiles": {
+          "0": 2.24460431933403,
+          "0.01": 2.2480575567483903,
+          "0.05": 2.26187050640583,
+          "0.1": 2.2791366934776307,
+          "0.25": 2.3309352546930313,
+          "0.5": 2.4172661900520325,
+          "0.75": 2.5035971254110336,
+          "0.9": 2.5553956866264342,
+          "0.95": 2.5726618736982347,
+          "0.99": 2.5864748233556747,
+          "1": 2.589928060770035
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 2,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 65.0,
+        "episode_length_min": 40,
+        "episode_length_max": 90,
+        "wins": 0,
+        "win_rate": 0.0
+      },
+      "training_steps": 1280,
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      },
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "original_files_unchanged": true
+    },
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-evaluation-walker-all/validation.json",
+      "sha256": "2fc15e8235151ccea80d906b32dfcb823b4378e70fa72cff96b96bdc4b74adcb",
+      "summary": {
+        "episodes": 2,
+        "return_mean": 253.47993755340576,
+        "return_population_std": 0.5118800401687622,
+        "return_median": 253.47993755340576,
+        "return_quantiles": {
+          "0": 252.968057513237,
+          "0.01": 252.97829511404038,
+          "0.05": 253.01924551725386,
+          "0.1": 253.07043352127076,
+          "0.25": 253.22399753332138,
+          "0.5": 253.47993755340576,
+          "0.75": 253.73587757349014,
+          "0.9": 253.88944158554077,
+          "0.95": 253.94062958955766,
+          "0.99": 253.98157999277115,
+          "1": 253.99181759357452
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 2,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 135.5,
+        "episode_length_min": 135,
+        "episode_length_max": 136
+      },
+      "training_steps": 8000,
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      },
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "original_files_unchanged": true
+    },
+    {
+      "validation": "runs/development-stability-pooling-3m-seed101/smoke-evaluation-walker-low-aux/validation.json",
+      "sha256": "5c2994cf7dbd971460664df62326b19aab1a3d33f4ac66533cae2716065f5332",
+      "summary": {
+        "episodes": 2,
+        "return_mean": 256.64200803637505,
+        "return_population_std": 1.0825466215610504,
+        "return_median": 256.64200803637505,
+        "return_quantiles": {
+          "0": 255.559461414814,
+          "0.01": 255.5811123472452,
+          "0.05": 255.6677160769701,
+          "0.1": 255.7759707391262,
+          "0.25": 256.1007347255945,
+          "0.5": 256.64200803637505,
+          "0.75": 257.18328134715557,
+          "0.9": 257.5080453336239,
+          "0.95": 257.61629999577997,
+          "0.99": 257.7029037255049,
+          "1": 257.7245546579361
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 2,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 138.5,
+        "episode_length_min": 138,
+        "episode_length_max": 139
+      },
+      "training_steps": 8000,
+      "source_sha256": {
+        "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+        "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+        "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+        "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+        "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+        "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+        "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+        "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+        "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+        "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+        "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+        "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+        "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+        "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+        "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+        "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+        "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+        "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+        "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+        "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+      },
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "original_files_unchanged": true
+    }
+  ],
+  "default_regression_reference": "reports/conditioning-native-validation.json",
+  "scope": "Four native H100 wiring checks and four saved-source CPU evaluations. Training code is identical to the already validated trainer. No benchmark performance claim."
+}
