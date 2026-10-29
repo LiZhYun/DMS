@@ -11,8 +11,7 @@
 [**Paper**](https://www.sciencedirect.com/science/article/pii/S0893608024000157) ·
 [**DOI**](https://doi.org/10.1016/j.neunet.2024.106101) ·
 [**Documentation**](docs/METHOD_WALKTHROUGH.md) ·
-[**BibTeX**](#citation) ·
-[**Original Implementation**](https://github.com/LiZhYun/DMS/tree/legacy-paper-code)
+[**BibTeX**](#citation)
 
 [![Tests](https://github.com/LiZhYun/DMS/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/LiZhYun/DMS/actions/workflows/tests.yml)
 [![Python](https://img.shields.io/badge/Python-3.10-3776AB.svg)](#installation)
