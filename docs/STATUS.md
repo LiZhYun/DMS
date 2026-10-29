@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 10:04 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 10:24 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -205,12 +205,13 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-Walker residual job **21280354** is running on H100 and has completed **64,000
-steps** with finite metrics and active intention gates. Its source, configuration
-and validation guards passed. The other three training jobs remain queued.
-Evaluations depend on successful training; five collectors record completion
-automatically. No fixed-endpoint performance result is available for residual
-fusion yet.
+Walker residual job **21280354** has reached **312,000 steps** and its
+trained no-input control **21280356** has reached **284,000 steps**, both on
+H100. Metrics remain finite; their recent throughputs project approximately
+3.78 and 3.06 training hours within the 5-hour allocations. SMAC residual
+**21280358** has also started; its no-input control is queued. Evaluations
+and collectors remain dependent on completion. No fixed-endpoint performance
+result is available for residual fusion yet.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
 Four missing primary partitions now have declared local-history IPPO controls:
@@ -233,11 +234,22 @@ and submitted the four fixed-3M controls:
 | Walker 2x3 | 21280636 | 21280637 |
 | Walker 6x1 | 21280638 | 21280639 |
 
-These controls are queued for H100 or H200. Each actual GPU family is recorded
-and must be matched by that partition's future DMS comparison. Five dependent
+Ant 2x4 **21280632** is running on H200 and has reached **168,000 steps**
+with finite metrics; recent throughput projects about 1.91 training hours
+within its 4-hour allocation. The other controls remain queued. Each actual
+GPU family is recorded and must be matched by that partition's future DMS comparison. Five dependent
 collectors preserve the results automatically. This fills baseline coverage
 while residual DMS remains under test on Walker3x2 and SMAC 8m_vs_9m.
 Held-out seeds remain unused.
+
+The [learned residual causal-selection check](../reports/residual-causal-native-validation.json)
+passed **27 focused tests** and native H200 validation (**21280847**). Manual
+peer-removal KL agrees with selection, and causal PPO replay is exact with the
+collection batch shape. Threshold **0.6 selects no peers** after these short
+all-peer training runs. Walker eligible KL ranges from 0.000245 to 0.002041;
+SMAC values are at float32 rounding scale (−3.69e−7 to 4.66e−7). Zero-threshold
+selection therefore is not evidence of useful influence. Original checkpoints
+remain unchanged, and no threshold or performance claim is promoted.
 
 The [paired auxiliary-drift probe](../reports/development-walker-history32-soft-update-probe.json),
 job **21272741**, completed twelve ephemeral CPU updates on four archived

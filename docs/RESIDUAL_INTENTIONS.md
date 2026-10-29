@@ -45,7 +45,7 @@ input widths and initialization from IPPO. Lowering auxiliary updates and
 changing peer pooling did not resolve the target gaps. Residual fusion removes
 that initial local-network difference while keeping a learnable intention path.
 
-The [unit evidence](../reports/residual-unit-validation.json) records 25 focused
+The initial [unit evidence](../reports/residual-unit-validation.json) records 25 focused
 checks and **516 passing tests**, with 32 native dependency checks skipped.
 Tests cover initial parameter/RNG/action/value equivalence, local-only behavior
 with absent peers, exclusion of invisible histories and future targets,
@@ -62,3 +62,31 @@ prior RL LR zero. No held-out training seeds are used, and no checkpoint is
 selected by evaluation return.
 
 The [queue ledger](../reports/development-residual-fusion-3m-seed101.json) records training jobs 21280354/56/58/60 and dependent fixed-checkpoint evaluations.
+
+## Causal-selection validation
+
+The [subsequent causal check](../reports/residual-causal-native-validation.json)
+passed **27 focused residual tests** and native checks on H200. Two new tests
+compare learned residual peer-removal scores with explicit Gaussian and
+categorical KL formulas. Native all-peer models trained for 8,000 Walker steps
+and 1,280 SMAC steps were then checked on fresh local histories. The source
+checkpoint and original model remained unchanged.
+
+| Short-trained policy | Eligible KL range | Selected at threshold 0.6 |
+| --- | ---: | ---: |
+| Walker3x2, history 32 | 0.000245–0.002041 | 0 |
+| SMAC 8m_vs_9m, history 16 | −3.69e−7–4.66e−7 | 0 |
+
+These budgets differ, and the magnitudes should not be compared as a task
+performance result. Negative KL values reveal float32 rounding; SMAC's
+zero-threshold selections do not establish meaningful influence. Every
+predeclared positive threshold (0.01, 0.1, 0.2, 0.6) selected no peers in these
+short-trained checkpoints. No threshold is promoted.
+
+Separate cloned models also collected native causal rollouts at thresholds zero
+and 0.6, with causal warmup disabled only for this diagnostic. PPO replayed the
+stored log probabilities exactly with the original collection batch shape, and
+both updates stayed finite. This verifies the selection and update path; longer
+training must still establish useful selective coordination. The first full
+suite's 516 passing tests precede the two additional causal tests, while the
+production source used by these checks is identical.

@@ -1,0 +1,396 @@
+{
+  "purpose": "Validate learned residual intentions with causal peer-removal KL and cached PPO likelihoods on native Walker and SMAC; no performance or threshold-selection claim.",
+  "created_utc": "2026-10-29T10:09:30.380789+00:00",
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "thresholds": [
+    0.0,
+    0.01,
+    0.1,
+    0.2,
+    0.6
+  ],
+  "update_thresholds": [
+    0.0,
+    0.6
+  ],
+  "probe_seed": 400811,
+  "runs": [
+    {
+      "task": "walker",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/residual-causal-native-validation-01/configs/walker.json",
+      "config_sha256": "983ffc605e83072ca0a9ffe0e287ce69b902e17e732319217df27fda8aaff436",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      }
+    },
+    {
+      "task": "8m",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/residual-causal-native-validation-01/configs/8m.json",
+      "config_sha256": "ea303802171b17c7ab324621bfadde0354b3b8ab8467e44483b7168537cce6c2",
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      }
+    }
+  ],
+  "scripts_sha256": {
+    "run_case.py": "22972daa1b590267d6b85e9293d04f19d7865ee8f0145583083992e1a10730a6",
+    "run.sbatch": "b2878ec5721bdde31bf00c15c1c5131e8329bb5f7454b6e7df786029285f95fd",
+    "unit.sbatch": "1db38ff275efca8cd13b1645fb028f47e97df62bc0b4f5327948464b68da7c7f",
+    "tests/test_residual_intentions.py": "62a324928daed237a21317ab674766ea0ea8c83573b9acf7a68cd76ff4ef7457",
+    "tests/test_intention_rl.py": "5754cec26fa6ecaad95a0449e5242b38e814140cc27ff2985216515dda1fe87c",
+    "tests/test_sequential_update.py": "5a34a037589278368e86c28f6f77946367f70751f43c2e1c24aa5a0207868d71",
+    "tests/pytest.ini": "8250d20f42b419af40706490ead78aabab9feba93eab09a3f626e3de5256e1f4"
+  },
+  "unit_validation": {
+    "success": true,
+    "job_id": "21280744",
+    "passed": 27,
+    "scheduler": "21280744|COMPLETED|0:0",
+    "log": "runs/residual-causal-native-validation-01/dms-residual-causal-unit_21280744.out",
+    "log_sha256": "435667e9d65a4d1b69676a654b657ec1d501c3a32bdb4904427cbb1dc68a427d"
+  },
+  "artifact": "runs/residual-causal-native-validation-01",
+  "status": "completed_pass",
+  "job_id": "21280847",
+  "submission": [
+    "sbatch",
+    "--parsable",
+    "--job-name=dms-residual-causal-native",
+    "--partition=gpu-h200-141g-ellis,gpu-debug,gpu-a100-80g,gpu-h100-80g",
+    "--gpus=1",
+    "--constraint=ampere|hopper",
+    "--cpus-per-task=4",
+    "--mem=10G",
+    "--time=00:30:00",
+    "--output=/scratch/work/liz23/reproduce/dms/runs/residual-causal-native-validation-01/%x_%j.out",
+    "--error=/scratch/work/liz23/reproduce/dms/runs/residual-causal-native-validation-01/%x_%j.err",
+    "/scratch/work/liz23/reproduce/dms/runs/residual-causal-native-validation-01/run.sbatch"
+  ],
+  "success": true,
+  "scheduler": "21280847|COMPLETED|0:0|00:03:21|gpu52",
+  "results": {
+    "walker": {
+      "validation": "runs/residual-causal-native-validation-01/walker-validation.json",
+      "validation_sha256": "14bd861c53cbfee76444dacbedd9354591a659fc8e2e5a840bae846ebfc86fa7",
+      "result": {
+        "success": true,
+        "task": "walker",
+        "job_id": "21280847",
+        "gpu": "NVIDIA H200",
+        "training_steps": 8000,
+        "checkpoint_sha256": "ce8aecb1d40edc4b9427a863bc868dec4ec5540a5c459d5651703945758b7441",
+        "checkpoint_unchanged": true,
+        "source_unchanged": true,
+        "original_model_unchanged": true,
+        "eligible_peer_entries": 484,
+        "threshold_selected_entries": {
+          "0.0": 484,
+          "0.01": 0,
+          "0.1": 0,
+          "0.2": 0,
+          "0.6": 0
+        },
+        "eligible_kl": {
+          "minimum": 0.0002452731132507324,
+          "mean": 0.0007586514693684876,
+          "maximum": 0.002041459083557129,
+          "positive_entries": 484
+        },
+        "causal_updates": [
+          {
+            "threshold": 0.0,
+            "peer_gate_fraction": 0.6302083333333334,
+            "old_log_probability_max_error": 0.0,
+            "finite_update": true,
+            "original_model_unchanged": true
+          },
+          {
+            "threshold": 0.6,
+            "peer_gate_fraction": 0.0,
+            "old_log_probability_max_error": 0.0,
+            "finite_update": true,
+            "original_model_unchanged": true
+          }
+        ],
+        "scope": "Two-update all-peer residual native training followed by frozen-policy KL probes and ephemeral causal updates. Thresholds0 and0.6 disable causal warmup only in cloned diagnostic models. No benchmark or threshold-selection result."
+      }
+    },
+    "8m": {
+      "validation": "runs/residual-causal-native-validation-01/8m-validation.json",
+      "validation_sha256": "48e3da45bb84d23a8ff2bd5cce1f98fe535a634705dd04cfae7f845d0def1c99",
+      "result": {
+        "success": true,
+        "task": "8m",
+        "job_id": "21280847",
+        "gpu": "NVIDIA H200",
+        "training_steps": 1280,
+        "checkpoint_sha256": "e46d458159a12adcb38971ba8c44c1e2c068f216cf6913694c2f05603026fb0b",
+        "checkpoint_unchanged": true,
+        "source_unchanged": true,
+        "original_model_unchanged": true,
+        "eligible_peer_entries": 6776,
+        "threshold_selected_entries": {
+          "0.0": 2416,
+          "0.01": 0,
+          "0.1": 0,
+          "0.2": 0,
+          "0.6": 0
+        },
+        "eligible_kl": {
+          "minimum": -3.694476617965847e-07,
+          "mean": 1.4502708367558625e-08,
+          "maximum": 4.6592685976065695e-07,
+          "positive_entries": 2416
+        },
+        "causal_updates": [
+          {
+            "threshold": 0.0,
+            "peer_gate_fraction": 0.33705357142857145,
+            "old_log_probability_max_error": 0.0,
+            "finite_update": true,
+            "original_model_unchanged": true
+          },
+          {
+            "threshold": 0.6,
+            "peer_gate_fraction": 0.0,
+            "old_log_probability_max_error": 0.0,
+            "finite_update": true,
+            "original_model_unchanged": true
+          }
+        ],
+        "scope": "Two-update all-peer residual native training followed by frozen-policy KL probes and ephemeral causal updates. Thresholds0 and0.6 disable causal warmup only in cloned diagnostic models. No benchmark or threshold-selection result."
+      }
+    }
+  },
+  "collected_utc": "2026-10-29T10:21:33.197257+00:00",
+  "interpretation": "Causal KL/gating and exact same-batch PPO replay passed. Threshold0.6 selects no peers in either short-trained policy. SMAC KL values span negative/positive float32 roundoff-scale values; threshold-zero selection is not evidence of meaningful causal influence. No threshold is promoted and these probes do not establish learning performance."
+}

@@ -164,3 +164,43 @@ def test_residual_checkpoint_roundtrip_preserves_outputs(tmp_path):
 def test_invalid_fusion_is_rejected(fusion):
     with pytest.raises(ValueError,match='intention_fusion'):Config(intention_fusion=fusion).validate()
     with pytest.raises(ValueError,match='intention_fusion'):IndependentAgent(4,2,3,2,intention_fusion=fusion)
+
+
+@pytest.mark.parametrize('discrete', [False, True])
+def test_learned_residual_causal_selection_matches_policy_interventions(discrete):
+    """Equation-level oracle: remove one peer, keeping the local input fixed."""
+    torch.manual_seed(83)
+    agent = IndependentAgent(4, 3, 3, 2, hidden_dim=8, discrete=discrete,
+                             coordination='causal', intention_fusion='residual')
+    with torch.no_grad():
+        agent.actor_intention_projection.weight.normal_(std=.4)
+        agent.actor[-1].weight.mul_(20)
+    obs = torch.randn(5, 4)
+    context = torch.randn(5, 3, 2)
+    visible = torch.tensor([[True, True, True], [True, True, False],
+                            [True, False, True], [True, False, False],
+                            [True, True, True]])
+    eligible = visible.clone()
+    eligible[:, 0] = False
+    available = torch.tensor([[True, False, True]]).expand(5, -1) if discrete else None
+    full = agent.distribution(obs, context, eligible, available)
+    scores = torch.zeros(5, 3)
+    for peer in range(1, 3):
+        removed = eligible.clone()
+        removed[:, peer] = False
+        ablated = agent.distribution(obs, context, removed, available)
+        if discrete:
+            # Restrict the sum to legal actions; illegal logits are sentinels.
+            scores[:, peer] = (full.probs[:, [0, 2]] *
+                (full.logits[:, [0, 2]] - ablated.logits[:, [0, 2]])).sum(-1)
+        else:
+            sigma = agent.log_std.clamp(-5, 2).exp()
+            scores[:, peer] = .5 * ((full.mean - ablated.mean) / sigma).square().sum(-1)
+    maximum = scores[eligible].max().item()
+    assert maximum > 0
+    for threshold in [0, maximum / 2, maximum * 2]:
+        selected = agent.relevance(obs, context, visible, available, threshold)
+        torch.testing.assert_close(selected, eligible & (scores > threshold))
+        assert not selected[:, 0].any()
+    # Selection reads inference state only; it does not change caller masks.
+    assert visible[:, 0].all()

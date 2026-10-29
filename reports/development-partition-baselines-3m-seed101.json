@@ -534,10 +534,10 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
+          "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "elapsed": "00:08:32",
+          "node": "gpu57"
         },
         "evaluation": {
           "state": "PENDING",
@@ -545,7 +545,30 @@
           "elapsed": "00:00:00",
           "node": "None assigned"
         }
-      }
+      },
+      "actual_training_runtime": {
+        "host": "gpu57.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21280632",
+        "slurm_partition": "gpu-h200-141g-ellis",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": false,
+        "accelerator": {
+          "name": "NVIDIA H200",
+          "capability": [
+            9,
+            0
+          ],
+          "total_memory_bytes": 150109880320,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "required_future_dms_gpu_family": "H200"
     },
     {
       "label": "ant-8x1-ippo",
@@ -2153,5 +2176,5 @@
     }
   ],
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-29T10:03:44.855313+00:00"
+  "last_refresh_utc": "2026-10-29T10:24:25.016771+00:00"
 }
