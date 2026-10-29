@@ -1,0 +1,1684 @@
+{
+  "created_utc": "2026-10-29T16:49:22.164356+00:00",
+  "scope": "Development snapshot. Live states are from squeue at creation; recorded accounting is separately timestamped and can lag. Partial training metrics are not fixed endpoint or final evidence.",
+  "budget_scope": "Full-budget 10M runs optional; queued Walker and Ant campaigns cancelled before learning on user instruction.",
+  "runs": [
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "walker-residual",
+      "training_job": "21280354",
+      "evaluation_job": "21280355",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "03:43:35",
+          "node": "gpu48"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:11:38",
+          "node": "milan32"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:21.833001+00:00",
+      "campaign_status": "completed_pass",
+      "output": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.004204694487513431,
+        "value_loss": 0.15853637506564458,
+        "entropy": 0.9466100007295608,
+        "approx_kl": 0.005967869271408807,
+        "peer_gate_fraction": 0.6651666666666667,
+        "intention_feature_std": 1.1917694807052612,
+        "intention_loss": 0.7592343787352244,
+        "intention_nll": 0.5711919019619623,
+        "intention_kl": 1.8804246584574382,
+        "forecast_target_count": 1792,
+        "forecast_comparison_count": 1792,
+        "forecast_component_count": 3072,
+        "history_baseline_target_count": 1792,
+        "history_baseline_component_count": 3072,
+        "forecast_rmse": 0.5232331287437184,
+        "persistence_rmse": 0.624327521718517,
+        "history_mean_rmse": 0.5282784967173655,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 3000000,
+        "episodes": 14204,
+        "elapsed_seconds": 13362.006386306137,
+        "training_return_mean": 687.9797944174964
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 636.864808162665,
+        "return_population_std": 252.44392679220752,
+        "return_median": 605.5213857293129,
+        "return_quantiles": {
+          "0": 278.3662454355508,
+          "0.01": 282.8246859549265,
+          "0.05": 321.12297013625505,
+          "0.1": 404.0023658275604,
+          "0.25": 485.0069731473923,
+          "0.5": 605.5213857293129,
+          "0.75": 674.3845775090158,
+          "0.9": 1000.6006219305099,
+          "0.95": 1144.3541347295045,
+          "0.99": 1536.7000270562926,
+          "1": 1603.2738445401192
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 90,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 271.54,
+        "episode_length_min": 154,
+        "episode_length_max": 1000
+      }
+    },
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "walker-no-input",
+      "training_job": "21280356",
+      "evaluation_job": "21280357",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "03:01:44",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:05:01",
+          "node": "milan32"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:21.833001+00:00",
+      "campaign_status": "completed_pass",
+      "output": "runs/dev-walker-no-input-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.004395288730059595,
+        "value_loss": 0.08637219052761794,
+        "entropy": 1.0508775303761164,
+        "approx_kl": 0.005298691279832113,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 0.7797668278217316,
+        "intention_nll": 0.6053168922662735,
+        "intention_kl": 1.744499425093333,
+        "forecast_target_count": 1785,
+        "forecast_comparison_count": 1764,
+        "forecast_component_count": 3024,
+        "history_baseline_target_count": 1764,
+        "history_baseline_component_count": 3024,
+        "forecast_rmse": 0.5008586044601834,
+        "persistence_rmse": 0.6037035310253406,
+        "history_mean_rmse": 0.6589090970919882,
+        "history_baseline_coverage_fraction": 0.9882352941176471,
+        "steps": 3000000,
+        "episodes": 12154,
+        "elapsed_seconds": 10863.673657361884,
+        "training_return_mean": 673.3698027011008
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 524.2556688589231,
+        "return_population_std": 82.4493547393076,
+        "return_median": 505.43213518336415,
+        "return_quantiles": {
+          "0": 423.8101804628968,
+          "0.01": 423.90694748312234,
+          "0.05": 431.0048334300518,
+          "0.1": 474.4619576841593,
+          "0.25": 490.61097347177565,
+          "0.5": 505.43213518336415,
+          "0.75": 519.2566128522158,
+          "0.9": 625.4609685331585,
+          "0.95": 712.049244012311,
+          "0.99": 757.2930780925614,
+          "1": 993.0100927054882
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 188.78,
+        "episode_length_min": 149,
+        "episode_length_max": 388
+      }
+    },
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "8m-residual",
+      "training_job": "21280358",
+      "evaluation_job": "21280359",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "04:29:19",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:15:05",
+          "node": "milan29"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:21.833001+00:00",
+      "campaign_status": "completed_pass",
+      "output": "runs/dev-8m-residual-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.018288515552001526,
+        "value_loss": 0.05037246472202241,
+        "entropy": 0.38511373549699784,
+        "approx_kl": 0.0011536512899896138,
+        "sequential_agent_order": [
+          3,
+          5,
+          4,
+          7,
+          1,
+          0,
+          2,
+          6
+        ],
+        "sequential_factor_min": 0.15923291444778442,
+        "sequential_factor_max": 8.420794486999512,
+        "sequential_factor_ess": 1482.447159468952,
+        "sequential_factor_ess_fraction": 0.926529474668095,
+        "alive_fraction": 0.7849218845367432,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.95125,
+        "intention_feature_std": 2.4700000286102295,
+        "intention_loss": 0.9526850283145905,
+        "intention_nll": 0.7714260891079903,
+        "intention_kl": 1.8125893473625183,
+        "forecast_target_count": 10593,
+        "forecast_comparison_count": 10593,
+        "history_baseline_target_count": 10593,
+        "forecast_nll": 1.4183629840784029,
+        "forecast_accuracy": 0.5740583341339768,
+        "persistence_accuracy": 0.5059001188428771,
+        "history_histogram_accuracy": 0.3407910812298344,
+        "history_histogram_nll": 2.329677848834824,
+        "forecast_history_comparison_nll": 1.4183629840784029,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 3000000,
+        "episodes": 148139,
+        "elapsed_seconds": 15970.41938761063,
+        "training_return_mean": 9.648617760131234,
+        "training_battles": 76,
+        "training_battles_won": 0,
+        "training_win_rate": 0.0,
+        "training_battles_total": 148139,
+        "training_battles_won_total": 157,
+        "training_win_rate_total": 0.0010598154436036425,
+        "scheduled_environment_restarts": 40
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 8.796834372878074,
+        "return_population_std": 1.0129307914976002,
+        "return_median": 8.647481918334961,
+        "return_quantiles": {
+          "0": 6.071942239999771,
+          "0.01": 6.955107792317867,
+          "0.05": 7.336690489947796,
+          "0.1": 7.654676073789597,
+          "0.25": 8.050359539687634,
+          "0.5": 8.647481918334961,
+          "0.75": 9.46762577444315,
+          "0.9": 10.359711909294129,
+          "0.95": 10.5395682066679,
+          "0.99": 10.850935032367707,
+          "1": 11.050359547138214
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 20.11,
+        "episode_length_min": 18,
+        "episode_length_max": 23,
+        "wins": 0,
+        "win_rate": 0.0
+      }
+    },
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "8m-no-input",
+      "training_job": "21280360",
+      "evaluation_job": "21280361",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "04:20:54",
+          "node": "gpu47"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:15:04",
+          "node": "milan31"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:21.833001+00:00",
+      "campaign_status": "completed_pass",
+      "output": "runs/dev-8m-no-input-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.03533989102021877,
+        "value_loss": 0.06201067734509706,
+        "entropy": 0.26400258429348467,
+        "approx_kl": 0.0011885196761166326,
+        "sequential_agent_order": [
+          1,
+          7,
+          4,
+          2,
+          6,
+          3,
+          0,
+          5
+        ],
+        "sequential_factor_min": 0.04806763306260109,
+        "sequential_factor_max": 4.956695079803467,
+        "sequential_factor_ess": 1487.0155599076516,
+        "sequential_factor_ess_fraction": 0.9293847249422822,
+        "alive_fraction": 0.7774999737739563,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 1.3952925726771355,
+        "intention_nll": 1.07127645611763,
+        "intention_kl": 3.240160971879959,
+        "forecast_target_count": 10615,
+        "forecast_comparison_count": 10365,
+        "history_baseline_target_count": 10365,
+        "forecast_nll": 2.8943622091161267,
+        "forecast_accuracy": 0.30139894597034667,
+        "persistence_accuracy": 0.2572117684273345,
+        "history_histogram_accuracy": 0.10477568761944714,
+        "history_histogram_nll": 2.7377792208423606,
+        "forecast_history_comparison_nll": 2.9614515282253224,
+        "history_baseline_coverage_fraction": 0.976448422044277,
+        "steps": 3000000,
+        "episodes": 106776,
+        "elapsed_seconds": 15444.124987015966,
+        "training_return_mean": 16.809556051245277,
+        "training_battles": 53,
+        "training_battles_won": 31,
+        "training_win_rate": 0.5849056603773585,
+        "training_battles_total": 106776,
+        "training_battles_won_total": 31703,
+        "training_win_rate_total": 0.2969112909268,
+        "scheduled_environment_restarts": 40
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 18.06388482093811,
+        "return_population_std": 3.301859763408881,
+        "return_median": 19.999999910593033,
+        "return_quantiles": {
+          "0": 9.812949448823929,
+          "0.01": 10.667625826895238,
+          "0.05": 12.070503433048724,
+          "0.1": 12.284891918301582,
+          "0.25": 13.870503567159176,
+          "0.5": 19.999999910593033,
+          "0.75": 20.0,
+          "0.9": 20.000000059604645,
+          "0.95": 20.000000089406967,
+          "0.99": 20.000000119507312,
+          "1": 20.000000149011612
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 30.57,
+        "episode_length_min": 24,
+        "episode_length_max": 120,
+        "wins": 74,
+        "win_rate": 0.74
+      }
+    },
+    {
+      "campaign": "development-ant-entropy-3m-seed101-attempt2",
+      "label": "ant-ippo",
+      "training_job": "21282828",
+      "evaluation_job": "21282829",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "03:15:26",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:00:42",
+          "node": "csl48"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T16:23:17.925128+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101-attempt2",
+      "latest_training_metrics": {
+        "policy_loss": -0.002012440922408132,
+        "value_loss": 0.06764526800252497,
+        "entropy": 6.8378777503967285,
+        "approx_kl": 0.00202076598220412,
+        "peer_gate_fraction": 0.0,
+        "steps": 3000000,
+        "episodes": 174544,
+        "elapsed_seconds": 11701.508666897658,
+        "training_return_mean": -17.30390861732969
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": -16.750730212857015,
+        "return_population_std": 6.503377437143966,
+        "return_median": -15.370050032623112,
+        "return_quantiles": {
+          "0": -54.41343602538109,
+          "0.01": -42.785084595382216,
+          "0.05": -26.97159851491451,
+          "0.1": -22.662368236109614,
+          "0.25": -19.14091232419014,
+          "0.5": -15.370050032623112,
+          "0.75": -12.847710666246712,
+          "0.9": -11.060973531007763,
+          "0.95": -10.18391163274646,
+          "0.99": -7.824418659880746,
+          "1": -5.577836997807026
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 100,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 11.14,
+        "episode_length_min": 7,
+        "episode_length_max": 28
+      }
+    },
+    {
+      "campaign": "development-ant-entropy-3m-seed101-attempt2",
+      "label": "ant-dms",
+      "training_job": "21282830",
+      "evaluation_job": "21282831",
+      "live_training": {
+        "job_name": "dms-ant-entropy-ant-dms-3m",
+        "state": "RUNNING",
+        "elapsed": "3:41:58",
+        "node_or_reason": "gpu48"
+      },
+      "live_evaluation": {
+        "job_name": "dms-ant-entropy-ant-dms-eval",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "03:15:53",
+          "node": "gpu48"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T16:23:17.925128+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101-attempt2",
+      "latest_training_metrics": {
+        "policy_loss": -0.002680628457892453,
+        "value_loss": 0.09923781855031848,
+        "entropy": 6.8378777503967285,
+        "approx_kl": 0.0015931262000335844,
+        "peer_gate_fraction": 0.90575,
+        "intention_feature_std": 1.2882189750671387,
+        "intention_loss": 1.260982260107994,
+        "intention_nll": 1.110881246626377,
+        "intention_kl": 1.5010101050138474,
+        "forecast_target_count": 3984,
+        "forecast_comparison_count": 3648,
+        "forecast_component_count": 4560,
+        "history_baseline_target_count": 3648,
+        "history_baseline_component_count": 4560,
+        "forecast_rmse": 0.8608754406917583,
+        "persistence_rmse": 1.3994174269599813,
+        "history_mean_rmse": 1.2256233213884076,
+        "history_baseline_coverage_fraction": 0.9156626506024096,
+        "steps": 2324000,
+        "episodes": 146412,
+        "elapsed_seconds": 13278.059834724292,
+        "training_return_mean": -16.691981427072147
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "ant-2x4-ippo",
+      "training_job": "21280632",
+      "evaluation_job": "21280633",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "01:56:31",
+          "node": "gpu57"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:10:10",
+          "node": "milan32"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.184073+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-ant-2x4-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0069991883879993114,
+        "value_loss": 0.11893087103962899,
+        "entropy": -2.670444166660309,
+        "approx_kl": 0.006708049014140851,
+        "peer_gate_fraction": 0.0,
+        "steps": 3000000,
+        "episodes": 3241,
+        "elapsed_seconds": 6915.392611977179,
+        "training_return_mean": 820.8299679283518
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 936.7590446137843,
+        "return_population_std": 85.99237284157951,
+        "return_median": 933.8776056741772,
+        "return_quantiles": {
+          "0": 708.59570214618,
+          "0.01": 770.4047121237195,
+          "0.05": 783.0738713773142,
+          "0.1": 829.3919788216793,
+          "0.25": 881.3679068523925,
+          "0.5": 933.8776056741772,
+          "0.75": 999.2166040996708,
+          "0.9": 1053.6373488882307,
+          "0.95": 1072.5972404718516,
+          "0.99": 1112.509496290754,
+          "1": 1124.7320160032614
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 75,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 1000.0,
+        "episode_length_min": 1000,
+        "episode_length_max": 1000
+      }
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "ant-8x1-ippo",
+      "training_job": "21280634",
+      "evaluation_job": "21280635",
+      "live_training": {
+        "job_name": "dms-partition-baseline-ant-8x1-ippo-3m",
+        "state": "RUNNING",
+        "elapsed": "5:22:24",
+        "node_or_reason": "gpu45"
+      },
+      "live_evaluation": {
+        "job_name": "dms-partition-baseline-ant-8x1-ippo-eval",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "04:25:24",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.184073+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-ant-8x1-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0017749084070601384,
+        "value_loss": 0.09250793210230768,
+        "entropy": -0.7351037468761206,
+        "approx_kl": 0.0023185664446285954,
+        "peer_gate_fraction": 0.0,
+        "steps": 2404000,
+        "episodes": 2577,
+        "elapsed_seconds": 19328.171384637244,
+        "training_return_mean": 1127.6010761757752
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "walker-2x3-ippo",
+      "training_job": "21280636",
+      "evaluation_job": "21280637",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "01:43:21",
+          "node": "gpu57"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:01:29",
+          "node": "milan32"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.184073+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-2x3-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.002961069528828375,
+        "value_loss": 0.01202238209079951,
+        "entropy": 1.2844053894281386,
+        "approx_kl": 0.007115962275324339,
+        "peer_gate_fraction": 0.0,
+        "steps": 3000000,
+        "episodes": 18707,
+        "elapsed_seconds": 6189.141567220911,
+        "training_return_mean": 407.9703610149714
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 412.09232365071773,
+        "return_population_std": 9.324535087095525,
+        "return_median": 411.6947064101696,
+        "return_quantiles": {
+          "0": 387.99781185388565,
+          "0.01": 397.13852237343787,
+          "0.05": 398.96534998118875,
+          "0.1": 400.4118222415447,
+          "0.25": 405.9108107239008,
+          "0.5": 411.6947064101696,
+          "0.75": 417.8101047873497,
+          "0.9": 421.97877111434934,
+          "0.95": 426.06323503255845,
+          "0.99": 439.93965655088425,
+          "1": 440.17502957582474
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 153.11,
+        "episode_length_min": 146,
+        "episode_length_max": 163
+      }
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "walker-6x1-ippo",
+      "training_job": "21280638",
+      "evaluation_job": "21280639",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "04:20:48",
+          "node": "gpu48"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.184073+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-6x1-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0014425568037646978,
+        "value_loss": 0.2319539209206899,
+        "entropy": 0.3391405442108711,
+        "approx_kl": 0.0037952717826424437,
+        "peer_gate_fraction": 0.0,
+        "steps": 3000000,
+        "episodes": 15763,
+        "elapsed_seconds": 18362.571180626284,
+        "training_return_mean": 481.3921489685774
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "walker-after",
+      "training_job": "21288097",
+      "evaluation_job": "21288119",
+      "live_training": {
+        "job_name": "dms-auxorder-walker-after-3m",
+        "state": "RUNNING",
+        "elapsed": "42:46",
+        "node_or_reason": "gpu13"
+      },
+      "live_evaluation": {
+        "job_name": "dms-auxorder-walker-after-eval-v2",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.495487+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-auxorder-after-3m-a100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0015454535760606328,
+        "value_loss": 0.13886831452449164,
+        "entropy": 1.6889360825220743,
+        "approx_kl": 0.002514387489117557,
+        "peer_gate_fraction": 0.662,
+        "intention_feature_std": 2.050020933151245,
+        "intention_loss": 1.1261345744132996,
+        "intention_nll": 1.1202683250109355,
+        "intention_kl": 0.058662633722027145,
+        "forecast_target_count": 1792,
+        "forecast_comparison_count": 1792,
+        "forecast_component_count": 3072,
+        "history_baseline_target_count": 1792,
+        "history_baseline_component_count": 3072,
+        "forecast_rmse": 0.4572861013432823,
+        "persistence_rmse": 0.6355292524472675,
+        "history_mean_rmse": 0.48809223497620946,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 476000,
+        "episodes": 3195,
+        "elapsed_seconds": 2532.1980820698664,
+        "training_return_mean": 257.8133884525991
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "walker-before",
+      "training_job": "21288099",
+      "evaluation_job": "21288120",
+      "live_training": {
+        "job_name": "dms-auxorder-walker-before-3m",
+        "state": "RUNNING",
+        "elapsed": "40:44",
+        "node_or_reason": "gpu39"
+      },
+      "live_evaluation": {
+        "job_name": "dms-auxorder-walker-before-eval-v2",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.495487+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-auxorder-before-3m-a100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.001862034684745595,
+        "value_loss": 0.163819994404912,
+        "entropy": 1.7137246012687684,
+        "approx_kl": 0.0038587580317274235,
+        "peer_gate_fraction": 0.6636666666666666,
+        "intention_feature_std": 2.3264293670654297,
+        "intention_loss": 1.3004628618558247,
+        "intention_nll": 1.2807756265004475,
+        "intention_kl": 0.19687220578392348,
+        "forecast_target_count": 1787,
+        "forecast_comparison_count": 1772,
+        "forecast_component_count": 3040,
+        "history_baseline_target_count": 1772,
+        "history_baseline_component_count": 3040,
+        "forecast_rmse": 0.5177471038926574,
+        "persistence_rmse": 0.6764369076646137,
+        "history_mean_rmse": 0.5203974225897261,
+        "history_baseline_coverage_fraction": 0.9916060436485731,
+        "steps": 456000,
+        "episodes": 2366,
+        "elapsed_seconds": 2414.944138891995,
+        "training_return_mean": 311.9994037350836
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "walker-no-input",
+      "training_job": "21288101",
+      "evaluation_job": "21288121",
+      "live_training": {
+        "job_name": "dms-auxorder-walker-no-input-3m",
+        "state": "RUNNING",
+        "elapsed": "39:44",
+        "node_or_reason": "gpu43"
+      },
+      "live_evaluation": {
+        "job_name": "dms-auxorder-walker-no-input-eval-v2",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.495487+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-auxorder-no-input-3m-a100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0028704006142409827,
+        "value_loss": 0.039098510922243195,
+        "entropy": 1.6901586711406709,
+        "approx_kl": 0.0036091897574281736,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 1.4493825634320576,
+        "intention_nll": 1.4323298533757527,
+        "intention_kl": 0.17052702916165194,
+        "forecast_target_count": 1786,
+        "forecast_comparison_count": 1768,
+        "forecast_component_count": 3032,
+        "history_baseline_target_count": 1768,
+        "history_baseline_component_count": 3032,
+        "forecast_rmse": 0.5766976253871646,
+        "persistence_rmse": 0.8071676056835744,
+        "history_mean_rmse": 0.6064065595710872,
+        "history_baseline_coverage_fraction": 0.9899216125419933,
+        "steps": 528000,
+        "episodes": 3339,
+        "elapsed_seconds": 2357.15713665518,
+        "training_return_mean": 326.84181716328146
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "8m-after",
+      "training_job": "21288103",
+      "evaluation_job": "21288122",
+      "live_training": {
+        "job_name": "dms-auxorder-8m-after-3m",
+        "state": "RUNNING",
+        "elapsed": "39:13",
+        "node_or_reason": "gpu14"
+      },
+      "live_evaluation": {
+        "job_name": "dms-auxorder-8m-after-eval-v2",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.495487+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-8m-auxorder-after-3m-a100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.00899773958360619,
+        "value_loss": 0.032033053087070586,
+        "entropy": 1.035896721482277,
+        "approx_kl": 0.00022265378091460564,
+        "sequential_agent_order": [
+          4,
+          3,
+          7,
+          6,
+          5,
+          1,
+          2,
+          0
+        ],
+        "sequential_factor_min": 0.5432751774787903,
+        "sequential_factor_max": 1.8813819885253906,
+        "sequential_factor_ess": 3167.083781862591,
+        "sequential_factor_ess_fraction": 0.9897136818320597,
+        "alive_fraction": 0.7647265195846558,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.946875,
+        "intention_feature_std": 2.2904269695281982,
+        "intention_loss": 1.5955981239676476,
+        "intention_nll": 1.4979751855134964,
+        "intention_kl": 0.9762294255197048,
+        "forecast_target_count": 10376,
+        "forecast_comparison_count": 8840,
+        "history_baseline_target_count": 8840,
+        "forecast_nll": 1.6582765969043525,
+        "forecast_accuracy": 0.4074660633551589,
+        "persistence_accuracy": 0.41787330210883156,
+        "history_histogram_accuracy": 0.3567873327946501,
+        "history_histogram_nll": 2.3658339139293223,
+        "forecast_history_comparison_nll": 1.837144783462874,
+        "history_baseline_coverage_fraction": 0.8519660755589823,
+        "steps": 329600,
+        "episodes": 17191,
+        "elapsed_seconds": 2202.6075059347786,
+        "training_return_mean": 7.68552089023019,
+        "training_battles": 167,
+        "training_battles_won": 0,
+        "training_win_rate": 0.0,
+        "training_battles_total": 17191,
+        "training_battles_won_total": 0,
+        "training_win_rate_total": 0.0,
+        "scheduled_environment_restarts": 0
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "8m-before",
+      "training_job": "21288105",
+      "evaluation_job": "21288123",
+      "live_training": {
+        "job_name": "dms-auxorder-8m-before-3m",
+        "state": "RUNNING",
+        "elapsed": "29:07",
+        "node_or_reason": "gpu40"
+      },
+      "live_evaluation": {
+        "job_name": "dms-auxorder-8m-before-eval-v2",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.495487+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-8m-auxorder-before-3m-a100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.01013979822928377,
+        "value_loss": 0.03294437839649618,
+        "entropy": 1.1191425606608392,
+        "approx_kl": 0.00036948906405633866,
+        "sequential_agent_order": [
+          4,
+          0,
+          5,
+          6,
+          7,
+          3,
+          2,
+          1
+        ],
+        "sequential_factor_min": 0.4785468578338623,
+        "sequential_factor_max": 1.7911136150360107,
+        "sequential_factor_ess": 3148.725699135786,
+        "sequential_factor_ess_fraction": 0.9839767809799331,
+        "alive_fraction": 0.7535156011581421,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.9475,
+        "intention_feature_std": 2.2313475608825684,
+        "intention_loss": 1.789323978126049,
+        "intention_nll": 1.7074934095144272,
+        "intention_kl": 0.8183056674897671,
+        "forecast_target_count": 10209,
+        "forecast_comparison_count": 9281,
+        "history_baseline_target_count": 9281,
+        "forecast_nll": 1.9753998475252723,
+        "forecast_accuracy": 0.35190173515393913,
+        "persistence_accuracy": 0.3867040181671182,
+        "history_histogram_accuracy": 0.32808964228838144,
+        "history_histogram_nll": 2.3951844679437158,
+        "forecast_history_comparison_nll": 2.0992409139855543,
+        "history_baseline_coverage_fraction": 0.9090998138897052,
+        "steps": 236800,
+        "episodes": 12141,
+        "elapsed_seconds": 1597.599433561787,
+        "training_return_mean": 7.246349520937225,
+        "training_battles": 169,
+        "training_battles_won": 0,
+        "training_win_rate": 0.0,
+        "training_battles_total": 12141,
+        "training_battles_won_total": 0,
+        "training_win_rate_total": 0.0,
+        "scheduled_environment_restarts": 0
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "8m-no-input",
+      "training_job": "21288107",
+      "evaluation_job": "21288124",
+      "live_training": {
+        "job_name": "dms-auxorder-8m-no-input-3m",
+        "state": "RUNNING",
+        "elapsed": "28:37",
+        "node_or_reason": "gpu11"
+      },
+      "live_evaluation": {
+        "job_name": "dms-auxorder-8m-no-input-eval-v2",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.495487+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-8m-auxorder-no-input-3m-a100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.02372210163844457,
+        "value_loss": 0.03446076321415603,
+        "entropy": 1.135046723484993,
+        "approx_kl": 0.0005664296068703889,
+        "sequential_agent_order": [
+          5,
+          3,
+          1,
+          4,
+          2,
+          0,
+          6,
+          7
+        ],
+        "sequential_factor_min": 0.30266857147216797,
+        "sequential_factor_max": 2.2647552490234375,
+        "sequential_factor_ess": 3110.2602844611315,
+        "sequential_factor_ess_fraction": 0.9719563388941036,
+        "alive_fraction": 0.7609765529632568,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 2.16579931974411,
+        "intention_nll": 2.0360134169459343,
+        "intention_kl": 1.2978590354323387,
+        "forecast_target_count": 10295,
+        "forecast_comparison_count": 9592,
+        "history_baseline_target_count": 9592,
+        "forecast_nll": 2.5246795522524,
+        "forecast_accuracy": 0.24051292689891535,
+        "persistence_accuracy": 0.21945371491223997,
+        "history_histogram_accuracy": 0.10581734862716075,
+        "history_histogram_nll": 2.6782317993986893,
+        "forecast_history_comparison_nll": 2.5869141308539505,
+        "history_baseline_coverage_fraction": 0.9317144244779019,
+        "steps": 284800,
+        "episodes": 11523,
+        "elapsed_seconds": 1581.220153089147,
+        "training_return_mean": 8.432284685599543,
+        "training_battles": 137,
+        "training_battles_won": 0,
+        "training_win_rate": 0.0,
+        "training_battles_total": 11523,
+        "training_battles_won_total": 0,
+        "training_win_rate_total": 0.0,
+        "scheduled_environment_restarts": 0
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-3m-seed103",
+      "label": "walker-ippo",
+      "training_job": "21284499",
+      "evaluation_job": "21284500",
+      "live_training": {
+        "job_name": "dms-walker-seed103-walker-ippo-3m",
+        "state": "RUNNING",
+        "elapsed": "43:17",
+        "node_or_reason": "gpu47"
+      },
+      "live_evaluation": {
+        "job_name": "dms-walker-seed103-walker-ippo-eval",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.344727+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-ippo-fusion-3m-h100-103",
+      "latest_training_metrics": {
+        "policy_loss": -0.003561581947481803,
+        "value_loss": 0.019494713190943,
+        "entropy": 1.5815570175647735,
+        "approx_kl": 0.0049533145742597815,
+        "peer_gate_fraction": 0.0,
+        "steps": 676000,
+        "episodes": 4323,
+        "elapsed_seconds": 2572.9488320720848,
+        "training_return_mean": 249.58802369339713
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-3m-seed103",
+      "label": "walker-residual",
+      "training_job": "21284501",
+      "evaluation_job": "21284502",
+      "live_training": {
+        "job_name": "dms-walker-seed103-walker-residual-3m",
+        "state": "RUNNING",
+        "elapsed": "42:46",
+        "node_or_reason": "gpu46"
+      },
+      "live_evaluation": {
+        "job_name": "dms-walker-seed103-walker-residual-eval",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.344727+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-residual-fusion-3m-h100-103",
+      "latest_training_metrics": {
+        "policy_loss": -0.0034595161865581757,
+        "value_loss": 0.12454976886510849,
+        "entropy": 1.641623467206955,
+        "approx_kl": 0.004286659319702957,
+        "peer_gate_fraction": 0.6618333333333334,
+        "intention_feature_std": 1.581005334854126,
+        "intention_loss": 1.2609517574310303,
+        "intention_nll": 1.208319862683614,
+        "intention_kl": 0.5263188034296036,
+        "forecast_target_count": 1792,
+        "forecast_comparison_count": 1792,
+        "forecast_component_count": 3072,
+        "history_baseline_target_count": 1792,
+        "history_baseline_component_count": 3072,
+        "forecast_rmse": 0.5407711900851476,
+        "persistence_rmse": 0.6998847714145637,
+        "history_mean_rmse": 0.5509725125846505,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 544000,
+        "episodes": 3198,
+        "elapsed_seconds": 2527.6028473530896,
+        "training_return_mean": 259.40305758190567
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-3m-seed103",
+      "label": "walker-no-input",
+      "training_job": "21284503",
+      "evaluation_job": "21284504",
+      "live_training": {
+        "job_name": "dms-walker-seed103-walker-no-input-3m",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Priority)"
+      },
+      "live_evaluation": {
+        "job_name": "dms-walker-seed103-walker-no-input-eval",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.344727+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-no-input-fusion-3m-h100-103",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-clipping-3m-seed101",
+      "label": "walker-ippo",
+      "training_job": "21283719",
+      "evaluation_job": "21283720",
+      "live_training": {
+        "job_name": "dms-walker-clip-walker-ippo-3m",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Priority)"
+      },
+      "live_evaluation": {
+        "job_name": "dms-walker-clip-walker-ippo-eval",
+        "state": "PENDING",
+        "elapsed": "0:00",
+        "node_or_reason": "(Dependency)"
+      },
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.266915+00:00",
+      "campaign_status": "waiting_running_or_failed",
+      "output": "runs/dev-walker-2x3-ippo-history32-gradclip10-3m-h200-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-10m-seed101",
+      "label": "walker-ippo",
+      "training_job": "21284886",
+      "evaluation_job": "21284887",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.420583+00:00",
+      "campaign_status": "cancelled_before_training_by_scope_change",
+      "output": "runs/dev-walker-ippo-fusion-10m-h100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "cancelled_by_scope_change",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-10m-seed101",
+      "label": "walker-residual",
+      "training_job": "21284888",
+      "evaluation_job": "21284889",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T15:52:22.420583+00:00",
+      "campaign_status": "cancelled_before_training_by_scope_change",
+      "output": "runs/dev-walker-residual-fusion-10m-h100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "cancelled_by_scope_change",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-ant-memory-10m-seed101",
+      "label": "ant-ippo",
+      "training_job": "21289400",
+      "evaluation_job": "21289401",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T16:23:56.990720+00:00",
+      "campaign_status": "cancelled_before_training_by_scope_change",
+      "output": "runs/dev-ant-4x2-ippo-history32-10m-h100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "cancelled_by_scope_change",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-ant-memory-10m-seed101",
+      "label": "ant-dms",
+      "training_job": "21289402",
+      "evaluation_job": "21289403",
+      "live_training": null,
+      "live_evaluation": null,
+      "recorded_scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "recorded_scheduler_refreshed_utc": "2026-10-29T16:23:56.990720+00:00",
+      "campaign_status": "cancelled_before_training_by_scope_change",
+      "output": "runs/dev-ant-4x2-dms-history32-10m-h100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "cancelled_by_scope_change",
+      "endpoint_summary": null
+    }
+  ],
+  "live_dms_jobs": {
+    "21288132": {
+      "job_name": "dms-auxorder-collect-all-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288130": {
+      "job_name": "dms-auxorder-collect-8m-no-input-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288129": {
+      "job_name": "dms-auxorder-collect-8m-before-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288128": {
+      "job_name": "dms-auxorder-collect-8m-after-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288127": {
+      "job_name": "dms-auxorder-collect-walker-no-input-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288126": {
+      "job_name": "dms-auxorder-collect-walker-before-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288125": {
+      "job_name": "dms-auxorder-collect-walker-after-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21284508": {
+      "job_name": "dms-walker-seed103-collect-all",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21284507": {
+      "job_name": "dms-walker-seed103-collect-walker-no-input",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21284506": {
+      "job_name": "dms-walker-seed103-collect-walker-residual",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21284505": {
+      "job_name": "dms-walker-seed103-collect-walker-ippo",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21283722": {
+      "job_name": "dms-walker-clip-collect-all",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21283721": {
+      "job_name": "dms-walker-clip-collect-walker-ippo",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21282834": {
+      "job_name": "dms-ant-entropy-collect-all",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21282833": {
+      "job_name": "dms-ant-entropy-collect-ant-dms",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21280644": {
+      "job_name": "dms-partition-baseline-collect-all",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21280641": {
+      "job_name": "dms-partition-baseline-collect-ant-8x1-ippo",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288124": {
+      "job_name": "dms-auxorder-8m-no-input-eval-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288123": {
+      "job_name": "dms-auxorder-8m-before-eval-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288122": {
+      "job_name": "dms-auxorder-8m-after-eval-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288121": {
+      "job_name": "dms-auxorder-walker-no-input-eval-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288120": {
+      "job_name": "dms-auxorder-walker-before-eval-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288119": {
+      "job_name": "dms-auxorder-walker-after-eval-v2",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21284504": {
+      "job_name": "dms-walker-seed103-walker-no-input-eval",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21284502": {
+      "job_name": "dms-walker-seed103-walker-residual-eval",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21284500": {
+      "job_name": "dms-walker-seed103-walker-ippo-eval",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21283720": {
+      "job_name": "dms-walker-clip-walker-ippo-eval",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21282831": {
+      "job_name": "dms-ant-entropy-ant-dms-eval",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21280635": {
+      "job_name": "dms-partition-baseline-ant-8x1-ippo-eval",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Dependency)"
+    },
+    "21288107": {
+      "job_name": "dms-auxorder-8m-no-input-3m",
+      "state": "RUNNING",
+      "elapsed": "28:37",
+      "node_or_reason": "gpu11"
+    },
+    "21288105": {
+      "job_name": "dms-auxorder-8m-before-3m",
+      "state": "RUNNING",
+      "elapsed": "29:07",
+      "node_or_reason": "gpu40"
+    },
+    "21288101": {
+      "job_name": "dms-auxorder-walker-no-input-3m",
+      "state": "RUNNING",
+      "elapsed": "39:44",
+      "node_or_reason": "gpu43"
+    },
+    "21288099": {
+      "job_name": "dms-auxorder-walker-before-3m",
+      "state": "RUNNING",
+      "elapsed": "40:44",
+      "node_or_reason": "gpu39"
+    },
+    "21288097": {
+      "job_name": "dms-auxorder-walker-after-3m",
+      "state": "RUNNING",
+      "elapsed": "42:46",
+      "node_or_reason": "gpu13"
+    },
+    "21288103": {
+      "job_name": "dms-auxorder-8m-after-3m",
+      "state": "RUNNING",
+      "elapsed": "39:13",
+      "node_or_reason": "gpu14"
+    },
+    "21280634": {
+      "job_name": "dms-partition-baseline-ant-8x1-ippo-3m",
+      "state": "RUNNING",
+      "elapsed": "5:22:24",
+      "node_or_reason": "gpu45"
+    },
+    "21282830": {
+      "job_name": "dms-ant-entropy-ant-dms-3m",
+      "state": "RUNNING",
+      "elapsed": "3:41:58",
+      "node_or_reason": "gpu48"
+    },
+    "21284501": {
+      "job_name": "dms-walker-seed103-walker-residual-3m",
+      "state": "RUNNING",
+      "elapsed": "42:46",
+      "node_or_reason": "gpu46"
+    },
+    "21284499": {
+      "job_name": "dms-walker-seed103-walker-ippo-3m",
+      "state": "RUNNING",
+      "elapsed": "43:17",
+      "node_or_reason": "gpu47"
+    },
+    "21283719": {
+      "job_name": "dms-walker-clip-walker-ippo-3m",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Priority)"
+    },
+    "21284503": {
+      "job_name": "dms-walker-seed103-walker-no-input-3m",
+      "state": "PENDING",
+      "elapsed": "0:00",
+      "node_or_reason": "(Priority)"
+    }
+  },
+  "accounting_note": "sacct requests are temporarily failing/timing out; no learning job was restarted for this observation failure.",
+  "held_out_training_seeds_used": false
+}

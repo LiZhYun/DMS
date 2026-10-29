@@ -1,5 +1,12 @@
 # Walker full-budget development pair
 
+**Cancelled before training, 2026-10-29:** the user removed full-budget runs
+as a requirement. Both training jobs, both evaluations and all three collectors
+were still pending and are now cancelled. [The scope-change record](../reports/full-budget-scope-change-20261029.json)
+verifies ownership, zero training and scheduler cancellation. The native checks
+and frozen preparation below remain available; commands describe an optional
+experiment, not an active campaign or release requirement.
+
 The completed 3M Walker3x2 residual model scored **636.86**, compared with
 **524.26** for its trained no-input control. The full-budget reference is
 **1,100** at 10M transitions. This experiment measures that full endpoint
@@ -22,7 +29,7 @@ its completed 3M reference.
 
 The planning estimates from the previous H100 runs are 8.81 and 12.37 hours
 respectively, excluding the separate endpoint evaluation. The requested times
-provide additional margin. Jobs have already been submitted; the
+provide additional margin. Jobs were submitted and subsequently cancelled before learning; the
 [campaign ledger](../reports/development-walker-residual-10m-seed101.json)
 records their state and three dependent collectors.
 

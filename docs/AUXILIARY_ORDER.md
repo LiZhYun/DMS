@@ -45,6 +45,11 @@ RNG states against the preceding trainer over 8,000 transitions, then exercises
 SMAC ran on A100. Smoke warmup is zero; development learning retains the
 original 100-episode warmup. No performance promotion is supported yet.
 
+The exact queued [saved-source evaluation launcher](../reports/auxiliary-first-saved-source-evaluation.json)
+also passed on copied Walker and SMAC smoke checkpoints, two episodes per
+task. Optimizer steps were forbidden, model state and original artifacts
+remained unchanged, and the check covered the corrected config-byte hashes.
+
 ## Matched development learning
 
 The [submitted ledger](../reports/development-auxiliary-order-3m-seed101.json)

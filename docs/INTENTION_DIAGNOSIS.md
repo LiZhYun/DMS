@@ -1,5 +1,28 @@
 # Intention objective and frozen-checkpoint diagnosis
 
+For SMAC, the standalone diagnostic also reports `peer_input_visibility`:
+counts of selected peer inputs whose latest stored sensor is missing, whose
+peer is now dead, and whose last sighting has each history age. Counts for
+living observers are separated from dead observers' forced no-op rows. Other
+agents' legal-action masks supply **offline alive labels only**; they never
+become policy inputs and no gates are changed. Missing sensors can reflect
+death or occlusion. Exposure alone does not establish harm. Two synthetic
+counting fixtures join the existing diagnostics; all 23 focused tests pass.
+The [native SMAC follow-up](../reports/smac-peer-forecast-visibility-validation.json),
+job **21289013**, replays every old diagnostic field and its collection metadata
+exactly on the same CPU node. Peer-only accuracy is **56.58%**, versus **51.01%**
+persistence and **34.37%** history mode on 31,046 comparable targets. Model NLL
+on that subset is **1.47394**, versus histogram NLL **2.33498**. Coverage is
+89.65% of 34,630 valid peer targets. Self-action prediction does not explain
+this forecast advantage on the sampled failed policy.
+
+Of **20,342** peer gate entries belonging to living observers, **3,410**
+(**16.76%**) refer to currently dead peers. There are also 3,410 such entries
+with no latest stored sensor, and no never-sensed gates. The last sighting can
+be up to 15 history steps old. These are counts of enabled peer entries across
+512 stochastic diagnostic transitions, not attention weights, episodes or
+independent training seeds. No visibility-gating change is selected from them.
+
 The current diagnostic also reports `forecast_peer_only`, which excludes the
 observer's own future targets while retaining the same visibility, horizon and
 baseline calculations. The existing `forecast` field combines self and peer

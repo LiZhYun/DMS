@@ -138,7 +138,7 @@ passed both tasks, exactly replayed the two saved episodes per task, and left
 parameters, normalizers, source, checkpoints and training phase unchanged with
 zero optimizer steps. Jobs **21281731** (Walker) and **21281732** (SMAC) depend on
 the corresponding fixed-3M evaluations; collector **21281733** validates and
-records their outputs. The SMAC result remains pending.
+records their outputs. The completed SMAC result is analyzed below.
 
 The Walker diagnostic completed in **37m13s**, with zero optimizer steps and
 unchanged model, normalization state, source and checkpoints. Its normal mode
@@ -173,6 +173,39 @@ a policy even when temporal variation matters little. Other observers show
 larger shuffle effects (mean KL **0.03310 / 0.10283**). These soft-pooling scores
 do not select a threshold for the distinct causal-concatenation architecture.
 The training-seed replications remain pending.
+
+## SMAC mechanism results
+
+The [SMAC mechanism audit](../reports/residual-smac-mechanism-results-20261029.json),
+job **21281732**, passed with unchanged source/model state and zero optimizer
+steps. Normal inputs exactly replay all 100 original endpoint episodes. All
+modes use the same frozen 3M, seed-101 policy and episode seeds 400101–400200.
+
+| Peer-input intervention | Wins | Mean shaped return | Mean battle length |
+| --- | --- | --- | --- |
+| Normal | 0/100 | 8.7968 | 20.11 |
+| Hold each first eligible peer latent | 0/100 | 8.8187 | 20.05 |
+| Mask peer gates | 0/100 | 6.4909 | 51.33 |
+
+Holding changes return by only **+0.02187**, with paired population SD 0.28410;
+36 episodes retain exactly the normal return and length. Masking lowers return
+by **2.30590** and lengthens battles. These interventions do not establish
+useful temporal coordination or recover the trained no-input control's 74 wins.
+Input removal can put the frozen model outside its training distribution.
+
+The [peer-only replay](../reports/smac-peer-forecast-visibility-validation.json)
+passes all old diagnostic fields exactly. Peer forecasts beat both history
+baselines (56.58% versus 51.01% persistence and 34.37% history mode). Shuffling
+matched peer latents raises decoder NLL by a target-weighted **0.41850** over
+14,917 matched targets across 56 observer/peer pairs. Thus reconstruction uses
+the latent, while its usefulness for winning coordination remains unproven.
+Mean policy KL under matched peer shuffling ranges from **1.10e-6 to 0.00692**
+across observers. These matched subsets are not independent training replicates.
+
+The same replay finds **16.76%** of living observers' peer gate entries refer
+to dead teammates. This is offline label analysis, not additional actor
+information. Exposure is confirmed; harm from those entries is not yet tested.
+The queued before/after learning comparison remains the next return test.
 
 ## Auxiliary update ordering
 

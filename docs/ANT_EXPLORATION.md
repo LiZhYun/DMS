@@ -95,11 +95,21 @@ The retry submission verified **13 evidence files** and queued:
 | IPPO | 21282828 | 21282829 |
 | DMS | 21282830 | 21282831 |
 
-Both training jobs are running on H100 as of 2026-10-29 15:05 UTC: IPPO has
-reached 1,748,000 transitions and DMS 1,216,000, with finite latest metrics. No fixed
-endpoint is available yet.
+IPPO training **21282828** and its 100-episode saved-source evaluation
+**21282829** completed successfully on H100/CPU. Its fixed 3M mean return is
+**−16.75**, population SD **6.50**, with mean episode length **11.14**;
+all 100 returns are negative. The original matched zero-entropy IPPO scored
+**1,055.41**, so entropy 0.1 substantially harms this seed. This is a negative
+learning result, not a launcher failure. The checked evaluation verifies
+unchanged model/source/state and zero optimizer steps. DMS **21282830** is
+still training; the paired outcome and independent seed robustness remain
+unknown. No configuration is promoted from this result.
 
 Three dependent collectors (**21282832–21282834**) preserve the outcomes. The
 first attempt remains a failed launcher check, not an unsuccessful learning run.
 
-No learning-performance result is available for this comparison yet.
+The DMS endpoint is pending; the completed IPPO result is retained as negative evidence.
+
+The separate [10M Ant memory pair](ANT_FULL_BUDGET.md) retains the original
+zero entropy coefficient and all other memory-run settings. It was cancelled before learning when full-budget training ceased to be a
+requirement; it does not promote the entropy-0.1 trial.

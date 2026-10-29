@@ -46,7 +46,7 @@ Relevant measured evidence:
   by 160 steps. A new 20-environment trial would duplicate existing work.
 
 The fixed 10M Walker pair and seed-103 three-arm comparison are submitted.
-Their results and the SMAC frozen-policy interventions remain pending. The
+Their results remain pending. The
 [completed SMAC residual pair](reports/residual-smac-results-20261029.json)
 scores 0/100 wins with peer inputs and 74/100 with inputs disabled. Held-out
 training seeds remain unused.
@@ -95,6 +95,17 @@ beats both history baselines and replays all previous diagnostic fields exactly.
 Therefore the update-order hypothesis concerns an active learned input path.
 These results still leave the below-target return and training-seed variance
 unresolved.
+
+The [completed SMAC interventions](reports/residual-smac-mechanism-results-20261029.json)
+are weaker: normal, held and masked inputs all win 0/100; held peer inputs
+change shaped return by only +0.02187, and masking lowers it by 2.30590.
+The [peer-only replay](reports/smac-peer-forecast-visibility-validation.json)
+beats both history baselines, and matched peer-latent shuffling raises decoder
+NLL by a target-weighted 0.41850. Thus poor peer forecasting hidden by self
+accuracy is unsupported on this rollout; useful winning coordination is still
+unproven. Dead peers account for 16.76% of living observers' enabled peer entries.
+That confirms exposure, not a benefit from changing eligibility. The queued
+before/after trials still test the input-consistency hypothesis.
 
 | Observation | Supported conclusion | Next action |
 | --- | --- | --- |

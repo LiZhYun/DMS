@@ -56,7 +56,7 @@
   },
   "purpose": "Measure the fixed full-10M Walker3x2 history-32 endpoint for a matched IPPO/residual-DMS pair after the residual 3M result improved over its no-input control but remained below the paper target.",
   "created_utc": "2026-10-29T14:03:16.805826+00:00",
-  "status": "waiting_running_or_failed",
+  "status": "cancelled_before_training_by_scope_change",
   "artifact": "runs/development-walker-residual-10m-seed101",
   "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/source",
   "gpu_family": "H100",
@@ -322,7 +322,7 @@
         "job_id": "21284886"
       },
       "job_id": "21284886",
-      "status": "training_running_or_pending",
+      "status": "cancelled_before_training_by_scope_change",
       "evaluation": {
         "command": [
           "sbatch",
@@ -347,7 +347,7 @@
         "job_id": "21284887",
         "spec": "runs/development-walker-residual-10m-seed101/evaluation-walker-ippo/spec.json",
         "spec_sha256": "8392d5f316e85393d7a1b5484dd9a03cd21c963181948587d636b0f2a6a98749",
-        "status": "waiting_for_training",
+        "status": "cancelled_by_scope_change",
         "launcher_sha256": "a30566c38c197893d1a9908e43cf183fdfe9cc8ccc493e8cbb6d4392e76bad25",
         "scheduler": {
           "state": "PENDING",
@@ -617,7 +617,7 @@
         "job_id": "21284888"
       },
       "job_id": "21284888",
-      "status": "training_running_or_pending",
+      "status": "cancelled_before_training_by_scope_change",
       "evaluation": {
         "command": [
           "sbatch",
@@ -642,7 +642,7 @@
         "job_id": "21284889",
         "spec": "runs/development-walker-residual-10m-seed101/evaluation-walker-residual/spec.json",
         "spec_sha256": "d3a62f3b522547d932d312d13dd86379b0502e5864e45fb4d53cabcc7239edcc",
-        "status": "waiting_for_training",
+        "status": "cancelled_by_scope_change",
         "launcher_sha256": "a30566c38c197893d1a9908e43cf183fdfe9cc8ccc493e8cbb6d4392e76bad25",
         "scheduler": {
           "state": "PENDING",
@@ -819,7 +819,8 @@
       "stdout": "21284890\n",
       "stderr": "",
       "submitted_utc": "2026-10-29T14:06:55.985360+00:00",
-      "job_id": "21284890"
+      "job_id": "21284890",
+      "status": "cancelled_by_scope_change"
     },
     {
       "label": "walker-residual",
@@ -840,7 +841,8 @@
       "stdout": "21284891\n",
       "stderr": "",
       "submitted_utc": "2026-10-29T14:06:56.008505+00:00",
-      "job_id": "21284891"
+      "job_id": "21284891",
+      "status": "cancelled_by_scope_change"
     },
     {
       "label": "all",
@@ -861,9 +863,16 @@
       "stdout": "21284892\n",
       "stderr": "",
       "submitted_utc": "2026-10-29T14:06:56.035967+00:00",
-      "job_id": "21284892"
+      "job_id": "21284892",
+      "status": "cancelled_by_scope_change"
     }
   ],
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-29T15:52:22.420583+00:00"
+  "last_refresh_utc": "2026-10-29T15:52:22.420583+00:00",
+  "scope_change": {
+    "record": "reports/full-budget-scope-change-20261029.json",
+    "created_utc": "2026-10-29T16:45:05.275875+00:00",
+    "user_instruction": "do not need to do full-budget",
+    "status": "cancelled_before_training_by_scope_change"
+  }
 }

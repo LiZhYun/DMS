@@ -1,6 +1,19 @@
 # Experiment plan and acceptance
 
-The goal is a readable public reproduction preserving intention inference and selective coordination, with performance higher than the paper's claims. No benchmark result has yet met that goal. [paper_targets.json](../configs/paper_targets.json) is the target ledger; source evidence and unresolved interpretation issues are in [PAPER_CONTRACT.md](PAPER_CONTRACT.md).
+The goal is a readable public reproduction preserving intention inference and selective coordination, with performance higher than the paper's claims. Some individual development targets are exceeded; the complete performance and mechanism goal remains unmet. [paper_targets.json](../configs/paper_targets.json) is the target ledger; source evidence and unresolved interpretation issues are in [PAPER_CONTRACT.md](PAPER_CONTRACT.md).
+
+## Budget scope, revised 2026-10-29
+
+The user removed full-budget training as a requirement. Use shorter, explicitly
+registered matched budgets for development and final replication; reaching
+10,000,000 transitions is optional and is not a readiness gate. The queued
+Walker and Ant 10M campaigns were cancelled before learning, as recorded in
+[the scope-change record](../reports/full-budget-scope-change-20261029.json).
+Existing completed 10M results remain valid at their recorded budgets.
+Performance above the paper targets, independent training replicates, local
+information boundaries and useful intention/coordination mechanisms remain
+requirements. Do not describe a shorter run as a reproduction of the paper
+training schedule.
 
 ## Stage 1: invariants and smoke checks
 
@@ -12,7 +25,7 @@ Measure wall time, peak host memory, GPU memory, and transitions per second sepa
 
 ## Stage 2: development on separate seeds
 
-Use training seeds **101, 103, 107**. Begin with HalfCheetah 2x3 and SMAC 3s5z using the paired DMS/IPPO configs. Start with explicitly shorter development budgets, then move promising configurations to 10,000,000 transitions. Record every attempted setting and its budget. Keep equal sensor access, environment version, reward semantics, and evaluation settings across algorithms. Match `smac_time_limit_terminal` within each pair: its optional finite-battle objective changes value targets at the native deadline and must be reported separately from continuing-value runs.
+Use training seeds **101, 103, 107**. Begin with HalfCheetah 2x3 and SMAC 3s5z using the paired DMS/IPPO configs. Use explicitly shorter development budgets (currently about 3M transitions); additional training to 10M is not required. Record every attempted setting and its budget. Keep equal sensor access, environment version, reward semantics, and evaluation settings across algorithms. Match `smac_time_limit_terminal` within each pair: its optional finite-battle objective changes value targets at the native deadline and must be reported separately from continuing-value runs.
 
 Tune a small predeclared set: actor/critic learning rates, history length, auxiliary-loss/update strength, and coordination variant/threshold. Record negative results. Inspect held-out behavior prediction against a persistence predictor and latent/selection diagnostics alongside reward. Flat or collapsed latent features, near-zero selected-peer rates, or gains explainable entirely by a stronger PPO base require investigation.
 
@@ -35,7 +48,7 @@ Do not implement a missing-action ablation by revealing hidden true controls. An
 
 ## Stage 3: freeze the final experiment
 
-Freeze code, environment versions, sensor definitions, selected hyperparameters, maps, budgets, and evaluation rules before final testing. Also freeze the GPU family within each matched algorithm pair and record the actual accelerator model and library versions. Same-seed reruns on another GPU family need not follow the same training trajectory; they are fresh runs, not exact continuations. Use six held-out training seeds **11, 23, 37, 53, 71, 89**. Choose a fixed 10,000,000-transition final checkpoint; do not choose each seed's best test checkpoint. The provided main configs divide their budgets exactly by rollout size; preserve this property when editing them.
+Freeze code, environment versions, sensor definitions, selected hyperparameters, maps, budgets, and evaluation rules before final testing. Also freeze the GPU family within each matched algorithm pair and record the actual accelerator model and library versions. Same-seed reruns on another GPU family need not follow the same training trajectory; they are fresh runs, not exact continuations. Use six held-out training seeds **11, 23, 37, 53, 71, 89**. Predeclare a fixed shorter final budget for each matched task before opening held-out results; do not choose each seed's best test checkpoint. Use a budget divisible by that task's rollout batch (for example 3,000,000 for 4 × 1,000 MuJoCo collection, or 2,998,400 for 20 × 160 SMAC collection). The existing 10M main configs remain optional historical templates; create explicit shorter configs rather than silently truncating them. Report actual transitions for every existing development run, including rounded final rollouts.
 
 Training-time diagnostics use evaluation seeds beginning at 10001. Final evaluation uses a disjoint seed range beginning at **500001**. Pair those episode seeds across algorithms for each task and report how randomness is controlled. Evaluate 100 MuJoCo episodes or 1,000 SMAC games for every independently trained seed. These stronger evaluation counts are the new protocol, not values claimed by the paper.
 
@@ -60,6 +73,6 @@ Original SMAC results require the matched StarCraft build, map files, difficulty
 
 Each run needs its complete configuration, dependency/environment manifest, source snapshot or identifiable revision, training metrics, checkpoint, individual evaluations, job ID, and logs. Use new output directories; failed jobs remain evidence rather than being overwritten. Maintain a table of every scheduled run, seed, variant, step budget, completed steps, terminal status, and evaluation result.
 
-The reproduction is ready only when all required environments run, all registered final seeds complete matched budgets, all primary targets are exceeded on comparable tracks, uncertainty and ablations support the stated mechanism, and a fresh reader can reproduce the commands. Code and smoke readiness may be reported separately from experimental readiness.
+The reproduction is ready only when all required environments run, all registered final seeds complete the frozen shorter matched budgets, all primary targets are exceeded on comparable tracks, uncertainty and ablations support the stated mechanism, and a fresh reader can reproduce the commands. Code and smoke readiness may be reported separately from experimental readiness.
 
 **Operational status, 2026-10-25:** scheduler discovery works with `SLURM_CONF_SERVER=slurmctl:6817,slurmctl2:6817`. Synthetic, real MuJoCo, and real SMAC GPU smoke jobs completed successfully, each running 119 tests first. These short executions do not establish learning performance. [STATUS.md](STATUS.md) records the job IDs, budgets, evidence paths, and remaining work.

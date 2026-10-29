@@ -68,3 +68,43 @@ def test_self_only_targets_produce_no_peer_prediction_claim():
     result = probe.diagnose(model, data, seed=101, max_windows=3)
     assert result['forecast']['forecast_target_count'] == 12
     assert result['forecast_peer_only'] == {}
+
+
+def test_smac_gate_visibility_distinguishes_dead_observers_peers_and_sensor_age():
+    # Observer1 is dead. Observer0 remembers dead peer1 at age2; observer2's
+    # gate for peer1 was never observed. Both living observers see each other.
+    gates = torch.ones(1, 1, 3, 3, dtype=torch.bool)
+    gates[0, 0, 1, 2] = False
+    visible = np.zeros((1, 1, 3, 3, 3), bool)
+    visible[0, 0, 0, 0, 1] = True
+    visible[0, 0, 0, 1, 0] = True
+    visible[0, 0, 2, 0, 2] = visible[0, 0, 2, 2, 0] = True
+    available = torch.zeros(1, 1, 3, 3, dtype=torch.bool)
+    available[0, 0, [0, 2], 1] = True
+    available[0, 0, 1, 0] = True
+    data = dict(gates=gates, visible=visible, available=available)
+    before = deepcopy(data)
+    result = probe.smac_peer_visibility(data)
+    assert result['gated_peer_entries'] == 5  # Ignore deliberately true self gates.
+    assert result['alive_observer_gated_peer_entries'] == 4
+    assert result['latest_sensor_missing_gated_entries'] == 3
+    assert result['latest_sensor_missing_alive_observer_gated_entries'] == 2
+    assert result['dead_peer_alive_observer_gated_entries'] == 2
+    assert result['latest_sensor_missing_alive_observer_gate_fraction'] == .5
+    assert result['dead_peer_alive_observer_gate_fraction'] == .5
+    assert result['never_sensed_alive_observer_gated_entries'] == 1
+    assert result['alive_observer_gate_age_histogram'] == {'0': 2, '1': 0, '2': 1}
+    torch.testing.assert_close(data['gates'], before['gates'])
+    torch.testing.assert_close(data['available'], before['available'])
+    np.testing.assert_array_equal(data['visible'], before['visible'])
+
+
+def test_smac_empty_peer_gates_report_zero_counts_and_explicit_zero_denominator():
+    data = dict(gates=torch.zeros(2, 1, 2, 2, dtype=torch.bool),
+                visible=np.ones((2, 1, 3, 2, 2), bool),
+                available=torch.ones(2, 1, 2, 2, dtype=torch.bool))
+    result = probe.smac_peer_visibility(data)
+    assert result['alive_observer_gated_peer_entries'] == 0
+    assert result['latest_sensor_missing_alive_observer_gate_fraction'] == 0
+    assert result['dead_peer_alive_observer_gate_fraction'] == 0
+    assert result['alive_observer_gate_age_histogram'] == {'0': 0, '1': 0, '2': 0}

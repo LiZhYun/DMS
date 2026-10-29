@@ -180,6 +180,53 @@ def selection_diagnostics(agent, observations, intentions, visible, available, t
 
 
 @torch.no_grad()
+def smac_peer_visibility(data):
+    """Score cached peer gates against recent sensors and native alive labels.
+
+    Gates are [time, environment, observer, peer], history visibility adds a
+    history axis before observer, and legal actions are [time, env, agent,
+    action]. SMAC reserves action zero for dead units. Other agents' legal
+    actions are *offline diagnostic labels*, never additional policy inputs.
+    A missing latest sensor can mean death or occlusion; it does not alone
+    establish that using the remembered peer input is harmful.
+    """
+    gates = torch.as_tensor(data['gates'], dtype=torch.bool)
+    visible = torch.as_tensor(data['visible'], dtype=torch.bool, device=gates.device)
+    available = torch.as_tensor(data['available'], dtype=torch.bool, device=gates.device)
+    if gates.ndim != 4 or gates.shape[-2] != gates.shape[-1]:
+        raise ValueError('Expected gates [time, environment, observer, peer]')
+    if visible.ndim != 5 or visible.shape[2] < 1 or visible.shape[:2] + visible.shape[3:] != gates.shape:
+        raise ValueError('Expected visibility [time, environment, history, observer, peer]')
+    if available.ndim != 4 or available.shape[:3] != gates.shape[:3] or available.shape[-1] < 2:
+        raise ValueError('Expected SMAC legal actions [time, environment, agent, action]')
+    peers = ~torch.eye(gates.shape[-1], dtype=torch.bool, device=gates.device)
+    eligible = gates & peers
+    alive = available[..., 1:].any(-1)
+    active = eligible & alive[..., None]
+    latest = visible[:, :, -1]
+    known = visible.any(2)
+    age = visible.flip(2).long().argmax(2)
+    total, active_total = int(eligible.sum().item()), int(active.sum().item())
+    missing = int((active & ~latest).sum().item())
+    dead = int((active & ~alive[:, :, None, :]).sum().item())
+    return {
+        'gated_peer_entries': total,
+        'alive_observer_gated_peer_entries': active_total,
+        'latest_sensor_missing_gated_entries': int((eligible & ~latest).sum().item()),
+        'latest_sensor_missing_alive_observer_gated_entries': missing,
+        'latest_sensor_missing_alive_observer_gate_fraction': missing / max(1, active_total),
+        'dead_peer_alive_observer_gated_entries': dead,
+        'dead_peer_alive_observer_gate_fraction': dead / max(1, active_total),
+        'never_sensed_alive_observer_gated_entries': int((active & ~known).sum().item()),
+        'alive_observer_gate_age_histogram': {
+            str(value): int((active & known & (age == value)).sum().item())
+            for value in range(visible.shape[2])},
+        'age_definition': '0 means visible in the latest stored history sensor; larger values count history steps since last sighting; never-sensed gates are counted separately',
+        'scope': 'Offline labels from SMAC legal-action masks; no policy input or gate is changed',
+    }
+
+
+@torch.no_grad()
 def diagnose(learner, data, seed, max_windows):
     config = learner.config
     steps, environments = data['ends'].shape
@@ -283,11 +330,14 @@ def diagnose(learner, data, seed, max_windows):
                            shuffled_forecast_rmse=float(mse_after.sqrt().item()),
                            mse_increase_after_shuffle=float((mse_after - mse_before).item()))
             decoder_rows.append(row)
-    return {'latent_temporal_variation': variation, 'policy_shuffle': policy_rows,
+    result = {'latent_temporal_variation': variation, 'policy_shuffle': policy_rows,
             'full_to_removed_policy_kl': selection_rows,
             'decoder_shuffle': decoder_rows, 'forecast': summarize_forecasts(forecasts),
             'forecast_peer_only': summarize_forecasts(peer_forecasts),
             'forecast_windows': len(selected), 'candidate_forecast_windows': len(candidates)}
+    if config.env == 'smac':
+        result['peer_input_visibility'] = smac_peer_visibility(data)
+    return result
 
 
 def current_source_hashes():

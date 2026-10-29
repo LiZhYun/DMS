@@ -113,7 +113,7 @@ sbatch scripts/triton/train.sbatch configs/halfcheetah_2x3_ippo.json \
   runs/dev-halfcheetah-2x3-ippo-101 101
 ```
 
-The full configs use exactly 10,000,000 environment transitions. Initial shorter development configs should be created explicitly before submission; the job script reads their budgets unchanged. `--seed`, `--device`, `--output`, `--algorithm`, and `--total-steps` are supported direct training CLI overrides; other changes belong in JSON.
+The optional full configs use exactly 10,000,000 environment transitions; full-budget training is not required by the current reproduction plan. Final comparisons will use explicitly frozen shorter matched budgets (see [the experiment plan](docs/EXPERIMENT_PLAN.md)). Initial shorter development configs should be created explicitly before submission; the job script reads their budgets unchanged. `--seed`, `--device`, `--output`, `--algorithm`, and `--total-steps` are supported direct training CLI overrides; other changes belong in JSON.
 
 Scripts use `.venv/bin/python` by default; override `PYTHON` with an absolute interpreter path if needed. `DMS_ROOT` can identify this directory when submitting elsewhere, and `SC2PATH` overrides the shared installation. `PYTHONPATH` includes `src` so the module also runs without an editable package install.
 
@@ -148,7 +148,7 @@ the legacy dependency record, and accepts the same `DMS_SOURCE_ROOT` override.
 [Native validation](reports/public-legacy-gpu-launcher-validation.json) covers
 8,000 residual-DMS transitions and saved-source checkpoint evaluation on A100.
 The [Walker full-budget guide](docs/WALKER_FULL_BUDGET.md) provides the matched
-H100 commands and records the pending 10M development comparison.
+H100 commands and preserves the 10M campaign cancelled before learning after the budget requirement changed.
 
 Normal jobs target `gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g`. Smoke jobs also permit `gpu-debug`. B300 is excluded because the current PyTorch wheel lacks Blackwell support. Public H200 short queues are omitted because this project has Ellis access. The CUDA preflight executes a real kernel; mixed `gpu-debug` hardware that is incompatible with the environment fails before creating a run directory.
 

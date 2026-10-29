@@ -1,10 +1,18 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 15:52 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 16:49 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
 89** remain unused. No result bundle or container has been published.
+
+**Budget scope changed on 2026-10-29:** full-budget training is no longer a
+requirement. The pending Walker and Ant 10M campaigns (four training jobs,
+four evaluations and six collectors) were cancelled before learning; see
+[the verified cancellation record](../reports/full-budget-scope-change-20261029.json).
+Shorter matched experiments and independent seed replication continue.
+Performance and mechanism requirements remain; the revised
+[experiment plan](EXPERIMENT_PLAN.md) allows frozen shorter final budgets.
 
 ## Completed fixed-checkpoint comparisons
 
@@ -35,7 +43,8 @@ are not independent training replicates.
 | Ant 4x2, 10M, computed contacts, CPU | 606.74 | 905.45 | Separate environment adaptation |
 | Ant 4x2, 3M, history 32, native contacts, H100 | 1,055.41 | 1,111.47 | Both below 1,700 target; all episodes last 1,000 steps |
 | Ant 2x4, 3M, history 32, native contacts, H200 | 936.76 | — | IPPO only; below 1,900 full-budget target |
-| Walker2d 2x3, 3M, history 32, H200 | 412.09 | — | IPPO only; below 850 full-budget target |
+| Walker2d 2x3, 3M, history 32, H200 | 412.09 | — | IPPO only; below 850 paper-derived target |
+| Walker2d 6x1, 3M, history 32, H100 | 423.94 | — | Native fixed evaluation passed; scheduler accounting pending; below 1,000 target |
 
 [The 3M evaluation ledger](../reports/development-fixed3m-evaluation-queue.json)
 and [Walker ledger](../reports/development-walker-10m-seed101.json) retain every
@@ -226,11 +235,11 @@ now preserves both residual policies and the earlier IPPO memory control:
 Every payload was read back successfully by export job **21284990**.
 [Artifact details](ARTIFACTS.md#walker-residual-fusion-and-memory-control).
 
-SMAC residual **21280358** has completed **3M steps** on H100; its separate
-100-game evaluation is running. The no-input control **21280360** has reached
-**2,915,200 steps** and remains running on H100 with finite metrics. Its fixed
-evaluation and the remaining collectors are queued.
-[Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
+SMAC residual **21280358** and no-input control **21280360** both completed
+3M steps and their fixed 100-game evaluations. DMS scored **0/100** wins;
+the trained no-input control scored **74/100**. The
+[frozen ledger](../reports/development-residual-fusion-3m-seed101.json) and
+[paired audit](../reports/residual-smac-results-20261029.json) retain both outcomes.
 
 A [fresh-initialization paired diagnostic](../reports/residual-no-input-rng-diagnostic.json),
 job **21283997**, confirms that auxiliary sampling changes later main RNG draws.
@@ -249,18 +258,15 @@ use the same frozen source, H100, local history 32, a fixed 3M checkpoint, and
 passed all three 8,000-step cases and saved-source evaluations on A100. The
 submission verified nine evidence files and queued training **21284499 /
 21284501 / 21284503**, with evaluations **21284500 / 21284502 / 21284504** and
-four collectors. This tests seed sensitivity before further redesign; held-out
+four collectors. IPPO and residual training are now running on H100; the
+no-input arm is still pending. This tests seed sensitivity before further redesign; held-out
 seeds remain unused and no final setting is promoted.
 
-A [fixed full-10M Walker pair](WALKER_FULL_BUDGET.md) is also submitted, with
-fresh seed-101 IPPO and residual DMS on H100. The residual setting changes only
-budget and output from its 3M reference. Native validation **21284863** passed
-both 8,000-step cases and saved-source evaluations on A100, plus an exact
-8,000-step archived/current IPPO regression. Training **21284886 / 21284888**,
-evaluations **21284887 / 21284889**, and three collectors are queued after nine
-evidence checks. The collector records whether the fixed first-3M traces match
-their earlier references. These full endpoints remain pending and use no
-held-out seeds.
+The optional [full-10M Walker pair](WALKER_FULL_BUDGET.md) was cancelled
+before training after the user removed the full-budget requirement. Training
+**21284886 / 21284888**, evaluations **21284887 / 21284889** and collectors
+**21284890–21284892** never started. Native validation **21284863** remains
+available; the shorter seed-103 comparison continues.
 
 The new [public legacy CUDA launcher](../scripts/triton/train_legacy_gpu.sbatch)
 also passed native execution **21284907** on A100: 8,000 residual-DMS
@@ -285,7 +291,22 @@ Excluding self targets gives RMSE **0.45812**, versus **0.56932** persistence an
 are not independent training replicates. Large removal KL can also reflect a
 static context offset: observer 0 has mean removal KL 2.7671 but peer-shuffle KL
 only 0.00009081. No causal threshold is selected from these soft-policy results.
-SMAC mechanism job **21281732** is running after its endpoint evaluation passed.
+The [SMAC mechanism audit](../reports/residual-smac-mechanism-results-20261029.json),
+job **21281732**, is complete. All normal/held/masked modes win **0/100**;
+shaped returns are **8.7968 / 8.8187 / 6.4909**. Holding changes mean return by
+only +0.02187, while masking lowers it by 2.30590 and lengthens battles. Normal
+inputs exactly replay the endpoint; source, model state and checkpoint remain
+unchanged. This does not establish useful temporal coordination for that policy.
+
+The [peer-only follow-up](../reports/smac-peer-forecast-visibility-validation.json),
+job **21289013**, passes all old diagnostic fields and collection metadata
+exactly on the same CPU node, plus **23 focused tests**. Peer accuracy is
+**56.58%**, versus **51.01%** persistence and **34.37%** history mode over
+31,046 comparable targets. Reconstruction also depends on matched peer latents:
+shuffling raises target-weighted decoder NLL by **0.41850** on 14,917 matched
+targets. These prediction results do not establish improved coordination return.
+Offline labels show **3,410 / 20,342 (16.76%)** of living observers' peer gate
+entries refer to dead teammates. Counts measure exposure; harm remains untested.
 
 A [paired auxiliary-order probe](../reports/development-walker-residual-auxiliary-order-probe.json),
 job **21285355**, passes exact ordinary-update replay and a stale-cache control
@@ -317,13 +338,22 @@ are **21288103 / 21288105 / 21288107**. Each has a separate fixed 100-episode
 evaluation and an automatic collector. [Queue ledger](../reports/development-auxiliary-order-3m-seed101.json).
 No learning-return claim exists for the new option.
 
-The [current progress snapshot](../reports/development-progress-20261029T155222Z.json)
+The [current progress snapshot](../reports/development-progress-20261029T164922Z.json)
 records completed endpoints, scheduler states and the latest incomplete
-training metrics separately. All six new A100 training jobs remain queued.
-The exact saved-source evaluator is additionally being checked on copies of
-the two 8,000-transition smoke policies, job **21288139**, with completion
-collector **21288156**. This uses two smoke episodes per task and leaves the
-original native artifacts unchanged. It is not a performance evaluation.
+training metrics separately. All six new A100 training jobs are now running; partial metrics are recorded without treating them as endpoint results.
+The exact [saved-source evaluator check](../reports/auxiliary-first-saved-source-evaluation.json)
+passed on copies of both 8,000-transition smoke policies, job **21288139**,
+with collector **21288156**. Each task uses two smoke episodes, unchanged
+original artifacts and zero optimizer steps. It is not a performance result.
+
+The optional [full-budget Ant comparison](ANT_FULL_BUDGET.md) was cancelled
+before training under the same scope change: training **21289400 / 21289402**,
+evaluations **21289401 / 21289403** and collectors **21289404–21289406** never
+started. [Native validation 21289136](../reports/ant-full10m-native-validation.json)
+remains evidence for exact launcher execution, saved-source evaluations and
+archived/current equality for both IPPO and active DMS over 8,000 transitions,
+including model/optimizer/RNG state, metrics excluding time and diagnostics.
+It is not a learning-performance result.
 
 The [completed SMAC residual audit](../reports/residual-smac-results-20261029.json)
 records **0/100** versus the trained no-input control's **74/100** wins. Their
@@ -368,8 +398,11 @@ budget. These are baseline results, not DMS measurements. Ant's return after
 subtracting its alive bonus is −63.24; this combines forward movement and
 control/contact costs. Walker ends early in every episode. The stronger earlier
 Walker3x2 history-32 control does not transfer automatically to this partition;
-that comparison also used a different GPU family. Ant 8x1 **21280634** and
-Walker 6x1 **21280638** remain running on H100, with evaluations already queued.
+that comparison also used a different GPU family. Ant 8x1 **21280634** remains training on H100. Walker 6x1 **21280638**
+has a [validated native evaluation](../reports/partition-walker6x1-evaluation-20261029.json):
+**423.94** mean return, population SD **50.57**, mean episode length **164.40**.
+Scheduler exit/collector accounting remains pending during the Slurm database
+outage; this native result is labelled separately from the completed audits.
 Each actual GPU family is recorded and must be matched by that partition's
 future DMS comparison. Five dependent collectors preserve the results
 automatically. This fills baseline coverage while residual DMS remains under
@@ -390,9 +423,12 @@ hyperparameters remain unchanged. Exact-launcher validation **21282799**
 passed both 8,000-step cases and separate saved-source evaluations, recording
 runtime metadata independently. The retry checked 13 evidence files and
 submitted training **21282828 / 21282830**, fixed evaluations **21282829 / 21282831**,
-and three collectors. Both training jobs are now running on H100, at **1,748,000**
-IPPO steps and **1,216,000** DMS steps, with finite metrics. Their fixed evaluations
-remain pending. [Launcher evidence](../reports/ant-entropy-launcher-validation.json).
+and three collectors. IPPO completed 3M steps and its fixed 100-episode
+evaluation: mean return **−16.75**, population SD **6.50**, mean episode length
+**11.14**; every return is negative. This is substantially below the original
+zero-entropy IPPO's **1,055.41** at the same seed and budget. DMS remains running
+on H100, at **2,324,000** steps in the current snapshot. No setting is promoted.
+[Launcher evidence](../reports/ant-entropy-launcher-validation.json).
 [Failed attempt](../reports/development-ant-entropy-3m-seed101.json),
 [current retry](../reports/development-ant-entropy-3m-seed101-attempt2.json).
 
@@ -647,7 +683,8 @@ hashes matched to the fixed 100-episode evaluations. They have no public downloa
 
 Release still requires frozen final settings, useful intention inference against
 equal-memory controls, the complete twelve-task matrix and required ablations,
-six held-out training seeds at the registered budgets, and public artifacts.
+six held-out training seeds at frozen shorter matched budgets, and public artifacts.
+Full-budget 10M training is optional following the user’s budget-scope change.
 Historical simulator parity and the manuscript's k=0/k=1 ambiguity need explicit
 resolution or qualification. Computed Ant contacts change both local inputs and
 the contact penalty, so they remain a separate adaptation. See the
