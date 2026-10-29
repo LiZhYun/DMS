@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 10:24 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 10:38 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -205,11 +205,11 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-Walker residual job **21280354** has reached **312,000 steps** and its
-trained no-input control **21280356** has reached **284,000 steps**, both on
+Walker residual job **21280354** has reached **512,000 steps** and its
+trained no-input control **21280356** has reached **532,000 steps**, both on
 H100. Metrics remain finite; their recent throughputs project approximately
 3.78 and 3.06 training hours within the 5-hour allocations. SMAC residual
-**21280358** has also started; its no-input control is queued. Evaluations
+**21280358** has reached **182,400 steps** with finite metrics; its no-input control is queued. Evaluations
 and collectors remain dependent on completion. No fixed-endpoint performance
 result is available for residual fusion yet.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
@@ -234,7 +234,7 @@ and submitted the four fixed-3M controls:
 | Walker 2x3 | 21280636 | 21280637 |
 | Walker 6x1 | 21280638 | 21280639 |
 
-Ant 2x4 **21280632** is running on H200 and has reached **168,000 steps**
+Ant 2x4 **21280632** is running on H200 and has reached **568,000 steps**
 with finite metrics; recent throughput projects about 1.91 training hours
 within its 4-hour allocation. The other controls remain queued. Each actual
 GPU family is recorded and must be matched by that partition's future DMS comparison. Five dependent
@@ -414,11 +414,21 @@ accelerator model and numerical settings. [Validation](../reports/runtime-metada
 passed 12 tests, four exact CPU/CUDA before/after state comparisons, and the
 documented 4,000-step CUDA reader command with saved-source evaluation.
 
-The [current public-wheel check](../reports/public-wheel-joint-validation.json),
-job **21219592**, verified all 22 packaged Python/XML files, optional plotting
-metadata and notices. A fresh install target ran the joint-training synthetic
-example successfully. This used the existing tested dependencies, so it does
-not extend the older fresh-dependency validation to the new source.
+The [latest fresh installation](../reports/fresh-install-residual-validation.json),
+job **21281024**, passed **518 tests with 32 native-only skips** on Python
+3.10.19 and PyTorch 2.6.0+cpu. It started with an empty environment and package
+cache, downloaded dependencies, verified isolated imports and passed `pip check`.
+The frozen checkout remained unchanged. An installed 128-step modern MuJoCo
+residual run with local history four and two checkpoint-evaluation episodes
+also passed. This verifies the current reader workflow; it is not a historical
+benchmark comparison or a fresh installation of the external simulators.
+
+The [latest public-wheel check](../reports/public-wheel-residual-validation.json),
+job **21280044**, verified all 22 packaged Python/XML files, optional plotting
+metadata and notices. It also exercised residual-plus-joint training in a new
+installation target, using existing dependencies. The older
+[joint-only wheel record](../reports/public-wheel-joint-validation.json) remains
+available for its earlier source snapshot.
 
 [Verified local artifact bundles](ARTIFACTS.md) preserve the nine completed 10M
 HalfCheetah runs, all four matched 3M memory controls, all six 3M coordination controls, all six

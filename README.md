@@ -190,8 +190,25 @@ For MuJoCo, native joint observations do not expose actuator commands. The adapt
 
 The software follows the original repository’s [MIT license](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) identify the adapted graph and Swimmer source, packaged XML, and separately installed benchmark assets. Cite the published method using [CITATION.bib](CITATION.bib); no benchmark reproduction result is claimed by this development release.
 
-A **fresh Python 3.10.19 CPU installation** passed **442 tests** (32 native-legacy tests skipped), using newly downloaded dependencies and a clean checkout. [The fresh-install record](reports/fresh-install-validation.json) includes exact wheel hashes and dependency versions. A separate allocation passed **56 native legacy tests** on the same package source. Offline wheel and isolated import checks verified the modules, licenses, and packaged Swimmer XML. [The integrated validation](reports/current-source-validation.json) reused installed dependencies; it does not claim a fresh dependency installation or benchmark performance. Earlier real-SMAC CUDA smokes separately validated local policy memory and inactive-agent masking.
+The current source passed a **fresh Python 3.10.19 CPU installation: 518 tests
+passed, 32 native-only tests skipped**. The environment and package cache started
+empty, and imports were verified against the frozen checkout. A 128-step modern
+MuJoCo residual run and two saved-checkpoint evaluation episodes also completed.
+[The installation record](reports/fresh-install-residual-validation.json)
+contains dependency versions, download hashes and evidence paths. These checks
+establish installation and execution, not benchmark performance.
 
-The [CPU CI workflow](.github/workflows/tests.yml) installs the pinned direct dependencies, runs the synthetic, mocked SMAC, and modern MuJoCo tests, and builds a wheel. Native legacy MuJoCo and real StarCraft checks run separately on allocated Triton nodes. The workflow has not yet run on GitHub because this repository has not been published.
+The [wheel check](reports/public-wheel-residual-validation.json) verified all
+22 packaged Python/XML files and exercised residual training after installation.
+Separate [native residual checks](reports/residual-native-validation.json)
+passed on A100, while [causal-selection checks](reports/residual-causal-native-validation.json)
+passed on H200. The [partition validation](reports/partition-baselines-native-validation.json)
+also covers native actuator routing, local sensors and termination handling.
+Original SMAC and legacy MuJoCo require the separate simulator setups above.
+Earlier validation records remain linked from [the status log](docs/STATUS.md).
 
-The preceding optional joint-intention snapshot passed **491 tests** (32 native-legacy checks skipped in that modern suite), plus separate native regression and CUDA integration checks. A [new wheel check](reports/public-wheel-joint-validation.json) verified all 22 packaged source/assets, installed into an empty target directory, and exercised joint training. It reused the existing dependencies; the earlier fresh-environment result above covers an older source snapshot. See [joint-training evidence](docs/JOINT_INTENTION_TRAINING.md) for the exact scope. The current residual-input source passes **516 tests**, with the same 32 native checks skipped; [its validation record](reports/residual-unit-validation.json) identifies the source and test hashes. An [offline wheel check](reports/public-wheel-residual-validation.json) also verifies the 22 source/assets and trains the installed residual option; it reuses existing dependencies. The [native residual checks](reports/residual-native-validation.json) also passed on A100, including exact existing-default regression and CPU checkpoint evaluation.
+The [CPU CI workflow](.github/workflows/tests.yml) installs the pinned direct
+dependencies, runs the synthetic, mocked SMAC, and modern MuJoCo tests, and builds
+a wheel. Native legacy MuJoCo and real StarCraft checks run separately on Triton.
+The workflow has not yet run on GitHub because this repository has not been
+published.

@@ -90,3 +90,10 @@ both updates stayed finite. This verifies the selection and update path; longer
 training must still establish useful selective coordination. The first full
 suite's 516 passing tests precede the two additional causal tests, while the
 production source used by these checks is identical.
+
+The [latest fresh CPU installation](../reports/fresh-install-residual-validation.json)
+now passes the complete **518-test suite** with 32 native-only skips, including
+both causal tests. It also runs the installed residual option with local history
+in modern MuJoCo and loads the saved checkpoint for evaluation. This extends
+installation evidence to the current source; benchmark performance remains
+under development.

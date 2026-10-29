@@ -1,0 +1,703 @@
+{
+  "purpose": "Fresh CPU dependency install of the latest residual-intention source, complete unit suite, and installed modern MuJoCo residual training/evaluation.",
+  "status": "completed_pass",
+  "commit": "afc51b9f4097dd0f3647d023c24f586a7759558e",
+  "artifact": "runs/dms-fresh-install-residual-01",
+  "snapshot_sha256": "c5a69e75078b4eae8b43c50f04ea151f895e38ca8128b36a0cbadc5b1a86e41e",
+  "runner_sha256": "9fdda464727f4b05c156b4c34d6781debfcae8187fb0fb26868fee99eae3b008",
+  "wrapper_sha256": "6d72205dccf8d243f655ea3ed501ca43e9b4c8718b0e795db3439914e51bef96",
+  "source_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "fresh_venv_without_system_site_packages": true,
+  "pip_cache_initially_absent": true,
+  "existing_environments_modified": false,
+  "job_id": "21281024",
+  "submission": [
+    "sbatch",
+    "--parsable",
+    "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-residual-01/run.sbatch"
+  ],
+  "limitations": [
+    "CPU PyTorch2.6 build; separate from the native CUDA benchmark runtime.",
+    "Modern MuJoCo smoke is an adaptation and does not establish paper performance.",
+    "StarCraftII and legacy MuJoCo are validated in separate native jobs."
+  ],
+  "success": true,
+  "scheduler": "21281024|COMPLETED|0:0|00:02:47|milan1",
+  "tests": {
+    "tests": 550,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 32,
+    "passed": 518,
+    "seconds": 20.597
+  },
+  "elapsed_seconds": 165.70012884098105,
+  "python": "3.10.19 | packaged by conda-forge | (main, Oct 22 2025, 22:29:10) [GCC 14.3.0]",
+  "torch": "2.6.0+cpu",
+  "public_files_unchanged": true,
+  "pytest_frozen_import_guard_passed": true,
+  "scientific_distributions_isolated": true,
+  "distributions": [
+    {
+      "name": "absl-py",
+      "version": "2.5.1"
+    },
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2"
+    },
+    {
+      "name": "dms-marl",
+      "version": "0.1.0"
+    },
+    {
+      "name": "dms-marl",
+      "version": "0.1.0"
+    },
+    {
+      "name": "etils",
+      "version": "1.13.0"
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.3.1"
+    },
+    {
+      "name": "Farama-Notifications",
+      "version": "0.0.6"
+    },
+    {
+      "name": "filelock",
+      "version": "4.1.0"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.9.0"
+    },
+    {
+      "name": "glfw",
+      "version": "2.11.0"
+    },
+    {
+      "name": "gymnasium",
+      "version": "1.4.0"
+    },
+    {
+      "name": "gymnasium-robotics",
+      "version": "1.4.2"
+    },
+    {
+      "name": "ImageIO",
+      "version": "2.38.0"
+    },
+    {
+      "name": "importlib_resources",
+      "version": "7.1.0"
+    },
+    {
+      "name": "iniconfig",
+      "version": "2.3.1"
+    },
+    {
+      "name": "Jinja2",
+      "version": "3.1.6"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.3"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0"
+    },
+    {
+      "name": "mujoco",
+      "version": "3.17.0"
+    },
+    {
+      "name": "networkx",
+      "version": "3.4.2"
+    },
+    {
+      "name": "numpy",
+      "version": "2.2.6"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pettingzoo",
+      "version": "1.27.0"
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0"
+    },
+    {
+      "name": "pip",
+      "version": "26.2.2"
+    },
+    {
+      "name": "pluggy",
+      "version": "1.7.0"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0"
+    },
+    {
+      "name": "PyOpenGL",
+      "version": "3.1.10"
+    },
+    {
+      "name": "pytest",
+      "version": "8.4.2"
+    },
+    {
+      "name": "setuptools",
+      "version": "79.0.1"
+    },
+    {
+      "name": "sympy",
+      "version": "1.13.1"
+    },
+    {
+      "name": "tomli",
+      "version": "2.5.0"
+    },
+    {
+      "name": "torch",
+      "version": "2.6.0+cpu"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "websockets",
+      "version": "16.1.1"
+    },
+    {
+      "name": "zipp",
+      "version": "4.1.2"
+    }
+  ],
+  "installations": {
+    "pip": [
+      {
+        "name": "pip",
+        "version": "26.2.2",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/3f/06/3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f/pip-26.2.2-py3-none-any.whl",
+          "archive_info": {
+            "hash": "sha256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70",
+            "hashes": {
+              "sha256": "fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70"
+            }
+          }
+        }
+      }
+    ],
+    "torch": [
+      {
+        "name": "torch",
+        "version": "2.6.0+cpu",
+        "download_info": {
+          "url": "https://download-r2.pytorch.org/whl/cpu/torch-2.6.0%2Bcpu-cp310-cp310-linux_x86_64.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "35a9e78b7e4096968b54c1a198687b981569c50ae93e661aa430f9fd208da102"
+            },
+            "hash": "sha256=35a9e78b7e4096968b54c1a198687b981569c50ae93e661aa430f9fd208da102"
+          }
+        }
+      },
+      {
+        "name": "sympy",
+        "version": "1.13.1",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/b2/fe/81695a1aa331a842b582453b605175f419fe8540355886031328089d840a/sympy-1.13.1-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8"
+            },
+            "hash": "sha256=db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8"
+          }
+        }
+      },
+      {
+        "name": "mpmath",
+        "version": "1.3.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+            },
+            "hash": "sha256=a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+          }
+        }
+      },
+      {
+        "name": "typing_extensions",
+        "version": "4.16.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+            },
+            "hash": "sha256=481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+          }
+        }
+      },
+      {
+        "name": "filelock",
+        "version": "4.1.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/ee/86/032133892a5de43b5a98200b01aadcad68cc255e274a762f08b8a76d2912/filelock-4.1.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "2ce9818e3e2d8f284c1a964414447ef148d42a5fd5e2a477a7118e574b293ec1"
+            },
+            "hash": "sha256=2ce9818e3e2d8f284c1a964414447ef148d42a5fd5e2a477a7118e574b293ec1"
+          }
+        }
+      },
+      {
+        "name": "fsspec",
+        "version": "2026.9.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/6c/c0/a98505f18594f1bce828bb159cec0fcf9860562f1a2c85913409fc8f3d9e/fsspec-2026.9.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f"
+            },
+            "hash": "sha256=8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f"
+          }
+        }
+      },
+      {
+        "name": "Jinja2",
+        "version": "3.1.6",
+        "download_info": {
+          "url": "https://download.pytorch.org/whl/jinja2-3.1.6-py3-none-any.whl",
+          "archive_info": {}
+        }
+      },
+      {
+        "name": "MarkupSafe",
+        "version": "3.0.3",
+        "download_info": {
+          "url": "https://download.pytorch.org/whl/markupsafe-3.0.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+          "archive_info": {}
+        }
+      },
+      {
+        "name": "networkx",
+        "version": "3.4.2",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/b9/54/dd730b32ea14ea797530a4479b2ed46a6fb250f682a9cfb997e968bf0261/networkx-3.4.2-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "df5d4365b724cf81b8c6a7312509d0c22386097011ad1abe274afd5e9d3bbc5f"
+            },
+            "hash": "sha256=df5d4365b724cf81b8c6a7312509d0c22386097011ad1abe274afd5e9d3bbc5f"
+          }
+        }
+      }
+    ],
+    "project": [
+      {
+        "name": "dms-marl",
+        "version": "0.1.0",
+        "download_info": {
+          "url": "file:///scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-residual-01/checkout",
+          "dir_info": {
+            "editable": true
+          }
+        }
+      },
+      {
+        "name": "gymnasium",
+        "version": "1.4.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/38/4e/6a51be94ae8e9dc8eaddd6ea74a6dde754448c4c746b51a232681f81e41c/gymnasium-1.4.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "1cb947c59e7c72d8eabb2c2274c00cd20948e69f8452a9ef4092223be24fdf0e"
+            },
+            "hash": "sha256=1cb947c59e7c72d8eabb2c2274c00cd20948e69f8452a9ef4092223be24fdf0e"
+          }
+        }
+      },
+      {
+        "name": "gymnasium-robotics",
+        "version": "1.4.2",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/71/86/2b890923c96b2ef3cf0f98ce91c54bad762db0982e07e6dd9b2afab9a2d3/gymnasium_robotics-1.4.2-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "a1743530431cb377e6b3b956d284bc96436fc68bac1648ef205054c178e7dc4b"
+            },
+            "hash": "sha256=a1743530431cb377e6b3b956d284bc96436fc68bac1648ef205054c178e7dc4b"
+          }
+        }
+      },
+      {
+        "name": "mujoco",
+        "version": "3.17.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/f9/db/360108471f993658d6a4f070fd521ace85d37a97a5c055144ac5a7eedfa3/mujoco-3.17.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "0fa2b5731e2bee273e52e93fd3349d0b2651d2cb95ee30da0e7c5c1af1e6f125"
+            },
+            "hash": "sha256=0fa2b5731e2bee273e52e93fd3349d0b2651d2cb95ee30da0e7c5c1af1e6f125"
+          }
+        }
+      },
+      {
+        "name": "numpy",
+        "version": "2.2.6",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/b4/63/3de6a34ad7ad6646ac7d2f55ebc6ad439dbbf9c4370017c50cf403fb19b5/numpy-2.2.6-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "fc7b73d02efb0e18c000e9ad8b83480dfcd5dfd11065997ed4c6747470ae8915"
+            },
+            "hash": "sha256=fc7b73d02efb0e18c000e9ad8b83480dfcd5dfd11065997ed4c6747470ae8915"
+          }
+        }
+      },
+      {
+        "name": "pytest",
+        "version": "8.4.2",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/a8/a4/20da314d277121d6534b3a980b29035dcd51e6744bd79075a6ce8fa4eb8d/pytest-8.4.2-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79"
+            },
+            "hash": "sha256=872f880de3fc3a5bdc88a11b39c9710c3497a547cfa9320bc3c5e62fbf272e79"
+          }
+        }
+      },
+      {
+        "name": "pluggy",
+        "version": "1.7.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/40/9e/2b38731e0fc536806f16490e1a12d7f0dc2a1235aa8cc07bcc75416a7daa/pluggy-1.7.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec"
+            },
+            "hash": "sha256=7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec"
+          }
+        }
+      },
+      {
+        "name": "cloudpickle",
+        "version": "3.1.2",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/88/39/799be3f2f0f38cc727ee3b4f1445fe6d5e4133064ec2e4115069418a5bb6/cloudpickle-3.1.2-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a"
+            },
+            "hash": "sha256=9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a"
+          }
+        }
+      },
+      {
+        "name": "exceptiongroup",
+        "version": "1.3.1",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/8a/0e/97c33bf5009bdbac74fd2beace167cab3f978feb69cc36f1ef79360d6c4e/exceptiongroup-1.3.1-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598"
+            },
+            "hash": "sha256=a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598"
+          }
+        }
+      },
+      {
+        "name": "Farama-Notifications",
+        "version": "0.0.6",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/7c/f0/21f81892e4ed10f4ec3ef2e7cf8635fb76e7c0907c55d0da66be50094760/farama_notifications-0.0.6-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "f84839188efa1ce5bb361c2a84881b2dc2c0d0d7fb661ff00421820170930935"
+            },
+            "hash": "sha256=f84839188efa1ce5bb361c2a84881b2dc2c0d0d7fb661ff00421820170930935"
+          }
+        }
+      },
+      {
+        "name": "iniconfig",
+        "version": "2.3.1",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7"
+            },
+            "hash": "sha256=9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7"
+          }
+        }
+      },
+      {
+        "name": "packaging",
+        "version": "26.3",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+            },
+            "hash": "sha256=d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+          }
+        }
+      },
+      {
+        "name": "pettingzoo",
+        "version": "1.27.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/7b/1f/ff1bebbe1fc168b6435b482a34d9757249c9da1b14ebc61868cc19998cca/pettingzoo-1.27.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "075a6ab7c32d32d9a674f1af395010198bf09c172341aa38fa5415461601ac61"
+            },
+            "hash": "sha256=075a6ab7c32d32d9a674f1af395010198bf09c172341aa38fa5415461601ac61"
+          }
+        }
+      },
+      {
+        "name": "Pygments",
+        "version": "2.21.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+            },
+            "hash": "sha256=2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9"
+          }
+        }
+      },
+      {
+        "name": "tomli",
+        "version": "2.5.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/60/3f/3e3f8fd0919249b0200c80fbc4f9a1e70be19f9883da71dfb7f8b9ab8aca/tomli-2.5.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "32a7b79ac57a2e83670ce329ccf675798bc5a2094783a63676866b70503f2e2b"
+            },
+            "hash": "sha256=32a7b79ac57a2e83670ce329ccf675798bc5a2094783a63676866b70503f2e2b"
+          }
+        }
+      },
+      {
+        "name": "websockets",
+        "version": "16.1.1",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/f3/18/a17e2f0cde02dc10154c808deed7e1d8528afff93612f70d3f0a5b19b011/websockets-16.1.1-cp310-cp310-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "1214e673c404684b9bf7154f5cf43b45025b1a6160fac3a9e438e9c1a97e22cb"
+            },
+            "hash": "sha256=1214e673c404684b9bf7154f5cf43b45025b1a6160fac3a9e438e9c1a97e22cb"
+          }
+        }
+      },
+      {
+        "name": "absl-py",
+        "version": "2.5.1",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/b3/7d/01e62f59e4166af1be6238d9f2b7f3453630c51b8044b412d05b5606532a/absl_py-2.5.1-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "721200f2f0e9960f2ca9dc3a2a706b201f5f75d812c158f059cbbe29eeafbdb8"
+            },
+            "hash": "sha256=721200f2f0e9960f2ca9dc3a2a706b201f5f75d812c158f059cbbe29eeafbdb8"
+          }
+        }
+      },
+      {
+        "name": "etils",
+        "version": "1.13.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/e7/98/87b5946356095738cb90a6df7b35ff69ac5750f6e783d5fbcc5cb3b6cbd7/etils-1.13.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "d9cd4f40fbe77ad6613b7348a18132cc511237b6c076dbb89105c0b520a4c6bb"
+            },
+            "hash": "sha256=d9cd4f40fbe77ad6613b7348a18132cc511237b6c076dbb89105c0b520a4c6bb"
+          }
+        }
+      },
+      {
+        "name": "glfw",
+        "version": "2.11.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/cc/b2/ee7afd7e84bc1a8a490710c3c0a7ad472b57f17909549dc7400d17f19c8b/glfw-2.11.0-py2.py3-none-manylinux_2_28_x86_64.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "76484fae4a4ef0f778a05e02422ecbe6960ae23039087fe2e0ad9742ab8c7bbe"
+            },
+            "hash": "sha256=76484fae4a4ef0f778a05e02422ecbe6960ae23039087fe2e0ad9742ab8c7bbe"
+          }
+        }
+      },
+      {
+        "name": "ImageIO",
+        "version": "2.38.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/ba/4b/87a794e51d150f62a55715c453c9afbf6103fe24afef6db26a929a8480b7/imageio-2.38.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "474ea3a39e36e0e8e02d81d7f10412aaecec7a2825e5fbc4f44cbcd7bb7cebfc"
+            },
+            "hash": "sha256=474ea3a39e36e0e8e02d81d7f10412aaecec7a2825e5fbc4f44cbcd7bb7cebfc"
+          }
+        }
+      },
+      {
+        "name": "pillow",
+        "version": "12.3.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/4e/89/36f4cd76cf4baf05c50ababb976249153f18c959171c7f6ba09a6f217260/pillow-12.3.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "f0606c8bf2cdefea14a43530f7657cbbb7ecf1c4222512492ef4a4434a9501ec"
+            },
+            "hash": "sha256=f0606c8bf2cdefea14a43530f7657cbbb7ecf1c4222512492ef4a4434a9501ec"
+          }
+        }
+      },
+      {
+        "name": "importlib_resources",
+        "version": "7.1.0",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/8a/db/55a262f3606bebcae07cc14095338471ad7c0bbcaa37707e6f0ee49725b7/importlib_resources-7.1.0-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "1bd7b48b4088eddb2cd16382150bb515af0bd2c70128194392725f82ad2c96a1"
+            },
+            "hash": "sha256=1bd7b48b4088eddb2cd16382150bb515af0bd2c70128194392725f82ad2c96a1"
+          }
+        }
+      },
+      {
+        "name": "PyOpenGL",
+        "version": "3.1.10",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/de/e4/1ba6f44e491c4eece978685230dde56b14d51a0365bc1b774ddaa94d14cd/pyopengl-3.1.10-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "794a943daced39300879e4e47bd94525280685f42dbb5a998d336cfff151d74f"
+            },
+            "hash": "sha256=794a943daced39300879e4e47bd94525280685f42dbb5a998d336cfff151d74f"
+          }
+        }
+      },
+      {
+        "name": "zipp",
+        "version": "4.1.2",
+        "download_info": {
+          "url": "https://files.pythonhosted.org/packages/b8/44/7bd2007260da11cccca29ba2d4c345f1287aa663db38ee7cefeabf6386a5/zipp-4.1.2-py3-none-any.whl",
+          "archive_info": {
+            "hashes": {
+              "sha256": "b30cb6cd253122169c47de245ca24a86bac2a5d3802ba15bf7ba6414eb9e144d"
+            },
+            "hash": "sha256=b30cb6cd253122169c47de245ca24a86bac2a5d3802ba15bf7ba6414eb9e144d"
+          }
+        }
+      }
+    ]
+  },
+  "pip_check": "No broken requirements found.",
+  "modern_residual_smoke": {
+    "training_steps": 128,
+    "evaluation_episodes": 2,
+    "environment": {
+      "benchmark_track": "modern_mamujoco_adaptation",
+      "scenario": "HalfCheetah",
+      "agent_conf": "2x3",
+      "agent_obsk": 1,
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "action_dims": [
+        3,
+        3
+      ],
+      "observation_dims": [
+        7,
+        7
+      ],
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "policy_observation_history": {
+        "length": 4,
+        "base_observation_dim": 28,
+        "shape": [
+          2,
+          4,
+          29
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "source_matches": true,
+    "evaluation": "/scratch/work/liz23/reproduce/dms/runs/dms-fresh-install-residual-01/modern-residual-evaluation.json",
+    "evaluation_sha256": "bdd1701c41b43ad53935a89bd81660dd8a6fd51638f2d8342237aa964e5ece27"
+  },
+  "evidence_sha256": {
+    "runs/dms-fresh-install-residual-01/validation.json": "a35c04b0a78a07f2254f8afdaaa39564d8584e55f19a84850bd9f1b4a60f8456",
+    "runs/dms-fresh-install-residual-01/snapshot.json": "c5a69e75078b4eae8b43c50f04ea151f895e38ca8128b36a0cbadc5b1a86e41e",
+    "runs/dms-fresh-install-residual-01/validate.py": "9fdda464727f4b05c156b4c34d6781debfcae8187fb0fb26868fee99eae3b008",
+    "runs/dms-fresh-install-residual-01/run.sbatch": "6d72205dccf8d243f655ea3ed501ca43e9b4c8718b0e795db3439914e51bef96",
+    "runs/dms-fresh-install-residual-01/environment.json": "402caf78c50fcc951da1ba770791f2532ea1d112681758ea45033a651821e49b",
+    "runs/dms-fresh-install-residual-01/pytest-imports.json": "01ff95816d7b46b46c898340e9bfe13a4ee2ce613e94d77c224b46bd23c20429",
+    "runs/dms-fresh-install-residual-01/tests.xml": "e7ebf4d28f9bd1e3c577065d2b7ffffc7d89b4f7ce6f8672fdf26ef7dc0c6f48",
+    "runs/dms-fresh-install-residual-01/pip-check.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "runs/dms-fresh-install-residual-01/pip-freeze.txt": "b309817fbdc23061a186f78c6d6a135f5670d69d86d422c2bbbc4387178b1510",
+    "runs/dms-fresh-install-residual-01/install-pip-report.json": "35389a4d72e85d619e49ec44c87546e5e9dfc4f0cb65314134a65e7f83bd86f8",
+    "runs/dms-fresh-install-residual-01/install-torch-report.json": "702644e40ea2da6f738eb1e891d9c0f34b005ca8e9d9f4236f18caedc34e0659",
+    "runs/dms-fresh-install-residual-01/install-project-report.json": "65624123c19c44c16fbdbe3bb141a454cc691184b353bbe7877c1be111a8d370",
+    "runs/dms-fresh-install-residual-01/modern-residual-smoke.json": "2f965fa5c4b501a5aabbaa77701c92f89f41c6bca2aa1df0eade22fa06b9f648",
+    "runs/dms-fresh-install-residual-01/modern-residual-smoke/manifest.json": "a351196c495936d40e82877f1f27fb31cb9a0dee568f7b306309a1f60e649d4d",
+    "runs/dms-fresh-install-residual-01/modern-residual-evaluation.json": "bdd1701c41b43ad53935a89bd81660dd8a6fd51638f2d8342237aa964e5ece27"
+  },
+  "collected_utc": "2026-10-29T10:36:06.119655+00:00"
+}
