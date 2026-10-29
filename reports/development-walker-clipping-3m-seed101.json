@@ -1,7 +1,7 @@
 {
   "purpose": "One fresh H200 Walker2x3 IPPO trial testing joint gradient cap10 against the completed cap0.5 baseline; only cap and output change",
   "created_utc": "2026-10-29T12:45:58.905855+00:00",
-  "status": "submitted_after_native_validation",
+  "status": "waiting_running_or_failed",
   "artifact": "runs/development-walker-clipping-3m-seed101",
   "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/source",
   "source_sha256": {
@@ -297,7 +297,7 @@
         "job_id": "21283719"
       },
       "job_id": "21283719",
-      "status": "submitted",
+      "status": "training_running_or_pending",
       "evaluation": {
         "command": [
           "sbatch",
@@ -323,7 +323,28 @@
         "spec": "runs/development-walker-clipping-3m-seed101/evaluation-walker-ippo/spec.json",
         "spec_sha256": "829f0f4ab30319acaaec73b92b5ed271d0b34fa8523c2e181adcd32637401b3b",
         "status": "waiting_for_training",
-        "launcher_sha256": "6c8372e9d1342a77c1a42a1a38a704a52df524d378d11ddb0f5976c5d83cee3f"
+        "launcher_sha256": "6c8372e9d1342a77c1a42a1a38a704a52df524d378d11ddb0f5976c5d83cee3f",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
       }
     }
   ],
@@ -478,5 +499,7 @@
       "submitted_utc": "2026-10-29T12:52:03.969391+00:00",
       "job_id": "21283722"
     }
-  ]
+  ],
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-29T12:56:05.608842+00:00"
 }

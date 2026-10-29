@@ -311,9 +311,11 @@ The original run and source are unchanged.
 One [fresh Walker2x3 IPPO cap-10 trial](../reports/development-walker-clipping-3m-seed101.json)
 is declared at **3M steps**, seed **101**, on **H200**, matching the completed
 baseline. Only the cap and output change. Exact-launcher native check
-**21283575** is queued. Dependent submission job **21283693** will require
-its successful completion and all six evidence files before launching training.
-The fixed evaluation uses 100
+**21283575** passed 8,000 transitions and two saved-source evaluation episodes.
+[Validation](../reports/walker-clipping-native-validation.json) confirms finite
+updates, unchanged state and zero optimizer steps during evaluation. Guarded
+submission **21283693** verified six evidence files and submitted training
+**21283719**, evaluation **21283720** and two collectors. The fixed evaluation uses 100
 episodes, seeds 400101–400200. This is an optimizer-control trial, not a DMS
 candidate or a promoted final setting. The four residual experiments and the
 separate Ant exploration pair remain independent comparisons.
