@@ -33,7 +33,8 @@ The reference executable defaults to **0.001** in
 [config_mujoco.py](../reference/DMS/configs/config_mujoco.py); its help text is
 inconsistent with that default. Coefficient 0.1 is an explicit redesign choice,
 not an asserted paper setting. The reproduction's zero-entropy reference is
-retained unchanged.
+retained unchanged. Both reference checkpoints are now included in the
+[verified partition-memory bundle](ARTIFACTS.md#ant-and-halfcheetah-partition-memory-controls).
 
 ## Declared learning comparison
 

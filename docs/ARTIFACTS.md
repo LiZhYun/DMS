@@ -11,6 +11,32 @@ activation keys and Python environments are excluded. The
 [comparison](MUJOCO200_COMPARISON.md) tests runtime behavior, not performance.
 There is no public download URL.
 
+## Ant and HalfCheetah partition memory controls
+
+The [verified six-run archive](../reports/development-partition-memory-artifacts.json)
+is `dist/dms-partition-memory-development-20261029-v1.zip`. It contains all
+completed **3M H100 history-32 IPPO/DMS** pairs for **Ant 4x2** and
+**HalfCheetah 3x2 / 6x1**, training seed **101**. The Ant pair falls below its
+engineering target; the HalfCheetah DMS models exceed their individual targets
+but trail their matched memory controls. Every outcome is included.
+
+Export job **21282368** completed and verified **156 payload files**, totaling
+**20,775,608 bytes**. SHA-256:
+
+```text
+a4e4a0e4afca3e24813984eda930add9caad15503976c725027daf9b2bca8e1b
+```
+
+Checkpoints match those used in the separate fixed 100-episode evaluations.
+The archive contains configurations, saved source, training metrics and
+training-time evaluation records. The checked-in
+[Ant/Walker ledger](../reports/development-walker-ant-history32-3m-seed101.json)
+and [HalfCheetah partition ledger](../reports/development-halfcheetah-partition-coverage-3m-seed101.json)
+retain the separate endpoint episodes, seeds **400101–400200**, and immutable
+checkpoint validation. The artifact ledger records the exact regeneration
+command and every payload hash. These are development results, with no held-out
+training seeds, public download URL or simulator binaries.
+
 ## Walker and SMAC conditioning controls
 
 The [verified twelve-run archive](../reports/development-conditioning-artifacts-v2.json)

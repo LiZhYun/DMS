@@ -479,7 +479,9 @@ available for its earlier source snapshot.
 [Verified local artifact bundles](ARTIFACTS.md) preserve the nine completed 10M
 HalfCheetah runs, all four matched 3M memory controls, all six 3M coordination controls, all six
 3M SMAC controls, and nine earlier pilots,
-including negative results. They have no public download URLs. Full raw
+including negative results. A new [six-run memory bundle](../reports/development-partition-memory-artifacts.json)
+also preserves both Ant4x2 and HalfCheetah3x2/6x1 controls, with checkpoint
+hashes matched to the fixed 100-episode evaluations. They have no public download URLs. Full raw
 100-episode endpoint results are also retained in the checked-in ledgers.
 
 Release still requires frozen final settings, useful intention inference against
