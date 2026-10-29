@@ -1,0 +1,99 @@
+{
+  "purpose": "Native smoke of saved-source residual forecast/intervention pipeline; not performance",
+  "status": "passed",
+  "job": {
+    "job_id": "21281659",
+    "accounting": "21281659|COMPLETED|0:0|00:03:33|milan32",
+    "cases": [
+      {
+        "task": "walker",
+        "validation": "runs/development-residual-mechanism-3m-seed101/smoke-walker/validation.json",
+        "validation_sha256": "f84ea663d2923f0dfc9c6f3abd86474500f531ba06a09afe6f57c038b941d82a",
+        "training_steps": 8000,
+        "normal_replayed_episodes": 2,
+        "success": true
+      },
+      {
+        "task": "8m",
+        "validation": "runs/development-residual-mechanism-3m-seed101/smoke-8m/validation.json",
+        "validation_sha256": "1973951d5aac4b198277f5e258b2da6acb0edc9f33b288329efe27b1af81e671",
+        "training_steps": 1280,
+        "normal_replayed_episodes": 2,
+        "success": true
+      }
+    ]
+  },
+  "cases": [
+    {
+      "task": "walker",
+      "training_steps": 8000,
+      "normal_endpoint_replayed_exactly": true,
+      "model_state_unchanged": true,
+      "snapshot_files_unchanged": true,
+      "optimizer_step_calls": 0,
+      "elapsed_seconds": 25.88819758896716,
+      "artifact_sha256": {
+        "interventions.json": "0f8360fe6b6ae4bf8180a786ff19ba4d58c0c9c3dfbc0f157a77300d4ee39093",
+        "diagnostics.json": "0910b77d493d7fd4c310100fcd5c9726a88dfae2b23fd25aa3a18f5c32585b45"
+      },
+      "baseline_validation_sha256": "8875e827104bb5c80ca02fbd802b41db392f7eee58c120e2be570191df610ca3",
+      "checkpoint_sha256": "8508f8d20dcdefcc81e405f1d80a2376a3c010bf0750473d635fd57261468d2b",
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      }
+    },
+    {
+      "task": "8m",
+      "training_steps": 1280,
+      "normal_endpoint_replayed_exactly": true,
+      "model_state_unchanged": true,
+      "snapshot_files_unchanged": true,
+      "optimizer_step_calls": 0,
+      "elapsed_seconds": 143.89633365697227,
+      "artifact_sha256": {
+        "interventions.json": "36d3f7e62365b06486884c42b5b9c2391ee970a22c7623366402ef06772300d7",
+        "diagnostics.json": "714479e913d154c77a5243fe91ba3217164df16f3c4a8d5e8851d53170fa7347"
+      },
+      "baseline_validation_sha256": "eb869370c6608f3f143f6c44f686fa85b1996c49f4f81e4dd929064f2ca6e0ba",
+      "checkpoint_sha256": "b29460e0a465b2e5d24539017b370fc335e5b445f098279d02a23a324b437833",
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      }
+    }
+  ],
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  }
+}

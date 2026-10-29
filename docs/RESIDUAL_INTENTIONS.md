@@ -63,6 +63,31 @@ selected by evaluation return.
 
 The [queue ledger](../reports/development-residual-fusion-3m-seed101.json) records training jobs 21280354/56/58/60 and dependent fixed-checkpoint evaluations.
 
+## Fixed-checkpoint mechanism checks
+
+After each intention-enabled model's 3M evaluation, a
+[separate diagnostic](../reports/development-residual-mechanism-3m-seed101.json)
+will replay all 100 normal episodes exactly before evaluating held and masked
+peer intentions on the same episode seeds. The hold intervention keeps each
+peer's first eligible latent, while current local history, the observer's own
+attention query, visibility gates and legal actions remain adaptive. Masking
+removes peer gates. These are changes to a frozen policy's inputs; the trained
+no-input and IPPO controls remain distinct comparisons.
+
+Four fresh stochastic trajectories of 128 transitions will also measure forecast
+quality against persistence and history baselines, visibility-matched latent
+shuffles, temporal variation, and full-versus-removed-peer policy KL. The
+existing soft pooling is retained. These sensitivity scores do not validate
+the different causal concatenation architecture or select a threshold by themselves.
+Negative or near-zero categorical KL may reflect float32 roundoff.
+
+[Native smoke job 21281659](../reports/residual-mechanism-native-validation.json)
+passed both tasks, exactly replayed the two saved episodes per task, and left
+parameters, normalizers, source, checkpoints and training phase unchanged with
+zero optimizer steps. Jobs **21281731** (Walker) and **21281732** (SMAC) depend on
+the corresponding fixed-3M evaluations; collector **21281733** validates and
+records their outputs. Full diagnostic results are pending.
+
 ## Causal-selection validation
 
 The [subsequent causal check](../reports/residual-causal-native-validation.json)

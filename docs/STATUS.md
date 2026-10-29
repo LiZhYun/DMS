@@ -215,6 +215,17 @@ and collectors remain dependent on completion. No fixed-endpoint performance
 result is available for residual fusion yet.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
+The residual models also have [queued mechanism diagnostics](../reports/development-residual-mechanism-3m-seed101.json):
+Walker **21281731** and SMAC **21281732**, each dependent on its fixed-3M
+evaluation. Both will replay the full 100 normal episodes before paired hold
+and mask interventions, then collect four fresh 128-transition trajectories
+for prediction baselines, latent shuffles and peer-removal sensitivity. Native
+smoke **21281659** passed on both tasks with exact saved-episode replay and
+unchanged model/source/checkpoints, without optimizer updates.
+[Validation](../reports/residual-mechanism-native-validation.json).
+These are fixed-policy diagnostics, distinct from the trained no-input controls;
+their full results remain pending and no threshold is promoted.
+
 Four missing primary partitions now have declared local-history IPPO controls:
 Ant **2x4 / 8x1** and Walker **2x3 / 6x1**. They reuse their task's existing
 history-32 settings, training seed 101, a fixed 3M budget and native rewards.
