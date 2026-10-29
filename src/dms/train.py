@@ -9,6 +9,7 @@ local past histories during PPO, keeping rollout gates and filtering fixed.
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass, fields
 import importlib.metadata
@@ -63,6 +64,7 @@ class Config:
     history_length: int = 32
     prediction_horizon: int = 4
     coordination: str = 'soft'
+    intention_fusion: str = 'concat'
     coordination_threshold: float = 0.6
     short_history: int = 4
     filter_history: bool = True
@@ -92,6 +94,8 @@ class Config:
     torch_threads: int = 1
 
     def validate(self):
+        if self.intention_fusion not in ('concat', 'residual'):
+            raise ValueError('intention_fusion must be concat or residual')
         if (isinstance(self.intention_rl_lr, bool)
                 or not isinstance(self.intention_rl_lr, (int, float))
                 or not math.isfinite(self.intention_rl_lr) or self.intention_rl_lr < 0):
@@ -226,16 +230,21 @@ class Learner:
             IndependentAgent(env.obs_dim, env.action_dim if env.discrete else env.action_dims[i], env.n_agents, self.latent_dim,
                              config.hidden_dim, env.discrete, config.coordination, i,
                              policy_history_length=config.policy_history_length,
-                             initial_log_std=config.initial_log_std)
+                             initial_log_std=config.initial_log_std,
+                             intention_fusion=config.intention_fusion)
             for i in range(env.n_agents)
         ]).to(self.device)
-        self.intentions = nn.ModuleList([
-            IntentionModel(env.n_agents, env.action_dim, config.hidden_dim, config.latent_dim,
-                           env.discrete, env.action_dims,
-                           observation_mask=None if env.discrete else env.action_visibility[i],
-                           decoder_history=config.decoder_history)
-            for i in range(env.n_agents)
-        ]).to(self.device) if self.latent_dim else nn.ModuleList()
+        # These models are initialized on CPU before transfer. Residual fusion
+        # preserves IPPO's RNG position at the start of rollout collection;
+        # later auxiliary sampling and learning deliberately diverge.
+        with torch.random.fork_rng(devices=[]) if config.intention_fusion == 'residual' else nullcontext():
+            self.intentions = nn.ModuleList([
+                IntentionModel(env.n_agents, env.action_dim, config.hidden_dim, config.latent_dim,
+                               env.discrete, env.action_dims,
+                               observation_mask=None if env.discrete else env.action_visibility[i],
+                               decoder_history=config.decoder_history)
+                for i in range(env.n_agents)
+            ]).to(self.device) if self.latent_dim else nn.ModuleList()
         self.optimizers = []
         for i, agent in enumerate(self.agents):
             critic_parameters = list(agent.critic_parameters())

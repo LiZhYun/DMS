@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-28 22:31 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 09:47 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -165,29 +165,50 @@ gradient-routing checks and four saved-source evaluations. Its earlier failed
 replay-tolerance attempts are preserved. Larger PPO batch shapes had small
 float32 discrepancies; replay with the collection batch shape was exact.
 
-The next bounded batch tests two existing settings independently:
+The stability/pooling batch has also completed all **13 training, evaluation
+and collector jobs**. Its four fixed 3M, 100-episode endpoints are:
 
-| Task | Lower auxiliary update size | Concatenated peer intentions |
-| --- | --- | --- |
-| Walker3x2, history 32 | LR 1e-4, soft; job 21272830 | LR 1e-3, all-peer; job 21272832 |
-| SMAC 8m_vs_9m, gamma 0.95 | LR 1e-4, soft; job 21272834 | LR 1e-3, all-peer; job 21272836 |
+| Task | Original soft DMS | Auxiliary LR 1e-4 | All-peer concatenation, LR 1e-3 |
+| --- | ---: | ---: | ---: |
+| Walker3x2, history 32 | 391.09 | 746.10 | 311.11 |
+| SMAC 8m_vs_9m, gamma 0.95 | 0/100 wins | 0/100 wins | 1/100 wins |
 
-All four use development seed 101, a fixed 3M budget, H100, the same native
-environment and existing actor/critic rates; prior RL gradients remain disabled.
-Each differs from its archived DMS control in one configuration setting plus
-output. Concatenation also changes network width and initialization, so it does
-not isolate only the information lost by pooling. The lower rate previously
-hurt HalfCheetah on three seeds; no general promotion is intended.
+Lower auxiliary LR improves Walker on this seed, but its episodes still average
+only 247.42 steps and its return is below the 1,100 target. Concatenation averages
+122.38 steps. Both SMAC variants remain far below the 82.6% target. No setting is
+promoted. The [independent audit](../reports/stability-pooling-results-20261029.json)
+checks job completion, endpoint hashes, exact evaluation seeds and unchanged
+state. The [full ledger](../reports/development-stability-pooling-3m-seed101.json)
+retains every episode. All four runs use training seed 101 and matched H100
+hardware. Changing concatenation also changes input width and initialization.
 
-The [native H100 smoke](../reports/stability-pooling-native-validation.json),
-job **21272750**, passed all four variants and all four saved-source CPU
-evaluations. The training source is unchanged from the preceding validated
-trainer. The guarded submit job (**21272769**) verified all eleven evidence files and
-registered four 3M runs, now pending for H100. Their fixed 100-episode CPU
-evaluations are **21272831 / 21272833 / 21272835 / 21272837**, each dependent
-on successful training. Five collectors (**21272838–21272842**) preserve
-individual endpoints and the final batch status automatically.
-[Next batch and frozen settings](../reports/development-stability-pooling-3m-seed101.json).
+The next design under test is [residual intention fusion](RESIDUAL_INTENTIONS.md).
+It preserves the local actor/critic trunk and adds separate zero-initialized
+projections of inferred intention context. This tests whether a stronger local
+starting point improves conditioning. A paired model with inputs disabled during
+training remains an ablation, not a DMS candidate. The [unit validation](../reports/residual-unit-validation.json)
+passed all 25 new invariants and the complete modern suite (**516 passed,
+32 native checks skipped**). The [native validation](../reports/residual-native-validation.json), job
+**21279768**, passed all eight short training cases on A100. Both tasks exactly
+matched IPPO's initial local parameters, RNG and first rollout with active peer
+gates. Archived/current default training matched parameters, optimizer state,
+RNG and metrics exactly. All four saved-source CPU evaluations passed with
+unchanged state and zero optimizer steps. An [installed-wheel check](../reports/public-wheel-residual-validation.json)
+also passed. Its first harness attempt incorrectly expected two toy agents;
+the corrected agent-count check passed without source changes.
+
+The guarded submission job **21279947** verified all 18 required evidence files
+and submitted the paired fixed-3M H100 experiments:
+
+| Task | Intentions enabled | Inputs disabled during training | Fixed 100-episode evaluation jobs |
+| --- | --- | --- | --- |
+| Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
+| SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
+
+All four training jobs are queued for H100. Evaluations depend on successful
+training; five collectors record completion automatically. No performance
+result is available for residual fusion yet.
+[Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
 The [paired auxiliary-drift probe](../reports/development-walker-history32-soft-update-probe.json),
 job **21272741**, completed twelve ephemeral CPU updates on four archived
@@ -201,11 +222,11 @@ fraction of sampled action-probability ratios outside [0.8,1.2] falls from
 This supports the local stabilization mechanism, not improved learned returns.
 The previously negative HalfCheetah learning-rate replications remain relevant.
 
-A [verified eight-run local archive](../reports/development-conditioning-artifacts.json)
-now preserves all four completed conditioning trials and their four matched
-H100 controls, including both zero-win SMAC policies. It contains 208 payload
-files and is 68,180,285 bytes. Separate fixed 100-episode endpoints remain in
-the checked-in ledgers. No archive has been published.
+A [verified twelve-run local archive](../reports/development-conditioning-artifacts-v2.json)
+now preserves all eight completed conditioning/stability/pooling trials and
+four matched H100 controls, including all zero-win SMAC policies. It contains
+312 payload files and is 104,686,958 bytes. Separate fixed 100-episode endpoints
+remain in the checked-in ledgers. No archive has been published.
 
 A completed [Walker history-32 drift probe](../reports/development-walker-history32-policy-drift.json),
 job **21251696**, made one ephemeral CPU update from the failed 3M checkpoint

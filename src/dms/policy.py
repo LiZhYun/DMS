@@ -6,6 +6,7 @@ The runner caches normalized observations and inferred intentions for PPO.
 from __future__ import annotations
 
 import math
+from contextlib import nullcontext
 import torch
 from torch import Tensor, nn
 from torch.distributions import kl_divergence
@@ -56,10 +57,13 @@ class IndependentAgent(nn.Module):
     def __init__(self, obs_dim: int, action_dim: int, num_peers: int,
                  latent_dim: int = 0, hidden_dim: int = 64, discrete: bool = False,
                  coordination: str = 'soft', observer_id: int = 0, *,
-                 policy_history_length: int = 0, initial_log_std: float = -0.5):
+                 policy_history_length: int = 0, initial_log_std: float = -0.5,
+                 intention_fusion: str = 'concat'):
         super().__init__()
         if coordination not in {'soft', 'causal', 'all'}:
             raise ValueError('coordination must be soft, causal, or all')
+        if intention_fusion not in ('concat', 'residual'):
+            raise ValueError('intention_fusion must be concat or residual')
         if (not isinstance(policy_history_length, int) or isinstance(policy_history_length, bool)
                 or policy_history_length < 0):
             raise ValueError('policy_history_length must be a nonnegative integer')
@@ -69,6 +73,7 @@ class IndependentAgent(nn.Module):
         self.discrete = discrete
         self.latent_dim = latent_dim
         self.coordination = coordination
+        self.intention_fusion = intention_fusion
         self.observer_id = observer_id
         self.obs_dim = obs_dim
         self.policy_history_length = policy_history_length
@@ -78,15 +83,24 @@ class IndependentAgent(nn.Module):
             self.actor_encoder = LocalHistoryEncoder(obs_dim, hidden_dim)
             self.critic_encoder = LocalHistoryEncoder(obs_dim, hidden_dim)
         local_width = hidden_dim if policy_history_length else obs_dim
-        inputs = local_width + (latent_dim if coordination == 'soft' else num_peers * latent_dim)
+        context_width = latent_dim if coordination == 'soft' else num_peers * latent_dim
+        inputs = local_width + (context_width if intention_fusion == 'concat' else 0)
         self.actor = mlp(inputs, hidden_dim, action_dim, 0.01)
         self.critic = mlp(inputs, hidden_dim, 1, 1.0)
         # Initialization only: checkpoints restore learned scales, whose runtime
         # clamp remains [-5, 2]. Discrete policies create no scale parameters.
         self.log_std = None if discrete else nn.Parameter(torch.full((action_dim,), float(initial_log_std)))
-        if latent_dim and coordination == 'soft':
-            self.query = nn.Linear(latent_dim, latent_dim, bias=False)
-            self.key = nn.Linear(latent_dim, latent_dim, bias=False)
+        # Residual fusion starts from exactly the local-only policy. Isolate
+        # optional CPU initialization so subsequent agents retain IPPO's seed.
+        with torch.random.fork_rng(devices=[]) if intention_fusion == 'residual' else nullcontext():
+            if latent_dim and coordination == 'soft':
+                self.query = nn.Linear(latent_dim, latent_dim, bias=False)
+                self.key = nn.Linear(latent_dim, latent_dim, bias=False)
+            if latent_dim and intention_fusion == 'residual':
+                self.actor_intention_projection = nn.Linear(context_width, local_width, bias=False)
+                self.critic_intention_projection = nn.Linear(context_width, local_width, bias=False)
+                nn.init.zeros_(self.actor_intention_projection.weight)
+                nn.init.zeros_(self.critic_intention_projection.weight)
 
     def _history_parts(self, observations: Tensor) -> tuple[Tensor, Tensor]:
         """Split local windows into base channels and exact, unnormalized validity."""
@@ -117,6 +131,8 @@ class IndependentAgent(nn.Module):
         yield from self.critic.parameters()
         if self.policy_history_length:
             yield from self.critic_encoder.parameters()
+        if self.latent_dim and self.intention_fusion == 'residual':
+            yield from self.critic_intention_projection.parameters()
 
     def _local_features(self, observations: Tensor, *, critic: bool = False) -> Tensor:
         if not self.policy_history_length:
@@ -125,7 +141,8 @@ class IndependentAgent(nn.Module):
         encoder = self.critic_encoder if critic else self.actor_encoder
         return encoder.encode_windows(base, valid)
 
-    def _inputs(self, observations: Tensor, intentions: Tensor, relevant: Tensor) -> Tensor:
+    def _inputs(self, observations: Tensor, intentions: Tensor, relevant: Tensor,
+                *, critic: bool = False) -> Tensor:
         if not self.latent_dim:
             return observations
         weights = relevant.to(intentions.dtype)
@@ -137,7 +154,12 @@ class IndependentAgent(nn.Module):
             scores = torch.where(relevant.any(-1, keepdim=True), scores, torch.zeros_like(scores))
             weights = scores.softmax(-1) * relevant
         weighted = intentions * weights[..., None]
+        if self.intention_fusion == 'residual':
+            weighted = torch.where(relevant[..., None], weighted, torch.zeros_like(weighted))
         context = weighted.sum(1) if self.coordination == 'soft' else weighted.flatten(1)
+        if self.intention_fusion == 'residual':
+            projection = self.critic_intention_projection if critic else self.actor_intention_projection
+            return observations + projection(context)
         return torch.cat((observations, context), -1)
 
     def distribution(self, observations: Tensor, intentions: Tensor,
@@ -153,7 +175,7 @@ class IndependentAgent(nn.Module):
 
     def normalized_value(self, observations: Tensor, intentions: Tensor, relevant: Tensor) -> Tensor:
         local = self._local_features(observations, critic=True)
-        return self.critic(self._inputs(local, intentions, relevant)).squeeze(-1)
+        return self.critic(self._inputs(local, intentions, relevant, critic=True)).squeeze(-1)
 
     def value(self, observations: Tensor, intentions: Tensor, relevant: Tensor) -> Tensor:
         return self.normalized_value(observations, intentions, relevant) * self.value_moments.std[0] + self.value_moments.mean[0]

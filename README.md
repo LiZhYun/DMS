@@ -22,6 +22,8 @@ The optional [local policy memory](docs/LOCAL_POLICY_MEMORY.md) adds a bounded o
 
 The optional [joint intention training](docs/JOINT_INTENTION_TRAINING.md) lets PPO train the local intention encoder as well as the actor and critic. It is disabled by default; native validation has passed, while performance trials remain in development.
 
+The optional [residual intention input](docs/RESIDUAL_INTENTIONS.md) preserves the local IPPO starting point and learns an intention correction. It is an experimental design; the default remains concatenation, and performance improvement has not been established.
+
 ## Install
 
 | Workflow | Tested setup | Additional requirement |
@@ -192,4 +194,4 @@ A **fresh Python 3.10.19 CPU installation** passed **442 tests** (32 native-lega
 
 The [CPU CI workflow](.github/workflows/tests.yml) installs the pinned direct dependencies, runs the synthetic, mocked SMAC, and modern MuJoCo tests, and builds a wheel. Native legacy MuJoCo and real StarCraft checks run separately on allocated Triton nodes. The workflow has not yet run on GitHub because this repository has not been published.
 
-The current optional joint-intention implementation passed **491 tests** (32 native-legacy checks skipped in that modern suite), plus separate native regression and CUDA integration checks. A [new wheel check](reports/public-wheel-joint-validation.json) verified all 22 packaged source/assets, installed into an empty target directory, and exercised joint training. It reused the existing dependencies; the earlier fresh-environment result above covers an older source snapshot. See [joint-training evidence](docs/JOINT_INTENTION_TRAINING.md) for the exact scope.
+The preceding optional joint-intention snapshot passed **491 tests** (32 native-legacy checks skipped in that modern suite), plus separate native regression and CUDA integration checks. A [new wheel check](reports/public-wheel-joint-validation.json) verified all 22 packaged source/assets, installed into an empty target directory, and exercised joint training. It reused the existing dependencies; the earlier fresh-environment result above covers an older source snapshot. See [joint-training evidence](docs/JOINT_INTENTION_TRAINING.md) for the exact scope. The current residual-input source passes **516 tests**, with the same 32 native checks skipped; [its validation record](reports/residual-unit-validation.json) identifies the source and test hashes. An [offline wheel check](reports/public-wheel-residual-validation.json) also verifies the 22 source/assets and trains the installed residual option; it reuses existing dependencies. The [native residual checks](reports/residual-native-validation.json) also passed on A100, including exact existing-default regression and CPU checkpoint evaluation.

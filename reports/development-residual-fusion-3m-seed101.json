@@ -1,0 +1,2200 @@
+{
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "gpu_family": "H100",
+  "smoke_gpu_families": [
+    "A100",
+    "H100",
+    "H200"
+  ],
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "device": "cpu",
+    "parameter_updates": 0
+  },
+  "budget": 3000000,
+  "purpose": "Residual intention fusion with exact local-policy initialization; one paired training-input ablation per task.",
+  "created_utc": "2026-10-29T09:33:23.828831+00:00",
+  "status": "submitted_after_native_validation",
+  "artifact": "runs/development-residual-fusion-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "reference_source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "4d5a70c8f0bac6bb88791ba48c598bc2af39e4f908260d14a5aa9b470ddecf39"
+  },
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "runs": [
+    {
+      "task": "walker",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "comparison_reference_run": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101",
+      "comparison_reference_evaluation": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-dms/validation.json",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-dms/spec.json",
+      "cpus": 1,
+      "memory": "4G",
+      "label": "walker-residual",
+      "mode": "residual",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-residual-fusion-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "config": "configs/development/walker-residual-fusion-3m-h100.json",
+      "frozen_config": "runs/development-residual-fusion-3m-seed101/configs/walker-residual.json",
+      "config_sha256": "59fa45b590306b703884548c4bd11c3ce232c246892d210e4c661a4741257659",
+      "walltime_hours": 5,
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-walker-residual-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=5:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/train.sbatch",
+          "walker-residual"
+        ],
+        "returncode": 0,
+        "stdout": "21280354\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.023958+00:00",
+        "job_id": "21280354"
+      },
+      "job_id": "21280354",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-walker-residual-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280354",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21280355\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.050001+00:00",
+        "job_id": "21280355",
+        "spec": "runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/spec.json",
+        "spec_sha256": "382b4398f2291972c53930355904e267e9ab60c53de4e5d5c695cbc4c3fdb4ad",
+        "status": "waiting_for_training",
+        "launcher_sha256": "61c1df4faf5a60d9aa5ae267e402ce4897d0a9b8fc91bb3e9629888ff26ba814"
+      }
+    },
+    {
+      "task": "walker",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "comparison_reference_run": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101",
+      "comparison_reference_evaluation": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-dms/validation.json",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-dms/spec.json",
+      "cpus": 1,
+      "memory": "4G",
+      "label": "walker-no-input",
+      "mode": "no-input",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 1000000000,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-no-input-fusion-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-walker-no-input-fusion-3m-h100-101",
+      "config": "configs/development/walker-no-input-fusion-3m-h100.json",
+      "frozen_config": "runs/development-residual-fusion-3m-seed101/configs/walker-no-input.json",
+      "config_sha256": "546bb013cf35a538745bbfb36f9f3cf791661abe69683ffe95b2b225c9e6536e",
+      "walltime_hours": 5,
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-walker-no-input-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=5:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/train.sbatch",
+          "walker-no-input"
+        ],
+        "returncode": 0,
+        "stdout": "21280356\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.071787+00:00",
+        "job_id": "21280356"
+      },
+      "job_id": "21280356",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-walker-no-input-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280356",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-no-input/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-no-input/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-no-input/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21280357\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.093383+00:00",
+        "job_id": "21280357",
+        "spec": "runs/development-residual-fusion-3m-seed101/evaluation-walker-no-input/spec.json",
+        "spec_sha256": "1775a11952cbd8c6743c5b38853bf73c9a4e460d015393dcc264cc13fc2ca274",
+        "status": "waiting_for_training",
+        "launcher_sha256": "61c1df4faf5a60d9aa5ae267e402ce4897d0a9b8fc91bb3e9629888ff26ba814"
+      }
+    },
+    {
+      "task": "8m",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "comparison_reference_run": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101",
+      "comparison_reference_evaluation": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-dms/validation.json",
+      "evaluation_spec_template": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-dms/spec.json",
+      "cpus": 4,
+      "memory": "32G",
+      "label": "8m-residual",
+      "mode": "residual",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "smac",
+        "mamujoco_backend": "modern",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "8m_vs_9m",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 20,
+        "parallel_env_steps": true,
+        "mask_inactive_agents": true,
+        "smac_time_limit_terminal": false,
+        "update_mode": "sequential",
+        "total_steps": 3000000,
+        "rollout_steps": 160,
+        "epochs": 5,
+        "minibatch_size": 3200,
+        "hidden_dim": 64,
+        "policy_history_length": 16,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.95,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-8m-residual-fusion-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-8m-residual-fusion-3m-h100-101",
+      "config": "configs/development/8m-residual-fusion-3m-h100.json",
+      "frozen_config": "runs/development-residual-fusion-3m-seed101/configs/8m-residual.json",
+      "config_sha256": "fd2397a8436e6c29703c76cae92b5b4c97070f7ee7058823346bbb6b0bfca1d8",
+      "walltime_hours": 7,
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-8m-residual-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=4",
+          "--mem=32G",
+          "--time=7:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/train.sbatch",
+          "8m-residual"
+        ],
+        "returncode": 0,
+        "stdout": "21280358\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.118019+00:00",
+        "job_id": "21280358"
+      },
+      "job_id": "21280358",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-8m-residual-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280358",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-8m-residual/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-8m-residual/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-8m-residual/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21280359\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.139430+00:00",
+        "job_id": "21280359",
+        "spec": "runs/development-residual-fusion-3m-seed101/evaluation-8m-residual/spec.json",
+        "spec_sha256": "bad30358c5ee78055cc8eddddfae99599c2406306cd71ba2fe8f080870a5514f",
+        "status": "waiting_for_training",
+        "launcher_sha256": "61c1df4faf5a60d9aa5ae267e402ce4897d0a9b8fc91bb3e9629888ff26ba814"
+      }
+    },
+    {
+      "task": "8m",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "comparison_reference_run": "runs/dev-smac-8m_vs_9m-dms-sequential-history16-mask-20env-gamma095-3m-101",
+      "comparison_reference_evaluation": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-dms/validation.json",
+      "evaluation_spec_template": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-dms/spec.json",
+      "cpus": 4,
+      "memory": "32G",
+      "label": "8m-no-input",
+      "mode": "no-input",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "smac",
+        "mamujoco_backend": "modern",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "8m_vs_9m",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 20,
+        "parallel_env_steps": true,
+        "mask_inactive_agents": true,
+        "smac_time_limit_terminal": false,
+        "update_mode": "sequential",
+        "total_steps": 3000000,
+        "rollout_steps": 160,
+        "epochs": 5,
+        "minibatch_size": 3200,
+        "hidden_dim": 64,
+        "policy_history_length": 16,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 1000000000,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.95,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-8m-no-input-fusion-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-8m-no-input-fusion-3m-h100-101",
+      "config": "configs/development/8m-no-input-fusion-3m-h100.json",
+      "frozen_config": "runs/development-residual-fusion-3m-seed101/configs/8m-no-input.json",
+      "config_sha256": "09404cef05b852a5a9ee8b127a0a4a65b1e62732d551a1b79a5ffc3da6d14e19",
+      "walltime_hours": 7,
+      "status": "submitted",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-8m-no-input-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=4",
+          "--mem=32G",
+          "--time=7:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/train.sbatch",
+          "8m-no-input"
+        ],
+        "returncode": 0,
+        "stdout": "21280360\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.158262+00:00",
+        "job_id": "21280360"
+      },
+      "job_id": "21280360",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-residual-8m-no-input-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280360",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-8m-no-input/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-8m-no-input/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-8m-no-input/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21280361\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T09:45:34.178542+00:00",
+        "job_id": "21280361",
+        "spec": "runs/development-residual-fusion-3m-seed101/evaluation-8m-no-input/spec.json",
+        "spec_sha256": "dd956ee47dcf223785c377bef7de6b60e0e5c5619795a9616d4e68a96b300165",
+        "status": "waiting_for_training",
+        "launcher_sha256": "61c1df4faf5a60d9aa5ae267e402ce4897d0a9b8fc91bb3e9629888ff26ba814"
+      }
+    }
+  ],
+  "smokes": [
+    {
+      "label": "walker-reference-default",
+      "task": "walker",
+      "mode": "reference-default",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-stability-pooling-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/walker-reference-default.json",
+      "config_sha256": "4932057b7fdb6a13af8cae691c9b5d95eeec8ec5f1b885b198d5b8efe8e424bd"
+    },
+    {
+      "label": "walker-current-default",
+      "task": "walker",
+      "mode": "current-default",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/walker-current-default.json",
+      "config_sha256": "9e0a10a03899d56ef611499ec5b3310229ce9ec725475541c51855c39a624452"
+    },
+    {
+      "label": "walker-residual",
+      "task": "walker",
+      "mode": "residual",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/walker-residual.json",
+      "config_sha256": "ddfd962e615ac85891f96f60fa463216980621a62c12ffa08911f875d1899568"
+    },
+    {
+      "label": "walker-no-input",
+      "task": "walker",
+      "mode": "no-input",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/walker-no-input.json",
+      "config_sha256": "81b9f94534dbff6d0400d9b4fea8c6778fea4f20c73389b69b13ad5ccda54ca2"
+    },
+    {
+      "label": "8m-reference-default",
+      "task": "8m",
+      "mode": "reference-default",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-stability-pooling-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/8m-reference-default.json",
+      "config_sha256": "e4491981a64cd1818a5af2c8be2574f72d0d0310feb1f39eac4ecc1640c771f3"
+    },
+    {
+      "label": "8m-current-default",
+      "task": "8m",
+      "mode": "current-default",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/8m-current-default.json",
+      "config_sha256": "4a7551bedb50f94485147b47f376b6f71b35a4cea4d76dc65830963ad0850b42"
+    },
+    {
+      "label": "8m-residual",
+      "task": "8m",
+      "mode": "residual",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/8m-residual.json",
+      "config_sha256": "0d4636ede53a8477c80783122fff32be34edac09ff1aeed6af68e3da78388681"
+    },
+    {
+      "label": "8m-no-input",
+      "task": "8m",
+      "mode": "no-input",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/source",
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke-configs/8m-no-input.json",
+      "config_sha256": "7a3da71bc6f016a666c79335329c5b9db8062283fe506de3ab0e02959bd4ffde"
+    }
+  ],
+  "required_validation": [
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation.json",
+      "sha256": "d1549f8d647b4f6b515158ae714782c37a4267cc39f1760473126967e4d3e9f5"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/8m-current-default.json",
+      "sha256": "a7e42fa760ac7b568acb20fe66866f4f9f1b5608983f11f785a923967315d6ae"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/8m-default-regression.json",
+      "sha256": "0ec7e42fd6cff2ac40a5da11cba738105f120d3edb86076ce6a80f1b2bf96aab"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/8m-initial-equivalence.json",
+      "sha256": "685c8c92df92805eebbd42a9c49dd1e8909a3f7abbaa2705ee64042123afa57b"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/8m-no-input.json",
+      "sha256": "edeabc129db49793fdd6ef60ca0b5c75f51c2cca44e2a560061919fa5229dd8c"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/8m-reference-default.json",
+      "sha256": "ed40c1090e76737af77bd33a0f7306c73428c8c0e119cc5d86406135f16eb5b0"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/8m-residual.json",
+      "sha256": "44e83311180e88097dc80d5f1f06701dc7086f2226472096906a265020870d10"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/walker-current-default.json",
+      "sha256": "0c484dc39cb3ac44f57b8d0e6801628097c0f3943e270574f29b543ca433f8aa"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/walker-default-regression.json",
+      "sha256": "76854f341126a992e90055b38c638756bbef58cad7c8e7e796348f44767b6f4a"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/walker-initial-equivalence.json",
+      "sha256": "3e305d864221adefb0729d61230fc48921472822bef179bda88975f706fa1ea0"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/walker-no-input.json",
+      "sha256": "2532b0b9de36e236176acf3eda30f45a3758db70e74122bd528ab99ddd116d12"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/walker-reference-default.json",
+      "sha256": "56df27fd3191b5f90fc433a46680c005f99ee489a4cd8c0c6ba34b5a2d0c5e49"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-validation/walker-residual.json",
+      "sha256": "91581683fc0769e48c46f9e8156ecf22fb09b14662762b6e74d9b09e5f3d2a6c"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-evaluation-walker-residual/validation.json",
+      "sha256": "8875e827104bb5c80ca02fbd802b41db392f7eee58c120e2be570191df610ca3"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-evaluation-walker-no-input/validation.json",
+      "sha256": "aaae326ae79c2bf46eb2eb285d99826b7ea0da22ee34e990c90188a4980893b7"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-evaluation-8m-residual/validation.json",
+      "sha256": "eb869370c6608f3f143f6c44f686fa85b1996c49f4f81e4dd929064f2ca6e0ba"
+    },
+    {
+      "path": "runs/development-residual-fusion-3m-seed101/smoke-evaluation-8m-no-input/validation.json",
+      "sha256": "acf44724dba8f4dd96b10094d7db0b0dd5672ecd61800ab0b2b5b5488bddc1bf"
+    },
+    {
+      "path": "reports/residual-unit-validation.json",
+      "sha256": "12a59a77b4e17c22a356251a1f09bbb763603fdae3981cf09123a204e01c64ed"
+    }
+  ],
+  "hypotheses": [
+    "If wider policy inputs and changed initialization explain the gap, retaining the IPPO local trunk and adding zero-initialized residual intention projections should improve fixed-budget development endpoints.",
+    "If useful intention conditioning is learned, enabled residual fusion should improve over the same residual model trained with all peer gates disabled.",
+    "If input-induced feature drift still dominates, the enabled residual model may trail its paired disabled-input ablation despite identical initial local policy."
+  ],
+  "limits": [
+    "Experimental redesign, not a proven bug fix or performance improvement.",
+    "Same initialization does not imply matching IPPO training RNG after auxiliary sampling.",
+    "One training seed, two tasks, development only; no held-out seeds or best-checkpoint selection.",
+    "Disabled-input models are mechanism ablations and cannot be promoted as DMS."
+  ],
+  "smoke_scripts_sha256": {
+    "smoke_all.py": "7fad59ec239bbbd67973dd3284907d86fc93e98fb9f72b340bf2abf826b9a260",
+    "smoke_case.py": "46489b10f16bcfa243811214d06c640a491d71af28b77143050f12da6c2f4917",
+    "compare_defaults.py": "b8c7524c301080bc188adb80167f3558ca41be23a9b4954eb4008cb035c2f9c5",
+    "initial_equivalence.py": "bc2059558b226df3236028e227d67e2b377aafacccbb4cc1ff4e663fba7f965a",
+    "smoke.sbatch": "065489e38b1d629bb91380f5b9a6fe6210a9d8f565d7e34a5fee4cd77b5f16c9",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "61c1df4faf5a60d9aa5ae267e402ce4897d0a9b8fc91bb3e9629888ff26ba814"
+  },
+  "smoke": {
+    "job_id": "21279768",
+    "status": "completed_pass",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-residual-smoke",
+      "--partition=gpu-h200-141g-ellis,gpu-debug,gpu-a100-80g,gpu-h100-80g",
+      "--gpus=1",
+      "--constraint=ampere|hopper",
+      "--cpus-per-task=4",
+      "--mem=12G",
+      "--time=00:30:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/smoke.sbatch"
+    ],
+    "validation": "runs/development-residual-fusion-3m-seed101/smoke-validation.json",
+    "validation_sha256": "d1549f8d647b4f6b515158ae714782c37a4267cc39f1760473126967e4d3e9f5",
+    "completed_accounting": "21279768|COMPLETED|0:0"
+  },
+  "validation_gated_submission_job": {
+    "job_id": "21279947",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-residual-submit-after-validation",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--dependency=afterok:21279768",
+      "--kill-on-invalid-dep=yes",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/submit.sbatch"
+    ],
+    "submitted_utc": "2026-10-29T09:38:33.196211+00:00"
+  },
+  "scripts_sha256": {
+    "guarded_train.py": "dfc356cab7ee153384905adac6c26c2b08347200915d664723e42ebd0eeb42a0",
+    "train.sbatch": "b48f4d504ee7607111be595b67b91c0066e0bf60a6a78b634f98ea3d917fe3c0",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "61c1df4faf5a60d9aa5ae267e402ce4897d0a9b8fc91bb3e9629888ff26ba814",
+    "refresh_status.py": "a08cc72d8e58f7ec4f100498cc3a26f3d4ae9461c70f6ecd52c3774ea8b1c369",
+    "collect.sbatch": "1b65b01890c386bffbe73a490bc0c3770a469fe0587a3fecb64266eca70d29b6",
+    "submit.py": "c24bbba9996c529fbe83f7367647237ee8c8b3f87f49e4077465944e53b1b66e"
+  },
+  "frozen_after_native_validation_utc": "2026-10-29T09:45:33.993482+00:00",
+  "predeclared_sha256": "5b91bd83dab12f53d06248fc3b19d7093ece4b43554ce04e64d1d9d075dadc99",
+  "completion_collectors": [
+    {
+      "label": "walker-residual",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-residual-collect-walker-residual",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280355",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280362\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T09:45:34.197869+00:00",
+      "job_id": "21280362"
+    },
+    {
+      "label": "walker-no-input",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-residual-collect-walker-no-input",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280357",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280363\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T09:45:34.216734+00:00",
+      "job_id": "21280363"
+    },
+    {
+      "label": "8m-residual",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-residual-collect-8m-residual",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280359",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280364\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T09:45:34.235902+00:00",
+      "job_id": "21280364"
+    },
+    {
+      "label": "8m-no-input",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-residual-collect-8m-no-input",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280361",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280365\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T09:45:34.254743+00:00",
+      "job_id": "21280365"
+    },
+    {
+      "label": "all",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-residual-collect-all",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280354:21280355:21280356:21280357:21280358:21280359:21280360:21280361",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280366\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T09:45:34.273467+00:00",
+      "job_id": "21280366"
+    }
+  ]
+}
