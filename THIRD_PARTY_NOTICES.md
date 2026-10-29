@@ -7,3 +7,5 @@
 SMAC, StarCraft II, Gym/Gymnasium, Gymnasium Robotics, MuJoCo, and mujoco-py are separately installed dependencies or benchmark assets. They retain their own licenses and distribution terms. The root license covers this repository's software; it does not relicense those installations or the supplied manuscript. Reference checkouts, simulator binaries, manuscript sources, downloaded dependencies, and trained checkpoints are not bundled in the Python distribution. The adapted Swimmer XML above is included as package data.
 
 The published method is credited in [CITATION.bib](CITATION.bib). Dependency revisions are recorded in [references.json](references.json), and experiment manifests record the packages and benchmark assets actually used.
+
+The README architecture illustration, `docs/assets/dms-overview.png`, is reproduced from the authors’ supplied DMS manuscript. It depicts the published method and retains the paper illustration’s applicable rights. [Figure provenance](docs/assets/README.md) records its source and pixel-preserving conversion; the software MIT license does not relicense this illustration.

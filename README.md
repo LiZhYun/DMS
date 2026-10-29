@@ -1,99 +1,258 @@
-# DMS: coordination through inferred intentions
+<div align="center">
 
-A readable implementation of **Coordination as Inference in Multi-Agent
-Reinforcement Learning**, published in *Neural Networks* (2024).
-[Citation](CITATION.bib) · [Original paper code](https://github.com/LiZhYun/DMS/tree/legacy-paper-code)
+# Deep Motor System (DMS)
 
-Each agent infers teammates’ intentions from locally observed past actions,
-learns to predict their future behavior, and conditions its own policy on
-relevant inferred intentions. The actor and critic use local information.
-Future actions enter auxiliary training only.
+### Coordination as Inference in Multi-Agent Reinforcement Learning
 
-This is a redesign preserving the method’s core ideas, with explicit
-[implementation differences](docs/IMPLEMENTATION_DECISIONS.md). It is not a
-claim of exact historical training replication or performance above the paper.
-The release focuses on clear code, faithful information flow and runnable examples;
-full-budget runs and the complete experiment matrix are not required.
-[Validation and status](docs/STATUS.md).
+<p>Zhiyuan Li · Lijun Wu · Kaile Su · Wei Wu · Yulin Jing<br>Tong Wu · Weiwei Duan · Xiaofeng Yue · Xiyi Tong · Yizhou Han</p>
 
-## Start here
+**Neural Networks, Volume 172, Article 106101, 2024**
 
-Use Python 3.10. The synthetic example needs no external simulator.
+[**Paper**](https://www.sciencedirect.com/science/article/pii/S0893608024000157) ·
+[**DOI**](https://doi.org/10.1016/j.neunet.2024.106101) ·
+[**Documentation**](docs/METHOD_WALKTHROUGH.md) ·
+[**BibTeX**](#citation) ·
+[**Original Implementation**](https://github.com/LiZhYun/DMS/tree/legacy-paper-code)
 
-```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
-.venv/bin/python -m pip install -e '.[test]'
-.venv/bin/python -m dms.train --config configs/toy_smoke.json \
-  --device cpu --output runs/my-first-dms
-```
+[![Tests](https://github.com/LiZhYun/DMS/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/LiZhYun/DMS/actions/workflows/tests.yml)
+[![Python](https://img.shields.io/badge/Python-3.10-3776AB.svg)](#installation)
+[![Paper](https://img.shields.io/badge/Neural_Networks-2024-8A2BE2.svg)](https://doi.org/10.1016/j.neunet.2024.106101)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-This runs 512 transitions and saves configuration, source, environment metadata,
-training metrics, evaluation episodes and a checkpoint. Use a new output directory
-for each run. The toy task checks execution; its score is not benchmark evidence.
+</div>
 
-Compare the same task with IPPO or exercise policy-KL peer selection:
+---
 
-```bash
-.venv/bin/python -m dms.train --config configs/toy_smoke.json \
-  --algorithm ippo --device cpu --output runs/my-first-ippo
-.venv/bin/python -m dms.train --config configs/toy_causal_smoke.json \
-  --device cpu --output runs/my-first-causal-dms
-```
+DMS studies how independent reinforcement learning agents can coordinate by
+inferring one another’s intentions from observed behavior. This repository
+provides a documented implementation of intention inference, behavior prediction,
+and selective coordination, together with training and evaluation utilities for
+cooperative multi-agent tasks.
 
-The causal smoke computes the selection rule immediately, without the benchmark
-warmup. A short smoke can select no peers; it does not establish a coordination gain.
-Evaluate the saved DMS policy without updating it:
+<p align="center">
+  <img src="docs/assets/dms-overview.png" width="1000" alt="Published DMS architecture: locally observed agent actions feed an intention encoder; inferred intentions are filtered by the coordination module and combined with local observations for actor and critic predictions.">
+</p>
+<p align="center">
+  <em>Architecture of Deep Motor System from Li et al., Neural Networks (2024).</em>
+</p>
 
-```bash
-PYTHONPATH=runs/my-first-dms/source .venv/bin/python -m dms.evaluate \
-  --checkpoint runs/my-first-dms/latest.pt --episodes 10 --seed 20001 \
-  --device cpu --output runs/my-first-dms/checkpoint-evaluation.json
-```
+## Contents
 
-## Follow one training iteration
+- [Overview](#overview)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Benchmarks](#benchmarks)
+- [Documentation](#documentation)
+- [Repository Structure](#repository-structure)
+- [Validation](#validation)
+- [Citation](#citation)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
-[The walkthrough](docs/METHOD_WALKTHROUGH.md) explains the tensor axes, equations
-and collect → PPO → intention-learning loop. Read these files in order:
+## Overview
 
-| File | Responsibility |
+DMS addresses coordination under independent learning through two complementary
+components:
+
+1. **Individual intention inference.** Each observer maintains a conditional
+   generative model of locally observed action histories. A prior infers latent
+   intentions from past behavior; a training-only posterior and an autoregressive
+   decoder learn from completed future behavior.
+2. **Selective coordination.** Each agent conditions its actor and critic on
+   relevant inferred peer intentions. The implementation provides the paper’s
+   policy-KL selection criterion, a soft-attention alternative, and an all-peer
+   comparison.
+
+Actors and critics operate on local information. Unobserved actions remain
+masked, and future action targets are excluded from decision-time inputs.
+
+| Configuration | Coordination mechanism |
 | --- | --- |
-| [envs.py](src/dms/envs.py) | Local observations, observed action sensors, visibility masks and the toy task |
-| [intention.py](src/dms/intention.py) | Past-only prior, training-only posterior, decoder and masked variational loss |
-| [policy.py](src/dms/policy.py) | Independent actor/critic, soft attention and policy-KL peer selection |
-| [returns.py](src/dms/returns.py) | Advantages with distinct terminal and timeout handling |
-| [train.py](src/dms/train.py) | Configuration, collection, PPO, auxiliary updates and checkpointing |
+| `coordination="causal"` | Select peers using the KL divergence between the full policy and the policy with one peer’s intention removed |
+| `coordination="soft"` | Aggregate available peer intentions through attention |
+| `coordination="all"` | Condition on all available peer intentions |
+| `algorithm="ippo"` | Independent PPO baseline without intention conditioning |
 
-The three coordination choices are `soft` (attention), `all` (all available
-peers), and `causal` (the paper’s policy-sensitivity criterion). The last uses
-`KL(full policy || policy without peer)`; it does not identify a causal effect
-on return. Hidden actions stay masked in every variant. The default learning
-base is independent PPO; [sequential updates](docs/SEQUENTIAL_POLICY_UPDATE.md)
-provide the disclosed HAPPO-style alternative.
+The causal score measures policy sensitivity to a peer’s inferred intention; it
+does not by itself identify that peer’s causal effect on episode return.
 
-## Checks and benchmarks
+**Implementation scope.** The figure depicts the published architecture. The
+current code preserves its inference and coordination mechanisms while making
+mathematical corrections and implementation choices explicit. Independent PPO is
+the default learning base; a HAPPO-style sequential update is also available.
+See [implementation decisions](docs/IMPLEMENTATION_DECISIONS.md) for finite
+histories, deterministic prior features, loss normalization, and other changes.
+The original paper code remains available on
+[`legacy-paper-code`](https://github.com/LiZhYun/DMS/tree/legacy-paper-code).
+
+## Installation
+
+The documented environment uses **Python 3.10** and **PyTorch 2.6**. The synthetic
+example runs on CPU without StarCraft II or MuJoCo.
 
 ```bash
-.venv/bin/python -m pytest tests -q
+git clone https://github.com/LiZhYun/DMS.git
+cd DMS
+
+python3.10 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e '.[test]'
 ```
 
-Optional simulator checks skip when their dependencies are unavailable.
-For the tested modern MuJoCo setup, install
-`.venv/bin/python -m pip install -c requirements/modern-constraints.txt -e '.[test,mujoco]'`.
-The pinned setup, separate benchmark tracks and scheduler commands are in:
+For GPU training, install the corresponding PyTorch CUDA wheel instead of the CPU
+wheel. The measured Triton environment uses PyTorch 2.6 with CUDA 12.6; additional
+setup instructions are in the [environment reference](docs/READER_REFERENCE.md).
 
-- [Original SMAC setup](docs/SMAC_ENVIRONMENT.md): official SMAC, maps and a separately installed StarCraft II 4.10.
-- [Historical MuJoCo setup](docs/PORTABLE_LEGACY_SETUP.md) and [containers](containers/README.md): v2 compatibility backend; historical binary parity is qualified.
-- [Extended reader reference](docs/READER_REFERENCE.md): CUDA installation, Triton, config generation, optional research variants and result aggregation.
-- [Validation and scope](docs/STATUS.md): tested behavior, limitations and preserved development evidence.
+### Optional benchmark dependencies
 
-On Triton, submit simulation and tests to compute nodes; for example,
-`sbatch scripts/triton/smoke.sbatch configs/toy_smoke.json runs/triton-toy-101 101`
-after creating `logs/`. Use a compatible PyTorch CUDA build for GPU jobs.
+| Benchmark | Installation and environment requirements |
+| --- | --- |
+| Modern Multi-Agent MuJoCo | `python -m pip install -c requirements/modern-constraints.txt -e '.[test,mujoco]'` |
+| Original SMAC | Official SMAC package, maps, and StarCraft II 4.10; follow the [SMAC setup guide](docs/READER_REFERENCE.md#install) and [environment record](docs/SMAC_ENVIRONMENT.md) |
+| Historical Multi-Agent MuJoCo | Separate Gym-v2 compatibility environment; follow the [native setup](docs/PORTABLE_LEGACY_SETUP.md) or [container guide](containers/README.md) |
 
-Optional policy memory, residual intention inputs, joint prior training and
-auxiliary-first updates are experimental extensions. They are disabled in the
-introductory configs. Their presence does not imply a measured improvement.
+## Quick Start
 
-[MIT license](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md).
-Simulator binaries and private manuscript sources are not distributed.
+### Train DMS
+
+```bash
+python -m dms.train --config configs/toy_smoke.json \
+  --device cpu --output runs/toy-dms
+```
+
+The example completes 512 environment transitions. It exercises collection,
+policy optimization, intention learning, evaluation, and checkpoint saving.
+Each run records its resolved configuration, source snapshot, environment
+metadata, metrics, evaluation episodes, and checkpoint. Use a fresh output
+directory for every run.
+
+### Compare coordination variants
+
+```bash
+# Independent PPO baseline
+python -m dms.train --config configs/toy_smoke.json \
+  --algorithm ippo --device cpu --output runs/toy-ippo
+
+# DMS with policy-KL peer selection
+python -m dms.train --config configs/toy_causal_smoke.json \
+  --device cpu --output runs/toy-dms-causal
+```
+
+The causal example activates the selection rule immediately, without the
+benchmark warmup. Its selected peer set may be empty. These short examples
+validate execution and are not benchmark performance measurements.
+
+### Evaluate a checkpoint
+
+```bash
+PYTHONPATH=runs/toy-dms/source python -m dms.evaluate \
+  --checkpoint runs/toy-dms/latest.pt \
+  --episodes 10 --seed 20001 --device cpu \
+  --output runs/toy-dms/checkpoint-evaluation.json
+```
+
+Evaluation loads the training run’s saved source and uses fresh episode seeds
+with frozen model parameters and normalization statistics.
+
+## Benchmarks
+
+The environment interfaces cover the following task families:
+
+| Environment | Tasks | Track |
+| --- | --- | --- |
+| SMAC | `3s5z`, `8m_vs_9m`, `MMM2` | StarCraft II 4.10 with native local observations and visible ally-action sensors |
+| Multi-Agent MuJoCo | Ant, HalfCheetah, Walker2d with multiple agent partitions | Historical Gym-v2 compatibility backend and a separate modern Gymnasium-v5 adaptation |
+| ManyAgentSwimmer | `10x2` | Supplementary parameter-study environment |
+
+Generate matched configuration files with an explicit training budget:
+
+```bash
+python -m dms.benchmark_configs \
+  --output-dir configs/my-experiments \
+  --steps 3000000 --include-ablations
+```
+
+This command generates configurations only. It defaults to the modern MuJoCo
+track; add `--mamujoco-backend legacy` for historical compatibility configurations.
+Training and evaluation must use the matching simulator dependencies.
+
+Historical and modern environment tracks are reported separately. The
+manuscript’s observation-radius ambiguity and remaining simulator-comparability
+questions are documented in the [paper contract](docs/PAPER_CONTRACT.md).
+Existing development results are available in the [status record](docs/STATUS.md);
+this release does not claim complete replication of the paper’s performance.
+
+## Documentation
+
+| Topic | Guide |
+| --- | --- |
+| Algorithm, equations, and tensor dimensions | [One training iteration](docs/METHOD_WALKTHROUGH.md) |
+| Manuscript correspondence and mathematical corrections | [Paper contract](docs/PAPER_CONTRACT.md) · [Implementation decisions](docs/IMPLEMENTATION_DECISIONS.md) |
+| Training, evaluation, CUDA, and Triton commands | [Extended reader reference](docs/READER_REFERENCE.md) |
+| Original SMAC and historical MuJoCo environments | [SMAC](docs/SMAC_ENVIRONMENT.md) · [MuJoCo](docs/HISTORICAL_ENVIRONMENT.md) |
+| Sequential policy optimization | [HAPPO-style update](docs/SEQUENTIAL_POLICY_UPDATE.md) |
+| Optional research extensions | [Local policy memory](docs/LOCAL_POLICY_MEMORY.md) · [Residual inputs](docs/RESIDUAL_INTENTIONS.md) · [Joint intention training](docs/JOINT_INTENTION_TRAINING.md) |
+| Validation, development evidence, and limitations | [Release status](docs/STATUS.md) |
+
+## Repository Structure
+
+```text
+src/dms/          Intention models, policies, environments, and training loop
+configs/          Runnable examples and benchmark configurations
+scripts/          Evaluation diagnostics and Triton launchers
+tests/            Mathematical, information-flow, and integration checks
+docs/             Method walkthroughs and environment documentation
+containers/       Historical MuJoCo runtime support
+```
+
+For the core implementation, read `intention.py` → `policy.py` → `train.py`.
+[The walkthrough](docs/METHOD_WALKTHROUGH.md) explains the complete data flow.
+
+## Validation
+
+```bash
+python -m pytest tests -q
+```
+
+The suite checks variational inference, visibility masking, sequence boundaries,
+policy likelihood replay, legal actions, timeout handling, and checkpoint
+loading. Optional native-simulator checks require their corresponding runtime.
+[GitHub Actions](https://github.com/LiZhYun/DMS/actions/workflows/tests.yml)
+installs the CPU environment, runs the tests, and builds the package.
+
+The [community validation record](reports/community-release-validation.json)
+reports **545 passed tests and 32 optional checks skipped**, plus wheel
+installation and saved-source evaluation of the IPPO, soft-DMS, and causal-DMS
+examples. These checks establish software behavior, not a benchmark ranking.
+
+## Citation
+
+If you use DMS in your research, please cite:
+
+```bibtex
+@article{li2024coordination,
+  title = {Coordination as inference in multi-agent reinforcement learning},
+  author = {Li, Zhiyuan and Wu, Lijun and Su, Kaile and Wu, Wei and Jing, Yulin and Wu, Tong and Duan, Weiwei and Yue, Xiaofeng and Tong, Xiyi and Han, Yizhou},
+  journal = {Neural Networks},
+  volume = {172},
+  pages = {106101},
+  year = {2024},
+  doi = {10.1016/j.neunet.2024.106101},
+  url = {https://www.sciencedirect.com/science/article/pii/S0893608024000157}
+}
+```
+
+## Acknowledgements
+
+This work uses [SMAC](https://github.com/oxwhirl/smac),
+[Multi-Agent MuJoCo](https://github.com/schroederdewitt/multiagent_mujoco),
+and the Gym/Gymnasium and MuJoCo ecosystems. Adapted source and benchmark assets
+are credited in [third-party notices](THIRD_PARTY_NOTICES.md).
+
+## License
+
+The software is released under the [MIT License](LICENSE). Simulator assets and
+the paper’s illustrations retain their respective licensing terms; figure
+provenance is recorded in [docs/assets](docs/assets/README.md).
