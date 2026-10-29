@@ -34,6 +34,15 @@ flowchart LR
 
 The paper calls the third rule causal selection. Its implemented statistic is policy-distribution sensitivity; it is not an identified causal effect on return. A disclosed additional warmup lets this policy learn sensitivity before hard gating. With only two agents there is at most one peer, so soft attention cannot demonstrate ranking among peers.
 
+Coordination chooses the peer context; `intention_fusion` determines how that
+context enters the networks. The default `concat` appends it to the local
+features. Optional [residual fusion](RESIDUAL_INTENTIONS.md) adds separate
+actor/critic projections to their local features. Those projections start at
+zero, so the initial local policy matches IPPO. This initialization property
+does not promise identical subsequent learning. With optional
+[local policy memory](LOCAL_POLICY_MEMORY.md), the local features come from
+separate actor and critic GRUs over the observer's own observation window.
+
 The collector stores the normalized observations, intention features, gates, sampled actions, log probabilities, and values that actually produced the rollout. Action masks exclude illegal discrete actions. Continuous policies sample only real actuator coordinates; adapters clip executed controls and pad heterogeneous actions only at the environment interface.
 
 ## 2. Update the policy on fixed rollout inputs
@@ -45,6 +54,14 @@ The collector stores the normalized observations, intention features, gates, sam
 ## 3. Learn intentions from completed windows
 
 After the PPO update, the auxiliary update samples past/future action windows that stay inside one episode. The posterior can now use the completed future as a **training target**. The decoder predicts those observed future actions, and a KL term trains the prior to agree with the posterior.
+
+Here, one call to `update` finishes **all PPO epochs and minibatches for all
+agents**, then calls `update_intentions` once. `aux_updates=2` means two
+auxiliary optimizer steps per observer after that complete rollout update,
+using up to `aux_batch_size` completed windows per step. It does not mean two
+auxiliary steps before every PPO minibatch. This is the implemented schedule;
+the manuscript's delayed actor updates and soft intention updates are recorded
+separately in [the implementation decisions](IMPLEMENTATION_DECISIONS.md).
 
 ```mermaid
 flowchart LR
@@ -74,9 +91,14 @@ A useful intention representation should predict better than simple history base
 | Object | Axes |
 | --- | --- |
 | Environment observations | `environment, observer, observation_feature` |
+| Optional local observation window | `environment, observer, policy_history_time, observation_feature_plus_validity` |
 | Action history | `environment, history_time, observer, peer, action_feature` |
 | History visibility | `environment, history_time, observer, peer` |
 | Prior features for a decision | `environment, observer, peer, latent_feature` |
 | One observer's auxiliary batch | `window, time, peer, action_feature` |
 
 The intention model shares its sequence encoder across peers **within one observer**. Different observers have separate model parameters. IPPO uses the same local observations and sensed controls, but skips intention conditioning and auxiliary updates. The current [status](STATUS.md) separates implementation checks from unfinished benchmark acceptance.
+
+The observation-window validity bit stays exactly zero or one through
+normalization. The action-history visibility mask has a different role: it
+states whether that observer sensed each peer action at that time.

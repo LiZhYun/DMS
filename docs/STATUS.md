@@ -270,9 +270,10 @@ or environment changes.
 
 The residual models also have [queued mechanism diagnostics](../reports/development-residual-mechanism-3m-seed101.json):
 Walker **21281731** is running after its completed fixed-3M evaluation; SMAC
-**21281732** remains dependent on its pending evaluation. Both will replay the full 100 normal episodes before paired hold
-and mask interventions, then collect four fresh 128-transition trajectories
-for prediction baselines, latent shuffles and peer-removal sensitivity. Native
+**21281732** remains dependent on its pending evaluation. The Walker job has exactly replayed all 100 normal episodes and is continuing
+its held/masked-input checks. Each job then collects four fresh 128-transition
+trajectories for prediction baselines, latent shuffles and peer-removal
+sensitivity. Full validation remains pending. Native
 smoke **21281659** passed on both tasks with exact saved-episode replay and
 unchanged model/source/checkpoints, without optimizer updates.
 [Validation](../reports/residual-mechanism-native-validation.json).

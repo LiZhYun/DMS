@@ -22,7 +22,7 @@ The optional [local policy memory](docs/LOCAL_POLICY_MEMORY.md) adds a bounded o
 
 The optional [joint intention training](docs/JOINT_INTENTION_TRAINING.md) lets PPO train the local intention encoder as well as the actor and critic. It is disabled by default; native validation has passed, while performance trials remain in development.
 
-The optional [residual intention input](docs/RESIDUAL_INTENTIONS.md) preserves the local IPPO starting point and learns an intention correction. It is an experimental design; the default remains concatenation, and performance improvement has not been established.
+The optional [residual intention input](docs/RESIDUAL_INTENTIONS.md) preserves the local IPPO starting point and learns an intention correction. It is an experimental design; the default remains concatenation, and improvement across independent training seeds has not yet been established.
 
 ## Install
 
