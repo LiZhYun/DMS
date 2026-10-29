@@ -1,8 +1,8 @@
 <div align="center">
 
-# Deep Motor System (DMS)
+# Coordination as Inference in Multi-Agent Reinforcement Learning
 
-### Coordination as Inference in Multi-Agent Reinforcement Learning
+### Deep Motor System (DMS)
 
 <p>Zhiyuan Li · Lijun Wu · Kaile Su · Wei Wu · Yulin Jing<br>Tong Wu · Weiwei Duan · Xiaofeng Yue · Xiyi Tong · Yizhou Han</p>
 
@@ -21,6 +21,9 @@
 </div>
 
 ---
+
+This repository provides the research code for **Coordination as Inference in
+Multi-Agent Reinforcement Learning** (*Neural Networks*, 2024).
 
 DMS studies how independent reinforcement learning agents can coordinate by
 inferring one another’s intentions from observed behavior. This repository
