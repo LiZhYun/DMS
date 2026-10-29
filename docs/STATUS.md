@@ -277,6 +277,15 @@ fraction of sampled action-probability ratios outside [0.8,1.2] falls from
 This supports the local stabilization mechanism, not improved learned returns.
 The previously negative HalfCheetah learning-rate replications remain relevant.
 
+A [representation-alignment probe](../reports/development-walker-history32-representation-drift.json),
+job **21281883**, exactly reproduced ordinary auxiliary drift on those four
+saved rollouts. An affine mapping fitted on two environments reduced mean
+policy KL on the other two from **0.00329292 to 0.00017006** (94.84%). Offset
+and orthogonal corrections helped much less. Decoded forecasts also changed
+at a comparable normalized scale, so they are not established as a more stable
+replacement. This is an offline diagnostic on one failed concat/soft checkpoint;
+original files remain unchanged, and no new training method is promoted.
+
 A [verified twelve-run local archive](../reports/development-conditioning-artifacts-v2.json)
 now preserves all eight completed conditioning/stability/pooling trials and
 four matched H100 controls, including all zero-win SMAC policies. It contains

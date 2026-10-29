@@ -121,3 +121,41 @@ zero. This verifies a local numerical mechanism, not return improvement or
 independent training-seed evidence. The lower rate is being tested separately
 on Walker and SMAC 8m_vs_9m; the negative three-seed HalfCheetah result is not
 superseded. The public training implementation remains unchanged.
+
+**Representation alignment probe, 2026-10-29.** Job **21281883** replayed the
+ordinary auxiliary drift from all four archived Walker history-32 rollouts.
+Each ephemeral update starts from the same saved checkpoint and optimizer
+states as the earlier probe. The actor and its normalization statistics stay
+fixed across the auxiliary step. No original run or source is modified.
+[Evidence](../reports/development-walker-history32-representation-drift.json).
+
+For each observer, a mapping from updated prior means to their pre-update
+values is fitted using environments 0 and 1, then measured only on environments
+2 and 3. No future targets or policy losses enter this fit. The mapping is
+shared across known peers, including the observer's attention query. Four
+rollouts from one checkpoint are not independent training replicates.
+
+| Feature treatment after auxiliary update | Mean policy KL | Likelihood ratios outside [0.8, 1.2] |
+| --- | ---: | ---: |
+| Unmodified updated means | 0.00329292 | 3.3417% |
+| Offset correction | 0.00238936 | 2.3167% |
+| Orthogonal alignment plus offset | 0.00274539 | 2.5875% |
+| General affine alignment | 0.00017006 | 0.0250% |
+
+Affine alignment removes 94.84% of this measured KL on separate histories. The
+design matrices have full rank, and synthetic transforms recover unseen test
+points. Offset and orthogonal corrections remove much less; the evidence does
+not identify a pure rotation or an exact generative-model symmetry.
+
+Decoded four-action forecasts also change: their RMSE is 7.08–13.78% of their
+pre-update within-peer standard deviation, versus 5.73–12.18% for raw latent
+changes. Centering within each peer removes static identity offsets. These
+different feature spaces are not interchangeable effect measures, but the
+forecasts are not established as a more stable replacement. No feature
+transform or additional optimizer setting is promoted from this probe.
+
+The [completed lower-rate learning trials](../reports/stability-pooling-results-20261029.json)
+remain negative: reducing local auxiliary drift did not resolve the Walker or
+SMAC target gaps. A fitted correction on one checkpoint does not establish
+learning stability or improved returns. Residual fusion and its fixed-checkpoint
+mechanism diagnostics remain the active performance tests.

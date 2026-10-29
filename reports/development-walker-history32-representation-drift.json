@@ -1,0 +1,1709 @@
+{
+  "status": "completed_pass",
+  "created_utc": "2026-10-29T11:21:25.752580+00:00",
+  "job_id": "21281883",
+  "accounting": "21281883|COMPLETED|0:0|00:03:43|milan31",
+  "artifact": "runs/walker-history32-representation-drift",
+  "predeclared": {
+    "original_checkpoint": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101/latest.pt",
+    "checkpoint_sha256": "21d8c1bf5c895be18d75eba91961367d60656c7051a1c48e70137a26b06591b5",
+    "source_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+    },
+    "versions": {
+      "torch": "2.6.0+cu126",
+      "numpy": "1.26.4",
+      "protobuf": "6.33.0",
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14"
+    },
+    "config": {
+      "algorithm": "dms",
+      "env": "mamujoco",
+      "mamujoco_backend": "legacy",
+      "scenario": "Walker2d",
+      "ant_contact_forces": "native",
+      "agent_conf": "3x2",
+      "agent_obsk": 1,
+      "map_name": "3s5z",
+      "seed": 101,
+      "device": "cuda",
+      "num_envs": 4,
+      "parallel_env_steps": false,
+      "mask_inactive_agents": false,
+      "update_mode": "independent",
+      "total_steps": 3000000,
+      "rollout_steps": 1000,
+      "epochs": 5,
+      "minibatch_size": 1000,
+      "hidden_dim": 64,
+      "policy_history_length": 32,
+      "initial_log_std": -0.5,
+      "latent_dim": 8,
+      "decoder_history": false,
+      "history_length": 32,
+      "prediction_horizon": 4,
+      "coordination": "soft",
+      "coordination_threshold": 0.6,
+      "short_history": 4,
+      "filter_history": true,
+      "intention_threshold": 10000,
+      "warmup_episodes": 100,
+      "causal_warmup_episodes": 100,
+      "actor_lr": 0.0003,
+      "critic_lr": 0.001,
+      "intention_lr": 0.001,
+      "aux_updates": 2,
+      "aux_batch_size": 64,
+      "kl_beta": 0.1,
+      "latent_samples": 2,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip": 0.2,
+      "value_clip": 0.2,
+      "entropy_coef": 0.0,
+      "value_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "target_kl": 0.02,
+      "eval_every": 1000000,
+      "eval_episodes": 10,
+      "eval_seed": 10001,
+      "output": "runs/dev-legacy-walker2d-3x2-dms-history32-3m-h100-101",
+      "torch_threads": 1
+    },
+    "environment": {
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "historical_binary_parity_verified": false,
+      "scenario": "Walker2d",
+      "native_env_id": "Walker2d-v2",
+      "agent_conf": "3x2",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "walker2d.xml",
+      "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "action_dims": [
+        2,
+        2,
+        2
+      ],
+      "observation_dims": [
+        5,
+        7,
+        6
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+        "alive_bonus_on_terminal": true,
+        "healthy_height_open_interval": [
+          0.8,
+          2.0
+        ],
+        "healthy_angle_open_interval": [
+          -1.0,
+          1.0
+        ]
+      },
+      "frame_skip": 4,
+      "physics_timestep": 0.002,
+      "native_geom_friction": [
+        [
+          0.7,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          1.9,
+          0.1,
+          0.1
+        ]
+      ],
+      "policy_observation_history": {
+        "length": 32,
+        "base_observation_dim": 29,
+        "shape": [
+          3,
+          32,
+          30
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "purpose": "Decompose fixed-history auxiliary representation drift into coordinate alignment and decoded forecast drift; four ephemeral CPU updates, no production change",
+    "artifact": "runs/walker-history32-representation-drift",
+    "source_inventory_sha256": {
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+    },
+    "helper": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/probe.py",
+    "helper_sha256": "d97c8f342d8953dbb84bf2a1551cf77689ecb148613ab744f798931c446bdef5",
+    "rollouts": [
+      {
+        "path": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/rollout.pt",
+        "sha256": "b61490c44d938266d40086ffc40103b8017baac9760ff1d632388b4ffaa6f32b",
+        "update_seed": 400801
+      },
+      {
+        "path": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/400712/rollout.pt",
+        "sha256": "a63d618ceba91a511846781f53a4f868b1b5ff0b1fc4321e1cdb6fc305127d4b",
+        "update_seed": 400802
+      },
+      {
+        "path": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/400713/rollout.pt",
+        "sha256": "abe1fba989bee8023884a7df475bd9585710ace5ffe2e591981831164f763378",
+        "update_seed": 400803
+      },
+      {
+        "path": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/400714/rollout.pt",
+        "sha256": "5f2ec071f40ba0ee4ed9d0fa5b5b92999f5233aa4a1c8eb5c9f22ed741e603e6",
+        "update_seed": 400804
+      }
+    ],
+    "rho": 0.1,
+    "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+    "held_out_training_seeds_used": [],
+    "created_utc": "2026-10-29T11:13:37.980954+00:00",
+    "source_root": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-soft-update-probe/source",
+    "checkpoint": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-soft-update-probe/checkpoint.pt",
+    "reference_result": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-soft-update-probe/result.json",
+    "reference_result_sha256": "6f464d6b735603807088bf6c3bd8a8cf6990679df902b495d4470e915c6e3b87",
+    "alignment": {
+      "fit_environments": [
+        0,
+        1
+      ],
+      "test_environments": [
+        2,
+        3
+      ],
+      "modes": [
+        "raw",
+        "offset",
+        "orthogonal",
+        "affine"
+      ],
+      "fit": "one shared mapping per observer across known peers; no future actions or policy losses",
+      "comparison": "same held-out environment histories before/after one ordinary auxiliary update",
+      "decoded_features": "prior-mean forecast of four future actions, using the same filtered past; real sensed components only"
+    },
+    "hypotheses": [
+      "Coordinate drift predicts a held-out reduction in latent drift and frozen-policy KL after alignment fitted only on other environments.",
+      "Semantic prediction change predicts changes in decoded prior forecasts on identical histories.",
+      "Policy sensitivity predicts appreciable action-distribution KL from small normalized latent drift."
+    ],
+    "limits": [
+      "One late concat/soft Walker checkpoint, not residual models or independent training seeds.",
+      "Alignment to the pre-update model is a diagnostic intervention, not a deployable or trained algorithm.",
+      "These quantities do not demonstrate a cause of return gaps or an improvement.",
+      "No new training hyperparameter grid or held-out training seeds."
+    ],
+    "probe_sha256": "20302037377122d539be58e8ea7f46fb95a05ba3005a3fc8301a24243cef929d",
+    "script_sha256": "4eb89d3f96bf7b870fb3beeb22b54758dcf8586098b5e28591cebf958c2bfe7e"
+  },
+  "submission": {
+    "job_id": "21281883",
+    "submitted_utc": "2026-10-29T11:15:22.738896+00:00",
+    "predeclared_sha256": "1ae6cb1768d4bfb2e27ce23d353e3a61cb79ba055aa2ec069b03773ae287fd05"
+  },
+  "validation": {
+    "success": true,
+    "job_id": "21281883",
+    "completed_utc": "2026-10-29T11:19:00.450523+00:00",
+    "alignment_oracle_passed": true,
+    "original_files_unchanged": true,
+    "source_unchanged": true,
+    "ephemeral_training_updates": 4,
+    "original_training_updates": 0,
+    "results": [
+      {
+        "rollout": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/rollout.pt",
+        "update_seed": 400801,
+        "metrics": {
+          "policy_loss": -0.005049644018436083,
+          "value_loss": 0.08315536621958017,
+          "entropy": 0.8020130554835002,
+          "approx_kl": 0.00582542642005234,
+          "peer_gate_fraction": 0.6623333333333333,
+          "intention_feature_std": 1.1167550086975098,
+          "intention_loss": 0.4200128863255183,
+          "intention_nll": 0.19658654183149338,
+          "intention_kl": 2.2342633803685508,
+          "forecast_target_count": 1792,
+          "forecast_comparison_count": 1792,
+          "forecast_component_count": 3072,
+          "history_baseline_target_count": 1792,
+          "history_baseline_component_count": 3072,
+          "forecast_rmse": 0.5285354448995214,
+          "persistence_rmse": 0.6219594192751243,
+          "history_mean_rmse": 0.6580467986917607,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "reference_policy_kl": 0.003084500397865971,
+        "replayed_policy_kl": 0.003084500397865971,
+        "reference_drift_replayed": true,
+        "actor_and_normalizers_unchanged": true,
+        "visibility_filter_unchanged": true,
+        "observers": [
+          {
+            "observer": 0,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.06399770235236887,
+                  "before_within_peer_std": 0.6796791474127557,
+                  "rmse_over_before_std": 0.09415869619655161
+                },
+                "policy_mean_kl": 0.0017293284181505442,
+                "mean_action_shift_in_old_std": 0.042751044034957886,
+                "ratio_outside_ppo_clip_fraction": 0.012
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.04629027215330014,
+                  "before_within_peer_std": 0.6796791474127557,
+                  "rmse_over_before_std": 0.06810606494182905
+                },
+                "policy_mean_kl": 0.0009477509302087128,
+                "mean_action_shift_in_old_std": 0.03205696865916252,
+                "ratio_outside_ppo_clip_fraction": 0.0045
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    14227.093021459044,
+                    884.655494517324,
+                    384.1380253066177,
+                    140.50928870675156,
+                    8.897009710236254,
+                    5.085860200681485,
+                    1.8795662617037248,
+                    1.0060374899316051
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.04197293174777244,
+                  "before_within_peer_std": 0.6796791474127557,
+                  "rmse_over_before_std": 0.061754037780245616
+                },
+                "policy_mean_kl": 0.0009339131065644324,
+                "mean_action_shift_in_old_std": 0.031063126400113106,
+                "ratio_outside_ppo_clip_fraction": 0.005
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    231.82760020799145,
+                    102.77918627775581,
+                    30.07070958139456,
+                    17.983802115073296,
+                    12.19727925892259,
+                    2.731338275699911,
+                    1.8493593691637835,
+                    1.1052724448232238,
+                    0.6438133845641015
+                  ],
+                  "weight_frobenius_norm": 2.9857096732498287
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.015305196066641184,
+                  "before_within_peer_std": 0.6796791474127557,
+                  "rmse_over_before_std": 0.02251826633920055
+                },
+                "policy_mean_kl": 0.00010585034033283591,
+                "mean_action_shift_in_old_std": 0.009616870433092117,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 23832,
+              "rmse": 0.048521526943393165,
+              "before_within_peer_std": 0.5578059150667367,
+              "rmse_over_before_std": 0.08698639729840078
+            }
+          },
+          {
+            "observer": 1,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.05429376144074908,
+                  "before_within_peer_std": 0.44586128003408404,
+                  "rmse_over_before_std": 0.12177276626622201
+                },
+                "policy_mean_kl": 0.001041931682266295,
+                "mean_action_shift_in_old_std": 0.03836783021688461,
+                "ratio_outside_ppo_clip_fraction": 0.003
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.04435148187455874,
+                  "before_within_peer_std": 0.44586128003408404,
+                  "rmse_over_before_std": 0.09947372391513404
+                },
+                "policy_mean_kl": 0.0009490375523455441,
+                "mean_action_shift_in_old_std": 0.03537609055638313,
+                "ratio_outside_ppo_clip_fraction": 0.004
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    12917.35604804895,
+                    6750.371396055178,
+                    1537.220841453044,
+                    252.58253484435332,
+                    119.22134674289975,
+                    4.800827009295323,
+                    3.9968159199136974,
+                    1.8687022325915927
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.04184343732071723,
+                  "before_within_peer_std": 0.44586128003408404,
+                  "rmse_over_before_std": 0.0938485560296209
+                },
+                "policy_mean_kl": 0.0007829168462194502,
+                "mean_action_shift_in_old_std": 0.03256314992904663,
+                "ratio_outside_ppo_clip_fraction": 0.002
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    185.7611115618118,
+                    84.27128583917566,
+                    69.85915224207353,
+                    35.95966616836468,
+                    14.118175650428492,
+                    10.238080838920022,
+                    2.2005656132184463,
+                    1.8911952988573313,
+                    1.1130984596239457
+                  ],
+                  "weight_frobenius_norm": 3.1387332445551284
+                },
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.015492338043601209,
+                  "before_within_peer_std": 0.44586128003408404,
+                  "rmse_over_before_std": 0.03474699135663203
+                },
+                "policy_mean_kl": 0.00019612001779023558,
+                "mean_action_shift_in_old_std": 0.01580406166613102,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 39720,
+              "rmse": 0.04726242330437392,
+              "before_within_peer_std": 0.34294955125140364,
+              "rmse_over_before_std": 0.13781159103989493
+            }
+          },
+          {
+            "observer": 2,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.04406472157971046,
+                  "before_within_peer_std": 0.47529740367584666,
+                  "rmse_over_before_std": 0.09270978810093113
+                },
+                "policy_mean_kl": 0.007001366000622511,
+                "mean_action_shift_in_old_std": 0.09112893790006638,
+                "ratio_outside_ppo_clip_fraction": 0.079
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.0419647951871579,
+                  "before_within_peer_std": 0.47529740367584666,
+                  "rmse_over_before_std": 0.08829165668192443
+                },
+                "policy_mean_kl": 0.006413670722395182,
+                "mean_action_shift_in_old_std": 0.08873718976974487,
+                "ratio_outside_ppo_clip_fraction": 0.0725
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    7263.154868045004,
+                    3167.3759428426765,
+                    390.4330385883397,
+                    24.687528758557193,
+                    3.3692165509354273,
+                    2.198922303590621,
+                    1.5464673066055346,
+                    0.485208996888326
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.04114974014860114,
+                  "before_within_peer_std": 0.47529740367584666,
+                  "rmse_over_before_std": 0.08657682501599631
+                },
+                "policy_mean_kl": 0.00794125720858574,
+                "mean_action_shift_in_old_std": 0.09127194434404373,
+                "ratio_outside_ppo_clip_fraction": 0.081
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    182.7254790115983,
+                    58.57293576696017,
+                    47.064056365536686,
+                    17.403968224978726,
+                    4.779522178545666,
+                    1.7283943929141916,
+                    1.2721721764406728,
+                    0.9700481454391241,
+                    0.5978907803132332
+                  ],
+                  "weight_frobenius_norm": 3.2900463363856574
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.010348774319561075,
+                  "before_within_peer_std": 0.47529740367584666,
+                  "rmse_over_before_std": 0.021773260782671878
+                },
+                "policy_mean_kl": 0.00021147144434507936,
+                "mean_action_shift_in_old_std": 0.01429281197488308,
+                "ratio_outside_ppo_clip_fraction": 0.0005
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 31776,
+              "rmse": 0.03303285166879606,
+              "before_within_peer_std": 0.34172383780443216,
+              "rmse_over_before_std": 0.09666534205231739
+            }
+          }
+        ]
+      },
+      {
+        "rollout": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/400712/rollout.pt",
+        "update_seed": 400802,
+        "metrics": {
+          "policy_loss": -0.004447943010988335,
+          "value_loss": 0.07198161104073127,
+          "entropy": 0.8012868314981461,
+          "approx_kl": 0.005880869185222157,
+          "peer_gate_fraction": 0.6621666666666667,
+          "intention_feature_std": 1.1170412302017212,
+          "intention_loss": 0.34868499636650085,
+          "intention_nll": 0.12607273436151445,
+          "intention_kl": 2.226122498512268,
+          "forecast_target_count": 1785,
+          "forecast_comparison_count": 1764,
+          "forecast_component_count": 3024,
+          "history_baseline_target_count": 1764,
+          "history_baseline_component_count": 3024,
+          "forecast_rmse": 0.5244684656473323,
+          "persistence_rmse": 0.5953878203760795,
+          "history_mean_rmse": 0.6381734243836725,
+          "history_baseline_coverage_fraction": 0.9882352941176471
+        },
+        "reference_policy_kl": 0.0038392991215611496,
+        "replayed_policy_kl": 0.0038392991215611496,
+        "reference_drift_replayed": true,
+        "actor_and_normalizers_unchanged": true,
+        "visibility_filter_unchanged": true,
+        "observers": [
+          {
+            "observer": 0,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.05108027163099919,
+                  "before_within_peer_std": 0.6762941926476106,
+                  "rmse_over_before_std": 0.07552966177489423
+                },
+                "policy_mean_kl": 0.0009958059526979923,
+                "mean_action_shift_in_old_std": 0.0345216803252697,
+                "ratio_outside_ppo_clip_fraction": 0.0085
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.03640872285353257,
+                  "before_within_peer_std": 0.6762941926476106,
+                  "rmse_over_before_std": 0.05383562841342285
+                },
+                "policy_mean_kl": 0.0007093589520081878,
+                "mean_action_shift_in_old_std": 0.027906231582164764,
+                "ratio_outside_ppo_clip_fraction": 0.007
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    14255.109503946776,
+                    891.0806484192929,
+                    407.8527107632536,
+                    139.84576482394993,
+                    9.578379841562578,
+                    5.146091965188863,
+                    2.057664632963997,
+                    0.9451298269469068
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.03354203695068603,
+                  "before_within_peer_std": 0.6762941926476106,
+                  "rmse_over_before_std": 0.049596813510068706
+                },
+                "policy_mean_kl": 0.0007493006996810436,
+                "mean_action_shift_in_old_std": 0.028002068400382996,
+                "ratio_outside_ppo_clip_fraction": 0.008
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    231.69119767250567,
+                    102.91477476853825,
+                    30.172605201049745,
+                    18.447600144277402,
+                    12.065892178319288,
+                    2.832476212027957,
+                    1.8657787538665596,
+                    1.063855744047709,
+                    0.6621799615733568
+                  ],
+                  "weight_frobenius_norm": 2.9697427519480826
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.012707797645361672,
+                  "before_within_peer_std": 0.6762941926476106,
+                  "rmse_over_before_std": 0.018790339741957814
+                },
+                "policy_mean_kl": 0.00010556646884651855,
+                "mean_action_shift_in_old_std": 0.009663529694080353,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 23832,
+              "rmse": 0.03968720860088428,
+              "before_within_peer_std": 0.5547656501286441,
+              "rmse_over_before_std": 0.07153869132250934
+            }
+          },
+          {
+            "observer": 1,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 5961,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.053007356668263575,
+                  "before_within_peer_std": 0.4418071102664651,
+                  "rmse_over_before_std": 0.11997850518135278
+                },
+                "policy_mean_kl": 0.001023711753077805,
+                "mean_action_shift_in_old_std": 0.03756145015358925,
+                "ratio_outside_ppo_clip_fraction": 0.003
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 5961,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.04619798347474849,
+                  "before_within_peer_std": 0.4418071102664651,
+                  "rmse_over_before_std": 0.10456595740816692
+                },
+                "policy_mean_kl": 0.0008929046452976763,
+                "mean_action_shift_in_old_std": 0.03526192903518677,
+                "ratio_outside_ppo_clip_fraction": 0.0035
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 5961,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    12637.709844598294,
+                    6940.347715125005,
+                    1665.0685760330132,
+                    256.31963281996354,
+                    131.2025466490713,
+                    5.923224870618171,
+                    4.2517973870563335,
+                    1.9998649074815993
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.04356696303701074,
+                  "before_within_peer_std": 0.4418071102664651,
+                  "rmse_over_before_std": 0.09861082364820793
+                },
+                "policy_mean_kl": 0.00072033132892102,
+                "mean_action_shift_in_old_std": 0.032091718167066574,
+                "ratio_outside_ppo_clip_fraction": 0.003
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 5961,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    184.0640727566154,
+                    84.00756540789655,
+                    70.79922162453985,
+                    37.30109577747397,
+                    14.17808879317161,
+                    10.736899491011611,
+                    2.4295528850863626,
+                    1.93483032899712,
+                    1.161814968708078
+                  ],
+                  "weight_frobenius_norm": 3.1182166319064946
+                },
+                "latent_drift": {
+                  "component_count": 47664,
+                  "rmse": 0.016154664997290638,
+                  "before_within_peer_std": 0.4418071102664651,
+                  "rmse_over_before_std": 0.036564972862359206
+                },
+                "policy_mean_kl": 0.0002120270364684984,
+                "mean_action_shift_in_old_std": 0.016303211450576782,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 39720,
+              "rmse": 0.04383881660874706,
+              "before_within_peer_std": 0.3375229177286629,
+              "rmse_over_before_std": 0.12988397026121173
+            }
+          },
+          {
+            "observer": 2,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.04579780415575206,
+                  "before_within_peer_std": 0.4681570825464754,
+                  "rmse_over_before_std": 0.09782572103073027
+                },
+                "policy_mean_kl": 0.00946543924510479,
+                "mean_action_shift_in_old_std": 0.10070320218801498,
+                "ratio_outside_ppo_clip_fraction": 0.1045
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.042015978131560223,
+                  "before_within_peer_std": 0.4681570825464754,
+                  "rmse_over_before_std": 0.08974760758295089
+                },
+                "policy_mean_kl": 0.006195290479809046,
+                "mean_action_shift_in_old_std": 0.08884146064519882,
+                "ratio_outside_ppo_clip_fraction": 0.066
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    7164.626590967404,
+                    3295.631673380194,
+                    425.1561589438612,
+                    27.918482073788432,
+                    3.5849709582515,
+                    2.296673156319689,
+                    1.590030013754679,
+                    0.5388288857465562
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.041084781329403484,
+                  "before_within_peer_std": 0.4681570825464754,
+                  "rmse_over_before_std": 0.08775853845023239
+                },
+                "policy_mean_kl": 0.0076340255327522755,
+                "mean_action_shift_in_old_std": 0.08941477537155151,
+                "ratio_outside_ppo_clip_fraction": 0.0735
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3974,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    182.1498377171677,
+                    58.82525412259454,
+                    47.22912818588394,
+                    18.28640807380242,
+                    5.072530543281456,
+                    1.774305582938229,
+                    1.292629379060453,
+                    1.0033454080131456,
+                    0.6237380068371297
+                  ],
+                  "weight_frobenius_norm": 3.3002662794912836
+                },
+                "latent_drift": {
+                  "component_count": 31776,
+                  "rmse": 0.010929362330570536,
+                  "before_within_peer_std": 0.4681570825464754,
+                  "rmse_over_before_std": 0.023345502477761924
+                },
+                "policy_mean_kl": 0.0002546879113651812,
+                "mean_action_shift_in_old_std": 0.015967832878232002,
+                "ratio_outside_ppo_clip_fraction": 0.0005
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 31776,
+              "rmse": 0.03497744526316661,
+              "before_within_peer_std": 0.33407486959023036,
+              "rmse_over_before_std": 0.10469942054027966
+            }
+          }
+        ]
+      },
+      {
+        "rollout": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/400713/rollout.pt",
+        "update_seed": 400803,
+        "metrics": {
+          "policy_loss": -0.004480277266702614,
+          "value_loss": 0.08379584227999051,
+          "entropy": 0.8013538082440694,
+          "approx_kl": 0.006374713237125739,
+          "peer_gate_fraction": 0.6626666666666666,
+          "intention_feature_std": 1.1168714761734009,
+          "intention_loss": 0.36822691808144253,
+          "intention_nll": 0.1440192839751641,
+          "intention_kl": 2.242076277732849,
+          "forecast_target_count": 1792,
+          "forecast_comparison_count": 1792,
+          "forecast_component_count": 3072,
+          "history_baseline_target_count": 1792,
+          "history_baseline_component_count": 3072,
+          "forecast_rmse": 0.5362314064880324,
+          "persistence_rmse": 0.6436781289377194,
+          "history_mean_rmse": 0.6426289753477408,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "reference_policy_kl": 0.002872981111674259,
+        "replayed_policy_kl": 0.002872981111674259,
+        "reference_drift_replayed": true,
+        "actor_and_normalizers_unchanged": true,
+        "visibility_filter_unchanged": true,
+        "observers": [
+          {
+            "observer": 0,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.04572047760596779,
+                  "before_within_peer_std": 0.6787638874512589,
+                  "rmse_over_before_std": 0.0673584415011338
+                },
+                "policy_mean_kl": 0.0006016186671331525,
+                "mean_action_shift_in_old_std": 0.026427321135997772,
+                "ratio_outside_ppo_clip_fraction": 0.001
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.028292009920485372,
+                  "before_within_peer_std": 0.6787638874512589,
+                  "rmse_over_before_std": 0.04168166639907899
+                },
+                "policy_mean_kl": 0.00040527095552533865,
+                "mean_action_shift_in_old_std": 0.02071470580995083,
+                "ratio_outside_ppo_clip_fraction": 0.0005
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    14041.503231480781,
+                    896.7166559982583,
+                    374.77319260791575,
+                    140.54400257944712,
+                    9.269627619361682,
+                    5.050860639759136,
+                    1.923466243541333,
+                    0.9898504001267447
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.02621626218286609,
+                  "before_within_peer_std": 0.6787638874512589,
+                  "rmse_over_before_std": 0.03862353709079528
+                },
+                "policy_mean_kl": 0.0004191663465462625,
+                "mean_action_shift_in_old_std": 0.02089330367743969,
+                "ratio_outside_ppo_clip_fraction": 0.0015
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    232.7687510057847,
+                    101.84782744362569,
+                    30.220800267559426,
+                    17.713008702718987,
+                    12.04804409115326,
+                    2.8050979973186636,
+                    1.8151292211773167,
+                    1.0773959128507369,
+                    0.6372672583160359
+                  ],
+                  "weight_frobenius_norm": 2.922471609091668
+                },
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.010537952074110893,
+                  "before_within_peer_std": 0.6787638874512589,
+                  "rmse_over_before_std": 0.015525210266681445
+                },
+                "policy_mean_kl": 6.344991561491042e-05,
+                "mean_action_shift_in_old_std": 0.007678105961531401,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 23844,
+              "rmse": 0.04028293924611762,
+              "before_within_peer_std": 0.5568758472519553,
+              "rmse_over_before_std": 0.0723373790493949
+            }
+          },
+          {
+            "observer": 1,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 5967,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47688,
+                  "rmse": 0.0529358732841585,
+                  "before_within_peer_std": 0.44162233093852754,
+                  "rmse_over_before_std": 0.11986684000254282
+                },
+                "policy_mean_kl": 0.000993615365587175,
+                "mean_action_shift_in_old_std": 0.03619522601366043,
+                "ratio_outside_ppo_clip_fraction": 0.0035
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 5967,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47688,
+                  "rmse": 0.04678202540713025,
+                  "before_within_peer_std": 0.44162233093852754,
+                  "rmse_over_before_std": 0.10593220072841418
+                },
+                "policy_mean_kl": 0.0010181170655414462,
+                "mean_action_shift_in_old_std": 0.03652379289269447,
+                "ratio_outside_ppo_clip_fraction": 0.0035
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 5967,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    12792.03589275151,
+                    7028.445890236034,
+                    1601.6150634147195,
+                    252.38273437601313,
+                    118.0670070783673,
+                    5.495550079406938,
+                    3.8402049857434895,
+                    1.9664188080535194
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 47688,
+                  "rmse": 0.04347758353688183,
+                  "before_within_peer_std": 0.44162233093852754,
+                  "rmse_over_before_std": 0.09844969443570502
+                },
+                "policy_mean_kl": 0.0008050973410718143,
+                "mean_action_shift_in_old_std": 0.033172767609357834,
+                "ratio_outside_ppo_clip_fraction": 0.0025
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 5967,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    185.28640422686462,
+                    85.11620759410494,
+                    70.34739367559587,
+                    36.61476970857483,
+                    14.13915434941155,
+                    10.145759871625224,
+                    2.346837148203523,
+                    1.8909326731809013,
+                    1.1368112054148944
+                  ],
+                  "weight_frobenius_norm": 3.151589275252297
+                },
+                "latent_drift": {
+                  "component_count": 47688,
+                  "rmse": 0.016993366025316627,
+                  "before_within_peer_std": 0.44162233093852754,
+                  "rmse_over_before_std": 0.03847940838771138
+                },
+                "policy_mean_kl": 0.00020003292593173683,
+                "mean_action_shift_in_old_std": 0.016073498874902725,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 39740,
+              "rmse": 0.04481586618185865,
+              "before_within_peer_std": 0.33834799991626496,
+              "rmse_over_before_std": 0.13245494636572336
+            }
+          },
+          {
+            "observer": 2,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.03895183992160813,
+                  "before_within_peer_std": 0.4638879945612213,
+                  "rmse_over_before_std": 0.08396820003598408
+                },
+                "policy_mean_kl": 0.006185084115713835,
+                "mean_action_shift_in_old_std": 0.0840914323925972,
+                "ratio_outside_ppo_clip_fraction": 0.0765
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.036976966160312694,
+                  "before_within_peer_std": 0.4638879945612213,
+                  "rmse_over_before_std": 0.07971097892992074
+                },
+                "policy_mean_kl": 0.004009791184216738,
+                "mean_action_shift_in_old_std": 0.07209005206823349,
+                "ratio_outside_ppo_clip_fraction": 0.04
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    7660.821773334857,
+                    3563.284834064057,
+                    414.02982788396264,
+                    25.899854158677083,
+                    3.4015603162318206,
+                    2.2881868536564856,
+                    1.7360610373059011,
+                    0.5336630804718158
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.03623412234541864,
+                  "before_within_peer_std": 0.4638879945612213,
+                  "rmse_over_before_std": 0.07810963588245366
+                },
+                "policy_mean_kl": 0.004850724246352911,
+                "mean_action_shift_in_old_std": 0.07296273857355118,
+                "ratio_outside_ppo_clip_fraction": 0.0505
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3978,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    182.23593823994227,
+                    60.86204649951835,
+                    48.87342682243073,
+                    18.209547863062042,
+                    4.9158003818521046,
+                    1.7345887913770623,
+                    1.3493333769486506,
+                    0.9918203598183071,
+                    0.6329453937876179
+                  ],
+                  "weight_frobenius_norm": 3.202779337626567
+                },
+                "latent_drift": {
+                  "component_count": 31792,
+                  "rmse": 0.009587207039454785,
+                  "before_within_peer_std": 0.4638879945612213,
+                  "rmse_over_before_std": 0.020667072982828664
+                },
+                "policy_mean_kl": 0.0001785984932212159,
+                "mean_action_shift_in_old_std": 0.01344249490648508,
+                "ratio_outside_ppo_clip_fraction": 0.001
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 31792,
+              "rmse": 0.028046098771787258,
+              "before_within_peer_std": 0.3305682098224331,
+              "rmse_over_before_std": 0.08484209291284361
+            }
+          }
+        ]
+      },
+      {
+        "rollout": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-replicates/400714/rollout.pt",
+        "update_seed": 400804,
+        "metrics": {
+          "policy_loss": -0.004830477528351669,
+          "value_loss": 0.10001732744276523,
+          "entropy": 0.8009203771750132,
+          "approx_kl": 0.0059318597212317395,
+          "peer_gate_fraction": 0.6626666666666666,
+          "intention_feature_std": 1.1149404048919678,
+          "intention_loss": 0.3857914408047994,
+          "intention_nll": 0.15559315386538705,
+          "intention_kl": 2.301982879638672,
+          "forecast_target_count": 1792,
+          "forecast_comparison_count": 1792,
+          "forecast_component_count": 3072,
+          "history_baseline_target_count": 1792,
+          "history_baseline_component_count": 3072,
+          "forecast_rmse": 0.5459320979076546,
+          "persistence_rmse": 0.6387134646176528,
+          "history_mean_rmse": 0.665022139867828,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "reference_policy_kl": 0.003315198264317587,
+        "replayed_policy_kl": 0.003315198264317587,
+        "reference_drift_replayed": true,
+        "actor_and_normalizers_unchanged": true,
+        "visibility_filter_unchanged": true,
+        "observers": [
+          {
+            "observer": 0,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.038916074929944734,
+                  "before_within_peer_std": 0.6789954097729651,
+                  "rmse_over_before_std": 0.05731419442578714
+                },
+                "policy_mean_kl": 0.0003939025045838207,
+                "mean_action_shift_in_old_std": 0.021265335381031036,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.023193060387606074,
+                  "before_within_peer_std": 0.6789954097729651,
+                  "rmse_over_before_std": 0.03415790453629298
+                },
+                "policy_mean_kl": 0.0002813449827954173,
+                "mean_action_shift_in_old_std": 0.01690574176609516,
+                "ratio_outside_ppo_clip_fraction": 0.0005
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    13643.89174028483,
+                    868.3239023811883,
+                    375.3242230856543,
+                    134.90121596349726,
+                    9.168067242956687,
+                    4.926517214820692,
+                    1.9908149952543681,
+                    0.9631255571399263
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.02180035031138125,
+                  "before_within_peer_std": 0.6789954097729651,
+                  "rmse_over_before_std": 0.03210677126472859
+                },
+                "policy_mean_kl": 0.0002935333177447319,
+                "mean_action_shift_in_old_std": 0.01712888665497303,
+                "ratio_outside_ppo_clip_fraction": 0.0005
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    233.2178508067441,
+                    100.29063758587242,
+                    29.76648384925832,
+                    17.615953563830164,
+                    11.73962424706529,
+                    2.8040635701896166,
+                    1.767008027429721,
+                    1.0681515385632963,
+                    0.6443419893873125
+                  ],
+                  "weight_frobenius_norm": 2.9306224936832046
+                },
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.009910316986526732,
+                  "before_within_peer_std": 0.6789954097729651,
+                  "rmse_over_before_std": 0.014595558149414344
+                },
+                "policy_mean_kl": 4.901823558611795e-05,
+                "mean_action_shift_in_old_std": 0.0068048955872654915,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 23856,
+              "rmse": 0.039400348457761615,
+              "before_within_peer_std": 0.5562322177388602,
+              "rmse_over_before_std": 0.07083435155541327
+            }
+          },
+          {
+            "observer": 1,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47712,
+                  "rmse": 0.05216577211599545,
+                  "before_within_peer_std": 0.44950909410093093,
+                  "rmse_over_before_std": 0.11605053779909148
+                },
+                "policy_mean_kl": 0.0009547753725200891,
+                "mean_action_shift_in_old_std": 0.0361655130982399,
+                "ratio_outside_ppo_clip_fraction": 0.003
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 47712,
+                  "rmse": 0.04627880697915227,
+                  "before_within_peer_std": 0.44950909410093093,
+                  "rmse_over_before_std": 0.10295410612707431
+                },
+                "policy_mean_kl": 0.000979201402515173,
+                "mean_action_shift_in_old_std": 0.036546189337968826,
+                "ratio_outside_ppo_clip_fraction": 0.002
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    12702.15201167801,
+                    6931.2309521862735,
+                    1512.52633384063,
+                    250.80367593325323,
+                    117.45163135283154,
+                    5.191644139510145,
+                    3.9672784687292424,
+                    1.8999020473723216
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 47712,
+                  "rmse": 0.04330858962335058,
+                  "before_within_peer_std": 0.44950909410093093,
+                  "rmse_over_before_std": 0.09634641477047903
+                },
+                "policy_mean_kl": 0.0007834782591089606,
+                "mean_action_shift_in_old_std": 0.033179089426994324,
+                "ratio_outside_ppo_clip_fraction": 0.001
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 5964,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    184.97881779344692,
+                    84.7136807667494,
+                    69.48425189984097,
+                    35.793793595918906,
+                    14.050097016164349,
+                    10.151430199886693,
+                    2.245041659989297,
+                    1.929136431315998,
+                    1.1297474195204718
+                  ],
+                  "weight_frobenius_norm": 3.129770994549752
+                },
+                "latent_drift": {
+                  "component_count": 47712,
+                  "rmse": 0.016860705232239447,
+                  "before_within_peer_std": 0.44950909410093093,
+                  "rmse_over_before_std": 0.0375091526589974
+                },
+                "policy_mean_kl": 0.00020859373034909368,
+                "mean_action_shift_in_old_std": 0.01652700826525688,
+                "ratio_outside_ppo_clip_fraction": 0.0
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 39760,
+              "rmse": 0.04424681877597503,
+              "before_within_peer_std": 0.3443877638407872,
+              "rmse_over_before_std": 0.12847964829676886
+            }
+          },
+          {
+            "observer": 2,
+            "variants": [
+              {
+                "mode": "raw",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.04543814422828369,
+                  "before_within_peer_std": 0.4773699291918715,
+                  "rmse_over_before_std": 0.0951843454094498
+                },
+                "policy_mean_kl": 0.009128413163125515,
+                "mean_action_shift_in_old_std": 0.10251545906066895,
+                "ratio_outside_ppo_clip_fraction": 0.107
+              },
+              {
+                "mode": "offset",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {},
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.041914753790626,
+                  "before_within_peer_std": 0.4773699291918715,
+                  "rmse_over_before_std": 0.0878035067302679
+                },
+                "policy_mean_kl": 0.005870538763701916,
+                "mean_action_shift_in_old_std": 0.08719675987958908,
+                "ratio_outside_ppo_clip_fraction": 0.074
+              },
+              {
+                "mode": "orthogonal",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "singular_values": [
+                    7308.498006017619,
+                    3418.604865454221,
+                    356.80107723010127,
+                    25.452549394868825,
+                    3.551593606226032,
+                    2.3346045239520876,
+                    1.5799364935759814,
+                    0.4898917114622961
+                  ]
+                },
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.04112764912255145,
+                  "before_within_peer_std": 0.4773699291918715,
+                  "rmse_over_before_std": 0.08615467084861314
+                },
+                "policy_mean_kl": 0.007030967157334089,
+                "mean_action_shift_in_old_std": 0.08806430548429489,
+                "ratio_outside_ppo_clip_fraction": 0.082
+              },
+              {
+                "mode": "affine",
+                "calibration_latents": 3976,
+                "evaluation_policy_count": 2000,
+                "fit": {
+                  "rank": 9,
+                  "singular_values": [
+                    181.68803059807883,
+                    58.786019955864376,
+                    48.82946539803426,
+                    16.713289517107793,
+                    4.828947834823437,
+                    1.7477418893233192,
+                    1.320444086351472,
+                    0.9944996238385216,
+                    0.5954770193121764
+                  ],
+                  "weight_frobenius_norm": 3.3296238554194444
+                },
+                "latent_drift": {
+                  "component_count": 31808,
+                  "rmse": 0.011043400623170458,
+                  "before_within_peer_std": 0.4773699291918715,
+                  "rmse_over_before_std": 0.023133842221410083
+                },
+                "policy_mean_kl": 0.00025527607067488134,
+                "mean_action_shift_in_old_std": 0.01542916800826788,
+                "ratio_outside_ppo_clip_fraction": 0.001
+              }
+            ],
+            "decoded_forecast_drift": {
+              "component_count": 31808,
+              "rmse": 0.035133339902231005,
+              "before_within_peer_std": 0.34172970019572535,
+              "rmse_over_before_std": 0.10281032020953525
+            }
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "One late concat/soft Walker checkpoint, not residual models or independent training seeds.",
+      "Alignment to the pre-update model is a diagnostic intervention, not a deployable or trained algorithm.",
+      "These quantities do not demonstrate a cause of return gaps or an improvement.",
+      "No new training hyperparameter grid or held-out training seeds."
+    ]
+  },
+  "summary": {
+    "raw": {
+      "policy_mean_kl": 0.003292916020048627,
+      "ratio_outside_ppo_clip_fraction": 0.033416666666666664,
+      "mean_action_shift_in_old_std": 0.054307869325081505,
+      "latent_rmse_over_before_std_range": [
+        0.05731419442578714,
+        0.12177276626622201
+      ],
+      "calibration_only_environments": [
+        0,
+        1
+      ],
+      "evaluation_only_environments": [
+        2,
+        3
+      ],
+      "policy_evaluation_count": 24000
+    },
+    "offset": {
+      "policy_mean_kl": 0.0023893564696966982,
+      "ratio_outside_ppo_clip_fraction": 0.023166666666666665,
+      "mean_action_shift_in_old_std": 0.04817975933353106,
+      "latent_rmse_over_before_std_range": [
+        0.03415790453629298,
+        0.10593220072841418
+      ],
+      "calibration_only_environments": [
+        0,
+        1
+      ],
+      "evaluation_only_environments": [
+        2,
+        3
+      ],
+      "policy_evaluation_count": 24000
+    },
+    "orthogonal": {
+      "policy_mean_kl": 0.002745392615906894,
+      "ratio_outside_ppo_clip_fraction": 0.025875000000000002,
+      "mean_action_shift_in_old_std": 0.047483989503234625,
+      "latent_rmse_over_before_std_range": [
+        0.03210677126472859,
+        0.09861082364820793
+      ],
+      "calibration_only_environments": [
+        0,
+        1
+      ],
+      "evaluation_only_environments": [
+        2,
+        3
+      ],
+      "policy_evaluation_count": 24000
+    },
+    "affine": {
+      "policy_mean_kl": 0.0001700577158771921,
+      "ratio_outside_ppo_clip_fraction": 0.00025,
+      "mean_action_shift_in_old_std": 0.0131336241417254,
+      "latent_rmse_over_before_std_range": [
+        0.014595558149414344,
+        0.03847940838771138
+      ],
+      "calibration_only_environments": [
+        0,
+        1
+      ],
+      "evaluation_only_environments": [
+        2,
+        3
+      ],
+      "policy_evaluation_count": 24000
+    },
+    "decoded_forecast": {
+      "rmse_range": [
+        0.028046098771787258,
+        0.048521526943393165
+      ],
+      "rmse_over_before_std_range": [
+        0.07083435155541327,
+        0.13781159103989493
+      ]
+    },
+    "affine_policy_kl_reduction_fraction": 0.9483564977540239
+  },
+  "evidence_sha256": {
+    "runs/walker-history32-representation-drift/predeclared.json": "1ae6cb1768d4bfb2e27ce23d353e3a61cb79ba055aa2ec069b03773ae287fd05",
+    "runs/walker-history32-representation-drift/probe.py": "20302037377122d539be58e8ea7f46fb95a05ba3005a3fc8301a24243cef929d",
+    "runs/walker-history32-representation-drift/run.sbatch": "4eb89d3f96bf7b870fb3beeb22b54758dcf8586098b5e28591cebf958c2bfe7e",
+    "runs/walker-history32-representation-drift/result.json": "268eb9beb67a85a8f06b0cd9cdca7022562c8cb1a7712be63beb509e826b4bfe"
+  },
+  "interpretation": [
+    "A fitted general affine correction removes most of the measured policy drift on separate environment histories.",
+    "Offset-only or orthogonal alignment removes much less; this is not evidence of a pure rotation.",
+    "Decoded forecasts also change at comparable normalized scale, so they are not established as a more stable replacement.",
+    "No return result, production feature transform, optimizer change, or threshold is promoted."
+  ]
+}
