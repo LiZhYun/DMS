@@ -38,7 +38,7 @@ retained unchanged. Both reference checkpoints are now included in the
 
 ## Declared learning comparison
 
-The [campaign ledger](../reports/development-ant-entropy-3m-seed101.json)
+The [current campaign ledger](../reports/development-ant-entropy-3m-seed101-attempt2.json)
 freezes one fresh IPPO/DMS pair at **3M transitions**, development training
 seed **101**, on **H100**. Each configuration changes only entropy coefficient
 **0 → 0.1** and output path relative to its corresponding completed reference.
@@ -65,14 +65,37 @@ unchanged learner state and zero optimizer steps. Neither algorithm source
 nor the declared training settings changed.
 [Native validation](../reports/ant-entropy-native-validation.json).
 
-The guarded launcher checked all eight required evidence files and submitted:
+The [first full submission](../reports/development-ant-entropy-3m-seed101.json)
+passed its eight evidence checks, but jobs **21282324 / 21282326** failed before
+training. The launcher called `train.runtime_metadata`, which is absent from
+the unchanged archived trainer. Only dependency manifests were written: both
+runs collected **zero transitions**, and their dependent evaluations were
+cancelled. The failed scripts, declarations, logs and output directories remain
+intact. The earlier native checks exercised training and evaluation, but did
+not execute this launcher metadata call.
+
+The retry records runtime provenance directly in the launcher, without changing
+the archived algorithm. It uses separate output/configuration paths and the
+same H100 requirement, seed, entropy setting and 3M budget. Native job
+**21282799** passed both algorithms through the exact revised launcher at
+8,000 transitions, then separately evaluated each saved checkpoint. The
+100-episode warmup stays intact in this launcher check; the earlier active-DMS
+smoke remains required evidence. Source, checkpoints and evaluation state stayed
+unchanged, with zero optimizer updates during evaluation.
+[Exact-launcher validation](../reports/ant-entropy-launcher-validation.json).
+The launcher records accelerator and library details before `train.run`. Its
+numerical flags describe that preflight moment: the archived seeding routine
+subsequently enables deterministic cuDNN and disables cuDNN benchmarking.
+Do not interpret the preflight flags as a measurement of the later training state.
+
+The retry submission verified **13 evidence files** and queued:
 
 | Algorithm | Fresh 3M training job | Fixed 100-episode evaluation job |
 | --- | --- | --- |
-| IPPO | 21282324 | 21282325 |
-| DMS | 21282326 | 21282327 |
+| IPPO | 21282828 | 21282829 |
+| DMS | 21282830 | 21282831 |
 
-Three dependent collectors (**21282328–21282330**) preserve the outcomes.
-Both training jobs are queued for the same H100 family as their references.
+Three dependent collectors (**21282832–21282834**) preserve the outcomes. The
+first attempt remains a failed launcher check, not an unsuccessful learning run.
 
 No learning-performance result is available for this comparison yet.

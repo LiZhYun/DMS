@@ -1,0 +1,113 @@
+{
+  "success": true,
+  "purpose": "Audit the first two completed partition baselines without treating the two live runs as completed",
+  "created_utc": "2026-10-29T12:27:55.278839+00:00",
+  "source_ledger": "reports/development-partition-baselines-3m-seed101.json",
+  "frozen_ledger": "runs/partition-baselines-results-20261029-partial/source-ledger.json",
+  "frozen_ledger_sha256": "b48f99f6c3e46755c704710028162c1b3c76ae4a63643e2d3a5816cb34f7f1f3",
+  "scheduler": "21280632|COMPLETED|0:0|01:56:31|gpu57\n21280633|COMPLETED|0:0|00:10:10|milan32\n21280636|COMPLETED|0:0|01:43:21|gpu57\n21280637|COMPLETED|0:0|00:01:29|milan32\n21280640|COMPLETED|0:0|00:00:01|milan32\n21280642|COMPLETED|0:0|00:00:01|milan32",
+  "completed_runs": [
+    {
+      "label": "ant-2x4-ippo",
+      "output": "runs/dev-ant-2x4-ippo-history32-3m-101",
+      "training_job_id": "21280632",
+      "evaluation_job_id": "21280633",
+      "training_steps": 3000000,
+      "training_seed": 101,
+      "validation": "runs/development-partition-baselines-3m-seed101/evaluation-ant-2x4-ippo/validation.json",
+      "validation_sha256": "0bf5fe2818306d067fb3e97589bf9d2e0a8072d5845414e8ed77a7b9e9a2fe6e",
+      "checkpoint_sha256": "44335da6d0246f75ac0de590eacdda30f62696f9e9141fc1f89ade25bcfd1712",
+      "evaluation_output_sha256": "8d754ee6fb420fae94f0142ba90aa6752c50aba0d5cde90a29a82aeeb06de766",
+      "episodes": 100,
+      "evaluation_seed_start": 400101,
+      "evaluation_seed_end": 400200,
+      "return_mean": 936.7590446137843,
+      "length_mean": 1000,
+      "length_min": 1000,
+      "length_max": 1000,
+      "episodes_below1000_steps": 0,
+      "source_inventory_matches": true,
+      "environment_matches": true,
+      "checkpoint_and_state_unchanged": true,
+      "optimizer_step_calls": 0,
+      "all_training_metrics_finite": true,
+      "engineering_target_at10m": 1900,
+      "training_runtime": {
+        "host": "gpu57.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21280632",
+        "slurm_partition": "gpu-h200-141g-ellis",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA H200",
+          "capability": [
+            9,
+            0
+          ],
+          "total_memory_bytes": 150109880320,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      }
+    },
+    {
+      "label": "walker-2x3-ippo",
+      "output": "runs/dev-walker-2x3-ippo-history32-3m-101",
+      "training_job_id": "21280636",
+      "evaluation_job_id": "21280637",
+      "training_steps": 3000000,
+      "training_seed": 101,
+      "validation": "runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/validation.json",
+      "validation_sha256": "91f2718217a13f5801e264ad7363a8d4cdd803ecffda4842ac411c2f43d6423c",
+      "checkpoint_sha256": "978945dcf304385a6376112ac88be8f60f2123df3a0813c00463ef9216331182",
+      "evaluation_output_sha256": "7727df331a7c26adaebe137670f0c7e86a75a3d6cab0eadd2c0782a6fb23549a",
+      "episodes": 100,
+      "evaluation_seed_start": 400101,
+      "evaluation_seed_end": 400200,
+      "return_mean": 412.09232365071773,
+      "length_mean": 153.11,
+      "length_min": 146,
+      "length_max": 163,
+      "episodes_below1000_steps": 100,
+      "source_inventory_matches": true,
+      "environment_matches": true,
+      "checkpoint_and_state_unchanged": true,
+      "optimizer_step_calls": 0,
+      "all_training_metrics_finite": true,
+      "engineering_target_at10m": 850,
+      "training_runtime": {
+        "host": "gpu57.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21280636",
+        "slurm_partition": "gpu-h200-141g-ellis",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA H200",
+          "capability": [
+            9,
+            0
+          ],
+          "total_memory_bytes": 150109880320,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      }
+    }
+  ],
+  "pending_labels": [
+    "ant-8x1-ippo",
+    "walker-6x1-ippo"
+  ],
+  "held_out_training_seeds_used": [],
+  "scope": "Two IPPO controls, one development training seed, 3M transitions. Below the full-10M engineering targets; no DMS, replication or final-budget conclusion."
+}

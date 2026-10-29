@@ -1,0 +1,175 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "job_id": "21282799",
+  "accounting": "21282799|COMPLETED|0:0|00:03:47|gpu39",
+  "purpose": "Validate the exact revised archived-source training launcher and checkpoint evaluator before repeating the same Ant entropy protocol",
+  "previous_failed_training_attempt": {
+    "ledger": "reports/development-ant-entropy-3m-seed101.json",
+    "sha256": "fb6616dfadee539f789669a77d547e264018ed1485b603f116e690049101cae5",
+    "jobs": [
+      "21282324",
+      "21282326"
+    ],
+    "new_training_steps": 0,
+    "reason": "Launcher called runtime_metadata, which is absent from the unchanged archived trainer."
+  },
+  "artifact": "runs/development-ant-entropy-3m-seed101-attempt2",
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "checks": [
+    {
+      "label": "ant-ippo",
+      "training_steps": 8000,
+      "finite_updates": 2,
+      "exact_launcher_executed": true,
+      "integrity": {
+        "job_id": "21282799",
+        "source_unchanged": true,
+        "saved_source_matches": true,
+        "config_unchanged": true,
+        "host_process_peak_rss_bytes": 2097520640,
+        "gpu_peak_allocated_bytes": 534885888,
+        "completed_utc": "2026-10-29T12:18:40.639552+00:00"
+      },
+      "saved_source_evaluation": {
+        "success": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "optimizer_step_calls": 0,
+        "learner_state_unchanged": true,
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "checkpoint_sha256": "48c82580a015f011629a80ae713b1fd71d3f493f2f57936de8843e040a692069",
+        "evaluation_output_sha256": "f6662a8425fc51cb339b594c27733532171cd9ed24fe09ce497b9d185f4483f5"
+      },
+      "evaluation_episode_seeds": [
+        400305,
+        400306
+      ],
+      "launcher_preflight_runtime": {
+        "host": "gpu39.int.triton.aalto.fi",
+        "device": "cuda",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "capability": [
+          8,
+          0
+        ],
+        "torch_version": "2.6.0+cu126",
+        "cuda_version": "12.6",
+        "cudnn_version": 90501,
+        "slurm_job_id": "21282799",
+        "slurm_partition": "gpu-debug",
+        "cuda_visible_devices": "0",
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": true,
+        "cudnn_deterministic": false,
+        "cudnn_benchmark": false,
+        "deterministic_algorithms": false,
+        "torch_threads": 1
+      }
+    },
+    {
+      "label": "ant-dms",
+      "training_steps": 8000,
+      "finite_updates": 2,
+      "exact_launcher_executed": true,
+      "integrity": {
+        "job_id": "21282799",
+        "source_unchanged": true,
+        "saved_source_matches": true,
+        "config_unchanged": true,
+        "host_process_peak_rss_bytes": 2146127872,
+        "gpu_peak_allocated_bytes": 541345280,
+        "completed_utc": "2026-10-29T12:20:30.796650+00:00"
+      },
+      "saved_source_evaluation": {
+        "success": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "optimizer_step_calls": 0,
+        "learner_state_unchanged": true,
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "checkpoint_sha256": "dba03ebdd4c624b24c6145633f7e50b250af69f1eac26d81e136f6463fdf4b5d",
+        "evaluation_output_sha256": "1557ccf339155d80d1b66b495a40fbf5ed238c272f84841cb958fca3cce9af14"
+      },
+      "evaluation_episode_seeds": [
+        400305,
+        400306
+      ],
+      "launcher_preflight_runtime": {
+        "host": "gpu39.int.triton.aalto.fi",
+        "device": "cuda",
+        "gpu_name": "NVIDIA A100-SXM4-80GB",
+        "capability": [
+          8,
+          0
+        ],
+        "torch_version": "2.6.0+cu126",
+        "cuda_version": "12.6",
+        "cudnn_version": 90501,
+        "slurm_job_id": "21282799",
+        "slurm_partition": "gpu-debug",
+        "cuda_visible_devices": "0",
+        "matmul_allow_tf32": false,
+        "cudnn_allow_tf32": true,
+        "cudnn_deterministic": false,
+        "cudnn_benchmark": false,
+        "deterministic_algorithms": false,
+        "torch_threads": 1
+      }
+    }
+  ],
+  "evidence_sha256": {
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-predeclared.json": "e2ae310ad44cfb090a72e54fdbfff4f40a9c53f822bcdc4b1c54c794ffa0735e",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-v2-validation.json": "3904fd16ec3c8e03cec0b378e41a00545c4f83dbf329341aee336340b24686e1",
+    "runs/development-ant-entropy-3m-seed101-attempt2/guarded_train.py": "c0d54010c99947f182931d31a7be687c5b89eeec6b62edfbae98906c8e2719a1",
+    "runs/development-ant-entropy-3m-seed101-attempt2/train.sbatch": "32c9c9cbc19dbbfa1b6649285f3bd78f7c2c4ac05928a118f7232a46b93917fe",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke_all.py": "2395db763512268dc6a674b6850034b339aac135672a4ce0878bd4aa33750f5f",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke.sbatch": "6b5b9a1f49b9c49d75a066b0a6ba33113a0390f9e6ad69730fbbab37f308e167",
+    "runs/development-ant-entropy-3m-seed101-attempt2/evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "runs/development-ant-entropy-3m-seed101-attempt2/evaluation/evaluate.sbatch": "c4fc6d45a977d38313a0a1ebcfbf0d9088a0c45a52f4d85b287088f3e38e95f1",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-v2-validation/smoke-ant-ippo.json": "b2430889326522d380c41d1e459884e38ba636e05a44f0388663c8cbcb420d8a",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-v2-evaluation-ant-ippo/validation.json": "b39a5ffe425e083fed95ca5e085881c402f9f59f4f9e14f58ccecdd5dad30d1f",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-v2-evaluation-ant-ippo/development-evaluation-2.json": "f6662a8425fc51cb339b594c27733532171cd9ed24fe09ce497b9d185f4483f5",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-ant-ippo-runtime-preflight.json": "19be35fb57bdc0eec8ec56d1c6bf436439f9eebdbb02360dd2eb240005b080f7",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-ant-ippo-final-integrity.json": "e203fcf8f9ba39670c9c9e7ba6a317f43802abf47127f1c7db23f9fb1b757c9f",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-v2-validation/smoke-ant-dms.json": "6acc4e2e084bf62747a0b8d1cf4743482544dea92e910bee88d7d466e2cab51a",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-v2-evaluation-ant-dms/validation.json": "5269bd31212f3f72c111b816e1abfb967e28542386fa84f96790c23b6adc8f22",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-v2-evaluation-ant-dms/development-evaluation-2.json": "1557ccf339155d80d1b66b495a40fbf5ed238c272f84841cb958fca3cce9af14",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-ant-dms-runtime-preflight.json": "96fbaa747379a062cd913be47d642d9acc026ac964157accab94085cc388ca44",
+    "runs/development-ant-entropy-3m-seed101-attempt2/smoke-ant-dms-final-integrity.json": "b1b1e066d32a6544ab7e36e6e52e21dd5040829e4309da7e1a9d18c28442af2f"
+  },
+  "limits": [
+    "Validation uses 8,000 transitions per algorithm on A100, not full H100 performance.",
+    "The original 100-episode warmup is retained here; earlier native job21282286 separately exercised active DMS inputs with warmup disabled.",
+    "Only the launcher changes. The frozen trainer and declared hyperparameters match the initial full submission, with new output locations.",
+    "Launcher numeric flags are observed before train.run. The archived seed routine subsequently sets cudnn.benchmark=False and cudnn.deterministic=True; do not treat preflight flags as an observation of the later training state."
+  ],
+  "created_utc": "2026-10-29T12:23:38.078196+00:00"
+}

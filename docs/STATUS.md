@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 11:53 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 12:28 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -32,6 +32,8 @@ are not independent training replicates.
 | Ant 4x2, 10M, native contacts, CPU | 964.76 | 950.75 | Both below 1,700 target |
 | Ant 4x2, 10M, computed contacts, CPU | 606.74 | 905.45 | Separate environment adaptation |
 | Ant 4x2, 3M, history 32, native contacts, H100 | 1,055.41 | 1,111.47 | Both below 1,700 target; all episodes last 1,000 steps |
+| Ant 2x4, 3M, history 32, native contacts, H200 | 936.76 | — | IPPO only; below 1,900 full-budget target |
+| Walker2d 2x3, 3M, history 32, H200 | 412.09 | — | IPPO only; below 850 full-budget target |
 
 [The 3M evaluation ledger](../reports/development-fixed3m-evaluation-queue.json)
 and [Walker ledger](../reports/development-walker-10m-seed101.json) retain every
@@ -205,10 +207,10 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-Walker residual job **21280354** has reached **1,516,000 steps** and its
-trained no-input control **21280356** has reached **1,784,000 steps**, both on
-H100. SMAC residual **21280358** has reached **1,027,200 steps** and its
-no-input control **21280360** has reached **697,600 steps**, also on H100.
+Walker residual job **21280354** has reached **1,924,000 steps** and its
+trained no-input control **21280356** has reached **2,280,000 steps**, both on
+H100. SMAC residual **21280358** has reached **1,353,600 steps** and its
+no-input control **21280360** has reached **1,043,200 steps**, also on H100.
 All four are running with finite latest metrics. Evaluations and collectors
 remain dependent on completion. No fixed-endpoint performance result is
 available for residual fusion yet.
@@ -245,10 +247,23 @@ and submitted the four fixed-3M controls:
 | Walker 2x3 | 21280636 | 21280637 |
 | Walker 6x1 | 21280638 | 21280639 |
 
-All four partition controls are now running. Ant 2x4 **21280632** has reached
-**2,532,000 steps** and Walker 2x3 **21280636** has reached **2,200,000 steps**,
-both on H200. Ant 8x1 **21280634** is at **196,000 steps** and Walker 6x1
-**21280638** is at **188,000 steps**, both on H100. Latest metrics are finite.
+The first two fixed-3M baselines have completed training, separate 100-episode
+evaluations and their collectors on H200. An [independent partial audit](../reports/partition-baselines-results-20261029-partial.json)
+verified all six jobs, checkpoint/evaluation hashes, source inventories, exact
+seed blocks, finite metrics, unchanged evaluation state and zero optimizer steps.
+
+| IPPO partition | Mean return | Mean episode length | Episodes below 1,000 steps |
+| --- | ---: | ---: | ---: |
+| Ant 2x4 | 936.76 | 1,000.00 | 0 / 100 |
+| Walker 2x3 | 412.09 | 153.11 | 100 / 100 |
+
+Both are below the full-10M engineering targets at this shorter development
+budget. These are baseline results, not DMS measurements. Ant's return after
+subtracting its alive bonus is −63.24; this combines forward movement and
+control/contact costs. Walker ends early in every episode. The stronger earlier
+Walker3x2 history-32 control does not transfer automatically to this partition;
+that comparison also used a different GPU family. Ant 8x1 **21280634** and
+Walker 6x1 **21280638** remain running on H100, with evaluations already queued.
 Each actual GPU family is recorded and must be matched by that partition's
 future DMS comparison. Five dependent collectors preserve the results
 automatically. This fills baseline coverage while residual DMS remains under
@@ -261,11 +276,18 @@ log-standard-deviation components; coefficients 0, 0.001 and 0.01 did not.
 This is an update-level observation, not a learning-performance result. A
 matched fresh **3M H100 IPPO/DMS** comparison changes only entropy **0 → 0.1**
 and output relative to each original history-32 reference. Native smoke
-**21282286** passed both 8,000-step training cases and saved-source evaluations
-with unchanged state and zero optimizer updates. The launcher verified all
-eight required evidence files and queued training **21282324 / 21282326**,
-fixed 100-episode evaluations **21282325 / 21282327** and three collectors.
-[Declared settings and validation](../reports/development-ant-entropy-3m-seed101.json).
+**21282286** passed both 8,000-step training cases and saved-source evaluations.
+The first full jobs **21282324 / 21282326** failed before collecting any
+transitions because their launcher called a metadata helper absent from the
+archived trainer; their dependent evaluations were cancelled. The source and
+hyperparameters remain unchanged. Exact-launcher validation **21282799**
+passed both 8,000-step cases and separate saved-source evaluations, recording
+runtime metadata independently. The retry checked 13 evidence files and
+queued training **21282828 / 21282830**, fixed evaluations **21282829 / 21282831**,
+and three collectors. [Launcher evidence](../reports/ant-entropy-launcher-validation.json).
+[Failed attempt](../reports/development-ant-entropy-3m-seed101.json),
+[current retry](../reports/development-ant-entropy-3m-seed101-attempt2.json).
+
 
 The [learned residual causal-selection check](../reports/residual-causal-native-validation.json)
 passed **27 focused tests** and native H200 validation (**21280847**). Manual

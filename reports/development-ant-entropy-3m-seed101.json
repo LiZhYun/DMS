@@ -1,7 +1,7 @@
 {
   "purpose": "Matched fresh Ant4x2 H32 entropy0.1 IPPO/DMS development trial; only entropy coefficient and output differ from each zero-entropy reference",
   "created_utc": "2026-10-29T11:44:19.932682+00:00",
-  "status": "waiting_running_or_failed",
+  "status": "failed_before_training",
   "artifact": "runs/development-ant-entropy-3m-seed101",
   "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/source",
   "source_sha256": {
@@ -352,7 +352,7 @@
         "job_id": "21282324"
       },
       "job_id": "21282324",
-      "status": "training_running_or_pending",
+      "status": "training_failed_or_unknown",
       "evaluation": {
         "command": [
           "sbatch",
@@ -377,10 +377,10 @@
         "job_id": "21282325",
         "spec": "runs/development-ant-entropy-3m-seed101/evaluation-ant-ippo/spec.json",
         "spec_sha256": "605eadf3ec8cb0bb0e44f1f9e9d30e961cd9fd921b01cc57793eee97439b0548",
-        "status": "waiting_for_training",
+        "status": "evaluation_failed_or_unknown",
         "launcher_sha256": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
         "scheduler": {
-          "state": "PENDING",
+          "state": "CANCELLED",
           "exit_code": "0:0",
           "elapsed": "00:00:00",
           "node": "None assigned"
@@ -389,13 +389,13 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
-          "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "state": "FAILED",
+          "exit_code": "1:0",
+          "elapsed": "00:00:10",
+          "node": "gpu45"
         },
         "evaluation": {
-          "state": "PENDING",
+          "state": "CANCELLED",
           "exit_code": "0:0",
           "elapsed": "00:00:00",
           "node": "None assigned"
@@ -685,7 +685,7 @@
         "job_id": "21282326"
       },
       "job_id": "21282326",
-      "status": "training_running_or_pending",
+      "status": "training_failed_or_unknown",
       "evaluation": {
         "command": [
           "sbatch",
@@ -710,10 +710,10 @@
         "job_id": "21282327",
         "spec": "runs/development-ant-entropy-3m-seed101/evaluation-ant-dms/spec.json",
         "spec_sha256": "dc3a4063ccdaa2eb71062bb923f544ebbcc3565942911905f4176624abeb7540",
-        "status": "waiting_for_training",
+        "status": "evaluation_failed_or_unknown",
         "launcher_sha256": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
         "scheduler": {
-          "state": "PENDING",
+          "state": "CANCELLED",
           "exit_code": "0:0",
           "elapsed": "00:00:00",
           "node": "None assigned"
@@ -722,13 +722,13 @@
       },
       "scheduler": {
         "training": {
-          "state": "PENDING",
-          "exit_code": "0:0",
-          "elapsed": "00:00:00",
-          "node": "None assigned"
+          "state": "FAILED",
+          "exit_code": "1:0",
+          "elapsed": "00:00:04",
+          "node": "gpu45"
         },
         "evaluation": {
-          "state": "PENDING",
+          "state": "CANCELLED",
           "exit_code": "0:0",
           "elapsed": "00:00:00",
           "node": "None assigned"
@@ -1431,5 +1431,7 @@
     }
   ],
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-29T11:55:02.261851+00:00"
+  "last_refresh_utc": "2026-10-29T12:11:31.703950+00:00",
+  "failure_reason": "Launcher called runtime_metadata, which is absent from the unchanged archived trainer.",
+  "new_training_steps": 0
 }
