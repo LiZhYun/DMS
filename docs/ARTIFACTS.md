@@ -1,5 +1,38 @@
 # Local development artifacts
 
+## Walker residual fusion and memory control
+
+The [verified three-run archive](../reports/development-residual-walker-artifacts.json)
+is `dist/dms-walker-residual-development-20261029-v1.zip`: **7,682,331 bytes**,
+**78 payload files**, SHA-256
+`2229fa645819c43a39eba5bfe07874574e4355df90bc25de40aa0d8ffbd875f5`.
+Export job **21284990** completed on a CPU node and read back every payload.
+
+All three policies use H100, training seed 101, local observation history 32
+and a fixed 3M checkpoint on Walker3x2:
+
+| Policy | Separate 100-episode mean return |
+| --- | ---: |
+| IPPO memory control | 2,322.92 |
+| Residual DMS | 636.86 |
+| Residual model trained without intention inputs | 524.26 |
+
+The archive includes every checkpoint, saved source, configuration, training
+metrics and training-time evaluation record. The separate endpoint episodes,
+seeds 400101–400200, are retained in the checked-in
+[IPPO ledger](../reports/development-walker-ant-history32-3m-seed101.json) and
+[residual ledger](../reports/development-residual-fusion-3m-seed101.json).
+The [pair audit](../reports/residual-walker-results-20261029.json) checks both
+residual policies and their evaluation state. Archive `evaluation.jsonl` files
+are training diagnostics, rather than those separate 100-episode endpoints.
+
+The old IPPO snapshot predates the optional residual features; the archive
+preserves its actual source. A later [native regression](../reports/walker-full10m-native-validation.json)
+exactly matches old and current IPPO over 8,000 transitions, with the limits
+stated in that record. The [full-budget comparison](WALKER_FULL_BUDGET.md)
+remains pending. These are single-seed development artifacts, available locally
+without a public download URL or simulator binaries.
+
 ## MuJoCo 2.0 runtime comparison
 
 The [verified runtime-audit archive](../reports/mujoco200-runtime-comparison.json)

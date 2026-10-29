@@ -1,0 +1,555 @@
+{
+  "success": true,
+  "job_id": "21284990",
+  "purpose": "Preserve all three completed H100 seed-101 Walker3x2 history-32 controls: local IPPO, residual DMS and its trained no-input ablation. Keep both weak residual outcomes and the stronger IPPO reference.",
+  "artifact": "runs/residual-walker-artifacts-20261029",
+  "command": [
+    "python3",
+    "scripts/export_artifacts.py",
+    "--output",
+    "dist/dms-walker-residual-development-20261029-v1.zip",
+    "--include-checkpoints",
+    "--verify",
+    "--run",
+    "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+    "--run",
+    "runs/dev-walker-residual-fusion-3m-h100-101",
+    "--run",
+    "runs/dev-walker-no-input-fusion-3m-h100-101"
+  ],
+  "selected_runs": [
+    {
+      "label": "walker-ippo",
+      "output": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+      "validation": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-ippo/validation.json",
+      "validation_sha256": "b2c03c3cee21e95caec6a0465317335904ea0221923de1096882512c64785b4a",
+      "checkpoint_sha256": "144ddcb7e117a7f7dd0369c2bb2d9cb11f6130f932a989fd1ad639d87e5ac439",
+      "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-walker-ant-history32-3m-seed101/evaluation-walker-ippo/development-evaluation-100.json",
+      "evaluation_output_sha256": "96e66f7271f2ca30b0fa703cb93e2d6dee1c4aaa2a77ce4195536f1c9ab55a4d",
+      "mean_return": 2322.918035058912
+    },
+    {
+      "label": "walker-residual",
+      "output": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "validation": "runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/validation.json",
+      "validation_sha256": "c15fc09e527d260ae38d9faf76a14cf34e32239b97d23f6200cce63010359623",
+      "checkpoint_sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+      "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/development-evaluation-100.json",
+      "evaluation_output_sha256": "febd4e4a2d918324a13562c74f8c0c04262f561959ebfff274c24dd7214f86de",
+      "mean_return": 636.864808162665
+    },
+    {
+      "label": "walker-no-input",
+      "output": "runs/dev-walker-no-input-fusion-3m-h100-101",
+      "validation": "runs/development-residual-fusion-3m-seed101/evaluation-walker-no-input/validation.json",
+      "validation_sha256": "676b7fd79ec5e67202687e4b1b0a07e66e417ae58e63b897dd846cd7716ed8ab",
+      "checkpoint_sha256": "ec9fa39e21839087af35521b04238137afa7f8da516608c01fe0d7c853fc8aaa",
+      "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-no-input/development-evaluation-100.json",
+      "evaluation_output_sha256": "c90dd952f9d12d646502b3954d0d8c45454048d67f5422cebfb6b9419cd2ce5c",
+      "mean_return": 524.2556688589231
+    }
+  ],
+  "endpoint_ledgers": {
+    "runs/residual-walker-artifacts-20261029/development-residual-fusion-3m-seed101.json": "4ac9fe17f6cc240a04fa9604468ab9e9722ef0ab5ad65373bee713539c099869",
+    "runs/residual-walker-artifacts-20261029/development-walker-ant-history32-3m-seed101.json": "2ef3f89591fee0c2cfffaef28c19c6362fe4d3073b58de14a153090823704c1b"
+  },
+  "exporter_sha256": "e8af314c848d40ff0285d77a3d22383857a85acbf5cfacba0ca5cdf7a2ac8b49",
+  "public_download_url": null,
+  "predeclared_sha256": "789cfaaf5eb33d435eab4afc0fa1646bd4c93316b2e284af1683ce5596041124",
+  "status": "verified_local_only",
+  "archive": "dist/dms-walker-residual-development-20261029-v1.zip",
+  "sha256": "2229fa645819c43a39eba5bfe07874574e4355df90bc25de40aa0d8ffbd875f5",
+  "bytes": 7682331,
+  "payload_files": 78,
+  "manifest_sha256": "0727129f70a6a4f05f6b28e7020c8db4b817a5525faabe03d3d2d0040637af9e",
+  "manifest": {
+    "files": [
+      {
+        "bytes": 1298,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/config.json",
+        "sha256": "7b4310df141f2d3678a284ed7c6356053ec8c97425debd173884d341841a7156"
+      },
+      {
+        "bytes": 2981,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/evaluation.jsonl",
+        "sha256": "432701d428902c0ae9a8f066a25975c09d6b2c621b2a228388de87d7627afe78"
+      },
+      {
+        "bytes": 2008116,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/latest.pt",
+        "sha256": "144ddcb7e117a7f7dd0369c2bb2d9cb11f6130f932a989fd1ad639d87e5ac439"
+      },
+      {
+        "bytes": 5960,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/manifest.json",
+        "sha256": "bc6673aec1a209a2c1448195f18218731fc3453dfd0cc52a53cddd5ec483e0d6"
+      },
+      {
+        "bytes": 213865,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/metrics.jsonl",
+        "sha256": "f741e251dded3284d8bc9806e57a5a384d38bdaf2f31dee087de161b31cd3e4d"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15478,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/intention.py",
+        "sha256": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 10467,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/policy.py",
+        "sha256": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 39545,
+        "path": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101/source/dms/train.py",
+        "sha256": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+      },
+      {
+        "bytes": 1389,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/config.json",
+        "sha256": "546bb013cf35a538745bbfb36f9f3cf791661abe69683ffe95b2b225c9e6536e"
+      },
+      {
+        "bytes": 2949,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/evaluation.jsonl",
+        "sha256": "14916fef806f2f73ed552e2bd1f5da931762b9b029b1335fb5afa08067c864ef"
+      },
+      {
+        "bytes": 3234249,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/latest.pt",
+        "sha256": "ec9fa39e21839087af35521b04238137afa7f8da516608c01fe0d7c853fc8aaa"
+      },
+      {
+        "bytes": 6605,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/manifest.json",
+        "sha256": "a9b73320ac80f2c5426dd4d0824874bd1428ab4332c81886c654ff137d353b15"
+      },
+      {
+        "bytes": 577790,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/metrics.jsonl",
+        "sha256": "58aeffbff04df3ca045145f346115847098b16d1dae198e769e0d9e32ad13436"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15719,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/intention.py",
+        "sha256": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 12029,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/policy.py",
+        "sha256": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 45483,
+        "path": "runs/dev-walker-no-input-fusion-3m-h100-101/source/dms/train.py",
+        "sha256": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+      },
+      {
+        "bytes": 1382,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/config.json",
+        "sha256": "59fa45b590306b703884548c4bd11c3ce232c246892d210e4c661a4741257659"
+      },
+      {
+        "bytes": 2942,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/evaluation.jsonl",
+        "sha256": "d6ecb85c74a50d070f048a23086eb803967bd7d83c0bf0164e0f269805fc831e"
+      },
+      {
+        "bytes": 3234249,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/latest.pt",
+        "sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be"
+      },
+      {
+        "bytes": 6605,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/manifest.json",
+        "sha256": "f288288169083ee909f6239e95aee25d0451950b1959a8e3e0825741d7fceb62"
+      },
+      {
+        "bytes": 597692,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/metrics.jsonl",
+        "sha256": "0b0f866f66a1a0f5965c1985efea7f46fa9f1748c2e3e8b6d2da46246b695c5b"
+      },
+      {
+        "bytes": 87,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/__init__.py",
+        "sha256": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+      },
+      {
+        "bytes": 8273,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/benchmark_configs.py",
+        "sha256": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1"
+      },
+      {
+        "bytes": 8440,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/diagnostics.py",
+        "sha256": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0"
+      },
+      {
+        "bytes": 3774,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/distributions.py",
+        "sha256": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a"
+      },
+      {
+        "bytes": 15216,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/envs.py",
+        "sha256": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe"
+      },
+      {
+        "bytes": 3234,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/evaluate.py",
+        "sha256": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461"
+      },
+      {
+        "bytes": 15719,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/intention.py",
+        "sha256": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413"
+      },
+      {
+        "bytes": 1133,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/legacy_ant.py",
+        "sha256": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a"
+      },
+      {
+        "bytes": 13876,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/legacy_env.py",
+        "sha256": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1"
+      },
+      {
+        "bytes": 6429,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/legacy_graph.py",
+        "sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc"
+      },
+      {
+        "bytes": 3044,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/legacy_swimmer.py",
+        "sha256": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d"
+      },
+      {
+        "bytes": 3396,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/observation_history.py",
+        "sha256": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c"
+      },
+      {
+        "bytes": 1124,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/parallel.py",
+        "sha256": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b"
+      },
+      {
+        "bytes": 12029,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/policy.py",
+        "sha256": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377"
+      },
+      {
+        "bytes": 8699,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/recurrent.py",
+        "sha256": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f"
+      },
+      {
+        "bytes": 27993,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/report.py",
+        "sha256": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531"
+      },
+      {
+        "bytes": 2695,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/returns.py",
+        "sha256": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d"
+      },
+      {
+        "bytes": 3136,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/sequences.py",
+        "sha256": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c"
+      },
+      {
+        "bytes": 14816,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/smac_env.py",
+        "sha256": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32"
+      },
+      {
+        "bytes": 7905,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/swimmer_configs.py",
+        "sha256": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853"
+      },
+      {
+        "bytes": 45483,
+        "path": "runs/dev-walker-residual-fusion-3m-h100-101/source/dms/train.py",
+        "sha256": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+      }
+    ],
+    "include_checkpoints": true,
+    "manifest_scope": "files lists every payload member; this content manifest excludes its own hash",
+    "purpose": "local development artifacts; not final paper-performance evidence",
+    "runs": [
+      {
+        "completed_episodes": 7891,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 12154,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-walker-no-input-fusion-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      },
+      {
+        "completed_episodes": 14204,
+        "completed_steps": 3000000,
+        "final_evaluation_episodes": 10,
+        "final_evaluation_seeds": [
+          10001,
+          10002,
+          10003,
+          10004,
+          10005,
+          10006,
+          10007,
+          10008,
+          10009,
+          10010
+        ],
+        "name": "dev-walker-residual-fusion-3m-h100-101",
+        "planned_steps": 3000000,
+        "source_file_count": 21,
+        "source_hashes_verified": true,
+        "status": "completed; no paper performance claim",
+        "training_seed": 101
+      }
+    ],
+    "schema_version": 1
+  },
+  "limits": "One training seed and 3M development evidence; no performance promotion. Archive evaluation.jsonl records are training diagnostics. Separate fixed 100-episode results remain in the checked-in endpoint ledgers. No simulator binaries, private paper or public URL.",
+  "completed_utc": "2026-10-29T14:16:17.602918+00:00",
+  "scheduler": "21284990|COMPLETED|0:0|00:00:02|milan32",
+  "validation_record_sha256": "12c12676a409b054fad7fbd3f11d57186786e7e0edf6f061869a4d7b74ff395c",
+  "submission": {
+    "job_id": "21284990",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-walker-residual-artifacts",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/residual-walker-artifacts-20261029/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/residual-walker-artifacts-20261029/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/residual-walker-artifacts-20261029/run.sbatch"
+    ],
+    "submitted_utc": "2026-10-29T14:16:11.521878+00:00",
+    "predeclared_sha256": "789cfaaf5eb33d435eab4afc0fa1646bd4c93316b2e284af1683ce5596041124"
+  }
+}

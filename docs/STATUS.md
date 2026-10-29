@@ -219,6 +219,12 @@ source and checkpoint hashes, immutable evaluation state and zero optimizer
 steps. No-input training retains auxiliary losses and zero peer gates. This
 positive effect requires replication across training seeds.
 
+A [verified three-run archive](../reports/development-residual-walker-artifacts.json)
+now preserves both residual policies and the earlier IPPO memory control:
+**78 payloads, 7,682,331 bytes**, including checkpoints and saved source.
+Every payload was read back successfully by export job **21284990**.
+[Artifact details](ARTIFACTS.md#walker-residual-fusion-and-memory-control).
+
 SMAC residual **21280358** has reached **2,585,600 steps** and its no-input control
 **21280360** has reached **2,323,200 steps**. Both SMAC jobs remain running on
 H100 with finite metrics; their fixed evaluations and collectors are queued.

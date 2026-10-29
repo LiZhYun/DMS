@@ -79,6 +79,13 @@ steps. Both have 750 finite training updates with auxiliary losses; the
 no-input control has zero peer gates throughout. The two SMAC endpoints remain
 pending. This single-seed result does not establish robust benefit.
 
+The [verified Walker archive](../reports/development-residual-walker-artifacts.json)
+preserves both residual checkpoints and the earlier IPPO memory control, with
+all saved source and training diagnostics: 78 payloads, 7,682,331 bytes.
+[Artifact details](ARTIFACTS.md#walker-residual-fusion-and-memory-control) locate
+the separate 100-episode endpoints. The [full-budget guide](WALKER_FULL_BUDGET.md)
+provides a public legacy-CUDA command and records the pending 10M pair.
+
 A [paired update diagnostic](../reports/residual-no-input-rng-diagnostic.json)
 checks why this ablation is not an exact same-seed IPPO replay. From fresh,
 matching initialization and one native 4,000-transition Walker batch, it compares
