@@ -1,0 +1,1854 @@
+{
+  "status": "completed_pass",
+  "success": true,
+  "job_id": "21283997",
+  "accounting": "21283997|COMPLETED|0:0|00:01:06|milan30",
+  "artifact": "runs/residual-no-input-rng-probe",
+  "predeclared": {
+    "purpose": "One native initial rollout and three paired updates to distinguish auxiliary RNG consumption from extra zero-gradient parameter arithmetic; diagnostic only",
+    "created_utc": "2026-10-29T13:14:29.064107+00:00",
+    "artifact": "runs/residual-no-input-rng-probe",
+    "config": {
+      "algorithm": "dms",
+      "env": "mamujoco",
+      "mamujoco_backend": "legacy",
+      "scenario": "Walker2d",
+      "ant_contact_forces": "native",
+      "agent_conf": "3x2",
+      "agent_obsk": 1,
+      "map_name": "3s5z",
+      "seed": 101,
+      "device": "cpu",
+      "num_envs": 4,
+      "parallel_env_steps": false,
+      "mask_inactive_agents": false,
+      "smac_time_limit_terminal": false,
+      "update_mode": "independent",
+      "total_steps": 3000000,
+      "rollout_steps": 1000,
+      "epochs": 5,
+      "minibatch_size": 1000,
+      "hidden_dim": 64,
+      "policy_history_length": 32,
+      "initial_log_std": -0.5,
+      "latent_dim": 8,
+      "decoder_history": false,
+      "history_length": 32,
+      "prediction_horizon": 4,
+      "coordination": "soft",
+      "intention_fusion": "residual",
+      "coordination_threshold": 0.6,
+      "short_history": 4,
+      "filter_history": true,
+      "intention_threshold": 10000,
+      "warmup_episodes": 1000000000,
+      "causal_warmup_episodes": 100,
+      "actor_lr": 0.0003,
+      "critic_lr": 0.001,
+      "intention_lr": 0.001,
+      "intention_rl_lr": 0.0,
+      "aux_updates": 2,
+      "aux_batch_size": 64,
+      "kl_beta": 0.1,
+      "latent_samples": 2,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip": 0.2,
+      "value_clip": 0.2,
+      "entropy_coef": 0.0,
+      "value_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "target_kl": 0.02,
+      "eval_every": 1000000,
+      "eval_episodes": 10,
+      "eval_seed": 10001,
+      "output": "/scratch/work/liz23/reproduce/dms/runs/residual-no-input-rng-probe/unused-training-output",
+      "torch_threads": 1
+    },
+    "environment": {
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "historical_binary_parity_verified": false,
+      "scenario": "Walker2d",
+      "native_env_id": "Walker2d-v2",
+      "agent_conf": "3x2",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "walker2d.xml",
+      "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "action_dims": [
+        2,
+        2,
+        2
+      ],
+      "observation_dims": [
+        5,
+        7,
+        6
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+        "alive_bonus_on_terminal": true,
+        "healthy_height_open_interval": [
+          0.8,
+          2.0
+        ],
+        "healthy_angle_open_interval": [
+          -1.0,
+          1.0
+        ]
+      },
+      "frame_skip": 4,
+      "physics_timestep": 0.002,
+      "native_geom_friction": [
+        [
+          0.7,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          1.9,
+          0.1,
+          0.1
+        ]
+      ],
+      "policy_observation_history": {
+        "length": 32,
+        "base_observation_dim": 29,
+        "shape": [
+          3,
+          32,
+          30
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "versions": {
+      "torch": "2.6.0+cu126",
+      "numpy": "1.26.4",
+      "protobuf": "6.33.0",
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14"
+    },
+    "source_inventory_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+    },
+    "helper": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/probe.py",
+    "helper_sha256": "d97c8f342d8953dbb84bf2a1551cf77689ecb148613ab744f798931c446bdef5",
+    "initial_seed": 101,
+    "rollout_seed": 400981,
+    "update_seed": 400982,
+    "variants": [
+      "ippo",
+      "no-input-ordinary",
+      "no-input-restore-rng"
+    ],
+    "hypotheses": [
+      "If auxiliary sampling changes later main-stream draws, restoring Python/NumPy/Torch RNG after the same auxiliary update will recover the IPPO continuation RNG.",
+      "If extra zero-gradient residual parameters alter clipping arithmetic, common gradients may match before clipping but differ afterward despite matched RNG.",
+      "If PPO itself follows a different update path, differences will appear before the auxiliary call; record that boundary explicitly."
+    ],
+    "limits": [
+      "Fresh initialization and one 4,000-transition native batch, not a replay of the completed 3M policy or a return experiment.",
+      "RNG restoration is a diagnostic intervention, not an independently seeded auxiliary stream or a promoted implementation.",
+      "A same-seed comparison with different RNG consumption is still a valid independent run; it is not an exact no-input equivalence test.",
+      "Existing training and evaluation jobs remain untouched."
+    ],
+    "held_out_training_seeds_used": [],
+    "probe_sha256": "c227505437ec1dfe26c1ccbcd07a02648eb1e1cd92be1dd7d275bfc5adf18ee4",
+    "script_sha256": "9cdac5583a3553d1fb56fc46d6b7c5e6eecb7eda74b7a2f4b4339e940ba2a058"
+  },
+  "submission": {
+    "job_id": "21283997",
+    "submitted_utc": "2026-10-29T13:14:29.142845+00:00",
+    "predeclared_sha256": "f6adc4082dd06dca6c4cc18784b0955af982bb3e6b4c03f7b1fb7a89dbaf9278"
+  },
+  "validation": {
+    "success": true,
+    "job_id": "21283997",
+    "initial_common_parameters_and_rng_exact": true,
+    "rollout_transitions": 4000,
+    "source_unchanged": true,
+    "rollout_unchanged": true,
+    "original_training_updates": 0,
+    "ephemeral_updates": 3,
+    "auxiliary_updates_identical_between_dms_conditions": true,
+    "variants": {
+      "ippo": {
+        "metrics": {
+          "policy_loss": -0.009988381924146476,
+          "value_loss": 0.49143694788217546,
+          "entropy": 1.8365206976731618,
+          "approx_kl": 0.007077140460280255,
+          "peer_gate_fraction": 0.0
+        },
+        "ppo_clip_calls": 60,
+        "clipping": [
+          {
+            "raw_common_gradient_sha256": "3055292ae481839eeab5a310ea4bc21e8c2912e935234ff1c04e14238b4dcf3d",
+            "clipped_common_gradient_sha256": "19708f0f7480ddadeb83f6430ed37ee5bf2a1e3275873156f92c1339ac67e516",
+            "raw_joint_norm": 0.5413193702697754,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "622a4da0c1e5b3d3add5cd97ded313897ba47ad185d2dd21913cafc193103ac9",
+            "clipped_common_gradient_sha256": "8fc2f20cc736f3d6076f4806b09ccb77aa6073458f854a2e161a522935a124b9",
+            "raw_joint_norm": 0.7520231008529663,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "b6f396ffe3e895a7c8200d1864d373afd5f7a7600edcba0957eb25e8b5da6b71",
+            "clipped_common_gradient_sha256": "d9560f254137253a45910bf99cb9ce070ee9ca53f8426e7b136b8b8491d5d815",
+            "raw_joint_norm": 0.6669576168060303,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "9bbd64cbe7d219a33aaa14be75efa206482ef7702ff3d2bd6fba136cdd99a120",
+            "clipped_common_gradient_sha256": "f6ba21ee81d54a8143d129599938b19248ebdb550e72029f454f0126e04e1771",
+            "raw_joint_norm": 0.5240979790687561,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "741451786046d8ec49edc082690e308469a546fa2eb37295201aadcfe812a0c8",
+            "clipped_common_gradient_sha256": "f78f74c0080896fdcc7795ec444781c0f0f9517b0d1f23b28417b6a0bed2a389",
+            "raw_joint_norm": 0.5577752590179443,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "85c58ee46f31b6f96c3a6f63f9770c0f71eae9ea891ac03f73c825ed37be0e48",
+            "clipped_common_gradient_sha256": "eb8447dd1cbfba572f6c87e8ed7cedd30a0982eebaa896a626318def1aa08b25",
+            "raw_joint_norm": 0.6400041580200195,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "4a730a9dc142e353147db2121b671f179d8a7b622e909b53f20a3af5893495de",
+            "clipped_common_gradient_sha256": "abad9268a9b479f8dab9f083572289c01052c1c709dc2c3490c0934ec9981240",
+            "raw_joint_norm": 0.5837157368659973,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "6f05eb0a405fd4698f5fb3ce0b0cdd4a026185ea4b47c336cd71c0313eaa5d69",
+            "clipped_common_gradient_sha256": "8e41da4c235bea60d3040850712461319b543a78fcaabb425de4b1251d651064",
+            "raw_joint_norm": 0.6495890021324158,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "f7e2caec61eb1edfe577fa71acb5c93ebf75b5c3c224252b7246ca1c006d1685",
+            "clipped_common_gradient_sha256": "f7e2caec61eb1edfe577fa71acb5c93ebf75b5c3c224252b7246ca1c006d1685",
+            "raw_joint_norm": 0.49446094036102295,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "5f6ad9f74c36f65a21b99302493bce1c9cce9f57fede559b36aefcecc5754cb9",
+            "clipped_common_gradient_sha256": "5f6ad9f74c36f65a21b99302493bce1c9cce9f57fede559b36aefcecc5754cb9",
+            "raw_joint_norm": 0.43490755558013916,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "19171e1fd97b79d98870cb9f61d395dd43e34815ab4df46492b28f678c29c7cd",
+            "clipped_common_gradient_sha256": "19171e1fd97b79d98870cb9f61d395dd43e34815ab4df46492b28f678c29c7cd",
+            "raw_joint_norm": 0.35689231753349304,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "689443bfb6c995ba44e9534ebbb93647d87215265c52d33313c1181d9b7ab025",
+            "clipped_common_gradient_sha256": "689443bfb6c995ba44e9534ebbb93647d87215265c52d33313c1181d9b7ab025",
+            "raw_joint_norm": 0.4307716190814972,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "293b145136dd5a32721ccb8d420c79f40a5e593748c4ba89b8122d5836ef8d69",
+            "clipped_common_gradient_sha256": "293b145136dd5a32721ccb8d420c79f40a5e593748c4ba89b8122d5836ef8d69",
+            "raw_joint_norm": 0.34261325001716614,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "3fef2d7ce47cc45931b6b8fcba56923f8508ab92db7c89c2d9b45fcb07d9493f",
+            "clipped_common_gradient_sha256": "3fef2d7ce47cc45931b6b8fcba56923f8508ab92db7c89c2d9b45fcb07d9493f",
+            "raw_joint_norm": 0.3895055055618286,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "4af17d9e0627690fc46a79a765ae56fb095b707694ce4c0ac3f9a6b10649eae8",
+            "clipped_common_gradient_sha256": "4af17d9e0627690fc46a79a765ae56fb095b707694ce4c0ac3f9a6b10649eae8",
+            "raw_joint_norm": 0.20694321393966675,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "46a960eeac2a8bac2aa0f8fc6442a65fdaa2c07b9b9683b0f6dc0dcde94e2812",
+            "clipped_common_gradient_sha256": "46a960eeac2a8bac2aa0f8fc6442a65fdaa2c07b9b9683b0f6dc0dcde94e2812",
+            "raw_joint_norm": 0.3140026330947876,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "3ac454a3dd2192771630a5b5e743bf43bd74677e91e3555a3b3522bffb3e42db",
+            "clipped_common_gradient_sha256": "3ac454a3dd2192771630a5b5e743bf43bd74677e91e3555a3b3522bffb3e42db",
+            "raw_joint_norm": 0.3924602270126343,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "2cbfe8461b76bd7c4d264c02057a7b99caaf4f57fa5b58a9f9cd5ae898d9631f",
+            "clipped_common_gradient_sha256": "5abd909c5c6a4ae0c0fc7aa115ca4c8ffa031de242ead439525cde70406a1ba2",
+            "raw_joint_norm": 0.6656903028488159,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "2271b2bfbca7bb5ec7c0794c1c2d40d90d76f17534fe4b94424501b739138cf5",
+            "clipped_common_gradient_sha256": "2271b2bfbca7bb5ec7c0794c1c2d40d90d76f17534fe4b94424501b739138cf5",
+            "raw_joint_norm": 0.26433104276657104,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "4c13f40ae629f5bdfb0780436be57ca059fa282cdd3466195a5698bfa1f1493a",
+            "clipped_common_gradient_sha256": "4c13f40ae629f5bdfb0780436be57ca059fa282cdd3466195a5698bfa1f1493a",
+            "raw_joint_norm": 0.38675621151924133,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "c5c2e15d916e3017a6d120dc4a885d45e6d9a1b0dcc1f31be9e34f249ce0da98",
+            "clipped_common_gradient_sha256": "8850703ea6aa8e3ea8ac6082e40d43e7787191bf54f13265da449979c71f508d",
+            "raw_joint_norm": 0.6668693423271179,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "82317414354a53a5af27a89b789e8377bafa4ebb8f3a7dbe90fff1bc6d8cdda5",
+            "clipped_common_gradient_sha256": "82317414354a53a5af27a89b789e8377bafa4ebb8f3a7dbe90fff1bc6d8cdda5",
+            "raw_joint_norm": 0.494701623916626,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "3be155ed21a42a70aff7e36fc0b1bf526a1a131dd0f9a8b4c117adf4994d9a05",
+            "clipped_common_gradient_sha256": "3be155ed21a42a70aff7e36fc0b1bf526a1a131dd0f9a8b4c117adf4994d9a05",
+            "raw_joint_norm": 0.4823799133300781,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "2c08e534d5ac56e6df232050f257f440f33c01245fc67e6c6c55f0c9c2429f49",
+            "clipped_common_gradient_sha256": "ff89fc13acfe48d61531685cc599b93414fa2ab16af361f5867415727235a9cf",
+            "raw_joint_norm": 0.5248982310295105,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "1dc10e20ba625782ae960dcb9efea4a98d772a698636cd5ef5036316fe6f195c",
+            "clipped_common_gradient_sha256": "cc56a200d81deae89acd1661c6d7d4a35fa2bd194981141749e2021d0a579bb3",
+            "raw_joint_norm": 0.5880934596061707,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "d5fa44a2ec9744f5306b0c4bcfabad32b06f63c7eef1a1416d12f650391ae73a",
+            "clipped_common_gradient_sha256": "d5fa44a2ec9744f5306b0c4bcfabad32b06f63c7eef1a1416d12f650391ae73a",
+            "raw_joint_norm": 0.34131190180778503,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "a3ffe7275ead09e0015f2e6e112a15b7d2ba35635df7ab1ed9d301a962a7129b",
+            "clipped_common_gradient_sha256": "26f1e5e189b8b3b6d65f8d67375de0b6e2e55e466388d8cbc632df06f5de71d3",
+            "raw_joint_norm": 0.6923731565475464,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "fbc11afa7ed7e86bac35b0580ea6e8a3ec4d6ea424daf319691c86a08d2e2b53",
+            "clipped_common_gradient_sha256": "fbc11afa7ed7e86bac35b0580ea6e8a3ec4d6ea424daf319691c86a08d2e2b53",
+            "raw_joint_norm": 0.37812700867652893,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "81a8d3709efe2596d35a3fb70f0148ace271bb6a2b99147ad27e9aca22cefa9d",
+            "clipped_common_gradient_sha256": "81a8d3709efe2596d35a3fb70f0148ace271bb6a2b99147ad27e9aca22cefa9d",
+            "raw_joint_norm": 0.34587720036506653,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "d3ec255830933f9224f2495ab8e28e6e5a3ee64130e8db6a1b5d2ac0f412971f",
+            "clipped_common_gradient_sha256": "d3ec255830933f9224f2495ab8e28e6e5a3ee64130e8db6a1b5d2ac0f412971f",
+            "raw_joint_norm": 0.2827625572681427,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "31edaf0e6ad2a3fc3262b687ce78a73b77b6ece1210c520e9e20f64b7907a65d",
+            "clipped_common_gradient_sha256": "31edaf0e6ad2a3fc3262b687ce78a73b77b6ece1210c520e9e20f64b7907a65d",
+            "raw_joint_norm": 0.3066946268081665,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "077855600af2c72614e6834586db358cd85216941a3a06c6f9dc448de0ec3fd6",
+            "clipped_common_gradient_sha256": "077855600af2c72614e6834586db358cd85216941a3a06c6f9dc448de0ec3fd6",
+            "raw_joint_norm": 0.2658439874649048,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "37159bf1f064c3d23f06343e39508b7b256664d4af70de92e59784d2585e9ad9",
+            "clipped_common_gradient_sha256": "37159bf1f064c3d23f06343e39508b7b256664d4af70de92e59784d2585e9ad9",
+            "raw_joint_norm": 0.34334883093833923,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "0c614d83e4cac32036325a652582963e6a9e0771597e06fdfc0d18a8045cf111",
+            "clipped_common_gradient_sha256": "0c614d83e4cac32036325a652582963e6a9e0771597e06fdfc0d18a8045cf111",
+            "raw_joint_norm": 0.2689686417579651,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "0915c55e6b2362c96190d867ffca5808f39a66ecc1834b5dd13c91686e9a2124",
+            "clipped_common_gradient_sha256": "0915c55e6b2362c96190d867ffca5808f39a66ecc1834b5dd13c91686e9a2124",
+            "raw_joint_norm": 0.4212690591812134,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "fb78765a5967efe0142286dcd28a08af63cb8d3b25eaecc7222d9f425cb72d2c",
+            "clipped_common_gradient_sha256": "fb78765a5967efe0142286dcd28a08af63cb8d3b25eaecc7222d9f425cb72d2c",
+            "raw_joint_norm": 0.4018256664276123,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "f1c3ae05cace56d74da410de983dd6bd67283f7b349cc21858badcb7a92a60e8",
+            "clipped_common_gradient_sha256": "f1c3ae05cace56d74da410de983dd6bd67283f7b349cc21858badcb7a92a60e8",
+            "raw_joint_norm": 0.388905793428421,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "1d8f9c9583cca8d555ae67f00a913f51d6a24b28981dece44f74ee35c061f609",
+            "clipped_common_gradient_sha256": "1d8f9c9583cca8d555ae67f00a913f51d6a24b28981dece44f74ee35c061f609",
+            "raw_joint_norm": 0.34086325764656067,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "e754cf7ac2154574c3672c65f43fd2379c83675fafdd7c63cb1e330906f95b80",
+            "clipped_common_gradient_sha256": "e754cf7ac2154574c3672c65f43fd2379c83675fafdd7c63cb1e330906f95b80",
+            "raw_joint_norm": 0.31006163358688354,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "7cd9ac486701cea90a625233f3ce3732049e811c2219a3bdb351f6823d5a8860",
+            "clipped_common_gradient_sha256": "7cd9ac486701cea90a625233f3ce3732049e811c2219a3bdb351f6823d5a8860",
+            "raw_joint_norm": 0.3626181483268738,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "be50729b534b6ca2db0f892ef3888fef65d139cd243d69f746cb1c2de0ebb575",
+            "clipped_common_gradient_sha256": "cf26c3441a0c4ae7fc8cddb68d4c2b7efb0e8766744ceb608b61d02a88259c1e",
+            "raw_joint_norm": 1.015103816986084,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "457ce597508cece3f587f637f7d33f7915c51d1c6615f633fb22482d79353f0b",
+            "clipped_common_gradient_sha256": "ea2cbad8c44e8e6bbbf94c597be498e3ebfc03c1f359a0f7286e4206fc40aecd",
+            "raw_joint_norm": 0.9679456353187561,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "7b8d4f309f29bd8d7c5abeca2fa313b33823ccc1c4cd8c79467d6aba83ffd740",
+            "clipped_common_gradient_sha256": "51e4b712447c5dac4805b74a2a4bb2747e9f93dcdfeed17c8641f3650a76f9c4",
+            "raw_joint_norm": 0.8279239535331726,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "b0e706193ab17b1b48b331fc9f8a849779dc739a9a01cc59fb32ccc415805b07",
+            "clipped_common_gradient_sha256": "8a76e88b8c0f0161cca97870e032d82924e640a97395a8e168507e013f34dc50",
+            "raw_joint_norm": 0.7864540219306946,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "88945f2cc936d65b766ddeaa42b7bcd361878eece2af40ec27f5db706bb7f334",
+            "clipped_common_gradient_sha256": "1479674a66cc159c3862ff9c68384e0e17fbb3b2bc3eba7fbcf4c52a4b1d1d5a",
+            "raw_joint_norm": 0.7823197841644287,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "f7d287d9abf7eba054bd52acb021731a2e0a850ab0e4b32fe762162fccc6904e",
+            "clipped_common_gradient_sha256": "f15201f7f6871212f6e22ced967d4d3fba7a36f496e55ca0ff3b7b329cf4c317",
+            "raw_joint_norm": 0.8286350965499878,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "d917032b675556ae5ecd445316af23c5536faba81a5dc8bfea32151c833e38e2",
+            "clipped_common_gradient_sha256": "2e0404f30919146bf7f9016458145c35a39a282354e80348292330f1e88845d2",
+            "raw_joint_norm": 0.8121755123138428,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "36fbc49baa6e5fc6e9e4955ed7c7b74c0bd8670a24b9d0bf7fae523c935c09bd",
+            "clipped_common_gradient_sha256": "36fbc49baa6e5fc6e9e4955ed7c7b74c0bd8670a24b9d0bf7fae523c935c09bd",
+            "raw_joint_norm": 0.42303386330604553,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "0bb2dcbb8c3197e2ea7c88923e3be9ec95fe79b92a24e442af34342818a047ed",
+            "clipped_common_gradient_sha256": "0bb2dcbb8c3197e2ea7c88923e3be9ec95fe79b92a24e442af34342818a047ed",
+            "raw_joint_norm": 0.2679941952228546,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "077f53b5987e839dc96d41e9e4d6b747d7595a54228fd02f872ac82e168b51e7",
+            "clipped_common_gradient_sha256": "077f53b5987e839dc96d41e9e4d6b747d7595a54228fd02f872ac82e168b51e7",
+            "raw_joint_norm": 0.18807809054851532,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "2fdd9a9ef6dc5510b69bdc520e7b5d4b2b1cc1861789ab8b5bc5033dc5ba52f1",
+            "clipped_common_gradient_sha256": "2fdd9a9ef6dc5510b69bdc520e7b5d4b2b1cc1861789ab8b5bc5033dc5ba52f1",
+            "raw_joint_norm": 0.2808181345462799,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "94f885aed8ebf14f8226dd3e53721cce920f2470c9a97d8219653b3ec62de60e",
+            "clipped_common_gradient_sha256": "94f885aed8ebf14f8226dd3e53721cce920f2470c9a97d8219653b3ec62de60e",
+            "raw_joint_norm": 0.2611444294452667,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "c98e53c482c676ec933331e757647ae1323883a017eaac74d320cdf2e670978c",
+            "clipped_common_gradient_sha256": "c98e53c482c676ec933331e757647ae1323883a017eaac74d320cdf2e670978c",
+            "raw_joint_norm": 0.3217538595199585,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "9dcd2043b83eaeafdd40b5ff6b7f2bb604593a457acc11b539027ddf560332e5",
+            "clipped_common_gradient_sha256": "c4bb26546b2492253a5675f660e741948917fc3d02901871f2916eaa6fba3198",
+            "raw_joint_norm": 0.5672001838684082,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "f96a25fdc1cdbf03c3f88573b298e6d969ed75ef0fb50b118c015aa88b9d8618",
+            "clipped_common_gradient_sha256": "f96a25fdc1cdbf03c3f88573b298e6d969ed75ef0fb50b118c015aa88b9d8618",
+            "raw_joint_norm": 0.2095186710357666,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "fb543f987389585c4e8fb2bd8bdcde46bde9d030000a1f1437efd9f37b0b838b",
+            "clipped_common_gradient_sha256": "fb543f987389585c4e8fb2bd8bdcde46bde9d030000a1f1437efd9f37b0b838b",
+            "raw_joint_norm": 0.2874784767627716,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "5d04956cc026b8a83658397da676e25d71e4c0bbed5f66932c047ecfd5ac393c",
+            "clipped_common_gradient_sha256": "5d04956cc026b8a83658397da676e25d71e4c0bbed5f66932c047ecfd5ac393c",
+            "raw_joint_norm": 0.43428951501846313,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "4966729a8c294c48f43365b79ad0439e201fc7151f830884b660a04838b5e25b",
+            "clipped_common_gradient_sha256": "4966729a8c294c48f43365b79ad0439e201fc7151f830884b660a04838b5e25b",
+            "raw_joint_norm": 0.3413822650909424,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "86761a37851cdd747f4b0126eaf0208ad38e35ebcf354ee37b5b6fb1016b3581",
+            "clipped_common_gradient_sha256": "86761a37851cdd747f4b0126eaf0208ad38e35ebcf354ee37b5b6fb1016b3581",
+            "raw_joint_norm": 0.322702020406723,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          },
+          {
+            "raw_common_gradient_sha256": "1483061cd80f845ed251cac6edd18a17eb9abafbdf071c7d4327e81bd8ec6e0f",
+            "clipped_common_gradient_sha256": "1483061cd80f845ed251cac6edd18a17eb9abafbdf071c7d4327e81bd8ec6e0f",
+            "raw_joint_norm": 0.22807371616363525,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 0,
+            "extra_gradients_present": 0
+          }
+        ],
+        "post_ppo_rng_sha256": "6bc6b86b6d44992c49f33559f98565d378c1a11c1a21c7939eb94fbfeec914fc",
+        "post_aux_rng_sha256": "6bc6b86b6d44992c49f33559f98565d378c1a11c1a21c7939eb94fbfeec914fc",
+        "next_noise_sha256": "ca3ae43bd5f9bc5c9afd4fa6bfe578bca0fb3e79e421f1e8c0f3c5f5abc638f3",
+        "common_state_sha256": "7beba1e8719f4e907a394025065e83b55acad132a4c57f79b749edd63d782046",
+        "common_optimizer_sha256": "290d27e4c77ab8c554f027c499da52cfc365199cec29c77a41044a34ec59fb5b",
+        "auxiliary_state_sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+        "auxiliary_optimizer_sha256": "a5b47c610df58580a7794e03ea4fe86ba7107e9bc91c4b07fed8d660d4497bd9"
+      },
+      "no-input-ordinary": {
+        "metrics": {
+          "policy_loss": -0.009988381163566373,
+          "value_loss": 0.4914369453986486,
+          "entropy": 1.8365206976731618,
+          "approx_kl": 0.007077140513637278,
+          "peer_gate_fraction": 0.0,
+          "intention_feature_std": 0.0,
+          "intention_loss": 2.124528706073761,
+          "intention_nll": 2.0704721212387085,
+          "intention_kl": 0.5405658334493637,
+          "forecast_target_count": 1764,
+          "forecast_comparison_count": 1680,
+          "forecast_component_count": 2880,
+          "history_baseline_target_count": 1680,
+          "history_baseline_component_count": 2880,
+          "forecast_rmse": 0.7699296874542744,
+          "persistence_rmse": 0.7699296874542744,
+          "history_mean_rmse": 0.5673699390392134,
+          "history_baseline_coverage_fraction": 0.9523809523809523
+        },
+        "ppo_clip_calls": 60,
+        "clipping": [
+          {
+            "raw_common_gradient_sha256": "3055292ae481839eeab5a310ea4bc21e8c2912e935234ff1c04e14238b4dcf3d",
+            "clipped_common_gradient_sha256": "19708f0f7480ddadeb83f6430ed37ee5bf2a1e3275873156f92c1339ac67e516",
+            "raw_joint_norm": 0.5413193702697754,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "622a4da0c1e5b3d3add5cd97ded313897ba47ad185d2dd21913cafc193103ac9",
+            "clipped_common_gradient_sha256": "8fc2f20cc736f3d6076f4806b09ccb77aa6073458f854a2e161a522935a124b9",
+            "raw_joint_norm": 0.7520231008529663,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b6f396ffe3e895a7c8200d1864d373afd5f7a7600edcba0957eb25e8b5da6b71",
+            "clipped_common_gradient_sha256": "d9560f254137253a45910bf99cb9ce070ee9ca53f8426e7b136b8b8491d5d815",
+            "raw_joint_norm": 0.6669576168060303,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "9bbd64cbe7d219a33aaa14be75efa206482ef7702ff3d2bd6fba136cdd99a120",
+            "clipped_common_gradient_sha256": "516a7df69489958c07dadd504d8d18df1134dcfb6784fd3d9585910300318876",
+            "raw_joint_norm": 0.5240979194641113,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b086257862ea54c8c77e2045aff7319dd9f2cadd056aae0c474377714e31ab24",
+            "clipped_common_gradient_sha256": "a621fbeca52a353a1a2bc1b696037b70204b8b0517b85be26bfd29051d7e4eee",
+            "raw_joint_norm": 0.5577752590179443,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "197e66938cef5875a8a39ddbff3a1839a405dda0ca019451b51c79f61ed68f45",
+            "clipped_common_gradient_sha256": "c366a72fdd14777157263f393f2a67cc2161ee3f0c47e35a7c34e9bdda4dd8a6",
+            "raw_joint_norm": 0.6400042176246643,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "386a1f51c547867d22cc9208d7563521fb86f457d59f6e852af5b3a6751d4faa",
+            "clipped_common_gradient_sha256": "5461ffb8c14561ea7444c69c3c05f4fee06bf9e1e4fe6bd60e4bfc854f027f45",
+            "raw_joint_norm": 0.5837157368659973,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a3235415bbf1ea1752e1f0e797fd958cda2d2aff457e71a9e28d4910c15c6f84",
+            "clipped_common_gradient_sha256": "931f862c4f278f610da590e1a0bc7c23420ed89120efb52547384e1e10c66810",
+            "raw_joint_norm": 0.6495890021324158,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a28a93db3fb7a0bf11daef624d19cb253a0f67c10bd90ab30aa2736a53f2e040",
+            "clipped_common_gradient_sha256": "a28a93db3fb7a0bf11daef624d19cb253a0f67c10bd90ab30aa2736a53f2e040",
+            "raw_joint_norm": 0.49446097016334534,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "6c4d3a38458dd27f9d55ebd7affec8dd1d1d569cf0124da326d9e849fe9fa9e5",
+            "clipped_common_gradient_sha256": "6c4d3a38458dd27f9d55ebd7affec8dd1d1d569cf0124da326d9e849fe9fa9e5",
+            "raw_joint_norm": 0.4349075257778168,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "29f726a5c966010ddc5dc51d585b4d16c79f65c722d81c03739b75448d357bb1",
+            "clipped_common_gradient_sha256": "29f726a5c966010ddc5dc51d585b4d16c79f65c722d81c03739b75448d357bb1",
+            "raw_joint_norm": 0.35689231753349304,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "785bd89b97f922d6927960a4f757a5a7d40b37261389ea92dc7b57f71c94ccf1",
+            "clipped_common_gradient_sha256": "785bd89b97f922d6927960a4f757a5a7d40b37261389ea92dc7b57f71c94ccf1",
+            "raw_joint_norm": 0.4307716488838196,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "fd914226b970e23b81c5491bed2cf9f5ef79108c12acb3a78d5619e7a699d414",
+            "clipped_common_gradient_sha256": "fd914226b970e23b81c5491bed2cf9f5ef79108c12acb3a78d5619e7a699d414",
+            "raw_joint_norm": 0.34261325001716614,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "0eab873aa56e475d0ff5a5bdacf6269518db0f969bcca6e3a752c240a5686417",
+            "clipped_common_gradient_sha256": "0eab873aa56e475d0ff5a5bdacf6269518db0f969bcca6e3a752c240a5686417",
+            "raw_joint_norm": 0.3895055651664734,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "534ba758157e79414e42040cc14bce1b74354ed99b0283882e60ea36f53e8ffb",
+            "clipped_common_gradient_sha256": "534ba758157e79414e42040cc14bce1b74354ed99b0283882e60ea36f53e8ffb",
+            "raw_joint_norm": 0.20694319903850555,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "53e9b0600c6bc260df36659ebcfa6e31aa14fdaf68b150e4ef84e8d8a788f6cc",
+            "clipped_common_gradient_sha256": "53e9b0600c6bc260df36659ebcfa6e31aa14fdaf68b150e4ef84e8d8a788f6cc",
+            "raw_joint_norm": 0.3140026330947876,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "d48cdc9ed46b739c6f85e4d113e91c17278d45ae162de9eec582f9bbaff2d4d7",
+            "clipped_common_gradient_sha256": "d48cdc9ed46b739c6f85e4d113e91c17278d45ae162de9eec582f9bbaff2d4d7",
+            "raw_joint_norm": 0.3924602270126343,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "131e76b8bb1ed0e442ef1f5c21a52da9f48a23d35d870b6816c7c54214360251",
+            "clipped_common_gradient_sha256": "c973e710a72c3ae5c3526134282db40c90b521624728143ca311950e577770a8",
+            "raw_joint_norm": 0.6656903624534607,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "df242359e48540b290eb88abf02a233443bc799e5aebe46631fec274a14fef4d",
+            "clipped_common_gradient_sha256": "df242359e48540b290eb88abf02a233443bc799e5aebe46631fec274a14fef4d",
+            "raw_joint_norm": 0.26433104276657104,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b95c79db1c36fc12e15d7aaa85f7fcc71d16739e68157c919a1d9d3d3016355f",
+            "clipped_common_gradient_sha256": "b95c79db1c36fc12e15d7aaa85f7fcc71d16739e68157c919a1d9d3d3016355f",
+            "raw_joint_norm": 0.3867562413215637,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "c5c2e15d916e3017a6d120dc4a885d45e6d9a1b0dcc1f31be9e34f249ce0da98",
+            "clipped_common_gradient_sha256": "8850703ea6aa8e3ea8ac6082e40d43e7787191bf54f13265da449979c71f508d",
+            "raw_joint_norm": 0.6668693423271179,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "82317414354a53a5af27a89b789e8377bafa4ebb8f3a7dbe90fff1bc6d8cdda5",
+            "clipped_common_gradient_sha256": "82317414354a53a5af27a89b789e8377bafa4ebb8f3a7dbe90fff1bc6d8cdda5",
+            "raw_joint_norm": 0.494701623916626,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "3be155ed21a42a70aff7e36fc0b1bf526a1a131dd0f9a8b4c117adf4994d9a05",
+            "clipped_common_gradient_sha256": "3be155ed21a42a70aff7e36fc0b1bf526a1a131dd0f9a8b4c117adf4994d9a05",
+            "raw_joint_norm": 0.4823799133300781,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "2c08e534d5ac56e6df232050f257f440f33c01245fc67e6c6c55f0c9c2429f49",
+            "clipped_common_gradient_sha256": "aae600ee96178ff5f0c4c996475c0b7e9277c0ac1647637abc6c46d165736e6c",
+            "raw_joint_norm": 0.5248982906341553,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "21ff40d84edc6487f85dbb47f96b844b150e499724f0d1df639b779cc107b6a7",
+            "clipped_common_gradient_sha256": "c86563c3f44b533841acab345c1e7df986ddc33561d8b4ab2180e71052d31fd5",
+            "raw_joint_norm": 0.5880934596061707,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "faca9af9d6bb2cac68572f0fa5c7f5b384aa911c0e2d0741185405e718f0761d",
+            "clipped_common_gradient_sha256": "faca9af9d6bb2cac68572f0fa5c7f5b384aa911c0e2d0741185405e718f0761d",
+            "raw_joint_norm": 0.34131187200546265,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "c1d005c0597f6cfa54bfa66be552b86a9526b4fae8394fee9be024a9bf9f8019",
+            "clipped_common_gradient_sha256": "fec266f990c09f05a6ec4d872e4f54a3d50a8a9afd2bd8bfcb1f0c0799de4cf0",
+            "raw_joint_norm": 0.6923731565475464,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "63da0a68ea2a4333a8d8ebbda9d21537217112a7f9eddc90f5cfbee75fff018e",
+            "clipped_common_gradient_sha256": "63da0a68ea2a4333a8d8ebbda9d21537217112a7f9eddc90f5cfbee75fff018e",
+            "raw_joint_norm": 0.37812697887420654,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "30be39d295cfe166dc81b373876fa4708d3016314a3a61139a6bf2893d2c5c3a",
+            "clipped_common_gradient_sha256": "30be39d295cfe166dc81b373876fa4708d3016314a3a61139a6bf2893d2c5c3a",
+            "raw_joint_norm": 0.34587720036506653,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a3392e86b052f747f8d42aa5db2cc84380a163a6e53b57053765f141bf11a9ad",
+            "clipped_common_gradient_sha256": "a3392e86b052f747f8d42aa5db2cc84380a163a6e53b57053765f141bf11a9ad",
+            "raw_joint_norm": 0.2827625572681427,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "82d2fa8a5cf0085b8e136ba9939ee23b01a1ff0710e776c922062c1fc372b4e7",
+            "clipped_common_gradient_sha256": "82d2fa8a5cf0085b8e136ba9939ee23b01a1ff0710e776c922062c1fc372b4e7",
+            "raw_joint_norm": 0.3066946268081665,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "12d4c925128d9588ed622fc2107e36dc8aa30bf8053beef1731f95e2aff7b595",
+            "clipped_common_gradient_sha256": "12d4c925128d9588ed622fc2107e36dc8aa30bf8053beef1731f95e2aff7b595",
+            "raw_joint_norm": 0.2658439874649048,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "d2f5b688054deb70cfd48e51fbbd044eb731616bb6c895f7d8d0e6cec9bee4e3",
+            "clipped_common_gradient_sha256": "d2f5b688054deb70cfd48e51fbbd044eb731616bb6c895f7d8d0e6cec9bee4e3",
+            "raw_joint_norm": 0.34334883093833923,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "9e31e3b1e37ecd186b7fa795783c4d0cb38c6de127faacf3679edab7ed57150c",
+            "clipped_common_gradient_sha256": "9e31e3b1e37ecd186b7fa795783c4d0cb38c6de127faacf3679edab7ed57150c",
+            "raw_joint_norm": 0.2689686119556427,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "34276f5efd8b863a9180306fa8e6db7041f94220b94c6ed7b97efc1084f7ade1",
+            "clipped_common_gradient_sha256": "34276f5efd8b863a9180306fa8e6db7041f94220b94c6ed7b97efc1084f7ade1",
+            "raw_joint_norm": 0.4212690591812134,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "8a3db4da0cc758cd6414c025a871d94621cbf51fbd4ca096347da07f9c5e8c64",
+            "clipped_common_gradient_sha256": "8a3db4da0cc758cd6414c025a871d94621cbf51fbd4ca096347da07f9c5e8c64",
+            "raw_joint_norm": 0.4018256366252899,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "138db4f74660cb40b2abf68f249c0627584ab5612b9b68ffc5f5fc2346d1a99d",
+            "clipped_common_gradient_sha256": "138db4f74660cb40b2abf68f249c0627584ab5612b9b68ffc5f5fc2346d1a99d",
+            "raw_joint_norm": 0.38890576362609863,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "fc7a492e2ad3009dd7e037e326c7cf30cd77db709ff6a8fcb8461c355de8a1ed",
+            "clipped_common_gradient_sha256": "fc7a492e2ad3009dd7e037e326c7cf30cd77db709ff6a8fcb8461c355de8a1ed",
+            "raw_joint_norm": 0.34086331725120544,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "3274ebd6ed2116286b74a1d2130b54e014e62b8ab0e810fe5271da6fb0eceded",
+            "clipped_common_gradient_sha256": "3274ebd6ed2116286b74a1d2130b54e014e62b8ab0e810fe5271da6fb0eceded",
+            "raw_joint_norm": 0.31006160378456116,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "bdfc12865254677d9be89f31f7b3aba3a4fca9fc49627db72d384d0cc53ea89c",
+            "clipped_common_gradient_sha256": "bdfc12865254677d9be89f31f7b3aba3a4fca9fc49627db72d384d0cc53ea89c",
+            "raw_joint_norm": 0.3626181185245514,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "be50729b534b6ca2db0f892ef3888fef65d139cd243d69f746cb1c2de0ebb575",
+            "clipped_common_gradient_sha256": "cf26c3441a0c4ae7fc8cddb68d4c2b7efb0e8766744ceb608b61d02a88259c1e",
+            "raw_joint_norm": 1.015103816986084,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "457ce597508cece3f587f637f7d33f7915c51d1c6615f633fb22482d79353f0b",
+            "clipped_common_gradient_sha256": "ea2cbad8c44e8e6bbbf94c597be498e3ebfc03c1f359a0f7286e4206fc40aecd",
+            "raw_joint_norm": 0.9679456353187561,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "7b8d4f309f29bd8d7c5abeca2fa313b33823ccc1c4cd8c79467d6aba83ffd740",
+            "clipped_common_gradient_sha256": "51e4b712447c5dac4805b74a2a4bb2747e9f93dcdfeed17c8641f3650a76f9c4",
+            "raw_joint_norm": 0.8279239535331726,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b0e706193ab17b1b48b331fc9f8a849779dc739a9a01cc59fb32ccc415805b07",
+            "clipped_common_gradient_sha256": "8a76e88b8c0f0161cca97870e032d82924e640a97395a8e168507e013f34dc50",
+            "raw_joint_norm": 0.7864540219306946,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "88945f2cc936d65b766ddeaa42b7bcd361878eece2af40ec27f5db706bb7f334",
+            "clipped_common_gradient_sha256": "55a7701a0b26cfa313494fe031bf4a0d4d68c4fd19662c9c5b259d13b92f6065",
+            "raw_joint_norm": 0.7823197245597839,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "e9340c5a843313e6498037f6eb108f2e5f4d4d41bbbefb2b5ad51a8cbb1eb629",
+            "clipped_common_gradient_sha256": "76e098691eca76b34445efbc3ffbdf2354b4fa9646ed40949e1f8c9031b33e7d",
+            "raw_joint_norm": 0.8286351561546326,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "65723d244cffafd0b1081e0700917d22758c6d25d23794fe1ca1997b9019ecfe",
+            "clipped_common_gradient_sha256": "09f5f50cd987159e7558b00698a9054cc9c2c1308612eb300390d5adf25f0157",
+            "raw_joint_norm": 0.8121755123138428,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "aec5529eda5dccfe0c0f3353539c536dbc7e35a3f7e8e68c86b3f9fceb3e52ae",
+            "clipped_common_gradient_sha256": "aec5529eda5dccfe0c0f3353539c536dbc7e35a3f7e8e68c86b3f9fceb3e52ae",
+            "raw_joint_norm": 0.42303386330604553,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "2bcfcfabcbac3746a963554b22b4d15fcc0478e784c490048597ef48a7e3015e",
+            "clipped_common_gradient_sha256": "2bcfcfabcbac3746a963554b22b4d15fcc0478e784c490048597ef48a7e3015e",
+            "raw_joint_norm": 0.267994225025177,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "32a2af67cfc05894e0a5929ee59b11a1ec62db897da3eb10ecd7d7f171222051",
+            "clipped_common_gradient_sha256": "32a2af67cfc05894e0a5929ee59b11a1ec62db897da3eb10ecd7d7f171222051",
+            "raw_joint_norm": 0.18807807564735413,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "41749bf58f802c97cc8c9c401f1e86b7b596c46bb97dfd3b5e758a55f69ecb70",
+            "clipped_common_gradient_sha256": "41749bf58f802c97cc8c9c401f1e86b7b596c46bb97dfd3b5e758a55f69ecb70",
+            "raw_joint_norm": 0.2808181047439575,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "242361aeea634af38c853d87fc8e34a9e15ed9e5e0c7f9f1e918ffed620811e6",
+            "clipped_common_gradient_sha256": "242361aeea634af38c853d87fc8e34a9e15ed9e5e0c7f9f1e918ffed620811e6",
+            "raw_joint_norm": 0.26114439964294434,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "dffa166436d09f69b0de1732607c3b159ea2bba2a14e2a6c04979787c3bdcb5e",
+            "clipped_common_gradient_sha256": "dffa166436d09f69b0de1732607c3b159ea2bba2a14e2a6c04979787c3bdcb5e",
+            "raw_joint_norm": 0.3217538595199585,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "5ede8f6dbf410d809b50fcfc8de5dc3fe34e2545e071808cfe14740aa29c69a1",
+            "clipped_common_gradient_sha256": "f7bcfbec49ef23650df747272d5ca1245dbd198818beed43a0a43b9ed8dab063",
+            "raw_joint_norm": 0.5672001242637634,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "e2c1a6ba20f22b46c82efc75eb745092db4111d75091cf38b3ab60587fb51dd8",
+            "clipped_common_gradient_sha256": "e2c1a6ba20f22b46c82efc75eb745092db4111d75091cf38b3ab60587fb51dd8",
+            "raw_joint_norm": 0.2095186710357666,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a739ba84bd39fb129561fc331d07b1432793755b27c69110591ef550f7e3b510",
+            "clipped_common_gradient_sha256": "a739ba84bd39fb129561fc331d07b1432793755b27c69110591ef550f7e3b510",
+            "raw_joint_norm": 0.2874784469604492,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "00111a9b24f54f67887cf37817c6b337910bb1fe9d5f7e1d4035608eb49fe96f",
+            "clipped_common_gradient_sha256": "00111a9b24f54f67887cf37817c6b337910bb1fe9d5f7e1d4035608eb49fe96f",
+            "raw_joint_norm": 0.43428951501846313,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "1a5f69c3f72d8ecb5d2635f3f73e867248feb9840a1b4525ebb1fb6dc95d2827",
+            "clipped_common_gradient_sha256": "1a5f69c3f72d8ecb5d2635f3f73e867248feb9840a1b4525ebb1fb6dc95d2827",
+            "raw_joint_norm": 0.34138223528862,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "19ecd618f2732ee9751ec06e121899ec02c8b50f21f040e39fa74d49a597c54f",
+            "clipped_common_gradient_sha256": "19ecd618f2732ee9751ec06e121899ec02c8b50f21f040e39fa74d49a597c54f",
+            "raw_joint_norm": 0.322702020406723,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a2f5461a3fbee85bc81fa610933ab92b0171c8e997d03b498dba73e663bdabca",
+            "clipped_common_gradient_sha256": "a2f5461a3fbee85bc81fa610933ab92b0171c8e997d03b498dba73e663bdabca",
+            "raw_joint_norm": 0.22807368636131287,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          }
+        ],
+        "post_ppo_rng_sha256": "6bc6b86b6d44992c49f33559f98565d378c1a11c1a21c7939eb94fbfeec914fc",
+        "post_aux_rng_sha256": "28c114cc39ec43483404a21bca9c5fc5f72d19f4da51c75f7dc4d0fc9f0fe2f8",
+        "next_noise_sha256": "974946d831753c714cd1f11a17f79d42228b4d56ff6d78acf82342434c6ca8ca",
+        "common_state_sha256": "0f32bcdfa5aa149c7f559045622f2e227969fa745717cd91db98acc8f6590d07",
+        "common_optimizer_sha256": "1b696bd29f3a7228d10b0bf80d9dabc5841358b8bc084b434f38e72dac783d81",
+        "auxiliary_state_sha256": "6a1eda01e04a090fb287190b81b9432e6f8fbffc5285986ade129e5f41a99ed9",
+        "auxiliary_optimizer_sha256": "cc03bdd926c4fb2e959d00180d97f35fef40d312c9141d5cc70edd86932d38b9"
+      },
+      "no-input-restore-rng": {
+        "metrics": {
+          "policy_loss": -0.009988381163566373,
+          "value_loss": 0.4914369453986486,
+          "entropy": 1.8365206976731618,
+          "approx_kl": 0.007077140513637278,
+          "peer_gate_fraction": 0.0,
+          "intention_feature_std": 0.0,
+          "intention_loss": 2.124528706073761,
+          "intention_nll": 2.0704721212387085,
+          "intention_kl": 0.5405658334493637,
+          "forecast_target_count": 1764,
+          "forecast_comparison_count": 1680,
+          "forecast_component_count": 2880,
+          "history_baseline_target_count": 1680,
+          "history_baseline_component_count": 2880,
+          "forecast_rmse": 0.7699296874542744,
+          "persistence_rmse": 0.7699296874542744,
+          "history_mean_rmse": 0.5673699390392134,
+          "history_baseline_coverage_fraction": 0.9523809523809523
+        },
+        "ppo_clip_calls": 60,
+        "clipping": [
+          {
+            "raw_common_gradient_sha256": "3055292ae481839eeab5a310ea4bc21e8c2912e935234ff1c04e14238b4dcf3d",
+            "clipped_common_gradient_sha256": "19708f0f7480ddadeb83f6430ed37ee5bf2a1e3275873156f92c1339ac67e516",
+            "raw_joint_norm": 0.5413193702697754,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "622a4da0c1e5b3d3add5cd97ded313897ba47ad185d2dd21913cafc193103ac9",
+            "clipped_common_gradient_sha256": "8fc2f20cc736f3d6076f4806b09ccb77aa6073458f854a2e161a522935a124b9",
+            "raw_joint_norm": 0.7520231008529663,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b6f396ffe3e895a7c8200d1864d373afd5f7a7600edcba0957eb25e8b5da6b71",
+            "clipped_common_gradient_sha256": "d9560f254137253a45910bf99cb9ce070ee9ca53f8426e7b136b8b8491d5d815",
+            "raw_joint_norm": 0.6669576168060303,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "9bbd64cbe7d219a33aaa14be75efa206482ef7702ff3d2bd6fba136cdd99a120",
+            "clipped_common_gradient_sha256": "516a7df69489958c07dadd504d8d18df1134dcfb6784fd3d9585910300318876",
+            "raw_joint_norm": 0.5240979194641113,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b086257862ea54c8c77e2045aff7319dd9f2cadd056aae0c474377714e31ab24",
+            "clipped_common_gradient_sha256": "a621fbeca52a353a1a2bc1b696037b70204b8b0517b85be26bfd29051d7e4eee",
+            "raw_joint_norm": 0.5577752590179443,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "197e66938cef5875a8a39ddbff3a1839a405dda0ca019451b51c79f61ed68f45",
+            "clipped_common_gradient_sha256": "c366a72fdd14777157263f393f2a67cc2161ee3f0c47e35a7c34e9bdda4dd8a6",
+            "raw_joint_norm": 0.6400042176246643,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "386a1f51c547867d22cc9208d7563521fb86f457d59f6e852af5b3a6751d4faa",
+            "clipped_common_gradient_sha256": "5461ffb8c14561ea7444c69c3c05f4fee06bf9e1e4fe6bd60e4bfc854f027f45",
+            "raw_joint_norm": 0.5837157368659973,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a3235415bbf1ea1752e1f0e797fd958cda2d2aff457e71a9e28d4910c15c6f84",
+            "clipped_common_gradient_sha256": "931f862c4f278f610da590e1a0bc7c23420ed89120efb52547384e1e10c66810",
+            "raw_joint_norm": 0.6495890021324158,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a28a93db3fb7a0bf11daef624d19cb253a0f67c10bd90ab30aa2736a53f2e040",
+            "clipped_common_gradient_sha256": "a28a93db3fb7a0bf11daef624d19cb253a0f67c10bd90ab30aa2736a53f2e040",
+            "raw_joint_norm": 0.49446097016334534,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "6c4d3a38458dd27f9d55ebd7affec8dd1d1d569cf0124da326d9e849fe9fa9e5",
+            "clipped_common_gradient_sha256": "6c4d3a38458dd27f9d55ebd7affec8dd1d1d569cf0124da326d9e849fe9fa9e5",
+            "raw_joint_norm": 0.4349075257778168,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "29f726a5c966010ddc5dc51d585b4d16c79f65c722d81c03739b75448d357bb1",
+            "clipped_common_gradient_sha256": "29f726a5c966010ddc5dc51d585b4d16c79f65c722d81c03739b75448d357bb1",
+            "raw_joint_norm": 0.35689231753349304,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "785bd89b97f922d6927960a4f757a5a7d40b37261389ea92dc7b57f71c94ccf1",
+            "clipped_common_gradient_sha256": "785bd89b97f922d6927960a4f757a5a7d40b37261389ea92dc7b57f71c94ccf1",
+            "raw_joint_norm": 0.4307716488838196,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "fd914226b970e23b81c5491bed2cf9f5ef79108c12acb3a78d5619e7a699d414",
+            "clipped_common_gradient_sha256": "fd914226b970e23b81c5491bed2cf9f5ef79108c12acb3a78d5619e7a699d414",
+            "raw_joint_norm": 0.34261325001716614,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "0eab873aa56e475d0ff5a5bdacf6269518db0f969bcca6e3a752c240a5686417",
+            "clipped_common_gradient_sha256": "0eab873aa56e475d0ff5a5bdacf6269518db0f969bcca6e3a752c240a5686417",
+            "raw_joint_norm": 0.3895055651664734,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "534ba758157e79414e42040cc14bce1b74354ed99b0283882e60ea36f53e8ffb",
+            "clipped_common_gradient_sha256": "534ba758157e79414e42040cc14bce1b74354ed99b0283882e60ea36f53e8ffb",
+            "raw_joint_norm": 0.20694319903850555,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "53e9b0600c6bc260df36659ebcfa6e31aa14fdaf68b150e4ef84e8d8a788f6cc",
+            "clipped_common_gradient_sha256": "53e9b0600c6bc260df36659ebcfa6e31aa14fdaf68b150e4ef84e8d8a788f6cc",
+            "raw_joint_norm": 0.3140026330947876,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "d48cdc9ed46b739c6f85e4d113e91c17278d45ae162de9eec582f9bbaff2d4d7",
+            "clipped_common_gradient_sha256": "d48cdc9ed46b739c6f85e4d113e91c17278d45ae162de9eec582f9bbaff2d4d7",
+            "raw_joint_norm": 0.3924602270126343,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "131e76b8bb1ed0e442ef1f5c21a52da9f48a23d35d870b6816c7c54214360251",
+            "clipped_common_gradient_sha256": "c973e710a72c3ae5c3526134282db40c90b521624728143ca311950e577770a8",
+            "raw_joint_norm": 0.6656903624534607,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "df242359e48540b290eb88abf02a233443bc799e5aebe46631fec274a14fef4d",
+            "clipped_common_gradient_sha256": "df242359e48540b290eb88abf02a233443bc799e5aebe46631fec274a14fef4d",
+            "raw_joint_norm": 0.26433104276657104,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b95c79db1c36fc12e15d7aaa85f7fcc71d16739e68157c919a1d9d3d3016355f",
+            "clipped_common_gradient_sha256": "b95c79db1c36fc12e15d7aaa85f7fcc71d16739e68157c919a1d9d3d3016355f",
+            "raw_joint_norm": 0.3867562413215637,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "c5c2e15d916e3017a6d120dc4a885d45e6d9a1b0dcc1f31be9e34f249ce0da98",
+            "clipped_common_gradient_sha256": "8850703ea6aa8e3ea8ac6082e40d43e7787191bf54f13265da449979c71f508d",
+            "raw_joint_norm": 0.6668693423271179,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "82317414354a53a5af27a89b789e8377bafa4ebb8f3a7dbe90fff1bc6d8cdda5",
+            "clipped_common_gradient_sha256": "82317414354a53a5af27a89b789e8377bafa4ebb8f3a7dbe90fff1bc6d8cdda5",
+            "raw_joint_norm": 0.494701623916626,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "3be155ed21a42a70aff7e36fc0b1bf526a1a131dd0f9a8b4c117adf4994d9a05",
+            "clipped_common_gradient_sha256": "3be155ed21a42a70aff7e36fc0b1bf526a1a131dd0f9a8b4c117adf4994d9a05",
+            "raw_joint_norm": 0.4823799133300781,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "2c08e534d5ac56e6df232050f257f440f33c01245fc67e6c6c55f0c9c2429f49",
+            "clipped_common_gradient_sha256": "aae600ee96178ff5f0c4c996475c0b7e9277c0ac1647637abc6c46d165736e6c",
+            "raw_joint_norm": 0.5248982906341553,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "21ff40d84edc6487f85dbb47f96b844b150e499724f0d1df639b779cc107b6a7",
+            "clipped_common_gradient_sha256": "c86563c3f44b533841acab345c1e7df986ddc33561d8b4ab2180e71052d31fd5",
+            "raw_joint_norm": 0.5880934596061707,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "faca9af9d6bb2cac68572f0fa5c7f5b384aa911c0e2d0741185405e718f0761d",
+            "clipped_common_gradient_sha256": "faca9af9d6bb2cac68572f0fa5c7f5b384aa911c0e2d0741185405e718f0761d",
+            "raw_joint_norm": 0.34131187200546265,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "c1d005c0597f6cfa54bfa66be552b86a9526b4fae8394fee9be024a9bf9f8019",
+            "clipped_common_gradient_sha256": "fec266f990c09f05a6ec4d872e4f54a3d50a8a9afd2bd8bfcb1f0c0799de4cf0",
+            "raw_joint_norm": 0.6923731565475464,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "63da0a68ea2a4333a8d8ebbda9d21537217112a7f9eddc90f5cfbee75fff018e",
+            "clipped_common_gradient_sha256": "63da0a68ea2a4333a8d8ebbda9d21537217112a7f9eddc90f5cfbee75fff018e",
+            "raw_joint_norm": 0.37812697887420654,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "30be39d295cfe166dc81b373876fa4708d3016314a3a61139a6bf2893d2c5c3a",
+            "clipped_common_gradient_sha256": "30be39d295cfe166dc81b373876fa4708d3016314a3a61139a6bf2893d2c5c3a",
+            "raw_joint_norm": 0.34587720036506653,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a3392e86b052f747f8d42aa5db2cc84380a163a6e53b57053765f141bf11a9ad",
+            "clipped_common_gradient_sha256": "a3392e86b052f747f8d42aa5db2cc84380a163a6e53b57053765f141bf11a9ad",
+            "raw_joint_norm": 0.2827625572681427,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "82d2fa8a5cf0085b8e136ba9939ee23b01a1ff0710e776c922062c1fc372b4e7",
+            "clipped_common_gradient_sha256": "82d2fa8a5cf0085b8e136ba9939ee23b01a1ff0710e776c922062c1fc372b4e7",
+            "raw_joint_norm": 0.3066946268081665,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "12d4c925128d9588ed622fc2107e36dc8aa30bf8053beef1731f95e2aff7b595",
+            "clipped_common_gradient_sha256": "12d4c925128d9588ed622fc2107e36dc8aa30bf8053beef1731f95e2aff7b595",
+            "raw_joint_norm": 0.2658439874649048,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "d2f5b688054deb70cfd48e51fbbd044eb731616bb6c895f7d8d0e6cec9bee4e3",
+            "clipped_common_gradient_sha256": "d2f5b688054deb70cfd48e51fbbd044eb731616bb6c895f7d8d0e6cec9bee4e3",
+            "raw_joint_norm": 0.34334883093833923,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "9e31e3b1e37ecd186b7fa795783c4d0cb38c6de127faacf3679edab7ed57150c",
+            "clipped_common_gradient_sha256": "9e31e3b1e37ecd186b7fa795783c4d0cb38c6de127faacf3679edab7ed57150c",
+            "raw_joint_norm": 0.2689686119556427,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "34276f5efd8b863a9180306fa8e6db7041f94220b94c6ed7b97efc1084f7ade1",
+            "clipped_common_gradient_sha256": "34276f5efd8b863a9180306fa8e6db7041f94220b94c6ed7b97efc1084f7ade1",
+            "raw_joint_norm": 0.4212690591812134,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "8a3db4da0cc758cd6414c025a871d94621cbf51fbd4ca096347da07f9c5e8c64",
+            "clipped_common_gradient_sha256": "8a3db4da0cc758cd6414c025a871d94621cbf51fbd4ca096347da07f9c5e8c64",
+            "raw_joint_norm": 0.4018256366252899,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "138db4f74660cb40b2abf68f249c0627584ab5612b9b68ffc5f5fc2346d1a99d",
+            "clipped_common_gradient_sha256": "138db4f74660cb40b2abf68f249c0627584ab5612b9b68ffc5f5fc2346d1a99d",
+            "raw_joint_norm": 0.38890576362609863,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "fc7a492e2ad3009dd7e037e326c7cf30cd77db709ff6a8fcb8461c355de8a1ed",
+            "clipped_common_gradient_sha256": "fc7a492e2ad3009dd7e037e326c7cf30cd77db709ff6a8fcb8461c355de8a1ed",
+            "raw_joint_norm": 0.34086331725120544,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "3274ebd6ed2116286b74a1d2130b54e014e62b8ab0e810fe5271da6fb0eceded",
+            "clipped_common_gradient_sha256": "3274ebd6ed2116286b74a1d2130b54e014e62b8ab0e810fe5271da6fb0eceded",
+            "raw_joint_norm": 0.31006160378456116,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "bdfc12865254677d9be89f31f7b3aba3a4fca9fc49627db72d384d0cc53ea89c",
+            "clipped_common_gradient_sha256": "bdfc12865254677d9be89f31f7b3aba3a4fca9fc49627db72d384d0cc53ea89c",
+            "raw_joint_norm": 0.3626181185245514,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "be50729b534b6ca2db0f892ef3888fef65d139cd243d69f746cb1c2de0ebb575",
+            "clipped_common_gradient_sha256": "cf26c3441a0c4ae7fc8cddb68d4c2b7efb0e8766744ceb608b61d02a88259c1e",
+            "raw_joint_norm": 1.015103816986084,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "457ce597508cece3f587f637f7d33f7915c51d1c6615f633fb22482d79353f0b",
+            "clipped_common_gradient_sha256": "ea2cbad8c44e8e6bbbf94c597be498e3ebfc03c1f359a0f7286e4206fc40aecd",
+            "raw_joint_norm": 0.9679456353187561,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "7b8d4f309f29bd8d7c5abeca2fa313b33823ccc1c4cd8c79467d6aba83ffd740",
+            "clipped_common_gradient_sha256": "51e4b712447c5dac4805b74a2a4bb2747e9f93dcdfeed17c8641f3650a76f9c4",
+            "raw_joint_norm": 0.8279239535331726,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "b0e706193ab17b1b48b331fc9f8a849779dc739a9a01cc59fb32ccc415805b07",
+            "clipped_common_gradient_sha256": "8a76e88b8c0f0161cca97870e032d82924e640a97395a8e168507e013f34dc50",
+            "raw_joint_norm": 0.7864540219306946,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "88945f2cc936d65b766ddeaa42b7bcd361878eece2af40ec27f5db706bb7f334",
+            "clipped_common_gradient_sha256": "55a7701a0b26cfa313494fe031bf4a0d4d68c4fd19662c9c5b259d13b92f6065",
+            "raw_joint_norm": 0.7823197245597839,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "e9340c5a843313e6498037f6eb108f2e5f4d4d41bbbefb2b5ad51a8cbb1eb629",
+            "clipped_common_gradient_sha256": "76e098691eca76b34445efbc3ffbdf2354b4fa9646ed40949e1f8c9031b33e7d",
+            "raw_joint_norm": 0.8286351561546326,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "65723d244cffafd0b1081e0700917d22758c6d25d23794fe1ca1997b9019ecfe",
+            "clipped_common_gradient_sha256": "09f5f50cd987159e7558b00698a9054cc9c2c1308612eb300390d5adf25f0157",
+            "raw_joint_norm": 0.8121755123138428,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "aec5529eda5dccfe0c0f3353539c536dbc7e35a3f7e8e68c86b3f9fceb3e52ae",
+            "clipped_common_gradient_sha256": "aec5529eda5dccfe0c0f3353539c536dbc7e35a3f7e8e68c86b3f9fceb3e52ae",
+            "raw_joint_norm": 0.42303386330604553,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "2bcfcfabcbac3746a963554b22b4d15fcc0478e784c490048597ef48a7e3015e",
+            "clipped_common_gradient_sha256": "2bcfcfabcbac3746a963554b22b4d15fcc0478e784c490048597ef48a7e3015e",
+            "raw_joint_norm": 0.267994225025177,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "32a2af67cfc05894e0a5929ee59b11a1ec62db897da3eb10ecd7d7f171222051",
+            "clipped_common_gradient_sha256": "32a2af67cfc05894e0a5929ee59b11a1ec62db897da3eb10ecd7d7f171222051",
+            "raw_joint_norm": 0.18807807564735413,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "41749bf58f802c97cc8c9c401f1e86b7b596c46bb97dfd3b5e758a55f69ecb70",
+            "clipped_common_gradient_sha256": "41749bf58f802c97cc8c9c401f1e86b7b596c46bb97dfd3b5e758a55f69ecb70",
+            "raw_joint_norm": 0.2808181047439575,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "242361aeea634af38c853d87fc8e34a9e15ed9e5e0c7f9f1e918ffed620811e6",
+            "clipped_common_gradient_sha256": "242361aeea634af38c853d87fc8e34a9e15ed9e5e0c7f9f1e918ffed620811e6",
+            "raw_joint_norm": 0.26114439964294434,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "dffa166436d09f69b0de1732607c3b159ea2bba2a14e2a6c04979787c3bdcb5e",
+            "clipped_common_gradient_sha256": "dffa166436d09f69b0de1732607c3b159ea2bba2a14e2a6c04979787c3bdcb5e",
+            "raw_joint_norm": 0.3217538595199585,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "5ede8f6dbf410d809b50fcfc8de5dc3fe34e2545e071808cfe14740aa29c69a1",
+            "clipped_common_gradient_sha256": "f7bcfbec49ef23650df747272d5ca1245dbd198818beed43a0a43b9ed8dab063",
+            "raw_joint_norm": 0.5672001242637634,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "e2c1a6ba20f22b46c82efc75eb745092db4111d75091cf38b3ab60587fb51dd8",
+            "clipped_common_gradient_sha256": "e2c1a6ba20f22b46c82efc75eb745092db4111d75091cf38b3ab60587fb51dd8",
+            "raw_joint_norm": 0.2095186710357666,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a739ba84bd39fb129561fc331d07b1432793755b27c69110591ef550f7e3b510",
+            "clipped_common_gradient_sha256": "a739ba84bd39fb129561fc331d07b1432793755b27c69110591ef550f7e3b510",
+            "raw_joint_norm": 0.2874784469604492,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "00111a9b24f54f67887cf37817c6b337910bb1fe9d5f7e1d4035608eb49fe96f",
+            "clipped_common_gradient_sha256": "00111a9b24f54f67887cf37817c6b337910bb1fe9d5f7e1d4035608eb49fe96f",
+            "raw_joint_norm": 0.43428951501846313,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "1a5f69c3f72d8ecb5d2635f3f73e867248feb9840a1b4525ebb1fb6dc95d2827",
+            "clipped_common_gradient_sha256": "1a5f69c3f72d8ecb5d2635f3f73e867248feb9840a1b4525ebb1fb6dc95d2827",
+            "raw_joint_norm": 0.34138223528862,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "19ecd618f2732ee9751ec06e121899ec02c8b50f21f040e39fa74d49a597c54f",
+            "clipped_common_gradient_sha256": "19ecd618f2732ee9751ec06e121899ec02c8b50f21f040e39fa74d49a597c54f",
+            "raw_joint_norm": 0.322702020406723,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          },
+          {
+            "raw_common_gradient_sha256": "a2f5461a3fbee85bc81fa610933ab92b0171c8e997d03b498dba73e663bdabca",
+            "clipped_common_gradient_sha256": "a2f5461a3fbee85bc81fa610933ab92b0171c8e997d03b498dba73e663bdabca",
+            "raw_joint_norm": 0.22807368636131287,
+            "extra_gradient_norm": 0.0,
+            "extra_parameter_count": 4,
+            "extra_gradients_present": 4
+          }
+        ],
+        "post_ppo_rng_sha256": "6bc6b86b6d44992c49f33559f98565d378c1a11c1a21c7939eb94fbfeec914fc",
+        "post_aux_rng_sha256": "6bc6b86b6d44992c49f33559f98565d378c1a11c1a21c7939eb94fbfeec914fc",
+        "next_noise_sha256": "ca3ae43bd5f9bc5c9afd4fa6bfe578bca0fb3e79e421f1e8c0f3c5f5abc638f3",
+        "common_state_sha256": "0f32bcdfa5aa149c7f559045622f2e227969fa745717cd91db98acc8f6590d07",
+        "common_optimizer_sha256": "1b696bd29f3a7228d10b0bf80d9dabc5841358b8bc084b434f38e72dac783d81",
+        "auxiliary_state_sha256": "6a1eda01e04a090fb287190b81b9432e6f8fbffc5285986ade129e5f41a99ed9",
+        "auxiliary_optimizer_sha256": "cc03bdd926c4fb2e959d00180d97f35fef40d312c9141d5cc70edd86932d38b9"
+      }
+    },
+    "comparisons": {
+      "no-input-ordinary": {
+        "common_state_max_abs_difference": 5.960464477539063e-08,
+        "common_state_exact": false,
+        "common_optimizer_exact": false,
+        "post_ppo_rng_exact": true,
+        "post_aux_rng_exact": false,
+        "next_noise_exact": false,
+        "same_ppo_call_count": true,
+        "raw_common_gradients_exact_calls": 13,
+        "clipped_common_gradients_exact_calls": 10,
+        "first_raw_gradient_exact": true,
+        "first_clipped_gradient_exact": true,
+        "first_joint_norms": [
+          0.5413193702697754,
+          0.5413193702697754
+        ]
+      },
+      "no-input-restore-rng": {
+        "common_state_max_abs_difference": 5.960464477539063e-08,
+        "common_state_exact": false,
+        "common_optimizer_exact": false,
+        "post_ppo_rng_exact": true,
+        "post_aux_rng_exact": true,
+        "next_noise_exact": true,
+        "same_ppo_call_count": true,
+        "raw_common_gradients_exact_calls": 13,
+        "clipped_common_gradients_exact_calls": 10,
+        "first_raw_gradient_exact": true,
+        "first_clipped_gradient_exact": true,
+        "first_joint_norms": [
+          0.5413193702697754,
+          0.5413193702697754
+        ]
+      }
+    },
+    "limits": [
+      "Fresh initialization and one 4,000-transition native batch, not a replay of the completed 3M policy or a return experiment.",
+      "RNG restoration is a diagnostic intervention, not an independently seeded auxiliary stream or a promoted implementation.",
+      "A same-seed comparison with different RNG consumption is still a valid independent run; it is not an exact no-input equivalence test.",
+      "Existing training and evaluation jobs remain untouched."
+    ],
+    "rollout_sha256": "e2c01ec196aad5d999818460e9bb81ad2793a2e0e7a18b5998fac8f9f58a18f2",
+    "update_states_sha256": "4364a218a28c2a0599b06c4c292022f6f4295836ebbda67b8a590619ebfa4ab5",
+    "elapsed_seconds": 41.10595452901907,
+    "completed_utc": "2026-10-29T13:15:28.488254+00:00"
+  },
+  "first_clipping_difference": {
+    "zero_based_call": 3,
+    "raw_common_gradients_exact": true,
+    "ippo_norm": 0.5240979790687561,
+    "residual_norm": 0.5240979194641113,
+    "extra_gradient_norm": 0.0,
+    "extra_zero_gradient_parameters": 4
+  },
+  "evidence_sha256": {
+    "runs/residual-no-input-rng-probe/predeclared.json": "f6adc4082dd06dca6c4cc18784b0955af982bb3e6b4c03f7b1fb7a89dbaf9278",
+    "runs/residual-no-input-rng-probe/probe.py": "c227505437ec1dfe26c1ccbcd07a02648eb1e1cd92be1dd7d275bfc5adf18ee4",
+    "runs/residual-no-input-rng-probe/run.sbatch": "9cdac5583a3553d1fb56fc46d6b7c5e6eecb7eda74b7a2f4b4339e940ba2a058",
+    "runs/residual-no-input-rng-probe/result.json": "7556c4bcb3155d89f6c28f52eb2a5a2e19a6974f8c8a944efca6b409b3841ca3"
+  },
+  "decision": "Do not treat the trained no-input control as an exact IPPO replay. RNG restoration recovers subsequent draws but not bitwise common parameters. Keep the current experiments unchanged; this one-update observation neither explains the entire return gap nor selects an RNG-based training redesign."
+}

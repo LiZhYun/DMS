@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 12:53 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 13:34 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -207,14 +207,28 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-Walker residual job **21280354** has reached **1,924,000 steps** and its
-trained no-input control **21280356** has reached **2,280,000 steps**, both on
-H100. SMAC residual **21280358** has reached **1,353,600 steps** and its
-no-input control **21280360** has reached **1,043,200 steps**, also on H100.
-All four are running with finite latest metrics. Evaluations and collectors
-remain dependent on completion. No fixed-endpoint performance result is
-available for residual fusion yet.
+The Walker no-input control **21280356** and its fixed evaluation **21280357**
+have completed. Mean return is **524.26**, mean episode length **188.78**, and
+all 100 episodes end before 1,000 steps. All 750 training updates retain
+auxiliary training with zero peer inputs. The [endpoint audit](../reports/residual-fusion-first-endpoint-20261029.json)
+checks the 3M budget, evaluation seed block, immutable state and zero optimizer
+steps. This remains an ablation, below the full-budget 1,100 target at 3M.
+
+Walker residual job **21280354** has reached **2,892,000 steps**. SMAC residual
+**21280358** has reached **2,160,000 steps** and its no-input control
+**21280360** has reached **1,859,200 steps**. All three are running on H100
+with finite latest metrics; their fixed evaluations and collectors are queued.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
+
+A [fresh-initialization paired diagnostic](../reports/residual-no-input-rng-diagnostic.json),
+job **21283997**, confirms that auxiliary sampling changes later main RNG draws.
+Restoring RNG after the same auxiliary update recovers IPPO's next draws but
+does not recover bitwise common parameters: extra zero-gradient residual
+parameters cause tiny float32 clipping differences before auxiliary training.
+The largest common parameter difference after one 4,000-transition update is
+**5.96e-8**. This explains why no-input training is not an exact IPPO replay;
+it does not explain the full return gap or justify selecting a different RNG
+path to recover one favorable seed. Current experiments remain unchanged.
 
 The residual models also have [queued mechanism diagnostics](../reports/development-residual-mechanism-3m-seed101.json):
 Walker **21281731** and SMAC **21281732**, each dependent on its fixed-3M
@@ -283,8 +297,10 @@ archived trainer; their dependent evaluations were cancelled. The source and
 hyperparameters remain unchanged. Exact-launcher validation **21282799**
 passed both 8,000-step cases and separate saved-source evaluations, recording
 runtime metadata independently. The retry checked 13 evidence files and
-queued training **21282828 / 21282830**, fixed evaluations **21282829 / 21282831**,
-and three collectors. [Launcher evidence](../reports/ant-entropy-launcher-validation.json).
+submitted training **21282828 / 21282830**, fixed evaluations **21282829 / 21282831**,
+and three collectors. Both training jobs are now running on H100, at **372,000**
+IPPO steps and **268,000** DMS steps, with finite metrics. Their fixed evaluations
+remain pending. [Launcher evidence](../reports/ant-entropy-launcher-validation.json).
 [Failed attempt](../reports/development-ant-entropy-3m-seed101.json),
 [current retry](../reports/development-ant-entropy-3m-seed101-attempt2.json).
 

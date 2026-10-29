@@ -50,7 +50,7 @@ checks and **516 passing tests**, with 32 native dependency checks skipped.
 Tests cover initial parameter/RNG/action/value equivalence, local-only behavior
 with absent peers, exclusion of invisible histories and future targets,
 independent actor/critic gradients, PopArt and checkpoint round trips. The [native A100 validation](../reports/residual-native-validation.json) passed eight short training runs, exact initial IPPO rollout equivalence on both tasks, exact archived/current default regression, and four saved-source CPU evaluations with zero optimizer steps and unchanged state.
-The [installed-wheel check](../reports/public-wheel-residual-validation.json) also passed, using a new installation target with existing dependencies and a small synthetic residual-plus-joint run. No benchmark learning result is available for this option yet.
+The [installed-wheel check](../reports/public-wheel-residual-validation.json) also passed, using a new installation target with existing dependencies and a small synthetic residual-plus-joint run.
 
 The submitted comparison uses training seed 101, 3M transitions, H100, and a
 fixed 100-episode development evaluation block (400101–400200). Each task has
@@ -62,6 +62,31 @@ prior RL LR zero. No held-out training seeds are used, and no checkpoint is
 selected by evaluation return.
 
 The [queue ledger](../reports/development-residual-fusion-3m-seed101.json) records training jobs 21280354/56/58/60 and dependent fixed-checkpoint evaluations.
+
+The first completed endpoint is the **Walker no-input ablation**, with mean
+return **524.26** and mean episode length **188.78** over 100 episodes. All
+episodes end before 1,000 steps. All 750 training updates have zero peer gates
+and retain auxiliary training. Evaluation uses the frozen 3M checkpoint, has
+zero optimizer steps, and leaves source and learner state unchanged.
+[Endpoint audit](../reports/residual-fusion-first-endpoint-20261029.json).
+This is below the full-budget 1,100 reference at the shorter 3M budget and is
+not an intention-enabled DMS result. The other three endpoints remain pending.
+
+A [paired update diagnostic](../reports/residual-no-input-rng-diagnostic.json)
+checks why this ablation is not an exact same-seed IPPO replay. From fresh,
+matching initialization and one native 4,000-transition Walker batch, it compares
+IPPO, ordinary no-input residual DMS, and the same DMS update with main RNG states
+restored after auxiliary training. Restoring RNG recovers IPPO's subsequent
+random draws, but common parameters still differ by at most **5.96e-8**. The
+first difference occurs during PPO clipping: adding four exactly zero gradients
+changes the float32 norm reduction from **0.5240979791 to 0.5240979195**, despite
+identical common gradients before clipping. Both DMS conditions have identical
+model and optimizer states; only their continuation RNG differs.
+
+This diagnostic establishes two sources of numerical trajectory divergence,
+not the cause of the full return gap. Same-seed runs remain valid independent
+training outcomes. It does not select an RNG redesign or alter any experiment.
+Initialization equivalence remains the supported guarantee.
 
 ## Fixed-checkpoint mechanism checks
 
