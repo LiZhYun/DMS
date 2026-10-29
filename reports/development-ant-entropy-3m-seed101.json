@@ -1,0 +1,1435 @@
+{
+  "purpose": "Matched fresh Ant4x2 H32 entropy0.1 IPPO/DMS development trial; only entropy coefficient and output differ from each zero-entropy reference",
+  "created_utc": "2026-10-29T11:44:19.932682+00:00",
+  "status": "waiting_running_or_failed",
+  "artifact": "runs/development-ant-entropy-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "gpu_family": "H100",
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "budget": {
+    "steps_per_run": 3000000,
+    "new_training_runs": 2,
+    "total_new_training_steps": 6000000
+  },
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "deterministic": true,
+    "checkpoint": "fixed3M",
+    "device": "cpu"
+  },
+  "runs": [
+    {
+      "label": "ant-ippo",
+      "task": "ant",
+      "algorithm": "ippo",
+      "mode": "entropy",
+      "seed": 101,
+      "config": "configs/development/ant-4x2-ippo-history32-entropy01-3m-h100.json",
+      "frozen_config": "runs/development-ant-entropy-3m-seed101/configs/ant-ippo.json",
+      "config_sha256": "b747d1879f8328a85be33b2315c6ab71ceeac556bd9140cdda41b4422edb7ca3",
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "ant_contact_forces": "native",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -1.0,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.1,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101",
+      "comparison_reference_run": "runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101",
+      "comparison_reference_evaluation": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-ippo/validation.json",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-ippo/spec.json",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 82,
+          "shape": [
+            4,
+            32,
+            83
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 5,
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/source",
+      "changes_from_reference": {
+        "entropy_coef": [
+          0.0,
+          0.1
+        ],
+        "output": [
+          "runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101",
+          "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101"
+        ]
+      },
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-ant-entropy-ant-ippo-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=5:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/train.sbatch",
+          "ant-ippo"
+        ],
+        "returncode": 0,
+        "stdout": "21282324\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T11:54:43.762332+00:00",
+        "job_id": "21282324"
+      },
+      "job_id": "21282324",
+      "status": "training_running_or_pending",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-ant-entropy-ant-ippo-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21282324",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation-ant-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation-ant-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation-ant-ippo/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21282325\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T11:54:43.795785+00:00",
+        "job_id": "21282325",
+        "spec": "runs/development-ant-entropy-3m-seed101/evaluation-ant-ippo/spec.json",
+        "spec_sha256": "605eadf3ec8cb0bb0e44f1f9e9d30e961cd9fd921b01cc57793eee97439b0548",
+        "status": "waiting_for_training",
+        "launcher_sha256": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    },
+    {
+      "label": "ant-dms",
+      "task": "ant",
+      "algorithm": "dms",
+      "mode": "entropy",
+      "seed": 101,
+      "config": "configs/development/ant-4x2-dms-history32-entropy01-3m-h100.json",
+      "frozen_config": "runs/development-ant-entropy-3m-seed101/configs/ant-dms.json",
+      "config_sha256": "c68dcb04c408e293ddfb15dff64a1f314213e809294dad4b26ea4391a9ed8b7b",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "ant_contact_forces": "native",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -1.0,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.1,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101",
+      "comparison_reference_run": "runs/dev-legacy-ant-4x2-native-dms-history32-3m-h100-101",
+      "comparison_reference_evaluation": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-dms/validation.json",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-dms/spec.json",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 82,
+          "shape": [
+            4,
+            32,
+            83
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 8,
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/source",
+      "changes_from_reference": {
+        "entropy_coef": [
+          0.0,
+          0.1
+        ],
+        "output": [
+          "runs/dev-legacy-ant-4x2-native-dms-history32-3m-h100-101",
+          "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101"
+        ]
+      },
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-ant-entropy-ant-dms-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=8:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/train.sbatch",
+          "ant-dms"
+        ],
+        "returncode": 0,
+        "stdout": "21282326\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T11:54:43.820180+00:00",
+        "job_id": "21282326"
+      },
+      "job_id": "21282326",
+      "status": "training_running_or_pending",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-ant-entropy-ant-dms-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21282326",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation-ant-dms/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation-ant-dms/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/evaluation-ant-dms/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21282327\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T11:54:43.846593+00:00",
+        "job_id": "21282327",
+        "spec": "runs/development-ant-entropy-3m-seed101/evaluation-ant-dms/spec.json",
+        "spec_sha256": "dc3a4063ccdaa2eb71062bb923f544ebbcc3565942911905f4176624abeb7540",
+        "status": "waiting_for_training",
+        "launcher_sha256": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    }
+  ],
+  "smokes": [
+    {
+      "label": "ant-ippo",
+      "task": "ant",
+      "algorithm": "ippo",
+      "mode": "entropy",
+      "seed": 101,
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/smoke-configs-v2/ant-ippo.json",
+      "frozen_config": "runs/development-ant-entropy-3m-seed101/configs/ant-ippo.json",
+      "config_sha256": "e3d6e342474543ee0b1989ea15ce1b2ecd2c7b06a725db3e283154ace1760101",
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "ant_contact_forces": "native",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -1.0,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.1,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101",
+      "comparison_reference_run": "runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101",
+      "comparison_reference_evaluation": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-ippo/validation.json",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-ippo/spec.json",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 82,
+          "shape": [
+            4,
+            32,
+            83
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 5,
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/source",
+      "changes_from_reference": {
+        "entropy_coef": [
+          0.0,
+          0.1
+        ],
+        "output": [
+          "runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101",
+          "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101"
+        ]
+      }
+    },
+    {
+      "label": "ant-dms",
+      "task": "ant",
+      "algorithm": "dms",
+      "mode": "entropy",
+      "seed": 101,
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/smoke-configs-v2/ant-dms.json",
+      "frozen_config": "runs/development-ant-entropy-3m-seed101/configs/ant-dms.json",
+      "config_sha256": "c728fa7007b886fff92d7a6a718b173f1b0e21a2ffcfc47b23f8fa72f9c3ce1d",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "ant_contact_forces": "native",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -1.0,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.1,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101",
+      "comparison_reference_run": "runs/dev-legacy-ant-4x2-native-dms-history32-3m-h100-101",
+      "comparison_reference_evaluation": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-dms/validation.json",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-dms/spec.json",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 82,
+          "shape": [
+            4,
+            32,
+            83
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 8,
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/source",
+      "changes_from_reference": {
+        "entropy_coef": [
+          0.0,
+          0.1
+        ],
+        "output": [
+          "runs/dev-legacy-ant-4x2-native-dms-history32-3m-h100-101",
+          "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101"
+        ]
+      }
+    }
+  ],
+  "required_validation": [
+    {
+      "path": "runs/development-ant-entropy-3m-seed101/smoke-v2-validation.json",
+      "sha256": "474100e0fa3be0246deb65b02ad14e191f100198fbafdd98e5f9d0c5e39de610"
+    },
+    {
+      "path": "runs/development-ant-entropy-3m-seed101/smoke-v2-validation/ant-dms.json",
+      "sha256": "c047e8f303a77500195d0a44498161e1eaff0e409c4cb9da07ce9c886c68c546"
+    },
+    {
+      "path": "runs/development-ant-entropy-3m-seed101/smoke-v2-validation/ant-ippo.json",
+      "sha256": "8bba549f8ae5de925874c0286740b131cd9c83c7a5cf3c37e1443d7da58c4b5e"
+    },
+    {
+      "path": "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-ippo/validation.json",
+      "sha256": "2af902f7615f5c05aa50e03499b6bc62ac52835690625b150cd683b51e3032b5"
+    },
+    {
+      "path": "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-dms/validation.json",
+      "sha256": "2f50548dcee291f07048f5193da138c6778195840a13a01ce01fa4fc6554a199"
+    },
+    {
+      "path": "reports/development-ant-history32-entropy-update-probe.json",
+      "sha256": "6073e48b0747290a2a87110ece51bd8666c1587e1f52005ff20733ec9858cfa5"
+    },
+    {
+      "path": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-ippo/validation.json",
+      "sha256": "8ad6e5fb5089c004e16f92075742003dc8ec6932b12b8c94aaf1d3a9712b96c5"
+    },
+    {
+      "path": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-dms/validation.json",
+      "sha256": "f4926c357326626c0105619d483084de74e8b4b70789577edb78257895532cc5"
+    }
+  ],
+  "hypotheses": [
+    "If loss of exploration limits Ant locomotion, entropy0.1 may improve net movement returns after the same3M budget.",
+    "If useful coordination is still missing, DMS may remain worse than the matched optimizer control even with larger action variance.",
+    "More noise may harm survival or control costs; retain all outcomes and the fixed endpoint."
+  ],
+  "limits": [
+    "One development training seed; no final acceptance claim.",
+    "Entropy0.1 is a redesign choice, not the original code default0.001.",
+    "The one-update probe measures exploration gradients, not learning performance.",
+    "Old matched source is frozen exactly to isolate the entropy change; current residual trials remain separate."
+  ],
+  "selection_evidence": "reports/development-ant-history32-entropy-update-probe.json",
+  "runtime_basis": {
+    "completed_reference_training_hours": {
+      "ippo": 3.568052475777222,
+      "dms": 5.1387742970933
+    },
+    "allocated_hours": {
+      "ippo": 5,
+      "dms": 8
+    },
+    "cpus_per_run": 1,
+    "memory_per_run": "4G"
+  },
+  "smoke_scripts_sha256": {
+    "smoke_case.py": "cc9ddeb06ded0d669ebc05aeb282e982a127de407eab00456a6cac6cfb08189c",
+    "smoke_all.py": "417db4a7c951687602c2a2136fb3bc11489fc363eecae3cd20dbd5596df09814",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
+    "smoke.sbatch": "6f8b9e7b739a1cc8758420769849f6a4fe8a4b1c5c28dcbb276cbcd1f5bd3cb9"
+  },
+  "smoke": {
+    "job_id": "21282286",
+    "status": "completed_pass",
+    "submitted_utc": "2026-10-29T11:47:45.287088+00:00",
+    "attempt": 2,
+    "validation": "runs/development-ant-entropy-3m-seed101/smoke-v2-validation.json",
+    "validation_sha256": "474100e0fa3be0246deb65b02ad14e191f100198fbafdd98e5f9d0c5e39de610",
+    "completed_accounting": "21282286|COMPLETED|0:0"
+  },
+  "previous_smoke_submissions": [
+    {
+      "job_id": "21282251",
+      "status": "failed_harness_assertion",
+      "submitted_utc": "2026-10-29T11:45:14.958386+00:00",
+      "accounting": "21282251|FAILED|1:0",
+      "reason": "IPPO has zero intention models; harness incorrectly expected one flag per agent.",
+      "validation": "runs/development-ant-entropy-3m-seed101/smoke-validation.json",
+      "frozen_harness": "runs/development-ant-entropy-3m-seed101/failed-attempt1",
+      "scripts_sha256": {
+        "smoke_case.py": "04158ef727b94b64c8e12e5ffcde28f9aceaf7345c7d4accb32192ac1a8de493",
+        "smoke_all.py": "31119f3955496e6f24744e2f881ce671f5465e96510502d1eabed0f5628943d3",
+        "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+        "evaluation/evaluate.sbatch": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
+        "smoke.sbatch": "6f8b9e7b739a1cc8758420769849f6a4fe8a4b1c5c28dcbb276cbcd1f5bd3cb9"
+      }
+    }
+  ],
+  "scripts_sha256": {
+    "guarded_train.py": "c84bc54610b9eab271b4622375ae03e0c8de9535c44cfcd893c8bd05a8a99d99",
+    "train.sbatch": "bcf5f1b361dd4b9006b20c49fc0693d50f909a5583ce0be0877e9c9484f30c24",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
+    "refresh_status.py": "4898065878de886fd77ddad001a3f013dcc5d81dd69cf0d1edda546bc520a3df",
+    "collect.sbatch": "3c958a32bcc3c4e78e5c6bd00d73e40d54a4cd7efba63a64a8d2f98effe99155",
+    "submit.py": "77f626e08dd52a7c9e0946afdcbbd06a8eaf158aadb2734559cc37ddd49746aa"
+  },
+  "frozen_after_native_validation_utc": "2026-10-29T11:54:43.733182+00:00",
+  "predeclared_sha256": "3648265893bc9f4e5974d5f0ebefd79e140473572de450626a23dd2366d9d611",
+  "completion_collectors": [
+    {
+      "label": "ant-ippo",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-ant-entropy-collect-ant-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21282325",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21282328\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T11:54:43.871137+00:00",
+      "job_id": "21282328"
+    },
+    {
+      "label": "ant-dms",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-ant-entropy-collect-ant-dms",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21282327",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21282329\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T11:54:43.897517+00:00",
+      "job_id": "21282329"
+    },
+    {
+      "label": "all",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-ant-entropy-collect-all",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21282324:21282325:21282326:21282327",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-ant-entropy-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21282330\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T11:54:43.924331+00:00",
+      "job_id": "21282330"
+    }
+  ],
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-29T11:55:02.261851+00:00"
+}

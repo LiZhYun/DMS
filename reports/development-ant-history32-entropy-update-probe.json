@@ -1,0 +1,4764 @@
+{
+  "status": "completed_pass",
+  "job_id": "21282086",
+  "accounting": "21282086|COMPLETED|0:0|00:02:55|milan32",
+  "artifact": "runs/ant-history32-entropy-update-probe",
+  "predeclared": {
+    "purpose": "One frozen Ant H32 rollout and four paired ephemeral PPO updates to measure entropy effects on Gaussian exploration; no return-improvement claim",
+    "created_utc": "2026-10-29T11:30:47.363326+00:00",
+    "artifact": "runs/ant-history32-entropy-update-probe",
+    "original_checkpoint": "/scratch/work/liz23/reproduce/dms/runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101/latest.pt",
+    "checkpoint_sha256": "5615b978506705fafb087934ed5b55248e73516bb6da4f105947410d77463446",
+    "config": {
+      "algorithm": "ippo",
+      "env": "mamujoco",
+      "mamujoco_backend": "legacy",
+      "scenario": "Ant",
+      "ant_contact_forces": "native",
+      "agent_conf": "4x2",
+      "agent_obsk": 1,
+      "map_name": "3s5z",
+      "seed": 101,
+      "device": "cuda",
+      "num_envs": 4,
+      "parallel_env_steps": false,
+      "mask_inactive_agents": false,
+      "update_mode": "independent",
+      "total_steps": 3000000,
+      "rollout_steps": 1000,
+      "epochs": 5,
+      "minibatch_size": 1000,
+      "hidden_dim": 64,
+      "policy_history_length": 32,
+      "initial_log_std": -1.0,
+      "latent_dim": 8,
+      "decoder_history": false,
+      "history_length": 32,
+      "prediction_horizon": 4,
+      "coordination": "soft",
+      "coordination_threshold": 0.6,
+      "short_history": 4,
+      "filter_history": true,
+      "intention_threshold": 10000,
+      "warmup_episodes": 100,
+      "causal_warmup_episodes": 100,
+      "actor_lr": 0.0003,
+      "critic_lr": 0.001,
+      "intention_lr": 0.001,
+      "aux_updates": 2,
+      "aux_batch_size": 64,
+      "kl_beta": 0.1,
+      "latent_samples": 2,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip": 0.2,
+      "value_clip": 0.2,
+      "entropy_coef": 0.0,
+      "value_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "target_kl": 0.02,
+      "eval_every": 1000000,
+      "eval_episodes": 10,
+      "eval_seed": 10001,
+      "output": "runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101",
+      "torch_threads": 1
+    },
+    "environment": {
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "historical_binary_parity_verified": false,
+      "scenario": "Ant",
+      "native_env_id": "Ant-v2",
+      "agent_conf": "4x2",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel",
+          "cfrc_ext"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "ant.xml",
+      "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "action_dims": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "observation_dims": [
+        31,
+        31,
+        31,
+        31
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+        "alive_bonus_on_terminal": true,
+        "healthy_height": [
+          0.2,
+          1.0
+        ]
+      },
+      "frame_skip": 5,
+      "physics_timestep": 0.01,
+      "native_geom_friction": [
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ],
+        [
+          1.0,
+          0.5,
+          0.5
+        ]
+      ],
+      "ant_contact_forces": "native",
+      "contact_force_computation": {
+        "mode": "native",
+        "api": null,
+        "after_control_substeps_before_reward": false,
+        "after_reset_before_observation": false,
+        "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+        "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+        "variant_source_sha256": null,
+        "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+        "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+        "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+      },
+      "policy_observation_history": {
+        "length": 32,
+        "base_observation_dim": 82,
+        "shape": [
+          4,
+          32,
+          83
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "versions": {
+      "torch": "2.6.0+cu126",
+      "numpy": "1.26.4",
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14"
+    },
+    "source_inventory_sha256": {
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+    },
+    "helper": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/probe.py",
+    "helper_sha256": "d97c8f342d8953dbb84bf2a1551cf77689ecb148613ab744f798931c446bdef5",
+    "rollout_seed": 400871,
+    "update_seed": 400872,
+    "coefficients": [
+      0.0,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "reference_entropy_default": {
+      "path": "reference/DMS/configs/config_mujoco.py",
+      "sha256": "975eae03d92ce4f8a189245204d780cb8f9ccecf0b1aab8a44ae30852e6ccbf7",
+      "value": 0.001,
+      "note": "Executable default; neighboring help text says 0.01 and is stale."
+    },
+    "hypotheses": [
+      "A positive entropy bonus may reverse or reduce log-standard-deviation contraction on the same PPO batch.",
+      "If the current actor loss dominates, 0.001 and 0.01 may have little effect despite the theoretical entropy gradient.",
+      "Larger bonuses may change PPO clipping or update counts; track those instead of interpreting a noise increase as a return improvement."
+    ],
+    "limits": [
+      "One IPPO checkpoint and one rollout, not DMS learning or training-seed replication.",
+      "Coefficient0.001 comes from the reference executable default;0.01 and0.1 are diagnostic scales.",
+      "This diagnostic alone does not establish which full training trial will improve return; choose any next experiment from the measured evidence.",
+      "No original checkpoint, source or training configuration is modified."
+    ],
+    "held_out_training_seeds_used": [],
+    "probe_sha256": "03ac20665dfb4c0fc1bc48f1939409e6e97f44f209502cef593b425d246075ae",
+    "script_sha256": "8049c815a5880b618b41675130e731f7304238113bde7629f30911c0d4c14217"
+  },
+  "submission": {
+    "job_id": "21282086",
+    "submitted_utc": "2026-10-29T11:32:04.821689+00:00",
+    "predeclared_sha256": "c5c439ceb9de8eb8ef6544d5a7d6ef4918d5b67af6cde0007f889e228007b151"
+  },
+  "validation": {
+    "success": true,
+    "job_id": "21282086",
+    "elapsed_seconds": 168.51789931498934,
+    "completed_utc": "2026-10-29T11:35:25.658902+00:00",
+    "checkpoint_steps": 3000000,
+    "training_seed": 101,
+    "paired_initial_states_exact": true,
+    "source_and_original_checkpoint_unchanged": true,
+    "rollout_unchanged": true,
+    "rollout_sha256": "2747c78b1efe41a948f34433f8c57e0abb33cf13af8d4e6fc6b92a7bb235d163",
+    "rollout_transitions": 4000,
+    "replay_before_update": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 0.0,
+          "kl_p90": 0.0,
+          "kl_max": 0.0,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0
+        },
+        {
+          "agent": 1,
+          "kl_mean": 0.0,
+          "kl_p90": 0.0,
+          "kl_max": 0.0,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0
+        },
+        {
+          "agent": 2,
+          "kl_mean": 0.0,
+          "kl_p90": 0.0,
+          "kl_max": 0.0,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0
+        },
+        {
+          "agent": 3,
+          "kl_mean": 0.0,
+          "kl_p90": 0.0,
+          "kl_max": 0.0,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.0
+        }
+      ],
+      "mean_kl": 0.0,
+      "mean_ratio_outside_ppo_clip_fraction": 0.0
+    },
+    "ephemeral_updates": 4,
+    "original_training_updates": 0,
+    "variants": [
+      {
+        "coefficient": 0.0,
+        "metrics": {
+          "policy_loss": -0.0035911251958168577,
+          "value_loss": 0.10504974825307727,
+          "entropy": -1.632879562675953,
+          "approx_kl": 0.003901262801446137,
+          "peer_gate_fraction": 0.0
+        },
+        "before_std": [
+          [
+            0.10961494594812393,
+            0.10742997378110886
+          ],
+          [
+            0.11707741767168045,
+            0.10740139335393906
+          ],
+          [
+            0.10369527339935303,
+            0.10155067592859268
+          ],
+          [
+            0.10190410166978836,
+            0.1081104651093483
+          ]
+        ],
+        "after_std": [
+          [
+            0.10949656367301941,
+            0.10729265213012695
+          ],
+          [
+            0.11714688688516617,
+            0.10736614465713501
+          ],
+          [
+            0.10364025086164474,
+            0.10124297440052032
+          ],
+          [
+            0.10206564515829086,
+            0.10768993198871613
+          ]
+        ],
+        "before_log_std": [
+          [
+            -2.2107815742492676,
+            -2.2309160232543945
+          ],
+          [
+            -2.1449198722839355,
+            -2.231182098388672
+          ],
+          [
+            -2.266298770904541,
+            -2.2871973514556885
+          ],
+          [
+            -2.2837231159210205,
+            -2.2246017456054688
+          ]
+        ],
+        "after_log_std": [
+          [
+            -2.211862087249756,
+            -2.2321951389312744
+          ],
+          [
+            -2.144326686859131,
+            -2.2315104007720947
+          ],
+          [
+            -2.266829490661621,
+            -2.290231943130493
+          ],
+          [
+            -2.2821390628814697,
+            -2.228499174118042
+          ]
+        ],
+        "mean_log_std_change": -0.0009966790676116943,
+        "min_log_std_change": -0.003897428512573242,
+        "max_log_std_change": 0.0015840530395507812,
+        "clip_calls": 80,
+        "gradients": [
+          {
+            "agent": 0,
+            "gradient_norm": 1.4921627044677734,
+            "log_std_gradient_before_clip": [
+              0.013413401320576668,
+              -0.03316551819443703
+            ],
+            "log_std_gradient_after_clip": [
+              0.004494614899158478,
+              -0.01111323107033968
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0625696182250977,
+            "log_std_gradient_before_clip": [
+              -0.0015255603939294815,
+              -0.08234159648418427
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0007178630912676454,
+              -0.038746412843465805
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5600699186325073,
+            "log_std_gradient_before_clip": [
+              0.00903351977467537,
+              0.07648307830095291
+            ],
+            "log_std_gradient_after_clip": [
+              0.002895227400586009,
+              0.024512693285942078
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.45710027217865,
+            "log_std_gradient_before_clip": [
+              -0.03299250826239586,
+              -0.019363371655344963
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01132128294557333,
+              -0.006644484121352434
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.1687793731689453,
+            "log_std_gradient_before_clip": [
+              0.006767904385924339,
+              -0.01728939637541771
+            ],
+            "log_std_gradient_after_clip": [
+              0.00156030198559165,
+              -0.00398597214370966
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1836885213851929,
+            "log_std_gradient_before_clip": [
+              0.03790658339858055,
+              -0.005403826013207436
+            ],
+            "log_std_gradient_after_clip": [
+              0.016012046486139297,
+              -0.002282619709149003
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0948646068572998,
+            "log_std_gradient_before_clip": [
+              0.01866156980395317,
+              0.025257572531700134
+            ],
+            "log_std_gradient_after_clip": [
+              0.008522311225533485,
+              0.0115345548838377
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4301872253417969,
+            "log_std_gradient_before_clip": [
+              -0.013067763298749924,
+              -0.030056606978178024
+            ],
+            "log_std_gradient_after_clip": [
+              -0.004568546544760466,
+              -0.010507919825613499
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0449402332305908,
+            "log_std_gradient_before_clip": [
+              -0.003840216901153326,
+              -0.0546814426779747
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0018375278450548649,
+              -0.026164842769503593
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.51753568649292,
+            "log_std_gradient_before_clip": [
+              0.0952645093202591,
+              0.02810732088983059
+            ],
+            "log_std_gradient_after_clip": [
+              0.031387876719236374,
+              0.00926083792001009
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4594366550445557,
+            "log_std_gradient_before_clip": [
+              -0.006722602527588606,
+              0.04849247634410858
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0023031483869999647,
+              0.016613412648439407
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1576651334762573,
+            "log_std_gradient_before_clip": [
+              0.0451691597700119,
+              -0.006794205866754055
+            ],
+            "log_std_gradient_after_clip": [
+              0.019508717581629753,
+              -0.002934441203251481
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0315659046173096,
+            "log_std_gradient_before_clip": [
+              0.04957808181643486,
+              0.01448022946715355
+            ],
+            "log_std_gradient_after_clip": [
+              0.024030473083257675,
+              0.007018560543656349
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0503877401351929,
+            "log_std_gradient_before_clip": [
+              -0.024144507944583893,
+              -0.028211504220962524
+            ],
+            "log_std_gradient_after_clip": [
+              -0.011493129655718803,
+              -0.01342907827347517
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0966562032699585,
+            "log_std_gradient_before_clip": [
+              0.0370338037610054,
+              0.024339726194739342
+            ],
+            "log_std_gradient_after_clip": [
+              0.016884859651327133,
+              0.011097235605120659
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5122896432876587,
+            "log_std_gradient_before_clip": [
+              -0.007108675315976143,
+              -0.0001674741506576538
+            ],
+            "log_std_gradient_after_clip": [
+              -0.002350300783291459,
+              -5.5371019698213786e-05
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.2705800533294678,
+            "log_std_gradient_before_clip": [
+              -0.03920844569802284,
+              0.010519515722990036
+            ],
+            "log_std_gradient_after_clip": [
+              -0.015429336577653885,
+              0.0041396478191018105
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0317163467407227,
+            "log_std_gradient_before_clip": [
+              0.08745475858449936,
+              -0.02440715581178665
+            ],
+            "log_std_gradient_after_clip": [
+              0.0423831008374691,
+              -0.011828412301838398
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.0569019317626953,
+            "log_std_gradient_before_clip": [
+              0.016393009573221207,
+              -0.03870707005262375
+            ],
+            "log_std_gradient_after_clip": [
+              0.003984876908361912,
+              -0.009409066289663315
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1830968856811523,
+            "log_std_gradient_before_clip": [
+              -0.01822815090417862,
+              0.021760953590273857
+            ],
+            "log_std_gradient_after_clip": [
+              -0.007703568786382675,
+              0.009196599014103413
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.1163182258605957,
+            "log_std_gradient_before_clip": [
+              -0.01602027751505375,
+              -0.0057083480060100555
+            ],
+            "log_std_gradient_after_clip": [
+              -0.007175491191446781,
+              -0.002556772204115987
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2257931232452393,
+            "log_std_gradient_before_clip": [
+              0.0022041862830519676,
+              -0.05078786984086037
+            ],
+            "log_std_gradient_after_clip": [
+              0.0008990850183181465,
+              -0.020716313272714615
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9264733791351318,
+            "log_std_gradient_before_clip": [
+              -0.05825917422771454,
+              0.024228975176811218
+            ],
+            "log_std_gradient_after_clip": [
+              -0.031441327184438705,
+              0.01307590026408434
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9844786524772644,
+            "log_std_gradient_before_clip": [
+              -0.03303714841604233,
+              -0.012736013159155846
+            ],
+            "log_std_gradient_after_clip": [
+              -0.016778990626335144,
+              -0.006468398496508598
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.7417212128639221,
+            "log_std_gradient_before_clip": [
+              0.010928178206086159,
+              0.02029096893966198
+            ],
+            "log_std_gradient_after_clip": [
+              0.007366758771240711,
+              0.01367827970534563
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0984975099563599,
+            "log_std_gradient_before_clip": [
+              -0.07020030915737152,
+              -0.013822296634316444
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03195285052061081,
+              -0.0062914504669606686
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.3714230060577393,
+            "log_std_gradient_before_clip": [
+              0.0008689891546964645,
+              0.009858082979917526
+            ],
+            "log_std_gradient_after_clip": [
+              0.00031682002008892596,
+              0.0035941048990935087
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0455883741378784,
+            "log_std_gradient_before_clip": [
+              -0.025205077603459358,
+              -0.030354011803865433
+            ],
+            "log_std_gradient_after_clip": [
+              -0.012053048238158226,
+              -0.014515264891088009
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.047377109527588,
+            "log_std_gradient_before_clip": [
+              0.02198207750916481,
+              0.012883584946393967
+            ],
+            "log_std_gradient_after_clip": [
+              0.010493859648704529,
+              0.006150398403406143
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.721679925918579,
+            "log_std_gradient_before_clip": [
+              -0.01387312263250351,
+              0.034754782915115356
+            ],
+            "log_std_gradient_after_clip": [
+              -0.004028947092592716,
+              0.010093270801007748
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.1176068782806396,
+            "log_std_gradient_before_clip": [
+              0.0050064753741025925,
+              0.010278829373419285
+            ],
+            "log_std_gradient_after_clip": [
+              0.0022398175206035376,
+              0.004598584957420826
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9918258190155029,
+            "log_std_gradient_before_clip": [
+              -0.06700623780488968,
+              -0.004765581339597702
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03377920016646385,
+              -0.002402425976470113
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.8401110768318176,
+            "log_std_gradient_before_clip": [
+              0.014630302786827087,
+              0.04196526110172272
+            ],
+            "log_std_gradient_after_clip": [
+              0.008707351982593536,
+              0.024975990876555443
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2834757566452026,
+            "log_std_gradient_before_clip": [
+              0.0013684127479791641,
+              -0.0018650973215699196
+            ],
+            "log_std_gradient_after_clip": [
+              0.000533088285010308,
+              -0.0007265800959430635
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.3128066062927246,
+            "log_std_gradient_before_clip": [
+              0.01942567527294159,
+              0.043991073966026306
+            ],
+            "log_std_gradient_after_clip": [
+              0.007398523390293121,
+              0.016754578799009323
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.415988564491272,
+            "log_std_gradient_before_clip": [
+              -0.08396546542644501,
+              0.007313590496778488
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0296490415930748,
+              0.002582501620054245
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9773457646369934,
+            "log_std_gradient_before_clip": [
+              -0.031006790697574615,
+              0.0388651117682457
+            ],
+            "log_std_gradient_after_clip": [
+              -0.015862738713622093,
+              0.019882969558238983
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0511175394058228,
+            "log_std_gradient_before_clip": [
+              0.025157179683446884,
+              -0.021619433537125587
+            ],
+            "log_std_gradient_after_clip": [
+              0.01196686178445816,
+              -0.010284013114869595
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9919917583465576,
+            "log_std_gradient_before_clip": [
+              0.0026333127170801163,
+              -0.009437531232833862
+            ],
+            "log_std_gradient_after_clip": [
+              0.0013272842625156045,
+              -0.004756854847073555
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.1843647956848145,
+            "log_std_gradient_before_clip": [
+              -0.011966485530138016,
+              0.02187025360763073
+            ],
+            "log_std_gradient_after_clip": [
+              -0.005051854066550732,
+              0.009232896380126476
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6804226636886597,
+            "log_std_gradient_before_clip": [
+              -0.06532901525497437,
+              0.022041672840714455
+            ],
+            "log_std_gradient_after_clip": [
+              -0.019438259303569794,
+              0.006558368448168039
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.035122036933899,
+            "log_std_gradient_before_clip": [
+              0.08083920180797577,
+              -0.01669389382004738
+            ],
+            "log_std_gradient_after_clip": [
+              0.03904811665415764,
+              -0.0080637251958251
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.8886284828186035,
+            "log_std_gradient_before_clip": [
+              0.01580013334751129,
+              0.04112560674548149
+            ],
+            "log_std_gradient_after_clip": [
+              0.004182963166385889,
+              0.010887686163187027
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.5075123310089111,
+            "log_std_gradient_before_clip": [
+              -0.021091416478157043,
+              0.06906825304031372
+            ],
+            "log_std_gradient_after_clip": [
+              -0.006995433010160923,
+              0.022908007726073265
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.383650302886963,
+            "log_std_gradient_before_clip": [
+              -0.02193669229745865,
+              -0.018238985911011696
+            ],
+            "log_std_gradient_after_clip": [
+              -0.007927102968096733,
+              -0.0065908897668123245
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.402051329612732,
+            "log_std_gradient_before_clip": [
+              0.07441751658916473,
+              0.05283648893237114
+            ],
+            "log_std_gradient_after_clip": [
+              0.026538779959082603,
+              0.018842551857233047
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.810701608657837,
+            "log_std_gradient_before_clip": [
+              0.06926199793815613,
+              0.10440288484096527
+            ],
+            "log_std_gradient_after_clip": [
+              0.01912572607398033,
+              0.028829386457800865
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.287804365158081,
+            "log_std_gradient_before_clip": [
+              0.007425371557474136,
+              -0.021070003509521484
+            ],
+            "log_std_gradient_after_clip": [
+              0.0016228155000135303,
+              -0.004604850895702839
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.251178503036499,
+            "log_std_gradient_before_clip": [
+              0.09436652809381485,
+              0.07083921879529953
+            ],
+            "log_std_gradient_after_clip": [
+              0.03771102800965309,
+              0.02830897457897663
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.1477649211883545,
+            "log_std_gradient_before_clip": [
+              -0.002913902048021555,
+              0.02328847162425518
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0006783565622754395,
+              0.00542155746370554
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.0378756523132324,
+            "log_std_gradient_before_clip": [
+              0.000956609845161438,
+              0.02504250407218933
+            ],
+            "log_std_gradient_after_clip": [
+              0.00023470749147236347,
+              0.006144263781607151
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.8851537704467773,
+            "log_std_gradient_before_clip": [
+              -0.027902282774448395,
+              0.010053792968392372
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0048354915343225,
+              0.0017423317767679691
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.1404125690460205,
+            "log_std_gradient_before_clip": [
+              0.04037058725953102,
+              -0.002826533280313015
+            ],
+            "log_std_gradient_after_clip": [
+              0.009430558420717716,
+              -0.0006602773792110384
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.870619058609009,
+            "log_std_gradient_before_clip": [
+              0.003239378333091736,
+              0.06605127453804016
+            ],
+            "log_std_gradient_after_clip": [
+              0.0005642297328449786,
+              0.011504705995321274
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.5081748962402344,
+            "log_std_gradient_before_clip": [
+              -0.016936860978603363,
+              0.047282926738262177
+            ],
+            "log_std_gradient_after_clip": [
+              -0.005615015514194965,
+              0.015675535425543785
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.133287787437439,
+            "log_std_gradient_before_clip": [
+              -0.01969832554459572,
+              0.021646762266755104
+            ],
+            "log_std_gradient_after_clip": [
+              -0.008690779097378254,
+              0.009550417773425579
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6402112245559692,
+            "log_std_gradient_before_clip": [
+              -0.002702556550502777,
+              0.0911276638507843
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0008238435257226229,
+              0.0277792289853096
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.2377417087554932,
+            "log_std_gradient_before_clip": [
+              0.03645913302898407,
+              0.015831947326660156
+            ],
+            "log_std_gradient_after_clip": [
+              0.01472807489335537,
+              0.006395492237061262
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3997114896774292,
+            "log_std_gradient_before_clip": [
+              0.04122859984636307,
+              0.03803176060318947
+            ],
+            "log_std_gradient_after_clip": [
+              0.014727525413036346,
+              0.013585562817752361
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3231120109558105,
+            "log_std_gradient_before_clip": [
+              0.019284337759017944,
+              -0.017399780452251434
+            ],
+            "log_std_gradient_after_clip": [
+              0.0072874873876571655,
+              -0.006575319450348616
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4138736724853516,
+            "log_std_gradient_before_clip": [
+              -0.02747589722275734,
+              -0.011191915720701218
+            ],
+            "log_std_gradient_after_clip": [
+              -0.009716525673866272,
+              -0.00395788811147213
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.6555216312408447,
+            "log_std_gradient_before_clip": [
+              -0.053625382483005524,
+              0.006226804107427597
+            ],
+            "log_std_gradient_after_clip": [
+              -0.016195908188819885,
+              0.0018806159496307373
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.737304449081421,
+            "log_std_gradient_before_clip": [
+              -0.01287876907736063,
+              0.020778728649020195
+            ],
+            "log_std_gradient_after_clip": [
+              -0.003706535557284951,
+              0.005980160087347031
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 2.1133556365966797,
+            "log_std_gradient_before_clip": [
+              -0.010645903646945953,
+              0.0487031489610672
+            ],
+            "log_std_gradient_after_clip": [
+              -0.002518719295039773,
+              0.01152270007878542
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3890836238861084,
+            "log_std_gradient_before_clip": [
+              -0.05047701299190521,
+              0.04335927218198776
+            ],
+            "log_std_gradient_after_clip": [
+              -0.018169164657592773,
+              0.015607139095664024
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.54257333278656,
+            "log_std_gradient_before_clip": [
+              -0.019244156777858734,
+              0.020369214937090874
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0062376754358410835,
+              0.006602344568818808
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3631926774978638,
+            "log_std_gradient_before_clip": [
+              0.008927684277296066,
+              0.0042380522936582565
+            ],
+            "log_std_gradient_after_clip": [
+              0.003274547401815653,
+              0.001554457237944007
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.508628010749817,
+            "log_std_gradient_before_clip": [
+              -0.0018471963703632355,
+              0.05606722831726074
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0006122102495282888,
+              0.0185821782797575
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4741584062576294,
+            "log_std_gradient_before_clip": [
+              -0.052178092300891876,
+              0.04307430982589722
+            ],
+            "log_std_gradient_after_clip": [
+              -0.017697574570775032,
+              0.014609787613153458
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1561299562454224,
+            "log_std_gradient_before_clip": [
+              -0.03679319843649864,
+              0.06770403683185577
+            ],
+            "log_std_gradient_after_clip": [
+              -0.015912210568785667,
+              0.029280437156558037
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.656402826309204,
+            "log_std_gradient_before_clip": [
+              0.015367384999990463,
+              -0.04403203725814819
+            ],
+            "log_std_gradient_after_clip": [
+              0.004638779442757368,
+              -0.013291455805301666
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4334080219268799,
+            "log_std_gradient_before_clip": [
+              0.01852719858288765,
+              0.01921820640563965
+            ],
+            "log_std_gradient_after_clip": [
+              0.006462635472416878,
+              0.006703671999275684
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.445575475692749,
+            "log_std_gradient_before_clip": [
+              -0.037690676748752594,
+              0.04602466896176338
+            ],
+            "log_std_gradient_after_clip": [
+              -0.013036555610597134,
+              0.015919139608740807
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.2314660549163818,
+            "log_std_gradient_before_clip": [
+              -0.0010103844106197357,
+              0.05693716183304787
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0004102360690012574,
+              0.023117614910006523
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5789391994476318,
+            "log_std_gradient_before_clip": [
+              -0.11575842648744583,
+              0.010903457179665565
+            ],
+            "log_std_gradient_after_clip": [
+              -0.036657001823186874,
+              0.003452777396887541
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5756721496582031,
+            "log_std_gradient_before_clip": [
+              0.0778176411986351,
+              0.0009484458714723587
+            ],
+            "log_std_gradient_after_clip": [
+              0.024693459272384644,
+              0.0003009653009939939
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 0.9627270102500916,
+            "log_std_gradient_before_clip": [
+              0.012826470658183098,
+              0.02564915455877781
+            ],
+            "log_std_gradient_after_clip": [
+              0.006661523599177599,
+              0.013321081176400185
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 0.9164486527442932,
+            "log_std_gradient_before_clip": [
+              -0.022025657817721367,
+              0.02588968724012375
+            ],
+            "log_std_gradient_after_clip": [
+              -0.012016840279102325,
+              0.014124992303550243
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.124147891998291,
+            "log_std_gradient_before_clip": [
+              0.019488314166665077,
+              0.039058271795511246
+            ],
+            "log_std_gradient_after_clip": [
+              0.008668030612170696,
+              0.0173723753541708
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3809762001037598,
+            "log_std_gradient_before_clip": [
+              -0.08377993851900101,
+              0.036606136709451675
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03033357299864292,
+              0.013253708370029926
+            ]
+          }
+        ],
+        "gradient_norm_mean": 1.4067362666130065,
+        "gradient_norm_max": 2.8851537704467773,
+        "effective_policy_change": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.005707346834242344,
+              "kl_p90": 0.012945744208991528,
+              "kl_max": 0.044597212225198746,
+              "ratio_outside_ppo_clip_fraction": 0.06800000369548798,
+              "mean_action_shift_in_old_std": 0.09482245147228241
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0034546449314802885,
+              "kl_p90": 0.00830652005970478,
+              "kl_max": 0.03244875371456146,
+              "ratio_outside_ppo_clip_fraction": 0.038750000298023224,
+              "mean_action_shift_in_old_std": 0.07270926237106323
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.006064965855330229,
+              "kl_p90": 0.013868512585759163,
+              "kl_max": 0.0641813576221466,
+              "ratio_outside_ppo_clip_fraction": 0.07575000077486038,
+              "mean_action_shift_in_old_std": 0.09750287979841232
+            },
+            {
+              "agent": 3,
+              "kl_mean": 0.006644108332693577,
+              "kl_p90": 0.014921877533197403,
+              "kl_max": 0.0589202381670475,
+              "ratio_outside_ppo_clip_fraction": 0.08425000309944153,
+              "mean_action_shift_in_old_std": 0.10257115215063095
+            }
+          ],
+          "mean_kl": 0.0054677664884366095,
+          "mean_ratio_outside_ppo_clip_fraction": 0.06668750196695328
+        }
+      },
+      {
+        "coefficient": 0.001,
+        "metrics": {
+          "policy_loss": -0.003594476113357814,
+          "value_loss": 0.10504942443221807,
+          "entropy": -1.632827265560627,
+          "approx_kl": 0.0038975479365490175,
+          "peer_gate_fraction": 0.0
+        },
+        "before_std": [
+          [
+            0.10961494594812393,
+            0.10742997378110886
+          ],
+          [
+            0.11707741767168045,
+            0.10740139335393906
+          ],
+          [
+            0.10369527339935303,
+            0.10155067592859268
+          ],
+          [
+            0.10190410166978836,
+            0.1081104651093483
+          ]
+        ],
+        "after_std": [
+          [
+            0.10950364172458649,
+            0.10730116814374924
+          ],
+          [
+            0.1171545684337616,
+            0.10737195611000061
+          ],
+          [
+            0.10364793986082077,
+            0.10125048458576202
+          ],
+          [
+            0.10207334160804749,
+            0.10769827663898468
+          ]
+        ],
+        "before_log_std": [
+          [
+            -2.2107815742492676,
+            -2.2309160232543945
+          ],
+          [
+            -2.1449198722839355,
+            -2.231182098388672
+          ],
+          [
+            -2.266298770904541,
+            -2.2871973514556885
+          ],
+          [
+            -2.2837231159210205,
+            -2.2246017456054688
+          ]
+        ],
+        "after_log_std": [
+          [
+            -2.2117974758148193,
+            -2.2321157455444336
+          ],
+          [
+            -2.144261121749878,
+            -2.2314562797546387
+          ],
+          [
+            -2.2667553424835205,
+            -2.2901577949523926
+          ],
+          [
+            -2.2820637226104736,
+            -2.228421688079834
+          ]
+        ],
+        "mean_log_std_change": -0.0009260773658752441,
+        "min_log_std_change": -0.0038199424743652344,
+        "max_log_std_change": 0.001659393310546875,
+        "clip_calls": 80,
+        "gradients": [
+          {
+            "agent": 0,
+            "gradient_norm": 1.4921765327453613,
+            "log_std_gradient_before_clip": [
+              0.012413389980793,
+              -0.03416551649570465
+            ],
+            "log_std_gradient_after_clip": [
+              0.004159488249570131,
+              -0.011448207311332226
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0626486539840698,
+            "log_std_gradient_before_clip": [
+              -0.002525804564356804,
+              -0.08334162831306458
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0011884465347975492,
+              -0.03921406716108322
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.560015320777893,
+            "log_std_gradient_before_clip": [
+              0.00803365558385849,
+              0.07548345625400543
+            ],
+            "log_std_gradient_after_clip": [
+              0.002574862679466605,
+              0.024193162098526955
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4571301937103271,
+            "log_std_gradient_before_clip": [
+              -0.033991724252700806,
+              -0.02036280557513237
+            ],
+            "log_std_gradient_after_clip": [
+              -0.011663920246064663,
+              -0.006987293250858784
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.1688008308410645,
+            "log_std_gradient_before_clip": [
+              0.00576695054769516,
+              -0.018289392814040184
+            ],
+            "log_std_gradient_after_clip": [
+              0.001329524558968842,
+              -0.004216474015265703
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1836707592010498,
+            "log_std_gradient_before_clip": [
+              0.03690690919756889,
+              -0.006400411017239094
+            ],
+            "log_std_gradient_after_clip": [
+              0.015590011142194271,
+              -0.0027036259416490793
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0948045253753662,
+            "log_std_gradient_before_clip": [
+              0.017661068588495255,
+              0.0242567528039217
+            ],
+            "log_std_gradient_after_clip": [
+              0.008065847679972649,
+              0.01107811089605093
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.430189609527588,
+            "log_std_gradient_before_clip": [
+              -0.014067258685827255,
+              -0.031058063730597496
+            ],
+            "log_std_gradient_after_clip": [
+              -0.004917966667562723,
+              -0.010858016088604927
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.044992208480835,
+            "log_std_gradient_before_clip": [
+              -0.004841038025915623,
+              -0.05567953735589981
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0023163012228906155,
+              -0.026641100645065308
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5174208879470825,
+            "log_std_gradient_before_clip": [
+              0.09427298605442047,
+              0.02710874192416668
+            ],
+            "log_std_gradient_after_clip": [
+              0.031063538044691086,
+              0.008932500146329403
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4594836235046387,
+            "log_std_gradient_before_clip": [
+              -0.0077223945409059525,
+              0.04749789834022522
+            ],
+            "log_std_gradient_after_clip": [
+              -0.002645589644089341,
+              0.016272148117423058
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1576391458511353,
+            "log_std_gradient_before_clip": [
+              0.044163648039102554,
+              -0.00779670849442482
+            ],
+            "log_std_gradient_after_clip": [
+              0.019074860960245132,
+              -0.003367501078173518
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0316920280456543,
+            "log_std_gradient_before_clip": [
+              0.048559218645095825,
+              0.013481475412845612
+            ],
+            "log_std_gradient_after_clip": [
+              0.02353375405073166,
+              0.006533666513860226
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.049712061882019,
+            "log_std_gradient_before_clip": [
+              -0.022300895303487778,
+              -0.029458601027727127
+            ],
+            "log_std_gradient_after_clip": [
+              -0.010622376576066017,
+              -0.01403173990547657
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.09635329246521,
+            "log_std_gradient_before_clip": [
+              0.036065876483917236,
+              0.023334065452218056
+            ],
+            "log_std_gradient_after_clip": [
+              0.016448095440864563,
+              0.010641663335263729
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5125755071640015,
+            "log_std_gradient_before_clip": [
+              -0.00810212641954422,
+              -0.001145642250776291
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0026782534550875425,
+              -0.00037870556116104126
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.2709718942642212,
+            "log_std_gradient_before_clip": [
+              -0.04014148190617561,
+              0.009517461061477661
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0157916359603405,
+              0.003744164016097784
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0222234725952148,
+            "log_std_gradient_before_clip": [
+              0.08684311807155609,
+              -0.025265436619520187
+            ],
+            "log_std_gradient_after_clip": [
+              0.04247752204537392,
+              -0.01235806755721569
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.0568766593933105,
+            "log_std_gradient_before_clip": [
+              0.015302611514925957,
+              -0.039673931896686554
+            ],
+            "log_std_gradient_after_clip": [
+              0.0037198644131422043,
+              -0.009644213132560253
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.183595895767212,
+            "log_std_gradient_before_clip": [
+              -0.01922183483839035,
+              0.020772304385900497
+            ],
+            "log_std_gradient_after_clip": [
+              -0.008120093494653702,
+              0.008775075897574425
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.1163386106491089,
+            "log_std_gradient_before_clip": [
+              -0.017020275816321373,
+              -0.00670832023024559
+            ],
+            "log_std_gradient_after_clip": [
+              -0.007623251993209124,
+              -0.0030046056490391493
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2258328199386597,
+            "log_std_gradient_before_clip": [
+              0.0012040911242365837,
+              -0.05178799480199814
+            ],
+            "log_std_gradient_after_clip": [
+              0.0004911315045319498,
+              -0.021123578771948814
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9265111684799194,
+            "log_std_gradient_before_clip": [
+              -0.05925919488072395,
+              0.02322927862405777
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03197971731424332,
+              0.012535872869193554
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9845219254493713,
+            "log_std_gradient_before_clip": [
+              -0.03403828293085098,
+              -0.013735804706811905
+            ],
+            "log_std_gradient_after_clip": [
+              -0.017286688089370728,
+              -0.006975868251174688
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.7416801452636719,
+            "log_std_gradient_before_clip": [
+              0.00992717407643795,
+              0.019292857497930527
+            ],
+            "log_std_gradient_after_clip": [
+              0.0066923461854457855,
+              0.01300616655498743
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0985708236694336,
+            "log_std_gradient_before_clip": [
+              -0.07120168954133987,
+              -0.014823056757450104
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03240647912025452,
+              -0.006746512372046709
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.3714336156845093,
+            "log_std_gradient_before_clip": [
+              -0.0001312587410211563,
+              0.008856896311044693
+            ],
+            "log_std_gradient_after_clip": [
+              -4.78545407531783e-05,
+              0.0032290625385940075
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0456418991088867,
+            "log_std_gradient_before_clip": [
+              -0.02620949037373066,
+              -0.031353920698165894
+            ],
+            "log_std_gradient_after_clip": [
+              -0.012532716616988182,
+              -0.014992653392255306
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0290679931640625,
+            "log_std_gradient_before_clip": [
+              0.02220584824681282,
+              0.015016580000519753
+            ],
+            "log_std_gradient_after_clip": [
+              0.010789291001856327,
+              0.0072961971163749695
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.7196762561798096,
+            "log_std_gradient_before_clip": [
+              -0.012987421825528145,
+              0.033466458320617676
+            ],
+            "log_std_gradient_after_clip": [
+              -0.003776121884584427,
+              0.009730447083711624
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0899723768234253,
+            "log_std_gradient_before_clip": [
+              0.0035884957760572433,
+              0.018613997846841812
+            ],
+            "log_std_gradient_after_clip": [
+              0.0016461393097415566,
+              0.008538739755749702
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9919975399971008,
+            "log_std_gradient_before_clip": [
+              -0.06812386214733124,
+              -0.005773978307843208
+            ],
+            "log_std_gradient_after_clip": [
+              -0.034336671233177185,
+              -0.0029102754779160023
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.8401442170143127,
+            "log_std_gradient_before_clip": [
+              0.013521125540137291,
+              0.040971867740154266
+            ],
+            "log_std_gradient_after_clip": [
+              0.008046898059546947,
+              0.024383801966905594
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2831157445907593,
+            "log_std_gradient_before_clip": [
+              0.00034161657094955444,
+              -0.002647850662469864
+            ],
+            "log_std_gradient_after_clip": [
+              0.00013311984366737306,
+              -0.0010318043641746044
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2959887981414795,
+            "log_std_gradient_before_clip": [
+              0.017871376127004623,
+              0.04355984181165695
+            ],
+            "log_std_gradient_after_clip": [
+              0.006894875317811966,
+              0.016805626451969147
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.4139142036437988,
+            "log_std_gradient_before_clip": [
+              -0.08442451804876328,
+              0.006007412448525429
+            ],
+            "log_std_gradient_after_clip": [
+              -0.029854875057935715,
+              0.002124389400705695
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9997283816337585,
+            "log_std_gradient_before_clip": [
+              -0.030753890052437782,
+              0.02730131894350052
+            ],
+            "log_std_gradient_after_clip": [
+              -0.015381108038127422,
+              0.013654354959726334
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0521708726882935,
+            "log_std_gradient_before_clip": [
+              0.024103358387947083,
+              -0.022696074098348618
+            ],
+            "log_std_gradient_after_clip": [
+              0.011454097926616669,
+              -0.010785345919430256
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.998564600944519,
+            "log_std_gradient_before_clip": [
+              0.0009966236539185047,
+              -0.010508236475288868
+            ],
+            "log_std_gradient_after_clip": [
+              0.0004990276647731662,
+              -0.005261665675789118
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0536643266677856,
+            "log_std_gradient_before_clip": [
+              -0.004338930360972881,
+              0.014297455549240112
+            ],
+            "log_std_gradient_after_clip": [
+              -0.002058970043435693,
+              0.006784628611057997
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6804490089416504,
+            "log_std_gradient_before_clip": [
+              -0.06632901728153229,
+              0.021041668951511383
+            ],
+            "log_std_gradient_after_clip": [
+              -0.019735492765903473,
+              0.006260724738240242
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.0350608825683594,
+            "log_std_gradient_before_clip": [
+              0.0798393189907074,
+              -0.017694013193249702
+            ],
+            "log_std_gradient_after_clip": [
+              0.03856741636991501,
+              -0.008547321893274784
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.888601303100586,
+            "log_std_gradient_before_clip": [
+              0.014799605123698711,
+              0.04012586921453476
+            ],
+            "log_std_gradient_after_clip": [
+              0.003918137401342392,
+              0.010623166337609291
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.5074819326400757,
+            "log_std_gradient_before_clip": [
+              -0.02209172025322914,
+              0.06806828081607819
+            ],
+            "log_std_gradient_after_clip": [
+              -0.007327353581786156,
+              0.022576799616217613
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.38367760181427,
+            "log_std_gradient_before_clip": [
+              -0.022938238456845284,
+              -0.01923949643969536
+            ],
+            "log_std_gradient_after_clip": [
+              -0.008288861252367496,
+              -0.006952299736440182
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.4019583463668823,
+            "log_std_gradient_before_clip": [
+              0.07341837882995605,
+              0.05183566361665726
+            ],
+            "log_std_gradient_after_clip": [
+              0.02618420496582985,
+              0.018486864864826202
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.810638666152954,
+            "log_std_gradient_before_clip": [
+              0.06826134771108627,
+              0.10340186208486557
+            ],
+            "log_std_gradient_after_clip": [
+              0.018850065767765045,
+              0.028553960844874382
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.2878646850585938,
+            "log_std_gradient_before_clip": [
+              0.006423637270927429,
+              -0.02207092009484768
+            ],
+            "log_std_gradient_after_clip": [
+              0.0014038493391126394,
+              -0.004823473747819662
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.2510532140731812,
+            "log_std_gradient_before_clip": [
+              0.09336647391319275,
+              0.06983603537082672
+            ],
+            "log_std_gradient_after_clip": [
+              0.03731511905789375,
+              0.027910875156521797
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.14780330657959,
+            "log_std_gradient_before_clip": [
+              -0.003920413088053465,
+              0.022290825843811035
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0009126560762524605,
+              0.005189212504774332
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.0378949642181396,
+            "log_std_gradient_before_clip": [
+              -4.982203245162964e-05,
+              0.024041008204221725
+            ],
+            "log_std_gradient_after_clip": [
+              -1.2223889825691003e-05,
+              0.005898487754166126
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.885133981704712,
+            "log_std_gradient_before_clip": [
+              -0.028900114819407463,
+              0.009048935025930405
+            ],
+            "log_std_gradient_after_clip": [
+              -0.005008451174944639,
+              0.0015681996010243893
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.140430212020874,
+            "log_std_gradient_before_clip": [
+              0.03936343267560005,
+              -0.003829523455351591
+            ],
+            "log_std_gradient_after_clip": [
+              0.009195211343467236,
+              -0.0008945682784542441
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.870562791824341,
+            "log_std_gradient_before_clip": [
+              0.0022349273785948753,
+              0.06504763662815094
+            ],
+            "log_std_gradient_after_clip": [
+              0.00038928372669033706,
+              0.011330115608870983
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.5080815553665161,
+            "log_std_gradient_before_clip": [
+              -0.01794443465769291,
+              0.0462869331240654
+            ],
+            "log_std_gradient_after_clip": [
+              -0.005949420854449272,
+              0.015346286818385124
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.133266806602478,
+            "log_std_gradient_before_clip": [
+              -0.020699195563793182,
+              0.020643193274736404
+            ],
+            "log_std_gradient_after_clip": [
+              -0.009132525883615017,
+              0.009107817895710468
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6401065587997437,
+            "log_std_gradient_before_clip": [
+              -0.003718060441315174,
+              0.09011951088905334
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0011334806913509965,
+              0.027473658323287964
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.2376534938812256,
+            "log_std_gradient_before_clip": [
+              0.035448107868433,
+              0.014821067452430725
+            ],
+            "log_std_gradient_after_clip": [
+              0.014320679940283298,
+              0.005987562704831362
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3997561931610107,
+            "log_std_gradient_before_clip": [
+              0.0402236208319664,
+              0.03702732175588608
+            ],
+            "log_std_gradient_after_clip": [
+              0.014368071220815182,
+              0.013226337730884552
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3231090307235718,
+            "log_std_gradient_before_clip": [
+              0.018282676115632057,
+              -0.018393464386463165
+            ],
+            "log_std_gradient_after_clip": [
+              0.006908978335559368,
+              -0.006950844544917345
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.413901686668396,
+            "log_std_gradient_before_clip": [
+              -0.02847590111196041,
+              -0.012191925197839737
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01006996538490057,
+              -0.004311444237828255
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.6555509567260742,
+            "log_std_gradient_before_clip": [
+              -0.05462533235549927,
+              0.005226884037256241
+            ],
+            "log_std_gradient_after_clip": [
+              -0.016497619450092316,
+              0.0015785925788804889
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.7373000383377075,
+            "log_std_gradient_before_clip": [
+              -0.013879296369850636,
+              0.01977834850549698
+            ],
+            "log_std_gradient_after_clip": [
+              -0.003994499798864126,
+              0.005692263133823872
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 2.113337278366089,
+            "log_std_gradient_before_clip": [
+              -0.011645853519439697,
+              0.04770351201295853
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0027553217951208353,
+              0.011286294087767601
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3890882730484009,
+            "log_std_gradient_before_clip": [
+              -0.05147688090801239,
+              0.04235966503620148
+            ],
+            "log_std_gradient_after_clip": [
+              -0.018529003486037254,
+              0.015247279778122902
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5425788164138794,
+            "log_std_gradient_before_clip": [
+              -0.020244456827640533,
+              0.019370175898075104
+            ],
+            "log_std_gradient_after_clip": [
+              -0.006561883259564638,
+              0.006278500892221928
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.363167405128479,
+            "log_std_gradient_before_clip": [
+              0.007927633821964264,
+              0.0032364409416913986
+            ],
+            "log_std_gradient_after_clip": [
+              0.002907796995714307,
+              0.0011871024034917355
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.508597493171692,
+            "log_std_gradient_before_clip": [
+              -0.002848474308848381,
+              0.05506642907857895
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0009440796566195786,
+              0.018250856548547745
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4741686582565308,
+            "log_std_gradient_before_clip": [
+              -0.05317967012524605,
+              0.042073048651218414
+            ],
+            "log_std_gradient_after_clip": [
+              -0.018037160858511925,
+              0.014270083978772163
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1560962200164795,
+            "log_std_gradient_before_clip": [
+              -0.03779403492808342,
+              0.06670446693897247
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01634552702307701,
+              0.028848988935351372
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.6564382314682007,
+            "log_std_gradient_before_clip": [
+              0.014362065121531487,
+              -0.045030627399683
+            ],
+            "log_std_gradient_after_clip": [
+              0.004335222765803337,
+              -0.013592598959803581
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4334183931350708,
+            "log_std_gradient_before_clip": [
+              0.017531920224428177,
+              0.018214011564850807
+            ],
+            "log_std_gradient_after_clip": [
+              0.006115419324487448,
+              0.006353343836963177
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4455710649490356,
+            "log_std_gradient_before_clip": [
+              -0.03868894279003143,
+              0.04502612352371216
+            ],
+            "log_std_gradient_after_clip": [
+              -0.013381880708038807,
+              0.015573808923363686
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.2314553260803223,
+            "log_std_gradient_before_clip": [
+              -0.002015208825469017,
+              0.05594328045845032
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0008182218298316002,
+              0.02271427772939205
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5791106224060059,
+            "log_std_gradient_before_clip": [
+              -0.11677512526512146,
+              0.009896993637084961
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0369749441742897,
+              0.0031337221153080463
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.575600028038025,
+            "log_std_gradient_before_clip": [
+              0.07681779563426971,
+              -6.19012862443924e-05
+            ],
+            "log_std_gradient_after_clip": [
+              0.024377301335334778,
+              -1.9643706764327362e-05
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 0.9628027081489563,
+            "log_std_gradient_before_clip": [
+              0.011823007836937904,
+              0.024633221328258514
+            ],
+            "log_std_gradient_after_clip": [
+              0.006139885168522596,
+              0.012792442925274372
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 0.9164034128189087,
+            "log_std_gradient_before_clip": [
+              -0.023028666153550148,
+              0.024885548278689384
+            ],
+            "log_std_gradient_after_clip": [
+              -0.012564684264361858,
+              0.013577818870544434
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1240503787994385,
+            "log_std_gradient_before_clip": [
+              0.018469255417585373,
+              0.038065604865550995
+            ],
+            "log_std_gradient_after_clip": [
+              0.008215486072003841,
+              0.016932325437664986
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.381039023399353,
+            "log_std_gradient_before_clip": [
+              -0.08478918671607971,
+              0.03561273589730263
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03069758601486683,
+              0.01289344858378172
+            ]
+          }
+        ],
+        "gradient_norm_mean": 1.4045221246778965,
+        "gradient_norm_max": 2.885133981704712,
+        "effective_policy_change": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.005702137481421232,
+              "kl_p90": 0.012941771186888218,
+              "kl_max": 0.04524007439613342,
+              "ratio_outside_ppo_clip_fraction": 0.06750000268220901,
+              "mean_action_shift_in_old_std": 0.09479251503944397
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0033858013339340687,
+              "kl_p90": 0.00807924848049879,
+              "kl_max": 0.03155357018113136,
+              "ratio_outside_ppo_clip_fraction": 0.035999998450279236,
+              "mean_action_shift_in_old_std": 0.07210066169500351
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.006062115542590618,
+              "kl_p90": 0.01385815255343914,
+              "kl_max": 0.06417863816022873,
+              "ratio_outside_ppo_clip_fraction": 0.07575000077486038,
+              "mean_action_shift_in_old_std": 0.0974898561835289
+            },
+            {
+              "agent": 3,
+              "kl_mean": 0.006641880143433809,
+              "kl_p90": 0.014921573922038078,
+              "kl_max": 0.05891147628426552,
+              "ratio_outside_ppo_clip_fraction": 0.08425000309944153,
+              "mean_action_shift_in_old_std": 0.10256373882293701
+            }
+          ],
+          "mean_kl": 0.005447983625344932,
+          "mean_ratio_outside_ppo_clip_fraction": 0.06587500125169754
+        }
+      },
+      {
+        "coefficient": 0.01,
+        "metrics": {
+          "policy_loss": -0.0035868805229256396,
+          "value_loss": 0.10504959346726536,
+          "entropy": -1.6323099300265311,
+          "approx_kl": 0.0039038797268403868,
+          "peer_gate_fraction": 0.0
+        },
+        "before_std": [
+          [
+            0.10961494594812393,
+            0.10742997378110886
+          ],
+          [
+            0.11707741767168045,
+            0.10740139335393906
+          ],
+          [
+            0.10369527339935303,
+            0.10155067592859268
+          ],
+          [
+            0.10190410166978836,
+            0.1081104651093483
+          ]
+        ],
+        "after_std": [
+          [
+            0.10957825928926468,
+            0.10737548768520355
+          ],
+          [
+            0.11724703013896942,
+            0.10745380073785782
+          ],
+          [
+            0.10371742397546768,
+            0.10131464153528214
+          ],
+          [
+            0.10214132815599442,
+            0.10777305066585541
+          ]
+        ],
+        "before_log_std": [
+          [
+            -2.2107815742492676,
+            -2.2309160232543945
+          ],
+          [
+            -2.1449198722839355,
+            -2.231182098388672
+          ],
+          [
+            -2.266298770904541,
+            -2.2871973514556885
+          ],
+          [
+            -2.2837231159210205,
+            -2.2246017456054688
+          ]
+        ],
+        "after_log_std": [
+          [
+            -2.211116313934326,
+            -2.2314233779907227
+          ],
+          [
+            -2.143472194671631,
+            -2.23069429397583
+          ],
+          [
+            -2.266085147857666,
+            -2.2895243167877197
+          ],
+          [
+            -2.281397819519043,
+            -2.2277276515960693
+          ]
+        ],
+        "mean_log_std_change": -0.0002275705337524414,
+        "min_log_std_change": -0.003125905990600586,
+        "max_log_std_change": 0.002325296401977539,
+        "clip_calls": 80,
+        "gradients": [
+          {
+            "agent": 0,
+            "gradient_norm": 1.4923620223999023,
+            "log_std_gradient_before_clip": [
+              0.003413386642932892,
+              -0.04316549748182297
+            ],
+            "log_std_gradient_after_clip": [
+              0.001143618137575686,
+              -0.014462131075561047
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0634466409683228,
+            "log_std_gradient_before_clip": [
+              -0.011528240516781807,
+              -0.09234178066253662
+            ],
+            "log_std_gradient_after_clip": [
+              -0.005420220550149679,
+              -0.043416235595941544
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5595839023590088,
+            "log_std_gradient_before_clip": [
+              -0.0009652962908148766,
+              0.06648688018321991
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0003094721760135144,
+              0.021315569058060646
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.457459807395935,
+            "log_std_gradient_before_clip": [
+              -0.04298495501279831,
+              -0.02935791015625
+            ],
+            "log_std_gradient_after_clip": [
+              -0.014746521599590778,
+              -0.010071595199406147
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.1690263748168945,
+            "log_std_gradient_before_clip": [
+              -0.0032414570450782776,
+              -0.0272892564535141
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0007472144206985831,
+              -0.00629066675901413
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1835840940475464,
+            "log_std_gradient_before_clip": [
+              0.02790936268866062,
+              -0.015369810163974762
+            ],
+            "log_std_gradient_after_clip": [
+              0.011790180578827858,
+              -0.006492904853075743
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0943431854248047,
+            "log_std_gradient_before_clip": [
+              0.008656683377921581,
+              0.015249593183398247
+            ],
+            "log_std_gradient_after_clip": [
+              0.003955192398279905,
+              0.006967457942664623
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4302771091461182,
+            "log_std_gradient_before_clip": [
+              -0.02306223474442959,
+              -0.040071308612823486
+            ],
+            "log_std_gradient_after_clip": [
+              -0.008062150329351425,
+              -0.014008223079144955
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0455472469329834,
+            "log_std_gradient_before_clip": [
+              -0.01384851522743702,
+              -0.0646631121635437
+            ],
+            "log_std_gradient_after_clip": [
+              -0.006622609682381153,
+              -0.030923064798116684
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5164517164230347,
+            "log_std_gradient_before_clip": [
+              0.08534857630729675,
+              0.01812136545777321
+            ],
+            "log_std_gradient_after_clip": [
+              0.02814086526632309,
+              0.005974919535219669
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4599491357803345,
+            "log_std_gradient_before_clip": [
+              -0.016721494495868683,
+              0.0385456308722496
+            ],
+            "log_std_gradient_after_clip": [
+              -0.005726735107600689,
+              0.013201010413467884
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.157474398612976,
+            "log_std_gradient_before_clip": [
+              0.03511398285627365,
+              -0.01681968942284584
+            ],
+            "log_std_gradient_after_clip": [
+              0.01516835018992424,
+              -0.0072656795382499695
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.032765507698059,
+            "log_std_gradient_before_clip": [
+              0.03969064727425575,
+              0.004386667162179947
+            ],
+            "log_std_gradient_after_clip": [
+              0.019215693697333336,
+              0.002123745856806636
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0501405000686646,
+            "log_std_gradient_before_clip": [
+              -0.03126992657780647,
+              -0.03840091824531555
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01488843560218811,
+              -0.01828368939459324
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.098199725151062,
+            "log_std_gradient_before_clip": [
+              0.029865488409996033,
+              0.017011452466249466
+            ],
+            "log_std_gradient_after_clip": [
+              0.013597464188933372,
+              0.007745147682726383
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.487467885017395,
+            "log_std_gradient_before_clip": [
+              -0.015952756628394127,
+              -0.012804154306650162
+            ],
+            "log_std_gradient_after_clip": [
+              -0.005362383555620909,
+              -0.00430400762706995
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.2449663877487183,
+            "log_std_gradient_before_clip": [
+              -0.03936171159148216,
+              -0.0009645875543355942
+            ],
+            "log_std_gradient_after_clip": [
+              -0.015808330848813057,
+              -0.0003873947134707123
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0781680345535278,
+            "log_std_gradient_before_clip": [
+              0.0795804113149643,
+              -0.033380039036273956
+            ],
+            "log_std_gradient_after_clip": [
+              0.036905352026224136,
+              -0.015479966066777706
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.083188533782959,
+            "log_std_gradient_before_clip": [
+              0.005597367882728577,
+              -0.04903138428926468
+            ],
+            "log_std_gradient_after_clip": [
+              0.0013434611028060317,
+              -0.011768344789743423
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.2441608905792236,
+            "log_std_gradient_before_clip": [
+              -0.025531355291604996,
+              0.014002333395183086
+            ],
+            "log_std_gradient_after_clip": [
+              -0.010260463692247868,
+              0.005627215374261141
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.1166024208068848,
+            "log_std_gradient_before_clip": [
+              -0.026020269840955734,
+              -0.015708347782492638
+            ],
+            "log_std_gradient_after_clip": [
+              -0.011651527136564255,
+              -0.00703398697078228
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2262672185897827,
+            "log_std_gradient_before_clip": [
+              -0.007796822115778923,
+              -0.06078920513391495
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0031790852081030607,
+              -0.024786261841654778
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9269499182701111,
+            "log_std_gradient_before_clip": [
+              -0.06825929135084152,
+              0.014232112094759941
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03681926056742668,
+              0.007676842622458935
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9850048422813416,
+            "log_std_gradient_before_clip": [
+              -0.04304858297109604,
+              -0.022734183818101883
+            ],
+            "log_std_gradient_after_clip": [
+              -0.02185194380581379,
+              -0.011540126986801624
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.7414266467094421,
+            "log_std_gradient_before_clip": [
+              0.0009175369050353765,
+              0.010309619829058647
+            ],
+            "log_std_gradient_after_clip": [
+              0.0006187636172398925,
+              0.0069525460712611675
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0993127822875977,
+            "log_std_gradient_before_clip": [
+              -0.0802144855260849,
+              -0.023829884827136993
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03648389130830765,
+              -0.010838528163731098
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.3715893030166626,
+            "log_std_gradient_before_clip": [
+              -0.009133413434028625,
+              -0.0001537129282951355
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0033294979948550463,
+              -5.603456884273328e-05
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.04621422290802,
+            "log_std_gradient_before_clip": [
+              -0.035250794142484665,
+              -0.04035297408699989
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01684681884944439,
+              -0.01928521692752838
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0287305116653442,
+            "log_std_gradient_before_clip": [
+              0.01314186118543148,
+              0.00600234791636467
+            ],
+            "log_std_gradient_after_clip": [
+              0.006387411151081324,
+              0.002917354227975011
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.71988844871521,
+            "log_std_gradient_before_clip": [
+              -0.02197318710386753,
+              0.024495907127857208
+            ],
+            "log_std_gradient_after_clip": [
+              -0.00638796528801322,
+              0.007121361326426268
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.089712142944336,
+            "log_std_gradient_before_clip": [
+              -0.005401667207479477,
+              0.009627047926187515
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0024784815032035112,
+              0.004417239688336849
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9924288988113403,
+            "log_std_gradient_before_clip": [
+              -0.07721731066703796,
+              -0.014743631705641747
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03890315443277359,
+              -0.007428046781569719
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.8392572999000549,
+            "log_std_gradient_before_clip": [
+              0.004467470571398735,
+              0.031966790556907654
+            ],
+            "log_std_gradient_after_clip": [
+              0.002661558799445629,
+              0.0190446674823761
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2832200527191162,
+            "log_std_gradient_before_clip": [
+              -0.008725980296730995,
+              -0.011672883294522762
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0034000303130596876,
+              -0.004548274911940098
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2924457788467407,
+            "log_std_gradient_before_clip": [
+              0.010864051058888435,
+              0.03469635546207428
+            ],
+            "log_std_gradient_after_clip": [
+              0.004202900920063257,
+              0.013422741554677486
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.414146900177002,
+            "log_std_gradient_before_clip": [
+              -0.0934852808713913,
+              -0.0029818303883075714
+            ],
+            "log_std_gradient_after_clip": [
+              -0.033053573220968246,
+              -0.001054285210557282
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9897696375846863,
+            "log_std_gradient_before_clip": [
+              -0.03983476385474205,
+              0.019405405968427658
+            ],
+            "log_std_gradient_after_clip": [
+              -0.020123230293393135,
+              0.009802981279790401
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0525736808776855,
+            "log_std_gradient_before_clip": [
+              0.014981070533394814,
+              -0.03172842413187027
+            ],
+            "log_std_gradient_after_clip": [
+              0.007116393186151981,
+              -0.015071816742420197
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0069060325622559,
+            "log_std_gradient_before_clip": [
+              -0.009754474274814129,
+              -0.020670920610427856
+            ],
+            "log_std_gradient_after_clip": [
+              -0.004843781236559153,
+              -0.010264563374221325
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0753456354141235,
+            "log_std_gradient_before_clip": [
+              -0.013315480202436447,
+              0.009879674762487411
+            ],
+            "log_std_gradient_after_clip": [
+              -0.006191250402480364,
+              0.0045937164686620235
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6807397603988647,
+            "log_std_gradient_before_clip": [
+              -0.07532903552055359,
+              0.012041663751006126
+            ],
+            "log_std_gradient_after_clip": [
+              -0.022409476339817047,
+              0.0035822491627186537
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.0345988273620605,
+            "log_std_gradient_before_clip": [
+              0.07084029912948608,
+              -0.026695797219872475
+            ],
+            "log_std_gradient_after_clip": [
+              0.03423560410737991,
+              -0.012901509180665016
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.8884069919586182,
+            "log_std_gradient_before_clip": [
+              0.005794568452984095,
+              0.03112850897014141
+            ],
+            "log_std_gradient_after_clip": [
+              0.0015342470724135637,
+              0.00824199803173542
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.5072681903839111,
+            "log_std_gradient_before_clip": [
+              -0.031094716861844063,
+              0.059068500995635986
+            ],
+            "log_std_gradient_after_clip": [
+              -0.010314918123185635,
+              0.019594542682170868
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.383988618850708,
+            "log_std_gradient_before_clip": [
+              -0.031952813267707825,
+              -0.028244566172361374
+            ],
+            "log_std_gradient_after_clip": [
+              -0.011543733067810535,
+              -0.010204038582742214
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.4011852741241455,
+            "log_std_gradient_before_clip": [
+              0.0644254982471466,
+              0.042827852070331573
+            ],
+            "log_std_gradient_after_clip": [
+              0.022989626973867416,
+              0.015282711945474148
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.810122013092041,
+            "log_std_gradient_before_clip": [
+              0.05925511568784714,
+              0.09439264237880707
+            ],
+            "log_std_gradient_after_clip": [
+              0.016367703676223755,
+              0.02607354335486889
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.277700901031494,
+            "log_std_gradient_before_clip": [
+              -0.0009767301380634308,
+              -0.031028704717755318
+            ],
+            "log_std_gradient_after_clip": [
+              -0.00021441132412292063,
+              -0.006811405997723341
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.2499419450759888,
+            "log_std_gradient_before_clip": [
+              0.08434020727872849,
+              0.06079987436532974
+            ],
+            "log_std_gradient_after_clip": [
+              0.03373762592673302,
+              0.0243210606276989
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.1483113765716553,
+            "log_std_gradient_before_clip": [
+              -0.013048351742327213,
+              0.013369603082537651
+            ],
+            "log_std_gradient_after_clip": [
+              -0.003036884358152747,
+              0.0031116525642573833
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.0731425285339355,
+            "log_std_gradient_before_clip": [
+              -0.008547311648726463,
+              0.01161047164350748
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0020614375825971365,
+              0.0028002094477415085
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.858231544494629,
+            "log_std_gradient_before_clip": [
+              -0.038192059844732285,
+              0.002707397099584341
+            ],
+            "log_std_gradient_after_clip": [
+              -0.006681062281131744,
+              0.0004736138798762113
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.2386012077331543,
+            "log_std_gradient_before_clip": [
+              0.03381955623626709,
+              -0.009206530638039112
+            ],
+            "log_std_gradient_after_clip": [
+              0.0075537217780947685,
+              -0.002056312281638384
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.824570417404175,
+            "log_std_gradient_before_clip": [
+              -0.007903339341282845,
+              0.05628137290477753
+            ],
+            "log_std_gradient_after_clip": [
+              -0.001399033353663981,
+              0.009962815791368484
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.5068551301956177,
+            "log_std_gradient_before_clip": [
+              -0.026812449097633362,
+              0.037247080355882645
+            ],
+            "log_std_gradient_after_clip": [
+              -0.00889681838452816,
+              0.012359203770756721
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.1498273611068726,
+            "log_std_gradient_before_clip": [
+              -0.02954866923391819,
+              0.01711471751332283
+            ],
+            "log_std_gradient_after_clip": [
+              -0.012849166058003902,
+              0.007442292757332325
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6387470960617065,
+            "log_std_gradient_before_clip": [
+              -0.014493228867650032,
+              0.08176878094673157
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0044220429845154285,
+              0.02494855225086212
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.244961142539978,
+            "log_std_gradient_before_clip": [
+              0.025401614606380463,
+              0.01179184764623642
+            ],
+            "log_std_gradient_after_clip": [
+              0.010201762430369854,
+              0.004735826049000025
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3946911096572876,
+            "log_std_gradient_before_clip": [
+              0.030902966856956482,
+              0.028055965900421143
+            ],
+            "log_std_gradient_after_clip": [
+              0.01107877865433693,
+              0.01005812268704176
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.275550365447998,
+            "log_std_gradient_before_clip": [
+              0.007231032010167837,
+              -0.027376841753721237
+            ],
+            "log_std_gradient_after_clip": [
+              0.0028344730380922556,
+              -0.010731375776231289
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4142178297042847,
+            "log_std_gradient_before_clip": [
+              -0.037475910037755966,
+              -0.021191909909248352
+            ],
+            "log_std_gradient_after_clip": [
+              -0.013249685987830162,
+              -0.007492443546652794
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.6558728218078613,
+            "log_std_gradient_before_clip": [
+              -0.06362497806549072,
+              -0.0037721581757068634
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01921190321445465,
+              -0.0011390234576538205
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.7373145818710327,
+            "log_std_gradient_before_clip": [
+              -0.022882599383592606,
+              0.010773375630378723
+            ],
+            "log_std_gradient_after_clip": [
+              -0.006585619878023863,
+              0.003100581234320998
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 2.113208055496216,
+            "log_std_gradient_before_clip": [
+              -0.020645305514335632,
+              0.03870673477649689
+            ],
+            "log_std_gradient_after_clip": [
+              -0.004884823691099882,
+              0.009158283472061157
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3891929388046265,
+            "log_std_gradient_before_clip": [
+              -0.06047588586807251,
+              0.033362507820129395
+            ],
+            "log_std_gradient_after_clip": [
+              -0.02176653780043125,
+              0.012007865123450756
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5426902770996094,
+            "log_std_gradient_before_clip": [
+              -0.029246944934129715,
+              0.01037832535803318
+            ],
+            "log_std_gradient_after_clip": [
+              -0.009479195810854435,
+              0.0033637078013271093
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3630043268203735,
+            "log_std_gradient_before_clip": [
+              -0.0010727643966674805,
+              -0.005778046324849129
+            ],
+            "log_std_gradient_after_clip": [
+              -0.00039352907333523035,
+              -0.002119597978889942
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5083813667297363,
+            "log_std_gradient_before_clip": [
+              -0.011859660968184471,
+              0.046059153974056244
+            ],
+            "log_std_gradient_after_clip": [
+              -0.00393125182017684,
+              0.015267732553184032
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4743248224258423,
+            "log_std_gradient_before_clip": [
+              -0.06219429522752762,
+              0.033062227070331573
+            ],
+            "log_std_gradient_after_clip": [
+              -0.021092452108860016,
+              0.011212659999728203
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1558715105056763,
+            "log_std_gradient_before_clip": [
+              -0.04680188372731209,
+              0.0577082522213459
+            ],
+            "log_std_gradient_after_clip": [
+              -0.02024526335299015,
+              0.024963071569800377
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.6568173170089722,
+            "log_std_gradient_before_clip": [
+              0.005313295405358076,
+              -0.05401819199323654
+            ],
+            "log_std_gradient_after_clip": [
+              0.0016034634318202734,
+              -0.01630178466439247
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4335755109786987,
+            "log_std_gradient_before_clip": [
+              0.008575099520385265,
+              0.009175825864076614
+            ],
+            "log_std_gradient_after_clip": [
+              0.0029908064752817154,
+              0.003200326580554247
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4455912113189697,
+            "log_std_gradient_before_clip": [
+              -0.04767347127199173,
+              0.03603917360305786
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01648925431072712,
+              0.01246519386768341
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.2314280271530151,
+            "log_std_gradient_before_clip": [
+              -0.011058916337788105,
+              0.04699759930372238
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0044902777299284935,
+              0.01908254623413086
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5444408655166626,
+            "log_std_gradient_before_clip": [
+              -0.11934986710548401,
+              0.0024034767411649227
+            ],
+            "log_std_gradient_after_clip": [
+              -0.038638509809970856,
+              0.0007781052845530212
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.575039267539978,
+            "log_std_gradient_before_clip": [
+              0.06781687587499619,
+              -0.00914554763585329
+            ],
+            "log_std_gradient_after_clip": [
+              0.021528618410229683,
+              -0.002903274493291974
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 0.9654485583305359,
+            "log_std_gradient_before_clip": [
+              0.002499660477042198,
+              0.015623867511749268
+            ],
+            "log_std_gradient_after_clip": [
+              0.0012945577036589384,
+              0.008091498166322708
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 0.9688184261322021,
+            "log_std_gradient_before_clip": [
+              -0.03286045044660568,
+              0.01733909547328949
+            ],
+            "log_std_gradient_after_clip": [
+              -0.016959017142653465,
+              0.008948569186031818
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1417385339736938,
+            "log_std_gradient_before_clip": [
+              0.009982559829950333,
+              0.028738778084516525
+            ],
+            "log_std_gradient_after_clip": [
+              0.004371644929051399,
+              0.01258552260696888
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3800702095031738,
+            "log_std_gradient_before_clip": [
+              -0.09411680698394775,
+              0.026587774977087975
+            ],
+            "log_std_gradient_after_clip": [
+              -0.034098535776138306,
+              0.009632755070924759
+            ]
+          }
+        ],
+        "gradient_norm_mean": 1.406635546684265,
+        "gradient_norm_max": 2.858231544494629,
+        "effective_policy_change": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.005702795460820198,
+              "kl_p90": 0.012910710647702217,
+              "kl_max": 0.04471082612872124,
+              "ratio_outside_ppo_clip_fraction": 0.06674999743700027,
+              "mean_action_shift_in_old_std": 0.09492669999599457
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.003372641745954752,
+              "kl_p90": 0.008043169043958187,
+              "kl_max": 0.031672991812229156,
+              "ratio_outside_ppo_clip_fraction": 0.035750001668930054,
+              "mean_action_shift_in_old_std": 0.07195878773927689
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.005866872612386942,
+              "kl_p90": 0.01332107000052929,
+              "kl_max": 0.06394357979297638,
+              "ratio_outside_ppo_clip_fraction": 0.07374999672174454,
+              "mean_action_shift_in_old_std": 0.09601599723100662
+            },
+            {
+              "agent": 3,
+              "kl_mean": 0.006454110611230135,
+              "kl_p90": 0.014269908890128136,
+              "kl_max": 0.05432059243321419,
+              "ratio_outside_ppo_clip_fraction": 0.08299999684095383,
+              "mean_action_shift_in_old_std": 0.10105881094932556
+            }
+          ],
+          "mean_kl": 0.005349105107598007,
+          "mean_ratio_outside_ppo_clip_fraction": 0.06481249816715717
+        }
+      },
+      {
+        "coefficient": 0.1,
+        "metrics": {
+          "policy_loss": -0.0035107341003822513,
+          "value_loss": 0.10504898661747575,
+          "entropy": -1.627312496304512,
+          "approx_kl": 0.00391470248459882,
+          "peer_gate_fraction": 0.0
+        },
+        "before_std": [
+          [
+            0.10961494594812393,
+            0.10742997378110886
+          ],
+          [
+            0.11707741767168045,
+            0.10740139335393906
+          ],
+          [
+            0.10369527339935303,
+            0.10155067592859268
+          ],
+          [
+            0.10190410166978836,
+            0.1081104651093483
+          ]
+        ],
+        "after_std": [
+          [
+            0.11031737178564072,
+            0.10808394849300385
+          ],
+          [
+            0.11809752136468887,
+            0.10822339355945587
+          ],
+          [
+            0.10438992828130722,
+            0.101971834897995
+          ],
+          [
+            0.10278435051441193,
+            0.1084827333688736
+          ]
+        ],
+        "before_log_std": [
+          [
+            -2.2107815742492676,
+            -2.2309160232543945
+          ],
+          [
+            -2.1449198722839355,
+            -2.231182098388672
+          ],
+          [
+            -2.266298770904541,
+            -2.2871973514556885
+          ],
+          [
+            -2.2837231159210205,
+            -2.2246017456054688
+          ]
+        ],
+        "after_log_std": [
+          [
+            -2.2043938636779785,
+            -2.2248470783233643
+          ],
+          [
+            -2.136244535446167,
+            -2.223557710647583
+          ],
+          [
+            -2.259622097015381,
+            -2.2830586433410645
+          ],
+          [
+            -2.2751221656799316,
+            -2.2211642265319824
+          ]
+        ],
+        "mean_log_std_change": 0.006451278924942017,
+        "min_log_std_change": 0.003437519073486328,
+        "max_log_std_change": 0.008675336837768555,
+        "clip_calls": 80,
+        "gradients": [
+          {
+            "agent": 0,
+            "gradient_norm": 1.5001665353775024,
+            "log_std_gradient_before_clip": [
+              -0.0865866094827652,
+              -0.13316550850868225
+            ],
+            "log_std_gradient_after_clip": [
+              -0.028858980163931847,
+              -0.04438354820013046
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0796704292297363,
+            "log_std_gradient_before_clip": [
+              -0.10155287384986877,
+              -0.1823512762784958
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0470295287668705,
+              -0.08444757759571075
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5610703229904175,
+            "log_std_gradient_before_clip": [
+              -0.09096108376979828,
+              -0.023483414202928543
+            ],
+            "log_std_gradient_after_clip": [
+              -0.02913418598473072,
+              -0.007521569728851318
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4669908285140991,
+            "log_std_gradient_before_clip": [
+              -0.13291636109352112,
+              -0.11929957568645477
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04530235379934311,
+              -0.040661297738552094
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.175161600112915,
+            "log_std_gradient_before_clip": [
+              -0.09332485496997833,
+              -0.11730979382991791
+            ],
+            "log_std_gradient_after_clip": [
+              -0.021452385932207108,
+              -0.026965752243995667
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1900895833969116,
+            "log_std_gradient_before_clip": [
+              -0.06207377091050148,
+              -0.10507583618164062
+            ],
+            "log_std_gradient_after_clip": [
+              -0.026079431176185608,
+              -0.04414615035057068
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.11961030960083,
+            "log_std_gradient_before_clip": [
+              -0.08168040961027145,
+              -0.0748818889260292
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03647712990641594,
+              -0.03344102203845978
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4373009204864502,
+            "log_std_gradient_before_clip": [
+              -0.11305564641952515,
+              -0.13027149438858032
+            ],
+            "log_std_gradient_after_clip": [
+              -0.039329126477241516,
+              -0.04531807079911232
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.041998267173767,
+            "log_std_gradient_before_clip": [
+              -0.09940945357084274,
+              -0.1554877907037735
+            ],
+            "log_std_gradient_after_clip": [
+              -0.047701310366392136,
+              -0.07461032271385193
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.513824701309204,
+            "log_std_gradient_before_clip": [
+              -0.00397844985127449,
+              -0.07184165716171265
+            ],
+            "log_std_gradient_after_clip": [
+              -0.001314038410782814,
+              -0.023728512227535248
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.5100699663162231,
+            "log_std_gradient_before_clip": [
+              -0.10775540769100189,
+              -0.043190840631723404
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0356789231300354,
+              -0.014300931245088577
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.3078796863555908,
+            "log_std_gradient_before_clip": [
+              -0.043952085077762604,
+              -0.10956414043903351
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01680278778076172,
+              -0.041886139661073685
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0181970596313477,
+            "log_std_gradient_before_clip": [
+              -0.029726970940828323,
+              -0.08229053020477295
+            ],
+            "log_std_gradient_after_clip": [
+              -0.014597834087908268,
+              -0.040409885346889496
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0595364570617676,
+            "log_std_gradient_before_clip": [
+              -0.1194433718919754,
+              -0.12587295472621918
+            ],
+            "log_std_gradient_after_clip": [
+              -0.05636581405997276,
+              -0.059399958699941635
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.0972999334335327,
+            "log_std_gradient_before_clip": [
+              -0.056349389255046844,
+              -0.07428211718797684
+            ],
+            "log_std_gradient_after_clip": [
+              -0.025676362216472626,
+              -0.03384765237569809
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.4909168481826782,
+            "log_std_gradient_before_clip": [
+              -0.10601833462715149,
+              -0.09590814262628555
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03555472195148468,
+              -0.03216412663459778
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.2333346605300903,
+            "log_std_gradient_before_clip": [
+              -0.13310806453227997,
+              -0.08648382127285004
+            ],
+            "log_std_gradient_after_clip": [
+              -0.05396262928843498,
+              -0.03506094217300415
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.1620573997497559,
+            "log_std_gradient_before_clip": [
+              -0.0061055636033415794,
+              -0.12068688124418259
+            ],
+            "log_std_gradient_after_clip": [
+              -0.002627047011628747,
+              -0.051928065717220306
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 2.051243305206299,
+            "log_std_gradient_before_clip": [
+              -0.07689118385314941,
+              -0.13716638088226318
+            ],
+            "log_std_gradient_after_clip": [
+              -0.018742570653557777,
+              -0.0334349200129509
+            ]
+          },
+          {
+            "agent": 0,
+            "gradient_norm": 1.2611525058746338,
+            "log_std_gradient_before_clip": [
+              -0.10903265327215195,
+              -0.06050638109445572
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04322735592722893,
+              -0.02398850955069065
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.1271699666976929,
+            "log_std_gradient_before_clip": [
+              -0.11602027714252472,
+              -0.10570834577083588
+            ],
+            "log_std_gradient_after_clip": [
+              -0.05146525427699089,
+              -0.046891000121831894
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2378528118133545,
+            "log_std_gradient_before_clip": [
+              -0.09780588001012802,
+              -0.15080367028713226
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03950623422861099,
+              -0.060913365334272385
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9410143494606018,
+            "log_std_gradient_before_clip": [
+              -0.15825727581977844,
+              -0.07572725415229797
+            ],
+            "log_std_gradient_after_clip": [
+              -0.08408857136964798,
+              -0.04023699089884758
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9988517165184021,
+            "log_std_gradient_before_clip": [
+              -0.13313916325569153,
+              -0.11273407936096191
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0666460394859314,
+              -0.05643178150057793
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.7506346106529236,
+            "log_std_gradient_before_clip": [
+              -0.08916881680488586,
+              -0.0795309990644455
+            ],
+            "log_std_gradient_after_clip": [
+              -0.05939554423093796,
+              -0.052975770086050034
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.1145249605178833,
+            "log_std_gradient_before_clip": [
+              -0.17034052312374115,
+              -0.11388055235147476
+            ],
+            "log_std_gradient_after_clip": [
+              -0.07641837745904922,
+              -0.05108923465013504
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.3793996572494507,
+            "log_std_gradient_before_clip": [
+              -0.0991363450884819,
+              -0.09028375893831253
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03593457490205765,
+              -0.03272572159767151
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0916143655776978,
+            "log_std_gradient_before_clip": [
+              -0.11921405047178268,
+              -0.12462274730205536
+            ],
+            "log_std_gradient_after_clip": [
+              -0.054604422301054,
+              -0.057081807404756546
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0316319465637207,
+            "log_std_gradient_before_clip": [
+              -0.07792970538139343,
+              -0.0842096209526062
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03777007386088371,
+              -0.04081375151872635
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.6430226564407349,
+            "log_std_gradient_before_clip": [
+              -0.11270537972450256,
+              -0.06817987561225891
+            ],
+            "log_std_gradient_after_clip": [
+              -0.034298162907361984,
+              -0.02074829488992691
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.0899461507797241,
+            "log_std_gradient_before_clip": [
+              -0.08730532228946686,
+              -0.08062094449996948
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04005025699734688,
+              -0.036983877420425415
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9818065166473389,
+            "log_std_gradient_before_clip": [
+              -0.16583532094955444,
+              -0.09920043498277664
+            ],
+            "log_std_gradient_after_clip": [
+              -0.08445408940315247,
+              -0.05051928758621216
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.8543665409088135,
+            "log_std_gradient_before_clip": [
+              -0.08089493960142136,
+              -0.04681801050901413
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04734199866652489,
+              -0.027399219572544098
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2921515703201294,
+            "log_std_gradient_before_clip": [
+              -0.08836342394351959,
+              -0.09394508600234985
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03419233486056328,
+              -0.03635216876864433
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.3214164972305298,
+            "log_std_gradient_before_clip": [
+              -0.07382497191429138,
+              -0.049488116055727005
+            ],
+            "log_std_gradient_after_clip": [
+              -0.027934007346630096,
+              -0.01872538961470127
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.4159725904464722,
+            "log_std_gradient_before_clip": [
+              -0.16836333274841309,
+              -0.07931555807590485
+            ],
+            "log_std_gradient_after_clip": [
+              -0.05945144221186638,
+              -0.028007429093122482
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.013342022895813,
+            "log_std_gradient_before_clip": [
+              -0.1317116618156433,
+              -0.05189245566725731
+            ],
+            "log_std_gradient_after_clip": [
+              -0.06498868763446808,
+              -0.02560458704829216
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.8577827215194702,
+            "log_std_gradient_before_clip": [
+              -0.06656857579946518,
+              -0.0969049260020256
+            ],
+            "log_std_gradient_after_clip": [
+              -0.038802653551101685,
+              -0.05648563802242279
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 0.9204132556915283,
+            "log_std_gradient_before_clip": [
+              -0.0821370929479599,
+              -0.09950405359268188
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04461963102221489,
+              -0.05405394732952118
+            ]
+          },
+          {
+            "agent": 1,
+            "gradient_norm": 1.2758255004882812,
+            "log_std_gradient_before_clip": [
+              -0.10041676461696625,
+              -0.06925751268863678
+            ],
+            "log_std_gradient_after_clip": [
+              -0.039353612810373306,
+              -0.02714221552014351
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6889280080795288,
+            "log_std_gradient_before_clip": [
+              -0.1653289943933487,
+              -0.07795833051204681
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04894492030143738,
+              -0.023079220205545425
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.038643717765808,
+            "log_std_gradient_before_clip": [
+              -0.019147008657455444,
+              -0.11671369522809982
+            ],
+            "log_std_gradient_after_clip": [
+              -0.009217304177582264,
+              -0.05618557333946228
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.8911443948745728,
+            "log_std_gradient_before_clip": [
+              -0.0842551663517952,
+              -0.05883878841996193
+            ],
+            "log_std_gradient_after_clip": [
+              -0.022276228293776512,
+              -0.015556390397250652
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.5109707117080688,
+            "log_std_gradient_before_clip": [
+              -0.12113519012928009,
+              -0.030901994556188583
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04008519649505615,
+              -0.010225867852568626
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3937633037567139,
+            "log_std_gradient_before_clip": [
+              -0.12212705612182617,
+              -0.11829172074794769
+            ],
+            "log_std_gradient_after_clip": [
+              -0.043811947107315063,
+              -0.04243605583906174
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3996001482009888,
+            "log_std_gradient_before_clip": [
+              -0.025530625134706497,
+              -0.04725904017686844
+            ],
+            "log_std_gradient_after_clip": [
+              -0.009120679460465908,
+              -0.016883037984371185
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.7939695119857788,
+            "log_std_gradient_before_clip": [
+              -0.02600228227674961,
+              0.00420447438955307
+            ],
+            "log_std_gradient_after_clip": [
+              -0.007247131783515215,
+              0.0011718348832800984
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.287430763244629,
+            "log_std_gradient_before_clip": [
+              -0.09113490581512451,
+              -0.1211528480052948
+            ],
+            "log_std_gradient_after_clip": [
+              -0.019920792430639267,
+              -0.026482287794351578
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.2625632286071777,
+            "log_std_gradient_before_clip": [
+              -0.008670058101415634,
+              -0.01658513769507408
+            ],
+            "log_std_gradient_after_clip": [
+              -0.0034335118252784014,
+              -0.006568037439137697
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.1355154514312744,
+            "log_std_gradient_before_clip": [
+              -0.10383923351764679,
+              -0.07452342659235
+            ],
+            "log_std_gradient_after_clip": [
+              -0.024312440305948257,
+              -0.01744857244193554
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.129469633102417,
+            "log_std_gradient_before_clip": [
+              -0.10095634311437607,
+              -0.06961409747600555
+            ],
+            "log_std_gradient_after_clip": [
+              -0.023704564198851585,
+              -0.016345400363206863
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.8125040531158447,
+            "log_std_gradient_before_clip": [
+              -0.11513455212116241,
+              -0.07796696573495865
+            ],
+            "log_std_gradient_after_clip": [
+              -0.020468328148126602,
+              -0.013860768638551235
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.207331895828247,
+            "log_std_gradient_before_clip": [
+              -0.04226333647966385,
+              -0.0845027044415474
+            ],
+            "log_std_gradient_after_clip": [
+              -0.009573394432663918,
+              -0.019141359254717827
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 2.765897750854492,
+            "log_std_gradient_before_clip": [
+              -0.09501320868730545,
+              -0.031191213056445122
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01717582903802395,
+              -0.005638530943542719
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.4890254735946655,
+            "log_std_gradient_before_clip": [
+              -0.11342784762382507,
+              -0.052970170974731445
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03808792307972908,
+              -0.017786847427487373
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.1895596981048584,
+            "log_std_gradient_before_clip": [
+              -0.11690822243690491,
+              -0.06729493290185928
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04913924261927605,
+              -0.028285624459385872
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.6239674091339111,
+            "log_std_gradient_before_clip": [
+              -0.09199120104312897,
+              -0.009079694747924805
+            ],
+            "log_std_gradient_after_clip": [
+              -0.028322964906692505,
+              -0.0027955269906669855
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.2648860216140747,
+            "log_std_gradient_before_clip": [
+              -0.05203627794981003,
+              -0.07669803500175476
+            ],
+            "log_std_gradient_after_clip": [
+              -0.020569536834955215,
+              -0.030318137258291245
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.4648991823196411,
+            "log_std_gradient_before_clip": [
+              -0.04744955152273178,
+              -0.05487491562962532
+            ],
+            "log_std_gradient_after_clip": [
+              -0.01619548909366131,
+              -0.018729915842413902
+            ]
+          },
+          {
+            "agent": 2,
+            "gradient_norm": 1.3705483675003052,
+            "log_std_gradient_before_clip": [
+              -0.07137632369995117,
+              -0.1074175089597702
+            ],
+            "log_std_gradient_after_clip": [
+              -0.02603931352496147,
+              -0.03918775916099548
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4236475229263306,
+            "log_std_gradient_before_clip": [
+              -0.12747591733932495,
+              -0.11119193583726883
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04477085545659065,
+              -0.03905175253748894
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.6644513607025146,
+            "log_std_gradient_before_clip": [
+              -0.15361814200878143,
+              -0.09375561028718948
+            ],
+            "log_std_gradient_after_clip": [
+              -0.046146754175424576,
+              -0.028164103627204895
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.7426284551620483,
+            "log_std_gradient_before_clip": [
+              -0.11290328204631805,
+              -0.07930007576942444
+            ],
+            "log_std_gradient_after_clip": [
+              -0.032394517213106155,
+              -0.022752992808818817
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 2.1160788536071777,
+            "log_std_gradient_before_clip": [
+              -0.11063496023416519,
+              -0.05125688016414642
+            ],
+            "log_std_gradient_after_clip": [
+              -0.026141490787267685,
+              -0.012111281976103783
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.3965928554534912,
+            "log_std_gradient_before_clip": [
+              -0.15045630931854248,
+              -0.05662867799401283
+            ],
+            "log_std_gradient_after_clip": [
+              -0.053865451365709305,
+              -0.020273853093385696
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.539480209350586,
+            "log_std_gradient_before_clip": [
+              -0.11902081966400146,
+              -0.07938116788864136
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03865614905953407,
+              -0.025781793519854546
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.367876410484314,
+            "log_std_gradient_before_clip": [
+              -0.09106537699699402,
+              -0.09592944383621216
+            ],
+            "log_std_gradient_after_clip": [
+              -0.033287111669778824,
+              -0.035065073519945145
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5036563873291016,
+            "log_std_gradient_before_clip": [
+              -0.09828400611877441,
+              -0.03876359388232231
+            ],
+            "log_std_gradient_after_clip": [
+              -0.032681651413440704,
+              -0.012889769859611988
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4160218238830566,
+            "log_std_gradient_before_clip": [
+              -0.14898820221424103,
+              -0.04157097265124321
+            ],
+            "log_std_gradient_after_clip": [
+              -0.052607983350753784,
+              -0.014678779989480972
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1516989469528198,
+            "log_std_gradient_before_clip": [
+              -0.13836491107940674,
+              -0.0197361521422863
+            ],
+            "log_std_gradient_after_clip": [
+              -0.06006986275315285,
+              -0.00856827013194561
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.5868613719940186,
+            "log_std_gradient_before_clip": [
+              -0.0760503038764,
+              -0.1436460018157959
+            ],
+            "log_std_gradient_after_clip": [
+              -0.023962477222085,
+              -0.045261017978191376
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4266712665557861,
+            "log_std_gradient_before_clip": [
+              -0.07590225338935852,
+              -0.08228854089975357
+            ],
+            "log_std_gradient_after_clip": [
+              -0.02660115249454975,
+              -0.02883932925760746
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.4088276624679565,
+            "log_std_gradient_before_clip": [
+              -0.13809724152088165,
+              -0.049932848662137985
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04901136830449104,
+              -0.017721407115459442
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.2780119180679321,
+            "log_std_gradient_before_clip": [
+              -0.0983174592256546,
+              -0.04313325136899948
+            ],
+            "log_std_gradient_after_clip": [
+              -0.038464970886707306,
+              -0.016875123605132103
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.679502010345459,
+            "log_std_gradient_before_clip": [
+              -0.21705320477485657,
+              -0.08980488777160645
+            ],
+            "log_std_gradient_after_clip": [
+              -0.06461828947067261,
+              -0.02673555724322796
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.6266379356384277,
+            "log_std_gradient_before_clip": [
+              -0.024557871744036674,
+              -0.08967581391334534
+            ],
+            "log_std_gradient_after_clip": [
+              -0.007548654917627573,
+              -0.02756475657224655
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1066515445709229,
+            "log_std_gradient_before_clip": [
+              -0.08557576686143875,
+              -0.0431838184595108
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03866424411535263,
+              -0.019511010497808456
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.0931930541992188,
+            "log_std_gradient_before_clip": [
+              -0.10494862496852875,
+              -0.0523374006152153
+            ],
+            "log_std_gradient_after_clip": [
+              -0.04800091311335564,
+              -0.023937836289405823
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.1214303970336914,
+            "log_std_gradient_before_clip": [
+              -0.06898289918899536,
+              -0.06312675774097443
+            ],
+            "log_std_gradient_after_clip": [
+              -0.03075663186609745,
+              -0.028145618736743927
+            ]
+          },
+          {
+            "agent": 3,
+            "gradient_norm": 1.2865947484970093,
+            "log_std_gradient_before_clip": [
+              -0.15996062755584717,
+              -0.05262252688407898
+            ],
+            "log_std_gradient_after_clip": [
+              -0.062164291739463806,
+              -0.020450295880436897
+            ]
+          }
+        ],
+        "gradient_norm_mean": 1.4159180648624896,
+        "gradient_norm_max": 2.8125040531158447,
+        "effective_policy_change": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.005724040791392326,
+              "kl_p90": 0.012787669897079468,
+              "kl_max": 0.04444093257188797,
+              "ratio_outside_ppo_clip_fraction": 0.07050000131130219,
+              "mean_action_shift_in_old_std": 0.09501588344573975
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.003434601705521345,
+              "kl_p90": 0.008175404742360115,
+              "kl_max": 0.03326670825481415,
+              "ratio_outside_ppo_clip_fraction": 0.039000000804662704,
+              "mean_action_shift_in_old_std": 0.0712575912475586
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.005833534058183432,
+              "kl_p90": 0.013327337801456451,
+              "kl_max": 0.0629299059510231,
+              "ratio_outside_ppo_clip_fraction": 0.07400000095367432,
+              "mean_action_shift_in_old_std": 0.09565721452236176
+            },
+            {
+              "agent": 3,
+              "kl_mean": 0.006139826029539108,
+              "kl_p90": 0.013597704470157623,
+              "kl_max": 0.05696707218885422,
+              "ratio_outside_ppo_clip_fraction": 0.07649999856948853,
+              "mean_action_shift_in_old_std": 0.09854918718338013
+            }
+          ],
+          "mean_kl": 0.005283000646159053,
+          "mean_ratio_outside_ppo_clip_fraction": 0.06500000040978193
+        }
+      }
+    ],
+    "limits": [
+      "One IPPO checkpoint and one rollout, not DMS learning or training-seed replication.",
+      "Coefficient0.001 comes from the reference executable default;0.01 and0.1 are diagnostic scales.",
+      "This diagnostic alone does not establish which full training trial will improve return; choose any next experiment from the measured evidence.",
+      "No original checkpoint, source or training configuration is modified."
+    ]
+  },
+  "summary": [
+    {
+      "coefficient": 0.0,
+      "mean_log_std_change": -0.0009966790676116943,
+      "min_log_std_change": -0.003897428512573242,
+      "max_log_std_change": 0.0015840530395507812,
+      "clip_calls": 80,
+      "gradient_norm_mean": 1.4067362666130065,
+      "gradient_norm_max": 2.8851537704467773
+    },
+    {
+      "coefficient": 0.001,
+      "mean_log_std_change": -0.0009260773658752441,
+      "min_log_std_change": -0.0038199424743652344,
+      "max_log_std_change": 0.001659393310546875,
+      "clip_calls": 80,
+      "gradient_norm_mean": 1.4045221246778965,
+      "gradient_norm_max": 2.885133981704712
+    },
+    {
+      "coefficient": 0.01,
+      "mean_log_std_change": -0.0002275705337524414,
+      "min_log_std_change": -0.003125905990600586,
+      "max_log_std_change": 0.002325296401977539,
+      "clip_calls": 80,
+      "gradient_norm_mean": 1.406635546684265,
+      "gradient_norm_max": 2.858231544494629
+    },
+    {
+      "coefficient": 0.1,
+      "mean_log_std_change": 0.006451278924942017,
+      "min_log_std_change": 0.003437519073486328,
+      "max_log_std_change": 0.008675336837768555,
+      "clip_calls": 80,
+      "gradient_norm_mean": 1.4159180648624896,
+      "gradient_norm_max": 2.8125040531158447
+    }
+  ],
+  "evidence_sha256": {
+    "runs/ant-history32-entropy-update-probe/predeclared.json": "c5c439ceb9de8eb8ef6544d5a7d6ef4918d5b67af6cde0007f889e228007b151",
+    "runs/ant-history32-entropy-update-probe/probe.py": "03ac20665dfb4c0fc1bc48f1939409e6e97f44f209502cef593b425d246075ae",
+    "runs/ant-history32-entropy-update-probe/run.sbatch": "8049c815a5880b618b41675130e731f7304238113bde7629f30911c0d4c14217",
+    "runs/ant-history32-entropy-update-probe/result.json": "ce309245648c7fbaa14d16d158e40a9baa97791fedafe425bdb381e34f74bd20"
+  },
+  "next_step": "Predeclare one matched fresh Ant4x2H32 IPPO/DMS entropy0.1 trial; native smoke before full budget. This one-update result does not establish improved returns."
+}

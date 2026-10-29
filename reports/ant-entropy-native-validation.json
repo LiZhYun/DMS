@@ -1,0 +1,174 @@
+{
+  "status": "completed_pass",
+  "success": true,
+  "job_id": "21282286",
+  "accounting": "21282286|COMPLETED|0:0|00:04:52|gpu12",
+  "artifact": "runs/development-ant-entropy-3m-seed101",
+  "purpose": "Native wiring and saved-source checkpoint validation for the matched Ant entropy comparison; no performance claim",
+  "global_validation": {
+    "success": true,
+    "job_id": "21282286",
+    "matched_source_verified": true,
+    "native_cases": [
+      "ant-ippo",
+      "ant-dms"
+    ],
+    "saved_source_evaluations": [
+      "ant-ippo",
+      "ant-dms"
+    ],
+    "sources_and_checkpoints_guarded": true,
+    "completed_utc": "2026-10-29T11:53:33.615755+00:00"
+  },
+  "cases": [
+    {
+      "label": "ant-ippo",
+      "training_steps": 8000,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "checks": [
+        {
+          "old_log_probability_max_error": 2.5272369384765625e-05,
+          "same_collection_batch_max_error": 0.0,
+          "peer_gate_fraction": 0.0,
+          "prior_ppo_update_expected": false,
+          "finite": true
+        },
+        {
+          "old_log_probability_max_error": 5.1975250244140625e-05,
+          "same_collection_batch_max_error": 0.0,
+          "peer_gate_fraction": 0.0,
+          "prior_ppo_update_expected": false,
+          "finite": true
+        }
+      ],
+      "peak_gpu_allocated_bytes": 534885888,
+      "training_elapsed_seconds": 88.19893949804828,
+      "environment_sha256": "06a535ae6fb2b9f41ad1d31ed3f8f9b4da66b1b196410c994b9dcef57831a5de",
+      "checkpoint_evaluation": {
+        "success": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "optimizer_step_calls": 0,
+        "learner_state_unchanged": true,
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "elapsed_seconds": 21.871943830978125,
+        "checkpoint_sha256": "a9347bfd864122da2819c803315363785eb8e194bdaa5c2e76364ee9e5682a2c",
+        "evaluation_output_sha256": "cbe9b28e9cead7bf525f4261ac8b84ae26fb27d6cc4343a096e9602240880236"
+      },
+      "evaluation_episodes": 2,
+      "evaluation_seeds": [
+        400305,
+        400306
+      ]
+    },
+    {
+      "label": "ant-dms",
+      "training_steps": 8000,
+      "gpu": "NVIDIA A100-SXM4-80GB",
+      "checks": [
+        {
+          "old_log_probability_max_error": 2.765655517578125e-05,
+          "same_collection_batch_max_error": 0.0,
+          "peer_gate_fraction": 0.99775,
+          "prior_ppo_update_expected": false,
+          "finite": true
+        },
+        {
+          "old_log_probability_max_error": 4.7206878662109375e-05,
+          "same_collection_batch_max_error": 0.0,
+          "peer_gate_fraction": 0.99825,
+          "prior_ppo_update_expected": false,
+          "finite": true
+        }
+      ],
+      "peak_gpu_allocated_bytes": 541863424,
+      "training_elapsed_seconds": 111.7328083650209,
+      "environment_sha256": "06a535ae6fb2b9f41ad1d31ed3f8f9b4da66b1b196410c994b9dcef57831a5de",
+      "checkpoint_evaluation": {
+        "success": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "optimizer_step_calls": 0,
+        "learner_state_unchanged": true,
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "elapsed_seconds": 41.736654847860336,
+        "checkpoint_sha256": "1a79fe55d371ee4ad62b7a565db9784488a6545030eba06b5f7e4f1c481b85f6",
+        "evaluation_output_sha256": "12045cfceb944b0d01a873f2980e9028f721235f12fdba2cb3f32caa1e6ab4f9"
+      },
+      "evaluation_episodes": 2,
+      "evaluation_seeds": [
+        400305,
+        400306
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-validation.json": "474100e0fa3be0246deb65b02ad14e191f100198fbafdd98e5f9d0c5e39de610",
+    "runs/development-ant-entropy-3m-seed101/smoke-predeclared.json": "70d0bf2cd540ede22472468b294c9a9a5425f7c497f912d4e8c510acb4f0edf1",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-validation/ant-ippo.json": "8bba549f8ae5de925874c0286740b131cd9c83c7a5cf3c37e1443d7da58c4b5e",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-ippo/validation.json": "2af902f7615f5c05aa50e03499b6bc62ac52835690625b150cd683b51e3032b5",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-ippo/development-evaluation-2.json": "cbe9b28e9cead7bf525f4261ac8b84ae26fb27d6cc4343a096e9602240880236",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-ippo/spec.json": "fa81a3cb1dc86943ba46400968d17a70c1a6da7685a816b87c787750a46c24ad",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-validation/ant-dms.json": "c047e8f303a77500195d0a44498161e1eaff0e409c4cb9da07ce9c886c68c546",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-dms/validation.json": "2f50548dcee291f07048f5193da138c6778195840a13a01ce01fa4fc6554a199",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-dms/development-evaluation-2.json": "12045cfceb944b0d01a873f2980e9028f721235f12fdba2cb3f32caa1e6ab4f9",
+    "runs/development-ant-entropy-3m-seed101/smoke-v2-evaluation-ant-dms/spec.json": "7c17249dc43913ccc9d31988675bf14fe11219408411025390deff68b60d63e6",
+    "runs/development-ant-entropy-3m-seed101/smoke_case.py": "cc9ddeb06ded0d669ebc05aeb282e982a127de407eab00456a6cac6cfb08189c",
+    "runs/development-ant-entropy-3m-seed101/smoke_all.py": "417db4a7c951687602c2a2136fb3bc11489fc363eecae3cd20dbd5596df09814",
+    "runs/development-ant-entropy-3m-seed101/evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "runs/development-ant-entropy-3m-seed101/evaluation/evaluate.sbatch": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
+    "runs/development-ant-entropy-3m-seed101/smoke.sbatch": "6f8b9e7b739a1cc8758420769849f6a4fe8a4b1c5c28dcbb276cbcd1f5bd3cb9"
+  },
+  "previous_failed_attempts": [
+    {
+      "job_id": "21282251",
+      "status": "failed_harness_assertion",
+      "submitted_utc": "2026-10-29T11:45:14.958386+00:00",
+      "accounting": "21282251|FAILED|1:0",
+      "reason": "IPPO has zero intention models; harness incorrectly expected one flag per agent.",
+      "validation": "runs/development-ant-entropy-3m-seed101/smoke-validation.json",
+      "frozen_harness": "runs/development-ant-entropy-3m-seed101/failed-attempt1",
+      "scripts_sha256": {
+        "smoke_case.py": "04158ef727b94b64c8e12e5ffcde28f9aceaf7345c7d4accb32192ac1a8de493",
+        "smoke_all.py": "31119f3955496e6f24744e2f881ce671f5465e96510502d1eabed0f5628943d3",
+        "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+        "evaluation/evaluate.sbatch": "0084d0efd82adf41a0387c4438b6f759b5f60417c7540e1d2c8826aa52c2657f",
+        "smoke.sbatch": "6f8b9e7b739a1cc8758420769849f6a4fe8a4b1c5c28dcbb276cbcd1f5bd3cb9"
+      }
+    }
+  ],
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39"
+  },
+  "held_out_training_seeds_used": [],
+  "limits": [
+    "Two updates per algorithm, one development training seed, one A100 smoke GPU; full H100 performance is pending.",
+    "Warmup is disabled for the DMS smoke to exercise peer inputs; full training retains the reference 100-episode warmup."
+  ],
+  "created_utc": "2026-10-29T11:55:45.436054+00:00"
+}

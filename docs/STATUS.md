@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 10:56 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 11:53 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -205,14 +205,13 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-Walker residual job **21280354** has reached **764,000 steps** and its
-trained no-input control **21280356** has reached **840,000 steps**, both on
-H100. Metrics remain finite; their recent throughputs project approximately
-3.78 and 3.07 training hours within the 5-hour allocations. SMAC residual
-**21280358** has reached **390,400 steps** and its no-input control
-**21280360** has reached **28,800 steps**, both on H100 with finite metrics. Evaluations
-and collectors remain dependent on completion. No fixed-endpoint performance
-result is available for residual fusion yet.
+Walker residual job **21280354** has reached **1,516,000 steps** and its
+trained no-input control **21280356** has reached **1,784,000 steps**, both on
+H100. SMAC residual **21280358** has reached **1,027,200 steps** and its
+no-input control **21280360** has reached **697,600 steps**, also on H100.
+All four are running with finite latest metrics. Evaluations and collectors
+remain dependent on completion. No fixed-endpoint performance result is
+available for residual fusion yet.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
 The residual models also have [queued mechanism diagnostics](../reports/development-residual-mechanism-3m-seed101.json):
@@ -246,15 +245,27 @@ and submitted the four fixed-3M controls:
 | Walker 2x3 | 21280636 | 21280637 |
 | Walker 6x1 | 21280638 | 21280639 |
 
-Ant 2x4 **21280632** is running on H200 and has reached **1,040,000 steps**
-with finite metrics; recent throughput projects about 1.95 training hours
-within its 4-hour allocation. Walker 2x3 **21280636** is also running on H200,
-at **544,000 steps**, with a 1.73-hour projection. Ant 8x1 and Walker 6x1 remain
-queued. Each actual
-GPU family is recorded and must be matched by that partition's future DMS comparison. Five dependent
-collectors preserve the results automatically. This fills baseline coverage
-while residual DMS remains under test on Walker3x2 and SMAC 8m_vs_9m.
-Held-out seeds remain unused.
+All four partition controls are now running. Ant 2x4 **21280632** has reached
+**2,532,000 steps** and Walker 2x3 **21280636** has reached **2,200,000 steps**,
+both on H200. Ant 8x1 **21280634** is at **196,000 steps** and Walker 6x1
+**21280638** is at **188,000 steps**, both on H100. Latest metrics are finite.
+Each actual GPU family is recorded and must be matched by that partition's
+future DMS comparison. Five dependent collectors preserve the results
+automatically. This fills baseline coverage while residual DMS remains under
+test on Walker3x2 and SMAC 8m_vs_9m. Held-out seeds remain unused.
+
+The [Ant exploration diagnostic](ANT_EXPLORATION.md), job **21282086**,
+restored the same 3M IPPO checkpoint and fresh 4,000-transition batch for four
+temporary PPO updates. Entropy coefficient **0.1** increased all eight action
+log-standard-deviation components; coefficients 0, 0.001 and 0.01 did not.
+This is an update-level observation, not a learning-performance result. A
+matched fresh **3M H100 IPPO/DMS** comparison changes only entropy **0 → 0.1**
+and output relative to each original history-32 reference. Native smoke
+**21282286** passed both 8,000-step training cases and saved-source evaluations
+with unchanged state and zero optimizer updates. The launcher verified all
+eight required evidence files and queued training **21282324 / 21282326**,
+fixed 100-episode evaluations **21282325 / 21282327** and three collectors.
+[Declared settings and validation](../reports/development-ant-entropy-3m-seed101.json).
 
 The [learned residual causal-selection check](../reports/residual-causal-native-validation.json)
 passed **27 focused tests** and native H200 validation (**21280847**). Manual
