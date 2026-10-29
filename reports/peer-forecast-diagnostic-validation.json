@@ -1,0 +1,97 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "job_id": "21286675",
+  "accounting": "21286675|COMPLETED|0:0|00:00:30|milan32",
+  "artifact": "runs/peer-forecast-diagnostic-validation",
+  "scope": "Diagnostic extension only: peer-only forecasts exclude the observer self targets, with unchanged full native diagnostics and no model update.",
+  "tests": {
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "junit": "runs/peer-forecast-diagnostic-validation/tests.xml",
+    "junit_sha256": "a7085489fa4566ee4ebf2a554d50554c4deb0564cab6d250736ed700f4440231"
+  },
+  "script": "scripts/diagnose_intentions.py",
+  "script_sha256": "fb92742462e5c2fcb091475b00267acc65bd500755cc2f3d1603b496e3f46843",
+  "validation": {
+    "success": true,
+    "job_id": "21286675",
+    "legacy_diagnostic_fields_replayed_exactly": true,
+    "model_and_checkpoint_unchanged": true,
+    "optimizer_steps": 0,
+    "training_steps": 3000000,
+    "training_seed": 101,
+    "forecast_including_self": {
+      "forecast_target_count": 7140,
+      "forecast_comparison_count": 7056,
+      "forecast_component_count": 12096,
+      "history_baseline_target_count": 7056,
+      "history_baseline_component_count": 12096,
+      "forecast_rmse": 0.510483567933687,
+      "persistence_rmse": 0.6229958185441504,
+      "history_mean_rmse": 0.5426030321548262,
+      "history_baseline_coverage_fraction": 0.9882352941176471
+    },
+    "forecast_peer_only": {
+      "forecast_target_count": 4080,
+      "forecast_comparison_count": 4032,
+      "forecast_component_count": 6048,
+      "history_baseline_target_count": 4032,
+      "history_baseline_component_count": 6048,
+      "forecast_rmse": 0.4581211522471572,
+      "persistence_rmse": 0.5693159790499502,
+      "history_mean_rmse": 0.487653117872465,
+      "history_baseline_coverage_fraction": 0.9882352941176471
+    },
+    "diagnostic_seed": 400851,
+    "diagnostic_transitions": 512,
+    "forecast_windows": 256,
+    "extended_diagnostics_sha256": "40a5be1f158f48f1c0c88b8c85fbcff26d17168ebbdbc10d3427a6f9da856bcf",
+    "completed_utc": "2026-10-29T14:53:13.895387+00:00"
+  },
+  "validation_sha256": "a166f9a419b0012eab1c2d7b02d5f05dccdf5650bd3a275b8ecaa3af4979aad1",
+  "predeclared": {
+    "purpose": "Separate peer prediction metrics from self-action metrics and replay the completed native Walker diagnostic exactly on every existing field.",
+    "created_utc": "2026-10-29T14:50:01.560609+00:00",
+    "snapshot": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot",
+    "checkpoint_sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+    "baseline_diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-residual-mechanism-3m-seed101/final-walker/diagnostics.json",
+    "baseline_diagnostics_sha256": "54bc80e2be6a1017fd7bf9e62ed92d74a93715fccfd5d32080d44e2557b7e2ed",
+    "files_sha256": {
+      "runs/peer-forecast-diagnostic-validation/native.py": "0e8609b144384b19ce96751697e2ef95324d45403f9c84acf263f3c0a7d6098e",
+      "runs/peer-forecast-diagnostic-validation/run.sbatch": "bdd33f0b9f158e48d5aeb1b57ce123d0204b75e212e130ea947c10ed7c208554",
+      "runs/peer-forecast-diagnostic-validation/tests/test_diagnostics.py": "9913b2ffe3c8f543c72a81554fed8fb19b77635ea70b721dddcc2810dcf3b7cb",
+      "runs/peer-forecast-diagnostic-validation/tests/test_diagnostic_provenance.py": "4b1c3305c972399f332f427307cca2734b1b85b0552bc49bfe96c83ea7a63aa1",
+      "runs/peer-forecast-diagnostic-validation/tests/test_peer_forecast_diagnostic.py": "304c728ca54f0d87e96d45d9781776bea8b09ec0fe5b6a02a3a6cc9aa3b43000",
+      "runs/peer-forecast-diagnostic-validation/tests/test_selection_diagnostics.py": "4fc014a238f50383b60a92d7af7b7717cd699e655b724896eefe26c31cf74541",
+      "runs/peer-forecast-diagnostic-validation/scripts/evaluate_interventions.py": "f1ed260d291bff3f046a343671c45e2583d34da40efbf948a1ae567cbc6aec00",
+      "runs/peer-forecast-diagnostic-validation/scripts/diagnose_intentions.py": "fb92742462e5c2fcb091475b00267acc65bd500755cc2f3d1603b496e3f46843"
+    },
+    "held_out_training_seeds_used": []
+  },
+  "submission": {
+    "job_id": "21286675",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-peer-forecast-validation",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--nodelist=milan32",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:10:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/peer-forecast-diagnostic-validation/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/peer-forecast-diagnostic-validation/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/peer-forecast-diagnostic-validation/run.sbatch"
+    ],
+    "submitted_utc": "2026-10-29T14:50:01.591037+00:00",
+    "predeclared_sha256": "b1ca14e73c5962112bfce485af16bd026e782f32ec70e834c44f4cdca84edab2"
+  },
+  "limits": [
+    "One trained development policy and four stochastic trajectories; overlapping forecast windows are not independent training replicates.",
+    "No benchmark evaluation, optimizer, policy input or training-source change.",
+    "Existing pending mechanism jobs use their frozen earlier diagnostic source and remain unchanged."
+  ],
+  "created_utc": "2026-10-29T14:58:43.944243+00:00"
+}

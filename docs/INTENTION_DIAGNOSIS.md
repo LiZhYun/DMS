@@ -1,5 +1,14 @@
 # Intention objective and frozen-checkpoint diagnosis
 
+The current diagnostic also reports `forecast_peer_only`, which excludes the
+observer's own future targets while retaining the same visibility, horizon and
+baseline calculations. The existing `forecast` field combines self and peer
+predictions. [Validation added on 2026-10-29](../reports/peer-forecast-diagnostic-validation.json)
+passes 21 focused tests and exactly replays every existing field of the frozen
+Walker diagnostic. Its peer-only RMSE is 0.45812, versus 0.56932 persistence and
+0.48765 history mean, on four fresh trajectories from one 3M policy. The
+historical HalfCheetah audit below retains its original source and scope.
+
 Audit dated 2026-10-25. This records a read-only examination of the two completed historical HalfCheetah 2x3 DMS pilots at 500,000 transitions, training seed 101. It changes neither the implementation nor existing experiment configurations. Both pilots remain development evidence; their return difference does not establish the intended coordination mechanism or paper reproduction.
 
 The main finding is that the current loss is a **time-normalized beta objective**, with different denominators for reconstruction and KL. At horizon four, its `kl_beta=1` is not the canonical sequence ELBO. The frozen probes also find little dependence on the current variation in deployed peer latent means, especially for the higher-return decoder variant.

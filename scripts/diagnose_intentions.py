@@ -185,7 +185,7 @@ def diagnose(learner, data, seed, max_windows):
     steps, environments = data['ends'].shape
     rng = np.random.default_rng(seed)
     active = learner.completed_episodes >= config.warmup_episodes
-    variation, policy_rows, decoder_rows, forecasts, selection_rows = [], [], [], [], []
+    variation, policy_rows, decoder_rows, forecasts, peer_forecasts, selection_rows = [], [], [], [], [], []
     candidates = [(t, e) for t in range(steps - config.prediction_horizon + 1)
                   for e in range(environments)
                   if not data['ends'][t:t + config.prediction_horizon - 1, e].any()]
@@ -244,6 +244,11 @@ def diagnose(learner, data, seed, max_windows):
             data['future_visible'][t:t + config.prediction_horizon, e, observer]
             for t, e in selected]), torch.bool)
         forecasts.append(forecast_diagnostics(model, past, visible, future, future_visible))
+        # Report teammates separately: predicting one's own actions must not
+        # supply evidence that the model predicts other agents successfully.
+        peer_future_visible = future_visible.clone()
+        peer_future_visible[:, :, observer] = False
+        peer_forecasts.append(forecast_diagnostics(model, past, visible, future, peer_future_visible))
         prior = model.prior(past, visible)
         donors, paired = matched_donors(model._masked_actions(past, visible).cpu().numpy(),
                                         visible.cpu().numpy(),
@@ -281,6 +286,7 @@ def diagnose(learner, data, seed, max_windows):
     return {'latent_temporal_variation': variation, 'policy_shuffle': policy_rows,
             'full_to_removed_policy_kl': selection_rows,
             'decoder_shuffle': decoder_rows, 'forecast': summarize_forecasts(forecasts),
+            'forecast_peer_only': summarize_forecasts(peer_forecasts),
             'forecast_windows': len(selected), 'candidate_forecast_windows': len(candidates)}
 
 

@@ -86,6 +86,11 @@ Evaluation uses deterministic actions, fresh episode seeds, frozen parameters, a
 
 A useful intention representation should predict better than simple history baselines, change when relevant histories change, and help the policy during complete episodes. Forecast loss alone does not establish this. [INTERVENTION_DIAGNOSTICS.md](INTERVENTION_DIAGNOSTICS.md) describes the separate frozen-policy probes and their limits.
 
+The prediction diagnostic reports both `forecast` (self and peers together)
+and `forecast_peer_only` (other agents only), with sample counts for each.
+Accurate prediction of an observer's own actions cannot supply evidence for
+the peer-only result. Both retain the same local visibility masks.
+
 ## Tensor axes
 
 | Object | Axes |

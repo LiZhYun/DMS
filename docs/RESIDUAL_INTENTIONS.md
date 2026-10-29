@@ -129,7 +129,59 @@ passed both tasks, exactly replayed the two saved episodes per task, and left
 parameters, normalizers, source, checkpoints and training phase unchanged with
 zero optimizer steps. Jobs **21281731** (Walker) and **21281732** (SMAC) depend on
 the corresponding fixed-3M evaluations; collector **21281733** validates and
-records their outputs. Full diagnostic results are pending.
+records their outputs. The SMAC result remains pending.
+
+The Walker diagnostic completed in **37m13s**, with zero optimizer steps and
+unchanged model, normalization state, source and checkpoints. Its normal mode
+exactly replays all 100 endpoint episodes.
+
+| Frozen-policy inputs | Mean return | Mean episode length |
+| --- | ---: | ---: |
+| Normal dynamic intentions | 636.86 | 271.54 |
+| First eligible peer latents held fixed | 527.87 | 384.31 |
+| Peer gates masked | 489.40 | 238.56 |
+
+Holding reduces mean return by **109.00**; masking reduces it by **147.46**.
+Holding also increases mean episode length, so the return change does not
+identify a balance or velocity effect by itself. These are interventions on
+one trained policy, distinct from the separately trained no-input control.
+[Checked results](../reports/residual-walker-mechanism-results-20261029.json).
+
+On four fresh stochastic trajectories and 256 overlapping forecast windows,
+the model's RMSE is **0.51048**, versus **0.62300** for persistence and
+**0.54260** for the history mean. This aggregate includes self predictions.
+The [peer-only extension](../reports/peer-forecast-diagnostic-validation.json)
+replays all existing native diagnostic fields exactly and separately scores
+only other agents: **0.45812** model RMSE, **0.56932** persistence, **0.48765**
+history mean, over 6,048 sensed action components. Its 21 focused tests include
+changing only self targets and verifying that peer metrics remain unchanged.
+No policy input or optimizer behavior changes.
+
+Removal sensitivity requires care. Observer 0's visible peer has mean removal
+KL **2.7671**, while shuffling its temporal latent information gives policy KL
+only **0.00009081**. Removing a large static context offset can strongly change
+a policy even when temporal variation matters little. Other observers show
+larger shuffle effects (mean KL **0.03310 / 0.10283**). These soft-pooling scores
+do not select a threshold for the distinct causal-concatenation architecture.
+The training-seed replications remain pending.
+
+## Auxiliary update ordering
+
+A [paired update probe](../reports/development-walker-residual-auxiliary-order-probe.json)
+uses the frozen 3M Walker model and one fresh 4,000-transition rollout. Moving
+auxiliary training before PPO while retaining cached old features produces
+exactly the ordinary final model/optimizer state when phase RNG states match.
+Moving it first and evaluating PPO with the updated past-only features instead
+reduces actual refreshed-policy KL from **0.00917540 to 0.00780247** and raises
+the fitted surrogate from **0.00852421 to 0.00938248**. All variants have the
+same auxiliary model/optimizer state and 20 PPO steps per agent; filter masks,
+peer gates and original behavior log probabilities remain fixed.
+
+The uninstrumented source update replays exactly, and analytic Gaussian KL
+checks pass. This is one update at a late checkpoint, rather than a return
+experiment. Production still uses PPO followed by auxiliary training. The
+[local design audit](../RESEARCH_REVIEW.md) records the proposed next checks
+and the unavailable independent-review capability.
 
 ## Causal-selection validation
 

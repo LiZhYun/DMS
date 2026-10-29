@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 14:12 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 15:05 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -225,9 +225,10 @@ now preserves both residual policies and the earlier IPPO memory control:
 Every payload was read back successfully by export job **21284990**.
 [Artifact details](ARTIFACTS.md#walker-residual-fusion-and-memory-control).
 
-SMAC residual **21280358** has reached **2,585,600 steps** and its no-input control
-**21280360** has reached **2,323,200 steps**. Both SMAC jobs remain running on
-H100 with finite metrics; their fixed evaluations and collectors are queued.
+SMAC residual **21280358** has completed **3M steps** on H100; its separate
+100-game evaluation is running. The no-input control **21280360** has reached
+**2,915,200 steps** and remains running on H100 with finite metrics. Its fixed
+evaluation and the remaining collectors are queued.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
 A [fresh-initialization paired diagnostic](../reports/residual-no-input-rng-diagnostic.json),
@@ -268,17 +269,34 @@ imports, and rejected invalid-source/existing-output/modern-backend cases.
 readers a direct GPU command for the native configurations; it adds no learning
 or environment changes.
 
-The residual models also have [queued mechanism diagnostics](../reports/development-residual-mechanism-3m-seed101.json):
-Walker **21281731** is running after its completed fixed-3M evaluation; SMAC
-**21281732** remains dependent on its pending evaluation. The Walker job has exactly replayed all 100 normal episodes and is continuing
-its held/masked-input checks. Each job then collects four fresh 128-transition
-trajectories for prediction baselines, latent shuffles and peer-removal
-sensitivity. Full validation remains pending. Native
-smoke **21281659** passed on both tasks with exact saved-episode replay and
-unchanged model/source/checkpoints, without optimizer updates.
-[Validation](../reports/residual-mechanism-native-validation.json).
-These are fixed-policy diagnostics, distinct from the trained no-input controls;
-their full results remain pending and no threshold is promoted.
+The [Walker residual mechanism check](../reports/residual-walker-mechanism-results-20261029.json),
+job **21281731**, completed in **37m13s**. All 100 normal episodes replay exactly.
+Holding peer latents reduces return from **636.86 to 527.87**; masking peer gates
+reduces it to **489.40**. The model, normalization state, snapshot and source stay
+unchanged, with zero optimizer steps. Holding increases mean episode length
+from 271.54 to 384.31 despite the lower return; this does not identify a balance
+or movement effect by itself.
+
+The new [peer-only forecast output](../reports/peer-forecast-diagnostic-validation.json)
+passes **21 focused tests** and native replay of every previous diagnostic field.
+Excluding self targets gives RMSE **0.45812**, versus **0.56932** persistence and
+**0.48765** history mean, on four fresh stochastic trajectories. These windows
+are not independent training replicates. Large removal KL can also reflect a
+static context offset: observer 0 has mean removal KL 2.7671 but peer-shuffle KL
+only 0.00009081. No causal threshold is selected from these soft-policy results.
+SMAC mechanism job **21281732** remains dependent on its endpoint evaluation.
+
+A [paired auxiliary-order probe](../reports/development-walker-residual-auxiliary-order-probe.json),
+job **21285355**, passes exact ordinary-update replay and a stale-cache control
+on one fresh 4,000-transition batch. Moving auxiliary training first with old
+cached PPO features is exactly equivalent under matched phase RNG states.
+Using updated past-only features reduces actual policy KL from **0.00917540 to
+0.00780247** and raises the fitted surrogate from **0.00852421 to 0.00938248**.
+Auxiliary models/optimizer states, 20 PPO steps per agent, filter masks and gates
+match. This is one update, not a learning-return result. The
+[local design audit](../RESEARCH_REVIEW.md) records the next implementation
+candidate and the independent review interface limitation. Production training
+and all queued experiments keep their frozen source.
 
 Four missing primary partitions now have declared local-history IPPO controls:
 Ant **2x4 / 8x1** and Walker **2x3 / 6x1**. They reuse their task's existing
@@ -337,8 +355,8 @@ hyperparameters remain unchanged. Exact-launcher validation **21282799**
 passed both 8,000-step cases and separate saved-source evaluations, recording
 runtime metadata independently. The retry checked 13 evidence files and
 submitted training **21282828 / 21282830**, fixed evaluations **21282829 / 21282831**,
-and three collectors. Both training jobs are now running on H100, at **924,000**
-IPPO steps and **668,000** DMS steps, with finite metrics. Their fixed evaluations
+and three collectors. Both training jobs are now running on H100, at **1,748,000**
+IPPO steps and **1,216,000** DMS steps, with finite metrics. Their fixed evaluations
 remain pending. [Launcher evidence](../reports/ant-entropy-launcher-validation.json).
 [Failed attempt](../reports/development-ant-entropy-3m-seed101.json),
 [current retry](../reports/development-ant-entropy-3m-seed101-attempt2.json).

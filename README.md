@@ -206,8 +206,8 @@ For MuJoCo, native joint observations do not expose actuator commands. The adapt
 
 The software follows the original repository’s [MIT license](LICENSE). [Third-party notices](THIRD_PARTY_NOTICES.md) identify the adapted graph and Swimmer source, packaged XML, and separately installed benchmark assets. Cite the published method using [CITATION.bib](CITATION.bib); no benchmark reproduction result is claimed by this development release.
 
-The current source passed a **fresh Python 3.10.19 CPU installation: 518 tests
-passed, 32 native-only tests skipped**. The environment and package cache started
+The latest fresh Python 3.10.19 CPU installation passed **518 tests**,
+with **32 native-only tests skipped**. The environment and package cache started
 empty, and imports were verified against the frozen checkout. A 128-step modern
 MuJoCo residual run and two saved-checkpoint evaluation episodes also completed.
 [The installation record](reports/fresh-install-residual-validation.json)

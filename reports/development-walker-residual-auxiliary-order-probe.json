@@ -1,0 +1,675 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "job_id": "21285355",
+  "accounting": "21285355|COMPLETED|0:0|00:09:09|milan32",
+  "artifact": "runs/walker-residual-auxiliary-order-probe",
+  "scope": "One phase-RNG-paired ephemeral update diagnostic at the residual Walker3M checkpoint, with an uninstrumented ordinary oracle; no learning-performance result.",
+  "predeclared": {
+    "purpose": "Paired auxiliary-order/current-input diagnostic with uninstrumented and stale-cache oracles; no learning-performance claim.",
+    "created_utc": "2026-10-29T14:40:03.068597+00:00",
+    "artifact": "runs/walker-residual-auxiliary-order-probe",
+    "original_checkpoint": "/scratch/work/liz23/reproduce/dms/runs/dev-walker-residual-fusion-3m-h100-101/latest.pt",
+    "checkpoint_sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+    "config": {
+      "algorithm": "dms",
+      "env": "mamujoco",
+      "mamujoco_backend": "legacy",
+      "scenario": "Walker2d",
+      "ant_contact_forces": "native",
+      "agent_conf": "3x2",
+      "agent_obsk": 1,
+      "map_name": "3s5z",
+      "seed": 101,
+      "device": "cuda",
+      "num_envs": 4,
+      "parallel_env_steps": false,
+      "mask_inactive_agents": false,
+      "smac_time_limit_terminal": false,
+      "update_mode": "independent",
+      "total_steps": 3000000,
+      "rollout_steps": 1000,
+      "epochs": 5,
+      "minibatch_size": 1000,
+      "hidden_dim": 64,
+      "policy_history_length": 32,
+      "initial_log_std": -0.5,
+      "latent_dim": 8,
+      "decoder_history": false,
+      "history_length": 32,
+      "prediction_horizon": 4,
+      "coordination": "soft",
+      "intention_fusion": "residual",
+      "coordination_threshold": 0.6,
+      "short_history": 4,
+      "filter_history": true,
+      "intention_threshold": 10000,
+      "warmup_episodes": 100,
+      "causal_warmup_episodes": 100,
+      "actor_lr": 0.0003,
+      "critic_lr": 0.001,
+      "intention_lr": 0.001,
+      "intention_rl_lr": 0.0,
+      "aux_updates": 2,
+      "aux_batch_size": 64,
+      "kl_beta": 0.1,
+      "latent_samples": 2,
+      "gamma": 0.99,
+      "gae_lambda": 0.95,
+      "clip": 0.2,
+      "value_clip": 0.2,
+      "entropy_coef": 0.0,
+      "value_coef": 0.5,
+      "max_grad_norm": 0.5,
+      "target_kl": 0.02,
+      "eval_every": 1000000,
+      "eval_episodes": 10,
+      "eval_seed": 10001,
+      "output": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "torch_threads": 1
+    },
+    "environment": {
+      "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+      "historical_binary_parity_verified": false,
+      "scenario": "Walker2d",
+      "native_env_id": "Walker2d-v2",
+      "agent_conf": "3x2",
+      "agent_obsk": 1,
+      "k_categories": [
+        [
+          "qpos",
+          "qvel"
+        ],
+        [
+          "qpos"
+        ]
+      ],
+      "global_categories": [],
+      "max_episode_steps": 1000,
+      "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+      "packages": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "mujoco_engine_version": 210,
+      "xml_asset": "walker2d.xml",
+      "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+      "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+      "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+      "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "action_routing": "graph_node_actuator_indices",
+      "control_processing": "clip_native_bounds_before_simulation_and_reward",
+      "action_ids": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "action_dims": [
+        2,
+        2,
+        2
+      ],
+      "observation_dims": [
+        5,
+        7,
+        6
+      ],
+      "action_sensor": "previous_executed_control_on_observed_joints",
+      "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+      "reward": {
+        "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+        "alive_bonus_on_terminal": true,
+        "healthy_height_open_interval": [
+          0.8,
+          2.0
+        ],
+        "healthy_angle_open_interval": [
+          -1.0,
+          1.0
+        ]
+      },
+      "frame_skip": 4,
+      "physics_timestep": 0.002,
+      "native_geom_friction": [
+        [
+          0.7,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          0.9,
+          0.1,
+          0.1
+        ],
+        [
+          1.9,
+          0.1,
+          0.1
+        ]
+      ],
+      "policy_observation_history": {
+        "length": 32,
+        "base_observation_dim": 29,
+        "shape": [
+          3,
+          32,
+          30
+        ],
+        "validity_channel": "last; exact 0/1; never normalized",
+        "padding": "left zeros; current observation at final slot",
+        "reset": "episode reset",
+        "information": "only this agent's existing local observations"
+      }
+    },
+    "versions": {
+      "torch": "2.6.0+cu126",
+      "numpy": "1.26.4",
+      "protobuf": "6.33.0",
+      "gym": "0.23.1",
+      "mujoco-py": "2.1.2.14"
+    },
+    "source_inventory_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+    },
+    "helper": "/scratch/work/liz23/reproduce/dms/runs/walker-history32-policy-drift-01/probe.py",
+    "helper_sha256": "d97c8f342d8953dbb84bf2a1551cf77689ecb148613ab744f798931c446bdef5",
+    "original_files_sha256": {
+      "runs/dev-walker-residual-fusion-3m-h100-101/config.json": "59fa45b590306b703884548c4bd11c3ce232c246892d210e4c661a4741257659",
+      "runs/dev-walker-residual-fusion-3m-h100-101/manifest.json": "f288288169083ee909f6239e95aee25d0451950b1959a8e3e0825741d7fceb62",
+      "runs/dev-walker-residual-fusion-3m-h100-101/metrics.jsonl": "0b0f866f66a1a0f5965c1985efea7f46fa9f1748c2e3e8b6d2da46246b695c5b",
+      "runs/dev-walker-residual-fusion-3m-h100-101/evaluation.jsonl": "d6ecb85c74a50d070f048a23086eb803967bd7d83c0bf0164e0f269805fc831e",
+      "runs/dev-walker-residual-fusion-3m-h100-101/latest.pt": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+      "runs/dev-walker-residual-fusion-3m-h100-101/legacy-dependencies.json": "0c6a2ec4eb2a33e1c6398310674a4eb24fffc91b3e7a5a0a3e678543b5cdd43b"
+    },
+    "rollout_seed": 401011,
+    "update_seed": 401012,
+    "variants": [
+      "ordinary",
+      "aux-first-cached",
+      "aux-first-current"
+    ],
+    "hypotheses": [
+      "Moving auxiliary updates first without changing cached PPO inputs gives the same model/optimizer state when phase RNG states are matched.",
+      "Re-encoding updated past-only features for PPO reduces the actual final refreshed-policy shift while keeping exactly the same auxiliary update.",
+      "An apparent conditional-input benefit may disappear after real observation/intention refresh; report both."
+    ],
+    "limits": [
+      "One late checkpoint and one fresh 4000-transition batch.",
+      "All fitted surrogate scores are in-sample diagnostics, not return improvements or generalization.",
+      "Current-input PPO keeps original behavior log probabilities, past-history filter masks and peer gates.",
+      "No production code, source snapshots, active jobs or held-out training seeds change.",
+      "The phase-paired RNG mechanism is a diagnostic intervention, not a proposed production RNG redesign."
+    ],
+    "probe_sha256": "6a7555460252293f2502cc4390afb441e487a5d1357394528fd8cd6d1b679203",
+    "script_sha256": "631a9a6b4cf0ca1ee0df40a0e2f1a9b725976df0786ee3ee1ee1cd433968666b",
+    "held_out_training_seeds_used": []
+  },
+  "submission": {
+    "job_id": "21285355",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-residual-aux-order-probe",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=4G",
+      "--time=00:15:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/walker-residual-auxiliary-order-probe/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/walker-residual-auxiliary-order-probe/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/walker-residual-auxiliary-order-probe/run.sbatch"
+    ],
+    "submitted_utc": "2026-10-29T14:40:03.198743+00:00",
+    "predeclared_sha256": "a40d0656539ac6d7755c685018e8b36f564d9dea31cbfd7fb70aa2836d286755"
+  },
+  "validation": {
+    "success": true,
+    "job_id": "21285355",
+    "checkpoint_steps": 3000000,
+    "checkpoint_sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+    "training_seed": 101,
+    "rollout_seed": 401011,
+    "update_seed": 401012,
+    "transitions": 4000,
+    "initial_prior_features_replayed_exactly": true,
+    "initial_log_prob_max_abs_difference": 0.0,
+    "ordinary_uninstrumented_model_optimizer_metrics_and_rng_replayed_exactly": true,
+    "aux_first_cached_equals_ordinary": true,
+    "auxiliary_models_and_optimizer_states_identical": true,
+    "filter_entries_changed_after_aux": 0,
+    "original_phase_auxiliary_policy_shift": {
+      "per_agent": [
+        {
+          "agent": 0,
+          "kl_mean": 5.794155731564388e-05,
+          "kl_p90": 0.00014415974146686494,
+          "kl_max": 0.0003235936164855957,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.009527784772217274
+        },
+        {
+          "agent": 1,
+          "kl_mean": 0.0030565462075173855,
+          "kl_p90": 0.0066178301349282265,
+          "kl_max": 0.2801865339279175,
+          "ratio_outside_ppo_clip_fraction": 0.028750000521540642,
+          "mean_action_shift_in_old_std": 0.044044964015483856
+        },
+        {
+          "agent": 2,
+          "kl_mean": 4.997138603357598e-05,
+          "kl_p90": 0.00011224744957871735,
+          "kl_max": 0.00033599138259887695,
+          "ratio_outside_ppo_clip_fraction": 0.0,
+          "mean_action_shift_in_old_std": 0.009026792831718922
+        }
+      ],
+      "mean_kl": 0.0010548197169555351,
+      "mean_ratio_outside_ppo_clip_fraction": 0.009583333507180214,
+      "analytic_gaussian_kl_oracle_passed": true
+    },
+    "variants": {
+      "ordinary": {
+        "metrics": {
+          "policy_loss": -0.004333372542168945,
+          "value_loss": 0.18414727970957756,
+          "entropy": 0.9450328111648559,
+          "approx_kl": 0.006519082670101974,
+          "peer_gate_fraction": 0.664,
+          "intention_feature_std": 1.1931670904159546,
+          "intention_loss": 0.7145147522290548,
+          "intention_nll": 0.5157376403609911,
+          "intention_kl": 1.9877711534500122,
+          "forecast_target_count": 1792,
+          "forecast_comparison_count": 1792,
+          "forecast_component_count": 3072,
+          "history_baseline_target_count": 1792,
+          "history_baseline_component_count": 3072,
+          "forecast_rmse": 0.5230884746805241,
+          "persistence_rmse": 0.6184387362304068,
+          "history_mean_rmse": 0.5537707032559552,
+          "history_baseline_coverage_fraction": 1.0
+        },
+        "ppo_optimizer_steps": [
+          20,
+          20,
+          20
+        ],
+        "state_sha256": "18f822a114889147a3990ff5a4d82d7f6664fe6053c2d1adc34e04f03031987e",
+        "conditional_fixed_normalization": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.009491249918937683,
+              "kl_p90": 0.021131101995706558,
+              "kl_max": 0.28090187907218933,
+              "ratio_outside_ppo_clip_fraction": 0.10700000077486038,
+              "mean_action_shift_in_old_std": 0.1140429899096489
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.010989799164235592,
+              "kl_p90": 0.02558639459311962,
+              "kl_max": 0.668870747089386,
+              "ratio_outside_ppo_clip_fraction": 0.09749999642372131,
+              "mean_action_shift_in_old_std": 0.10791366547346115
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.006406125612556934,
+              "kl_p90": 0.01352795958518982,
+              "kl_max": 0.06784304976463318,
+              "ratio_outside_ppo_clip_fraction": 0.07575000077486038,
+              "mean_action_shift_in_old_std": 0.10163090378046036
+            }
+          ],
+          "mean_kl": 0.008962391565243403,
+          "mean_ratio_outside_ppo_clip_fraction": 0.09341666599114735,
+          "analytic_gaussian_kl_oracle_passed": true
+        },
+        "actual_refreshed_policy": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.009482071734964848,
+              "kl_p90": 0.02112523652613163,
+              "kl_max": 0.2804346978664398,
+              "ratio_outside_ppo_clip_fraction": 0.10750000178813934,
+              "mean_action_shift_in_old_std": 0.11405300348997116
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.011655041016638279,
+              "kl_p90": 0.02815110795199871,
+              "kl_max": 0.6637742519378662,
+              "ratio_outside_ppo_clip_fraction": 0.10499999672174454,
+              "mean_action_shift_in_old_std": 0.11190101504325867
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.006389090791344643,
+              "kl_p90": 0.013501334004104137,
+              "kl_max": 0.06739214062690735,
+              "ratio_outside_ppo_clip_fraction": 0.07450000196695328,
+              "mean_action_shift_in_old_std": 0.1016303151845932
+            }
+          ],
+          "mean_kl": 0.00917540118098259,
+          "mean_ratio_outside_ppo_clip_fraction": 0.09566666682561238,
+          "analytic_gaussian_kl_oracle_passed": true
+        },
+        "fitted_surrogate_conditional": {
+          "per_agent": [
+            0.011361347511410713,
+            0.004970989190042019,
+            0.009436443448066711
+          ],
+          "mean": 0.008589593383173147,
+          "scope": "Fitted surrogate on the collected rollout, not held-out value or return."
+        },
+        "fitted_surrogate_actual": {
+          "per_agent": [
+            0.011353462003171444,
+            0.004752372857183218,
+            0.009466800838708878
+          ],
+          "mean": 0.008524211899687847,
+          "scope": "Fitted surrogate on the collected rollout, not held-out value or return."
+        },
+        "refreshed_gate_entries_changed": 0
+      },
+      "aux-first-cached": {
+        "metrics": {
+          "policy_loss": -0.004333372542168945,
+          "value_loss": 0.18414727970957756,
+          "entropy": 0.9450328111648559,
+          "approx_kl": 0.006519082670101974,
+          "peer_gate_fraction": 0.664,
+          "intention_feature_std": 1.1931670904159546
+        },
+        "ppo_optimizer_steps": [
+          20,
+          20,
+          20
+        ],
+        "state_sha256": "18f822a114889147a3990ff5a4d82d7f6664fe6053c2d1adc34e04f03031987e",
+        "same_auxiliary_model_and_optimizer": true,
+        "conditional_fixed_normalization": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.009491249918937683,
+              "kl_p90": 0.021131101995706558,
+              "kl_max": 0.28090187907218933,
+              "ratio_outside_ppo_clip_fraction": 0.10700000077486038,
+              "mean_action_shift_in_old_std": 0.1140429899096489
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.010989799164235592,
+              "kl_p90": 0.02558639459311962,
+              "kl_max": 0.668870747089386,
+              "ratio_outside_ppo_clip_fraction": 0.09749999642372131,
+              "mean_action_shift_in_old_std": 0.10791366547346115
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.006406125612556934,
+              "kl_p90": 0.01352795958518982,
+              "kl_max": 0.06784304976463318,
+              "ratio_outside_ppo_clip_fraction": 0.07575000077486038,
+              "mean_action_shift_in_old_std": 0.10163090378046036
+            }
+          ],
+          "mean_kl": 0.008962391565243403,
+          "mean_ratio_outside_ppo_clip_fraction": 0.09341666599114735,
+          "analytic_gaussian_kl_oracle_passed": true
+        },
+        "actual_refreshed_policy": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.009482071734964848,
+              "kl_p90": 0.02112523652613163,
+              "kl_max": 0.2804346978664398,
+              "ratio_outside_ppo_clip_fraction": 0.10750000178813934,
+              "mean_action_shift_in_old_std": 0.11405300348997116
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.011655041016638279,
+              "kl_p90": 0.02815110795199871,
+              "kl_max": 0.6637742519378662,
+              "ratio_outside_ppo_clip_fraction": 0.10499999672174454,
+              "mean_action_shift_in_old_std": 0.11190101504325867
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.006389090791344643,
+              "kl_p90": 0.013501334004104137,
+              "kl_max": 0.06739214062690735,
+              "ratio_outside_ppo_clip_fraction": 0.07450000196695328,
+              "mean_action_shift_in_old_std": 0.1016303151845932
+            }
+          ],
+          "mean_kl": 0.00917540118098259,
+          "mean_ratio_outside_ppo_clip_fraction": 0.09566666682561238,
+          "analytic_gaussian_kl_oracle_passed": true
+        },
+        "fitted_surrogate_conditional": {
+          "per_agent": [
+            0.011361347511410713,
+            0.004970989190042019,
+            0.009436443448066711
+          ],
+          "mean": 0.008589593383173147,
+          "scope": "Fitted surrogate on the collected rollout, not held-out value or return."
+        },
+        "fitted_surrogate_actual": {
+          "per_agent": [
+            0.011353462003171444,
+            0.004752372857183218,
+            0.009466800838708878
+          ],
+          "mean": 0.008524211899687847,
+          "scope": "Fitted surrogate on the collected rollout, not held-out value or return."
+        },
+        "refreshed_gate_entries_changed": 0
+      },
+      "aux-first-current": {
+        "metrics": {
+          "policy_loss": -0.0042713994587150715,
+          "value_loss": 0.18397276103496552,
+          "entropy": 0.944924458861351,
+          "approx_kl": 0.0069026774227192314,
+          "peer_gate_fraction": 0.664,
+          "intention_feature_std": 1.194735050201416
+        },
+        "ppo_optimizer_steps": [
+          20,
+          20,
+          20
+        ],
+        "state_sha256": "8cdf35d399ca00e90d5bc7eaed34463f78b07ac46e1fa5fee6e601f7779b1b09",
+        "same_auxiliary_model_and_optimizer": true,
+        "conditional_fixed_normalization": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.009904320351779461,
+              "kl_p90": 0.02369246818125248,
+              "kl_max": 0.14069484174251556,
+              "ratio_outside_ppo_clip_fraction": 0.11800000071525574,
+              "mean_action_shift_in_old_std": 0.11805343627929688
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.0067810541950166225,
+              "kl_p90": 0.018333017826080322,
+              "kl_max": 0.2553306519985199,
+              "ratio_outside_ppo_clip_fraction": 0.07474999874830246,
+              "mean_action_shift_in_old_std": 0.08572208881378174
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.006501737982034683,
+              "kl_p90": 0.014102159067988396,
+              "kl_max": 0.06544313579797745,
+              "ratio_outside_ppo_clip_fraction": 0.07474999874830246,
+              "mean_action_shift_in_old_std": 0.10132412612438202
+            }
+          ],
+          "mean_kl": 0.007729037509610255,
+          "mean_ratio_outside_ppo_clip_fraction": 0.08916666607062022,
+          "analytic_gaussian_kl_oracle_passed": true
+        },
+        "actual_refreshed_policy": {
+          "per_agent": [
+            {
+              "agent": 0,
+              "kl_mean": 0.009910239838063717,
+              "kl_p90": 0.02379448153078556,
+              "kl_max": 0.14038793742656708,
+              "ratio_outside_ppo_clip_fraction": 0.11824999749660492,
+              "mean_action_shift_in_old_std": 0.11816288530826569
+            },
+            {
+              "agent": 1,
+              "kl_mean": 0.007010396104305983,
+              "kl_p90": 0.01908460259437561,
+              "kl_max": 0.27160462737083435,
+              "ratio_outside_ppo_clip_fraction": 0.07599999755620956,
+              "mean_action_shift_in_old_std": 0.08582758903503418
+            },
+            {
+              "agent": 2,
+              "kl_mean": 0.00648675998672843,
+              "kl_p90": 0.014145885594189167,
+              "kl_max": 0.06499586254358292,
+              "ratio_outside_ppo_clip_fraction": 0.07500000298023224,
+              "mean_action_shift_in_old_std": 0.10128580033779144
+            }
+          ],
+          "mean_kl": 0.007802465309699376,
+          "mean_ratio_outside_ppo_clip_fraction": 0.08974999934434891,
+          "analytic_gaussian_kl_oracle_passed": true
+        },
+        "fitted_surrogate_conditional": {
+          "per_agent": [
+            0.009900318458676338,
+            0.00868837721645832,
+            0.009369411505758762
+          ],
+          "mean": 0.009319369060297808,
+          "scope": "Fitted surrogate on the collected rollout, not held-out value or return."
+        },
+        "fitted_surrogate_actual": {
+          "per_agent": [
+            0.009879421442747116,
+            0.008871562778949738,
+            0.009396469220519066
+          ],
+          "mean": 0.00938248448073864,
+          "scope": "Fitted surrogate on the collected rollout, not held-out value or return."
+        },
+        "refreshed_gate_entries_changed": 0
+      }
+    },
+    "ephemeral_updates": 4,
+    "original_training_updates": 0,
+    "held_out_training_seeds_used": [],
+    "scope": "One paired CPU counterfactual at a late residual development checkpoint. Phase RNG restoration is diagnostic only; no production RNG, schedule or performance setting is promoted.",
+    "original_files_unchanged": true,
+    "frozen_checkpoint_unchanged": true,
+    "source_unchanged": true,
+    "rollout_unchanged": true,
+    "rollout_sha256": "d283e158e34cb0c784cf9f04dbf310241185aa9ab99ade585dbffa2d95e0066b",
+    "update_states_sha256": "3ee895040b59c4ee78210f3050c84f4bb95418d822b4d19f7c5d3cd0ba0196dd",
+    "elapsed_seconds": 542.1286173700355,
+    "completed_utc": "2026-10-29T14:50:09.499417+00:00"
+  },
+  "summary": {
+    "actual_policy_kl_ordinary": 0.00917540118098259,
+    "actual_policy_kl_updated_inputs": 0.007802465309699376,
+    "relative_kl_reduction": 0.14963224432396827,
+    "fitted_surrogate_ordinary": 0.008524211899687847,
+    "fitted_surrogate_updated_inputs": 0.00938248448073864,
+    "relative_fitted_surrogate_increase": 0.10068644364439394,
+    "ppo_steps_ordinary": [
+      20,
+      20,
+      20
+    ],
+    "ppo_steps_updated_inputs": [
+      20,
+      20,
+      20
+    ],
+    "filter_or_gate_changes": 0
+  },
+  "evidence_sha256": {
+    "predeclared.json": "a40d0656539ac6d7755c685018e8b36f564d9dea31cbfd7fb70aa2836d286755",
+    "probe.py": "6a7555460252293f2502cc4390afb441e487a5d1357394528fd8cd6d1b679203",
+    "run.sbatch": "631a9a6b4cf0ca1ee0df40a0e2f1a9b725976df0786ee3ee1ee1cd433968666b",
+    "result.json": "79419002142c7f83420d188177652bc2a706d6167fb34c0cb688ffd8ee7d5d6d",
+    "rollout.pt": "d283e158e34cb0c784cf9f04dbf310241185aa9ab99ade585dbffa2d95e0066b",
+    "update-states.pt": "3ee895040b59c4ee78210f3050c84f4bb95418d822b4d19f7c5d3cd0ba0196dd"
+  },
+  "decision": "Moving auxiliary updates before PPO with stale cached features is exactly equivalent here. Updated past-only features improve the fitted surrogate and reduce refreshed-policy KL on this batch with identical auxiliary training. This supports testing that design separately; no training code or final setting is promoted.",
+  "created_utc": "2026-10-29T14:56:51.248396+00:00"
+}

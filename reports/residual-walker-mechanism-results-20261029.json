@@ -1,0 +1,520 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "job_id": "21281731",
+  "accounting": "21281731|COMPLETED|0:0|00:37:13|milan32",
+  "created_utc": "2026-10-29T14:55:48.167476+00:00",
+  "scope": "Completed Walker residual fixed-policy mechanisms only; SMAC mechanism job remains pending.",
+  "source_ledger_snapshot": "runs/residual-walker-mechanism-results-20261029/source-ledger.json",
+  "source_ledger_snapshot_sha256": "f2061b0147f5aee3ea58d557c8a40b0579ae8d65a9cdb306c1da45ff47f61738",
+  "validation": "runs/development-residual-mechanism-3m-seed101/final-walker/validation.json",
+  "validation_sha256": "98c57011fd34bfa3ee5fd79ff5890361063a2c534b831d873b8adc99358183b7",
+  "checkpoint_sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+  "training_steps": 3000000,
+  "training_seed": 101,
+  "normal_endpoint_replayed_exactly": true,
+  "optimizer_steps": 0,
+  "model_and_snapshot_unchanged": true,
+  "evaluation_seed_start": 400101,
+  "evaluation_seed_end": 400200,
+  "interventions": {
+    "normal": {
+      "episodes": 100,
+      "return_mean": 636.864808162665,
+      "return_population_std": 252.44392679220752,
+      "mean_episode_length": 271.54,
+      "episodes_below1000_steps": 98,
+      "return_minus_alive_bonus_mean": 365.32480816266497
+    },
+    "hold": {
+      "episodes": 100,
+      "return_mean": 527.8650802018072,
+      "return_population_std": 261.59074365541653,
+      "mean_episode_length": 384.31,
+      "episodes_below1000_steps": 95,
+      "paired_return_difference_mean": -108.99972796085771,
+      "paired_return_difference_population_std": 376.3062569073324,
+      "return_minus_alive_bonus_mean": 143.55508020180724
+    },
+    "masked": {
+      "episodes": 100,
+      "return_mean": 489.4005389711936,
+      "return_population_std": 184.03693410032946,
+      "mean_episode_length": 238.56,
+      "episodes_below1000_steps": 99,
+      "paired_return_difference_mean": -147.4642691914714,
+      "paired_return_difference_population_std": 315.21653421852363,
+      "return_minus_alive_bonus_mean": 250.8405389711936
+    }
+  },
+  "forecast_including_self": {
+    "forecast_target_count": 7140,
+    "forecast_comparison_count": 7056,
+    "forecast_component_count": 12096,
+    "history_baseline_target_count": 7056,
+    "history_baseline_component_count": 12096,
+    "forecast_rmse": 0.510483567933687,
+    "persistence_rmse": 0.6229958185441504,
+    "history_mean_rmse": 0.5426030321548262,
+    "history_baseline_coverage_fraction": 0.9882352941176471
+  },
+  "forecast_trajectory_protocol": {
+    "diagnostic_seed": 400851,
+    "steps_per_env": 128,
+    "num_envs": 4,
+    "forecast_windows": 256,
+    "candidate_forecast_windows": 500
+  },
+  "policy_shuffle": [
+    {
+      "observer": 0,
+      "eligible_peer_entries": 508,
+      "matched_peer_entries": 507,
+      "compared_policy_count": 507,
+      "mean_kl_full_to_shuffled": 9.081055759452283e-05,
+      "max_kl_full_to_shuffled": 0.002378702163696289,
+      "own_query_preserved": true
+    },
+    {
+      "observer": 1,
+      "eligible_peer_entries": 1016,
+      "matched_peer_entries": 1016,
+      "compared_policy_count": 508,
+      "mean_kl_full_to_shuffled": 0.03309563919901848,
+      "max_kl_full_to_shuffled": 1.6785250902175903,
+      "own_query_preserved": true
+    },
+    {
+      "observer": 2,
+      "eligible_peer_entries": 508,
+      "matched_peer_entries": 508,
+      "compared_policy_count": 508,
+      "mean_kl_full_to_shuffled": 0.10283412039279938,
+      "max_kl_full_to_shuffled": 1.5523689985275269,
+      "own_query_preserved": true
+    }
+  ],
+  "full_to_removed_policy_kl": [
+    {
+      "observer": 0,
+      "peer": 1,
+      "visible_policy_count": 508,
+      "mean_kl": 2.7671049427329084,
+      "quantiles": {
+        "0.0": 0.0017802119255065918,
+        "0.25": 0.8930380940437317,
+        "0.5": 2.0894317626953125,
+        "0.75": 4.059896111488342,
+        "0.9": 6.247354555130006,
+        "0.95": 7.494302082061766,
+        "0.99": 10.592905073165898,
+        "1.0": 13.1989107131958
+      },
+      "fraction_above_threshold": {
+        "0.0001": 1.0,
+        "0.001": 1.0,
+        "0.01": 0.9881889763779528,
+        "0.1": 0.9488188976377953,
+        "0.2": 0.9094488188976378,
+        "0.6": 0.7952755905511811
+      }
+    },
+    {
+      "observer": 0,
+      "peer": 2,
+      "visible_policy_count": 0,
+      "mean_kl": null,
+      "quantiles": null,
+      "fraction_above_threshold": null
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "visible_policy_count": 508,
+      "mean_kl": 0.021748570593323295,
+      "quantiles": {
+        "0.0": 1.2516975402832031e-06,
+        "0.25": 0.00017657876014709473,
+        "0.5": 0.00222855806350708,
+        "0.75": 0.015904903411865234,
+        "0.9": 0.05720013380050659,
+        "0.95": 0.11557384431362151,
+        "0.99": 0.2718914484977723,
+        "1.0": 0.7665891051292419
+      },
+      "fraction_above_threshold": {
+        "0.0001": 0.7933070866141733,
+        "0.001": 0.5767716535433071,
+        "0.01": 0.3031496062992126,
+        "0.1": 0.06299212598425197,
+        "0.2": 0.01968503937007874,
+        "0.6": 0.001968503937007874
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 2,
+      "visible_policy_count": 508,
+      "mean_kl": 0.036420750688380146,
+      "quantiles": {
+        "0.0": 2.1457672119140625e-06,
+        "0.25": 0.0003276020288467407,
+        "0.5": 0.00251731276512146,
+        "0.75": 0.025585398077964783,
+        "0.9": 0.10289672017097481,
+        "0.95": 0.16890029013156885,
+        "0.99": 0.4399995696544651,
+        "1.0": 1.1404857635498047
+      },
+      "fraction_above_threshold": {
+        "0.0001": 0.8759842519685039,
+        "0.001": 0.6043307086614174,
+        "0.01": 0.34448818897637795,
+        "0.1": 0.10236220472440945,
+        "0.2": 0.03937007874015748,
+        "0.6": 0.007874015748031496
+      }
+    },
+    {
+      "observer": 2,
+      "peer": 0,
+      "visible_policy_count": 0,
+      "mean_kl": null,
+      "quantiles": null,
+      "fraction_above_threshold": null
+    },
+    {
+      "observer": 2,
+      "peer": 1,
+      "visible_policy_count": 508,
+      "mean_kl": 0.20323418608800634,
+      "quantiles": {
+        "0.0": 0.0035381317138671875,
+        "0.25": 0.08536547422409058,
+        "0.5": 0.1791752278804779,
+        "0.75": 0.2977871000766754,
+        "0.9": 0.4033855557441712,
+        "0.95": 0.44501466751098634,
+        "0.99": 0.5434765422344208,
+        "1.0": 1.082433819770813
+      },
+      "fraction_above_threshold": {
+        "0.0001": 1.0,
+        "0.001": 1.0,
+        "0.01": 0.9724409448818898,
+        "0.1": 0.7145669291338582,
+        "0.2": 0.4507874015748031,
+        "0.6": 0.007874015748031496
+      }
+    }
+  ],
+  "peer_latent_variation": [
+    {
+      "observer": 0,
+      "peer": 1,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.04438994178063482,
+          0.010708374656818188,
+          0.014747225593416425,
+          0.03555153561676363,
+          0.01996306544340081,
+          0.006381939762526103,
+          0.02335352091819388,
+          0.004745067321952363
+        ],
+        "rms_coordinate_std": 0.023910469220323916,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.006781708304037171
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.04438994178063482,
+          0.010708374656818188,
+          0.014747225593416425,
+          0.03555153561676363,
+          0.01996306544340081,
+          0.006381939762526103,
+          0.02335352091819388,
+          0.004745067321952363
+        ],
+        "rms_coordinate_std": 0.023910469220323916,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.006781708304037171
+      }
+    },
+    {
+      "observer": 0,
+      "peer": 2,
+      "self": false,
+      "visible": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      },
+      "gated": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.014937361423371903,
+          0.014556389430384852,
+          0.01680733042793107,
+          0.019705201347453905,
+          0.33044718743659096,
+          1.0153284699338336,
+          0.029931378437106113,
+          0.09353556639491684
+        ],
+        "rms_coordinate_std": 0.3792818591916003,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.18222401380321165
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.014937361423371903,
+          0.014556389430384852,
+          0.01680733042793107,
+          0.019705201347453905,
+          0.33044718743659096,
+          1.0153284699338336,
+          0.029931378437106113,
+          0.09353556639491684
+        ],
+        "rms_coordinate_std": 0.3792818591916003,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.18222401380321165
+      }
+    },
+    {
+      "observer": 1,
+      "peer": 2,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.03807478203803312,
+          0.013126189621320632,
+          0.054616873298652925,
+          0.036538673258142355,
+          0.4990010745647126,
+          1.5652673223646751,
+          0.05052206387099806,
+          0.715913887899665
+        ],
+        "rms_coordinate_std": 0.6344376545491313,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.25788211490075746
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.03807478203803312,
+          0.013126189621320632,
+          0.054616873298652925,
+          0.036538673258142355,
+          0.4990010745647126,
+          1.5652673223646751,
+          0.05052206387099806,
+          0.715913887899665
+        ],
+        "rms_coordinate_std": 0.6344376545491313,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.25788211490075746
+      }
+    },
+    {
+      "observer": 2,
+      "peer": 0,
+      "self": false,
+      "visible": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      },
+      "gated": {
+        "valid_steps": 0,
+        "variance_steps": 0,
+        "segments_with_multiple_samples": 0,
+        "coordinate_std": null,
+        "rms_coordinate_std": null,
+        "adjacent_pair_count": 0,
+        "adjacent_delta_rms": null
+      }
+    },
+    {
+      "observer": 2,
+      "peer": 1,
+      "self": false,
+      "visible": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.5480904372561491,
+          0.07462773245185512,
+          0.14243320631065398,
+          0.0339270488556661,
+          0.049371845277717055,
+          1.110393571040399,
+          0.01792603566778314,
+          0.17743246132014487
+        ],
+        "rms_coordinate_std": 0.4464618924899126,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.21906325084598866
+      },
+      "gated": {
+        "valid_steps": 508,
+        "variance_steps": 508,
+        "segments_with_multiple_samples": 4,
+        "coordinate_std": [
+          0.5480904372561491,
+          0.07462773245185512,
+          0.14243320631065398,
+          0.0339270488556661,
+          0.049371845277717055,
+          1.110393571040399,
+          0.01792603566778314,
+          0.17743246132014487
+        ],
+        "rms_coordinate_std": 0.4464618924899126,
+        "adjacent_pair_count": 504,
+        "adjacent_delta_rms": 0.21906325084598866
+      }
+    }
+  ],
+  "decoder_peer_shuffle": [
+    {
+      "observer": 0,
+      "peer": 1,
+      "self": false,
+      "matched_history_count": 243,
+      "scored_target_count": 972,
+      "scored_component_count": 972,
+      "prediction_change_rmse": 0.002896917751058936,
+      "forecast_rmse": 0.07494359463453293,
+      "shuffled_forecast_rmse": 0.07504235208034515,
+      "mse_increase_after_shuffle": 1.4812685549259186e-05
+    },
+    {
+      "observer": 0,
+      "peer": 2,
+      "self": false,
+      "matched_history_count": 0,
+      "scored_target_count": 0
+    },
+    {
+      "observer": 1,
+      "peer": 0,
+      "self": false,
+      "matched_history_count": 244,
+      "scored_target_count": 976,
+      "scored_component_count": 976,
+      "prediction_change_rmse": 0.3207440972328186,
+      "forecast_rmse": 0.5730559825897217,
+      "shuffled_forecast_rmse": 0.5998290181159973,
+      "mse_increase_after_shuffle": 0.03140169382095337
+    },
+    {
+      "observer": 1,
+      "peer": 2,
+      "self": false,
+      "matched_history_count": 244,
+      "scored_target_count": 976,
+      "scored_component_count": 1952,
+      "prediction_change_rmse": 0.2950858771800995,
+      "forecast_rmse": 0.5707563161849976,
+      "shuffled_forecast_rmse": 0.5797291398048401,
+      "mse_increase_after_shuffle": 0.010323107242584229
+    },
+    {
+      "observer": 2,
+      "peer": 0,
+      "self": false,
+      "matched_history_count": 0,
+      "scored_target_count": 0
+    },
+    {
+      "observer": 2,
+      "peer": 1,
+      "self": false,
+      "matched_history_count": 244,
+      "scored_target_count": 976,
+      "scored_component_count": 1952,
+      "prediction_change_rmse": 0.2799392640590668,
+      "forecast_rmse": 0.37535521388053894,
+      "shuffled_forecast_rmse": 0.41513505578041077,
+      "mse_increase_after_shuffle": 0.03144557774066925
+    }
+  ],
+  "evidence_sha256": {
+    "runs/development-residual-mechanism-3m-seed101/final-walker/validation.json": "98c57011fd34bfa3ee5fd79ff5890361063a2c534b831d873b8adc99358183b7",
+    "runs/development-residual-mechanism-3m-seed101/final-walker/interventions.json": "658992dbfbe7f22b36e9cfe2c4aed12fa1cc24850fc07a3a82cb178ff6f56504",
+    "runs/development-residual-mechanism-3m-seed101/final-walker/diagnostics.json": "54bc80e2be6a1017fd7bf9e62ed92d74a93715fccfd5d32080d44e2557b7e2ed"
+  },
+  "interpretation": [
+    "For this frozen policy, both holding temporal peer latents and masking peer gates lower mean return; holding increases mean survival length while reducing net return after the alive bonus.",
+    "Peer-only native replay also beats persistence and history mean on the same trajectories, excluding all self targets; this supports forecasting of locally sensed teammates on this checkpoint, not across-seed robustness.",
+    "Observer 0 has mean full-to-removed KL 2.7671 but peer-shuffle KL only 0.00009081. Large removal sensitivity can reflect static context offsets, not useful temporal prediction.",
+    "This is one development training seed and one soft-pooling architecture. It does not establish robust trained-control superiority, causal-concat performance, or a promoted threshold.",
+    "Forecast windows overlap and multiple samples share the same model/trajectory; they are not independent training replicates."
+  ],
+  "held_out_training_seeds_used": [],
+  "peer_only_forecast_followup": {
+    "validation": "reports/peer-forecast-diagnostic-validation.json",
+    "validation_sha256": "d72ce67b12c325e81fce4e9bcddb7bf9b0a22417faf2a8f70a3f2ab435119326",
+    "job_id": "21286675",
+    "forecast": {
+      "forecast_target_count": 4080,
+      "forecast_comparison_count": 4032,
+      "forecast_component_count": 6048,
+      "history_baseline_target_count": 4032,
+      "history_baseline_component_count": 6048,
+      "forecast_rmse": 0.4581211522471572,
+      "persistence_rmse": 0.5693159790499502,
+      "history_mean_rmse": 0.487653117872465,
+      "history_baseline_coverage_fraction": 0.9882352941176471
+    },
+    "all_original_diagnostic_fields_replayed_exactly": true,
+    "same_trajectories_as_original": true,
+    "focused_tests_passed": 21,
+    "added_utc": "2026-10-29T15:10:56.880377+00:00"
+  }
+}

@@ -95,8 +95,8 @@ The retry submission verified **13 evidence files** and queued:
 | IPPO | 21282828 | 21282829 |
 | DMS | 21282830 | 21282831 |
 
-Both training jobs are running on H100 as of 2026-10-29 14:12 UTC: IPPO has
-reached 924,000 transitions and DMS 668,000, with finite latest metrics. No fixed
+Both training jobs are running on H100 as of 2026-10-29 15:05 UTC: IPPO has
+reached 1,748,000 transitions and DMS 1,216,000, with finite latest metrics. No fixed
 endpoint is available yet.
 
 Three dependent collectors (**21282832–21282834**) preserve the outcomes. The
