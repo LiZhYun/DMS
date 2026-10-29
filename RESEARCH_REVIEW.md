@@ -46,8 +46,10 @@ Relevant measured evidence:
   by 160 steps. A new 20-environment trial would duplicate existing work.
 
 The fixed 10M Walker pair and seed-103 three-arm comparison are submitted.
-Their results, the SMAC endpoints and frozen-policy interventions remain
-pending. Held-out training seeds remain unused.
+Their results and the SMAC frozen-policy interventions remain pending. The
+[completed SMAC residual pair](reports/residual-smac-results-20261029.json)
+scores 0/100 wins with peer inputs and 74/100 with inputs disabled. Held-out
+training seeds remain unused.
 
 ## Minimal counterfactual
 
@@ -116,9 +118,23 @@ peer gates. Keep the existing default schedule and validate its exact replay.
 The first candidate should keep prior RL learning rate zero, matching this
 probe; its interaction with joint-prior gradients needs separate validation.
 
+For sequential training, perform the auxiliary step immediately before **that
+observer's** PPO update, rather than updating every observer's encoder up front.
+Otherwise not-yet-updated actors would already change through their encoders,
+while the predecessor correction assumes those actors retain their behavior
+policies. Preserve the random agent order and include each processed actor's
+encoder change in its likelihood correction. Separate per-observer models make
+this ordering possible. Add a test that unprocessed actors stay unchanged and
+that predecessor factors include the refreshed context.
+
 Required evidence before a learning claim: information-boundary and gradient
 tests, native continuous/categorical smoke, a timing check, matched fresh
 development runs with fixed endpoints, and independent training-seed evidence.
 Normal training will consume randomness in a different phase order; the paired
 diagnostic does not prove identical future trajectories or select a favorable
-random stream. No production update-order option is implemented yet.
+random stream. The optional implementation is now present and documented in
+[AUXILIARY_ORDER.md](docs/AUXILIARY_ORDER.md). The full unit suite passes
+543 tests with 32 native-only skips; native GPU validation passes for Walker
+and SMAC, including exact default replay over 8,000 transitions per task.
+Matched A100 three-arm learning comparisons are submitted. No benchmark
+learning result is available for this candidate yet.

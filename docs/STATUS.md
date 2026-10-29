@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 15:05 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 15:52 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -26,6 +26,7 @@ are not independent training replicates.
 | SMAC 3s5z, 3M, gamma 0.95, A100 | 81/100 wins | 56/100 wins | Both improve over gamma 0.99 |
 | SMAC 3s5z, 10M, gamma 0.95, H100 | 100/100 wins | 80/100 wins | DMS below 97.5% target |
 | SMAC 8m_vs_9m, 3M, gamma 0.95, H100 | 66/100 wins | 0/100 wins | Both below full-budget target 82.6% |
+| SMAC 8m_vs_9m, 3M, residual fusion, H100 | 74/100 wins (trained no-input control) | 0/100 wins | Residual inputs remain harmful on seed 101; frozen-policy mechanisms are being checked separately |
 | SMAC MMM2, 3M, gamma 0.95, H100 | 13/100 wins | 8/100 wins | Both below full-budget target 62.1% |
 | Walker2d 3x2, 10M, no policy memory, CPU | 880.11 | 460.78 | Both below 1,100 target |
 | Walker2d 3x2, 3M, history 32, H100 | 2,322.92 | 391.09 | DMS episodes average only 169.48 steps |
@@ -284,7 +285,7 @@ Excluding self targets gives RMSE **0.45812**, versus **0.56932** persistence an
 are not independent training replicates. Large removal KL can also reflect a
 static context offset: observer 0 has mean removal KL 2.7671 but peer-shuffle KL
 only 0.00009081. No causal threshold is selected from these soft-policy results.
-SMAC mechanism job **21281732** remains dependent on its endpoint evaluation.
+SMAC mechanism job **21281732** is running after its endpoint evaluation passed.
 
 A [paired auxiliary-order probe](../reports/development-walker-residual-auxiliary-order-probe.json),
 job **21285355**, passes exact ordinary-update replay and a stale-cache control
@@ -295,8 +296,42 @@ Using updated past-only features reduces actual policy KL from **0.00917540 to
 Auxiliary models/optimizer states, 20 PPO steps per agent, filter masks and gates
 match. This is one update, not a learning-return result. The
 [local design audit](../RESEARCH_REVIEW.md) records the next implementation
-candidate and the independent review interface limitation. Production training
-and all queued experiments keep their frozen source.
+candidate and the independent review interface limitation. All previously
+submitted experiments retain their frozen source.
+
+The optional [auxiliary-first implementation](AUXILIARY_ORDER.md) now passes
+**543 tests with 32 native-only skips**, including current-input PPO,
+unprocessed sequential behavior policies and encoder-inclusive predecessor
+corrections. [Unit evidence](../reports/auxiliary-first-unit-validation.json).
+Native Walker validation passes exact default replay against the preceding
+trainer over 8,000 transitions, then active auxiliary-first training over
+another 8,000. Native SMAC validation also passes with the established
+20-environment resource request. [Native evidence](../reports/auxiliary-first-native-validation.json).
+A matched A100 three-arm comparison for each task is now submitted. Its arms
+are after-PPO residual DMS, before-PPO refreshed DMS, and a before-PPO trained
+no-input control. The initial H200 preparation was changed before submission
+after checking that 13 nodes were draining and the remaining node fully
+allocated. Fresh A100 after-PPO controls preserve the hardware comparison.
+Walker training jobs are **21288097 / 21288099 / 21288101**; SMAC training jobs
+are **21288103 / 21288105 / 21288107**. Each has a separate fixed 100-episode
+evaluation and an automatic collector. [Queue ledger](../reports/development-auxiliary-order-3m-seed101.json).
+No learning-return claim exists for the new option.
+
+The [current progress snapshot](../reports/development-progress-20261029T155222Z.json)
+records completed endpoints, scheduler states and the latest incomplete
+training metrics separately. All six new A100 training jobs remain queued.
+The exact saved-source evaluator is additionally being checked on copies of
+the two 8,000-transition smoke policies, job **21288139**, with completion
+collector **21288156**. This uses two smoke episodes per task and leaves the
+original native artifacts unchanged. It is not a performance evaluation.
+
+The [completed SMAC residual audit](../reports/residual-smac-results-20261029.json)
+records **0/100** versus the trained no-input control's **74/100** wins. Their
+mean shaped returns are **8.80 / 18.06**, and mean battle lengths are
+**20.11 / 30.57** steps. Both use H100 and the same residual architecture; the
+comparison is one training seed, not a fixed-policy intervention. This setting
+is not promoted. The four residual endpoint evaluations have all passed their
+integrity checks.
 
 Four missing primary partitions now have declared local-history IPPO controls:
 Ant **2x4 / 8x1** and Walker **2x3 / 6x1**. They reuse their task's existing

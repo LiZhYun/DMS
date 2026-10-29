@@ -76,8 +76,17 @@ and below the earlier IPPO result of 2,322.92. The [pair audit](../reports/resid
 verifies both training/evaluation jobs and collectors, exact seed blocks,
 source and checkpoint hashes, unchanged evaluation state and zero optimizer
 steps. Both have 750 finite training updates with auxiliary losses; the
-no-input control has zero peer gates throughout. The two SMAC endpoints remain
-pending. This single-seed result does not establish robust benefit.
+no-input control has zero peer gates throughout. This single-seed result does
+not establish robust benefit.
+
+The [SMAC pair](../reports/residual-smac-results-20261029.json) has now also
+completed: residual DMS wins **0/100** games and the trained no-input control
+wins **74/100**, with mean shaped returns **8.80 / 18.06**. Both use H100,
+training seed 101, 3M transitions, 20 environments and the same residual
+architecture. The control remains below the 82.6% full-budget target at this
+shorter budget. Different training trajectories and subsequent RNG states mean
+this pair is not a frozen-policy causal intervention. The separate SMAC
+mechanism check is running. Residual fusion has not solved SMAC conditioning.
 
 The [verified Walker archive](../reports/development-residual-walker-artifacts.json)
 preserves both residual checkpoints and the earlier IPPO memory control, with
@@ -179,9 +188,13 @@ peer gates and original behavior log probabilities remain fixed.
 
 The uninstrumented source update replays exactly, and analytic Gaussian KL
 checks pass. This is one update at a late checkpoint, rather than a return
-experiment. Production still uses PPO followed by auxiliary training. The
-[local design audit](../RESEARCH_REVIEW.md) records the proposed next checks
-and the unavailable independent-review capability.
+experiment. The default remains PPO followed by auxiliary training. An optional
+[auxiliary-first implementation](AUXILIARY_ORDER.md) now passes the full unit
+suite and native Walker/SMAC validation. Matched A100 three-arm learning
+comparisons are submitted with fresh after-PPO and no-input controls. The
+[local design audit](../RESEARCH_REVIEW.md) records the next checks and the
+unavailable independent-review capability. No improved learning return has
+been established for the new option.
 
 ## Causal-selection validation
 

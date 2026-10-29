@@ -3,8 +3,10 @@
 Read in order: Config -> Learner -> collect -> update -> evaluate -> main.
 Rollouts use [time, environment, observer, ...]. Intention histories add
 [history, peer, action_feature]. Inference features/gates are cached for PPO;
-the auxiliary model is updated after PPO. Optional joint training re-encodes
-local past histories during PPO, keeping rollout gates and filtering fixed.
+the auxiliary model is updated after PPO by default. The optional before_ppo
+schedule updates each observer's auxiliary model, refreshes its past-only inputs,
+then runs that observer's PPO. Joint training instead differentiates through the
+prior during PPO. Both options keep rollout gates and filtering fixed.
 """
 from __future__ import annotations
 
@@ -75,6 +77,7 @@ class Config:
     critic_lr: float = 1e-3
     intention_lr: float = 1e-3
     intention_rl_lr: float = 0.0
+    intention_update_order: str = 'after_ppo'
     aux_updates: int = 2
     aux_batch_size: int = 64
     kl_beta: float = 1.0
@@ -94,6 +97,11 @@ class Config:
     torch_threads: int = 1
 
     def validate(self):
+        if self.intention_update_order not in ('after_ppo', 'before_ppo'):
+            raise ValueError('intention_update_order must be after_ppo or before_ppo')
+        if (self.algorithm == 'dms' and self.intention_update_order == 'before_ppo'
+                and self.intention_rl_lr):
+            raise ValueError('before_ppo currently requires intention_rl_lr=0')
         if self.intention_fusion not in ('concat', 'residual'):
             raise ValueError('intention_fusion must be concat or residual')
         if (isinstance(self.intention_rl_lr, bool)
@@ -397,14 +405,14 @@ def collect(learner, environments, states, history, visible, episodes, episode_r
 
 
 @torch.no_grad()
-def prepare_intention_inputs(learner, data, agent_index):
+def prepare_intention_inputs(learner, data, agent_index, *, force=False):
     """Freeze local history filtering before this observer's first PPO update.
 
     Return [time*environment, history, peer, (action)] tensors. Future targets
     never enter this path. Rollout gates remain fixed even across warmup changes.
     """
     c, i = learner.config, agent_index
-    if not (learner.latent_dim and c.intention_rl_lr and data['gates'][:, :, i].any()):
+    if not (learner.latent_dim and (c.intention_rl_lr or force) and data['gates'][:, :, i].any()):
         return None
     past = learner.tensor(data['history'][:, :, :, i]).flatten(0, 1)
     visible = learner.tensor(data['visible'][:, :, :, i], torch.bool).flatten(0, 1)
@@ -413,6 +421,19 @@ def prepare_intention_inputs(learner, data, agent_index):
             past[rows], visible[rows], c.short_history, c.intention_threshold)[0]
             for rows in torch.arange(len(past), device=learner.device).split(c.minibatch_size)])
     return past, visible
+
+
+@torch.no_grad()
+def refresh_intention_context(learner, agent_index, cached, gates, intention_inputs):
+    """Detach updated prior means; keep unused rows and rollout gates unchanged."""
+    if intention_inputs is None:
+        return cached
+    past, visible = intention_inputs
+    refreshed = cached.clone()
+    used = gates.any(-1).nonzero(as_tuple=True)[0]
+    for rows in used.split(learner.config.minibatch_size):
+        refreshed[rows] = learner.intentions[agent_index].features(past[rows], visible[rows])
+    return refreshed
 
 
 def ppo_context(learner, agent_index, cached, gates, intention_inputs, indices):
@@ -433,7 +454,8 @@ def sequential_factor(log_correction):
 
 
 @torch.no_grad()
-def advance_sequential_correction(learner, data, agent_index, log_correction, intention_inputs=None):
+def advance_sequential_correction(learner, data, agent_index, log_correction, intention_inputs=None,
+                                  *, updated_context=None):
     """Reevaluate stored actions after one agent finishes all its PPO epochs.
 
     Each distribution already returns the joint action log probability. Keep
@@ -441,6 +463,8 @@ def advance_sequential_correction(learner, data, agent_index, log_correction, in
     its active subset. Cached normalized observations, contexts and gates keep
     the likelihood comparison conditional on the same rollout information. Joint
     training re-encodes that history with updated parameters and the old filter.
+    Auxiliary-first training supplies its refreshed detached context so that the
+    predecessor factor includes the encoder change as well as the actor change.
     """
     i, agent = agent_index, learner.agents[agent_index]
     if (learner.latent_dim and learner.config.intention_rl_lr
@@ -448,7 +472,7 @@ def advance_sequential_correction(learner, data, agent_index, log_correction, in
         raise ValueError('Joint sequential correction requires the original intention filter inputs')
     old_log_prob = data['log_prob'][:, :, i].flatten()
     obs = data['obs'][:, :, i].flatten(0, 1)
-    context = data['context'][:, :, i].flatten(0, 1)
+    context = data['context'][:, :, i].flatten(0, 1) if updated_context is None else updated_context
     gates = data['gates'][:, :, i].flatten(0, 1)
     actions = data['actions'][:, :, i].flatten(0, 1)
     if not learner.discrete:
@@ -494,6 +518,9 @@ def update(learner: Learner, data):
         terminated, truncated,
         gamma=c.gamma, gae_lambda=c.gae_lambda)
     metrics = []
+    auxiliary_rows = []
+    before_ppo = (c.intention_update_order == 'before_ppo' and learner.latent_dim
+                  and c.aux_updates and bool(intention_candidates(data, c.prediction_horizon)))
     sequential = c.update_mode == 'sequential'
     order = torch.randperm(learner.num_agents, device=learner.device).tolist() if sequential else range(learner.num_agents)
     log_correction = torch.zeros_like(data['log_prob'][:, :, 0].flatten()) if sequential else None
@@ -505,6 +532,13 @@ def update(learner: Learner, data):
         obs = data['obs'][:, :, i].flatten(0, 1)
         contexts = data['context'][:, :, i].flatten(0, 1)
         gates = data['gates'][:, :, i].flatten(0, 1)
+        if before_ppo:
+            # Do not change later observers early: sequential PPO assumes they
+            # still use their behavior policies until their own turn.
+            frozen_inputs = prepare_intention_inputs(learner, data, i, force=True)
+            auxiliary_rows.append(update_intentions(learner, data, agent_index=i))
+            contexts = refresh_intention_context(learner, i, contexts, gates, frozen_inputs)
+        full_contexts = contexts
         actions = data['actions'][:, :, i].flatten(0, 1)
         if not learner.discrete:
             actions = actions[:, :learner.action_dims[i]]
@@ -577,7 +611,10 @@ def update(learner: Learner, data):
             if stop:
                 break
         if sequential:
-            if full_intention_inputs is None:
+            if before_ppo:
+                log_correction = advance_sequential_correction(
+                    learner, data, i, log_correction, updated_context=full_contexts)
+            elif full_intention_inputs is None:
                 log_correction = advance_sequential_correction(learner, data, i, log_correction)
             else:
                 log_correction = advance_sequential_correction(
@@ -602,25 +639,39 @@ def update(learner: Learner, data):
         max(1, data['gates'].shape[0]*data['gates'].shape[1]*learner.num_agents*(learner.num_agents-1)))
     if learner.latent_dim:
         result['intention_feature_std'] = data['context'].float().std(unbiased=False).item()
-    result.update(update_intentions(learner, data))
+    if before_ppo:
+        # Each observer performs the same number of auxiliary steps. Forecast
+        # counts, unlike loss means, need sample-weighted pooling.
+        result.update({key: float(np.mean([row[key] for row in auxiliary_rows]))
+                       for key in auxiliary_rows[0] if key.startswith('intention_')})
+        result.update(summarize_forecasts(auxiliary_rows))
+    else:
+        result.update(update_intentions(learner, data))
     return result
 
 
-def update_intentions(learner: Learner, data):
+def intention_candidates(data, horizon):
+    """Indices whose future suffix does not cross an episode boundary."""
+    length, environments = data['ends'].shape
+    return [(t, e) for t in range(length-horizon+1) for e in range(environments)
+            if not data['ends'][t:t+horizon-1, e].any()]
+
+
+def update_intentions(learner: Learner, data, *, agent_index=None):
     """Completed future suffixes stay inside their source episodes."""
     if not learner.latent_dim:
         return {}
     c = learner.config
-    length, environments = data['ends'].shape
-    candidates = [(t,e) for t in range(length-c.prediction_horizon+1) for e in range(environments)
-                  if not data['ends'][t:t+c.prediction_horizon-1,e].any()]
+    candidates = intention_candidates(data, c.prediction_horizon)
     if not candidates or not c.aux_updates:
         return {}
     summaries, forecasts = [], []
     for update_index in range(c.aux_updates):
         selected = [candidates[j] for j in np.random.randint(len(candidates), size=min(c.aux_batch_size,len(candidates)))]
         ts, es = np.array(selected).T
-        for i, (model, optimizer) in enumerate(zip(learner.intentions, learner.aux_optimizers)):
+        observers = range(learner.num_agents) if agent_index is None else [agent_index]
+        for i in observers:
+            model, optimizer = learner.intentions[i], learner.aux_optimizers[i]
             past = learner.tensor(data['history'][ts,es,:,i])
             visible = learner.tensor(data['visible'][ts,es,:,i], torch.bool)
             future = learner.tensor(np.stack([data['future'][t:t+c.prediction_horizon,e,i] for t,e in selected]))
@@ -724,7 +775,9 @@ def run(config: Config):
             'source_sha256':source_hashes,
             'runtime':runtime_metadata(config.device),
             'information':'local observations and visibility-masked observed action sensors',
-            'intention_control':'deterministic prior means; fixed rollout features/gates during PPO',
+            'intention_control':('deterministic prior means; fixed rollout features/gates during PPO'
+                if config.intention_update_order == 'after_ppo' else
+                'deterministic prior means refreshed after each observer auxiliary update; fixed rollout gates and history filters'),
             'value_time_limits':{
                 'mode':'terminal_at_smac_limit' if config.smac_time_limit_terminal else 'bootstrap_truncations',
                 'native_environment_flags_preserved':True,
@@ -732,7 +785,10 @@ def run(config: Config):
             'ppo_update':{'mode':config.update_mode,
                 'agent_order':'one random permutation per rollout' if config.update_mode == 'sequential' else 'fixed index order; independent objectives',
                 'training_signal':'detached predecessor action likelihood ratios across agents' if config.update_mode == 'sequential' else 'no cross-agent likelihood correction',
-                'actor_information':'unchanged local cached observations, intentions and gates',
+                'actor_information':('unchanged local cached observations, intentions and gates'
+                    if config.intention_update_order == 'after_ppo' else
+                    'local cached observations and gates; updated prior means from the same filtered past histories'),
+                'intention_update_order':config.intention_update_order,
                 'sequential_scope':'HAPPO-style coordinated training; not the exact legacy stochastic-latent recipe'},
             'parameters':{'actor_critic':sum(p.numel() for p in learner.agents.parameters()),
                           'intention':sum(p.numel() for p in learner.intentions.parameters())},

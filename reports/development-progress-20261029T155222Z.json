@@ -1,0 +1,882 @@
+{
+  "created_utc": "2026-10-29T15:52:22.899978+00:00",
+  "scope": "Development progress snapshot; incomplete training metrics are not fixed-endpoint or final performance evidence.",
+  "runs": [
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "walker-residual",
+      "training_job": "21280354",
+      "scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "03:43:35",
+          "node": "gpu48"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:11:38",
+          "node": "milan32"
+        }
+      },
+      "output": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.004204694487513431,
+        "value_loss": 0.15853637506564458,
+        "entropy": 0.9466100007295608,
+        "approx_kl": 0.005967869271408807,
+        "peer_gate_fraction": 0.6651666666666667,
+        "intention_feature_std": 1.1917694807052612,
+        "intention_loss": 0.7592343787352244,
+        "intention_nll": 0.5711919019619623,
+        "intention_kl": 1.8804246584574382,
+        "forecast_target_count": 1792,
+        "forecast_comparison_count": 1792,
+        "forecast_component_count": 3072,
+        "history_baseline_target_count": 1792,
+        "history_baseline_component_count": 3072,
+        "forecast_rmse": 0.5232331287437184,
+        "persistence_rmse": 0.624327521718517,
+        "history_mean_rmse": 0.5282784967173655,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 3000000,
+        "episodes": 14204,
+        "elapsed_seconds": 13362.006386306137,
+        "training_return_mean": 687.9797944174964
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 636.864808162665,
+        "return_population_std": 252.44392679220752,
+        "return_median": 605.5213857293129,
+        "return_quantiles": {
+          "0": 278.3662454355508,
+          "0.01": 282.8246859549265,
+          "0.05": 321.12297013625505,
+          "0.1": 404.0023658275604,
+          "0.25": 485.0069731473923,
+          "0.5": 605.5213857293129,
+          "0.75": 674.3845775090158,
+          "0.9": 1000.6006219305099,
+          "0.95": 1144.3541347295045,
+          "0.99": 1536.7000270562926,
+          "1": 1603.2738445401192
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 90,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 271.54,
+        "episode_length_min": 154,
+        "episode_length_max": 1000
+      }
+    },
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "walker-no-input",
+      "training_job": "21280356",
+      "scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "03:01:44",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:05:01",
+          "node": "milan32"
+        }
+      },
+      "output": "runs/dev-walker-no-input-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.004395288730059595,
+        "value_loss": 0.08637219052761794,
+        "entropy": 1.0508775303761164,
+        "approx_kl": 0.005298691279832113,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 0.7797668278217316,
+        "intention_nll": 0.6053168922662735,
+        "intention_kl": 1.744499425093333,
+        "forecast_target_count": 1785,
+        "forecast_comparison_count": 1764,
+        "forecast_component_count": 3024,
+        "history_baseline_target_count": 1764,
+        "history_baseline_component_count": 3024,
+        "forecast_rmse": 0.5008586044601834,
+        "persistence_rmse": 0.6037035310253406,
+        "history_mean_rmse": 0.6589090970919882,
+        "history_baseline_coverage_fraction": 0.9882352941176471,
+        "steps": 3000000,
+        "episodes": 12154,
+        "elapsed_seconds": 10863.673657361884,
+        "training_return_mean": 673.3698027011008
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 524.2556688589231,
+        "return_population_std": 82.4493547393076,
+        "return_median": 505.43213518336415,
+        "return_quantiles": {
+          "0": 423.8101804628968,
+          "0.01": 423.90694748312234,
+          "0.05": 431.0048334300518,
+          "0.1": 474.4619576841593,
+          "0.25": 490.61097347177565,
+          "0.5": 505.43213518336415,
+          "0.75": 519.2566128522158,
+          "0.9": 625.4609685331585,
+          "0.95": 712.049244012311,
+          "0.99": 757.2930780925614,
+          "1": 993.0100927054882
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 188.78,
+        "episode_length_min": 149,
+        "episode_length_max": 388
+      }
+    },
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "8m-residual",
+      "training_job": "21280358",
+      "scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "04:29:19",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:15:05",
+          "node": "milan29"
+        }
+      },
+      "output": "runs/dev-8m-residual-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.018288515552001526,
+        "value_loss": 0.05037246472202241,
+        "entropy": 0.38511373549699784,
+        "approx_kl": 0.0011536512899896138,
+        "sequential_agent_order": [
+          3,
+          5,
+          4,
+          7,
+          1,
+          0,
+          2,
+          6
+        ],
+        "sequential_factor_min": 0.15923291444778442,
+        "sequential_factor_max": 8.420794486999512,
+        "sequential_factor_ess": 1482.447159468952,
+        "sequential_factor_ess_fraction": 0.926529474668095,
+        "alive_fraction": 0.7849218845367432,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.95125,
+        "intention_feature_std": 2.4700000286102295,
+        "intention_loss": 0.9526850283145905,
+        "intention_nll": 0.7714260891079903,
+        "intention_kl": 1.8125893473625183,
+        "forecast_target_count": 10593,
+        "forecast_comparison_count": 10593,
+        "history_baseline_target_count": 10593,
+        "forecast_nll": 1.4183629840784029,
+        "forecast_accuracy": 0.5740583341339768,
+        "persistence_accuracy": 0.5059001188428771,
+        "history_histogram_accuracy": 0.3407910812298344,
+        "history_histogram_nll": 2.329677848834824,
+        "forecast_history_comparison_nll": 1.4183629840784029,
+        "history_baseline_coverage_fraction": 1.0,
+        "steps": 3000000,
+        "episodes": 148139,
+        "elapsed_seconds": 15970.41938761063,
+        "training_return_mean": 9.648617760131234,
+        "training_battles": 76,
+        "training_battles_won": 0,
+        "training_win_rate": 0.0,
+        "training_battles_total": 148139,
+        "training_battles_won_total": 157,
+        "training_win_rate_total": 0.0010598154436036425,
+        "scheduled_environment_restarts": 40
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 8.796834372878074,
+        "return_population_std": 1.0129307914976002,
+        "return_median": 8.647481918334961,
+        "return_quantiles": {
+          "0": 6.071942239999771,
+          "0.01": 6.955107792317867,
+          "0.05": 7.336690489947796,
+          "0.1": 7.654676073789597,
+          "0.25": 8.050359539687634,
+          "0.5": 8.647481918334961,
+          "0.75": 9.46762577444315,
+          "0.9": 10.359711909294129,
+          "0.95": 10.5395682066679,
+          "0.99": 10.850935032367707,
+          "1": 11.050359547138214
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 20.11,
+        "episode_length_min": 18,
+        "episode_length_max": 23,
+        "wins": 0,
+        "win_rate": 0.0
+      }
+    },
+    {
+      "campaign": "development-residual-fusion-3m-seed101",
+      "label": "8m-no-input",
+      "training_job": "21280360",
+      "scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "04:20:54",
+          "node": "gpu47"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:15:04",
+          "node": "milan31"
+        }
+      },
+      "output": "runs/dev-8m-no-input-fusion-3m-h100-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.03533989102021877,
+        "value_loss": 0.06201067734509706,
+        "entropy": 0.26400258429348467,
+        "approx_kl": 0.0011885196761166326,
+        "sequential_agent_order": [
+          1,
+          7,
+          4,
+          2,
+          6,
+          3,
+          0,
+          5
+        ],
+        "sequential_factor_min": 0.04806763306260109,
+        "sequential_factor_max": 4.956695079803467,
+        "sequential_factor_ess": 1487.0155599076516,
+        "sequential_factor_ess_fraction": 0.9293847249422822,
+        "alive_fraction": 0.7774999737739563,
+        "ppo_update_count": 40,
+        "peer_gate_fraction": 0.0,
+        "intention_feature_std": 0.0,
+        "intention_loss": 1.3952925726771355,
+        "intention_nll": 1.07127645611763,
+        "intention_kl": 3.240160971879959,
+        "forecast_target_count": 10615,
+        "forecast_comparison_count": 10365,
+        "history_baseline_target_count": 10365,
+        "forecast_nll": 2.8943622091161267,
+        "forecast_accuracy": 0.30139894597034667,
+        "persistence_accuracy": 0.2572117684273345,
+        "history_histogram_accuracy": 0.10477568761944714,
+        "history_histogram_nll": 2.7377792208423606,
+        "forecast_history_comparison_nll": 2.9614515282253224,
+        "history_baseline_coverage_fraction": 0.976448422044277,
+        "steps": 3000000,
+        "episodes": 106776,
+        "elapsed_seconds": 15444.124987015966,
+        "training_return_mean": 16.809556051245277,
+        "training_battles": 53,
+        "training_battles_won": 31,
+        "training_win_rate": 0.5849056603773585,
+        "training_battles_total": 106776,
+        "training_battles_won_total": 31703,
+        "training_win_rate_total": 0.2969112909268,
+        "scheduled_environment_restarts": 40
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 18.06388482093811,
+        "return_population_std": 3.301859763408881,
+        "return_median": 19.999999910593033,
+        "return_quantiles": {
+          "0": 9.812949448823929,
+          "0.01": 10.667625826895238,
+          "0.05": 12.070503433048724,
+          "0.1": 12.284891918301582,
+          "0.25": 13.870503567159176,
+          "0.5": 19.999999910593033,
+          "0.75": 20.0,
+          "0.9": 20.000000059604645,
+          "0.95": 20.000000089406967,
+          "0.99": 20.000000119507312,
+          "1": 20.000000149011612
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 30.57,
+        "episode_length_min": 24,
+        "episode_length_max": 120,
+        "wins": 74,
+        "win_rate": 0.74
+      }
+    },
+    {
+      "campaign": "development-ant-entropy-3m-seed101-attempt2",
+      "label": "ant-ippo",
+      "training_job": "21282828",
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "02:45:28",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-ant-4x2-ippo-history32-entropy01-3m-h100-101-attempt2",
+      "latest_training_metrics": {
+        "policy_loss": -0.0016910955499042756,
+        "value_loss": 0.05422121924348176,
+        "entropy": 6.8378777503967285,
+        "approx_kl": 0.001193620174665838,
+        "peer_gate_fraction": 0.0,
+        "steps": 2512000,
+        "episodes": 133493,
+        "elapsed_seconds": 9913.299696302973,
+        "training_return_mean": -18.70949685037863
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-ant-entropy-3m-seed101-attempt2",
+      "label": "ant-dms",
+      "training_job": "21282830",
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "02:44:58",
+          "node": "gpu48"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-ant-4x2-dms-history32-entropy01-3m-h100-101-attempt2",
+      "latest_training_metrics": {
+        "policy_loss": -0.0033418771787182776,
+        "value_loss": 0.05330665074288845,
+        "entropy": 5.38700315952301,
+        "approx_kl": 0.0022869441342722617,
+        "peer_gate_fraction": 0.908,
+        "intention_feature_std": 1.2943031787872314,
+        "intention_loss": 1.4344077706336975,
+        "intention_nll": 1.302820086479187,
+        "intention_kl": 1.3158770054578781,
+        "forecast_target_count": 4000,
+        "forecast_comparison_count": 3712,
+        "forecast_component_count": 4640,
+        "history_baseline_target_count": 3712,
+        "history_baseline_component_count": 4640,
+        "forecast_rmse": 0.9756861901355831,
+        "persistence_rmse": 1.3913170761522804,
+        "history_mean_rmse": 1.2016526353936645,
+        "history_baseline_coverage_fraction": 0.928,
+        "steps": 1716000,
+        "episodes": 88545,
+        "elapsed_seconds": 9858.602173710242,
+        "training_return_mean": -15.889304274347058
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "ant-2x4-ippo",
+      "training_job": "21280632",
+      "scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "01:56:31",
+          "node": "gpu57"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:10:10",
+          "node": "milan32"
+        }
+      },
+      "output": "runs/dev-ant-2x4-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0069991883879993114,
+        "value_loss": 0.11893087103962899,
+        "entropy": -2.670444166660309,
+        "approx_kl": 0.006708049014140851,
+        "peer_gate_fraction": 0.0,
+        "steps": 3000000,
+        "episodes": 3241,
+        "elapsed_seconds": 6915.392611977179,
+        "training_return_mean": 820.8299679283518
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 936.7590446137843,
+        "return_population_std": 85.99237284157951,
+        "return_median": 933.8776056741772,
+        "return_quantiles": {
+          "0": 708.59570214618,
+          "0.01": 770.4047121237195,
+          "0.05": 783.0738713773142,
+          "0.1": 829.3919788216793,
+          "0.25": 881.3679068523925,
+          "0.5": 933.8776056741772,
+          "0.75": 999.2166040996708,
+          "0.9": 1053.6373488882307,
+          "0.95": 1072.5972404718516,
+          "0.99": 1112.509496290754,
+          "1": 1124.7320160032614
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 75,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 1000.0,
+        "episode_length_min": 1000,
+        "episode_length_max": 1000
+      }
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "ant-8x1-ippo",
+      "training_job": "21280634",
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "04:25:24",
+          "node": "gpu45"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-ant-8x1-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0016986648282795614,
+        "value_loss": 0.04871870027855039,
+        "entropy": -0.5937763705849648,
+        "approx_kl": 0.00281547870929262,
+        "peer_gate_fraction": 0.0,
+        "steps": 1988000,
+        "episodes": 2151,
+        "elapsed_seconds": 15889.079889290966,
+        "training_return_mean": 913.4158743048029
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "walker-2x3-ippo",
+      "training_job": "21280636",
+      "scheduler": {
+        "training": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "01:43:21",
+          "node": "gpu57"
+        },
+        "evaluation": {
+          "state": "COMPLETED",
+          "exit_code": "0:0",
+          "elapsed": "00:01:29",
+          "node": "milan32"
+        }
+      },
+      "output": "runs/dev-walker-2x3-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.002961069528828375,
+        "value_loss": 0.01202238209079951,
+        "entropy": 1.2844053894281386,
+        "approx_kl": 0.007115962275324339,
+        "peer_gate_fraction": 0.0,
+        "steps": 3000000,
+        "episodes": 18707,
+        "elapsed_seconds": 6189.141567220911,
+        "training_return_mean": 407.9703610149714
+      },
+      "evaluation_status": "completed_pass",
+      "endpoint_summary": {
+        "episodes": 100,
+        "return_mean": 412.09232365071773,
+        "return_population_std": 9.324535087095525,
+        "return_median": 411.6947064101696,
+        "return_quantiles": {
+          "0": 387.99781185388565,
+          "0.01": 397.13852237343787,
+          "0.05": 398.96534998118875,
+          "0.1": 400.4118222415447,
+          "0.25": 405.9108107239008,
+          "0.5": 411.6947064101696,
+          "0.75": 417.8101047873497,
+          "0.9": 421.97877111434934,
+          "0.95": 426.06323503255845,
+          "0.99": 439.93965655088425,
+          "1": 440.17502957582474
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 153.11,
+        "episode_length_min": 146,
+        "episode_length_max": 163
+      }
+    },
+    {
+      "campaign": "development-partition-baselines-3m-seed101",
+      "label": "walker-6x1-ippo",
+      "training_job": "21280638",
+      "scheduler": {
+        "training": {
+          "state": "RUNNING",
+          "exit_code": "0:0",
+          "elapsed": "04:20:48",
+          "node": "gpu48"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-6x1-ippo-history32-3m-101",
+      "latest_training_metrics": {
+        "policy_loss": -0.0017422941549739336,
+        "value_loss": 0.3158554174005985,
+        "entropy": 0.4193975963940223,
+        "approx_kl": 0.003197794899189158,
+        "peer_gate_fraction": 0.0,
+        "steps": 2528000,
+        "episodes": 13571,
+        "elapsed_seconds": 15617.132290880196,
+        "training_return_mean": 430.60325428630625
+      },
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-clipping-3m-seed101",
+      "label": "walker-ippo",
+      "training_job": "21283719",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-2x3-ippo-history32-gradclip10-3m-h200-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-3m-seed103",
+      "label": "walker-ippo",
+      "training_job": "21284499",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-ippo-fusion-3m-h100-103",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-3m-seed103",
+      "label": "walker-residual",
+      "training_job": "21284501",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-residual-fusion-3m-h100-103",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-3m-seed103",
+      "label": "walker-no-input",
+      "training_job": "21284503",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-no-input-fusion-3m-h100-103",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-10m-seed101",
+      "label": "walker-ippo",
+      "training_job": "21284886",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-ippo-fusion-10m-h100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-walker-residual-10m-seed101",
+      "label": "walker-residual",
+      "training_job": "21284888",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-residual-fusion-10m-h100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "walker-after",
+      "training_job": "21288097",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-auxorder-after-3m-a100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "walker-before",
+      "training_job": "21288099",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-auxorder-before-3m-a100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "walker-no-input",
+      "training_job": "21288101",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-walker-auxorder-no-input-3m-a100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "8m-after",
+      "training_job": "21288103",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-8m-auxorder-after-3m-a100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "8m-before",
+      "training_job": "21288105",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-8m-auxorder-before-3m-a100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    },
+    {
+      "campaign": "development-auxiliary-order-3m-seed101",
+      "label": "8m-no-input",
+      "training_job": "21288107",
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "output": "runs/dev-8m-auxorder-no-input-3m-a100-101",
+      "latest_training_metrics": null,
+      "evaluation_status": "waiting_for_training",
+      "endpoint_summary": null
+    }
+  ],
+  "saved_source_smoke_job": "21288139",
+  "saved_source_collector_job": "21288156",
+  "held_out_training_seeds_used": []
+}

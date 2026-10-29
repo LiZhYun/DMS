@@ -55,13 +55,19 @@ The collector stores the normalized observations, intention features, gates, sam
 
 After the PPO update, the auxiliary update samples past/future action windows that stay inside one episode. The posterior can now use the completed future as a **training target**. The decoder predicts those observed future actions, and a KL term trains the prior to agree with the posterior.
 
-Here, one call to `update` finishes **all PPO epochs and minibatches for all
+By default, one call to `update` finishes **all PPO epochs and minibatches for all
 agents**, then calls `update_intentions` once. `aux_updates=2` means two
 auxiliary optimizer steps per observer after that complete rollout update,
 using up to `aux_batch_size` completed windows per step. It does not mean two
 auxiliary steps before every PPO minibatch. This is the implemented schedule;
 the manuscript's delayed actor updates and soft intention updates are recorded
 separately in [the implementation decisions](IMPLEMENTATION_DECISIONS.md).
+
+The optional [auxiliary-first schedule](AUXILIARY_ORDER.md) instead fits each
+observer's intention model immediately before its PPO epochs, then rebuilds
+detached prior features from the original filtered past. Collected behavior
+log probabilities and peer gates remain fixed. This is an experimental
+schedule; it has not established improved benchmark return.
 
 ```mermaid
 flowchart LR

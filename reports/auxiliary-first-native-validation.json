@@ -1,0 +1,898 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "created_utc": "2026-10-29T15:45:30.458041+00:00",
+  "scope": "Native CUDA default regression and auxiliary-first smoke; no benchmark learning-performance claim.",
+  "accounting": "21287601|COMPLETED|0:0|00:00:29|milan31\n21287602|CANCELLED by 3278648|0:0|00:03:04|gpu56\n21288025|COMPLETED|0:0|00:06:44|gpu43",
+  "source_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "07f3568e87fb3094345a9d59671b7671c91c4cda41aafbca2af82127fc09cc3e",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "unit_report": "reports/auxiliary-first-unit-validation.json",
+  "unit_report_sha256": "392ac251477e2fd040341389f2b47a484d6acc348902a48ec7e6a4205aa87510",
+  "tasks": [
+    {
+      "task": "walker",
+      "job_id": "21287602",
+      "artifact": "runs/auxiliary-first-native-validation-01",
+      "raw_validation": "runs/auxiliary-first-native-validation-01/walker-validation.json",
+      "raw_validation_sha256": "1cff23a815be965e4bcd2b7ce29f3d48a5a4d249f2c871cb2791ff11045fb421",
+      "default_exact": true,
+      "active_before_ppo_passed": true,
+      "default_steps": 8000,
+      "before_ppo_steps": 8000,
+      "raw_result": {
+        "success": true,
+        "job_id": "21287602",
+        "label": "walker",
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "3x2",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              5
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            2,
+            2,
+            2
+          ],
+          "observation_dims": [
+            5,
+            7,
+            6
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 29,
+            "shape": [
+              3,
+              32,
+              30
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "runtime": {
+          "host": "gpu56.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21287602",
+          "slurm_partition": "gpu-h200-141g-ellis",
+          "torch_threads": 1,
+          "float32_matmul_precision": "highest",
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": true,
+          "accelerator": {
+            "name": "NVIDIA H200",
+            "capability": [
+              9,
+              0
+            ],
+            "total_memory_bytes": 150109880320,
+            "cuda_runtime": "12.6",
+            "cudnn_version": 90501,
+            "cuda_visible_devices": "0",
+            "matmul_allow_tf32": false
+          }
+        },
+        "default_regression": {
+          "exact": true,
+          "training_steps": 8000,
+          "updates": [
+            {
+              "steps": 4000,
+              "metrics": {
+                "policy_loss": -0.010517834067286458,
+                "value_loss": 0.4741123596827189,
+                "entropy": 1.836739138762156,
+                "approx_kl": 0.00687647422946514,
+                "peer_gate_fraction": 0.6346666666666667,
+                "intention_feature_std": 0.5870630145072937,
+                "intention_loss": 2.143100619316101,
+                "intention_nll": 2.096423327922821,
+                "intention_kl": 0.466773122549057,
+                "forecast_target_count": 1778,
+                "forecast_comparison_count": 1736,
+                "forecast_component_count": 2976,
+                "history_baseline_target_count": 1736,
+                "history_baseline_component_count": 2976,
+                "forecast_rmse": 0.7827403724427362,
+                "persistence_rmse": 0.7827403724427362,
+                "history_mean_rmse": 0.6055565716409779,
+                "history_baseline_coverage_fraction": 0.9763779527559056
+              }
+            },
+            {
+              "steps": 8000,
+              "metrics": {
+                "policy_loss": -0.005110938602592796,
+                "value_loss": 0.44746232877175013,
+                "entropy": 1.8326134701569876,
+                "approx_kl": 0.0009743201073897663,
+                "peer_gate_fraction": 0.6378333333333334,
+                "intention_feature_std": 0.5821737051010132,
+                "intention_loss": 2.206564426422119,
+                "intention_nll": 2.176117400328318,
+                "intention_kl": 0.30447059124708176,
+                "forecast_target_count": 1771,
+                "forecast_comparison_count": 1708,
+                "forecast_component_count": 2928,
+                "history_baseline_target_count": 1708,
+                "history_baseline_component_count": 2928,
+                "forecast_rmse": 0.8187793171191612,
+                "persistence_rmse": 0.8222157651929111,
+                "history_mean_rmse": 0.6106883945922102,
+                "history_baseline_coverage_fraction": 0.9644268774703557
+              }
+            }
+          ],
+          "original_train_sha256": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a",
+          "compared": [
+            "models",
+            "optimizers",
+            "metrics",
+            "python_numpy_torch_cuda_rng"
+          ]
+        },
+        "before_ppo_native": {
+          "config": {
+            "algorithm": "dms",
+            "env": "mamujoco",
+            "mamujoco_backend": "legacy",
+            "scenario": "Walker2d",
+            "ant_contact_forces": "native",
+            "agent_conf": "3x2",
+            "agent_obsk": 1,
+            "map_name": "3s5z",
+            "seed": 101,
+            "device": "cuda",
+            "num_envs": 4,
+            "parallel_env_steps": false,
+            "mask_inactive_agents": false,
+            "smac_time_limit_terminal": false,
+            "update_mode": "independent",
+            "total_steps": 8000,
+            "rollout_steps": 1000,
+            "epochs": 5,
+            "minibatch_size": 1000,
+            "hidden_dim": 64,
+            "policy_history_length": 32,
+            "initial_log_std": -0.5,
+            "latent_dim": 8,
+            "decoder_history": false,
+            "history_length": 32,
+            "prediction_horizon": 4,
+            "coordination": "soft",
+            "intention_fusion": "residual",
+            "coordination_threshold": 0.6,
+            "short_history": 4,
+            "filter_history": true,
+            "intention_threshold": 10000,
+            "warmup_episodes": 0,
+            "causal_warmup_episodes": 100,
+            "actor_lr": 0.0003,
+            "critic_lr": 0.001,
+            "intention_lr": 0.001,
+            "intention_rl_lr": 0.0,
+            "intention_update_order": "before_ppo",
+            "aux_updates": 2,
+            "aux_batch_size": 64,
+            "kl_beta": 0.1,
+            "latent_samples": 2,
+            "gamma": 0.99,
+            "gae_lambda": 0.95,
+            "clip": 0.2,
+            "value_clip": 0.2,
+            "entropy_coef": 0.0,
+            "value_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.02,
+            "eval_every": 8000,
+            "eval_episodes": 2,
+            "eval_seed": 400501,
+            "output": "/scratch/work/liz23/reproduce/dms/runs/auxiliary-first-native-validation-01/run-walker",
+            "torch_threads": 1
+          },
+          "updates": [
+            {
+              "policy_loss": -0.010558969673972267,
+              "value_loss": 0.473292679588,
+              "entropy": 1.837252789735794,
+              "approx_kl": 0.007117579710424371,
+              "peer_gate_fraction": 0.6346666666666667,
+              "intention_feature_std": 0.5870630145072937,
+              "intention_loss": 2.1724534233411155,
+              "intention_nll": 2.1244290272394815,
+              "intention_kl": 0.4802437673012416,
+              "forecast_target_count": 1773,
+              "forecast_comparison_count": 1716,
+              "forecast_component_count": 2940,
+              "history_baseline_target_count": 1716,
+              "history_baseline_component_count": 2940,
+              "forecast_rmse": 0.7932521745063026,
+              "persistence_rmse": 0.7932521745063026,
+              "history_mean_rmse": 0.6111628576431294,
+              "history_baseline_coverage_fraction": 0.9678510998307953,
+              "steps": 4000,
+              "episodes": 188,
+              "elapsed_seconds": 16.182997904717922,
+              "training_return_mean": 2.4847557877854953
+            },
+            {
+              "policy_loss": -0.005046176711524216,
+              "value_loss": 0.4445528770486514,
+              "entropy": 1.8336994608243307,
+              "approx_kl": 0.000943962213965932,
+              "peer_gate_fraction": 0.6381666666666667,
+              "intention_feature_std": 0.5792607665061951,
+              "intention_loss": 2.159450113773346,
+              "intention_nll": 2.130348523457845,
+              "intention_kl": 0.291015883286794,
+              "forecast_target_count": 1770,
+              "forecast_comparison_count": 1704,
+              "forecast_component_count": 2920,
+              "history_baseline_target_count": 1704,
+              "history_baseline_component_count": 2920,
+              "forecast_rmse": 0.7921779294954416,
+              "persistence_rmse": 0.7960387808085428,
+              "history_mean_rmse": 0.6048308154540473,
+              "history_baseline_coverage_fraction": 0.9627118644067797,
+              "steps": 8000,
+              "episodes": 360,
+              "elapsed_seconds": 32.51038793474436,
+              "training_return_mean": 4.159702722443568
+            }
+          ],
+          "evaluation": [
+            {
+              "steps": 8000,
+              "seed": 400501,
+              "return": 253.31012934446335,
+              "length": 136,
+              "battle_won": null
+            },
+            {
+              "steps": 8000,
+              "seed": 400502,
+              "return": 245.29330670833588,
+              "length": 131,
+              "battle_won": null
+            }
+          ],
+          "checkpoint_sha256": "e54919d342570d173e09823c7da9ebf95bce5d5374bbc7305d373f9fee586165",
+          "source_saved_exactly": true
+        },
+        "source_and_helpers_unchanged": true,
+        "elapsed_seconds": 85.20731200184673,
+        "completed_utc": "2026-10-29T15:36:50.230583+00:00"
+      },
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "note": "Walker subsection passed before its combined job was cancelled during later SMAC startup; the independent SMAC retry completed with32G/4CPUs."
+    },
+    {
+      "task": "8m",
+      "job_id": "21288025",
+      "artifact": "runs/auxiliary-first-native-validation-02",
+      "raw_validation": "runs/auxiliary-first-native-validation-02/8m-validation.json",
+      "raw_validation_sha256": "3cc5d70b0e97ac2bf2a977f5c6230e39b8297b57d539fefb1ba62e1c5a9376c8",
+      "default_exact": true,
+      "active_before_ppo_passed": true,
+      "default_steps": 8000,
+      "before_ppo_steps": 8000,
+      "raw_result": {
+        "success": true,
+        "job_id": "21288025",
+        "label": "8m",
+        "environment": {
+          "benchmark_track": "original_smac",
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "action_observability": "native_local_obs_last_action",
+          "environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "8m_vs_9m",
+            "game_version": "4.10",
+            "difficulty": "7"
+          },
+          "resolved_environment_options": {
+            "obs_last_action": true,
+            "continuing_episode": true,
+            "obs_instead_of_state": false,
+            "heuristic_ai": false,
+            "map_name": "8m_vs_9m",
+            "game_version": "4.10",
+            "difficulty": "7",
+            "obs_all_health": true,
+            "obs_own_health": true,
+            "obs_pathing_grid": false,
+            "obs_terrain_height": false,
+            "obs_timestep_number": false,
+            "state_last_action": true,
+            "state_timestep_number": false,
+            "reward_sparse": false,
+            "reward_only_positive": true,
+            "reward_death_value": 10,
+            "reward_win": 200,
+            "reward_defeat": 0,
+            "reward_negative_scale": 0.5,
+            "reward_scale": true,
+            "reward_scale_rate": 20,
+            "heuristic_rest": false,
+            "step_mul": 8,
+            "move_amount": 2,
+            "episode_limit": 120
+          },
+          "process_lifetime": {
+            "restart_at_episode_boundary_after_game_loops": 500000,
+            "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+            "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+          },
+          "map_asset": {
+            "status": "resolved",
+            "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+            "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+            "size_bytes": 14927,
+            "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+          },
+          "runtime_selection": {
+            "source": "pysc2_run_config_selection_not_launched_binary",
+            "game_version": "4.10.0",
+            "build_version": 75689,
+            "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+          },
+          "packages": {
+            "smac": "1.0.0",
+            "pysc2": "3.0.0",
+            "s2clientprotocol": "5.0.17.98310.0",
+            "protobuf": "3.20.3"
+          },
+          "policy_observation_history": {
+            "length": 16,
+            "base_observation_dim": 214,
+            "shape": [
+              8,
+              16,
+              215
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset and own SMAC death",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "runtime": {
+          "host": "gpu43.int.triton.aalto.fi",
+          "device": "cuda",
+          "slurm_job_id": "21288025",
+          "slurm_partition": "gpu-debug",
+          "torch_threads": 1,
+          "float32_matmul_precision": "highest",
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": true,
+          "accelerator": {
+            "name": "NVIDIA A100-SXM4-80GB",
+            "capability": [
+              8,
+              0
+            ],
+            "total_memory_bytes": 85093777408,
+            "cuda_runtime": "12.6",
+            "cudnn_version": 90501,
+            "cuda_visible_devices": "0",
+            "matmul_allow_tf32": false
+          }
+        },
+        "default_regression": {
+          "exact": true,
+          "training_steps": 8000,
+          "updates": [
+            {
+              "steps": 3200,
+              "metrics": {
+                "policy_loss": -0.0041989888946929455,
+                "value_loss": 2.883124475181103,
+                "entropy": 1.7349094986915587,
+                "approx_kl": 5.3892774082325845e-05,
+                "sequential_agent_order": [
+                  6,
+                  3,
+                  5,
+                  7,
+                  1,
+                  2,
+                  4,
+                  0
+                ],
+                "sequential_factor_min": 0.830246090888977,
+                "sequential_factor_max": 1.1860325336456299,
+                "sequential_factor_ess": 3193.234919005313,
+                "sequential_factor_ess_fraction": 0.9978859121891602,
+                "alive_fraction": 0.5967577695846558,
+                "ppo_update_count": 40,
+                "peer_gate_fraction": 0.9467410714285714,
+                "intention_feature_std": 0.5911957621574402,
+                "intention_loss": 2.8031086772680283,
+                "intention_nll": 2.7035835087299347,
+                "intention_kl": 0.9952517859637737,
+                "forecast_target_count": 6865,
+                "forecast_comparison_count": 6353,
+                "history_baseline_target_count": 6353,
+                "forecast_nll": 2.7058420236841747,
+                "forecast_accuracy": 0.058240202206290885,
+                "persistence_accuracy": 0.16197072219308223,
+                "history_histogram_accuracy": 0.1641744038480934,
+                "history_histogram_nll": 2.474009895782555,
+                "forecast_history_comparison_nll": 2.7054246441690863,
+                "history_baseline_coverage_fraction": 0.9254187909686817
+              }
+            },
+            {
+              "steps": 6400,
+              "metrics": {
+                "policy_loss": -0.0018110340198347786,
+                "value_loss": 2.3934940099716187,
+                "entropy": 1.7318012177944184,
+                "approx_kl": 6.3920801387895574e-06,
+                "sequential_agent_order": [
+                  4,
+                  5,
+                  3,
+                  7,
+                  2,
+                  0,
+                  6,
+                  1
+                ],
+                "sequential_factor_min": 0.9324660301208496,
+                "sequential_factor_max": 1.064681887626648,
+                "sequential_factor_ess": 3199.1170739702657,
+                "sequential_factor_ess_fraction": 0.999724085615708,
+                "alive_fraction": 0.5642187595367432,
+                "ppo_update_count": 40,
+                "peer_gate_fraction": 0.9168861607142857,
+                "intention_feature_std": 0.5956336259841919,
+                "intention_loss": 2.70926696062088,
+                "intention_nll": 2.6508025974035263,
+                "intention_kl": 0.5846437364816666,
+                "forecast_target_count": 6158,
+                "forecast_comparison_count": 5646,
+                "history_baseline_target_count": 5646,
+                "forecast_nll": 2.6524581417475246,
+                "forecast_accuracy": 0.12362734563028478,
+                "persistence_accuracy": 0.17676230913784924,
+                "history_histogram_accuracy": 0.21023733359657615,
+                "history_histogram_nll": 2.428498596829216,
+                "forecast_history_comparison_nll": 2.651232766463239,
+                "history_baseline_coverage_fraction": 0.9168561221175706
+              }
+            },
+            {
+              "steps": 8000,
+              "metrics": {
+                "policy_loss": -0.001775331749245268,
+                "value_loss": 1.3910184770822525,
+                "entropy": 1.7400801211595536,
+                "approx_kl": 7.785602884077814e-06,
+                "sequential_agent_order": [
+                  7,
+                  5,
+                  0,
+                  6,
+                  1,
+                  3,
+                  4,
+                  2
+                ],
+                "sequential_factor_min": 0.9297034740447998,
+                "sequential_factor_max": 1.070243000984192,
+                "sequential_factor_ess": 1599.470010833264,
+                "sequential_factor_ess_fraction": 0.99966875677079,
+                "alive_fraction": 0.5763280987739563,
+                "ppo_update_count": 40,
+                "peer_gate_fraction": 0.9595758928571428,
+                "intention_feature_std": 0.6445547938346863,
+                "intention_loss": 2.6401336193084717,
+                "intention_nll": 2.5980499386787415,
+                "intention_kl": 0.4208368044346571,
+                "forecast_target_count": 6193,
+                "forecast_comparison_count": 5169,
+                "history_baseline_target_count": 5169,
+                "forecast_nll": 2.5973908991300094,
+                "forecast_accuracy": 0.16695685831991702,
+                "persistence_accuracy": 0.18920487585762388,
+                "history_histogram_accuracy": 0.18823757075806793,
+                "history_histogram_nll": 2.395638549274807,
+                "forecast_history_comparison_nll": 2.596583956790215,
+                "history_baseline_coverage_fraction": 0.8346520264815114
+              }
+            }
+          ],
+          "original_train_sha256": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a",
+          "compared": [
+            "models",
+            "optimizers",
+            "metrics",
+            "python_numpy_torch_cuda_rng"
+          ]
+        },
+        "before_ppo_native": {
+          "config": {
+            "algorithm": "dms",
+            "env": "smac",
+            "mamujoco_backend": "modern",
+            "scenario": "HalfCheetah",
+            "ant_contact_forces": "native",
+            "agent_conf": "2x3",
+            "agent_obsk": 1,
+            "map_name": "8m_vs_9m",
+            "seed": 101,
+            "device": "cuda",
+            "num_envs": 20,
+            "parallel_env_steps": true,
+            "mask_inactive_agents": true,
+            "smac_time_limit_terminal": false,
+            "update_mode": "sequential",
+            "total_steps": 8000,
+            "rollout_steps": 160,
+            "epochs": 5,
+            "minibatch_size": 3200,
+            "hidden_dim": 64,
+            "policy_history_length": 16,
+            "initial_log_std": -0.5,
+            "latent_dim": 8,
+            "decoder_history": false,
+            "history_length": 32,
+            "prediction_horizon": 4,
+            "coordination": "soft",
+            "intention_fusion": "residual",
+            "coordination_threshold": 0.6,
+            "short_history": 4,
+            "filter_history": true,
+            "intention_threshold": 10000,
+            "warmup_episodes": 0,
+            "causal_warmup_episodes": 100,
+            "actor_lr": 0.0003,
+            "critic_lr": 0.001,
+            "intention_lr": 0.001,
+            "intention_rl_lr": 0.0,
+            "intention_update_order": "before_ppo",
+            "aux_updates": 2,
+            "aux_batch_size": 64,
+            "kl_beta": 0.1,
+            "latent_samples": 2,
+            "gamma": 0.95,
+            "gae_lambda": 0.95,
+            "clip": 0.2,
+            "value_clip": 0.2,
+            "entropy_coef": 0.01,
+            "value_coef": 0.5,
+            "max_grad_norm": 0.5,
+            "target_kl": 0.02,
+            "eval_every": 8000,
+            "eval_episodes": 2,
+            "eval_seed": 400501,
+            "output": "/scratch/work/liz23/reproduce/dms/runs/auxiliary-first-native-validation-02/run-8m",
+            "torch_threads": 1
+          },
+          "updates": [
+            {
+              "policy_loss": -0.004198534872695348,
+              "value_loss": 2.8852649584412573,
+              "entropy": 1.7349095076322556,
+              "approx_kl": 5.388725535942496e-05,
+              "sequential_agent_order": [
+                6,
+                3,
+                5,
+                7,
+                1,
+                2,
+                4,
+                0
+              ],
+              "sequential_factor_min": 0.8302993178367615,
+              "sequential_factor_max": 1.185917854309082,
+              "sequential_factor_ess": 3193.2369214625096,
+              "sequential_factor_ess_fraction": 0.9978865379570343,
+              "alive_fraction": 0.5967577695846558,
+              "ppo_update_count": 40,
+              "peer_gate_fraction": 0.9467410714285714,
+              "intention_feature_std": 0.5911957621574402,
+              "intention_loss": 2.801288813352585,
+              "intention_nll": 2.705822676420212,
+              "intention_kl": 0.9546612147241831,
+              "forecast_target_count": 7413,
+              "forecast_comparison_count": 6709,
+              "history_baseline_target_count": 6709,
+              "forecast_nll": 2.707322101690791,
+              "forecast_accuracy": 0.05917424463287589,
+              "persistence_accuracy": 0.18423013671852825,
+              "history_histogram_accuracy": 0.19063943803958946,
+              "history_histogram_nll": 2.4436413113131645,
+              "forecast_history_comparison_nll": 2.707458473207841,
+              "history_baseline_coverage_fraction": 0.9050317010656954,
+              "steps": 3200,
+              "episodes": 95,
+              "elapsed_seconds": 21.264940263004974,
+              "training_return_mean": 1.6084816346043034,
+              "training_battles": 95,
+              "training_battles_won": 0,
+              "training_win_rate": 0.0,
+              "training_battles_total": 95,
+              "training_battles_won_total": 0,
+              "training_win_rate_total": 0.0,
+              "scheduled_environment_restarts": 0
+            },
+            {
+              "policy_loss": -0.0017949969179803737,
+              "value_loss": 2.399674805998802,
+              "entropy": 1.7318012058734893,
+              "approx_kl": 6.345961590144278e-06,
+              "sequential_agent_order": [
+                4,
+                5,
+                3,
+                7,
+                2,
+                0,
+                6,
+                1
+              ],
+              "sequential_factor_min": 0.932876706123352,
+              "sequential_factor_max": 1.0639508962631226,
+              "sequential_factor_ess": 3199.1270171143915,
+              "sequential_factor_ess_fraction": 0.9997271928482474,
+              "alive_fraction": 0.5642187595367432,
+              "ppo_update_count": 40,
+              "peer_gate_fraction": 0.9168861607142857,
+              "intention_feature_std": 0.5932090282440186,
+              "intention_loss": 2.7137685269117355,
+              "intention_nll": 2.6518717855215073,
+              "intention_kl": 0.6189670860767365,
+              "forecast_target_count": 6609,
+              "forecast_comparison_count": 6033,
+              "history_baseline_target_count": 6033,
+              "forecast_nll": 2.6544237810357973,
+              "forecast_accuracy": 0.1304491972663441,
+              "persistence_accuracy": 0.18697165407718325,
+              "history_histogram_accuracy": 0.18398806424840813,
+              "history_histogram_nll": 2.4403904524881725,
+              "forecast_history_comparison_nll": 2.652919114179404,
+              "history_baseline_coverage_fraction": 0.9128461189287336,
+              "steps": 6400,
+              "episodes": 201,
+              "elapsed_seconds": 42.86070761689916,
+              "training_return_mean": 1.6826387927779611,
+              "training_battles": 106,
+              "training_battles_won": 0,
+              "training_win_rate": 0.0,
+              "training_battles_total": 201,
+              "training_battles_won_total": 0,
+              "training_win_rate_total": 0.0,
+              "scheduled_environment_restarts": 0
+            },
+            {
+              "policy_loss": -0.0018030002394816337,
+              "value_loss": 1.3917960941791534,
+              "entropy": 1.740080538392067,
+              "approx_kl": 7.798637212053094e-06,
+              "sequential_agent_order": [
+                7,
+                5,
+                0,
+                6,
+                1,
+                3,
+                4,
+                2
+              ],
+              "sequential_factor_min": 0.9290305376052856,
+              "sequential_factor_max": 1.070049524307251,
+              "sequential_factor_ess": 1599.4668133344007,
+              "sequential_factor_ess_fraction": 0.9996667583340005,
+              "alive_fraction": 0.5763280987739563,
+              "ppo_update_count": 40,
+              "peer_gate_fraction": 0.9595758928571428,
+              "intention_feature_std": 0.6421151161193848,
+              "intention_loss": 2.6322430670261383,
+              "intention_nll": 2.593137115240097,
+              "intention_kl": 0.39105966687202454,
+              "forecast_target_count": 5814,
+              "forecast_comparison_count": 5366,
+              "history_baseline_target_count": 5366,
+              "forecast_nll": 2.5983279027354893,
+              "forecast_accuracy": 0.17294073871021345,
+              "persistence_accuracy": 0.1835631733587372,
+              "history_histogram_accuracy": 0.1923220248596463,
+              "history_histogram_nll": 2.4276920200682737,
+              "forecast_history_comparison_nll": 2.5977720402978135,
+              "history_baseline_coverage_fraction": 0.9229446164430685,
+              "steps": 8000,
+              "episodes": 254,
+              "elapsed_seconds": 54.18338139005937,
+              "training_return_mean": 1.5604723759417265,
+              "training_battles": 53,
+              "training_battles_won": 0,
+              "training_win_rate": 0.0,
+              "training_battles_total": 254,
+              "training_battles_won_total": 0,
+              "training_win_rate_total": 0.0,
+              "scheduled_environment_restarts": 0
+            }
+          ],
+          "evaluation": [
+            {
+              "steps": 8000,
+              "seed": 400501,
+              "return": 1.8992805778980255,
+              "length": 120,
+              "battle_won": false
+            },
+            {
+              "steps": 8000,
+              "seed": 400502,
+              "return": 1.0359711945056915,
+              "length": 120,
+              "battle_won": false
+            }
+          ],
+          "checkpoint_sha256": "4e32259b458212c9ba8ec81c79fc01835d8ad4624b51ff0eaee6d49b74ee27d3",
+          "source_saved_exactly": true
+        },
+        "source_and_helpers_unchanged": true,
+        "elapsed_seconds": 381.7687009971123,
+        "completed_utc": "2026-10-29T15:44:58.152278+00:00"
+      },
+      "versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "note": "SMAC retry completed with the established20-environment resources."
+    }
+  ],
+  "prior_combined_job_resource_correction": {
+    "job_id": "21287602",
+    "action": "cancelled_own_validation_job",
+    "reason": "Walker validation passed. During SMAC startup, prior training accounting showed 21420908KiB peak RSS for20games; the 6G request was insufficient. Retry requests32G/4CPUs; no training code change.",
+    "prior_peak_rss": "21420908K",
+    "retry_artifact": "runs/auxiliary-first-native-validation-02"
+  },
+  "held_out_training_seeds_used": []
+}

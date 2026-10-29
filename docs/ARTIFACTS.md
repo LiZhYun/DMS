@@ -323,6 +323,18 @@ local review artifact while reproduction work continues.
 
 ## SMAC development progress snapshot
 
+The completed [residual SMAC pair archive](../reports/development-residual-smac-artifacts.json)
+is `dist/dms-smac-residual-development-20261029-v1.zip`: **29,856,192 bytes**,
+**52 payload files**, SHA-256
+`b476c1fb3098971281bb9f095c7f9c5cbd2d0833cd1210fd7660e30f9e87efe8`.
+Job **21288035** exported and read back every payload. It preserves both H100
+3M seed-101 policies, configs, source and training diagnostics, including the
+residual policy's **0/100** wins and the trained no-input control's **74/100**
+wins in the [separate endpoint ledger](../reports/residual-smac-results-20261029.json).
+The archive's `evaluation.jsonl` contains training diagnostics; the fixed
+100-episode endpoint records remain in the checked-in ledger. This is a local
+artifact with no public download URL or simulator binaries.
+
 The [SMAC objective comparison](../reports/smac-objectives-development-20261026.png)
 plots win rates and native shaped returns from one preserved, checked-in
 [progress snapshot](../reports/development-progress-20261026T110133Z.json).

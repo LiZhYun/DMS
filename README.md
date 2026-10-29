@@ -24,6 +24,11 @@ The optional [joint intention training](docs/JOINT_INTENTION_TRAINING.md) lets P
 
 The optional [residual intention input](docs/RESIDUAL_INTENTIONS.md) preserves the local IPPO starting point and learns an intention correction. It is an experimental design; the default remains concatenation, and improvement across independent training seeds has not yet been established.
 
+The optional [auxiliary-first update](docs/AUXILIARY_ORDER.md) fits each observer's
+intention model before its PPO epochs and refreshes past-only inputs against the
+original behavior log probabilities. It is under validation; the default
+schedule remains PPO followed by auxiliary training.
+
 ## Install
 
 | Workflow | Tested setup | Additional requirement |

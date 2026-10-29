@@ -1,0 +1,2206 @@
+{
+  "status": "waiting_running_or_failed",
+  "created_utc": "2026-10-29T15:39:08.303904+00:00",
+  "purpose": "Matched H200 tests of auxiliary update order and refreshed prior inputs, with a same-schedule no-input control per task. Seed101 development only; no final-setting promotion.",
+  "gpu_family": "A100",
+  "budget": 3000000,
+  "artifact": "runs/development-auxiliary-order-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/source",
+  "source_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "07f3568e87fb3094345a9d59671b7671c91c4cda41aafbca2af82127fc09cc3e",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "source_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "07f3568e87fb3094345a9d59671b7671c91c4cda41aafbca2af82127fc09cc3e",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9"
+  },
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "runs": [
+    {
+      "task": "walker",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-dms/spec.json",
+      "cpus": 1,
+      "memory": "4G",
+      "label": "walker-after",
+      "mode": "after",
+      "status": "training_running_or_pending",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-auxorder-after-3m-a100-101",
+        "torch_threads": 1,
+        "intention_update_order": "after_ppo"
+      },
+      "config_sha256": "c17a3c179a0a4518118aeb22790db5659954941833cf440ef038d50b451bf35a",
+      "frozen_config": "runs/development-auxiliary-order-3m-seed101/configs/walker-after.json",
+      "output": "runs/dev-walker-auxorder-after-3m-a100-101",
+      "comparison_reference_run": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "walltime_hours": 6,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-walker-after-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=6:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/train.sbatch",
+          "walker-after"
+        ],
+        "returncode": 0,
+        "stdout": "21288097\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:45:30.552322+00:00",
+        "job_id": "21288097"
+      },
+      "job_id": "21288097",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-walker-after-eval-v2",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21288097",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-after/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-after/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-after/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21288119\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:47:48.170528+00:00",
+        "job_id": "21288119",
+        "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-after/spec.json",
+        "spec_sha256": "71a3f2e31caec09f8a8774b66aacb7913bcf335d251cbdc91ce9f540212163d2",
+        "status": "waiting_for_training",
+        "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+        "config_serialization_order_verified_against_native_saved_config": true,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "evaluation_submission_attempts": [
+        {
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-auxorder-walker-after-eval",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=02:00:00",
+            "--dependency=afterok:21288097",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-after/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-after/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-after/spec.json",
+            "legacy"
+          ],
+          "returncode": 0,
+          "stdout": "21288098\n",
+          "stderr": "",
+          "submitted_utc": "2026-10-29T15:45:30.578841+00:00",
+          "job_id": "21288098",
+          "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-walker-after/spec.json",
+          "spec_sha256": "5be3e880df7ba3bc9c3262649cc326101d0d76b14c868f2ee7f765b3933df2c8",
+          "status": "cancelled_before_execution_metadata_correction",
+          "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
+    },
+    {
+      "task": "walker",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-dms/spec.json",
+      "cpus": 1,
+      "memory": "4G",
+      "label": "walker-before",
+      "mode": "before",
+      "status": "training_running_or_pending",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-auxorder-before-3m-a100-101",
+        "torch_threads": 1,
+        "intention_update_order": "before_ppo"
+      },
+      "config_sha256": "f1e4ca5c6a99aa68d8feed55e18bbfd34427f5479766899b7faa59336ffb55a3",
+      "frozen_config": "runs/development-auxiliary-order-3m-seed101/configs/walker-before.json",
+      "output": "runs/dev-walker-auxorder-before-3m-a100-101",
+      "comparison_reference_run": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "walltime_hours": 6,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-walker-before-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=6:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/train.sbatch",
+          "walker-before"
+        ],
+        "returncode": 0,
+        "stdout": "21288099\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:45:30.602658+00:00",
+        "job_id": "21288099"
+      },
+      "job_id": "21288099",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-walker-before-eval-v2",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21288099",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-before/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-before/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-before/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21288120\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:47:48.197346+00:00",
+        "job_id": "21288120",
+        "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-before/spec.json",
+        "spec_sha256": "2a658111bf097251b2a282e1e8bb7ee9a76f8d47e81af838751bd8699e440419",
+        "status": "waiting_for_training",
+        "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+        "config_serialization_order_verified_against_native_saved_config": true,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "evaluation_submission_attempts": [
+        {
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-auxorder-walker-before-eval",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=02:00:00",
+            "--dependency=afterok:21288099",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-before/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-before/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-before/spec.json",
+            "legacy"
+          ],
+          "returncode": 0,
+          "stdout": "21288100\n",
+          "stderr": "",
+          "submitted_utc": "2026-10-29T15:45:30.627589+00:00",
+          "job_id": "21288100",
+          "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-walker-before/spec.json",
+          "spec_sha256": "04b1ccd187b6d217df04bc06450f3cfbf33b5ccb5359e8b186807f42f13b86ec",
+          "status": "cancelled_before_execution_metadata_correction",
+          "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
+    },
+    {
+      "task": "walker",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-dms/spec.json",
+      "cpus": 1,
+      "memory": "4G",
+      "label": "walker-no-input",
+      "mode": "no-input",
+      "status": "training_running_or_pending",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 1000000000,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-auxorder-no-input-3m-a100-101",
+        "torch_threads": 1,
+        "intention_update_order": "before_ppo"
+      },
+      "config_sha256": "c446c2246a8ddf582bb45c38a6b1db44c66af5331d5194ccfc8c31775638b0c8",
+      "frozen_config": "runs/development-auxiliary-order-3m-seed101/configs/walker-no-input.json",
+      "output": "runs/dev-walker-auxorder-no-input-3m-a100-101",
+      "comparison_reference_run": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "walltime_hours": 6,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-walker-no-input-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=6:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/train.sbatch",
+          "walker-no-input"
+        ],
+        "returncode": 0,
+        "stdout": "21288101\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:45:30.651892+00:00",
+        "job_id": "21288101"
+      },
+      "job_id": "21288101",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-walker-no-input-eval-v2",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21288101",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-no-input/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-no-input/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-no-input/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21288121\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:47:48.239570+00:00",
+        "job_id": "21288121",
+        "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-v2-walker-no-input/spec.json",
+        "spec_sha256": "67b07dc370efc4039929aad9f799415e909ffc8a73ece60c1a066fad11cf8089",
+        "status": "waiting_for_training",
+        "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+        "config_serialization_order_verified_against_native_saved_config": true,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "evaluation_submission_attempts": [
+        {
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-auxorder-walker-no-input-eval",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=02:00:00",
+            "--dependency=afterok:21288101",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-no-input/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-no-input/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-walker-no-input/spec.json",
+            "legacy"
+          ],
+          "returncode": 0,
+          "stdout": "21288102\n",
+          "stderr": "",
+          "submitted_utc": "2026-10-29T15:45:30.676653+00:00",
+          "job_id": "21288102",
+          "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-walker-no-input/spec.json",
+          "spec_sha256": "4f277494ff1d590d88e8bc867f227027954ae3797ec22cbe6ff06d77b0af2d91",
+          "status": "cancelled_before_execution_metadata_correction",
+          "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
+    },
+    {
+      "task": "8m",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "evaluation_spec_template": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-dms/spec.json",
+      "cpus": 4,
+      "memory": "32G",
+      "label": "8m-after",
+      "mode": "after",
+      "status": "training_running_or_pending",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "smac",
+        "mamujoco_backend": "modern",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "8m_vs_9m",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 20,
+        "parallel_env_steps": true,
+        "mask_inactive_agents": true,
+        "smac_time_limit_terminal": false,
+        "update_mode": "sequential",
+        "total_steps": 3000000,
+        "rollout_steps": 160,
+        "epochs": 5,
+        "minibatch_size": 3200,
+        "hidden_dim": 64,
+        "policy_history_length": 16,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.95,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-8m-auxorder-after-3m-a100-101",
+        "torch_threads": 1,
+        "intention_update_order": "after_ppo"
+      },
+      "config_sha256": "191522f2d54c16662d8eacf66629820afab92bbb7986069b5d3f58caca25bc39",
+      "frozen_config": "runs/development-auxiliary-order-3m-seed101/configs/8m-after.json",
+      "output": "runs/dev-8m-auxorder-after-3m-a100-101",
+      "comparison_reference_run": "runs/dev-8m-residual-fusion-3m-h100-101",
+      "walltime_hours": 7,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-8m-after-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=4",
+          "--mem=32G",
+          "--time=7:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/train.sbatch",
+          "8m-after"
+        ],
+        "returncode": 0,
+        "stdout": "21288103\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:45:30.699430+00:00",
+        "job_id": "21288103"
+      },
+      "job_id": "21288103",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-8m-after-eval-v2",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21288103",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-after/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-after/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-after/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21288122\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:47:48.278862+00:00",
+        "job_id": "21288122",
+        "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-after/spec.json",
+        "spec_sha256": "c6b932e6529f222fe9c04c083637fa4e5e121216f6fa1aa4675a3eca63ad928b",
+        "status": "waiting_for_training",
+        "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+        "config_serialization_order_verified_against_native_saved_config": true,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "evaluation_submission_attempts": [
+        {
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-auxorder-8m-after-eval",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=02:00:00",
+            "--dependency=afterok:21288103",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-after/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-after/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-after/spec.json",
+            "modern"
+          ],
+          "returncode": 0,
+          "stdout": "21288104\n",
+          "stderr": "",
+          "submitted_utc": "2026-10-29T15:45:30.725040+00:00",
+          "job_id": "21288104",
+          "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-8m-after/spec.json",
+          "spec_sha256": "d19a298542e01f99d607c14060bb7915d2c370dd394bb0bdbd13ce7e7689265d",
+          "status": "cancelled_before_execution_metadata_correction",
+          "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
+    },
+    {
+      "task": "8m",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "evaluation_spec_template": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-dms/spec.json",
+      "cpus": 4,
+      "memory": "32G",
+      "label": "8m-before",
+      "mode": "before",
+      "status": "training_running_or_pending",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "smac",
+        "mamujoco_backend": "modern",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "8m_vs_9m",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 20,
+        "parallel_env_steps": true,
+        "mask_inactive_agents": true,
+        "smac_time_limit_terminal": false,
+        "update_mode": "sequential",
+        "total_steps": 3000000,
+        "rollout_steps": 160,
+        "epochs": 5,
+        "minibatch_size": 3200,
+        "hidden_dim": 64,
+        "policy_history_length": 16,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.95,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-8m-auxorder-before-3m-a100-101",
+        "torch_threads": 1,
+        "intention_update_order": "before_ppo"
+      },
+      "config_sha256": "0f9fec46cf03e4371d87718f2a2155c5f17b50d50012d9deebbfdef8f4d2c68d",
+      "frozen_config": "runs/development-auxiliary-order-3m-seed101/configs/8m-before.json",
+      "output": "runs/dev-8m-auxorder-before-3m-a100-101",
+      "comparison_reference_run": "runs/dev-8m-residual-fusion-3m-h100-101",
+      "walltime_hours": 7,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-8m-before-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=4",
+          "--mem=32G",
+          "--time=7:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/train.sbatch",
+          "8m-before"
+        ],
+        "returncode": 0,
+        "stdout": "21288105\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:45:30.750162+00:00",
+        "job_id": "21288105"
+      },
+      "job_id": "21288105",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-8m-before-eval-v2",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21288105",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-before/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-before/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-before/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21288123\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:47:48.305328+00:00",
+        "job_id": "21288123",
+        "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-before/spec.json",
+        "spec_sha256": "45768b939d584b74c32d662731912498489333d8ac569a4d53210ae739bdcea8",
+        "status": "waiting_for_training",
+        "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+        "config_serialization_order_verified_against_native_saved_config": true,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "evaluation_submission_attempts": [
+        {
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-auxorder-8m-before-eval",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=02:00:00",
+            "--dependency=afterok:21288105",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-before/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-before/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-before/spec.json",
+            "modern"
+          ],
+          "returncode": 0,
+          "stdout": "21288106\n",
+          "stderr": "",
+          "submitted_utc": "2026-10-29T15:45:30.775616+00:00",
+          "job_id": "21288106",
+          "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-8m-before/spec.json",
+          "spec_sha256": "16317b824e90ce327865b441cb1abcdebd350275de9a674edeed40f81a2f7a0e",
+          "status": "cancelled_before_execution_metadata_correction",
+          "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
+    },
+    {
+      "task": "8m",
+      "algorithm": "dms",
+      "seed": 101,
+      "environment": {
+        "benchmark_track": "original_smac",
+        "map_name": "8m_vs_9m",
+        "game_version": "4.10",
+        "difficulty": "7",
+        "action_observability": "native_local_obs_last_action",
+        "environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7"
+        },
+        "resolved_environment_options": {
+          "obs_last_action": true,
+          "continuing_episode": true,
+          "obs_instead_of_state": false,
+          "heuristic_ai": false,
+          "map_name": "8m_vs_9m",
+          "game_version": "4.10",
+          "difficulty": "7",
+          "obs_all_health": true,
+          "obs_own_health": true,
+          "obs_pathing_grid": false,
+          "obs_terrain_height": false,
+          "obs_timestep_number": false,
+          "state_last_action": true,
+          "state_timestep_number": false,
+          "reward_sparse": false,
+          "reward_only_positive": true,
+          "reward_death_value": 10,
+          "reward_win": 200,
+          "reward_defeat": 0,
+          "reward_negative_scale": 0.5,
+          "reward_scale": true,
+          "reward_scale_rate": 20,
+          "heuristic_rest": false,
+          "step_mul": 8,
+          "move_amount": 2,
+          "episode_limit": 120
+        },
+        "process_lifetime": {
+          "restart_at_episode_boundary_after_game_loops": 500000,
+          "reason": "SC2 cannot safely exceed 2**19 game loops in one game",
+          "seed_schedule": "SeedSequence([explicit_seed, generation]), uint32 modulo (2**31-1)"
+        },
+        "map_asset": {
+          "status": "resolved",
+          "path": "/scratch/work/liz23/3rdparty/StarCraftII/Maps/SMAC_Maps/8m_vs_9m.SC2Map",
+          "relative_path": "SMAC_Maps/8m_vs_9m.SC2Map",
+          "size_bytes": 14927,
+          "sha256": "15c9e65efefde407f8ae34a2bd9b70d46580db730accc15d3477fb281bb609d9"
+        },
+        "runtime_selection": {
+          "source": "pysc2_run_config_selection_not_launched_binary",
+          "game_version": "4.10.0",
+          "build_version": 75689,
+          "data_version": "B89B5D6FA7CBF6452E721311BFBC6CB2"
+        },
+        "packages": {
+          "smac": "1.0.0",
+          "pysc2": "3.0.0",
+          "s2clientprotocol": "5.0.17.98310.0",
+          "protobuf": "3.20.3"
+        },
+        "policy_observation_history": {
+          "length": 16,
+          "base_observation_dim": 214,
+          "shape": [
+            8,
+            16,
+            215
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset and own SMAC death",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "2.2.6",
+        "gymnasium": "1.4.0",
+        "gymnasium-robotics": "1.4.2",
+        "mujoco": "3.17.0",
+        "pysc2": "3.0.0",
+        "smac": "1.0.0",
+        "s2clientprotocol": "5.0.17.98310.0",
+        "protobuf": "3.20.3"
+      },
+      "evaluation_spec_template": "runs/development-smac-map-coverage-gamma095-3m-seed101/evaluation-8m_vs_9m-dms/spec.json",
+      "cpus": 4,
+      "memory": "32G",
+      "label": "8m-no-input",
+      "mode": "no-input",
+      "status": "training_running_or_pending",
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "smac",
+        "mamujoco_backend": "modern",
+        "scenario": "HalfCheetah",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "8m_vs_9m",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 20,
+        "parallel_env_steps": true,
+        "mask_inactive_agents": true,
+        "smac_time_limit_terminal": false,
+        "update_mode": "sequential",
+        "total_steps": 3000000,
+        "rollout_steps": 160,
+        "epochs": 5,
+        "minibatch_size": 3200,
+        "hidden_dim": 64,
+        "policy_history_length": 16,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 1000000000,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.95,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.01,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 200000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-8m-auxorder-no-input-3m-a100-101",
+        "torch_threads": 1,
+        "intention_update_order": "before_ppo"
+      },
+      "config_sha256": "f39c40f6d26a17ff7861dfd71c200bde9221e5cefe123665e04382736c7a508f",
+      "frozen_config": "runs/development-auxiliary-order-3m-seed101/configs/8m-no-input.json",
+      "output": "runs/dev-8m-auxorder-no-input-3m-a100-101",
+      "comparison_reference_run": "runs/dev-8m-residual-fusion-3m-h100-101",
+      "walltime_hours": 7,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-8m-no-input-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=a100:1",
+          "--cpus-per-task=4",
+          "--mem=32G",
+          "--time=7:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/train.sbatch",
+          "8m-no-input"
+        ],
+        "returncode": 0,
+        "stdout": "21288107\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:45:30.800450+00:00",
+        "job_id": "21288107"
+      },
+      "job_id": "21288107",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-auxorder-8m-no-input-eval-v2",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21288107",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-no-input/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-no-input/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-no-input/spec.json",
+          "modern"
+        ],
+        "returncode": 0,
+        "stdout": "21288124\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T15:47:48.331879+00:00",
+        "job_id": "21288124",
+        "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-v2-8m-no-input/spec.json",
+        "spec_sha256": "d4f723981920bf9c3884a5fa756690b70e8893495abb3867defdcea316b09328",
+        "status": "waiting_for_training",
+        "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+        "config_serialization_order_verified_against_native_saved_config": true,
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      },
+      "evaluation_submission_attempts": [
+        {
+          "command": [
+            "sbatch",
+            "--parsable",
+            "--job-name=dms-auxorder-8m-no-input-eval",
+            "--partition=batch-milan,batch-csl,batch-skl",
+            "--cpus-per-task=1",
+            "--mem=4G",
+            "--time=02:00:00",
+            "--dependency=afterok:21288107",
+            "--kill-on-invalid-dep=yes",
+            "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-no-input/%x_%j.out",
+            "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-no-input/%x_%j.err",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation/evaluate.sbatch",
+            "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/evaluation-8m-no-input/spec.json",
+            "modern"
+          ],
+          "returncode": 0,
+          "stdout": "21288108\n",
+          "stderr": "",
+          "submitted_utc": "2026-10-29T15:45:30.826354+00:00",
+          "job_id": "21288108",
+          "spec": "runs/development-auxiliary-order-3m-seed101/evaluation-8m-no-input/spec.json",
+          "spec_sha256": "6ae42ccfac458e521bc7811b498b237c4fca5910952a2b945203c26c676afa64",
+          "status": "cancelled_before_execution_metadata_correction",
+          "launcher_sha256": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+          "scheduler": {
+            "state": "PENDING",
+            "exit_code": "0:0",
+            "elapsed": "00:00:00",
+            "node": "None assigned"
+          },
+          "failure_artifacts": {}
+        }
+      ]
+    }
+  ],
+  "required_validation_paths": [
+    "reports/auxiliary-first-unit-validation.json",
+    "runs/auxiliary-first-native-validation-01/walker-validation.json",
+    "runs/auxiliary-first-native-validation-02/8m-validation.json",
+    "reports/auxiliary-first-native-validation.json"
+  ],
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "device": "cpu",
+    "parameter_updates": 0
+  },
+  "hypotheses": [
+    "Before-PPO refresh improves benchmark return relative to matched after-PPO residual DMS.",
+    "A before-PPO policy with peer inputs improves over its trained no-input control.",
+    "The effect may fail to generalize from the one-batch Walker probe to learning or categorical SMAC."
+  ],
+  "comparison_limits": "All three arms in each task use A100. Earlier H100 results are contextual references, not the paired after-PPO control. Natural phase RNG order differs; use further training seeds before robust claims. No RNG restoration during production training.",
+  "held_out_training_seeds_used": [],
+  "hardware_selection": {
+    "chosen_utc": "2026-10-29T15:45:06.500176+00:00",
+    "initial_preparation": "H200",
+    "selected": "A100",
+    "reason": "Before any learning submission:13H200nodes are draining; the remaining gpu51 has all8GPUsallocated and a planned reboot. An ordinary A100 node remains available; preserve matched fresh after/before/no-input arms on A100 instead of waiting for H200 maintenance.",
+    "initial_preparation_sha256": "61703db90d9d719f45a580f67f5373d44fd5bce137520633ae994c1c0d6927d2"
+  },
+  "required_validation": [
+    {
+      "path": "reports/auxiliary-first-unit-validation.json",
+      "sha256": "392ac251477e2fd040341389f2b47a484d6acc348902a48ec7e6a4205aa87510"
+    },
+    {
+      "path": "runs/auxiliary-first-native-validation-01/walker-validation.json",
+      "sha256": "1cff23a815be965e4bcd2b7ce29f3d48a5a4d249f2c871cb2791ff11045fb421"
+    },
+    {
+      "path": "runs/auxiliary-first-native-validation-02/8m-validation.json",
+      "sha256": "3cc5d70b0e97ac2bf2a977f5c6230e39b8297b57d539fefb1ba62e1c5a9376c8"
+    },
+    {
+      "path": "reports/auxiliary-first-native-validation.json",
+      "sha256": "e5419701cfcf8bce6ef6dfc543f77703680bbdd7f5a5aa7012f4e1d0630d09b6"
+    }
+  ],
+  "scripts_sha256": {
+    "guarded_train.py": "492cfc9386d4f4b852d76d671a3fa27ac3daa60475128f38a7418899262f3379",
+    "train.sbatch": "669bf347209c34b7838c4dfcb87617dd5429430aafccaecf292af6b5d480f490",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "36f6e34964720ca5e0f9acd9ca1eb6c34f9b1924f18142f9cf8788ac4cbc965c",
+    "refresh_status.py": "6be54bf77a3bc3bf513d91f6c6ac3aa7828c811a1cb8e2267bb559d4170975a7",
+    "collect.sbatch": "d8ca1547a5c8c3c63135c17a14c940c7a94c8f3ebe16ac68457b4e8ed0cbcfa9",
+    "submit.py": "a457501e30861c646673bcce2862148a0accb412d337f6fead9b5a3e582bc110"
+  },
+  "frozen_after_native_validation_utc": "2026-10-29T15:45:30.521903+00:00",
+  "predeclared_sha256": "0162a1946d87908fb0cf72f2efc9559d081c2ba86ca87600ae0f9153e271692b",
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-29T15:52:22.495487+00:00",
+  "evaluation_metadata_correction": {
+    "created_utc": "2026-10-29T15:47:48.139691+00:00",
+    "reason": "Config serializes dataclass fields in declaration order, while prepared dicts appended intention_update_order. Native saved config confirms canonical order. Logical field values are identical; only expected config byte hashes in evaluation specs were wrong.",
+    "cancelled_pending_evaluation_jobs": [
+      "21288098",
+      "21288100",
+      "21288102",
+      "21288104",
+      "21288106",
+      "21288108"
+    ],
+    "cancelled_pending_collector_jobs": [
+      "21288109",
+      "21288110",
+      "21288111",
+      "21288112",
+      "21288113",
+      "21288114",
+      "21288115"
+    ],
+    "original_accounting": "21288098|PENDING|0:0\n21288100|PENDING|0:0\n21288102|PENDING|0:0\n21288104|PENDING|0:0\n21288106|PENDING|0:0\n21288108|PENDING|0:0\n21288109|PENDING|0:0\n21288110|PENDING|0:0\n21288111|PENDING|0:0\n21288112|PENDING|0:0\n21288113|PENDING|0:0\n21288114|PENDING|0:0\n21288115|PENDING|0:0",
+    "training_jobs_configs_source_and_helpers_unchanged": true,
+    "initial_ledger_snapshot": "runs/development-auxiliary-order-3m-seed101/evaluation-metadata-correction-original-ledger.json"
+  },
+  "completion_collector_attempts": [
+    {
+      "label": "walker-after",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-walker-after",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288098",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288109\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:45:30.850286+00:00",
+      "job_id": "21288109"
+    },
+    {
+      "label": "walker-before",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-walker-before",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288100",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288110\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:45:30.875280+00:00",
+      "job_id": "21288110"
+    },
+    {
+      "label": "walker-no-input",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-walker-no-input",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288102",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288111\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:45:31.902518+00:00",
+      "job_id": "21288111"
+    },
+    {
+      "label": "8m-after",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-8m-after",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288104",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288112\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:45:32.933123+00:00",
+      "job_id": "21288112"
+    },
+    {
+      "label": "8m-before",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-8m-before",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288106",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288113\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:45:33.978775+00:00",
+      "job_id": "21288113"
+    },
+    {
+      "label": "8m-no-input",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-8m-no-input",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288108",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288114\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:45:35.008502+00:00",
+      "job_id": "21288114"
+    },
+    {
+      "label": "all",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-all",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288097:21288098:21288099:21288100:21288101:21288102:21288103:21288104:21288105:21288106:21288107:21288108",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288115\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:45:35.035650+00:00",
+      "job_id": "21288115"
+    }
+  ],
+  "completion_collectors": [
+    {
+      "label": "walker-after",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-walker-after-v2",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288119",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288125\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:47:48.357833+00:00",
+      "job_id": "21288125"
+    },
+    {
+      "label": "walker-before",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-walker-before-v2",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288120",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288126\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:47:49.384360+00:00",
+      "job_id": "21288126"
+    },
+    {
+      "label": "walker-no-input",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-walker-no-input-v2",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288121",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288127\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:47:50.415767+00:00",
+      "job_id": "21288127"
+    },
+    {
+      "label": "8m-after",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-8m-after-v2",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288122",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288128\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:47:51.443391+00:00",
+      "job_id": "21288128"
+    },
+    {
+      "label": "8m-before",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-8m-before-v2",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288123",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288129\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:47:52.473311+00:00",
+      "job_id": "21288129"
+    },
+    {
+      "label": "8m-no-input",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-8m-no-input-v2",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288124",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288130\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:47:53.500969+00:00",
+      "job_id": "21288130"
+    },
+    {
+      "label": "all",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-auxorder-collect-all-v2",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21288097:21288119:21288099:21288120:21288101:21288121:21288103:21288122:21288105:21288123:21288107:21288124",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-auxiliary-order-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21288132\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T15:47:54.529323+00:00",
+      "job_id": "21288132"
+    }
+  ]
+}
