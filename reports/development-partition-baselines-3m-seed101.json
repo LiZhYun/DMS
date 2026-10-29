@@ -1,0 +1,2157 @@
+{
+  "purpose": "Fill the four missing MuJoCo local-history IPPO development controls before expanding DMS. These baselines cannot establish DMS reproduction.",
+  "created_utc": "2026-10-29T09:54:16.790427+00:00",
+  "status": "waiting_running_or_failed",
+  "artifact": "runs/development-partition-baselines-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/source",
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "budget": 3000000,
+  "runs": [
+    {
+      "label": "ant-2x4-ippo",
+      "task": "ant",
+      "mode": "baseline",
+      "algorithm": "ippo",
+      "seed": 101,
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x4",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -1.0,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "concat",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-ant-2x4-ippo-history32-3m-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-ant-2x4-ippo-history32-3m-101",
+      "config": "configs/development/ant-2x4-ippo-history32-3m.json",
+      "frozen_config": "runs/development-partition-baselines-3m-seed101/configs/ant-2x4-ippo.json",
+      "config_sha256": "1f9e5c914cbb3d8f40029df3bd4ccdf3a6759e4fc8600914645bd5d5452d93a6",
+      "comparison_reference_run": "runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-ippo/spec.json",
+      "reference_environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 82,
+          "shape": [
+            4,
+            32,
+            83
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 4,
+      "status": "training_running_or_pending",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "2x4",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3,
+            4,
+            5
+          ],
+          [
+            6,
+            7,
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          4,
+          4
+        ],
+        "observation_dims": [
+          52,
+          52
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 122,
+          "shape": [
+            2,
+            32,
+            123
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-ant-2x4-ippo-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-h100-80g",
+          "--gpus=1",
+          "--constraint=hopper",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=4:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/train.sbatch",
+          "ant-2x4-ippo"
+        ],
+        "returncode": 0,
+        "stdout": "21280632\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.502546+00:00",
+        "job_id": "21280632"
+      },
+      "job_id": "21280632",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-ant-2x4-ippo-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280632",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-ant-2x4-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-ant-2x4-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-ant-2x4-ippo/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21280633\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.535932+00:00",
+        "job_id": "21280633",
+        "spec": "runs/development-partition-baselines-3m-seed101/evaluation-ant-2x4-ippo/spec.json",
+        "spec_sha256": "6a330aa0ccd10bdde5bfbd44f64bc2295c5323af78855ef57ce0c24f98e0ab89",
+        "status": "waiting_for_training",
+        "launcher_sha256": "d4ac1c97ef0a3a849d7ec0ab8446f89cc199add64b0dde83243a07e252c627d0",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    },
+    {
+      "label": "ant-8x1-ippo",
+      "task": "ant",
+      "mode": "baseline",
+      "algorithm": "ippo",
+      "seed": 101,
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Ant",
+        "ant_contact_forces": "native",
+        "agent_conf": "8x1",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -1.0,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "concat",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-ant-8x1-ippo-history32-3m-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-ant-8x1-ippo-history32-3m-101",
+      "config": "configs/development/ant-8x1-ippo-history32-3m.json",
+      "frozen_config": "runs/development-partition-baselines-3m-seed101/configs/ant-8x1-ippo.json",
+      "config_sha256": "c07f8900838c973d38e9884354731ca49550c3e7b5bb6d9ef486d32f665c2ce3",
+      "comparison_reference_run": "runs/dev-legacy-ant-4x2-native-ippo-history32-3m-h100-101",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-ant-ippo/spec.json",
+      "reference_environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "4x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          31,
+          31,
+          31,
+          31
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 82,
+          "shape": [
+            4,
+            32,
+            83
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 10,
+      "status": "training_running_or_pending",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Ant",
+        "native_env_id": "Ant-v2",
+        "agent_conf": "8x1",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel",
+            "cfrc_ext"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "ant.xml",
+        "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ],
+          [
+            6
+          ],
+          [
+            7
+          ],
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "action_dims": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "observation_dims": [
+          18,
+          21,
+          18,
+          21,
+          18,
+          21,
+          18,
+          21
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height": [
+            0.2,
+            1.0
+          ]
+        },
+        "frame_skip": 5,
+        "physics_timestep": 0.01,
+        "native_geom_friction": [
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            0.5,
+            0.5
+          ]
+        ],
+        "ant_contact_forces": "native",
+        "contact_force_computation": {
+          "mode": "native",
+          "api": null,
+          "after_control_substeps_before_reward": false,
+          "after_reset_before_observation": false,
+          "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+          "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+          "variant_source_sha256": null,
+          "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+          "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+          "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+        },
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 66,
+          "shape": [
+            8,
+            32,
+            67
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-ant-8x1-ippo-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-h100-80g",
+          "--gpus=1",
+          "--constraint=hopper",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=10:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/train.sbatch",
+          "ant-8x1-ippo"
+        ],
+        "returncode": 0,
+        "stdout": "21280634\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.673554+00:00",
+        "job_id": "21280634"
+      },
+      "job_id": "21280634",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-ant-8x1-ippo-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280634",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-ant-8x1-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-ant-8x1-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-ant-8x1-ippo/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21280635\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.697171+00:00",
+        "job_id": "21280635",
+        "spec": "runs/development-partition-baselines-3m-seed101/evaluation-ant-8x1-ippo/spec.json",
+        "spec_sha256": "59e3cd235368922990c3ffd4cef89a80ed3499773cba65cb66d2093c5018bdb5",
+        "status": "waiting_for_training",
+        "launcher_sha256": "d4ac1c97ef0a3a849d7ec0ab8446f89cc199add64b0dde83243a07e252c627d0",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    },
+    {
+      "label": "walker-2x3-ippo",
+      "task": "walker",
+      "mode": "baseline",
+      "algorithm": "ippo",
+      "seed": 101,
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "concat",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-2x3-ippo-history32-3m-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-walker-2x3-ippo-history32-3m-101",
+      "config": "configs/development/walker-2x3-ippo-history32-3m.json",
+      "frozen_config": "runs/development-partition-baselines-3m-seed101/configs/walker-2x3-ippo.json",
+      "config_sha256": "2d990cfe572078f63a868883546fb5045fd9ef08bbc92fc9562796f9be572f4e",
+      "comparison_reference_run": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-ippo/spec.json",
+      "reference_environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 4,
+      "status": "training_running_or_pending",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-walker-2x3-ippo-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-h100-80g",
+          "--gpus=1",
+          "--constraint=hopper",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=4:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/train.sbatch",
+          "walker-2x3-ippo"
+        ],
+        "returncode": 0,
+        "stdout": "21280636\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.725791+00:00",
+        "job_id": "21280636"
+      },
+      "job_id": "21280636",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-walker-2x3-ippo-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280636",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21280637\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.751856+00:00",
+        "job_id": "21280637",
+        "spec": "runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/spec.json",
+        "spec_sha256": "1321e6f492431332e016827a7e52c1e41ca384d712a85924ee17000ec0204ad0",
+        "status": "waiting_for_training",
+        "launcher_sha256": "d4ac1c97ef0a3a849d7ec0ab8446f89cc199add64b0dde83243a07e252c627d0",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    },
+    {
+      "label": "walker-6x1-ippo",
+      "task": "walker",
+      "mode": "baseline",
+      "algorithm": "ippo",
+      "seed": 101,
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "6x1",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "concat",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-6x1-ippo-history32-3m-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-walker-6x1-ippo-history32-3m-101",
+      "config": "configs/development/walker-6x1-ippo-history32-3m.json",
+      "frozen_config": "runs/development-partition-baselines-3m-seed101/configs/walker-6x1-ippo.json",
+      "config_sha256": "74bfa152ba11005367fd959a812908c96716cbb1250232039201a05a3e139a02",
+      "comparison_reference_run": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-ippo/spec.json",
+      "reference_environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 9,
+      "status": "training_running_or_pending",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "6x1",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2
+          ],
+          [
+            1
+          ],
+          [
+            0
+          ],
+          [
+            5
+          ],
+          [
+            4
+          ],
+          [
+            3
+          ]
+        ],
+        "action_dims": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "observation_dims": [
+          3,
+          4,
+          4,
+          3,
+          4,
+          4
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 26,
+          "shape": [
+            6,
+            32,
+            27
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-walker-6x1-ippo-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-h100-80g",
+          "--gpus=1",
+          "--constraint=hopper",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=9:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/train.sbatch",
+          "walker-6x1-ippo"
+        ],
+        "returncode": 0,
+        "stdout": "21280638\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.774139+00:00",
+        "job_id": "21280638"
+      },
+      "job_id": "21280638",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-partition-baseline-walker-6x1-ippo-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21280638",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-walker-6x1-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-walker-6x1-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/evaluation-walker-6x1-ippo/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21280639\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T10:01:44.798570+00:00",
+        "job_id": "21280639",
+        "spec": "runs/development-partition-baselines-3m-seed101/evaluation-walker-6x1-ippo/spec.json",
+        "spec_sha256": "4716fc450ab369595df68644fc7a72d348a33eecdf53247e235f9dbbaa0ae455",
+        "status": "waiting_for_training",
+        "launcher_sha256": "d4ac1c97ef0a3a849d7ec0ab8446f89cc199add64b0dde83243a07e252c627d0",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    }
+  ],
+  "smokes": [
+    {
+      "label": "ant-2x4-ippo",
+      "task": "ant",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-configs/ant-2x4-ippo.json",
+      "config_sha256": "a059701023aa6f27c81d84cedb74f761167d10a8a7b5409d2ec5d263bd8e83b8",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/source"
+    },
+    {
+      "label": "ant-8x1-ippo",
+      "task": "ant",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-configs/ant-8x1-ippo.json",
+      "config_sha256": "47ff92a903c0ef4544ded78e58c8fe408bb995e786c9a67052866f7771bb68ee",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/source"
+    },
+    {
+      "label": "walker-2x3-ippo",
+      "task": "walker",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-configs/walker-2x3-ippo.json",
+      "config_sha256": "0b2111ad75a2b33c80c936414b8e728ef0f08d877dd66af3c0bd2b4bcf6dbe66",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/source"
+    },
+    {
+      "label": "walker-6x1-ippo",
+      "task": "walker",
+      "config": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-configs/walker-6x1-ippo.json",
+      "config_sha256": "fd765dce17a9af631d554a56eb34fc455e051dc4f03b861daaf13999e4f6ecc3",
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/source"
+    }
+  ],
+  "required_validation": [
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-validation.json",
+      "sha256": "4b6fbb6ede6b46aaad8705c7ff2238fa071146ecb883a668bb8b5a63d64233ff"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-validation/ant-2x4-ippo.json",
+      "sha256": "ccba46da386f6cfe8f72bbd510b8cb6225cd138442fdf0a910f4c95d63b64882"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-validation/ant-8x1-ippo.json",
+      "sha256": "2d42bd1b34a1798d2b116d78ac4ff2c9b116e1c01bd26dfb88cd59dfd6a452b8"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-validation/walker-2x3-ippo.json",
+      "sha256": "e40f85da05e6df56b3bba3052e974b1c528cb379e4d4649065ed2eee04d11499"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-validation/walker-6x1-ippo.json",
+      "sha256": "e853a184d8b4693626a682bf2314404048d9536cecc3c0d6084d1a39f661cbcc"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/validation.json",
+      "sha256": "9662323605681921e4e4ef0c46684126750846c25621ecd5332489903698d200"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/validation.json",
+      "sha256": "167ac7b05efbe883cd7fe11b39f8a425581de9d36adc715c3cc00e7e4bf76e5f"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/validation.json",
+      "sha256": "af3800c64372de6319bcd2eae1d963f7be33867a46a788919e2f1085d6c14f78"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/validation.json",
+      "sha256": "d5ffd5bf59eb2124a06abff30f468ef3cc44adf8abe76d5564e5d17c1fa12cd7"
+    },
+    {
+      "path": "reports/residual-unit-validation.json",
+      "sha256": "12a59a77b4e17c22a356251a1f09bbb763603fdae3981cf09123a204e01c64ed"
+    },
+    {
+      "path": "reports/residual-native-validation.json",
+      "sha256": "d36472913cb5f79c58b0bc04e8e14d8e86afd07fa59750bc12bc229fffbc9fab"
+    }
+  ],
+  "gpu_families": [
+    "A100",
+    "H100",
+    "H200"
+  ],
+  "hardware_rule": "Use one available supported GPU; record its family. A future DMS comparison on each partition must match that baseline family; different families cannot be treated as exact reruns.",
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "device": "cpu",
+    "deterministic": true,
+    "parameter_updates": 0
+  },
+  "limits": [
+    "Only local-history baselines; no DMS performance claim.",
+    "No held-out training seeds, new objectives, reward changes, or checkpoint selection.",
+    "Native MuJoCo210 compatibility remains distinct from unverified historical binary parity."
+  ],
+  "smoke_scripts_sha256": {
+    "smoke_all.py": "468e1165dd25bb08a79d46ebe9e5ede49a3867f08c9dec1ebc731b1d9004ab1a",
+    "smoke_case.py": "298de2b47998be8214990e1871736d2474cb06cee8474cbe2e62966689faa072",
+    "smoke.sbatch": "e0945c6d2c3abb33353e521724ca20260fe2e52cb6ca912846f1df85deba1244",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "d4ac1c97ef0a3a849d7ec0ab8446f89cc199add64b0dde83243a07e252c627d0",
+    "tests/test_legacy_env.py": "474cd1001cb5200bae5882d708732118c61a03c762c339a8441a554ea57c3dca",
+    "tests/pytest.ini": "8250d20f42b419af40706490ead78aabab9feba93eab09a3f626e3de5256e1f4"
+  },
+  "smoke": {
+    "job_id": "21280525",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-partition-baselines-smoke",
+      "--partition=gpu-h200-141g-ellis,gpu-debug,gpu-a100-80g,gpu-h100-80g",
+      "--gpus=1",
+      "--constraint=ampere|hopper",
+      "--cpus-per-task=1",
+      "--mem=5G",
+      "--time=00:30:00",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke.sbatch"
+    ],
+    "status": "completed_pass",
+    "validation": "runs/development-partition-baselines-3m-seed101/smoke-validation.json",
+    "validation_sha256": "4b6fbb6ede6b46aaad8705c7ff2238fa071146ecb883a668bb8b5a63d64233ff",
+    "completed_accounting": "21280525|COMPLETED|0:0"
+  },
+  "training_gpu_families": [
+    "H100",
+    "H200"
+  ],
+  "runtime_basis": "Existing H100 history32 controls: Walker3x2 2h40, Ant4x2 3h36 for3M. Allow 4h for two-agent partitions, 9h Walker6x1,10h Ant8x1. Native smoke timing recorded before submission.",
+  "validation_gated_submission_job": {
+    "job_id": "21280592",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-partition-baselines-submit",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--dependency=afterok:21280525",
+      "--kill-on-invalid-dep=yes",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/submit.sbatch"
+    ],
+    "submitted_utc": "2026-10-29T09:58:30.627611+00:00"
+  },
+  "native_test_log_sha256": "ea2c0fbc8f7dd31d5b4b19a5aeafcffae77715a274e328313d1e807140c601b3",
+  "scripts_sha256": {
+    "guarded_train.py": "f792f154187180c1a25a7ce2850823338f9dbe0dc86c4f0f3c2f20155aed6963",
+    "train.sbatch": "8dda4f7070a1becd3a743e21f5dc38324fb92d01863d709e381ffdc7b9522418",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "d4ac1c97ef0a3a849d7ec0ab8446f89cc199add64b0dde83243a07e252c627d0",
+    "refresh_status.py": "c5c98e81878f78e6536828b8df8f1b5e1af61df254d05d7e4e495a721ddc6a6b",
+    "collect.sbatch": "ae9f9647b754640e47837bd2a096529c8e2f9e2ddac4a40055a3fc77c6217d72",
+    "submit.py": "868b5a4ab41c5d110afecb2d57331397d432e5063dd8833b06f1f792dc1859c0"
+  },
+  "frozen_after_native_validation_utc": "2026-10-29T10:01:44.474912+00:00",
+  "predeclared_sha256": "1eb3e467e6eb456f39d16e318655c3789215aead85efd513f866b10b9b34323e",
+  "completion_collectors": [
+    {
+      "label": "ant-2x4-ippo",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-partition-baseline-collect-ant-2x4-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280633",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280640\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T10:01:44.824124+00:00",
+      "job_id": "21280640"
+    },
+    {
+      "label": "ant-8x1-ippo",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-partition-baseline-collect-ant-8x1-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280635",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280641\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T10:01:44.844462+00:00",
+      "job_id": "21280641"
+    },
+    {
+      "label": "walker-2x3-ippo",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-partition-baseline-collect-walker-2x3-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280637",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280642\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T10:01:44.865791+00:00",
+      "job_id": "21280642"
+    },
+    {
+      "label": "walker-6x1-ippo",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-partition-baseline-collect-walker-6x1-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280639",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280643\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T10:01:44.887708+00:00",
+      "job_id": "21280643"
+    },
+    {
+      "label": "all",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-partition-baseline-collect-all",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21280632:21280633:21280634:21280635:21280636:21280637:21280638:21280639",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21280644\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T10:01:44.908997+00:00",
+      "job_id": "21280644"
+    }
+  ],
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-29T10:03:44.855313+00:00"
+}

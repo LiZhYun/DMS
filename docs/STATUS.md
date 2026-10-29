@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 09:47 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 10:04 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -205,10 +205,39 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-All four training jobs are queued for H100. Evaluations depend on successful
-training; five collectors record completion automatically. No performance
-result is available for residual fusion yet.
+Walker residual job **21280354** is running on H100 and has completed **64,000
+steps** with finite metrics and active intention gates. Its source, configuration
+and validation guards passed. The other three training jobs remain queued.
+Evaluations depend on successful training; five collectors record completion
+automatically. No fixed-endpoint performance result is available for residual
+fusion yet.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
+
+Four missing primary partitions now have declared local-history IPPO controls:
+Ant **2x4 / 8x1** and Walker **2x3 / 6x1**. They reuse their task's existing
+history-32 settings, training seed 101, a fixed 3M budget and native rewards.
+Ant keeps native contact-force buffers and initial log standard deviation −1;
+Walker keeps −0.5. These controls do not establish DMS performance.
+[Configurations and queue](../reports/development-partition-baselines-3m-seed101.json).
+
+The [native partition validation](../reports/partition-baselines-native-validation.json),
+job **21280525**, passed all **35 environment checks**, four 8,000-step GPU
+training runs, and four saved-source CPU evaluations with unchanged state and
+zero optimizer steps. Guarded submission **21280592** verified the evidence
+and submitted the four fixed-3M controls:
+
+| Partition | Training job | Fixed 100-episode evaluation job |
+| --- | --- | --- |
+| Ant 2x4 | 21280632 | 21280633 |
+| Ant 8x1 | 21280634 | 21280635 |
+| Walker 2x3 | 21280636 | 21280637 |
+| Walker 6x1 | 21280638 | 21280639 |
+
+These controls are queued for H100 or H200. Each actual GPU family is recorded
+and must be matched by that partition's future DMS comparison. Five dependent
+collectors preserve the results automatically. This fills baseline coverage
+while residual DMS remains under test on Walker3x2 and SMAC 8m_vs_9m.
+Held-out seeds remain unused.
 
 The [paired auxiliary-drift probe](../reports/development-walker-history32-soft-update-probe.json),
 job **21272741**, completed twelve ephemeral CPU updates on four archived

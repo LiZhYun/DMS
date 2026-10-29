@@ -1,0 +1,2376 @@
+{
+  "success": true,
+  "job_id": "21280525",
+  "scheduler": "21280525|COMPLETED|0:0|00:06:05|gpu43\n21280592|COMPLETED|0:0|00:00:00|milan32",
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "native_tests_passed": 35,
+  "native_test_log": "runs/development-partition-baselines-3m-seed101/native-tests.out",
+  "native_test_log_sha256": "ea2c0fbc8f7dd31d5b4b19a5aeafcffae77715a274e328313d1e807140c601b3",
+  "evidence": {
+    "runs/development-partition-baselines-3m-seed101/smoke-validation.json": {
+      "sha256": "4b6fbb6ede6b46aaad8705c7ff2238fa071146ecb883a668bb8b5a63d64233ff",
+      "result": {
+        "success": true,
+        "job_id": "21280525",
+        "native_tests": 35,
+        "native_cases": [
+          "ant-2x4-ippo",
+          "ant-8x1-ippo",
+          "walker-2x3-ippo",
+          "walker-6x1-ippo"
+        ],
+        "saved_source_evaluations": [
+          "ant-2x4-ippo",
+          "ant-8x1-ippo",
+          "walker-2x3-ippo",
+          "walker-6x1-ippo"
+        ],
+        "sources_and_checkpoints_guarded": true,
+        "completed_utc": "2026-10-29T10:01:25.409140+00:00"
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-validation/ant-2x4-ippo.json": {
+      "sha256": "ccba46da386f6cfe8f72bbd510b8cb6225cd138442fdf0a910f4c95d63b64882",
+      "result": {
+        "success": true,
+        "label": "ant-2x4-ippo",
+        "job_id": "21280525",
+        "checks": [
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 5.435943603515625e-05
+          },
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 8.630752563476562e-05
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "2x4",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              3,
+              4,
+              5
+            ],
+            [
+              6,
+              7,
+              0,
+              1
+            ]
+          ],
+          "action_dims": [
+            4,
+            4
+          ],
+          "observation_dims": [
+            52,
+            52
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "native",
+          "contact_force_computation": {
+            "mode": "native",
+            "api": null,
+            "after_control_substeps_before_reward": false,
+            "after_reset_before_observation": false,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+            "variant_source_sha256": null,
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          },
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 122,
+            "shape": [
+              2,
+              32,
+              123
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "gpu": "NVIDIA A100-SXM4-80GB",
+        "elapsed_seconds": 42.52712560305372,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 437497344,
+        "config": {
+          "algorithm": "ippo",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "Ant",
+          "ant_contact_forces": "native",
+          "agent_conf": "2x4",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "smac_time_limit_terminal": false,
+          "update_mode": "independent",
+          "total_steps": 8000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "policy_history_length": 32,
+          "initial_log_std": -1.0,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "intention_fusion": "concat",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 8000,
+          "eval_episodes": 2,
+          "eval_seed": 400305,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke/ant-2x4-ippo",
+          "torch_threads": 1
+        }
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-validation/ant-8x1-ippo.json": {
+      "sha256": "2d42bd1b34a1798d2b116d78ac4ff2c9b116e1c01bd26dfb88cd59dfd6a452b8",
+      "result": {
+        "success": true,
+        "label": "ant-8x1-ippo",
+        "job_id": "21280525",
+        "checks": [
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 2.47955322265625e-05
+          },
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 4.673004150390625e-05
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "8x1",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "action_dims": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "observation_dims": [
+            18,
+            21,
+            18,
+            21,
+            18,
+            21,
+            18,
+            21
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "native",
+          "contact_force_computation": {
+            "mode": "native",
+            "api": null,
+            "after_control_substeps_before_reward": false,
+            "after_reset_before_observation": false,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+            "variant_source_sha256": null,
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          },
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 66,
+            "shape": [
+              8,
+              32,
+              67
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "gpu": "NVIDIA A100-SXM4-80GB",
+        "elapsed_seconds": 120.77630072692409,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 853301760,
+        "config": {
+          "algorithm": "ippo",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "Ant",
+          "ant_contact_forces": "native",
+          "agent_conf": "8x1",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "smac_time_limit_terminal": false,
+          "update_mode": "independent",
+          "total_steps": 8000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "policy_history_length": 32,
+          "initial_log_std": -1.0,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "intention_fusion": "concat",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 8000,
+          "eval_episodes": 2,
+          "eval_seed": 400305,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke/ant-8x1-ippo",
+          "torch_threads": 1
+        }
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-validation/walker-2x3-ippo.json": {
+      "sha256": "e40f85da05e6df56b3bba3052e974b1c528cb379e4d4649065ed2eee04d11499",
+      "result": {
+        "success": true,
+        "label": "walker-2x3-ippo",
+        "job_id": "21280525",
+        "checks": [
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 4.291534423828125e-06
+          },
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 1.049041748046875e-05
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 28,
+            "shape": [
+              2,
+              32,
+              29
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "gpu": "NVIDIA A100-SXM4-80GB",
+        "elapsed_seconds": 24.03420738899149,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 149325312,
+        "config": {
+          "algorithm": "ippo",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "Walker2d",
+          "ant_contact_forces": "native",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "smac_time_limit_terminal": false,
+          "update_mode": "independent",
+          "total_steps": 8000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "policy_history_length": 32,
+          "initial_log_std": -0.5,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "intention_fusion": "concat",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 8000,
+          "eval_episodes": 2,
+          "eval_seed": 400305,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke/walker-2x3-ippo",
+          "torch_threads": 1
+        }
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-validation/walker-6x1-ippo.json": {
+      "sha256": "e853a184d8b4693626a682bf2314404048d9536cecc3c0d6084d1a39f661cbcc",
+      "result": {
+        "success": true,
+        "label": "walker-6x1-ippo",
+        "job_id": "21280525",
+        "checks": [
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 1.3828277587890625e-05
+          },
+          {
+            "finite_metrics": true,
+            "actor_and_critic_changed": true,
+            "no_intention_models": true,
+            "old_log_probability_max_error": 4.100799560546875e-05
+          }
+        ],
+        "environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "6x1",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2
+            ],
+            [
+              1
+            ],
+            [
+              0
+            ],
+            [
+              5
+            ],
+            [
+              4
+            ],
+            [
+              3
+            ]
+          ],
+          "action_dims": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "observation_dims": [
+            3,
+            4,
+            4,
+            3,
+            4,
+            4
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 26,
+            "shape": [
+              6,
+              32,
+              27
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "gpu": "NVIDIA A100-SXM4-80GB",
+        "elapsed_seconds": 59.39575311308727,
+        "source_unchanged": true,
+        "peak_gpu_allocated_bytes": 276034048,
+        "config": {
+          "algorithm": "ippo",
+          "env": "mamujoco",
+          "mamujoco_backend": "legacy",
+          "scenario": "Walker2d",
+          "ant_contact_forces": "native",
+          "agent_conf": "6x1",
+          "agent_obsk": 1,
+          "map_name": "3s5z",
+          "seed": 101,
+          "device": "cuda",
+          "num_envs": 4,
+          "parallel_env_steps": false,
+          "mask_inactive_agents": false,
+          "smac_time_limit_terminal": false,
+          "update_mode": "independent",
+          "total_steps": 8000,
+          "rollout_steps": 1000,
+          "epochs": 5,
+          "minibatch_size": 1000,
+          "hidden_dim": 64,
+          "policy_history_length": 32,
+          "initial_log_std": -0.5,
+          "latent_dim": 8,
+          "decoder_history": false,
+          "history_length": 32,
+          "prediction_horizon": 4,
+          "coordination": "soft",
+          "intention_fusion": "concat",
+          "coordination_threshold": 0.6,
+          "short_history": 4,
+          "filter_history": true,
+          "intention_threshold": 10000,
+          "warmup_episodes": 100,
+          "causal_warmup_episodes": 100,
+          "actor_lr": 0.0003,
+          "critic_lr": 0.001,
+          "intention_lr": 0.001,
+          "intention_rl_lr": 0.0,
+          "aux_updates": 2,
+          "aux_batch_size": 64,
+          "kl_beta": 0.1,
+          "latent_samples": 2,
+          "gamma": 0.99,
+          "gae_lambda": 0.95,
+          "clip": 0.2,
+          "value_clip": 0.2,
+          "entropy_coef": 0.0,
+          "value_coef": 0.5,
+          "max_grad_norm": 0.5,
+          "target_kl": 0.02,
+          "eval_every": 8000,
+          "eval_episodes": 2,
+          "eval_seed": 400305,
+          "output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke/walker-6x1-ippo",
+          "torch_threads": 1
+        }
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/validation.json": {
+      "sha256": "9662323605681921e4e4ef0c46684126750846c25621ecd5332489903698d200",
+      "result": {
+        "success": true,
+        "job_id": "21280525",
+        "training_job_id": "21280525",
+        "host": "gpu43.int.triton.aalto.fi",
+        "partition": "gpu-debug",
+        "started_utc": "2026-10-29T09:56:41.916299+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "b8ca9ff85ce75b3b00225b2bf1703490a10ed962721bcced5793e8740ae8da5a",
+        "learner_state_sha256_after": "b8ca9ff85ce75b3b00225b2bf1703490a10ed962721bcced5793e8740ae8da5a",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/evaluate.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/legacy_env.py",
+          "dms.legacy_ant": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/legacy_ant.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": 996.5283357426524,
+          "return_population_std": 5.726942427456379,
+          "return_median": 996.5283357426524,
+          "return_quantiles": {
+            "0": 990.801393315196,
+            "0.01": 990.9159321637452,
+            "0.05": 991.3740875579417,
+            "0.1": 991.9467818006873,
+            "0.25": 993.6648645289242,
+            "0.5": 996.5283357426524,
+            "0.75": 999.3918069563806,
+            "0.9": 1001.1098896846175,
+            "0.95": 1001.6825839273631,
+            "0.99": 1002.1407393215596,
+            "1": 1002.2552781701088
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 0,
+          "return_below1000_episodes": 1,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 1000.0,
+          "episode_length_min": 1000,
+          "episode_length_max": 1000
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": 1002.2552781701088,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "seed": 400306,
+            "return": 990.801393315196,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "checkpoint_sha256": "efc5fe46eb158288595d0665fd26598f57c74d8b6bbcee58250e9cce35e6c43a",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "2x4",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              3,
+              4,
+              5
+            ],
+            [
+              6,
+              7,
+              0,
+              1
+            ]
+          ],
+          "action_dims": [
+            4,
+            4
+          ],
+          "observation_dims": [
+            52,
+            52
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "native",
+          "contact_force_computation": {
+            "mode": "native",
+            "api": null,
+            "after_control_substeps_before_reward": false,
+            "after_reset_before_observation": false,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+            "variant_source_sha256": null,
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          },
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 122,
+            "shape": [
+              2,
+              32,
+              123
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-2x4-ippo/development-evaluation-2.json",
+        "evaluation_output_sha256": "10ca8bce3a70846e2e7d4a4b9111dc158b574da04ff767e9ce4fbe8aac5219d2",
+        "learner_state_unchanged": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 8000,
+              "seed": 400305,
+              "return": 1002.2755307555199,
+              "length": 1000,
+              "battle_won": null
+            },
+            {
+              "steps": 8000,
+              "seed": 400306,
+              "return": 990.563846886158,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "summary": {
+            "episodes": 2,
+            "return_mean": 996.4196888208389,
+            "return_population_std": 5.855841934680939,
+            "return_median": 996.4196888208389,
+            "return_quantiles": {
+              "0": 990.563846886158,
+              "0.01": 990.6809637248516,
+              "0.05": 991.1494310796261,
+              "0.1": 991.7350152730942,
+              "0.25": 993.4917678534985,
+              "0.5": 996.4196888208389,
+              "0.75": 999.3476097881794,
+              "0.9": 1001.1043623685837,
+              "0.95": 1001.6899465620518,
+              "0.99": 1002.1584139168262,
+              "1": 1002.2755307555199
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 1,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 1000.0,
+            "episode_length_min": 1000,
+            "episode_length_max": 1000
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 13.643980928929523,
+        "completed_utc": "2026-10-29T09:56:55.560313+00:00"
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/validation.json": {
+      "sha256": "167ac7b05efbe883cd7fe11b39f8a425581de9d36adc715c3cc00e7e4bf76e5f",
+      "result": {
+        "success": true,
+        "job_id": "21280525",
+        "training_job_id": "21280525",
+        "host": "gpu43.int.triton.aalto.fi",
+        "partition": "gpu-debug",
+        "started_utc": "2026-10-29T09:59:01.178424+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "aadb99fc56b7c0dbeeb2d85c3012fa232e685f553d8b026070c59a0ec6f77e29",
+        "learner_state_sha256_after": "aadb99fc56b7c0dbeeb2d85c3012fa232e685f553d8b026070c59a0ec6f77e29",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/evaluate.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/legacy_env.py",
+          "dms.legacy_ant": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/legacy_ant.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": 998.0112727582455,
+          "return_population_std": 1.0644668638706207,
+          "return_median": 998.0112727582455,
+          "return_quantiles": {
+            "0": 996.9468058943748,
+            "0.01": 996.9680952316522,
+            "0.05": 997.0532525807619,
+            "0.1": 997.159699267149,
+            "0.25": 997.4790393263102,
+            "0.5": 998.0112727582455,
+            "0.75": 998.5435061901808,
+            "0.9": 998.8628462493419,
+            "0.95": 998.9692929357291,
+            "0.99": 999.0544502848387,
+            "1": 999.0757396221161
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 0,
+          "return_below1000_episodes": 2,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 1000.0,
+          "episode_length_min": 1000,
+          "episode_length_max": 1000
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": 996.9468058943748,
+            "length": 1000,
+            "battle_won": null
+          },
+          {
+            "seed": 400306,
+            "return": 999.0757396221161,
+            "length": 1000,
+            "battle_won": null
+          }
+        ],
+        "checkpoint_sha256": "8494436033e69d6d407454d2cbcac120746dfc58d29fa425753c23453bd43d59",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Ant",
+          "native_env_id": "Ant-v2",
+          "agent_conf": "8x1",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel",
+              "cfrc_ext"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "ant.xml",
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2
+            ],
+            [
+              3
+            ],
+            [
+              4
+            ],
+            [
+              5
+            ],
+            [
+              6
+            ],
+            [
+              7
+            ],
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "action_dims": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "observation_dims": [
+            18,
+            21,
+            18,
+            21,
+            18,
+            21,
+            18,
+            21
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "torso_x_velocity + 1 - 0.5*sum(control**2) - 0.0005*sum(clip(contact,-1,1)**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height": [
+              0.2,
+              1.0
+            ]
+          },
+          "frame_skip": 5,
+          "physics_timestep": 0.01,
+          "native_geom_friction": [
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ],
+            [
+              1.0,
+              0.5,
+              0.5
+            ]
+          ],
+          "ant_contact_forces": "native",
+          "contact_force_computation": {
+            "mode": "native",
+            "api": null,
+            "after_control_substeps_before_reward": false,
+            "after_reset_before_observation": false,
+            "observation": "existing graph-local cfrc_ext slots; no new channels or global state",
+            "reward": "unchanged Gym Ant contact penalty reads native force buffer",
+            "variant_source_sha256": null,
+            "gym_ant_source_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+            "gym_do_simulation_source_sha256": "3cfe37a7d4420ea9a573ec73a1aa6025dd808542a9980b99321fba2f5f5f936a",
+            "historical_parity": "unverified; original MuJoCo 2.0 may also omit force computation"
+          },
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 66,
+            "shape": [
+              8,
+              32,
+              67
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-ant-8x1-ippo/development-evaluation-2.json",
+        "evaluation_output_sha256": "d5a6d7f8a3b05325a9a46ab449de3d5ef8ece743ad478a0d94fa7387b9b19568",
+        "learner_state_unchanged": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 8000,
+              "seed": 400305,
+              "return": 996.9255408644676,
+              "length": 1000,
+              "battle_won": null
+            },
+            {
+              "steps": 8000,
+              "seed": 400306,
+              "return": 999.0052799582481,
+              "length": 1000,
+              "battle_won": null
+            }
+          ],
+          "summary": {
+            "episodes": 2,
+            "return_mean": 997.9654104113579,
+            "return_population_std": 1.0398695468902588,
+            "return_median": 997.9654104113579,
+            "return_quantiles": {
+              "0": 996.9255408644676,
+              "0.01": 996.9463382554054,
+              "0.05": 997.0295278191567,
+              "0.1": 997.1335147738457,
+              "0.25": 997.4454756379128,
+              "0.5": 997.9654104113579,
+              "0.75": 998.485345184803,
+              "0.9": 998.79730604887,
+              "0.95": 998.9012930035591,
+              "0.99": 998.9844825673104,
+              "1": 999.0052799582481
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 2,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 1000.0,
+            "episode_length_min": 1000,
+            "episode_length_max": 1000
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 38.34011648106389,
+        "completed_utc": "2026-10-29T09:59:39.518571+00:00"
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/validation.json": {
+      "sha256": "af3800c64372de6319bcd2eae1d963f7be33867a46a788919e2f1085d6c14f78",
+      "result": {
+        "success": true,
+        "job_id": "21280525",
+        "training_job_id": "21280525",
+        "host": "gpu43.int.triton.aalto.fi",
+        "partition": "gpu-debug",
+        "started_utc": "2026-10-29T10:00:08.282911+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "69569640c87b526ee4373993e073fedb6bd61577b2b2df7d5ceef4800d9b7268",
+        "learner_state_sha256_after": "69569640c87b526ee4373993e073fedb6bd61577b2b2df7d5ceef4800d9b7268",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/evaluate.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/legacy_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": 253.98869740962982,
+          "return_population_std": 0.22676175832748413,
+          "return_median": 253.98869740962982,
+          "return_quantiles": {
+            "0": 253.76193565130234,
+            "0.01": 253.76647088646888,
+            "0.05": 253.78461182713508,
+            "0.1": 253.80728800296782,
+            "0.25": 253.87531653046608,
+            "0.5": 253.98869740962982,
+            "0.75": 254.10207828879356,
+            "0.9": 254.17010681629182,
+            "0.95": 254.19278299212456,
+            "0.99": 254.21092393279076,
+            "1": 254.2154591679573
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 0,
+          "return_below1000_episodes": 2,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 138.5,
+          "episode_length_min": 138,
+          "episode_length_max": 139
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": 253.76193565130234,
+            "length": 138,
+            "battle_won": null
+          },
+          {
+            "seed": 400306,
+            "return": 254.2154591679573,
+            "length": 139,
+            "battle_won": null
+          }
+        ],
+        "checkpoint_sha256": "945dae5a625c2b83724254c309c3c934fbe37804aa358041c948afdb6dbf03b6",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "2x3",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2,
+              1,
+              0
+            ],
+            [
+              5,
+              4,
+              3
+            ]
+          ],
+          "action_dims": [
+            3,
+            3
+          ],
+          "observation_dims": [
+            7,
+            7
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 28,
+            "shape": [
+              2,
+              32,
+              29
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-2x3-ippo/development-evaluation-2.json",
+        "evaluation_output_sha256": "8b780101590e99f0a2da3d4b1e0560a24ef22aace51efc7d9bf816430bdb44f3",
+        "learner_state_unchanged": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 8000,
+              "seed": 400305,
+              "return": 253.7741619348526,
+              "length": 138,
+              "battle_won": null
+            },
+            {
+              "steps": 8000,
+              "seed": 400306,
+              "return": 254.2114119529724,
+              "length": 139,
+              "battle_won": null
+            }
+          ],
+          "summary": {
+            "episodes": 2,
+            "return_mean": 253.9927869439125,
+            "return_population_std": 0.218625009059906,
+            "return_median": 253.9927869439125,
+            "return_quantiles": {
+              "0": 253.7741619348526,
+              "0.01": 253.7785344350338,
+              "0.05": 253.7960244357586,
+              "0.1": 253.8178869366646,
+              "0.25": 253.88347443938255,
+              "0.5": 253.9927869439125,
+              "0.75": 254.10209944844246,
+              "0.9": 254.16768695116042,
+              "0.95": 254.18954945206642,
+              "0.99": 254.2070394527912,
+              "1": 254.2114119529724
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 2,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 138.5,
+            "episode_length_min": 138,
+            "episode_length_max": 139
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 4.87601639283821,
+        "completed_utc": "2026-10-29T10:00:13.158958+00:00"
+      }
+    },
+    "runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/validation.json": {
+      "sha256": "d5ffd5bf59eb2124a06abff30f468ef3cc44adf8abe76d5564e5d17c1fa12cd7",
+      "result": {
+        "success": true,
+        "job_id": "21280525",
+        "training_job_id": "21280525",
+        "host": "gpu43.int.triton.aalto.fi",
+        "partition": "gpu-debug",
+        "started_utc": "2026-10-29T10:01:17.331891+00:00",
+        "optimizer_step_calls": 0,
+        "evaluation_calls": 1,
+        "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+        "imported_paths_before": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/evaluate.py"
+        },
+        "archived_evaluator_arguments": [
+          "dms.evaluate",
+          "--checkpoint",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/checkpoint.pt",
+          "--episodes",
+          "2",
+          "--seed",
+          "400305",
+          "--device",
+          "cpu",
+          "--output",
+          "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/development-evaluation-2.json"
+        ],
+        "learner_state_sha256_before": "3287909115a2d3c0ece6acfb4aea00daf61b1565d1f0477dbad3a98dffee573b",
+        "learner_state_sha256_after": "3287909115a2d3c0ece6acfb4aea00daf61b1565d1f0477dbad3a98dffee573b",
+        "imported_paths_after": {
+          "dms": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/__init__.py",
+          "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/envs.py",
+          "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/intention.py",
+          "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/diagnostics.py",
+          "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/distributions.py",
+          "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/recurrent.py",
+          "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/policy.py",
+          "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/parallel.py",
+          "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/returns.py",
+          "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/train.py",
+          "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/evaluate.py",
+          "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/legacy_graph.py",
+          "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/legacy_env.py",
+          "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/snapshot/source/dms/observation_history.py"
+        },
+        "development_summary": {
+          "episodes": 2,
+          "return_mean": 262.63557329773903,
+          "return_population_std": 1.9306412041187286,
+          "return_median": 262.63557329773903,
+          "return_quantiles": {
+            "0": 260.7049320936203,
+            "0.01": 260.74354491770265,
+            "0.05": 260.89799621403216,
+            "0.1": 261.091060334444,
+            "0.25": 261.67025269567966,
+            "0.5": 262.63557329773903,
+            "0.75": 263.6008938997984,
+            "0.9": 264.18008626103403,
+            "0.95": 264.3731503814459,
+            "0.99": 264.5276016777754,
+            "1": 264.56621450185776
+          },
+          "quantile_method": "linear interpolation at(n-1)*q",
+          "negative_return_episodes": 0,
+          "return_below1000_episodes": 2,
+          "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+          "episode_length_mean": 146.5,
+          "episode_length_min": 145,
+          "episode_length_max": 148
+        },
+        "development_episodes": [
+          {
+            "seed": 400305,
+            "return": 260.7049320936203,
+            "length": 145,
+            "battle_won": null
+          },
+          {
+            "seed": 400306,
+            "return": 264.56621450185776,
+            "length": 148,
+            "battle_won": null
+          }
+        ],
+        "checkpoint_sha256": "cca199afa8f367c71a6974a9266199f02496635988175cb6594f9680ee6615bd",
+        "source_sha256": {
+          "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+          "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+          "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+          "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+          "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+          "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+          "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+          "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+          "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+          "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+          "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+          "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+          "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+          "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+          "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+          "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+          "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+          "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+          "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+          "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+        },
+        "environment_matches_training": true,
+        "used_versions_match_training": true,
+        "actual_environment": {
+          "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+          "historical_binary_parity_verified": false,
+          "scenario": "Walker2d",
+          "native_env_id": "Walker2d-v2",
+          "agent_conf": "6x1",
+          "agent_obsk": 1,
+          "k_categories": [
+            [
+              "qpos",
+              "qvel"
+            ],
+            [
+              "qpos"
+            ]
+          ],
+          "global_categories": [],
+          "max_episode_steps": 1000,
+          "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+          "packages": {
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14",
+            "numpy": "1.26.4"
+          },
+          "mujoco_engine_version": 210,
+          "xml_asset": "walker2d.xml",
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+          "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+          "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+          "action_routing": "graph_node_actuator_indices",
+          "control_processing": "clip_native_bounds_before_simulation_and_reward",
+          "action_ids": [
+            [
+              2
+            ],
+            [
+              1
+            ],
+            [
+              0
+            ],
+            [
+              5
+            ],
+            [
+              4
+            ],
+            [
+              3
+            ]
+          ],
+          "action_dims": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "observation_dims": [
+            3,
+            4,
+            4,
+            3,
+            4,
+            4
+          ],
+          "action_sensor": "previous_executed_control_on_observed_joints",
+          "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+          "reward": {
+            "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+            "alive_bonus_on_terminal": true,
+            "healthy_height_open_interval": [
+              0.8,
+              2.0
+            ],
+            "healthy_angle_open_interval": [
+              -1.0,
+              1.0
+            ]
+          },
+          "frame_skip": 4,
+          "physics_timestep": 0.002,
+          "native_geom_friction": [
+            [
+              0.7,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              0.9,
+              0.1,
+              0.1
+            ],
+            [
+              1.9,
+              0.1,
+              0.1
+            ]
+          ],
+          "policy_observation_history": {
+            "length": 32,
+            "base_observation_dim": 26,
+            "shape": [
+              6,
+              32,
+              27
+            ],
+            "validity_channel": "last; exact 0/1; never normalized",
+            "padding": "left zeros; current observation at final slot",
+            "reset": "episode reset",
+            "information": "only this agent's existing local observations"
+          }
+        },
+        "actual_versions": {
+          "torch": "2.6.0+cu126",
+          "numpy": "1.26.4",
+          "protobuf": "6.33.0",
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14"
+        },
+        "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-partition-baselines-3m-seed101/smoke-evaluation-walker-6x1-ippo/development-evaluation-2.json",
+        "evaluation_output_sha256": "4ae6bc19a99cbcfaf24fdceb57804a9558826d6d69fbb96d4bf2bc0e3fa8f99c",
+        "learner_state_unchanged": true,
+        "training_steps": 8000,
+        "training_seed": 101,
+        "deterministic": true,
+        "final_test_seed_block_used": false,
+        "held_out_training_seed_used": false,
+        "original_final_diagnostic": {
+          "episodes": [
+            {
+              "steps": 8000,
+              "seed": 400305,
+              "return": 260.6885576248169,
+              "length": 145,
+              "battle_won": null
+            },
+            {
+              "steps": 8000,
+              "seed": 400306,
+              "return": 264.59131038188934,
+              "length": 148,
+              "battle_won": null
+            }
+          ],
+          "summary": {
+            "episodes": 2,
+            "return_mean": 262.6399340033531,
+            "return_population_std": 1.9513763785362244,
+            "return_median": 262.6399340033531,
+            "return_quantiles": {
+              "0": 260.6885576248169,
+              "0.01": 260.72758515238763,
+              "0.05": 260.8836952626705,
+              "0.1": 261.07883290052416,
+              "0.25": 261.664245814085,
+              "0.5": 262.6399340033531,
+              "0.75": 263.61562219262123,
+              "0.9": 264.2010351061821,
+              "0.95": 264.3961727440357,
+              "0.99": 264.5522828543186,
+              "1": 264.59131038188934
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 2,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 146.5,
+            "episode_length_min": 145,
+            "episode_length_max": 148
+          }
+        },
+        "checkpoint_source_and_original_run_files_unchanged": true,
+        "elapsed_seconds": 7.43363661901094,
+        "completed_utc": "2026-10-29T10:01:24.765561+00:00"
+      }
+    }
+  },
+  "scope": "Native routing/sensor/termination tests; four8000-step GPU IPPO memory controls with finite updates; four2-episode CPU saved-source evaluations with unchanged state and zero optimizer steps. No learning-performance claim.",
+  "collected_utc": "2026-10-29T10:03:44.701396+00:00"
+}
