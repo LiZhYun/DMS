@@ -1,0 +1,482 @@
+{
+  "purpose": "One fresh H200 Walker2x3 IPPO trial testing joint gradient cap10 against the completed cap0.5 baseline; only cap and output change",
+  "created_utc": "2026-10-29T12:45:58.905855+00:00",
+  "status": "submitted_after_native_validation",
+  "artifact": "runs/development-walker-clipping-3m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/source",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "gpu_family": "H200",
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "validation_only": false,
+  "budget": {
+    "steps_per_run": 3000000,
+    "new_training_runs": 1
+  },
+  "runs": [
+    {
+      "label": "walker-ippo",
+      "task": "walker",
+      "algorithm": "ippo",
+      "mode": "joint-clip10",
+      "seed": 101,
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 3000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "concat",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 10.0,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-2x3-ippo-history32-gradclip10-3m-h200-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-walker-2x3-ippo-history32-gradclip10-3m-h200-101",
+      "config": "configs/development/walker-2x3-ippo-history32-gradclip10-3m-h200.json",
+      "frozen_config": "runs/development-walker-clipping-3m-seed101/configs/walker-ippo.json",
+      "comparison_reference_run": "runs/dev-walker-2x3-ippo-history32-3m-101",
+      "comparison_reference_evaluation": "runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/validation.json",
+      "evaluation_spec_template": "runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/spec.json",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "2x3",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            5,
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          3,
+          3
+        ],
+        "observation_dims": [
+          7,
+          7
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 28,
+          "shape": [
+            2,
+            32,
+            29
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 3,
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/source",
+      "changes_from_reference": {
+        "max_grad_norm": [
+          0.5,
+          10.0
+        ],
+        "output": [
+          "runs/dev-walker-2x3-ippo-history32-3m-101",
+          "runs/dev-walker-2x3-ippo-history32-gradclip10-3m-h200-101"
+        ]
+      },
+      "config_sha256": "a20f80c1f60932a287ee6e4ffb73554f262774b794c3c5745401f1c67294d491",
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker-clip-walker-ippo-3m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h200:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=3:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/train.sbatch",
+          "walker-ippo"
+        ],
+        "returncode": 0,
+        "stdout": "21283719\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T12:52:03.915779+00:00",
+        "job_id": "21283719"
+      },
+      "job_id": "21283719",
+      "status": "submitted",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker-clip-walker-ippo-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21283719",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/evaluation-walker-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/evaluation-walker-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/evaluation-walker-ippo/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21283720\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T12:52:03.935469+00:00",
+        "job_id": "21283720",
+        "spec": "runs/development-walker-clipping-3m-seed101/evaluation-walker-ippo/spec.json",
+        "spec_sha256": "829f0f4ab30319acaaec73b92b5ed271d0b34fa8523c2e181adcd32637401b3b",
+        "status": "waiting_for_training",
+        "launcher_sha256": "6c8372e9d1342a77c1a42a1a38a704a52df524d378d11ddb0f5976c5d83cee3f"
+      }
+    }
+  ],
+  "required_validation": [
+    {
+      "path": "runs/development-walker-clipping-3m-seed101/smoke-v2-validation.json",
+      "sha256": "34c64d00aa17a10ca9fa56b494473cbb46da3d2456491bba67f62ab5219a09f0"
+    },
+    {
+      "path": "runs/development-walker-clipping-3m-seed101/smoke-v2-validation/smoke-walker-ippo.json",
+      "sha256": "545958bd9e81ca847e73a747017bb2da222a1a2b645aed386d12f6ec651c4335"
+    },
+    {
+      "path": "runs/development-walker-clipping-3m-seed101/smoke-v2-evaluation-walker-ippo/validation.json",
+      "sha256": "9620665e122ae02b622774a65079e8908ea16cb551d9527477e98847eadc3dbe"
+    },
+    {
+      "path": "reports/development-walker-2x3-clipping-update-probe.json",
+      "sha256": "6a068d8752c9c8a04d3cf561629efe837a13d86ba3622bc779ea6b93aff23324"
+    },
+    {
+      "path": "runs/development-partition-baselines-3m-seed101/evaluation-walker-2x3-ippo/validation.json",
+      "sha256": "91f2718217a13f5801e264ad7363a8d4cdd803ecffda4842ac411c2f43d6423c"
+    },
+    {
+      "path": "reports/partition-baselines-native-validation.json",
+      "sha256": "8fa357b54104fe4a21e25a44e680798a1d219ffd0a8a217865385631fc8a9721"
+    }
+  ],
+  "prior_native_validation": [
+    {
+      "path": "reports/partition-baselines-native-validation.json",
+      "sha256": "8fa357b54104fe4a21e25a44e680798a1d219ffd0a8a217865385631fc8a9721"
+    }
+  ],
+  "selection_evidence": "reports/development-walker-2x3-clipping-update-probe.json",
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "deterministic": true,
+    "parameter_updates": 0,
+    "device": "cpu"
+  },
+  "hypotheses": [
+    "If default clipping limits useful learning, cap10 may improve the fixed-3M return under the same H200 budget.",
+    "Larger parameter steps can instead worsen stability or leave the same local optimum; retain the fixed endpoint regardless of outcome.",
+    "This baseline trial cannot establish a DMS improvement or a causal benefit from intentions."
+  ],
+  "limits": [
+    "One development seed and a shorter-than-final budget.",
+    "Only IPPO is trained in this trial; no auxiliary optimizer is affected.",
+    "The clipping probe shows update sensitivity, not that cap10 is better.",
+    "Launcher numerical settings are preflight observations; the archived trainer subsequently configures deterministic cuDNN."
+  ],
+  "runtime_basis": {
+    "reference_training_job": "21280636",
+    "observed_elapsed": "01:43:21",
+    "allocated_hours": 3,
+    "cpus": 1,
+    "memory": "4G"
+  },
+  "smoke_scripts_sha256": {
+    "guarded_train.py": "11a772269716d3cfebece97615e3e958b39370b8a7e979c0081d552688e8b89b",
+    "train.sbatch": "786c3dffcb421bce53a204c5de932deb726f645dc1222797551a38fbd23751b5",
+    "smoke_all.py": "1bc5e621014ce79439b68e5745c556cffadba5e93121aaf832fcb13b7ffb81d7",
+    "smoke.sbatch": "575f1d140c8a0c8607f5dc9eb5ba3c3f0e3e52c1d0dcf44a1fc8d9b70a289efa",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "6c8372e9d1342a77c1a42a1a38a704a52df524d378d11ddb0f5976c5d83cee3f"
+  },
+  "smoke": {
+    "job_id": "21283575",
+    "status": "completed_pass",
+    "submitted_utc": "2026-10-29T12:46:38.732338+00:00",
+    "predeclared_sha256": "b1c8b38dd307c26784bfdedb331cb7dc3cea2d235c1415b4a505ed799041470f",
+    "validation": "runs/development-walker-clipping-3m-seed101/smoke-v2-validation.json",
+    "validation_sha256": "34c64d00aa17a10ca9fa56b494473cbb46da3d2456491bba67f62ab5219a09f0",
+    "completed_accounting": "21283575|COMPLETED|0:0"
+  },
+  "validation_gated_submission_job": {
+    "job_id": "21283693",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "--job-name=dms-walker-clip-submit",
+      "--partition=batch-milan,batch-csl,batch-skl",
+      "--cpus-per-task=1",
+      "--mem=1G",
+      "--time=00:05:00",
+      "--dependency=afterok:21283575",
+      "--kill-on-invalid-dep=yes",
+      "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.out",
+      "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.err",
+      "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/submit_after_validation.sbatch"
+    ],
+    "submitted_utc": "2026-10-29T12:50:30.036660+00:00",
+    "gate_sha256": "2058bdcbe75e5728a1be11226f6aaf55487a05ca97bcc06ecddf5828533d7d96",
+    "wrapper_sha256": "25a03c4057f190a9270905d84d3cbbb828b980974e01c31324889508096b4bed",
+    "script_sha256": "1b2478ba50605c7cb9e2d54e8efd7cec046f98af85c774e9021cba3e97c231e8"
+  },
+  "scripts_sha256": {
+    "guarded_train.py": "11a772269716d3cfebece97615e3e958b39370b8a7e979c0081d552688e8b89b",
+    "train.sbatch": "786c3dffcb421bce53a204c5de932deb726f645dc1222797551a38fbd23751b5",
+    "evaluation/runner.py": "2f3f27791473c167075a63c4f841ba35f43a3ecc95b1ab5fe7daee23e321c01f",
+    "evaluation/evaluate.sbatch": "6c8372e9d1342a77c1a42a1a38a704a52df524d378d11ddb0f5976c5d83cee3f",
+    "refresh_status.py": "ceb0ea27eef6ab773ec72d5b1eed18d3f669322ed1204b132cf02fdc39e5ddee",
+    "collect.sbatch": "80f3985340b4153291b1766de0e6d93e4abc72ab060b9c914fcacbfcd22d865a",
+    "submit.py": "5b0090c040662af51bb77a2fc2aeef6631bffcaf5ddef252076c86a5d959fa7a"
+  },
+  "frozen_after_native_validation_utc": "2026-10-29T12:52:03.894479+00:00",
+  "predeclared_sha256": "f952df3d57af035e5ada6870852d7831bb888dfb8797d8c0d28ede28ceca4d0a",
+  "completion_collectors": [
+    {
+      "label": "walker-ippo",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-clip-collect-walker-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21283720",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21283721\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T12:52:03.952852+00:00",
+      "job_id": "21283721"
+    },
+    {
+      "label": "all",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-clip-collect-all",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21283719:21283720",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-clipping-3m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21283722\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T12:52:03.969391+00:00",
+      "job_id": "21283722"
+    }
+  ]
+}

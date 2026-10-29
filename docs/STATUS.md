@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 12:28 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 12:53 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -288,6 +288,35 @@ and three collectors. [Launcher evidence](../reports/ant-entropy-launcher-valida
 [Failed attempt](../reports/development-ant-entropy-3m-seed101.json),
 [current retry](../reports/development-ant-entropy-3m-seed101-attempt2.json).
 
+
+The [Walker2x3 clipping probe](../reports/development-walker-2x3-clipping-update-probe.json),
+job **21283451**, replayed one fresh 4,000-transition batch from the completed
+IPPO checkpoint. All variants restore the same model, Adam state, batch and
+update RNG. The instrumented default exactly matches an ordinary update, and
+an independent gradient-vector oracle verifies both clipping scopes.
+
+| Clipping for the temporary update | Calls above the joint cap | Mean actor gradient scale | Policy KL from the updated default |
+| --- | ---: | ---: | ---: |
+| Joint cap 0.5 | 39 / 40 | 0.52320 | 0 |
+| Separate actor/critic caps 0.5 | 39 / 40 before separating | 0.52407 | 0.00000941 |
+| Joint cap 10 | 0 / 40 | 1.00000 | 0.00517321 |
+
+Actor gradients contribute **99.74%** of the default squared norm on average.
+This rejects critic domination on this batch. Separate clipping changes the
+critic more than the actor; increasing the joint cap changes the actor update
+materially. Neither observation establishes a better learning update. This is
+one late checkpoint and one rollout, not independent training replication.
+The original run and source are unchanged.
+
+One [fresh Walker2x3 IPPO cap-10 trial](../reports/development-walker-clipping-3m-seed101.json)
+is declared at **3M steps**, seed **101**, on **H200**, matching the completed
+baseline. Only the cap and output change. Exact-launcher native check
+**21283575** is queued. Dependent submission job **21283693** will require
+its successful completion and all six evidence files before launching training.
+The fixed evaluation uses 100
+episodes, seeds 400101–400200. This is an optimizer-control trial, not a DMS
+candidate or a promoted final setting. The four residual experiments and the
+separate Ant exploration pair remain independent comparisons.
 
 The [learned residual causal-selection check](../reports/residual-causal-native-validation.json)
 passed **27 focused tests** and native H200 validation (**21280847**). Manual
