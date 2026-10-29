@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 13:49 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 13:56 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -29,6 +29,7 @@ are not independent training replicates.
 | SMAC MMM2, 3M, gamma 0.95, H100 | 13/100 wins | 8/100 wins | Both below full-budget target 62.1% |
 | Walker2d 3x2, 10M, no policy memory, CPU | 880.11 | 460.78 | Both below 1,100 target |
 | Walker2d 3x2, 3M, history 32, H100 | 2,322.92 | 391.09 | DMS episodes average only 169.48 steps |
+| Walker2d 3x2, 3M, residual fusion, H100 | 524.26 (trained no-input control) | 636.86 | +112.61 on seed 101; both below 1,100 full-budget target |
 | Ant 4x2, 10M, native contacts, CPU | 964.76 | 950.75 | Both below 1,700 target |
 | Ant 4x2, 10M, computed contacts, CPU | 606.74 | 905.45 | Separate environment adaptation |
 | Ant 4x2, 3M, history 32, native contacts, H100 | 1,055.41 | 1,111.47 | Both below 1,700 target; all episodes last 1,000 steps |
@@ -207,17 +208,19 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-The Walker no-input control **21280356** and its fixed evaluation **21280357**
-have completed. Mean return is **524.26**, mean episode length **188.78**, and
-all 100 episodes end before 1,000 steps. All 750 training updates retain
-auxiliary training with zero peer inputs. The [endpoint audit](../reports/residual-fusion-first-endpoint-20261029.json)
-checks the 3M budget, evaluation seed block, immutable state and zero optimizer
-steps. This remains an ablation, below the full-budget 1,100 target at 3M.
+Both Walker residual-fusion runs, their fixed evaluations and collectors have
+completed. Residual DMS scores **636.86**, versus **524.26** for its trained
+no-input control: **+112.61** on seed 101. Mean episode lengths are **271.54 /
+188.78**, with **98 / 100** episodes ending before 1,000 steps respectively.
+Both remain below the full-budget 1,100 target at this 3M development budget.
+The [pair audit](../reports/residual-walker-results-20261029.json) checks all six
+jobs, the exact evaluation seed blocks, 750 finite training updates per run,
+source and checkpoint hashes, immutable evaluation state and zero optimizer
+steps. No-input training retains auxiliary losses and zero peer gates. This
+positive effect requires replication across training seeds.
 
-Walker residual job **21280354** has completed **3,000,000 steps** in 3h43m35s;
-its separate 100-episode evaluation is running. SMAC residual
-**21280358** has reached **2,160,000 steps** and its no-input control
-**21280360** has reached **1,859,200 steps**. Both SMAC jobs remain running on
+SMAC residual **21280358** has reached **2,406,400 steps** and its no-input control
+**21280360** has reached **2,128,000 steps**. Both SMAC jobs remain running on
 H100 with finite metrics; their fixed evaluations and collectors are queued.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
@@ -309,8 +312,8 @@ hyperparameters remain unchanged. Exact-launcher validation **21282799**
 passed both 8,000-step cases and separate saved-source evaluations, recording
 runtime metadata independently. The retry checked 13 evidence files and
 submitted training **21282828 / 21282830**, fixed evaluations **21282829 / 21282831**,
-and three collectors. Both training jobs are now running on H100, at **372,000**
-IPPO steps and **268,000** DMS steps, with finite metrics. Their fixed evaluations
+and three collectors. Both training jobs are now running on H100, at **684,000**
+IPPO steps and **500,000** DMS steps, with finite metrics. Their fixed evaluations
 remain pending. [Launcher evidence](../reports/ant-entropy-launcher-validation.json).
 [Failed attempt](../reports/development-ant-entropy-3m-seed101.json),
 [current retry](../reports/development-ant-entropy-3m-seed101-attempt2.json).

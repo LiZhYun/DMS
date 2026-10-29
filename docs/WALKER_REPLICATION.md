@@ -1,8 +1,10 @@
 # Walker development replication
 
 The seed-101 Walker3x2 history-32 IPPO control reached a mean return of
-2,322.92, while its residual no-input ablation reached 524.26. Both were trained
-for 3M transitions on H100 and evaluated over seeds 400101–400200. The no-input
+2,322.92, while its residual no-input ablation reached 524.26. After this
+replication was submitted, enabled residual DMS's fixed endpoint completed at
+636.86: a gain of 112.61 over its no-input control. All were trained for 3M
+transitions on H100 and evaluated over seeds 400101–400200. The no-input
 ablation retains auxiliary training; it is not an exact replay of IPPO because
 auxiliary sampling and floating-point clipping arithmetic change the training
 trajectory. [Diagnostic](../reports/residual-no-input-rng-diagnostic.json).
@@ -22,9 +24,12 @@ and fixed 3M budget. Each checkpoint receives a separate 100-episode CPU
 evaluation using seeds 400101–400200 with its saved source. Evaluation performs
 no optimization. No held-out training seeds are used and all outcomes are kept.
 
-The questions are whether the strong IPPO result repeats, whether inferred
-inputs consistently hurt this setting, and whether the ranking changes with
-the training seed. Two development seeds cannot establish final robustness.
+The questions are whether the strong IPPO result repeats, whether the residual
+input effect repeats, and whether the ranking changes with the training seed.
+The initial hypothesis of harmful inputs is not supported by the completed
+seed-101 residual pair; its positive effect now needs replication. The frozen
+predeclaration retains the original hypotheses. Two development seeds cannot
+establish final robustness.
 The 1,100 paper reference is a full-budget target; this shorter experiment
 does not replace the registered final 10M evaluation.
 

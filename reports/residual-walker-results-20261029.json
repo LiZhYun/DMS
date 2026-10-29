@@ -1,0 +1,199 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "created_utc": "2026-10-29T13:55:35.583201+00:00",
+  "scope": "Completed seed-101 Walker residual fusion and no-input pair only; both SMAC endpoints remain pending.",
+  "source_ledger_snapshot": "runs/residual-walker-results-20261029/source-ledger.json",
+  "source_ledger_snapshot_sha256": "f065dd33dc54c8d3f215e1bb6689fec60c7988e47a40e3ae8bf961f8f3ffec9c",
+  "accounting": "21280354|COMPLETED|0:0|03:43:35|gpu48\n21280355|COMPLETED|0:0|00:11:38|milan32\n21280356|COMPLETED|0:0|03:01:44|gpu45\n21280357|COMPLETED|0:0|00:05:01|milan32\n21280362|COMPLETED|0:0|00:00:01|milan32\n21280363|COMPLETED|0:0|00:00:00|milan32",
+  "required_completed_training_evaluation_jobs": [
+    "21280354",
+    "21280355",
+    "21280356",
+    "21280357"
+  ],
+  "collector_jobs": [
+    "21280362",
+    "21280363"
+  ],
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "evaluation_protocol": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "device": "cpu",
+    "optimizer_steps": 0
+  },
+  "runs": [
+    {
+      "label": "walker-residual",
+      "training_job": "21280354",
+      "evaluation_job": "21280355",
+      "output": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "training_steps": 3000000,
+      "training_seed": 101,
+      "training_updates": 750,
+      "training_runtime": {
+        "host": "gpu48.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21280354",
+        "slurm_partition": "gpu-h100-80g",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA H100 80GB HBM3",
+          "capability": [
+            9,
+            0
+          ],
+          "total_memory_bytes": 85017493504,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "all_metrics_finite": true,
+      "auxiliary_training_present": true,
+      "updates_with_positive_peer_inputs": 750,
+      "validation": "runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/validation.json",
+      "validation_sha256": "c15fc09e527d260ae38d9faf76a14cf34e32239b97d23f6200cce63010359623",
+      "checkpoint_sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+      "evaluation_output_sha256": "febd4e4a2d918324a13562c74f8c0c04262f561959ebfff274c24dd7214f86de",
+      "evaluation_summary": {
+        "episodes": 100,
+        "return_mean": 636.864808162665,
+        "return_population_std": 252.44392679220752,
+        "return_median": 605.5213857293129,
+        "return_quantiles": {
+          "0": 278.3662454355508,
+          "0.01": 282.8246859549265,
+          "0.05": 321.12297013625505,
+          "0.1": 404.0023658275604,
+          "0.25": 485.0069731473923,
+          "0.5": 605.5213857293129,
+          "0.75": 674.3845775090158,
+          "0.9": 1000.6006219305099,
+          "0.95": 1144.3541347295045,
+          "0.99": 1536.7000270562926,
+          "1": 1603.2738445401192
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 90,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 271.54,
+        "episode_length_min": 154,
+        "episode_length_max": 1000
+      },
+      "episodes_below1000_steps": 98,
+      "optimizer_step_calls": 0,
+      "learner_and_original_files_unchanged": true
+    },
+    {
+      "label": "walker-no-input",
+      "training_job": "21280356",
+      "evaluation_job": "21280357",
+      "output": "runs/dev-walker-no-input-fusion-3m-h100-101",
+      "training_steps": 3000000,
+      "training_seed": 101,
+      "training_updates": 750,
+      "training_runtime": {
+        "host": "gpu45.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21280356",
+        "slurm_partition": "gpu-h100-80g",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA H100 80GB HBM3",
+          "capability": [
+            9,
+            0
+          ],
+          "total_memory_bytes": 85017493504,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "all_metrics_finite": true,
+      "auxiliary_training_present": true,
+      "updates_with_positive_peer_inputs": 0,
+      "validation": "runs/development-residual-fusion-3m-seed101/evaluation-walker-no-input/validation.json",
+      "validation_sha256": "676b7fd79ec5e67202687e4b1b0a07e66e417ae58e63b897dd846cd7716ed8ab",
+      "checkpoint_sha256": "ec9fa39e21839087af35521b04238137afa7f8da516608c01fe0d7c853fc8aaa",
+      "evaluation_output_sha256": "c90dd952f9d12d646502b3954d0d8c45454048d67f5422cebfb6b9419cd2ce5c",
+      "evaluation_summary": {
+        "episodes": 100,
+        "return_mean": 524.2556688589231,
+        "return_population_std": 82.4493547393076,
+        "return_median": 505.43213518336415,
+        "return_quantiles": {
+          "0": 423.8101804628968,
+          "0.01": 423.90694748312234,
+          "0.05": 431.0048334300518,
+          "0.1": 474.4619576841593,
+          "0.25": 490.61097347177565,
+          "0.5": 505.43213518336415,
+          "0.75": 519.2566128522158,
+          "0.9": 625.4609685331585,
+          "0.95": 712.049244012311,
+          "0.99": 757.2930780925614,
+          "1": 993.0100927054882
+        },
+        "quantile_method": "linear interpolation at(n-1)*q",
+        "negative_return_episodes": 0,
+        "return_below1000_episodes": 100,
+        "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+        "episode_length_mean": 188.78,
+        "episode_length_min": 149,
+        "episode_length_max": 388
+      },
+      "episodes_below1000_steps": 100,
+      "optimizer_step_calls": 0,
+      "learner_and_original_files_unchanged": true
+    }
+  ],
+  "comparison": {
+    "dms_minus_no_input_return_mean": 112.60913930374198,
+    "paired_episode_difference_sample_std": 264.1084899047397,
+    "positive_episode_pairs": 64,
+    "negative_episode_pairs": 36,
+    "training_seed_replicates": 1,
+    "interpretation": "Residual DMS improves on its trained no-input control on this development seed, but neither reaches the full-budget 1100 target at 3M. Episode pairs do not establish training-seed robustness."
+  },
+  "held_out_training_seeds_used": [],
+  "next_evidence": [
+    "Unchanged three-arm Walker development training seed 103, already submitted after native validation.",
+    "Fixed-policy normal/held/masked intention interventions and forecast/peer-removal diagnostics on the completed residual checkpoint."
+  ]
+}

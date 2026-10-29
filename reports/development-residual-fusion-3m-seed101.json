@@ -348,15 +348,972 @@
         "job_id": "21280355",
         "spec": "runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/spec.json",
         "spec_sha256": "382b4398f2291972c53930355904e267e9ab60c53de4e5d5c695cbc4c3fdb4ad",
-        "status": "pending_or_running",
+        "status": "completed_pass",
         "launcher_sha256": "61c1df4faf5a60d9aa5ae267e402ce4897d0a9b8fc91bb3e9629888ff26ba814",
         "scheduler": {
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "exit_code": "0:0",
-          "elapsed": "00:04:46",
+          "elapsed": "00:11:38",
           "node": "milan32"
         },
-        "failure_artifacts": {}
+        "failure_artifacts": {},
+        "validation": "runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/validation.json",
+        "validation_sha256": "c15fc09e527d260ae38d9faf76a14cf34e32239b97d23f6200cce63010359623",
+        "result": {
+          "success": true,
+          "job_id": "21280355",
+          "training_job_id": "21280354",
+          "host": "milan32.int.triton.aalto.fi",
+          "partition": "batch-milan",
+          "started_utc": "2026-10-29T13:42:24.601729+00:00",
+          "optimizer_step_calls": 0,
+          "evaluation_calls": 1,
+          "purpose": "Fixed endpoint development evaluation; no held-out or final-test claim",
+          "imported_paths_before": {
+            "dms": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/__init__.py",
+            "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/envs.py",
+            "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/intention.py",
+            "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/diagnostics.py",
+            "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/distributions.py",
+            "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/recurrent.py",
+            "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/policy.py",
+            "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/parallel.py",
+            "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/returns.py",
+            "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/train.py",
+            "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/evaluate.py"
+          },
+          "archived_evaluator_arguments": [
+            "dms.evaluate",
+            "--checkpoint",
+            "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/checkpoint.pt",
+            "--episodes",
+            "100",
+            "--seed",
+            "400101",
+            "--device",
+            "cpu",
+            "--output",
+            "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/development-evaluation-100.json"
+          ],
+          "learner_state_sha256_before": "4fcd7a0ec97fcd4e57e1b18d49d1cdf482a82527a8f1e6a5e6b49680f510b853",
+          "learner_state_sha256_after": "4fcd7a0ec97fcd4e57e1b18d49d1cdf482a82527a8f1e6a5e6b49680f510b853",
+          "imported_paths_after": {
+            "dms": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/__init__.py",
+            "dms.envs": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/envs.py",
+            "dms.intention": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/intention.py",
+            "dms.diagnostics": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/diagnostics.py",
+            "dms.distributions": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/distributions.py",
+            "dms.recurrent": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/recurrent.py",
+            "dms.policy": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/policy.py",
+            "dms.parallel": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/parallel.py",
+            "dms.returns": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/returns.py",
+            "dms.train": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/train.py",
+            "dms.evaluate": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/evaluate.py",
+            "dms.legacy_graph": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/legacy_graph.py",
+            "dms.legacy_env": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/legacy_env.py",
+            "dms.observation_history": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/snapshot/source/dms/observation_history.py"
+          },
+          "development_summary": {
+            "episodes": 100,
+            "return_mean": 636.864808162665,
+            "return_population_std": 252.44392679220752,
+            "return_median": 605.5213857293129,
+            "return_quantiles": {
+              "0": 278.3662454355508,
+              "0.01": 282.8246859549265,
+              "0.05": 321.12297013625505,
+              "0.1": 404.0023658275604,
+              "0.25": 485.0069731473923,
+              "0.5": 605.5213857293129,
+              "0.75": 674.3845775090158,
+              "0.9": 1000.6006219305099,
+              "0.95": 1144.3541347295045,
+              "0.99": 1536.7000270562926,
+              "1": 1603.2738445401192
+            },
+            "quantile_method": "linear interpolation at(n-1)*q",
+            "negative_return_episodes": 0,
+            "return_below1000_episodes": 90,
+            "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+            "episode_length_mean": 271.54,
+            "episode_length_min": 154,
+            "episode_length_max": 1000
+          },
+          "development_episodes": [
+            {
+              "seed": 400101,
+              "return": 464.0269639492035,
+              "length": 183,
+              "battle_won": null
+            },
+            {
+              "seed": 400102,
+              "return": 494.71899169683456,
+              "length": 189,
+              "battle_won": null
+            },
+            {
+              "seed": 400103,
+              "return": 493.22601824998856,
+              "length": 191,
+              "battle_won": null
+            },
+            {
+              "seed": 400104,
+              "return": 999.4252313375473,
+              "length": 417,
+              "battle_won": null
+            },
+            {
+              "seed": 400105,
+              "return": 404.02830320596695,
+              "length": 161,
+              "battle_won": null
+            },
+            {
+              "seed": 400106,
+              "return": 1011.1791372671723,
+              "length": 525,
+              "battle_won": null
+            },
+            {
+              "seed": 400107,
+              "return": 610.4293587803841,
+              "length": 201,
+              "battle_won": null
+            },
+            {
+              "seed": 400108,
+              "return": 278.3662454355508,
+              "length": 209,
+              "battle_won": null
+            },
+            {
+              "seed": 400109,
+              "return": 778.1112602353096,
+              "length": 280,
+              "battle_won": null
+            },
+            {
+              "seed": 400110,
+              "return": 581.009294629097,
+              "length": 202,
+              "battle_won": null
+            },
+            {
+              "seed": 400111,
+              "return": 573.6247716546059,
+              "length": 234,
+              "battle_won": null
+            },
+            {
+              "seed": 400112,
+              "return": 643.3872567415237,
+              "length": 292,
+              "battle_won": null
+            },
+            {
+              "seed": 400113,
+              "return": 1142.6961559057236,
+              "length": 419,
+              "battle_won": null
+            },
+            {
+              "seed": 400114,
+              "return": 667.0837413668633,
+              "length": 282,
+              "battle_won": null
+            },
+            {
+              "seed": 400115,
+              "return": 510.05884635448456,
+              "length": 179,
+              "battle_won": null
+            },
+            {
+              "seed": 400116,
+              "return": 505.1667945384979,
+              "length": 200,
+              "battle_won": null
+            },
+            {
+              "seed": 400117,
+              "return": 497.88191705942154,
+              "length": 211,
+              "battle_won": null
+            },
+            {
+              "seed": 400118,
+              "return": 1218.224548816681,
+              "length": 515,
+              "battle_won": null
+            },
+            {
+              "seed": 400119,
+              "return": 580.2143328785896,
+              "length": 203,
+              "battle_won": null
+            },
+            {
+              "seed": 400120,
+              "return": 705.3433023691177,
+              "length": 287,
+              "battle_won": null
+            },
+            {
+              "seed": 400121,
+              "return": 564.5328069329262,
+              "length": 194,
+              "battle_won": null
+            },
+            {
+              "seed": 400122,
+              "return": 421.1812868118286,
+              "length": 160,
+              "battle_won": null
+            },
+            {
+              "seed": 400123,
+              "return": 681.4065407514572,
+              "length": 304,
+              "battle_won": null
+            },
+            {
+              "seed": 400124,
+              "return": 637.1444920301437,
+              "length": 246,
+              "battle_won": null
+            },
+            {
+              "seed": 400125,
+              "return": 624.627235352993,
+              "length": 266,
+              "battle_won": null
+            },
+            {
+              "seed": 400126,
+              "return": 1603.2738445401192,
+              "length": 894,
+              "battle_won": null
+            },
+            {
+              "seed": 400127,
+              "return": 616.3336200714111,
+              "length": 208,
+              "battle_won": null
+            },
+            {
+              "seed": 400128,
+              "return": 709.0968039035797,
+              "length": 258,
+              "battle_won": null
+            },
+            {
+              "seed": 400129,
+              "return": 282.8697207076475,
+              "length": 212,
+              "battle_won": null
+            },
+            {
+              "seed": 400130,
+              "return": 1129.4388299584389,
+              "length": 508,
+              "battle_won": null
+            },
+            {
+              "seed": 400131,
+              "return": 590.4564297795296,
+              "length": 201,
+              "battle_won": null
+            },
+            {
+              "seed": 400132,
+              "return": 663.1544753313065,
+              "length": 278,
+              "battle_won": null
+            },
+            {
+              "seed": 400133,
+              "return": 403.7689294219017,
+              "length": 161,
+              "battle_won": null
+            },
+            {
+              "seed": 400134,
+              "return": 611.3250577449799,
+              "length": 234,
+              "battle_won": null
+            },
+            {
+              "seed": 400135,
+              "return": 578.2089929580688,
+              "length": 204,
+              "battle_won": null
+            },
+            {
+              "seed": 400136,
+              "return": 486.27990305423737,
+              "length": 235,
+              "battle_won": null
+            },
+            {
+              "seed": 400137,
+              "return": 393.0084398984909,
+              "length": 169,
+              "battle_won": null
+            },
+            {
+              "seed": 400138,
+              "return": 666.5793572068214,
+              "length": 281,
+              "battle_won": null
+            },
+            {
+              "seed": 400139,
+              "return": 481.188183426857,
+              "length": 189,
+              "battle_won": null
+            },
+            {
+              "seed": 400140,
+              "return": 611.9205473065376,
+              "length": 249,
+              "battle_won": null
+            },
+            {
+              "seed": 400141,
+              "return": 519.596357524395,
+              "length": 200,
+              "battle_won": null
+            },
+            {
+              "seed": 400142,
+              "return": 1096.6752189993858,
+              "length": 454,
+              "battle_won": null
+            },
+            {
+              "seed": 400143,
+              "return": 771.3468806147575,
+              "length": 295,
+              "battle_won": null
+            },
+            {
+              "seed": 400144,
+              "return": 600.6134126782417,
+              "length": 194,
+              "battle_won": null
+            },
+            {
+              "seed": 400145,
+              "return": 641.3730961382389,
+              "length": 325,
+              "battle_won": null
+            },
+            {
+              "seed": 400146,
+              "return": 827.9309795498848,
+              "length": 379,
+              "battle_won": null
+            },
+            {
+              "seed": 400147,
+              "return": 441.135708630085,
+              "length": 162,
+              "battle_won": null
+            },
+            {
+              "seed": 400148,
+              "return": 498.9275393486023,
+              "length": 191,
+              "battle_won": null
+            },
+            {
+              "seed": 400149,
+              "return": 905.2655667066574,
+              "length": 368,
+              "battle_won": null
+            },
+            {
+              "seed": 400150,
+              "return": 642.3094696998596,
+              "length": 221,
+              "battle_won": null
+            },
+            {
+              "seed": 400151,
+              "return": 487.80298084020615,
+              "length": 210,
+              "battle_won": null
+            },
+            {
+              "seed": 400152,
+              "return": 640.404857635498,
+              "length": 212,
+              "battle_won": null
+            },
+            {
+              "seed": 400153,
+              "return": 467.7854610681534,
+              "length": 169,
+              "battle_won": null
+            },
+            {
+              "seed": 400154,
+              "return": 511.3965569138527,
+              "length": 183,
+              "battle_won": null
+            },
+            {
+              "seed": 400155,
+              "return": 455.72559982538223,
+              "length": 166,
+              "battle_won": null
+            },
+            {
+              "seed": 400156,
+              "return": 1320.1176090205554,
+              "length": 1000,
+              "battle_won": null
+            },
+            {
+              "seed": 400157,
+              "return": 425.51558685302734,
+              "length": 168,
+              "battle_won": null
+            },
+            {
+              "seed": 400158,
+              "return": 741.2888011932373,
+              "length": 296,
+              "battle_won": null
+            },
+            {
+              "seed": 400159,
+              "return": 933.5388456583023,
+              "length": 364,
+              "battle_won": null
+            },
+            {
+              "seed": 400160,
+              "return": 668.7496572136879,
+              "length": 271,
+              "battle_won": null
+            },
+            {
+              "seed": 400161,
+              "return": 487.4576373100281,
+              "length": 191,
+              "battle_won": null
+            },
+            {
+              "seed": 400162,
+              "return": 1175.8557323813438,
+              "length": 499,
+              "battle_won": null
+            },
+            {
+              "seed": 400163,
+              "return": 745.6800727844238,
+              "length": 273,
+              "battle_won": null
+            },
+            {
+              "seed": 400164,
+              "return": 296.70151676237583,
+              "length": 199,
+              "battle_won": null
+            },
+            {
+              "seed": 400165,
+              "return": 322.4083097875118,
+              "length": 210,
+              "battle_won": null
+            },
+            {
+              "seed": 400166,
+              "return": 454.354694545269,
+              "length": 170,
+              "battle_won": null
+            },
+            {
+              "seed": 400167,
+              "return": 284.7420456241816,
+              "length": 217,
+              "battle_won": null
+            },
+            {
+              "seed": 400168,
+              "return": 580.8608373403549,
+              "length": 241,
+              "battle_won": null
+            },
+            {
+              "seed": 400169,
+              "return": 471.78428143262863,
+              "length": 167,
+              "battle_won": null
+            },
+            {
+              "seed": 400170,
+              "return": 672.0439230948687,
+              "length": 410,
+              "battle_won": null
+            },
+            {
+              "seed": 400171,
+              "return": 737.7793674468994,
+              "length": 321,
+              "battle_won": null
+            },
+            {
+              "seed": 400172,
+              "return": 400.72533655166626,
+              "length": 163,
+              "battle_won": null
+            },
+            {
+              "seed": 400173,
+              "return": 487.3666689991951,
+              "length": 199,
+              "battle_won": null
+            },
+            {
+              "seed": 400174,
+              "return": 442.11650562286377,
+              "length": 170,
+              "battle_won": null
+            },
+            {
+              "seed": 400175,
+              "return": 998.2754991799593,
+              "length": 516,
+              "battle_won": null
+            },
+            {
+              "seed": 400176,
+              "return": 573.4737973809242,
+              "length": 226,
+              "battle_won": null
+            },
+            {
+              "seed": 400177,
+              "return": 924.0013462305069,
+              "length": 366,
+              "battle_won": null
+            },
+            {
+              "seed": 400178,
+              "return": 431.45589631795883,
+              "length": 169,
+              "battle_won": null
+            },
+            {
+              "seed": 400179,
+              "return": 620.5868204832077,
+              "length": 215,
+              "battle_won": null
+            },
+            {
+              "seed": 400180,
+              "return": 558.3587597608566,
+              "length": 237,
+              "battle_won": null
+            },
+            {
+              "seed": 400181,
+              "return": 1111.2118200659752,
+              "length": 465,
+              "battle_won": null
+            },
+            {
+              "seed": 400182,
+              "return": 489.87915927171707,
+              "length": 211,
+              "battle_won": null
+            },
+            {
+              "seed": 400183,
+              "return": 614.8113543391228,
+              "length": 218,
+              "battle_won": null
+            },
+            {
+              "seed": 400184,
+              "return": 637.8256887793541,
+              "length": 216,
+              "battle_won": null
+            },
+            {
+              "seed": 400185,
+              "return": 612.8436481356621,
+              "length": 251,
+              "battle_won": null
+            },
+            {
+              "seed": 400186,
+              "return": 426.16304183006287,
+              "length": 165,
+              "battle_won": null
+            },
+            {
+              "seed": 400187,
+              "return": 641.2778031229973,
+              "length": 250,
+              "battle_won": null
+            },
+            {
+              "seed": 400188,
+              "return": 506.2671877145767,
+              "length": 196,
+              "battle_won": null
+            },
+            {
+              "seed": 400189,
+              "return": 627.4399489760399,
+              "length": 208,
+              "battle_won": null
+            },
+            {
+              "seed": 400190,
+              "return": 627.275733590126,
+              "length": 211,
+              "battle_won": null
+            },
+            {
+              "seed": 400191,
+              "return": 427.9535464644432,
+              "length": 154,
+              "battle_won": null
+            },
+            {
+              "seed": 400192,
+              "return": 631.971912920475,
+              "length": 248,
+              "battle_won": null
+            },
+            {
+              "seed": 400193,
+              "return": 1536.0275642534252,
+              "length": 1000,
+              "battle_won": null
+            },
+            {
+              "seed": 400194,
+              "return": 393.8105317950249,
+              "length": 160,
+              "battle_won": null
+            },
+            {
+              "seed": 400195,
+              "return": 681.9088709354401,
+              "length": 247,
+              "battle_won": null
+            },
+            {
+              "seed": 400196,
+              "return": 633.1859903931618,
+              "length": 213,
+              "battle_won": null
+            },
+            {
+              "seed": 400197,
+              "return": 425.10975432395935,
+              "length": 193,
+              "battle_won": null
+            },
+            {
+              "seed": 400198,
+              "return": 619.9086428284645,
+              "length": 266,
+              "battle_won": null
+            },
+            {
+              "seed": 400199,
+              "return": 288.97907143458724,
+              "length": 214,
+              "battle_won": null
+            },
+            {
+              "seed": 400200,
+              "return": 575.1023402810097,
+              "length": 250,
+              "battle_won": null
+            }
+          ],
+          "checkpoint_sha256": "6041114787e63894d2d99a5c7cca3baf7e726a239a90ecdbe9dea18a59c901be",
+          "source_sha256": {
+            "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+            "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+            "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+            "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+            "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+            "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+            "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+            "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+            "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+            "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+            "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+            "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+            "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+            "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+            "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+            "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+            "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+            "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+            "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+            "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+          },
+          "environment_matches_training": true,
+          "used_versions_match_training": true,
+          "actual_environment": {
+            "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+            "historical_binary_parity_verified": false,
+            "scenario": "Walker2d",
+            "native_env_id": "Walker2d-v2",
+            "agent_conf": "3x2",
+            "agent_obsk": 1,
+            "k_categories": [
+              [
+                "qpos",
+                "qvel"
+              ],
+              [
+                "qpos"
+              ]
+            ],
+            "global_categories": [],
+            "max_episode_steps": 1000,
+            "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+            "packages": {
+              "gym": "0.23.1",
+              "mujoco-py": "2.1.2.14",
+              "numpy": "1.26.4"
+            },
+            "mujoco_engine_version": 210,
+            "xml_asset": "walker2d.xml",
+            "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+            "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+            "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+            "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+            "action_routing": "graph_node_actuator_indices",
+            "control_processing": "clip_native_bounds_before_simulation_and_reward",
+            "action_ids": [
+              [
+                2,
+                1
+              ],
+              [
+                0,
+                5
+              ],
+              [
+                4,
+                3
+              ]
+            ],
+            "action_dims": [
+              2,
+              2,
+              2
+            ],
+            "observation_dims": [
+              5,
+              7,
+              6
+            ],
+            "action_sensor": "previous_executed_control_on_observed_joints",
+            "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+            "reward": {
+              "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+              "alive_bonus_on_terminal": true,
+              "healthy_height_open_interval": [
+                0.8,
+                2.0
+              ],
+              "healthy_angle_open_interval": [
+                -1.0,
+                1.0
+              ]
+            },
+            "frame_skip": 4,
+            "physics_timestep": 0.002,
+            "native_geom_friction": [
+              [
+                0.7,
+                0.1,
+                0.1
+              ],
+              [
+                0.9,
+                0.1,
+                0.1
+              ],
+              [
+                0.9,
+                0.1,
+                0.1
+              ],
+              [
+                0.9,
+                0.1,
+                0.1
+              ],
+              [
+                0.9,
+                0.1,
+                0.1
+              ],
+              [
+                0.9,
+                0.1,
+                0.1
+              ],
+              [
+                0.9,
+                0.1,
+                0.1
+              ],
+              [
+                1.9,
+                0.1,
+                0.1
+              ]
+            ],
+            "policy_observation_history": {
+              "length": 32,
+              "base_observation_dim": 29,
+              "shape": [
+                3,
+                32,
+                30
+              ],
+              "validity_channel": "last; exact 0/1; never normalized",
+              "padding": "left zeros; current observation at final slot",
+              "reset": "episode reset",
+              "information": "only this agent's existing local observations"
+            }
+          },
+          "actual_versions": {
+            "torch": "2.6.0+cu126",
+            "numpy": "1.26.4",
+            "protobuf": "6.33.0",
+            "gym": "0.23.1",
+            "mujoco-py": "2.1.2.14"
+          },
+          "evaluation_output": "/scratch/work/liz23/reproduce/dms/runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/development-evaluation-100.json",
+          "evaluation_output_sha256": "febd4e4a2d918324a13562c74f8c0c04262f561959ebfff274c24dd7214f86de",
+          "learner_state_unchanged": true,
+          "training_steps": 3000000,
+          "training_seed": 101,
+          "deterministic": true,
+          "final_test_seed_block_used": false,
+          "held_out_training_seed_used": false,
+          "original_final_diagnostic": {
+            "episodes": [
+              {
+                "steps": 3000000,
+                "seed": 10001,
+                "return": 647.9704803228378,
+                "length": 225,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10002,
+                "return": 542.9279586076736,
+                "length": 190,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10003,
+                "return": 656.3429506421089,
+                "length": 226,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10004,
+                "return": 445.7742339372635,
+                "length": 178,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10005,
+                "return": 552.3038113117218,
+                "length": 211,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10006,
+                "return": 704.7077978253365,
+                "length": 292,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10007,
+                "return": 731.5391345024109,
+                "length": 239,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10008,
+                "return": 645.905390381813,
+                "length": 215,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10009,
+                "return": 644.1551897525787,
+                "length": 297,
+                "battle_won": null
+              },
+              {
+                "steps": 3000000,
+                "seed": 10010,
+                "return": 640.8312358856201,
+                "length": 214,
+                "battle_won": null
+              }
+            ],
+            "summary": {
+              "episodes": 10,
+              "return_mean": 621.2458183169365,
+              "return_population_std": 80.16858527804283,
+              "return_median": 645.0302900671959,
+              "return_quantiles": {
+                "0": 445.7742339372635,
+                "0.01": 454.5180691576004,
+                "0.05": 489.49341003894807,
+                "0.1": 533.2125861406327,
+                "0.25": 574.4356674551964,
+                "0.5": 645.0302900671959,
+                "0.75": 654.2498330622911,
+                "0.9": 707.3909314930439,
+                "0.95": 719.4650329977273,
+                "0.99": 729.1243142014741,
+                "1": 731.5391345024109
+              },
+              "quantile_method": "linear interpolation at(n-1)*q",
+              "negative_return_episodes": 0,
+              "return_below1000_episodes": 10,
+              "tail_count_note": "Zero and1000 are descriptive cutoffs, not paper or acceptance thresholds.",
+              "episode_length_mean": 228.7,
+              "episode_length_min": 178,
+              "episode_length_max": 297
+            }
+          },
+          "checkpoint_source_and_original_run_files_unchanged": true,
+          "elapsed_seconds": 693.9626078960719,
+          "completed_utc": "2026-10-29T13:53:58.564415+00:00"
+        }
       },
       "scheduler": {
         "training": {
@@ -366,9 +1323,9 @@
           "node": "gpu48"
         },
         "evaluation": {
-          "state": "RUNNING",
+          "state": "COMPLETED",
           "exit_code": "0:0",
-          "elapsed": "00:04:46",
+          "elapsed": "00:11:38",
           "node": "milan32"
         }
       }
@@ -1836,7 +2793,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "03:26:11",
+          "elapsed": "03:35:23",
           "node": "gpu45"
         },
         "evaluation": {
@@ -2073,7 +3030,7 @@
         "training": {
           "state": "RUNNING",
           "exit_code": "0:0",
-          "elapsed": "02:55:11",
+          "elapsed": "03:04:23",
           "node": "gpu47"
         },
         "evaluation": {
@@ -3239,5 +4196,5 @@
     }
   ],
   "all_evaluations_succeeded": false,
-  "last_refresh_utc": "2026-10-29T13:47:08.794337+00:00"
+  "last_refresh_utc": "2026-10-29T13:56:20.741685+00:00"
 }

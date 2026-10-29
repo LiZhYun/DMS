@@ -63,14 +63,21 @@ selected by evaluation return.
 
 The [queue ledger](../reports/development-residual-fusion-3m-seed101.json) records training jobs 21280354/56/58/60 and dependent fixed-checkpoint evaluations.
 
-The first completed endpoint is the **Walker no-input ablation**, with mean
-return **524.26** and mean episode length **188.78** over 100 episodes. All
-episodes end before 1,000 steps. All 750 training updates have zero peer gates
-and retain auxiliary training. Evaluation uses the frozen 3M checkpoint, has
-zero optimizer steps, and leaves source and learner state unchanged.
-[Endpoint audit](../reports/residual-fusion-first-endpoint-20261029.json).
-This is below the full-budget 1,100 reference at the shorter 3M budget and is
-not an intention-enabled DMS result. The other three endpoints remain pending.
+Both Walker endpoints have completed:
+
+| Fixed 3M policy | Mean return | Mean episode length | Episodes below 1,000 steps |
+| --- | ---: | ---: | ---: |
+| Residual DMS | 636.86 | 271.54 | 98 / 100 |
+| Trained no-input ablation | 524.26 | 188.78 | 100 / 100 |
+
+Residual DMS gains **112.61** over its no-input control on training seed 101.
+Both remain below the full-budget 1,100 reference at this shorter 3M budget,
+and below the earlier IPPO result of 2,322.92. The [pair audit](../reports/residual-walker-results-20261029.json)
+verifies both training/evaluation jobs and collectors, exact seed blocks,
+source and checkpoint hashes, unchanged evaluation state and zero optimizer
+steps. Both have 750 finite training updates with auxiliary losses; the
+no-input control has zero peer gates throughout. The two SMAC endpoints remain
+pending. This single-seed result does not establish robust benefit.
 
 A [paired update diagnostic](../reports/residual-no-input-rng-diagnostic.json)
 checks why this ablation is not an exact same-seed IPPO replay. From fresh,
