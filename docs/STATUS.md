@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 10:38 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 10:56 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -205,11 +205,12 @@ and submitted the paired fixed-3M H100 experiments:
 | Walker3x2, history 32 | 21280354 | 21280356 | 21280355 / 21280357 |
 | SMAC 8m_vs_9m, history 16, gamma 0.95 | 21280358 | 21280360 | 21280359 / 21280361 |
 
-Walker residual job **21280354** has reached **512,000 steps** and its
-trained no-input control **21280356** has reached **532,000 steps**, both on
+Walker residual job **21280354** has reached **764,000 steps** and its
+trained no-input control **21280356** has reached **840,000 steps**, both on
 H100. Metrics remain finite; their recent throughputs project approximately
-3.78 and 3.06 training hours within the 5-hour allocations. SMAC residual
-**21280358** has reached **182,400 steps** with finite metrics; its no-input control is queued. Evaluations
+3.78 and 3.07 training hours within the 5-hour allocations. SMAC residual
+**21280358** has reached **390,400 steps** and its no-input control
+**21280360** has reached **28,800 steps**, both on H100 with finite metrics. Evaluations
 and collectors remain dependent on completion. No fixed-endpoint performance
 result is available for residual fusion yet.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
@@ -234,9 +235,11 @@ and submitted the four fixed-3M controls:
 | Walker 2x3 | 21280636 | 21280637 |
 | Walker 6x1 | 21280638 | 21280639 |
 
-Ant 2x4 **21280632** is running on H200 and has reached **568,000 steps**
-with finite metrics; recent throughput projects about 1.91 training hours
-within its 4-hour allocation. The other controls remain queued. Each actual
+Ant 2x4 **21280632** is running on H200 and has reached **1,040,000 steps**
+with finite metrics; recent throughput projects about 1.95 training hours
+within its 4-hour allocation. Walker 2x3 **21280636** is also running on H200,
+at **544,000 steps**, with a 1.73-hour projection. Ant 8x1 and Walker 6x1 remain
+queued. Each actual
 GPU family is recorded and must be matched by that partition's future DMS comparison. Five dependent
 collectors preserve the results automatically. This fills baseline coverage
 while residual DMS remains under test on Walker3x2 and SMAC 8m_vs_9m.
@@ -404,7 +407,19 @@ four CUDA training/checkpoint smokes, saved-source evaluation and scheduler
 visibility checks on A100 (jobs **21215121 / 21215206**). Other hosts, other
 GPU models for this image and exact original MuJoCo 2.0 parity remain unverified.
 [CPU evidence](../reports/legacy-container-validation.json),
-[CUDA evidence](../reports/legacy-cuda-container-validation.json). A [native public-trainer comparison](../reports/native-public-trainer-bridge.json),
+[CUDA evidence](../reports/legacy-cuda-container-validation.json).
+
+The separate [MuJoCo 2.0 audit](MUJOCO200_COMPARISON.md) now runs the original
+repository's Gym 0.17.2 / mujoco-py 2.0.2.8 pins. Build **21281422** and
+comparison **21281466** passed. All **129 dynamics arrays** match the 210
+compatibility runtime exactly across fifteen fixed-input trajectories.
+Changing Gym changes all **30 native same-seed reset arrays**; explicitly
+matched initial states remove this confound. Native Ant contact buffers are
+zero under both engines. This narrows the runtime gap without proving full
+training or accepted-paper parity. A verified local archive preserves all
+captures, code and logs. [Evidence](../reports/mujoco200-runtime-comparison.json).
+
+A [native public-trainer comparison](../reports/native-public-trainer-bridge.json),
 job **21218446**, passed four native 8,000-step runs comparing the public source
 with the older winning CPU trainer. Both IPPO and active DMS exactly matched
 parameters, buffers, optimizer states, RNG, common metrics and evaluation episodes.

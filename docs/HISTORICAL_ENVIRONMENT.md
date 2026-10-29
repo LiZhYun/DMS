@@ -4,6 +4,12 @@ The repository provides a tested **modern adaptation** and a separate **historic
 
 The tested Python 3.10 / Gym 0.23.1 / MuJoCo 2.1.0 combination is a compatibility track. The original repository pins older versions, and the manuscript does not provide a complete environment lock. Exceeding a target under v5 alone cannot satisfy the historical-performance acceptance gate.
 
+A [controlled MuJoCo 2.0 comparison](MUJOCO200_COMPARISON.md) now runs the original
+Gym/binding versions in a separate environment. All 129 dynamics arrays match
+the 2.1 compatibility stack exactly across fifteen fixed-input trajectories.
+Native same-seed reset states differ between Gym versions. This narrows the
+version gap without establishing full training or accepted-paper parity.
+
 ## Source provenance
 
 The reference checkout is `LiZhYun/DMS` commit `ed94ab0795d794f8bf43cab54ec4737f33319af3`.
@@ -68,7 +74,7 @@ MuJoCo binary release 2.1.0 (mujoco210)
 
 The build uses `setuptools==68.2.2`, retaining the distutils API. Cython remains below 3 for the unmodified historical extension; NumPy 1.26 avoids importing the old extension against NumPy 2. Gym 0.23.1 avoids introducing the additional Gym 0.24 migration changes. The successful runtime is a compatibility stack, not the paper's older pinned Gym/binding stack.
 
-`mujoco-py` is only the binding; supply the engine separately from the [official MuJoCo 2.1.0 release](https://github.com/google-deepmind/mujoco/releases/tag/2.1.0), record its archive checksum, and set `MUJOCO_PY_MUJOCO_PATH` to its local directory. Version 2.1 removed the engine's license manager, which makes this track more practical than a literal reconstruction of older binary dependencies. This does not prove physics equivalence to MuJoCo 2.0.
+`mujoco-py` is only the binding; supply the engine separately from the [official MuJoCo 2.1.0 release](https://github.com/google-deepmind/mujoco/releases/tag/2.1.0), record its archive checksum, and set `MUJOCO_PY_MUJOCO_PATH` to its local directory. Version 2.1 removed the engine's license manager. Older releases now have an [official free activation key](https://www.roboti.us/license.html), used by our separate [2.0 diagnostic](MUJOCO200_COMPARISON.md). The production compatibility runtime remains pinned to 2.1.
 
 The tagged binding's [requirements file](https://raw.githubusercontent.com/openai/mujoco-py/v2.1.2.14/requirements.txt) additionally requires GLFW, imageio, cffi, and fasteners. Exact tested dependency pins are in `scripts/legacy/bootstrap.sh`, and downloaded artifact hashes are recorded in `.cache/legacy/artifacts.json`. No TensorFlow, Ray, old DMS training code, or full legacy requirements file is needed for this backend.
 

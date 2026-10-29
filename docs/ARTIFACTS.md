@@ -1,5 +1,16 @@
 # Local development artifacts
 
+## MuJoCo 2.0 runtime comparison
+
+The [verified runtime-audit archive](../reports/mujoco200-runtime-comparison.json)
+is `dist/dms-mujoco200-audit-20261029.zip`: **5,170,737 bytes**, **62 payloads**,
+SHA-256 `cb5942ab90a3cd1dde4a85002193f22c125aef131a3fb13c098c731d79d48f3a`.
+It preserves four fixed-input simulator captures, source snapshots, scripts,
+logs and hashes. Every payload was read back and verified. Engine binaries,
+activation keys and Python environments are excluded. The
+[comparison](MUJOCO200_COMPARISON.md) tests runtime behavior, not performance.
+There is no public download URL.
+
 ## Walker and SMAC conditioning controls
 
 The [verified twelve-run archive](../reports/development-conditioning-artifacts-v2.json)

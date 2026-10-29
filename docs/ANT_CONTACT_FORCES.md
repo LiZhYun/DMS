@@ -29,9 +29,12 @@ invocation depends on force- or acceleration-related sensors. The installed Gym
 0.23.1 Ant XML has no such sensors, and its `do_simulation` does not explicitly
 invoke that function.
 
-The original DMS requirements pin mujoco-py 2.0.2.8. That generation may have the
-same behavior. Consequently, computing forces must not silently replace the
-historical track or be described as restoring an established paper result.
+The original DMS requirements pin mujoco-py 2.0.2.8. The separate
+[MuJoCo 2.0 comparison](MUJOCO200_COMPARISON.md) now confirms zero native contact
+buffers throughout three 128-control trajectories with those bindings and Gym
+0.17.2. Explicitly computed forces are nonzero and match engine 210 exactly.
+Consequently, computing forces must not silently replace the historical track
+or be described as restoring an established paper result.
 
 ## Measured native diagnostic
 

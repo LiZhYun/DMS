@@ -1,0 +1,1480 @@
+{
+  "status": "passed",
+  "created_utc": "2026-10-29T10:54:30.235146+00:00",
+  "purpose": "Historical runtime audit, not learning performance or exact accepted-paper reconstruction",
+  "build_job": "21281422",
+  "comparison_job": "21281466",
+  "archive_job": "21281505",
+  "accounting": [
+    "21281422|COMPLETED|0:0|00:01:13|milan2",
+    "21281466|COMPLETED|0:0|00:00:26|milan32"
+  ],
+  "smoke": {
+    "status": "passed",
+    "purpose": "Runtime feasibility, not paper parity or performance",
+    "job_id": "21281422",
+    "host": "milan2.int.triton.aalto.fi",
+    "python": "3.10.19",
+    "engine_version": 200,
+    "versions": {
+      "gym": "0.17.2",
+      "mujoco-py": "2.0.2.8",
+      "numpy": "1.26.4",
+      "Cython": "0.29.37",
+      "setuptools": "68.2.2",
+      "cffi": "1.17.1",
+      "fasteners": "0.19",
+      "glfw": "2.9.0",
+      "imageio": "2.37.0",
+      "cloudpickle": "1.3.0",
+      "pyglet": "1.5.0",
+      "scipy": "1.15.2"
+    },
+    "module_paths": {
+      "gym": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/venv/lib/python3.10/site-packages/gym/__init__.py",
+      "mujoco_py": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/venv/lib/python3.10/site-packages/mujoco_py/__init__.py"
+    },
+    "cases": [
+      {
+        "task": "HalfCheetah-v2",
+        "steps": 32,
+        "reward_sum": 0.04260940548632103,
+        "repeat_seed_exact": true
+      },
+      {
+        "task": "Ant-v2",
+        "steps": 32,
+        "reward_sum": 34.693120889595214,
+        "repeat_seed_exact": true
+      },
+      {
+        "task": "Walker2d-v2",
+        "steps": 32,
+        "reward_sum": 31.286896209913255,
+        "repeat_seed_exact": true
+      }
+    ],
+    "license": {
+      "source": "https://www.roboti.us/license.html",
+      "activation": "official freely available unlocked key; normal binding activation"
+    },
+    "limits": [
+      "Build dependency versions differ from the repository requirements.",
+      "Exact accepted-paper environment was not fully recorded.",
+      "No learner or public adapter was run."
+    ]
+  },
+  "hypotheses": [
+    "Gym seed handling differs even when XML and dynamics agree.",
+    "Engine/binding differences may change dynamics from matched states and controls.",
+    "Native Ant contact buffers may be zero under the original repository pins too."
+  ],
+  "runtime_captures": [
+    {
+      "purpose": "Fixed-input simulator comparison, not training or evaluation returns",
+      "job_id": "21281466",
+      "host": "milan32.int.triton.aalto.fi",
+      "python": "3.10.19",
+      "versions": {
+        "gym": "0.17.2",
+        "mujoco-py": "2.0.2.8",
+        "numpy": "1.26.4"
+      },
+      "engine_version": 200,
+      "module_paths": {
+        "gym": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/venv/lib/python3.10/site-packages/gym/__init__.py",
+        "mujoco_py": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/venv/lib/python3.10/site-packages/mujoco_py/__init__.py"
+      },
+      "cases": [
+        {
+          "case": "HalfCheetah-native-400831",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400832",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400833",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400831",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400832",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400833",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400831",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400832",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400833",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400831",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400832",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400833",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400831",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400832",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400833",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        }
+      ],
+      "arrays": 204,
+      "data_sha256": "f044f6ffbbdd9b8498db8901db9a75ded80071634c0d1171e6f13d0279b7a830",
+      "script_sha256": "c25b10a4a2866fc7b1007637d51e5df1f2ddb222b5693b2513343e2747d26dc9",
+      "graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "inputs": "Explicit identical qpos/qvel and controls; separate native same-seed reset arrays",
+      "limits": "Dynamics continue beyond terminal states; no episode-return or learning-parity claim"
+    },
+    {
+      "purpose": "Fixed-input simulator comparison, not training or evaluation returns",
+      "job_id": "21281466",
+      "host": "milan32.int.triton.aalto.fi",
+      "python": "3.10.19",
+      "versions": {
+        "gym": "0.17.2",
+        "mujoco-py": "2.0.2.8",
+        "numpy": "1.26.4"
+      },
+      "engine_version": 200,
+      "module_paths": {
+        "gym": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/venv/lib/python3.10/site-packages/gym/__init__.py",
+        "mujoco_py": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/venv/lib/python3.10/site-packages/mujoco_py/__init__.py"
+      },
+      "cases": [
+        {
+          "case": "HalfCheetah-native-400831",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400832",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400833",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400831",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400832",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400833",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400831",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400832",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400833",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400831",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400832",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400833",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400831",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400832",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400833",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        }
+      ],
+      "arrays": 204,
+      "data_sha256": "f044f6ffbbdd9b8498db8901db9a75ded80071634c0d1171e6f13d0279b7a830",
+      "script_sha256": "c25b10a4a2866fc7b1007637d51e5df1f2ddb222b5693b2513343e2747d26dc9",
+      "graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "inputs": "Explicit identical qpos/qvel and controls; separate native same-seed reset arrays",
+      "limits": "Dynamics continue beyond terminal states; no episode-return or learning-parity claim"
+    },
+    {
+      "purpose": "Fixed-input simulator comparison, not training or evaluation returns",
+      "job_id": "21281466",
+      "host": "milan32.int.triton.aalto.fi",
+      "python": "3.10.19",
+      "versions": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.0.2.8",
+        "numpy": "1.26.4"
+      },
+      "engine_version": 200,
+      "module_paths": {
+        "gym": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/gym023/gym/__init__.py",
+        "mujoco_py": "/scratch/work/liz23/reproduce/dms/.cache/legacy200-audit/venv/lib/python3.10/site-packages/mujoco_py/__init__.py"
+      },
+      "cases": [
+        {
+          "case": "HalfCheetah-native-400831",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400832",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400833",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400831",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400832",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400833",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400831",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400832",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400833",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400831",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400832",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400833",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400831",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400832",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400833",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        }
+      ],
+      "arrays": 204,
+      "data_sha256": "21443d4bf0436e9b02981704955c062ea94e1736f5c1395149d3f5c9c5b54475",
+      "script_sha256": "c25b10a4a2866fc7b1007637d51e5df1f2ddb222b5693b2513343e2747d26dc9",
+      "graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "inputs": "Explicit identical qpos/qvel and controls; separate native same-seed reset arrays",
+      "limits": "Dynamics continue beyond terminal states; no episode-return or learning-parity claim"
+    },
+    {
+      "purpose": "Fixed-input simulator comparison, not training or evaluation returns",
+      "job_id": "21281466",
+      "host": "milan32.int.triton.aalto.fi",
+      "python": "3.10.19",
+      "versions": {
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14",
+        "numpy": "1.26.4"
+      },
+      "engine_version": 210,
+      "module_paths": {
+        "gym": "/scratch/work/liz23/reproduce/dms/.venv-legacy/lib/python3.10/site-packages/gym/__init__.py",
+        "mujoco_py": "/scratch/work/liz23/reproduce/dms/.venv-legacy/lib/python3.10/site-packages/mujoco_py/__init__.py"
+      },
+      "cases": [
+        {
+          "case": "HalfCheetah-native-400831",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400832",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "HalfCheetah-native-400833",
+          "scenario": "HalfCheetah",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400831",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400832",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-native-400833",
+          "scenario": "Ant",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400831",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400832",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Walker2d-native-400833",
+          "scenario": "Walker2d",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 27,
+          "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+          "frame_skip": 4,
+          "timestep": 0.002,
+          "partitions": [
+            "2x3",
+            "3x2",
+            "6x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400831",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400832",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "ManyAgentSwimmer-native-400833",
+          "scenario": "ManyAgentSwimmer",
+          "contact_mode": "native",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": null,
+          "xml_sha256": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+          "frame_skip": 4,
+          "timestep": 0.005,
+          "partitions": [
+            "10x2"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400831",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400831,
+          "steps": 128,
+          "first_terminal_step": 55,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400832",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400832,
+          "steps": 128,
+          "first_terminal_step": 35,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        },
+        {
+          "case": "Ant-computed-400833",
+          "scenario": "Ant",
+          "contact_mode": "computed",
+          "seed": 400833,
+          "steps": 128,
+          "first_terminal_step": 34,
+          "xml_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+          "frame_skip": 5,
+          "timestep": 0.01,
+          "partitions": [
+            "2x4",
+            "4x2",
+            "8x1"
+          ],
+          "graph_radius": 1
+        }
+      ],
+      "arrays": 204,
+      "data_sha256": "21443d4bf0436e9b02981704955c062ea94e1736f5c1395149d3f5c9c5b54475",
+      "script_sha256": "c25b10a4a2866fc7b1007637d51e5df1f2ddb222b5693b2513343e2747d26dc9",
+      "graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "inputs": "Explicit identical qpos/qvel and controls; separate native same-seed reset arrays",
+      "limits": "Dynamics continue beyond terminal states; no episode-return or learning-parity claim"
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "repeatability",
+      "left": "engine200-gym017",
+      "right": "engine200-gym017-repeat",
+      "arrays": 204,
+      "exact_arrays": 204,
+      "dynamics_arrays": 129,
+      "exact_dynamics_arrays": 129,
+      "seeded_reset_arrays": 30,
+      "exact_seeded_reset_arrays": 30,
+      "inputs_and_xml_exact": true
+    },
+    {
+      "comparison": "gym_version_only",
+      "left": "engine200-gym017",
+      "right": "engine200-gym023",
+      "arrays": 204,
+      "exact_arrays": 174,
+      "dynamics_arrays": 129,
+      "exact_dynamics_arrays": 129,
+      "seeded_reset_arrays": 30,
+      "exact_seeded_reset_arrays": 0,
+      "inputs_and_xml_exact": true
+    },
+    {
+      "comparison": "engine_and_bindings_only",
+      "left": "engine200-gym023",
+      "right": "engine210-gym023",
+      "arrays": 204,
+      "exact_arrays": 204,
+      "dynamics_arrays": 129,
+      "exact_dynamics_arrays": 129,
+      "seeded_reset_arrays": 30,
+      "exact_seeded_reset_arrays": 30,
+      "inputs_and_xml_exact": true
+    },
+    {
+      "comparison": "repository_pins_vs_compatibility",
+      "left": "engine200-gym017",
+      "right": "engine210-gym023",
+      "arrays": 204,
+      "exact_arrays": 174,
+      "dynamics_arrays": 129,
+      "exact_dynamics_arrays": 129,
+      "seeded_reset_arrays": 30,
+      "exact_seeded_reset_arrays": 0,
+      "inputs_and_xml_exact": true
+    }
+  ],
+  "native_ant_contacts": [
+    {
+      "key": "Ant-computed-400831/contact",
+      "kind": "contact",
+      "shape": [
+        129,
+        14,
+        6
+      ],
+      "exact": true,
+      "max_abs_difference": 0.0,
+      "unequal_values": 0,
+      "first_difference_step": null,
+      "first_transition_max_abs_difference": 0.0,
+      "initial_max_abs_difference": 0.0,
+      "nonzero_values": {
+        "engine200-gym017": 174,
+        "engine210-gym023": 174
+      }
+    },
+    {
+      "key": "Ant-computed-400832/contact",
+      "kind": "contact",
+      "shape": [
+        129,
+        14,
+        6
+      ],
+      "exact": true,
+      "max_abs_difference": 0.0,
+      "unequal_values": 0,
+      "first_difference_step": null,
+      "first_transition_max_abs_difference": 0.0,
+      "initial_max_abs_difference": 0.0,
+      "nonzero_values": {
+        "engine200-gym017": 311,
+        "engine210-gym023": 311
+      }
+    },
+    {
+      "key": "Ant-computed-400833/contact",
+      "kind": "contact",
+      "shape": [
+        129,
+        14,
+        6
+      ],
+      "exact": true,
+      "max_abs_difference": 0.0,
+      "unequal_values": 0,
+      "first_difference_step": null,
+      "first_transition_max_abs_difference": 0.0,
+      "initial_max_abs_difference": 0.0,
+      "nonzero_values": {
+        "engine200-gym017": 381,
+        "engine210-gym023": 381
+      }
+    },
+    {
+      "key": "Ant-native-400831/contact",
+      "kind": "contact",
+      "shape": [
+        129,
+        14,
+        6
+      ],
+      "exact": true,
+      "max_abs_difference": 0.0,
+      "unequal_values": 0,
+      "first_difference_step": null,
+      "first_transition_max_abs_difference": 0.0,
+      "initial_max_abs_difference": 0.0,
+      "nonzero_values": {
+        "engine200-gym017": 0,
+        "engine210-gym023": 0
+      }
+    },
+    {
+      "key": "Ant-native-400832/contact",
+      "kind": "contact",
+      "shape": [
+        129,
+        14,
+        6
+      ],
+      "exact": true,
+      "max_abs_difference": 0.0,
+      "unequal_values": 0,
+      "first_difference_step": null,
+      "first_transition_max_abs_difference": 0.0,
+      "initial_max_abs_difference": 0.0,
+      "nonzero_values": {
+        "engine200-gym017": 0,
+        "engine210-gym023": 0
+      }
+    },
+    {
+      "key": "Ant-native-400833/contact",
+      "kind": "contact",
+      "shape": [
+        129,
+        14,
+        6
+      ],
+      "exact": true,
+      "max_abs_difference": 0.0,
+      "unequal_values": 0,
+      "first_difference_step": null,
+      "first_transition_max_abs_difference": 0.0,
+      "initial_max_abs_difference": 0.0,
+      "nonzero_values": {
+        "engine200-gym017": 0,
+        "engine210-gym023": 0
+      }
+    }
+  ],
+  "gym_source_comparison": [
+    {
+      "path": "gym/envs/mujoco/ant.py",
+      "gym0172_sha256": "8ea3be600b8047928405cced8515928ad34d72d01deb6e9db2194a151027f9a9",
+      "gym0231_sha256": "3a7e559845e404102418633a79efdb2293059f23df5cd88933ac83f3442d91e6",
+      "exact": false
+    },
+    {
+      "path": "gym/envs/mujoco/half_cheetah.py",
+      "gym0172_sha256": "eae1b94bceca2d4a66dfb489a159d98cd9a1853bdec74a41cf37e770acb6ffdc",
+      "gym0231_sha256": "de7bc8f79d194948707330f9af5f42c397901f6e8c412a303202ca0a776fd9e7",
+      "exact": false
+    },
+    {
+      "path": "gym/envs/mujoco/walker2d.py",
+      "gym0172_sha256": "36cb4da5710d2026060d65e7bc271c9a7b570e43701882d070ceef9de4b686ea",
+      "gym0231_sha256": "dec05f755efa64c32dfd76bbb278f5e52d307b1af1b976f07eaf6633268af375",
+      "exact": false
+    },
+    {
+      "path": "gym/envs/mujoco/mujoco_env.py",
+      "gym0172_sha256": "1f22ed49ccbdf4cad55bc5da79f3ad596aced012ab48b8b5f61ab4a08c7c8cd7",
+      "gym0231_sha256": "f098927716b13fb13e25e924034347fb147acaca8e8d7122b5d37bc4da6c013d",
+      "exact": false
+    },
+    {
+      "path": "gym/envs/mujoco/assets/ant.xml",
+      "gym0172_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+      "gym0231_sha256": "cd5f83ef0ea35b0969e65d360c5bacd5b74ccaef6b27e4433b5168c605e3e2be",
+      "exact": true
+    },
+    {
+      "path": "gym/envs/mujoco/assets/half_cheetah.xml",
+      "gym0172_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+      "gym0231_sha256": "11797a5d69e8ac955e89ca6fdd3a0087f1c990094fda401ac51420de1b6c5494",
+      "exact": true
+    },
+    {
+      "path": "gym/envs/mujoco/assets/walker2d.xml",
+      "gym0172_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+      "gym0231_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+      "exact": true
+    },
+    {
+      "path": "gym/utils/seeding.py",
+      "gym0172_sha256": "4a34ef14e2730ced6b2125d54f7157cdd81237a6fa1071c9000099bd5f35a62a",
+      "gym0231_sha256": "237779bc22d88c33935e2f19417856fc16495fe76f0ba8a2d7f2d40a195dbdf3",
+      "exact": false
+    },
+    {
+      "path": "gym/wrappers/time_limit.py",
+      "gym0172_sha256": "8dbaa2a76c840ac2917debc4d18eb934f792a0e89fc35ef21d7a085650b42d4f",
+      "gym0231_sha256": "2adc707e54cd568dafcbe6386ac1e7295ef208721c3edc4a5a9d42789352687e",
+      "exact": false
+    }
+  ],
+  "gym_step_observation_ast_comparison": [
+    {
+      "task": "ant",
+      "function": "step",
+      "ast_equal": true
+    },
+    {
+      "task": "ant",
+      "function": "_get_obs",
+      "ast_equal": true
+    },
+    {
+      "task": "half_cheetah",
+      "function": "step",
+      "ast_equal": true
+    },
+    {
+      "task": "half_cheetah",
+      "function": "_get_obs",
+      "ast_equal": true
+    },
+    {
+      "task": "walker2d",
+      "function": "step",
+      "ast_equal": true
+    },
+    {
+      "task": "walker2d",
+      "function": "_get_obs",
+      "ast_equal": true
+    }
+  ],
+  "official_downloads": [
+    {
+      "url": "https://www.roboti.us/download/mujoco200_linux.zip",
+      "path": ".cache/legacy200-audit/downloads/mujoco200_linux.zip",
+      "sha256": "ba8560040f6ca47dbd89e4731bc9e06080a99eba4583cda95cdedca802389153",
+      "size": 4427362,
+      "official_checksum_available": false
+    },
+    {
+      "url": "https://www.roboti.us/file/mjkey.txt",
+      "path": ".cache/legacy200-audit/downloads/mjkey.txt",
+      "sha256": "bffe403bce6978d329239c83e874e0fd412740d149834b8c051689ba4a9adecc",
+      "size": 768,
+      "official_checksum_available": false
+    },
+    {
+      "url": "https://files.pythonhosted.org/packages/44/f8/1c2840d5ed717ac612aba2879dc1ce548451be6e4d32a7fc7c549c127119/mujoco_py-2.0.2.8-py3-none-any.whl",
+      "path": ".cache/legacy200-audit/downloads/mujoco_py-2.0.2.8-py3-none-any.whl",
+      "sha256": "2bf8aa8a57bfde8a8d8e911ce49616081459e64fe0ce833d91427f5feceaeaf7",
+      "size": 4018735,
+      "pypi_hash_verified": true
+    },
+    {
+      "url": "https://files.pythonhosted.org/packages/b3/99/7cc3e510678119cdac91f33fb9235b98448f09a6bdf0cafea2b108d9ce51/gym-0.17.2.tar.gz",
+      "path": ".cache/legacy200-audit/downloads/gym-0.17.2.tar.gz",
+      "sha256": "bb495aa56995b01274a2213423bf5ba05b8f4fd51c6dc61e9d4abddd1189718e",
+      "size": 1568165,
+      "pypi_hash_verified": true
+    }
+  ],
+  "source_unchanged_since_submission": true,
+  "evidence_sha256": {
+    "runs/legacy200-audit-01/comparison.json": "bd85ab2690db89217e8f0dfbaac598c879921922223b63ce459fd6aca7285de0",
+    "runs/legacy200-audit-01/smoke.json": "7dbbcc7eb3ade63d5e48b6830ecd9ea11828cbd3c4a49e0c05240d93f9a7dc0d",
+    "scripts/legacy/engine_probe.py": "c25b10a4a2866fc7b1007637d51e5df1f2ddb222b5693b2513343e2747d26dc9"
+  },
+  "artifact": {
+    "path": "dist/dms-mujoco200-audit-20261029.zip",
+    "bytes": 5170737,
+    "sha256": "cb5942ab90a3cd1dde4a85002193f22c125aef131a3fb13c098c731d79d48f3a",
+    "payloads": 62,
+    "every_payload_verified": true,
+    "public_url": null,
+    "excluded": [
+      "engine binaries",
+      "activation key",
+      "Python environments"
+    ]
+  },
+  "limits": [
+    "Fifteen fixed-input trajectories with three seeds and 128 controls each.",
+    "Dynamics continue past terminal states; sums are not benchmark returns.",
+    "Both the engine and its bindings differ in the engine comparison.",
+    "Original paper binaries and NumPy version were not fully recorded.",
+    "Production adapter remains pinned to its existing 210 stack.",
+    "Modern build dependencies were used; this is not the complete original requirements lock.",
+    "Native reset states differ between Gym versions for every tested same-seed pair.",
+    "Fixed-control agreement does not prove learned closed-loop or full-training equivalence.",
+    "The original control-routing and raw-command reward differences remain separate."
+  ]
+}

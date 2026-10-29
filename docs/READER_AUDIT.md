@@ -92,3 +92,13 @@ RNG checkpoint state (excluding the output path), plus identical evaluation
 records. The documented 4,000-transition CUDA command and saved-source evaluation
 also passed on this source. [Evidence](../reports/runtime-metadata-validation.json).
 This does not assert equivalent trajectories across GPU families.
+
+**Original runtime diagnostic, 2026-10-29.** Build **21281422** runs Gym 0.17.2,
+mujoco-py 2.0.2.8 and MuJoCo 200 in an isolated prefix using the official free
+activation key. Comparison **21281466** exactly matches all 129 dynamics arrays
+across fifteen fixed-input trajectories against the 210 compatibility runtime.
+Changing Gym changes all thirty native same-seed reset arrays. Native Ant
+contacts remain zero under both engines. This narrows the earlier binary gap;
+complete training equivalence and the unrecorded accepted-paper environment
+remain unverified. [Scope and replay](MUJOCO200_COMPARISON.md),
+[evidence](../reports/mujoco200-runtime-comparison.json).
