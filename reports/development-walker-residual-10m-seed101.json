@@ -1,0 +1,869 @@
+{
+  "bootstrap_sha256": "981b4e1e52f5392d91b4794273a022f6ef9348df267d8dea2e68c8f38322f5a7",
+  "source_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "evaluation": {
+    "episodes": 100,
+    "seed_start": 400101,
+    "seed_end": 400200,
+    "device": "cpu",
+    "parameter_updates": 0
+  },
+  "purpose": "Measure the fixed full-10M Walker3x2 history-32 endpoint for a matched IPPO/residual-DMS pair after the residual 3M result improved over its no-input control but remained below the paper target.",
+  "created_utc": "2026-10-29T14:03:16.805826+00:00",
+  "status": "waiting_running_or_failed",
+  "artifact": "runs/development-walker-residual-10m-seed101",
+  "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/source",
+  "gpu_family": "H100",
+  "training_seed": 101,
+  "held_out_training_seeds_used": [],
+  "validation_only": false,
+  "budget": 10000000,
+  "runs": [
+    {
+      "label": "walker-ippo",
+      "task": "walker",
+      "algorithm": "ippo",
+      "mode": "ippo",
+      "seed": 101,
+      "effective_config": {
+        "algorithm": "ippo",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 10000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-ippo-fusion-10m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-walker-ippo-fusion-10m-h100-101",
+      "config": "configs/development/walker-3x2-ippo-fusion-10m-h100-101.json",
+      "frozen_config": "runs/development-walker-residual-10m-seed101/configs/walker-3x2-ippo-fusion-10m-h100-101.json",
+      "config_sha256": "c6142c2d72cbe906679c264ba36d09169fce72594e42446ab9a02a4ae35e5623",
+      "comparison_reference_run": "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+      "comparison_reference_config_sha256": "7b4310df141f2d3678a284ed7c6356053ec8c97425debd173884d341841a7156",
+      "comparison_reference_evaluation": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-ippo/validation.json",
+      "evaluation_spec_template": "runs/development-walker-ant-history32-3m-seed101/evaluation-walker-ippo/spec.json",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 12,
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/source",
+      "changes_from_reference": {
+        "smac_time_limit_terminal": [
+          null,
+          false
+        ],
+        "total_steps": [
+          3000000,
+          10000000
+        ],
+        "intention_fusion": [
+          null,
+          "residual"
+        ],
+        "intention_rl_lr": [
+          null,
+          0.0
+        ],
+        "output": [
+          "runs/dev-legacy-walker2d-3x2-ippo-history32-3m-h100-101",
+          "runs/dev-walker-ippo-fusion-10m-h100-101"
+        ]
+      },
+      "prefix_reference_metrics": "runs/development-walker-residual-10m-seed101/prefix-reference-walker-ippo-metrics.jsonl",
+      "prefix_reference_metrics_sha256": "f741e251dded3284d8bc9806e57a5a384d38bdaf2f31dee087de161b31cd3e4d",
+      "prefix_comparison_steps": 3000000,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker-full10m-walker-ippo-10m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=12:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/train.sbatch",
+          "walker-ippo"
+        ],
+        "returncode": 0,
+        "stdout": "21284886\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T14:06:55.883384+00:00",
+        "job_id": "21284886"
+      },
+      "job_id": "21284886",
+      "status": "training_running_or_pending",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker-full10m-walker-ippo-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21284886",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation-walker-ippo/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation-walker-ippo/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation-walker-ippo/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21284887\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T14:06:55.907839+00:00",
+        "job_id": "21284887",
+        "spec": "runs/development-walker-residual-10m-seed101/evaluation-walker-ippo/spec.json",
+        "spec_sha256": "8392d5f316e85393d7a1b5484dd9a03cd21c963181948587d636b0f2a6a98749",
+        "status": "waiting_for_training",
+        "launcher_sha256": "a30566c38c197893d1a9908e43cf183fdfe9cc8ccc493e8cbb6d4392e76bad25",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    },
+    {
+      "label": "walker-residual",
+      "task": "walker",
+      "algorithm": "dms",
+      "mode": "residual",
+      "seed": 101,
+      "effective_config": {
+        "algorithm": "dms",
+        "env": "mamujoco",
+        "mamujoco_backend": "legacy",
+        "scenario": "Walker2d",
+        "ant_contact_forces": "native",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "map_name": "3s5z",
+        "seed": 101,
+        "device": "cuda",
+        "num_envs": 4,
+        "parallel_env_steps": false,
+        "mask_inactive_agents": false,
+        "smac_time_limit_terminal": false,
+        "update_mode": "independent",
+        "total_steps": 10000000,
+        "rollout_steps": 1000,
+        "epochs": 5,
+        "minibatch_size": 1000,
+        "hidden_dim": 64,
+        "policy_history_length": 32,
+        "initial_log_std": -0.5,
+        "latent_dim": 8,
+        "decoder_history": false,
+        "history_length": 32,
+        "prediction_horizon": 4,
+        "coordination": "soft",
+        "intention_fusion": "residual",
+        "coordination_threshold": 0.6,
+        "short_history": 4,
+        "filter_history": true,
+        "intention_threshold": 10000,
+        "warmup_episodes": 100,
+        "causal_warmup_episodes": 100,
+        "actor_lr": 0.0003,
+        "critic_lr": 0.001,
+        "intention_lr": 0.001,
+        "intention_rl_lr": 0.0,
+        "aux_updates": 2,
+        "aux_batch_size": 64,
+        "kl_beta": 0.1,
+        "latent_samples": 2,
+        "gamma": 0.99,
+        "gae_lambda": 0.95,
+        "clip": 0.2,
+        "value_clip": 0.2,
+        "entropy_coef": 0.0,
+        "value_coef": 0.5,
+        "max_grad_norm": 0.5,
+        "target_kl": 0.02,
+        "eval_every": 1000000,
+        "eval_episodes": 10,
+        "eval_seed": 10001,
+        "output": "runs/dev-walker-residual-fusion-10m-h100-101",
+        "torch_threads": 1
+      },
+      "output": "runs/dev-walker-residual-fusion-10m-h100-101",
+      "config": "configs/development/walker-3x2-residual-fusion-10m-h100-101.json",
+      "frozen_config": "runs/development-walker-residual-10m-seed101/configs/walker-3x2-residual-fusion-10m-h100-101.json",
+      "config_sha256": "b54edf6325e5c1346c8f788c14244cf4086ff53eb211b8948d11bbcb7f70f4f7",
+      "comparison_reference_run": "runs/dev-walker-residual-fusion-3m-h100-101",
+      "comparison_reference_config_sha256": "59fa45b590306b703884548c4bd11c3ce232c246892d210e4c661a4741257659",
+      "comparison_reference_evaluation": "runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/validation.json",
+      "evaluation_spec_template": "runs/development-residual-fusion-3m-seed101/evaluation-walker-residual/spec.json",
+      "environment": {
+        "benchmark_track": "historical_gym_v2_mujoco210_compatibility",
+        "historical_binary_parity_verified": false,
+        "scenario": "Walker2d",
+        "native_env_id": "Walker2d-v2",
+        "agent_conf": "3x2",
+        "agent_obsk": 1,
+        "k_categories": [
+          [
+            "qpos",
+            "qvel"
+          ],
+          [
+            "qpos"
+          ]
+        ],
+        "global_categories": [],
+        "max_episode_steps": 1000,
+        "timeout_decoding": "Gym TimeLimit.truncated; remaining done is terminal",
+        "packages": {
+          "gym": "0.23.1",
+          "mujoco-py": "2.1.2.14",
+          "numpy": "1.26.4"
+        },
+        "mujoco_engine_version": 210,
+        "xml_asset": "walker2d.xml",
+        "xml_sha256": "88dff0833ee2c6ec30854c7616b86d2ce5bd5b26ea0cd6367768c5aca4700296",
+        "original_graph_commit": "ed94ab0795d794f8bf43cab54ec4737f33319af3",
+        "original_graph_sha256": "ae412f152d13be5df4cd0806d0531d2e9c82b2eb8725a2afd2166dc20aa42088",
+        "adapted_graph_sha256": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+        "action_routing": "graph_node_actuator_indices",
+        "control_processing": "clip_native_bounds_before_simulation_and_reward",
+        "action_ids": [
+          [
+            2,
+            1
+          ],
+          [
+            0,
+            5
+          ],
+          [
+            4,
+            3
+          ]
+        ],
+        "action_dims": [
+          2,
+          2,
+          2
+        ],
+        "observation_dims": [
+          5,
+          7,
+          6
+        ],
+        "action_sensor": "previous_executed_control_on_observed_joints",
+        "actor_information": "local_observation_public_id_visible_previous_controls_and_masks",
+        "reward": {
+          "formula": "root_x_velocity + 1 - 0.001*sum(control**2)",
+          "alive_bonus_on_terminal": true,
+          "healthy_height_open_interval": [
+            0.8,
+            2.0
+          ],
+          "healthy_angle_open_interval": [
+            -1.0,
+            1.0
+          ]
+        },
+        "frame_skip": 4,
+        "physics_timestep": 0.002,
+        "native_geom_friction": [
+          [
+            0.7,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            0.9,
+            0.1,
+            0.1
+          ],
+          [
+            1.9,
+            0.1,
+            0.1
+          ]
+        ],
+        "policy_observation_history": {
+          "length": 32,
+          "base_observation_dim": 29,
+          "shape": [
+            3,
+            32,
+            30
+          ],
+          "validity_channel": "last; exact 0/1; never normalized",
+          "padding": "left zeros; current observation at final slot",
+          "reset": "episode reset",
+          "information": "only this agent's existing local observations"
+        }
+      },
+      "used_versions": {
+        "torch": "2.6.0+cu126",
+        "numpy": "1.26.4",
+        "protobuf": "6.33.0",
+        "gym": "0.23.1",
+        "mujoco-py": "2.1.2.14"
+      },
+      "cpus": 1,
+      "memory": "4G",
+      "walltime_hours": 16,
+      "source_root": "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/source",
+      "changes_from_reference": {
+        "total_steps": [
+          3000000,
+          10000000
+        ],
+        "output": [
+          "runs/dev-walker-residual-fusion-3m-h100-101",
+          "runs/dev-walker-residual-fusion-10m-h100-101"
+        ]
+      },
+      "prefix_reference_metrics": "runs/development-walker-residual-10m-seed101/prefix-reference-walker-residual-metrics.jsonl",
+      "prefix_reference_metrics_sha256": "0b0f866f66a1a0f5965c1985efea7f46fa9f1748c2e3e8b6d2da46246b695c5b",
+      "prefix_comparison_steps": 3000000,
+      "submission": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker-full10m-walker-residual-10m",
+          "--partition=gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g",
+          "--gpus=h100:1",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=16:00:00",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/train.sbatch",
+          "walker-residual"
+        ],
+        "returncode": 0,
+        "stdout": "21284888\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T14:06:55.931335+00:00",
+        "job_id": "21284888"
+      },
+      "job_id": "21284888",
+      "status": "training_running_or_pending",
+      "evaluation": {
+        "command": [
+          "sbatch",
+          "--parsable",
+          "--job-name=dms-walker-full10m-walker-residual-eval",
+          "--partition=batch-milan,batch-csl,batch-skl",
+          "--cpus-per-task=1",
+          "--mem=4G",
+          "--time=02:00:00",
+          "--dependency=afterok:21284888",
+          "--kill-on-invalid-dep=yes",
+          "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation-walker-residual/%x_%j.out",
+          "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation-walker-residual/%x_%j.err",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation/evaluate.sbatch",
+          "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/evaluation-walker-residual/spec.json",
+          "legacy"
+        ],
+        "returncode": 0,
+        "stdout": "21284889\n",
+        "stderr": "",
+        "submitted_utc": "2026-10-29T14:06:55.960621+00:00",
+        "job_id": "21284889",
+        "spec": "runs/development-walker-residual-10m-seed101/evaluation-walker-residual/spec.json",
+        "spec_sha256": "d3a62f3b522547d932d312d13dd86379b0502e5864e45fb4d53cabcc7239edcc",
+        "status": "waiting_for_training",
+        "launcher_sha256": "a30566c38c197893d1a9908e43cf183fdfe9cc8ccc493e8cbb6d4392e76bad25",
+        "scheduler": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "failure_artifacts": {}
+      },
+      "scheduler": {
+        "training": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        },
+        "evaluation": {
+          "state": "PENDING",
+          "exit_code": "0:0",
+          "elapsed": "00:00:00",
+          "node": "None assigned"
+        }
+      }
+    }
+  ],
+  "required_validation": [
+    {
+      "path": "runs/development-walker-residual-10m-seed101/smoke-v2-validation.json",
+      "sha256": "524826766db0105e068e9e68345417e0baeca523adffbd16298c6d43d0d02370"
+    },
+    {
+      "path": "runs/development-walker-residual-10m-seed101/smoke-v2-validation/smoke-walker-ippo.json",
+      "sha256": "83c1d5f43d6a27da1f35c3036b784ccd7b4f8c4d51cf4e8a11a42f9f9cb759f1"
+    },
+    {
+      "path": "runs/development-walker-residual-10m-seed101/smoke-v2-validation/smoke-walker-residual.json",
+      "sha256": "f72963ffd491b1c25dd550234a8f1d60ebc90af6ba5bfb30bf2f36eec259b1fa"
+    },
+    {
+      "path": "runs/development-walker-residual-10m-seed101/smoke-v2-evaluation-walker-ippo/validation.json",
+      "sha256": "359591527aaa0528f616368a6d1d00fec0ef942ba7012930a7d857e5c8308b14"
+    },
+    {
+      "path": "runs/development-walker-residual-10m-seed101/smoke-v2-evaluation-walker-residual/validation.json",
+      "sha256": "0b6d80b63c518da2fbcc1a546e71f9a8f8aa9dfb2fe1314724bdb2ceb46b0a01"
+    },
+    {
+      "path": "reports/residual-native-validation.json",
+      "sha256": "d36472913cb5f79c58b0bc04e8e14d8e86afd07fa59750bc12bc229fffbc9fab"
+    },
+    {
+      "path": "reports/residual-unit-validation.json",
+      "sha256": "12a59a77b4e17c22a356251a1f09bbb763603fdae3981cf09123a204e01c64ed"
+    },
+    {
+      "path": "reports/residual-walker-results-20261029.json",
+      "sha256": "20a27f15eb02bce452ed18f9f7b74cbc4609004ad44284cdfd044208d9afd3b6"
+    },
+    {
+      "path": "runs/development-walker-residual-10m-seed101/ippo-reference-regression.json",
+      "sha256": "2639f656836994963e68682ad5d9505dc16ee417b2b5332a41eea8fb59db5092"
+    }
+  ],
+  "reference_source_inventory_sha256": {
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+  },
+  "prior_native_validation": [
+    {
+      "path": "reports/residual-native-validation.json",
+      "sha256": "d36472913cb5f79c58b0bc04e8e14d8e86afd07fa59750bc12bc229fffbc9fab"
+    },
+    {
+      "path": "reports/residual-unit-validation.json",
+      "sha256": "12a59a77b4e17c22a356251a1f09bbb763603fdae3981cf09123a204e01c64ed"
+    },
+    {
+      "path": "reports/residual-walker-results-20261029.json",
+      "sha256": "20a27f15eb02bce452ed18f9f7b74cbc4609004ad44284cdfd044208d9afd3b6"
+    }
+  ],
+  "hypotheses": [
+    "If the residual model is limited by the shorter 3M development budget, its fixed 10M return should exceed its 3M endpoint and the 1100 target.",
+    "If the stronger local-history IPPO control remains advantageous at equal full budget, residual DMS should still trail its matched 10M mean return.",
+    "If current IPPO source changes are inactive in this setting, native seed-101 8k execution should exactly match the archived source in model/optimizer state, metrics and diagnostic episodes."
+  ],
+  "limits": [
+    "One full-budget development seed is not a final held-out result or proof of robustness.",
+    "Fresh training from initialization; no approximate checkpoint resume or best-checkpoint selection.",
+    "Only total_steps and output change relative to the residual 3M reference. IPPO additionally records the current disabled optional fields and source differences.",
+    "Both full runs require H100; native functional/regression validation may use A100 or H200.",
+    "The 3M training prefixes will be compared explicitly to previous results; any discrepancy remains evidence, not grounds to silently replace a run.",
+    "Frozen-policy interventions and seed-103 3M replications continue independently."
+  ],
+  "runtime_basis": {
+    "ippo_reference_seconds_at3m": 9518.723110842053,
+    "residual_reference_seconds_at3m": 13362.006386306137,
+    "ippo_linear_10m_hours": 8.813632510038937,
+    "residual_linear_10m_hours": 12.372228135468646,
+    "requested_ippo_hours": 12,
+    "requested_dms_hours": 16,
+    "scope": "Planning estimates from completed same-family 3M training; exclude independent 100-episode endpoint evaluations."
+  },
+  "scripts_sha256": {
+    "guarded_train.py": "b0b2189ca37d1c1c29e52ca5a1a00c4b08017d5d9cf5c03490957ac509aa4be8",
+    "train.sbatch": "56bfe1abc91a9ced0c7072dda15fb6cb2ffcd37221ec645170d354ffeae16f45",
+    "evaluation/runner.py": "2b99d96cd43154683d5e386288bdf864d898ad48001fbc25bd935c3afddd2bb8",
+    "evaluation/evaluate.sbatch": "a30566c38c197893d1a9908e43cf183fdfe9cc8ccc493e8cbb6d4392e76bad25",
+    "refresh_status.py": "3a348adbf767b944021ca3c720ef50e7644ffe3173d501f2f8b6f3cdde5d75ef",
+    "collect.sbatch": "f390c27cd5cc72236e50094490d15eb6760b854c275d24411dafedca54cbbe7f",
+    "submit.py": "d081f21188204f5e9b97f11db0d6444458868dfe31c8eeb7916db392447a8a4c"
+  },
+  "smoke_scripts_sha256": {
+    "guarded_train.py": "b0b2189ca37d1c1c29e52ca5a1a00c4b08017d5d9cf5c03490957ac509aa4be8",
+    "smoke_all.py": "2eb536392ffd8755b7fdf2fdee786bce015a0fce2daed36479b7ad8028245339",
+    "smoke.sbatch": "40b3fa3a9bf415fde266f7a2fb9972855564ad13d1d400c1ffda382e0edf240b",
+    "evaluation/runner.py": "2b99d96cd43154683d5e386288bdf864d898ad48001fbc25bd935c3afddd2bb8",
+    "evaluation/evaluate.sbatch": "a30566c38c197893d1a9908e43cf183fdfe9cc8ccc493e8cbb6d4392e76bad25",
+    "reference_train.py": "2fb0339e2f0aa2c8fe779286e655d4777bd91fd66733ed11ae4bbb6b9cbca381",
+    "reference_regression.py": "814df652a8499496c6ca6f49f2077d7f9b7488de16ff0166c106a25a6d6600fd"
+  },
+  "smoke": {
+    "job_id": "21284863",
+    "command": [
+      "sbatch",
+      "--parsable",
+      "runs/development-walker-residual-10m-seed101/smoke.sbatch"
+    ],
+    "status": "completed_pass",
+    "submitted_utc": "2026-10-29T14:03:43.800266+00:00",
+    "validation": "runs/development-walker-residual-10m-seed101/smoke-v2-validation.json",
+    "validation_sha256": "524826766db0105e068e9e68345417e0baeca523adffbd16298c6d43d0d02370",
+    "completed_accounting": "21284863|COMPLETED|0:0"
+  },
+  "frozen_after_native_validation_utc": "2026-10-29T14:06:55.855653+00:00",
+  "predeclared_sha256": "4efffe4d2f7cc4cdc160d261cf3c59d1416435505ab638995aaef7c7d58ec373",
+  "completion_collectors": [
+    {
+      "label": "walker-ippo",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-full10m-collect-walker-ippo",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21284887",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21284890\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T14:06:55.985360+00:00",
+      "job_id": "21284890"
+    },
+    {
+      "label": "walker-residual",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-full10m-collect-walker-residual",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21284889",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21284891\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T14:06:56.008505+00:00",
+      "job_id": "21284891"
+    },
+    {
+      "label": "all",
+      "command": [
+        "sbatch",
+        "--parsable",
+        "--job-name=dms-walker-full10m-collect-all",
+        "--partition=batch-milan,batch-csl,batch-skl",
+        "--cpus-per-task=1",
+        "--mem=1G",
+        "--time=00:05:00",
+        "--dependency=afterany:21284886:21284887:21284888:21284889",
+        "--output=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.out",
+        "--error=/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/%x_%j.err",
+        "/scratch/work/liz23/reproduce/dms/runs/development-walker-residual-10m-seed101/collect.sbatch"
+      ],
+      "returncode": 0,
+      "stdout": "21284892\n",
+      "stderr": "",
+      "submitted_utc": "2026-10-29T14:06:56.035967+00:00",
+      "job_id": "21284892"
+    }
+  ],
+  "all_evaluations_succeeded": false,
+  "last_refresh_utc": "2026-10-29T14:12:50.653127+00:00"
+}

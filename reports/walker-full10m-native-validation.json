@@ -1,0 +1,229 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "job_id": "21284863",
+  "accounting": "21284863|COMPLETED|0:0|00:02:55|gpu13",
+  "artifact": "runs/development-walker-residual-10m-seed101",
+  "scope": "Native launcher validation and archived/current IPPO regression before the matched fresh 10M Walker pair; no learning-performance claim.",
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "checks": {
+    "success": true,
+    "job_id": "21284863",
+    "purpose": "Exercise the exact revised training launcher with an 8k validation budget before the fixed 10M pair",
+    "exact_launcher_executed_for": [
+      "ippo",
+      "dms"
+    ],
+    "saved_source_evaluations_passed": true,
+    "source_and_checkpoint_unchanged": true,
+    "completed_utc": "2026-10-29T14:06:41.899567+00:00"
+  },
+  "cases": [
+    {
+      "label": "walker-ippo",
+      "algorithm": "ippo",
+      "training_steps": 8000,
+      "finite_updates": 2,
+      "completed_episodes": 363,
+      "peer_gate_fractions": [
+        0.0,
+        0.0
+      ],
+      "auxiliary_training_present": false,
+      "training_runtime": {
+        "host": "gpu13.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21284863",
+        "slurm_partition": "gpu-debug",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA A100-SXM4-80GB",
+          "capability": [
+            8,
+            0
+          ],
+          "total_memory_bytes": 85093777408,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "evaluation_episodes": 2,
+      "evaluation_seed_start": 400305,
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "source_and_checkpoint_unchanged": true,
+      "validation": "runs/development-walker-residual-10m-seed101/smoke-v2-evaluation-walker-ippo/validation.json",
+      "validation_sha256": "359591527aaa0528f616368a6d1d00fec0ef942ba7012930a7d857e5c8308b14"
+    },
+    {
+      "label": "walker-residual",
+      "algorithm": "dms",
+      "training_steps": 8000,
+      "finite_updates": 2,
+      "completed_episodes": 361,
+      "peer_gate_fractions": [
+        0.2945,
+        0.6378333333333334
+      ],
+      "auxiliary_training_present": true,
+      "training_runtime": {
+        "host": "gpu13.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21284863",
+        "slurm_partition": "gpu-debug",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA A100-SXM4-80GB",
+          "capability": [
+            8,
+            0
+          ],
+          "total_memory_bytes": 85093777408,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "evaluation_episodes": 2,
+      "evaluation_seed_start": 400305,
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "source_and_checkpoint_unchanged": true,
+      "validation": "runs/development-walker-residual-10m-seed101/smoke-v2-evaluation-walker-residual/validation.json",
+      "validation_sha256": "0b6d80b63c518da2fbcc1a546e71f9a8f8aa9dfb2fe1314724bdb2ceb46b0a01"
+    }
+  ],
+  "archived_current_ippo_regression": {
+    "success": true,
+    "job_id": "21284863",
+    "training_seed": 101,
+    "transitions_per_run": 8000,
+    "archived_source_inventory_sha256": {
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/policy.py": "cbb3536b183ae6f11e0ad0b7a121cf9125d30f8f07a776e5e19783484a172b0e",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/intention.py": "5be96c90cde79bbce2b644663382178b79c2bb1d8ad8063d101165eaa2530bd7",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/train.py": "3c44671c9ff20e5812cac3404bbb84285cf1bf6211f250738bfa879f19660e39",
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b"
+    },
+    "current_source_inventory_sha256": {
+      "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+      "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+      "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+      "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+      "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+      "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+      "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+      "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+      "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+      "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+      "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+      "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+      "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+      "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+      "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+      "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+      "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+      "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+      "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+      "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+      "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+      "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+    },
+    "common_model_state_exact": true,
+    "optimizer_states_exact": true,
+    "metrics_exact_except_elapsed_time": true,
+    "diagnostic_evaluation_episodes_exact": true,
+    "checkpoint_sha256": {
+      "archived": "c1e56f2906ae60d685324b1750b65f223a8c1f1a94285a0313badc987ffab805",
+      "current": "e2385b0d7e3b753139a26bee30b499e622725ab1fdb715386e36711a9639cec7"
+    },
+    "limits": [
+      "One native A100 seed and two updates, not a bitwise promise for the full H100 training trajectory.",
+      "Archived source differs from current by disabled optional intention features and metadata; source identities remain explicit."
+    ],
+    "completed_utc": "2026-10-29T14:06:41.700142+00:00"
+  },
+  "archived_current_ippo_regression_sha256": "2639f656836994963e68682ad5d9505dc16ee417b2b5332a41eea8fb59db5092",
+  "submission_evidence_sha256": {
+    "runs/development-walker-residual-10m-seed101/smoke-v2-validation.json": "524826766db0105e068e9e68345417e0baeca523adffbd16298c6d43d0d02370",
+    "runs/development-walker-residual-10m-seed101/smoke-v2-validation/smoke-walker-ippo.json": "83c1d5f43d6a27da1f35c3036b784ccd7b4f8c4d51cf4e8a11a42f9f9cb759f1",
+    "runs/development-walker-residual-10m-seed101/smoke-v2-validation/smoke-walker-residual.json": "f72963ffd491b1c25dd550234a8f1d60ebc90af6ba5bfb30bf2f36eec259b1fa",
+    "runs/development-walker-residual-10m-seed101/smoke-v2-evaluation-walker-ippo/validation.json": "359591527aaa0528f616368a6d1d00fec0ef942ba7012930a7d857e5c8308b14",
+    "runs/development-walker-residual-10m-seed101/smoke-v2-evaluation-walker-residual/validation.json": "0b6d80b63c518da2fbcc1a546e71f9a8f8aa9dfb2fe1314724bdb2ceb46b0a01",
+    "reports/residual-native-validation.json": "d36472913cb5f79c58b0bc04e8e14d8e86afd07fa59750bc12bc229fffbc9fab",
+    "reports/residual-unit-validation.json": "12a59a77b4e17c22a356251a1f09bbb763603fdae3981cf09123a204e01c64ed",
+    "reports/residual-walker-results-20261029.json": "20a27f15eb02bce452ed18f9f7b74cbc4609004ad44284cdfd044208d9afd3b6",
+    "runs/development-walker-residual-10m-seed101/ippo-reference-regression.json": "2639f656836994963e68682ad5d9505dc16ee417b2b5332a41eea8fb59db5092"
+  },
+  "submitted": [
+    {
+      "label": "walker-ippo",
+      "training_job": "21284886",
+      "evaluation_job": "21284887",
+      "budget": 10000000,
+      "walltime_hours": 12
+    },
+    {
+      "label": "walker-residual",
+      "training_job": "21284888",
+      "evaluation_job": "21284889",
+      "budget": 10000000,
+      "walltime_hours": 16
+    }
+  ],
+  "limits": [
+    "Native validation used A100; full experiments require H100.",
+    "The regression covers two updates at one native seed, not the entire 10M trajectory.",
+    "The fixed 3M prefixes of both full runs will be compared with immutable earlier traces; discrepancies will be retained."
+  ],
+  "created_utc": "2026-10-29T14:09:48.829490+00:00"
+}

@@ -57,7 +57,7 @@ fixed 100-episode development evaluation block (400101–400200). Each task has
 an intention-enabled residual model and an otherwise matching model whose
 `warmup_episodes=1000000000` keeps peer inputs disabled throughout training.
 Auxiliary models still train in that ablation. Walker uses local history 32;
-SMAC 8m_vs_9m uses history 16 and gamma 0.95. Both keep auxiliary LR 1e-3 and
+SMAC 8m_vs_9m uses local policy history 16, action-inference history 32, gamma 0.95, and 20 environments × 160 rollout steps with ordered parallel stepping. Both keep auxiliary LR 1e-3 and
 prior RL LR zero. No held-out training seeds are used, and no checkpoint is
 selected by evaluation return.
 

@@ -31,7 +31,7 @@ benefit of learned intention prediction from the benefit of remembering past
 inputs. Forecast shuffles and downstream interventions answer related but
 different questions; they do not replace that trained control.
 
-Do not implement a missing-action ablation by revealing hidden true controls. An ablation can instead remove the explicit missingness token or alter how missing local records are encoded, while preserving the information boundary. Check MuJoCo observation radius 0 and 1 because the manuscript contradicts itself. Record the four-environment SMAC redesign and investigate 20 environments before asserting historical optimizer parity.
+Do not implement a missing-action ablation by revealing hidden true controls. An ablation can instead remove the explicit missingness token or alter how missing local records are encoded, while preserving the information boundary. Check MuJoCo observation radius 0 and 1 because the manuscript contradicts itself. Record the initial four-environment SMAC redesign separately from the later 20-environment configurations. Current SMAC memory controls and residual trials use 20 environments × 160 steps, a 3,200-transition collection batch; matching that batch layout alone does not establish historical optimizer parity. See [the SMAC learning review](SMAC_LEARNING_REVIEW.md) and each frozen run configuration.
 
 ## Stage 3: freeze the final experiment
 

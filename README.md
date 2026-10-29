@@ -129,6 +129,22 @@ sbatch scripts/triton/train_legacy_cpu.sbatch \
 
 These configs explicitly set `mamujoco_backend="legacy"`. The wrapper loads the native libraries and uses `.venv-legacy`; the ordinary CPU/GPU scripts use the modern environment.
 
+For CUDA training with the same legacy environment, use
+[`train_legacy_gpu.sbatch`](scripts/triton/train_legacy_gpu.sbatch). After the
+native environment smoke has passed, a bounded GPU check is:
+
+```bash
+sbatch --time=00:30:00 scripts/triton/train_legacy_gpu.sbatch \
+  configs/legacy_gpu_smoke.json runs/reader-legacy-gpu-smoke-101 101
+```
+
+The launcher checks CUDA and source imports before creating the output, saves
+the legacy dependency record, and accepts the same `DMS_SOURCE_ROOT` override.
+[Native validation](reports/public-legacy-gpu-launcher-validation.json) covers
+8,000 residual-DMS transitions and saved-source checkpoint evaluation on A100.
+The [Walker full-budget guide](docs/WALKER_FULL_BUDGET.md) provides the matched
+H100 commands and records the pending 10M development comparison.
+
 Normal jobs target `gpu-h200-141g-ellis,gpu-a100-80g,gpu-h100-80g`. Smoke jobs also permit `gpu-debug`. B300 is excluded because the current PyTorch wheel lacks Blackwell support. Public H200 short queues are omitted because this project has Ellis access. The CUDA preflight executes a real kernel; mixed `gpu-debug` hardware that is incompatible with the environment fails before creating a run directory.
 
 Logs are `logs/<job-name>_<job-id>.out` and `.err`. Scripts record dependencies and any readable Git revision without modifying Git metadata. Each run also saves the imported source files and configuration; these records remain necessary when the working tree differs from its recorded Git revision.

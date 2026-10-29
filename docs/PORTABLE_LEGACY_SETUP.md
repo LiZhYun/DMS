@@ -61,6 +61,15 @@ sbatch --job-name=dms-legacy-smoke \
 
 This installs the cached legacy dependencies locally and compiles the binding on the allocated node, then checks finite simulation, seeded resets, timeouts, and the torch/NumPy bridge. Successful output is recorded in `.cache/legacy/smoke.json`. `bootstrap.sh test` runs the historical adapter/trainer integration tests in an allocation. Existing jobs and `.venv-legacy` are unaffected by the new preparation checks because native runtime modes do not recreate or revalidate the base environment.
 
+After the native smoke succeeds, CUDA training uses
+[`scripts/triton/train_legacy_gpu.sbatch`](../scripts/triton/train_legacy_gpu.sbatch)
+with a CUDA-enabled legacy PyTorch environment. The launcher accepts a config,
+a new output directory and an optional training seed, checks a real CUDA kernel,
+and preserves the native dependency record. Its bounded public smoke config
+completed 8,000 transitions on A100 with separate saved-source evaluation.
+[Execution evidence](../reports/public-legacy-gpu-launcher-validation.json)
+and [commands](WALKER_FULL_BUDGET.md) retain the source, hardware and budget.
+
 ## Other Linux systems: not yet validated
 
 There is currently **no generic system-Linux runtime mode** in this bootstrap. Successful `prepare` on another machine does not make `smoke` or `run` portable: those commands still require Triton's module names, module initialization, library layout, and Slurm guard.

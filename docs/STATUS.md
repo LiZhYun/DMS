@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 13:56 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 14:12 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -219,8 +219,8 @@ source and checkpoint hashes, immutable evaluation state and zero optimizer
 steps. No-input training retains auxiliary losses and zero peer gates. This
 positive effect requires replication across training seeds.
 
-SMAC residual **21280358** has reached **2,406,400 steps** and its no-input control
-**21280360** has reached **2,128,000 steps**. Both SMAC jobs remain running on
+SMAC residual **21280358** has reached **2,585,600 steps** and its no-input control
+**21280360** has reached **2,323,200 steps**. Both SMAC jobs remain running on
 H100 with finite metrics; their fixed evaluations and collectors are queued.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
@@ -244,9 +244,27 @@ submission verified nine evidence files and queued training **21284499 /
 four collectors. This tests seed sensitivity before further redesign; held-out
 seeds remain unused and no final setting is promoted.
 
+A [fixed full-10M Walker pair](WALKER_FULL_BUDGET.md) is also submitted, with
+fresh seed-101 IPPO and residual DMS on H100. The residual setting changes only
+budget and output from its 3M reference. Native validation **21284863** passed
+both 8,000-step cases and saved-source evaluations on A100, plus an exact
+8,000-step archived/current IPPO regression. Training **21284886 / 21284888**,
+evaluations **21284887 / 21284889**, and three collectors are queued after nine
+evidence checks. The collector records whether the fixed first-3M traces match
+their earlier references. These full endpoints remain pending and use no
+held-out seeds.
+
+The new [public legacy CUDA launcher](../scripts/triton/train_legacy_gpu.sbatch)
+also passed native execution **21284907** on A100: 8,000 residual-DMS
+transitions, two saved-source CPU evaluation episodes, correct frozen-source
+imports, and rejected invalid-source/existing-output/modern-backend cases.
+[Evidence](../reports/public-legacy-gpu-launcher-validation.json). This gives
+readers a direct GPU command for the native configurations; it adds no learning
+or environment changes.
+
 The residual models also have [queued mechanism diagnostics](../reports/development-residual-mechanism-3m-seed101.json):
-Walker **21281731** and SMAC **21281732**, each dependent on its fixed-3M
-evaluation. Both will replay the full 100 normal episodes before paired hold
+Walker **21281731** is running after its completed fixed-3M evaluation; SMAC
+**21281732** remains dependent on its pending evaluation. Both will replay the full 100 normal episodes before paired hold
 and mask interventions, then collect four fresh 128-transition trajectories
 for prediction baselines, latent shuffles and peer-removal sensitivity. Native
 smoke **21281659** passed on both tasks with exact saved-episode replay and
@@ -312,8 +330,8 @@ hyperparameters remain unchanged. Exact-launcher validation **21282799**
 passed both 8,000-step cases and separate saved-source evaluations, recording
 runtime metadata independently. The retry checked 13 evidence files and
 submitted training **21282828 / 21282830**, fixed evaluations **21282829 / 21282831**,
-and three collectors. Both training jobs are now running on H100, at **684,000**
-IPPO steps and **500,000** DMS steps, with finite metrics. Their fixed evaluations
+and three collectors. Both training jobs are now running on H100, at **924,000**
+IPPO steps and **668,000** DMS steps, with finite metrics. Their fixed evaluations
 remain pending. [Launcher evidence](../reports/ant-entropy-launcher-validation.json).
 [Failed attempt](../reports/development-ant-entropy-3m-seed101.json),
 [current retry](../reports/development-ant-entropy-3m-seed101-attempt2.json).
