@@ -1,0 +1,207 @@
+{
+  "success": true,
+  "status": "completed_pass",
+  "job_id": "21284426",
+  "accounting": "21284426|COMPLETED|0:0|00:03:01|gpu14",
+  "artifact": "runs/development-walker-residual-3m-seed103",
+  "scope": "Exact native launcher validation of all three unchanged Walker3x2 seed-103 settings before 3M submission; not benchmark performance.",
+  "source_inventory_sha256": {
+    "dms/__init__.py": "e40b66426f571d2727c316475c315425805523e51c86c5f455aa6120304643c9",
+    "dms/assets/manyagent_swimmer_10x2.xml": "2793aa62f97be1bceed660c5ea0860716991f64d2f9a1824f66ca914e037e20b",
+    "dms/benchmark_configs.py": "f9e639ee4ecd073197a3370c605e3808a62a1584a9d8aad126a002bc9949f2a1",
+    "dms/diagnostics.py": "a4d6f3c5fb85065afae35080cd5042db8569c5eaff82ca38d0138f03bea841c0",
+    "dms/distributions.py": "c5ef4b0d3271a0b78c5fca482deb3cf87287a7901e7176771a9cd8955069536a",
+    "dms/envs.py": "03fd9678a8526ca4c50a0ead82d0445614248462ef3e5c1bfa3cca1197157abe",
+    "dms/evaluate.py": "eaf388ae1643c9ab8e1d112cf51d7a3f0dde4966fa8b19347b689eff436e5461",
+    "dms/intention.py": "2c2fd8c3688d881e4b29679d679b3e1681fae6ebc715584c893515127525c413",
+    "dms/legacy_ant.py": "587fee123d32c867c11f72074792bbb2166fa9c4d3bb3063c66d19501a8c5a3a",
+    "dms/legacy_env.py": "f933edb966d7a167aaebcae150c1e9d0b20d4d6f8ca60623d7c780de91b2f0f1",
+    "dms/legacy_graph.py": "4e33b826bcff0bdd77c5b304f0351e3ddedd654af06325f8fcff9b72923336dc",
+    "dms/legacy_swimmer.py": "4558c5ec3fc1a4dce42eef8dcde764531451b9c07c44e758046db743a6f6741d",
+    "dms/observation_history.py": "9fb7593c10abf6569ec8ecda0d0a849c8633ead855cda3656aacd46318fd3e2c",
+    "dms/parallel.py": "910c1075711840f2e7becda5be50fbc21f82ca3b3b496bc1176bf5b16c037d5b",
+    "dms/policy.py": "fadb07732458957c90b0aa7a1a157a605a1a070dc96c5000ceee78c6d8cb8377",
+    "dms/recurrent.py": "c42ef865be301ebc915c3c6d5e3c4242158c737cf45400a46a27e8913a1bb35f",
+    "dms/report.py": "9a5af859c0e4f31f75b90b2a241297702bfe6731686d0bf1f3b97f2bb2643531",
+    "dms/returns.py": "23bdd7cdc9a0bf04b800bf0a014be9f15ab570bfd742eefd339c15fae843e03d",
+    "dms/sequences.py": "bc776f26a4ba4093628c41ba2994a51f2ecc0db6e07038fa358bec36df5d720c",
+    "dms/smac_env.py": "c497d3c1365c3f6a830f906ce6251c2b69fbac06199d272cb86c961d01b0af32",
+    "dms/swimmer_configs.py": "4c87e60ebf45530258fa3b4ff9b08b8c8b53ab1eca5e5e8a2183227366b17853",
+    "dms/train.py": "7caf77389a41972e262a7ca99bb00dcad893ab190ef8567679fedd847a62188a"
+  },
+  "checks": {
+    "success": true,
+    "job_id": "21284426",
+    "purpose": "Exercise the exact revised training launcher with an 8k validation budget before the seed-103 3M replications",
+    "exact_launcher_executed_for": [
+      "ippo",
+      "dms",
+      "dms"
+    ],
+    "saved_source_evaluations_passed": true,
+    "source_and_checkpoint_unchanged": true,
+    "completed_utc": "2026-10-29T13:45:58.781549+00:00"
+  },
+  "cases": [
+    {
+      "label": "walker-ippo",
+      "algorithm": "ippo",
+      "mode": "ippo",
+      "training_steps": 8000,
+      "finite_updates": 2,
+      "completed_episodes": 376,
+      "peer_gate_fractions": [
+        0.0,
+        0.0
+      ],
+      "auxiliary_training_present": false,
+      "training_runtime": {
+        "host": "gpu14.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21284426",
+        "slurm_partition": "gpu-debug",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA A100-SXM4-80GB",
+          "capability": [
+            8,
+            0
+          ],
+          "total_memory_bytes": 85093777408,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "evaluation_episodes": 2,
+      "evaluation_seed_start": 400305,
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "source_and_checkpoint_unchanged": true,
+      "validation": "runs/development-walker-residual-3m-seed103/smoke-v2-evaluation-walker-ippo/validation.json",
+      "validation_sha256": "a791cbb6b7ec1b83329fcf954be29ff8616b7ffe2eb29aadec283596aeb5ca64"
+    },
+    {
+      "label": "walker-residual",
+      "algorithm": "dms",
+      "mode": "residual",
+      "training_steps": 8000,
+      "finite_updates": 2,
+      "completed_episodes": 377,
+      "peer_gate_fractions": [
+        0.32083333333333336,
+        0.637
+      ],
+      "auxiliary_training_present": true,
+      "training_runtime": {
+        "host": "gpu14.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21284426",
+        "slurm_partition": "gpu-debug",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA A100-SXM4-80GB",
+          "capability": [
+            8,
+            0
+          ],
+          "total_memory_bytes": 85093777408,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "evaluation_episodes": 2,
+      "evaluation_seed_start": 400305,
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "source_and_checkpoint_unchanged": true,
+      "validation": "runs/development-walker-residual-3m-seed103/smoke-v2-evaluation-walker-residual/validation.json",
+      "validation_sha256": "c441dd070bab333678eedc06699e2b3cd8e3363f4aed2d6c73e0f72c086a14ba"
+    },
+    {
+      "label": "walker-no-input",
+      "algorithm": "dms",
+      "mode": "no-input",
+      "training_steps": 8000,
+      "finite_updates": 2,
+      "completed_episodes": 376,
+      "peer_gate_fractions": [
+        0.0,
+        0.0
+      ],
+      "auxiliary_training_present": true,
+      "training_runtime": {
+        "host": "gpu14.int.triton.aalto.fi",
+        "device": "cuda",
+        "slurm_job_id": "21284426",
+        "slurm_partition": "gpu-debug",
+        "torch_threads": 1,
+        "float32_matmul_precision": "highest",
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "accelerator": {
+          "name": "NVIDIA A100-SXM4-80GB",
+          "capability": [
+            8,
+            0
+          ],
+          "total_memory_bytes": 85093777408,
+          "cuda_runtime": "12.6",
+          "cudnn_version": 90501,
+          "cuda_visible_devices": "0",
+          "matmul_allow_tf32": false
+        }
+      },
+      "evaluation_episodes": 2,
+      "evaluation_seed_start": 400305,
+      "optimizer_step_calls": 0,
+      "learner_state_unchanged": true,
+      "source_and_checkpoint_unchanged": true,
+      "validation": "runs/development-walker-residual-3m-seed103/smoke-v2-evaluation-walker-no-input/validation.json",
+      "validation_sha256": "766cfcef4f0a1627e50a000c6feff79c5a0edc9cb3bbb47fbaa4e5471a312297"
+    }
+  ],
+  "submission_evidence_sha256": {
+    "runs/development-walker-residual-3m-seed103/smoke-v2-validation.json": "ab263e9c9ad39e8157839109146da5dab9643eed107f51882205d39053cdd000",
+    "runs/development-walker-residual-3m-seed103/smoke-v2-validation/smoke-walker-ippo.json": "4b7efa6edd60a24013ee39193cd55842e939a7dd0b4f706e8e62cb4a5f3f4347",
+    "runs/development-walker-residual-3m-seed103/smoke-v2-validation/smoke-walker-no-input.json": "30f050b2bbd15b16cc24f75ced759fb2d8aebf3816b44d4f6954e7239feb852e",
+    "runs/development-walker-residual-3m-seed103/smoke-v2-validation/smoke-walker-residual.json": "c5ed7b0ec24ce87d3f90189985bd7429d75b9ac2ce8620d45d82c35301f7ae86",
+    "runs/development-walker-residual-3m-seed103/smoke-v2-evaluation-walker-ippo/validation.json": "a791cbb6b7ec1b83329fcf954be29ff8616b7ffe2eb29aadec283596aeb5ca64",
+    "runs/development-walker-residual-3m-seed103/smoke-v2-evaluation-walker-residual/validation.json": "c441dd070bab333678eedc06699e2b3cd8e3363f4aed2d6c73e0f72c086a14ba",
+    "runs/development-walker-residual-3m-seed103/smoke-v2-evaluation-walker-no-input/validation.json": "766cfcef4f0a1627e50a000c6feff79c5a0edc9cb3bbb47fbaa4e5471a312297",
+    "reports/residual-native-validation.json": "d36472913cb5f79c58b0bc04e8e14d8e86afd07fa59750bc12bc229fffbc9fab",
+    "reports/residual-unit-validation.json": "12a59a77b4e17c22a356251a1f09bbb763603fdae3981cf09123a204e01c64ed"
+  },
+  "submitted": [
+    {
+      "label": "walker-ippo",
+      "training_job": "21284499",
+      "evaluation_job": "21284500"
+    },
+    {
+      "label": "walker-residual",
+      "training_job": "21284501",
+      "evaluation_job": "21284502"
+    },
+    {
+      "label": "walker-no-input",
+      "training_job": "21284503",
+      "evaluation_job": "21284504"
+    }
+  ],
+  "limits": [
+    "A100 native smoke, while all full experiments require H100.",
+    "Only 8,000 transitions and two evaluation episodes per setting; no performance claim.",
+    "Runtime settings below come from the training manifest after seeding. Launcher preflight settings are an earlier observation."
+  ],
+  "created_utc": "2026-10-29T13:47:08.624608+00:00"
+}

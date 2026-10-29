@@ -1,6 +1,6 @@
 # Reproduction status
 
-Snapshot: **2026-10-29 13:34 UTC**. **Not release-ready.** Development results exceed some
+Snapshot: **2026-10-29 13:49 UTC**. **Not release-ready.** Development results exceed some
 individual paper targets, but consistent improvement across training seeds,
 useful intention inference against strong memory controls, and the complete
 benchmark matrix remain unproven. Held-out training seeds **11, 23, 37, 53, 71,
@@ -214,10 +214,11 @@ auxiliary training with zero peer inputs. The [endpoint audit](../reports/residu
 checks the 3M budget, evaluation seed block, immutable state and zero optimizer
 steps. This remains an ablation, below the full-budget 1,100 target at 3M.
 
-Walker residual job **21280354** has reached **2,892,000 steps**. SMAC residual
+Walker residual job **21280354** has completed **3,000,000 steps** in 3h43m35s;
+its separate 100-episode evaluation is running. SMAC residual
 **21280358** has reached **2,160,000 steps** and its no-input control
-**21280360** has reached **1,859,200 steps**. All three are running on H100
-with finite latest metrics; their fixed evaluations and collectors are queued.
+**21280360** has reached **1,859,200 steps**. Both SMAC jobs remain running on
+H100 with finite metrics; their fixed evaluations and collectors are queued.
 [Frozen settings and queue](../reports/development-residual-fusion-3m-seed101.json).
 
 A [fresh-initialization paired diagnostic](../reports/residual-no-input-rng-diagnostic.json),
@@ -229,6 +230,16 @@ The largest common parameter difference after one 4,000-transition update is
 **5.96e-8**. This explains why no-input training is not an exact IPPO replay;
 it does not explain the full return gap or justify selecting a different RNG
 path to recover one favorable seed. Current experiments remain unchanged.
+
+A [Walker seed-103 replication](WALKER_REPLICATION.md) now declares three
+unchanged settings: IPPO, residual DMS and the trained no-input control. All
+use the same frozen source, H100, local history 32, a fixed 3M checkpoint, and
+100 separate evaluation episodes. [Native launch check **21284426**](../reports/walker-seed103-native-validation.json)
+passed all three 8,000-step cases and saved-source evaluations on A100. The
+submission verified nine evidence files and queued training **21284499 /
+21284501 / 21284503**, with evaluations **21284500 / 21284502 / 21284504** and
+four collectors. This tests seed sensitivity before further redesign; held-out
+seeds remain unused and no final setting is promoted.
 
 The residual models also have [queued mechanism diagnostics](../reports/development-residual-mechanism-3m-seed101.json):
 Walker **21281731** and SMAC **21281732**, each dependent on its fixed-3M

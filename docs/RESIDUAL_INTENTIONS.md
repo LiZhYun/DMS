@@ -88,6 +88,10 @@ not the cause of the full return gap. Same-seed runs remain valid independent
 training outcomes. It does not select an RNG redesign or alter any experiment.
 Initialization equivalence remains the supported guarantee.
 
+A [second development training seed](WALKER_REPLICATION.md) compares the same
+Walker settings with IPPO before drawing broader conclusions from seed 101.
+This replication introduces no new training method or hyperparameter search.
+
 ## Fixed-checkpoint mechanism checks
 
 After each intention-enabled model's 3M evaluation, a
