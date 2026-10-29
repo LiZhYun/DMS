@@ -1,78 +1,28 @@
-# Experiment plan and acceptance
+# Community release plan
 
-The goal is a readable public reproduction preserving intention inference and selective coordination, with performance higher than the paper's claims. Some individual development targets are exceeded; the complete performance and mechanism goal remains unmet. [paper_targets.json](../configs/paper_targets.json) is the target ledger; source evidence and unresolved interpretation issues are in [PAPER_CONTRACT.md](PAPER_CONTRACT.md).
+The user’s current objective (2026-10-29) is a clear, faithful repository that
+can be shared promptly. Full-budget training, every benchmark experiment and
+performance superiority are **not release requirements**. The earlier research
+plan is preserved in [the archive](EXPERIMENT_PLAN_ARCHIVE_20261029.md), rather
+than being treated as the current acceptance gate.
 
-## Budget scope, revised 2026-10-29
+## Required software evidence
 
-The user removed full-budget training as a requirement. Use shorter, explicitly
-registered matched budgets for development and final replication; reaching
-10,000,000 transitions is optional and is not a readiness gate. The queued
-Walker and Ant 10M campaigns were cancelled before learning, as recorded in
-[the scope-change record](../reports/full-budget-scope-change-20261029.json).
-Existing completed 10M results remain valid at their recorded budgets.
-Performance above the paper targets, independent training replicates, local
-information boundaries and useful intention/coordination mechanisms remain
-requirements. Do not describe a shorter run as a reproduction of the paper
-training schedule.
+1. Preserve past-only local intention inference, future-informed auxiliary
+   learning, and the paper’s policy-KL coordination criterion. Document
+   mathematical corrections and deliberate implementation differences.
+2. Keep actors and critics local; hidden actions and future targets cannot
+   enter acting inputs. Preserve episode boundaries and unavailable-action masks.
+3. Validate the unit suite and the documented IPPO, soft-DMS and causal-DMS toy
+   commands, including saved-source checkpoint evaluation.
+4. Build an installable package and verify its execution outside the checkout.
+5. Provide a short reader entry point, benchmark setup links, license and
+   citation. Label the environment assumptions and all unverified claims.
+6. Preserve existing completed and partial experiment evidence without requiring
+   further performance searches. Leave the sibling project untouched.
 
-## Stage 1: invariants and smoke checks
-
-Run the unit suite and the 512-step synthetic configuration. Check finite losses, meaningful updates, valid actions, explicit sequence boundaries, masked histories, and checkpoint evaluation. Then run the modern MuJoCo and official SMAC smoke configs on allocated Triton nodes. A benchmark smoke must complete collection, a PPO update, an intention update, deterministic evaluation, and checkpoint saving; starting an environment alone is insufficient.
-
-Read `config.json`, the environment manifest, and per-episode evaluation records. Confirm that SMAC sees only native visible ally actions, MuJoCo's added sensor is recorded, timeout bootstrap preserves the final observation, and actual transitions match the chosen smoke budget. Do not interpret synthetic reward or 64/128-transition benchmark smoke scores as reproduction performance.
-
-Measure wall time, peak host memory, GPU memory, and transitions per second separately for collection, updates, and evaluation. The templates' one-GPU/eight-core/32-GB/24-hour training request is provisional. Estimate a full run from measured throughput plus evaluation time, then allow a modest margin. Checkpoint resume does not restore environment trajectories; do not deliberately schedule a final run to exceed its wall-time limit.
-
-## Stage 2: development on separate seeds
-
-Use training seeds **101, 103, 107**. Begin with HalfCheetah 2x3 and SMAC 3s5z using the paired DMS/IPPO configs. Use explicitly shorter development budgets (currently about 3M transitions); additional training to 10M is not required. Record every attempted setting and its budget. Keep equal sensor access, environment version, reward semantics, and evaluation settings across algorithms. Match `smac_time_limit_terminal` within each pair: its optional finite-battle objective changes value targets at the native deadline and must be reported separately from continuing-value runs.
-
-Tune a small predeclared set: actor/critic learning rates, history length, auxiliary-loss/update strength, and coordination variant/threshold. Record negative results. Inspect held-out behavior prediction against a persistence predictor and latent/selection diagnostics alongside reward. Flat or collapsed latent features, near-zero selected-peer rates, or gains explainable entirely by a stronger PPO base require investigation.
-
-Use `coordination="all"` for intention without selection, `"soft"` for attention, and `"causal"` for the paper's KL-based selection. Required comparisons are:
-
-- IPPO with the same local sensors and optimizer settings.
-- Intention model with all available peer intentions.
-- Intention model with soft attention.
-- Intention model with causal selection.
-- Long/short filtering and missing-action handling sensitivity, with hidden commands still excluded in every variant.
-
-Keep `policy_history_length` equal across a matched IPPO/DMS pair. On representative
-tasks, also include an IPPO memory control over the same available observation
-and action history: a feedforward IPPO comparison alone cannot distinguish the
-benefit of learned intention prediction from the benefit of remembering past
-inputs. Forecast shuffles and downstream interventions answer related but
-different questions; they do not replace that trained control.
-
-Do not implement a missing-action ablation by revealing hidden true controls. An ablation can instead remove the explicit missingness token or alter how missing local records are encoded, while preserving the information boundary. Check MuJoCo observation radius 0 and 1 because the manuscript contradicts itself. Record the initial four-environment SMAC redesign separately from the later 20-environment configurations. Current SMAC memory controls and residual trials use 20 environments × 160 steps, a 3,200-transition collection batch; matching that batch layout alone does not establish historical optimizer parity. See [the SMAC learning review](SMAC_LEARNING_REVIEW.md) and each frozen run configuration.
-
-## Stage 3: freeze the final experiment
-
-Freeze code, environment versions, sensor definitions, selected hyperparameters, maps, budgets, and evaluation rules before final testing. Also freeze the GPU family within each matched algorithm pair and record the actual accelerator model and library versions. Same-seed reruns on another GPU family need not follow the same training trajectory; they are fresh runs, not exact continuations. Use six held-out training seeds **11, 23, 37, 53, 71, 89**. Predeclare a fixed shorter final budget for each matched task before opening held-out results; do not choose each seed's best test checkpoint. Use a budget divisible by that task's rollout batch (for example 3,000,000 for 4 × 1,000 MuJoCo collection, or 2,998,400 for 20 × 160 SMAC collection). The existing 10M main configs remain optional historical templates; create explicit shorter configs rather than silently truncating them. Report actual transitions for every existing development run, including rounded final rollouts.
-
-Training-time diagnostics use evaluation seeds beginning at 10001. Final evaluation uses a disjoint seed range beginning at **500001**. Pair those episode seeds across algorithms for each task and report how randomness is controlled. Evaluate 100 MuJoCo episodes or 1,000 SMAC games for every independently trained seed. These stronger evaluation counts are the new protocol, not values claimed by the paper.
-
-Report raw per-episode outcomes, per-training-seed means, across-seed mean/median/standard deviation, and a seed-level bootstrap confidence interval. Ten or a thousand episodes from one trained policy do not replace independent training seeds. A positive point estimate and statistically supported improvement are different claims; label them accurately. The paper's plot bands cannot supply missing raw seed results.
-
-## Targets and environment tracks
-
-| Task | Paper result | Initial acceptance threshold |
-| --- | --- | --- |
-| SMAC 3s5z | Exact reported win rate 97.5% | Above 97.5% |
-| SMAC 8m_vs_9m | Exact reported win rate 82.6% | Above 82.6% |
-| SMAC MMM2 | Exact reported win rate 62.1% | Above 62.1% |
-| Ant 2x4 / 4x2 / 8x1 | Raster-plot endpoints, approximately 1,650 / 1,550 / 1,800 | Above 1,900 / 1,700 / 2,000 |
-| HalfCheetah 2x3 / 3x2 / 6x1 | Approximately 3,500 / 4,700 / 4,100 | Above 3,800 / 5,200 / 4,300 |
-| Walker 2x3 / 3x2 / 6x1 | Approximately 600 / 1,000 / 700 | Above 850 / 1,100 / 1,000 |
-
-MuJoCo thresholds are conservative engineering targets derived from the supplied manuscript figures, not exact recovered numbers. ManyAgentSwimmer 10x2 is a supplementary parameter-study task with an engineering target above 85; its bundled standalone main-result asset is not included in the manuscript's main-result figure. Preserve that distinction in reports.
-
-Original SMAC results require the matched StarCraft build, map files, difficulty, reward and observation flags. Modern MuJoCo v5 scores form a separate adaptation track. Exceeding an old v2 return on v5 does not establish a like-for-like paper improvement. Complete an original-environment comparison or a documented equivalence audit before closing the original MuJoCo reproduction gate. The unresolved `agent_obsk` conflict must remain stated even after both sensitivity runs finish.
-
-## Artifacts and readiness
-
-Each run needs its complete configuration, dependency/environment manifest, source snapshot or identifiable revision, training metrics, checkpoint, individual evaluations, job ID, and logs. Use new output directories; failed jobs remain evidence rather than being overwritten. Maintain a table of every scheduled run, seed, variant, step budget, completed steps, terminal status, and evaluation result.
-
-The reproduction is ready only when all required environments run, all registered final seeds complete the frozen shorter matched budgets, all primary targets are exceeded on comparable tracks, uncertainty and ablations support the stated mechanism, and a fresh reader can reproduce the commands. Code and smoke readiness may be reported separately from experimental readiness.
-
-**Operational status, 2026-10-25:** scheduler discovery works with `SLURM_CONF_SERVER=slurmctl:6817,slurmctl2:6817`. Synthetic, real MuJoCo, and real SMAC GPU smoke jobs completed successfully, each running 119 tests first. These short executions do not establish learning performance. [STATUS.md](STATUS.md) records the job IDs, budgets, evidence paths, and remaining work.
+The research campaigns were intentionally stopped to meet this scope. No
+performance ranking, complete experiment matrix or held-out-seed result is
+inferred from passing software checks. Further benchmarks are optional work.
+Publishing to a remote host requires an actual destination; the local repository
+and source bundle can be prepared without uploading them.

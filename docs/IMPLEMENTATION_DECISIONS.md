@@ -1,6 +1,6 @@
 # Implementation decisions
 
-The user authorized a readable redesign that preserves the method's core and must eventually exceed the paper's reported performance. This file describes the implemented design rather than implying that every historical detail has been reproduced. Manuscript facts and ambiguities remain in [PAPER_CONTRACT.md](PAPER_CONTRACT.md).
+The user authorized a readable redesign preserving the method’s core. The current community-release scope prioritizes clear, faithful software; exhaustive experiments and demonstrated performance superiority are not required. This file describes the implemented design rather than implying that every historical detail has been reproduced. Manuscript facts and ambiguities remain in [PAPER_CONTRACT.md](PAPER_CONTRACT.md).
 
 | Area | Current decision and reason |
 | --- | --- |
@@ -50,4 +50,4 @@ The provided DMS configs initially select soft attention because it is different
 
 ## Changes still need evidence
 
-Unit tests establish mathematical and information-flow properties, not performance. Required empirical checks include future-action prediction against persistence, latent variation, causal-score/selection diagnostics, no-intention and no-filter ablations, matched sensors, and fixed-budget multi-seed results. Claims must identify the environment track, visibility assumptions, optimizer, coordination variant, and completed evaluation protocol.
+Unit tests establish mathematical and information-flow properties, not performance. A future performance/mechanism claim would require empirical checks including future-action prediction against persistence, latent variation, causal-score/selection diagnostics, no-intention and no-filter ablations, matched sensors, and fixed-budget multi-seed results. Claims must identify the environment track, visibility assumptions, optimizer, coordination variant, and completed evaluation protocol.
