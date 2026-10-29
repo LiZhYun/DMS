@@ -24,5 +24,6 @@ than being treated as the current acceptance gate.
 The research campaigns were intentionally stopped to meet this scope. No
 performance ranking, complete experiment matrix or held-out-seed result is
 inferred from passing software checks. Further benchmarks are optional work.
-Publishing to a remote host requires an actual destination; the local repository
-and source bundle can be prepared without uploading them.
+The software is published to `LiZhYun/DMS`, branch `main`; the original paper
+code is retained on `legacy-paper-code`. The current [status](STATUS.md) links
+the verified publication revision and GitHub CI result.

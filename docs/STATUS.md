@@ -48,7 +48,8 @@ and the manuscript’s observation-radius ambiguity remains explicit. Some raw
 run and reference links are workspace-only; no checkpoint bundle is publicly hosted.
 
 The current [release plan](EXPERIMENT_PLAN.md) concerns software correctness,
-method transparency and reader usability. Publication targets [LiZhYun/DMS](https://github.com/LiZhYun/DMS), branch `main`.
-The original paper code is preserved on `legacy-paper-code`. The publication
-record will identify the actual pushed revision; local validation is not a
-claim that GitHub Actions has completed.
+method transparency and reader usability. Published to [LiZhYun/DMS](https://github.com/LiZhYun/DMS), branch `main`.
+The original paper code is preserved on `legacy-paper-code`. The [publication record](../reports/community-publication.json) verifies revision
+`03e64b5` and the [successful GitHub CI run](https://github.com/LiZhYun/DMS/actions/runs/40918285093),
+including dependency installation, tests and wheel building. No DMS Slurm jobs
+remain active. This metadata update does not change the validated Python source.
